@@ -1,13 +1,13 @@
 # SparkPost Developer Community Portal
 This is a private repo to host the SparkPost Organization Github Page which will serve as the developer community site.
-See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/DEVRELATIONS/SparkPost+Developer+Community+Portal) for more details
+See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/DEVRELATIONS/SparkPost+Developer+Community+Portal) for more details.
 
 ## Contributing
-Because any changes pushed to the `master` branch are immediately live, all pull requests are to be merged into the `develop` branch. Releases will happen by merging `develop` into master. At that point a Github tag & release will be created.
+Because any changes pushed to the `master` branch are immediately live, all pull requests are to be merged into the `develop` branch. Releases will happen by merging `develop` into `master`. At that point a Github tag & release will be created.
 
 ### Prerequisite
 The site utilizes a static site generator called [Jekyll](http://jekyllrb.com/).
-The following installed in order run Jekyll locally.
+The following must be installed in order run Jekyll locally.
 - [Ruby](http://www.ruby-lang.org/en/downloads/)
 - [RubyGems](http://rubygems.org/pages/download)
 
@@ -17,7 +17,7 @@ The following installed in order run Jekyll locally.
 3. Run `bundle install` to install Jekyll
 4. Run `jekyll serve` to start the built-in development server. *The server will watch for changes and regenerate automatically.*
 5. Open <http://localhost:4000/> to view the site
-6. When finished hit `ctrl + c` to quit
+6. When finished hit `ctrl + c` in the terminal window to stop the server
 
 ### Submitting Updates
 1. Make sure you are on the `develop` branch `git checkout develop`
