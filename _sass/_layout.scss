@@ -1,9 +1,11 @@
 .sp-menu {
   background-color: $c-orange;
+  border: none;
 
   .navbar-brand,
   .navbar-nav > li > a {
     color: $c-white;
+    text-transform: uppercase;
 
     &:hover {
       color: $c-white;
@@ -14,7 +16,17 @@
 .jumbotron {
   background-color: $c-sp-gray;
   color: $c-white;
+  padding-top: 80px;
   text-align: center;
+
+  h1 {
+    font-size: $b-font-size * 3.25;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: $b-font-size * 1.25;
+  }
 }
 
 .row-darker {

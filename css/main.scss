@@ -29,11 +29,11 @@ $c-white: #fff;
 $c-orange: $sp-orange;
 
 // typography
-$base-font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B',sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 24px;
-$spacing-unit:     30px;
+$b-font-family: 'Gotham Narrow SSm A', 'Gotham Narrow SSm B', Helvetica, sans-serif;
+$b-font-size:   14px;
+// $small-font-size:  $base-font-size * 0.875;
+// $base-line-height: 24px;
+// $spacing-unit:     30px;
 
 
 
@@ -55,5 +55,6 @@ $spacing-unit:     30px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
+        "base",
         "layout"
 ;
