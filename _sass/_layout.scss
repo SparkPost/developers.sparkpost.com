@@ -1,6 +1,20 @@
+.sp-connect {
+  a {
+    color: $c-white;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .sp-menu {
   background-color: $c-orange;
   border: none;
+
+  .navbar-brand {
+    padding: 10px 15px;
+  }
 
   .navbar-brand,
   .navbar-nav > li > a {
