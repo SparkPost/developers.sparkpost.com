@@ -1,0 +1,23 @@
+//
+// Navbars
+// --------------------------------------------------
+
+.navbar {
+  background-color: $c-orange;
+  border: none;
+
+  .navbar-brand {
+    padding: 10px 15px;
+  }
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    color: $c-white;
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      color: $c-white;
+    }
+  }
+}

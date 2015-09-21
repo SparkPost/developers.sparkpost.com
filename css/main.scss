@@ -48,15 +48,15 @@ $text-color: $c-sp-gray;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:  "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$headings-font-weight:    500 !default;
+$font-family-sans-serif: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$headings-font-weight  : 500 !default;
 
 
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
-$btn-font-weight:         400 !default;
-$btn-border-radius-base:  none !default;
+$btn-font-weight        : 400 !default;
+$btn-border-radius-base : none !default;
 $btn-border-radius-large: none !default;
 $btn-border-radius-small: none !default;
 
@@ -66,5 +66,7 @@ $btn-border-radius-small: none !default;
         "bootstrap",
         "layout",
         "buttons",
+        "jumbotron",
+        "navbar",
         "type"
 ;
