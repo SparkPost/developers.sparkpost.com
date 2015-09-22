@@ -6,10 +6,25 @@
   <body>
 
     {% include header.html %}
-    <h1>{{ page.title }}</h1>
+    <h1 style="margin-top: 50px;">{{ page.title }}</h1>
 
     <iframe width="420" height="315" src="https://www.youtube.com/embed/{{ page.id }}" frameborder="0" allowfullscreen></iframe>
+    <br />
     {{ content }}
+
+    {% assign author = site.data.contributors[page.author] %}
+    {% if author %}
+      <span>
+        Video by {{ author.name }} <br />
+        {{ author.title }}, {{ author.company }} <br/>
+        {% if author.twitter %}
+        <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>
+        {% endif %}
+        {% if author.github %}
+        <a href="https://www.github.com/{{ author.github }}"><i class="fa fa-github"></i></a>
+        {% endif %}
+      </span>
+    {% endif %}
 
     {% include footer.html %}
 
