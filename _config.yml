@@ -10,6 +10,11 @@ url: "https://developers.sparkpost.com" # the base hostname & protocol for your 
 twitter_username: SparkPost
 github_username:  SparkPost
 
+collections:
+  videos:
+    output: true
+
+
 # Build settings
 markdown: kramdown
 sass:

@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="container-fluid">
+  <ul style="margin-top:50px;">
+  {% for video in site.videos %}
+    <li><a href="{{ video.url }}"><img src="http://img.youtube.com/vi/{{ video.id }}/1.jpg" />{{ video.title }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
