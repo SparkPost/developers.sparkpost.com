@@ -3,9 +3,9 @@
 // --------------------------------------------------
 
 .jumbotron {
-  background-color: $c-sp-gray;
+  background: $c-sp-gray url("/images/jumbotron-devs.jpg") center center;
+  background-size: cover;
   color: $c-white;
-  padding-top: 80px;
   text-align: center;
 
   h1 {
