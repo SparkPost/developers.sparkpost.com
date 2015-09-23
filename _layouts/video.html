@@ -12,7 +12,8 @@
     <br />
     {{ content }}
 
-    {% assign author = site.data.contributors[page.author] %}
+    {% assign author = site.contributors | where: "id", page.author %}
+    {% assign author = author[0] %}
     {% if author %}
       <span>
         Video by
@@ -20,7 +21,7 @@
           <br />
           <img src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" align="left" />
         {% endif %}
-        {{ author.name }} <br />
+        <a href="{{ author.url }}">{{ author.name }}</a> <br />
         {{ author.title }}, {{ author.company }} <br/>
         {% if author.twitter %}
         <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>

@@ -11,6 +11,8 @@ twitter_username: SparkPost
 github_username:  SparkPost
 
 collections:
+  contributors:
+    output: true
   videos:
     output: true
 
