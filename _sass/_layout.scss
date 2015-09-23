@@ -15,9 +15,11 @@
 .row-darker {
   background-color: $c-sp-gray;
   color: $c-white;
+  padding-bottom: 20px;
 }
 
 .row-dark {
   background-color: lighten($c-sp-gray, 4%);
   color: $c-white;
+  padding-bottom: 20px;
 }

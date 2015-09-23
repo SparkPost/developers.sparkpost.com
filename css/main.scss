@@ -55,10 +55,20 @@ $headings-font-weight  : 500 !default;
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
+
 $btn-font-weight        : 400 !default;
 $btn-border-radius-base : none !default;
 $btn-border-radius-large: none !default;
 $btn-border-radius-small: none !default;
+
+
+//== Jumbotron
+//
+//##
+
+$jumbotron-padding          : 80px !default;
+// $jumbotron-font-size        : ceil(($font-size-base * 1.5)) !default;
+// $jumbotron-heading-font-size: ceil(($font-size-base * 4.5)) !default;
 
 
 // Import partials from `sass_dir` (see _config.yml for load_paths)
@@ -66,6 +76,7 @@ $btn-border-radius-small: none !default;
         "bootstrap",
         "layout",
         "buttons",
+        "forms",
         "jumbotron",
         "navbar",
         "type"
