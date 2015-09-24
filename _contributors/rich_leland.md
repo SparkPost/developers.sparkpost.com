@@ -1,6 +1,4 @@
 ---
-layout: contributor
-
 id: rich_leland
 name: Rich Leland
 title: Director, Application Development & Developer Relations

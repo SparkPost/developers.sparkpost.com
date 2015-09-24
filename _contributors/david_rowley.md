@@ -1,6 +1,4 @@
 ---
-layout: contributor
-
 id: david_rowley
 name: David Rowley
 title: Senior Vice President / General Manager

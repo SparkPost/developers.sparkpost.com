@@ -1,6 +1,5 @@
 ---
-layout: video
-id: R3oy5ygi2fA
+video_id: R3oy5ygi2fA
 title: How to Create a Recipient List in SparkPost
 author: aydrian_howard
 ---

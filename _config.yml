@@ -18,6 +18,19 @@ collections:
   videos:
     output: true
 
+defaults:
+  - scope:
+      path: ""
+      type: videos
+    values:
+      layout: video
+      video_height: 315
+      video_width: 560
+  - scope:
+      path: ""
+      type: contributors
+    values:
+      layout: contributor
 
 # Build settings
 markdown: kramdown

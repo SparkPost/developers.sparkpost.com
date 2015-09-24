@@ -1,6 +1,4 @@
 ---
-layout: contributor
-
 id: aydrian_howard
 name: Aydrian Howard
 title: Developer Advocate
