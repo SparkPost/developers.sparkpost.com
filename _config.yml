@@ -9,6 +9,8 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://developers.sparkpost.com" # the base hostname & protocol for your site
 twitter_username: SparkPost
 github_username:  SparkPost
+facebook_username: SparkPost
+facebook_app_id: 740369632640251
 
 collections:
   contributors:
