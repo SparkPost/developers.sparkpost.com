@@ -48,6 +48,7 @@ $text-color: $c-sp-gray;
 //
 //## Font, line-height, and color for body text, headings, and more.
 
+$font-size-base        : 14px !default;
 $font-family-sans-serif: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $headings-font-weight  : 500 !default;
 
@@ -67,8 +68,8 @@ $btn-border-radius-small: none !default;
 //##
 
 $jumbotron-padding          : 80px !default;
-// $jumbotron-font-size        : ceil(($font-size-base * 1.5)) !default;
-// $jumbotron-heading-font-size: ceil(($font-size-base * 4.5)) !default;
+$jumbotron-font-size        : ceil(($font-size-base * 1.25)) !default;
+$jumbotron-heading-font-size: ceil(($font-size-base * 3.5)) !default;
 
 
 // Import partials from `sass_dir` (see _config.yml for load_paths)
