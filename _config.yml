@@ -12,3 +12,7 @@ github_username:  SparkPost
 
 # Build settings
 markdown: kramdown
+sass:
+    load_paths:
+        - _sass
+        - bower_components/bootstrap-sass/assets/stylesheets
