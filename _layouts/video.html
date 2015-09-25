@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-
-  {% include head.html %}
+  {% include base.html %}
+  {% include head.html base=base %}
 
   <body>
     <div id="fb-root"></div>
@@ -13,7 +13,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
-    {% include header.html %}
+    {% include header.html base=base %}
     <h1>{{ page.title }}</h1>
 
     <iframe width="{{ page.video_width }}" height="{{ page.video_height }}" src="https://www.youtube.com/embed/{{ page.video_id }}" frameborder="0" allowfullscreen></iframe>
@@ -44,9 +44,9 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <div class="fb-share-button" data-href="{{ page.url | prepend: site.url }}" data-layout="button_count"></div>
 
-    {% include footer.html %}
+    {% include footer.html base=base %}
 
-    {% include scripts.html %}
+    {% include scripts.html base=base %}
   </body>
 
 </html>

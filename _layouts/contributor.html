@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-
-  {% include head.html %}
+  {% include base.html %}
+  {% include head.html base=base %}
 
   <body>
 
-    {% include header.html %}
+    {% include header.html base=base %}
 
     <div class="container-fluid">
       <div class="row">
@@ -41,9 +41,9 @@
         </div>
     </div>
 
-    {% include footer.html %}
+    {% include footer.html base=base %}
 
-    {% include scripts.html %}
+    {% include scripts.html base=base %}
   </body>
 
 </html>
