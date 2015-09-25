@@ -15,7 +15,7 @@ The following must be installed in order run Jekyll locally.
 1. Clone the repo `git clone git@github.com:SparkPost/sparkpost.github.io.git`
 2. Switch to the repo directory `cd sparkpost.github.io`
 3. Run `bundle install` to install Jekyll
-4. Run `jekyll serve` to start the built-in development server. *The server will watch for changes and regenerate automatically.*
+4. Run `jekyll serve --safe` to start the built-in development server in safe mode which is used by GitHub Pages. *The server will watch for changes and regenerate automatically.*
 5. Open <http://localhost:4000/> to view the site
 6. When finished hit `ctrl + c` in the terminal window to stop the server
 
@@ -28,3 +28,10 @@ The following must be installed in order run Jekyll locally.
 6. Push your branch to Github `git push origin ISSUE-XX`
 7. Create a [Pull Request](https://github.com/SparkPost/sparkpost.github.io/pulls) to submit changes for review
 8. Once your Pull Request has been reviewed and merged, delete your branch
+
+### Deploying to Staging
+A second repo has been created for staging since GitHub will not generate branches other than master.
+
+1. Add the staging remote if it doesn't exist `git remote add staging git@github.com:SparkPost/devhub-staging.git`
+2. Push the develop branch to staging into the gh-pages branch `git push staging develop:gh-pages`
+3. Open http://sparkpost.github.io/devhub-staging to view the site
