@@ -1,0 +1,34 @@
+- name: node-sparkpost
+  type: official
+  description: Node.js module
+  github_repo: SparkPost/node-sparkpost
+  language: javascript
+  image: node-logo.png
+
+- name: python-sparkpost
+  type: official
+  description: Python module
+  github_repo: SparkPost/python-sparkpost
+  language: python
+  image: python-logo.png
+
+- name: php-sparkpost
+  type: official
+  description: PHP library
+  github_repo: SparkPost/php-sparkpost
+  language: php
+  image: php-logo.png
+
+- name: nodemailer-sparkpost-transport
+  type: official
+  description: Nodemailer Transport Module
+  github_repo: SparkPost/nodemailer-sparkpost-transport
+  language: php
+  image: nodemailer-logo.png
+
+- name: fake-community-lib
+  type: community
+  description: This isn't real (Delete after styling)
+  github_repo: aydrian/fake-community-lib
+  language: java
+  image: java-logo.png

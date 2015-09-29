@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% include base.html %}
+<div class="container-fluid">
+{% assign official_libs = site.data.libraries | where:"type", "official" %}
+{% if official_libs.size > 0 %}
+  <h2>Official SparkPost Libraries</h2>
+  <ul>
+  {% for library in official_libs %}
+    <li><img src="{{ base }}/images/{{ library.image }}" /><a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
+{% assign community_libs = site.data.libraries | where:"type", "community" %}
+{% if community_libs.size > 0 %}
+  <h2>Community Supported Libraries</h2>
+  <ul>
+  {% for library in community_libs %}
+    <li><img src="{{ base }}/images/{{ library.image }}" /><a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+  {% endfor %}
+  </ul>
+{% endif %}
+</div>
