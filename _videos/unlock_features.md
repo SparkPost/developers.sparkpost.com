@@ -1,7 +1,7 @@
 ---
 video_id: p4bkto1aIEo
-video_width: 420
 title: "Getting Started: How To Unlock Features in SparkPost"
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo lacus at tellus convallis ultricies.
+description: Send a test email, set up your setting domain and start sending email in minutes.
 author: david_rowley
 ---
+Send a test email, set up your setting domain and start sending email in minutes. Plus, learn how to unlock more features with your SparkPost account. Don't have a SparkPost account yet? Sign up here: http://bit.ly/sparkpost_yt

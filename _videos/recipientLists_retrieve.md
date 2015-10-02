@@ -1,6 +1,7 @@
 ---
 video_id: xqUmcrvt5sI
 title: How to Retrieve a Recipient List in SparkPost
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo lacus at tellus convallis ultricies.
+description: Learn how to easily retrieve your recipient list using the SparkPost API.
 author: aydrian_howard
 ---
+Learn how to easily retrieve your recipient list using the SparkPost API. Don't have an account? [Click here to sign up](https://app.sparkpost.com/sign-up).

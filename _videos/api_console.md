@@ -1,6 +1,6 @@
 ---
 video_id: eYoqv-GmfeY
-video_width: 420
 title: How to Leverage the Power of SparkPost API documentation and Live Console
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo lacus at tellus convallis ultricies.
+description: In this video learn how to leverage the power of the SparkPost API documentation.
 ---
+In this video learn how to leverage the power of the SparkPost API documentation. The SparkPost API enables client applications to integrate with SparkPost and perform actions associated with account management, message generation and reporting.

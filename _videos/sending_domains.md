@@ -1,7 +1,7 @@
 ---
 video_id: i35Nrxomjv0
-video_width: 420
 title: Setting Up Sending Domains for SparkPost
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo lacus at tellus convallis ultricies.
+description: Learn how to set up a sending domain with SparkPost.
 author: aydrian_howard
 ---
+Learn how to set up a sending domain with SparkPost.
