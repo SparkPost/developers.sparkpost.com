@@ -1,10 +1,16 @@
 ---
 layout: default
 ---
-<div class="container-fluid">
-  <ul style="margin-top:50px;">
+<div class="container videos">
+  <div class="col-xs-12">
   {% for video in site.videos %}
-    <li><a href="{{ video.url }}"><img src="http://img.youtube.com/vi/{{ video.video_id }}/1.jpg" />{{ video.title }}</a></li>
+  <!--{% if forloop.index % 4 == 0 %}<div class="col-xs-12">{% endif %}-->
+    <div class="col-xs-4 video video-{{ forloop.index }}">
+      <a href="{{ video.url }}"><img src="//img.youtube.com/vi/{{ video.video_id }}/default.jpg" /></a>
+      <h4><a href="{{ video.url }}">{{ forloop.index }}. {{ video.title }}</a></h4>
+      <p>{{ video.description }}</p>
+    </div>
+  <!--{% if forloop.index % 3 == 0 %}</div>{% endif %}-->
   {% endfor %}
-  </ul>
+  </div>
 </div>
