@@ -28,6 +28,15 @@ body {
   padding-bottom: 20px;
 }
 
+.videos {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .video {
   margin-bottom: 50px;
+
+  img {
+    border: 1px solid $c-gray-lighter;
+  }
 }
