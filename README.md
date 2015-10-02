@@ -14,10 +14,11 @@ The following must be installed in order run Jekyll locally.
 ### Local Development Setup
 1. Clone the repo `git clone git@github.com:SparkPost/sparkpost.github.io.git`
 2. Switch to the repo directory `cd sparkpost.github.io`
-3. Run `bundle install` to install Jekyll
-4. Run `jekyll serve --safe` to start the built-in development server in safe mode which is used by GitHub Pages. *The server will watch for changes and regenerate automatically.*
-5. Open <http://localhost:4000/> to view the site
-6. When finished hit `ctrl + c` in the terminal window to stop the server
+3. Run `bundle install --binstubs` to install Jekyll and Guard
+4. Run `bin/jekyll serve --safe` to start the built-in development server in safe mode which is used by GitHub Pages. *The server will watch for changes and regenerate automatically.*
+5. Optional - in a separate terminal tab, run `bin/guard` to trigger livereload when files change
+6. Open <http://localhost:4000/> to view the site
+7. When finished hit `ctrl + c` in the terminal window to stop the server
 
 ### Submitting Updates
 1. Make sure you are on the `develop` branch `git checkout develop`

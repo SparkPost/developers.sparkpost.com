@@ -1,6 +1,7 @@
 ---
 video_id: 1C24IXerjks
-video_width: 420
 title: How To Update A Recipient List Using SparkPost API
+description: Learn how to easily update a recipient list using the SparkPost API.
 author: aydrian_howard
 ---
+Learn how to easily update a recipient list using the SparkPost API. Don't have an account? [Click here to sign up](https://app.sparkpost.com/sign-up).
