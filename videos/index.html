@@ -4,7 +4,7 @@ layout: default
 <div class="container videos">
   <div class="col-xs-12">
   {% for video in site.videos %}
-    <div class="col-xs-12 col-sm-4 video">
+    <div class="col-xs-12 col-sm-4 video-thumb">
       <a href="{{ video.url }}"><img src="//img.youtube.com/vi/{{ video.video_id }}/mqdefault.jpg" class="img-responsive"></a>
       <h4><a href="{{ video.url }}">{{ video.title }}</a></h4>
       <p>{{ video.description }}</p>
