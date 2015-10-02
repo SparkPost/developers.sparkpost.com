@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{% include base.html %}
+<div class="container content">
+  <div class="col-xs-12">
+    <div class="col-xs-12">
+      <h1>Libraries &amp; Code</h1>
+      <h2>Client libraries</h2>
+      <p>
+        Our client libraries allow you to use SparkPost with your language of choice. Don't see your language or integration? We welcome contributions from the community. If you have a library or integration, <a href="mailto:developers@sparkpost.com?subject=Dev%20Hub:%20Client%20Libraries">let us know</a>!
+      </p>
+
+      {% assign official_libs = site.data.libraries | where:"type", "official" %}
+      {% if official_libs.size > 0 %}
+        <h3>Official SparkPost libraries</h3>
+        <ul class="libraries">
+        {% for library in official_libs %}
+          <li><i class="devicon devicon-{{ library.icon }} colored"></i> <a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% assign community_libs = site.data.libraries | where:"type", "community" %}
+      {% if community_libs.size > 0 %}
+        <h3>Community supported libraries</h3>
+        <ul>
+        {% for library in community_libs %}
+          <li><i class="devicon devicon-{{ library.icon }} colored"></i> <a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+
+      <h2>Code samples</h2>
+      <p>
+        Our code samples and snippets are real-world examples in various languages/formats that show how to use SparkPost.
+      </p>
+      <ul>
+        <li><a href="https://github.com/SparkPost/gists-and-code-snippets">Gist and code snippets</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
