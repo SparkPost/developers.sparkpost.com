@@ -1,7 +1,7 @@
 ---
 id: david_rowley
 name: David Rowley
-title: Senior Vice President / General Manager
+title: SVP / General Manager
 company: SparkPost
 email: david.rowley@messagesystems.com
 twitter: dwrowley
