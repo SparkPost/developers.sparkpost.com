@@ -3,7 +3,7 @@ id: aydrian_howard
 name: Aydrian Howard
 title: Developer Advocate
 company: SparkPost
-email: aydrian.howard@messagesystems.com
+email: aydrian.howard@sparkpost.com
 twitter: aydrianh
 github: aydrian
 gravatar: af56ea2a837a20adbaac344e21211f8e
