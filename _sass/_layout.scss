@@ -27,3 +27,34 @@ body {
   color: $c-white;
   padding-bottom: 20px;
 }
+
+// Video pages
+// -------------------------
+
+.videos,
+.video-detail {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.video-thumb {
+  margin-bottom: 50px;
+
+  img {
+    border: 1px solid $c-gray-lighter;
+  }
+}
+
+.video-detail {
+  .media {
+    margin-top: 20px;
+
+    .media-object {
+      border-radius: 50%;
+    }
+  }
+}
+
+.embed-responsive {
+  border: 1px solid $c-gray-lighter;
+}

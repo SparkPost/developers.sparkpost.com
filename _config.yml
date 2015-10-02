@@ -1,14 +1,36 @@
 # Site settings
 title: SparkPost Developer Community Hub
 email: developers@sparkpost.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: >
+  SparkPost provides email delivery and analytics built for
+  developers. Our developer hub is a collection of resources to help you succeed
+  with SparkPost. What will you build?
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://developers.sparkpost.com" # the base hostname & protocol for your site
 twitter_username: SparkPost
 github_username:  SparkPost
+facebook_username: SparkPost
+facebook_app_id: 740369632640251
+
+collections:
+  contributors:
+    output: true
+  videos:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: videos
+    values:
+      layout: video
+      video_height: 315
+      video_width: 560
+  - scope:
+      path: ""
+      type: contributors
+    values:
+      layout: contributor
 
 # Build settings
 markdown: kramdown

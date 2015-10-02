@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      {% if page.gravatar %}
+        <br />
+        <img src="https://www.gravatar.com/avatar/{{ page.gravatar }}?s=150" class="img-thumbnail" />
+        <br />
+      {% endif %}
+      <h3>{{ page.name }}<h3>
+      <h4>{{ page.title }}</h4>
+      <h4>{{ page.company }}</h4>
+      {% if page.twitter %}
+      <a href="https://www.twitter.com/{{ page.twitter }}"><i class="fa fa-twitter"></i></a>
+      {% endif %}
+      {% if page.github %}
+      <a href="https://www.github.com/{{ page.github }}"><i class="fa fa-github"></i></a>
+      {% endif %}
+    </div>
+    <div class="col-md-9">
+      {{ content }}
+
+      <h3>Contributions</h3>
+      {% assign videos = site.videos | where: "author", page.id %}
+      {% if videos.size > 0 %}
+      <h4>Videos</h4>
+      <ul>
+      {% for video in videos %}
+        <li><a href="{{ video.url }}">{{ video.title }}</a></li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+</div>
