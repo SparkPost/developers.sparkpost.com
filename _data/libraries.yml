@@ -3,32 +3,32 @@
   description: Node.js module
   github_repo: SparkPost/node-sparkpost
   language: javascript
-  image: node-logo.png
+  icon: nodejs-plain
 
 - name: python-sparkpost
   type: official
   description: Python module
   github_repo: SparkPost/python-sparkpost
   language: python
-  image: python-logo.png
+  icon: python-plain
 
 - name: php-sparkpost
   type: official
   description: PHP library
   github_repo: SparkPost/php-sparkpost
   language: php
-  image: php-logo.png
+  icon: php-plain
 
 - name: nodemailer-sparkpost-transport
   type: official
-  description: Nodemailer Transport Module
+  description: Nodemailer transport module
   github_repo: SparkPost/nodemailer-sparkpost-transport
-  language: php
-  image: nodemailer-logo.png
+  language: javascript
+  icon: nodejs-plain
 
 - name: fake-community-lib
   type: community
   description: This isn't real (Delete after styling)
   github_repo: aydrian/fake-community-lib
   language: java
-  image: java-logo.png
+  icon: java-plain

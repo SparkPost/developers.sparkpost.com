@@ -1,0 +1,34 @@
+{
+  "name": "devicon",
+  "main": "devicon.min.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "homepage": "http://devicon.fr/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/konpa/devicon.git"
+  },
+  "authors": [
+    "konpa <julien@konpa.fr> (http://konpa.fr)"
+  ],
+  "description": "Programming related icons collection",
+  "keywords": [
+    "programming",
+    "icons",
+    "svg",
+    "font"
+  ],
+  "license": "MIT",
+  "_release": "e7411b3f8a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e7411b3f8a51b67bb1af819f98b828cfc4d3bc0f"
+  },
+  "_source": "git://github.com/konpa/devicon.git",
+  "_target": "*",
+  "_originalSource": "devicon",
+  "_direct": true
+}

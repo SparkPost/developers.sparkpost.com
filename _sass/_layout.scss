@@ -28,14 +28,14 @@ body {
   padding-bottom: 20px;
 }
 
-// Video pages
-// -------------------------
-
-.videos,
-.video-detail {
+.content {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+
+// Video pages
+// -------------------------
 
 .video-thumb {
   margin-bottom: 50px;
@@ -57,4 +57,13 @@ body {
 
 .embed-responsive {
   border: 1px solid $c-gray-lighter;
+}
+
+// Libraries page
+// -------------------------
+
+.libraries {
+  li {
+    margin-bottom: 10px;
+  }
 }
