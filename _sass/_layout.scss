@@ -1,0 +1,60 @@
+//
+// General layout items
+// --------------------------------------------------
+
+body {
+  padding-top: 50px;
+}
+
+.sp-connect {
+  a {
+    color: $c-white;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.row-darker {
+  background-color: $c-sp-gray;
+  color: $c-white;
+  padding-bottom: 20px;
+}
+
+.row-dark {
+  background-color: lighten($c-sp-gray, 4%);
+  color: $c-white;
+  padding-bottom: 20px;
+}
+
+// Video pages
+// -------------------------
+
+.videos,
+.video-detail {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.video-thumb {
+  margin-bottom: 50px;
+
+  img {
+    border: 1px solid $c-gray-lighter;
+  }
+}
+
+.video-detail {
+  .media {
+    margin-top: 20px;
+
+    .media-object {
+      border-radius: 50%;
+    }
+  }
+}
+
+.embed-responsive {
+  border: 1px solid $c-gray-lighter;
+}

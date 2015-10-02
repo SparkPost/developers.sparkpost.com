@@ -1,0 +1,23 @@
+{
+  "name": "developers.sparkpost.com",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SparkPost/sparkpost.github.io",
+  "authors": [
+    "Aydrian Howard <aydrian@sparkpost.com>"
+  ],
+  "description": "SparkPost Developer Community Hub",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "jquery": "2.1.4"
+  }
+}

@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<!-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId={{ site.facebook_app_id }}";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
+
+<div class="container video-detail">
+  <div class="col-xs-12">
+
+    <div class="col-xs-12">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ page.video_id }}" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="col-xs-8">
+      <h3>{{ page.title }}</h3>
+      {{ content }}
+    </div>
+
+    <div class="col-xs-4">
+      {% assign author = site.contributors | where: "id", page.author %}
+      {% assign author = author[0] %}
+      {% if author %}
+      <div class="media">
+        {% if author.gravatar %}
+        <div class="media-left">
+          <a href="{{ author.url }}">
+            <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
+          </a>
+        </div>
+        {% endif %}
+        <div class="media-body">
+          <h4 class="media-heading">{{ author.name }}</h4>
+          {{ author.title }}, {{ author.company }} <br/>
+          {% if author.twitter %}
+          <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>
+          {% endif %}
+          {% if author.github %}
+          <a href="https://www.github.com/{{ author.github }}"><i class="fa fa-github"></i></a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+<!-- <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ page.url | prepend: site.url }}" data-text="{{ page.title }}" data-via="{{ site.twitter_username }}" data-related="{{ site.twitter_username }}" data-hashtags="SparkPostDevHub">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<div class="fb-share-button" data-href="{{ page.url | prepend: site.url }}" data-layout="button_count"></div> -->
