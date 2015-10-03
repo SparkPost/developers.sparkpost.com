@@ -1,4 +1,5 @@
 # Site settings
+environment: production
 title: SparkPost Developer Community Hub
 email: developers@sparkpost.com
 description: >
