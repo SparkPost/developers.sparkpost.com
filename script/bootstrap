@@ -1,0 +1,6 @@
+#!/bin/sh
+#bootstrap the development environment
+
+set -ex
+
+bundle install --binstubs
