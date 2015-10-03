@@ -14,11 +14,68 @@ layout: default
 <div class="row">
   <div class="container">
     <div class="col-xs-12">
+
       <div class="col-xs-12 col-sm-6">
-        <p>
-          this is where our code sample thing will go
-        </p>
+        <h1 class="page-heading">Code, anyway you want.</h1>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#curlExample" aria-controls="curlExample" data-toggle="pill">cURL</a></li>
+          <li role="presentation"><a href="#nodeExample" data-toggle="pill"><i class="devicon devicon-nodejs-plain colored"></i> Nodejs</a></li>
+          <li role="presentation"><a href="#pythonExample" data-toggle="pill"><i class="devicon devicon-python-plain colored"></i> Python</a></li>
+          <li role="presentation"><a href="#phpExample" data-toggle="pill"><i class="devicon devicon-php-plain colored"></i> PHP</a></li>
+        </ul>
+        <div id="code-examples" class="tab-content">
+          <div class="tab-pane active" id="curlExample">
+          <pre><code class="language-bash">> curl -XPOST -H "Authorization: API KEY" -d '{from: {name: "Sparky", email: "sparky@sparkpostbox.com"}, subject: "Emailing like a champ.", html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;", recipients: [{name: "Your Name", email: "you@example.com"}]}' https://api.sparkpost.com/api/v1/transmissions</code></pre>
+        </div>
+          <div class="tab-pane" id="nodeExample">
+              <pre><code class="language-javascript">var sparky = new SparkPost("API KEY");
+sparky.transmission.send({
+  from: {name: "Sparky", email: "sparky@sparkpostbox.com"},
+  subject: "Emailing like a champ.",
+  html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
+  recipients: [
+    {name: "Your Name", email: "you@example.com"}
+  ]
+});</code></pre>
+          </div>
+          <div class="tab-pane" id="pythonExample">
+              <pre><code class="language-python">from sparkpost import SparkPost
+
+sp = SparkPost('API KEY')
+
+response = sp.transmissions.send(
+  recipients=['someone@somedomain.com'],
+  html='&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+  from_email='test@sparkpostbox.com',
+  subject='Emailing like a champ.'
+)</code></pre>
+          </div>
+          <div class="tab-pane" id="phpExample">
+              <pre><code class="language-php">use SparkPost\SparkPost;
+use GuzzleHttp\Client;
+use Ivory\HttpAdapter\Guzzle6HttpAdapter;
+
+$httpAdapter = new Guzzle6HttpAdapter(new Client());
+$sparky = new SparkPost($httpAdapter, ['key'=>'YOUR API KEY']);
+
+$results = $sparky->transmission->send([
+'from'=>'From Envelope &lt;from@sparkpostbox.com&gt;',
+'html'=>'&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+'subject'=> 'Emailing like a champ.',
+'recipients'=>[
+    [
+    'address'=>[
+        'name'=>'YOUR FULL NAME',
+        'email'=>'YOUR EMAIL ADDRESS'
+      ]
+    ]
+  ]
+]);</code></pre>
+          </div>
+          </div>
       </div>
+
+
       <div class="col-xs-12 col-sm-6">
         <h1 class="page-heading">Heading here</h1>
         <p>

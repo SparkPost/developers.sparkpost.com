@@ -2,6 +2,10 @@
 <script src="{{ "/bower_components/jquery/dist/jquery.min.js" | prepend: include.base }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ "/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/prism/prism.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/prism/components/prism-bash.min.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/prism/components/prism-php.min.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/prism/components/prism-python.min.js" | prepend: include.base }}"></script>
 {% if site.envrionment == "production" %}
 <!-- GA -->
 <script>
