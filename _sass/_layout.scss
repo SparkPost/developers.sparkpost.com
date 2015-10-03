@@ -19,7 +19,6 @@ body {
 .row-darker {
   background-color: $c-sp-gray;
   color: $c-white;
-  padding-bottom: 20px;
 }
 
 .row-dark {
@@ -31,6 +30,17 @@ body {
 .content {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.content-graphic {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $c-gray;
+
+  &.last {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
 }
 
 
