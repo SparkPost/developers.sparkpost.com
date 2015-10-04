@@ -25,29 +25,33 @@ layout: default
         </ul>
         <div id="code-examples" class="tab-content">
           <div class="tab-pane active" id="curlExample">
-          <pre><code class="language-bash">> curl -XPOST -H "Authorization: API KEY" -d '{from: {name: "Sparky", email: "sparky@sparkpostbox.com"}, subject: "Emailing like a champ.", html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;", recipients: [{name: "Your Name", email: "you@example.com"}]}' https://api.sparkpost.com/api/v1/transmissions</code></pre>
+          <pre><code class="language-bash">> curl -XPOST \
+            -H "Authorization: 5aef8639dd970621e45b0ffb9f8950c09be71758" \
+            -H "Content-Type: application/json" \
+            -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "jordan.nornhold@sparkpost.com"}]}' \
+            https://api.sparkpost.com/api/v1/transmissions</code></pre>
         </div>
           <div class="tab-pane" id="nodeExample">
-              <pre><code class="language-javascript">var sparky = new SparkPost("API KEY");
+              <pre><code class="language-javascript">var sparky = new SparkPost("&lt;YOUR API KEY&gt;");
 sparky.transmission.send({
-  from: {name: "Sparky", email: "sparky@sparkpostbox.com"},
-  subject: "Emailing like a champ.",
-  html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
+  from: "testing@sparkpostbox.com",
+  subject: "Oh hey!",
+  html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world's most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
   recipients: [
-    {name: "Your Name", email: "you@example.com"}
+    {address: "developers@sparkpost.com"}
   ]
 });</code></pre>
           </div>
           <div class="tab-pane" id="pythonExample">
               <pre><code class="language-python">from sparkpost import SparkPost
 
-sp = SparkPost('API KEY')
+sp = SparkPost('&lt;YOUR API KEY&gt;')
 
 response = sp.transmissions.send(
-  recipients=['someone@somedomain.com'],
-  html='&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
-  from_email='test@sparkpostbox.com',
-  subject='Emailing like a champ.'
+  recipients=['developers@sparkpost.com'],
+  html='&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+  from_email='testing@sparkpostbox.com',
+  subject='Oh hey!'
 )</code></pre>
           </div>
           <div class="tab-pane" id="phpExample">
@@ -56,19 +60,14 @@ use GuzzleHttp\Client;
 use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 
 $httpAdapter = new Guzzle6HttpAdapter(new Client());
-$sparky = new SparkPost($httpAdapter, ['key'=>'YOUR API KEY']);
+$sparky = new SparkPost($httpAdapter, ['key'=>'&lt;YOUR API KEY&gt;']);
 
 $results = $sparky->transmission->send([
-'from'=>'From Envelope &lt;from@sparkpostbox.com&gt;',
-'html'=>'&lt;html&gt;&lt;body&gt;&lt;p&gt;Emailing awesomeness everywhere.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
-'subject'=> 'Emailing like a champ.',
+'from'=>'testing@sparkpostbox.com',
+'html'=>'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
+'subject'=> 'Oh hey!',
 'recipients'=>[
-    [
-    'address'=>[
-        'name'=>'YOUR FULL NAME',
-        'email'=>'YOUR EMAIL ADDRESS'
-      ]
-    ]
+    ['address'=>['email'=>'developers@sparkpost.com']]
   ]
 ]);</code></pre>
           </div>
