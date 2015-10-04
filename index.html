@@ -26,9 +26,9 @@ layout: default
         <div id="code-examples" class="tab-content">
           <div class="tab-pane active" id="curlExample">
           <pre><code class="language-bash">> curl -XPOST \
--H "Authorization: 5aef8639dd970621e45b0ffb9f8950c09be71758" \
+-H "Authorization: &lt;YOUR API KEY&gt;" \
 -H "Content-Type: application/json" \
--d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "jordan.nornhold@sparkpost.com"}]}' \
+-d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers@sparkpost.com"}]}' \
 https://api.sparkpost.com/api/v1/transmissions</code></pre>
         </div>
           <div class="tab-pane" id="nodeExample">
