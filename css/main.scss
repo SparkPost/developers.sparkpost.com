@@ -31,6 +31,7 @@ $c-gray         : lighten($c-black, 50%); //#808080
 $c-gray-light   : lighten($c-black, 60%); //#999
 $c-gray-lighter : lighten($c-black, 80%); //#ccc
 $c-gray-lightest: lighten($c-black, 90%); //#e6e6e6
+$c-terminal     : #2d2d2d;
 $c-white        : #fff;
 $c-orange       : $sp-orange;
 $c-blue         : $sp-blue;
@@ -77,6 +78,7 @@ $jumbotron-heading-font-size: ceil(($font-size-base * 3.5)) !default;
         "bootstrap",
         "layout",
         "buttons",
+        "code-examples",
         "forms",
         "jumbotron",
         "navbar",
