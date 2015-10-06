@@ -19,7 +19,6 @@
     "bootstrap-sass": "~3.3.5",
     "devicon": "*",
     "font-awesome": "~4.4.0",
-    "jquery": "2.1.4",
-    "prism": "~1.0.1"
+    "jquery": "2.1.4"
   }
 }

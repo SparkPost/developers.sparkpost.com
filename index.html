@@ -11,123 +11,136 @@ layout: default
   </div>
 </div>
 
-<div class="row">
+<div class="row row-code-examples">
   <div class="container">
     <div class="col-xs-12">
 
-      <div class="col-xs-12 col-sm-6">
-        <h1 class="page-heading">Code, anyway you want.</h1>
-        <ul class="nav nav-pills">
-          <li role="presentation" class="active"><a href="#curlExample" aria-controls="curlExample" data-toggle="pill">cURL</a></li>
-          <li role="presentation"><a href="#nodeExample" data-toggle="pill"><i class="devicon devicon-nodejs-plain colored"></i> Nodejs</a></li>
-          <li role="presentation"><a href="#pythonExample" data-toggle="pill"><i class="devicon devicon-python-plain colored"></i> Python</a></li>
-          <li role="presentation"><a href="#phpExample" data-toggle="pill"><i class="devicon devicon-php-plain colored"></i> PHP</a></li>
-        </ul>
-        <div id="code-examples" class="tab-content">
-          <div class="tab-pane active" id="curlExample">
-          <pre><code class="language-bash">> curl -XPOST \
--H "Authorization: &lt;YOUR API KEY&gt;" \
--H "Content-Type: application/json" \
--d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers@sparkpost.com"}]}' \
-https://api.sparkpost.com/api/v1/transmissions</code></pre>
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="page-header page-header-code-examples">
+          <h1 class="text-center">Our API, your language</h1>
+          <p class="text-center">
+            Combined with your language of choice, using the awesome, super-colossal power of our API couldn't be easier.  <a href="https://app.sparkpost.com/sign-up?src=SP-Website&sfdcid=701600000011daf">Create an account</a>, grab one of our client libraries, and get started quickly using the examples below.
+          </p>
         </div>
-          <div class="tab-pane" id="nodeExample">
-              <pre><code class="language-javascript">var sparky = new SparkPost("&lt;YOUR API KEY&gt;");
-sparky.transmission.send({
-  from: "testing@sparkpostbox.com",
-  subject: "Oh hey!",
-  html:"&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world's most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;",
-  recipients: [
-    {address: "developers@sparkpost.com"}
-  ]
-});</code></pre>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="code-examples">
+          <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#curlExample" aria-controls="curlExample" data-toggle="pill">cURL</a></li>
+            <li role="presentation"><a href="#nodeExample" data-toggle="pill"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
+            <li role="presentation"><a href="#pythonExample" data-toggle="pill"><i class="devicon devicon-python-plain"></i> Python</a></li>
+            <li role="presentation"><a href="#phpExample" data-toggle="pill"><i class="devicon devicon-php-plain"></i> PHP</a></li>
+          </ul>
+          <div id="code-examples" class="tab-content">
+            <div class="tab-pane active" id="curlExample">
+  {% highlight sh %}
+  curl -XPOST \
+    https://api.sparkpost.com/api/v1/transmissions \
+    -H "Authorization: <YOUR API KEY>;" \
+    -H "Content-Type: application/json" \
+    -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers@sparkpost.com"}]}'
+  {% endhighlight %}
+              </div>
+              <div class="tab-pane" id="nodeExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+  {% highlight js %}
+  var sparky = new SparkPost("<YOUR API KEY>");
+
+  sparky.transmission.send({
+    from: "testing@sparkpostbox.com",
+    subject: "Oh hey!",
+    html:"<html><body><p>Testing SparkPost - the world's most awesomest email service!</p></body></html>",
+    recipients: [
+      {address: "developers@sparkpost.com"}
+    ]
+  });
+  {% endhighlight %}
+                </div>
+                <div class="tab-pane" id="pythonExample">
+                  <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+  {% highlight python %}
+  from sparkpost import SparkPost
+
+  sp = SparkPost('<YOUR API KEY>')
+
+  response = sp.transmissions.send(
+      recipients=['developers@sparkpost.com'],
+      html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
+      from_email='testing@sparkpostbox.com',
+      subject='Oh hey!')
+                  {% endhighlight %}
+                </div>
+                <div class="tab-pane" id="phpExample">
+                  <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                  {% highlight php startinline %}
+  use SparkPost\SparkPost;
+  use GuzzleHttp\Client;
+  use Ivory\HttpAdapter\Guzzle6HttpAdapter;
+
+  $httpAdapter = new Guzzle6HttpAdapter(new Client());
+  $sparky = new SparkPost($httpAdapter, ['key'=>'<YOUR API KEY>']);
+
+  $results = $sparky->transmission->send([
+      'from'=>'testing@sparkpostbox.com',
+      'html'=>'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
+      'subject'=> 'Oh hey!',
+      'recipients'=>[
+        ['address'=>['email'=>'developers@sparkpost.com']]
+      ]
+  ]);
+                    {% endhighlight %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div class="tab-pane" id="pythonExample">
-              <pre><code class="language-python">from sparkpost import SparkPost
+        </div>
+      </div>
 
-sp = SparkPost('&lt;YOUR API KEY&gt;')
-
-response = sp.transmissions.send(
-  recipients=['developers@sparkpost.com'],
-  html='&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
-  from_email='testing@sparkpostbox.com',
-  subject='Oh hey!'
-)</code></pre>
+      <div class="row row-darker">
+        <div class="container">
+          <div class="col-xs-12">
+            <div class="col-xs-12 col-lg-4">
+              <h3>
+                <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-code fa-stack-1x text-orange"></i>
+                </span>
+                Code
+              </h3>
+              <p>
+                Example code snippets, projects, and mashups to help get you started using SparkPost
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <h3>
+                <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-code-fork fa-stack-1x text-orange"></i>
+                </span>
+                Client Libraries
+              </h3>
+              <p>
+                Our officially supported libraries to jump start your use of SparkPost available in several languages
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
+            </div>
+            <div class="col-xs-12 col-lg-4">
+              <h3>
+                <span class="fa-stack">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-book fa-stack-1x text-orange"></i>
+                </span>
+                Knowledge Base
+              </h3>
+              <p>
+                A collection of articles on our support site that cover a number of use cases
+              </p>
+              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
+            </div>
           </div>
-          <div class="tab-pane" id="phpExample">
-              <pre><code class="language-php">use SparkPost\SparkPost;
-use GuzzleHttp\Client;
-use Ivory\HttpAdapter\Guzzle6HttpAdapter;
-
-$httpAdapter = new Guzzle6HttpAdapter(new Client());
-$sparky = new SparkPost($httpAdapter, ['key'=>'&lt;YOUR API KEY&gt;']);
-
-$results = $sparky->transmission->send([
-'from'=>'testing@sparkpostbox.com',
-'html'=>'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;',
-'subject'=> 'Oh hey!',
-'recipients'=>[
-    ['address'=>['email'=>'developers@sparkpost.com']]
-  ]
-]);</code></pre>
-          </div>
-          </div>
+        </div>
       </div>
-
-
-      <div class="col-xs-12 col-sm-6">
-        <h1 class="page-heading">Heading here</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.
-        </p>
-        <p><a class="btn btn-primary" href="#" role="button">Getting Started</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row row-darker">
-  <div class="container">
-    <div class="col-xs-12">
-      <div class="col-xs-12 col-lg-4">
-        <h3>
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-code fa-stack-1x text-orange"></i>
-          </span>
-          Code
-        </h3>
-        <p>
-          Example code snippets, projects, and mashups to help get you started using SparkPost
-        </p>
-        <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
-      </div>
-      <div class="col-xs-12 col-lg-4">
-        <h3>
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-code-fork fa-stack-1x text-orange"></i>
-          </span>
-          Client Libraries
-        </h3>
-        <p>
-          Our officially supported libraries to jump start your use of SparkPost available in several languages
-        </p>
-        <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
-      </div>
-      <div class="col-xs-12 col-lg-4">
-        <h3>
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-book fa-stack-1x text-orange"></i>
-          </span>
-          Knowledge Base
-        </h3>
-        <p>
-          A collection of articles on our support site that cover a number of use cases
-        </p>
-        <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
-      </div>
-    </div>
-  </div>
-</div>
