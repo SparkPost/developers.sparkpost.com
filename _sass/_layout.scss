@@ -16,15 +16,29 @@ body {
   }
 }
 
-.row-darker {
-  background-color: $c-sp-gray;
-  color: $c-white;
+.row-light {
+  background-color: lighten($c-sp-gray, 58%);
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .row-dark {
   background-color: lighten($c-sp-gray, 4%);
   color: $c-white;
   padding-bottom: 20px;
+}
+
+.row-darker {
+  background-color: $c-sp-gray;
+  color: $c-white;
 }
 
 .content {
