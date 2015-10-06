@@ -139,16 +139,16 @@ layout: default
         <p>
           Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
         </p>
-        <h4><a href="http://www.meetup.com/charmcityjs/events/222292079/">charmCityJS</a> <small><i class="fa fa-external-link"></i></small></h4>
+        {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
+        {% if events.size > 0 %}
+        {% for event in events %}
+        <h4><a href="{{ event.url }}">{{ event.name }}</a> <small><i class="fa fa-external-link"></i></small></h4>
         <p>
-          October 7<br>
-          Baltimore, MD
+          {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
+          {{ event.location }}
         </p>
-        <h4><a href="http://nodevember.org/">Nodevember</a> <small><i class="fa fa-external-link"></i></small></h4>
-        <p>
-          November 14-15<br>
-          Nashville, TN
-        </p>
+        {% endfor %}
+        {% endif %}
       </div>
 
       <div class="col-xs-12 col-sm-6">
