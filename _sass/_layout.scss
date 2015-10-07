@@ -57,6 +57,25 @@ body {
   }
 }
 
+.content-social {
+  vertical-align: middle;
+
+  // behave, facebook button!
+  iframe {
+    vertical-align: middle;
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  .twitter {
+    iframe {
+      margin-top: -2px;
+    }
+  }
+}
+
 
 // Video pages
 // -------------------------
