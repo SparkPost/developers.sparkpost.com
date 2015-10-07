@@ -31,9 +31,7 @@ layout: default
       <div class="media">
         {% if author.gravatar %}
         <div class="media-left">
-          <a href="{{ author.url }}">
-            <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
-          </a>
+          <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
         </div>
         {% endif %}
         <div class="media-body">
