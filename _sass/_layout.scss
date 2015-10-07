@@ -16,10 +16,18 @@ body {
   }
 }
 
-.row-darker {
-  background-color: $c-sp-gray;
-  color: $c-white;
-  padding-bottom: 20px;
+.row-light {
+  background-color: lighten($c-sp-gray, 58%);
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  ul {
+    margin-bottom: 20px;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .row-dark {
@@ -28,9 +36,25 @@ body {
   padding-bottom: 20px;
 }
 
+.row-darker {
+  background-color: $c-sp-gray;
+  color: $c-white;
+}
+
 .content {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.content-graphic {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $c-gray;
+
+  &.last {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
 }
 
 

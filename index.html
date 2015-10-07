@@ -41,9 +41,9 @@ layout: default
     -H "Content-Type: application/json" \
     -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers@sparkpost.com"}]}'
   {% endhighlight %}
-              </div>
-              <div class="tab-pane" id="nodeExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+            </div>
+            <div class="tab-pane" id="nodeExample">
+              <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
   {% highlight js %}
   var sparky = new SparkPost("<YOUR API KEY>");
 
@@ -56,9 +56,9 @@ layout: default
     ]
   });
   {% endhighlight %}
-                </div>
-                <div class="tab-pane" id="pythonExample">
-                  <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+            </div>
+            <div class="tab-pane" id="pythonExample">
+              <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
   {% highlight python %}
   from sparkpost import SparkPost
 
@@ -69,11 +69,11 @@ layout: default
       html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
       from_email='testing@sparkpostbox.com',
       subject='Oh hey!')
-                  {% endhighlight %}
-                </div>
-                <div class="tab-pane" id="phpExample">
-                  <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-                  {% highlight php startinline %}
+{% endhighlight %}
+            </div>
+            <div class="tab-pane" id="phpExample">
+              <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+{% highlight php startinline %}
   use SparkPost\SparkPost;
   use GuzzleHttp\Client;
   use Ivory\HttpAdapter\Guzzle6HttpAdapter;
@@ -89,58 +89,82 @@ layout: default
         ['address'=>['email'=>'developers@sparkpost.com']]
       ]
   ]);
-                    {% endhighlight %}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <div class="row row-darker">
-        <div class="container">
-          <div class="col-xs-12">
-            <div class="col-xs-12 col-lg-4">
-              <h3>
-                <span class="fa-stack">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-code fa-stack-1x text-orange"></i>
-                </span>
-                Code
-              </h3>
-              <p>
-                Example code snippets, projects, and mashups to help get you started using SparkPost
-              </p>
-              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <h3>
-                <span class="fa-stack">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-code-fork fa-stack-1x text-orange"></i>
-                </span>
-                Client Libraries
-              </h3>
-              <p>
-                Our officially supported libraries to jump start your use of SparkPost available in several languages
-              </p>
-              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <h3>
-                <span class="fa-stack">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-book fa-stack-1x text-orange"></i>
-                </span>
-                Knowledge Base
-              </h3>
-              <p>
-                A collection of articles on our support site that cover a number of use cases
-              </p>
-              <p><a class="btn btn-primary" href="#" role="button">Take a Look</a></p>
+{% endhighlight %}
             </div>
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row row-light">
+  <div class="container">
+    <div class="col-xs-12">
+
+      <div class="col-xs-12 col-sm-6">
+        <h3>Client libraries</h3>
+        <p>
+          Our client libraries allow you to use SparkPost with your language of choice. Don't see your language or integration? We welcome contributions from the community. If you have a library or integration, <a href="mailto:developers@sparkpost.com?subject=Dev%20Hub:%20Client%20Libraries">let us know</a>!
+        </p>
+
+        {% assign official_libs = site.data.libraries | where:"type", "official" %}
+        {% if official_libs.size > 0 %}
+        <ul class="libraries">
+          {% for library in official_libs %}
+          <li><i class="devicon devicon-{{ library.icon }} colored"></i> <a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <h3>Samples &amp; integrations</h3>
+        <p>
+          Our code samples and snippets are real-world examples in various formats that show how to use SparkPost. Integrations allow you to use SparkPost through your favorite service.
+        </p>
+        <ul>
+          <li><i class="fa fa-github"></i> <a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
+          <li><i class="devicon devicon-heroku-original colored"></i> <a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col-xs-12">
+
+      <div class="col-xs-12 col-sm-6">
+        <h3>Dev Events</h3>
+        <p>
+          Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
+        </p>
+        {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
+        {% if events.size > 0 %}
+        {% for event in events %}
+        <h4><a href="{{ event.url }}">{{ event.name }}</a> <small><i class="fa fa-external-link"></i></small></h4>
+        <p>
+          {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
+          {{ event.location }}
+        </p>
+        {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="col-xs-12 col-sm-6">
+        <h3>Engineering posts</h3>
+        <p>
+          Our engineers write posts because sharing is caring. Learn a thing or two about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
+        </p>
+        <ul>
+          <li><a href="https://www.sparkpost.com/blog/new-api-feature-message-events/">New API Feature: Message Events</a></li>
+          <li><a href="https://www.sparkpost.com/blog/ip-whitelisting/">IP Whitelisting for API Keys</a></li>
+          <li><a href="https://www.sparkpost.com/blog/i-look-like-an-engineer-figure-skater-turns-software-engineer/">I Look Like An Engineer: Figure Skater Turns Software Engineer</a></li>
+          <li><a href="https://www.sparkpost.com/blog/developer-advocate-sparkpost/">What It’s Like to Be a SparkPost Developer Advocate</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
