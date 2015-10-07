@@ -1,6 +1,6 @@
 ---
 video_id: DS9JqT8_yIM
-title: Learn how to Create and Use SparkPost API Key
+title: Learn how to Create and Use SparkPost API Keys
 description: In this SparkPost tutorial, Aydrian shows you how to create and use SparkPost API keys.
 author: aydrian_howard
 ---

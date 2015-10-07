@@ -7,8 +7,13 @@
     <link rel="icon" href="{{ "/images/favicon-48.png" | prepend: include.base }}" sizes="48x48">
     <link rel="shortcut icon" href="{{ "/images/favicon.ico" | prepend: include.base }}">
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
+    <meta property="og:site_name" content="SparkPost Developer Hub">
+    <meta property="og:url" content="{{ page.url | prepend: site.url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:image" content="{{ "/images/logo-sparkpost.png" | prepend: site.url }}" />
 
     <link href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: include.base }}" rel="stylesheet">
     <link href="{{ "/bower_components/devicon/devicon.min.css" | prepend: include.base }}" rel="stylesheet">
