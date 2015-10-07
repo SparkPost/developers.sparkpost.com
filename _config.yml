@@ -11,7 +11,7 @@ url: "https://developers.sparkpost.com" # the base hostname & protocol for your 
 twitter_username: SparkPost
 github_username:  SparkPost
 facebook_username: SparkPost
-facebook_app_id: 740369632640251
+facebook_app_id: 1078423545531734
 highlighter: pygments
 
 collections:
