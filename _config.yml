@@ -1,6 +1,6 @@
 # Site settings
 environment: production
-title: SparkPost Developer Community Hub
+title: SparkPost Developer Hub
 email: developers@sparkpost.com
 description: >
   SparkPost provides email delivery and analytics built for
