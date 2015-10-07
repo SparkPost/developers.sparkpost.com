@@ -1,16 +1,13 @@
 ---
 layout: default
 ---
-{% include base.html %}
 <div class="container content video-detail">
   <div class="col-xs-12">
 
     <div class="col-xs-12">
-      <ol class="breadcrumb">
-        <li><a href="{{ '' | prepend: base }}">Home</a></li>
-        <li><a href="{{ '/videos' | prepend: base }}">Videos</a></li>
-        <li class="active">{{ page.title }}</li>
-      </ol>
+      <!-- <div class="well well-sm"> -->
+        <p><i class="fa fa-arrow-circle-left text-muted"></i> <a href="..">Back to video list</a></p>
+      <!-- </div> -->
       <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ page.video_id }}" allowfullscreen></iframe>
       </div>
