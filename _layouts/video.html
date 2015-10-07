@@ -19,12 +19,12 @@ layout: default
       </div>
     </div>
 
-    <div class="col-xs-8">
+    <div class="col-xs-12 col-sm-8">
       <h3>{{ page.title }}</h3>
       {{ content }}
     </div>
 
-    <div class="col-xs-4">
+    <div class="col-xs-12 col-sm-4">
       {% assign author = site.contributors | where: "id", page.author %}
       {% assign author = author[0] %}
       {% if author %}
