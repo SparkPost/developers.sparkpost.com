@@ -11,5 +11,8 @@
 
   h1 {
     font-weight: 200;
+    @media (min-width: $screen-sm-min) {
+      white-space: nowrap;
+    }
   }
 }
