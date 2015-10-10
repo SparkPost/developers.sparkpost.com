@@ -6,9 +6,12 @@
   transition-property: background-color;
   transition-duration: 0.25s;
   transition-timing-function: ease-out;
-
-  background-color: transparent;
+  background-color: $c-orange;
   border: none;
+
+  @media screen and (min-width: $screen-sm-min) {
+    background-color: transparent;
+  }
 
   .navbar-brand {
     padding: 10px 15px;
