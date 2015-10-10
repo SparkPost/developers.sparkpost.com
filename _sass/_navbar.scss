@@ -3,7 +3,11 @@
 // --------------------------------------------------
 
 .navbar {
-  background-color: $c-orange;
+  transition-property: background-color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-out;
+
+  background-color: transparent;
   border: none;
 
   .navbar-brand {
@@ -19,6 +23,10 @@
     &:active {
       color: $c-white;
     }
+  }
+
+  &.affix {
+    background-color: $c-orange;
   }
 }
 
