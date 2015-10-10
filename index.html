@@ -117,7 +117,7 @@ $results = $sparky->transmission->send([
           {% if official_libs.size > 0 %}
           <ul class="libraries">
             {% for library in official_libs %}
-            <li><i class="devicon devicon-{{ library.icon }} colored"></i> <a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+            <li><a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -129,9 +129,9 @@ $results = $sparky->transmission->send([
             Our code samples and snippets are real-world examples in various formats that show how to use SparkPost. Integrations allow you to use SparkPost through your favorite service.
           </p>
           <ul>
-            <li><i class="fa fa-github"></i> <a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
-            <li><i class="devicon devicon-heroku-original colored"></i> <a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
-            <li><i class="fa fa-cubes"></i> <a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
+            <li><a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
+            <li><a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
+            <li><a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
           </ul>
         </div>
 
@@ -147,7 +147,7 @@ $results = $sparky->transmission->send([
           {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
           {% if events.size > 0 %}
           {% for event in events %}
-          <h4><a href="{{ event.url }}">{{ event.name }}</a> <small><i class="fa fa-external-link"></i></small></h4>
+          <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
           <p>
             {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
             {{ event.location }}
@@ -172,7 +172,7 @@ $results = $sparky->transmission->send([
             <li><a href="https://www.sparkpost.com/blog/developer-advocate-sparkpost/">What It’s Like to Be a SparkPost Developer Advocate</a></li>
           </ul>
           <p>
-            <a href="https://www.sparkpost.com/blog/category/developer/">View more posts from our engineers</a> <small><i class="fa fa-external-link"></i></small>
+            <a href="https://www.sparkpost.com/blog/category/developer/">View more posts from our engineers</a>
           </p>
         </div>
 
