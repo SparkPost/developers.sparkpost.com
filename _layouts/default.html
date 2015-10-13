@@ -3,7 +3,7 @@
   {% include base.html %}
   {% include head.html base=base %}
 
-  <body>
+  <body class="{% if page.title == null %}page-home{% endif %}">
     <div id="fb-root"></div>
 
     {% include header.html base=base %}
