@@ -6,10 +6,18 @@
   background: $c-sp-gray url("../images/jumbotron-devs.jpg") center center;
   background-size: cover;
   color: $c-white;
+  margin-top: -50px;
   margin-bottom: 0;
   text-align: center;
 
+  @media screen and (min-width: $screen-sm-min) {
+    padding-top: ($jumbotron-padding * 1.6) + 50px;
+  }
+
   h1 {
     font-weight: 200;
+    @media (min-width: $screen-sm-min) {
+      white-space: nowrap;
+    }
   }
 }

@@ -4,7 +4,7 @@ layout: default
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
         <p><img src="{{ "images/logo-sparkpost.png" | prepend: site.baseurl }}" alt="SparkPost" width="270" /></p>
         <h1>Build Something Awesome.</h1>
         <p>SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?</p>
@@ -18,9 +18,9 @@ layout: default
     <div class="container">
       <div class="col-xs-12">
 
-        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
           <div class="page-header page-header-code-examples">
-            <h1 class="text-center">Our API, your language</h1>
+            <h1 class="text-center">Our API, Your Language</h1>
             <p class="text-center">
               Combined with your language of choice, using the awesome, super-colossal power of our API couldn't be easier.  <a href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab one of our client libraries, and get started quickly.
             </p>
@@ -108,7 +108,7 @@ $results = $sparky->transmission->send([
       <div class="col-xs-12">
 
         <div class="col-xs-12 col-sm-6">
-          <h3>Client libraries</h3>
+          <h3>Client Libraries</h3>
           <p>
             Our client libraries allow you to use SparkPost with your language of choice. Don't see your language or integration? We welcome contributions from the community. If you have a library or integration, <a href="mailto:developers@sparkpost.com?subject=Dev%20Hub:%20Client%20Libraries">let us know</a>!
           </p>
@@ -117,21 +117,21 @@ $results = $sparky->transmission->send([
           {% if official_libs.size > 0 %}
           <ul class="libraries">
             {% for library in official_libs %}
-            <li><i class="devicon devicon-{{ library.icon }} colored"></i> <a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+            <li><a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
             {% endfor %}
           </ul>
           {% endif %}
         </div>
 
         <div class="col-xs-12 col-sm-6">
-          <h3>Samples &amp; integrations</h3>
+          <h3>Samples &amp; Integrations</h3>
           <p>
             Our code samples and snippets are real-world examples in various formats that show how to use SparkPost. Integrations allow you to use SparkPost through your favorite service.
           </p>
           <ul>
-            <li><i class="fa fa-github"></i> <a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
-            <li><i class="devicon devicon-heroku-original colored"></i> <a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
-            <li><i class="fa fa-cubes"></i> <a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
+            <li><a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
+            <li><a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
+            <li><a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
           </ul>
         </div>
 
@@ -140,14 +140,14 @@ $results = $sparky->transmission->send([
       <div class="col-xs-12">
 
         <div class="col-xs-12 col-sm-6">
-          <h3>Dev events</h3>
+          <h3>Dev Events</h3>
           <p>
             Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
           </p>
           {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
           {% if events.size > 0 %}
           {% for event in events %}
-          <h4><a href="{{ event.url }}">{{ event.name }}</a> <small><i class="fa fa-external-link"></i></small></h4>
+          <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
           <p>
             {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
             {{ event.location }}
@@ -161,7 +161,7 @@ $results = $sparky->transmission->send([
         </div>
 
         <div class="col-xs-12 col-sm-6">
-          <h3>Engineering posts</h3>
+          <h3>Engineering Posts</h3>
           <p>
             Our engineers write posts because sharing is caring. Learn a thing or two about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
           </p>
@@ -172,7 +172,7 @@ $results = $sparky->transmission->send([
             <li><a href="https://www.sparkpost.com/blog/developer-advocate-sparkpost/">What It’s Like to Be a SparkPost Developer Advocate</a></li>
           </ul>
           <p>
-            <a href="https://www.sparkpost.com/blog/category/developer/">View more posts from our engineers</a> <small><i class="fa fa-external-link"></i></small>
+            <a href="https://www.sparkpost.com/blog/category/developer/">View more posts from our engineers</a>
           </p>
         </div>
 
