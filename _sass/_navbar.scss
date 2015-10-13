@@ -10,7 +10,9 @@
   border: none;
 
   @media screen and (min-width: $screen-sm-min) {
-    background-color: transparent;
+    .page-home & {
+      background-color: transparent;
+    }
   }
 
   .navbar-brand {
