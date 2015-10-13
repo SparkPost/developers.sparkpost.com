@@ -10,14 +10,14 @@
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <meta name="description" content="{{ site.description }}">
     <meta property="og:site_name" content="SparkPost Developer Hub">
-    <meta property="og:url" content="{{ page.url | prepend: site.url }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:image" content="{{ "/images/logo-sparkpost.png" | prepend: site.url }}" />
+    <meta property="og:image" content="{{ site.url }}/images/logo-sparkpost.png">
 
     <link href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: include.base }}" rel="stylesheet">
     <link href="{{ "/bower_components/devicon/devicon.min.css" | prepend: include.base }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: include.base }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: include.base }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
 </head>
