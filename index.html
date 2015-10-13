@@ -65,9 +65,9 @@ sparky.transmission.send({
 {% highlight python %}
 from sparkpost import SparkPost
 
-sp = SparkPost('<YOUR API KEY>')
+sparky = SparkPost('<YOUR API KEY>')
 
-response = sp.transmissions.send(
+response = sparky.transmissions.send(
     recipients=['developers@sparkpost.com'],
     html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
     from_email='testing@sparkpostbox.com',
