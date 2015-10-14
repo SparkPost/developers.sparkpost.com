@@ -48,14 +48,14 @@ curl -XPOST \
               <div class="tab-pane" id="nodeExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight js %}
-var sparky = new SparkPost("<YOUR API KEY>");
+var sparky = new SparkPost('<YOUR API KEY>');
 
 sparky.transmission.send({
-  from: "testing@sparkpostbox.com",
-  subject: "Oh hey!",
-  html:"<html><body><p>Testing SparkPost - the world's most awesomest email service!</p></body></html>",
+  from: 'testing@sparkpostbox.com',
+  subject: 'Oh hey!',
+  html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
   recipients: [
-    {address: "developers@sparkpost.com"}
+    {address: 'developers@sparkpost.com'}
   ]
 });
 {% endhighlight %}
