@@ -3,5 +3,9 @@
 // --------------------------------------------------
 
 .btn {
+  font-family: $font-family-gotham;
+  font-weight: 500;
+  font-style: normal;
+  font-size: $font-size-base * .857142857; // 12px
   text-transform: uppercase;
 }
