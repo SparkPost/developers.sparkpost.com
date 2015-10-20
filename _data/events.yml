@@ -5,8 +5,15 @@
   date_end: 2015-11-15
   location: Nashville, TN
 
-- name: charmCityJS
+- name: Insight
   type: future
+  url: https://www.messagesystems.com/insight
+  date_start: 2015-11-02
+  date_end: 2015-11-04
+  location: Monterey, CA
+
+- name: charmCityJS
+  type: past
   url: http://www.meetup.com/charmcityjs/events/222292079/
   date_start: 2015-10-07
   location: Baltimore, MD
