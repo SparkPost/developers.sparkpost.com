@@ -13,7 +13,8 @@
     <meta property="og:url" content="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ page.title }}">
-    <meta property="og:image" content="{{ site.url }}/images/logo-sparkpost.png">
+    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:image" content="{% if page.video_id %}https://img.youtube.com/vi/{{ page.video_id }}/hqdefault.jpg{% else %}{{ site.url }}/images/sparkpost-facebook.png{% endif %}">
 
     <link href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: include.base }}" rel="stylesheet">
     <link href="{{ "/bower_components/devicon/devicon.min.css" | prepend: include.base }}" rel="stylesheet">
