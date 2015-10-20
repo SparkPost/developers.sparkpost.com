@@ -8,6 +8,10 @@
   transition-timing-function: ease-out;
   background-color: $c-orange;
   border: none;
+  font-family: $font-family-gotham;
+  font-weight: 500;
+  font-style: normal;
+  font-size: $font-size-base * .857142857; // 12px
 
   @media screen and (min-width: $screen-sm-min) {
     .page-home & {

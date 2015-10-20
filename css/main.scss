@@ -52,18 +52,31 @@ $link-color:            $c-blue !default;
 $link-hover-color:      darken($link-color, 15%) !default;
 
 
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Padding between columns. Gets divided in half for the left and right.
+$grid-gutter-width:         50px !default;
+
 //== Typography
 //
 //## Font, line-height, and color for body text, headings, and more.
 
 $font-size-base        : 14px !default;
 $font-family-sans-serif: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-gotham-narrow: $font-family-sans-serif;
+$font-family-gotham: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $headings-font-weight  : 200 !default;
 
 
 //== Buttons
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-primary-color      : #fff !default;
+$btn-primary-bg         : $brand-primary !default;
+$btn-primary-border     : $btn-primary-bg !default;
 
 $btn-font-weight        : 400 !default;
 $btn-border-radius-base : none !default;
