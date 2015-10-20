@@ -8,6 +8,7 @@
   transition-timing-function: ease-out;
   background-color: $c-orange;
   border: none;
+  visibility: hidden;
   font-family: $font-family-gotham;
   font-weight: 500;
   font-style: normal;
@@ -32,6 +33,11 @@
     &:active {
       color: $c-white;
     }
+  }
+
+  &.affix,
+  &.affix-top {
+    visibility: visible;
   }
 
   &.affix {
