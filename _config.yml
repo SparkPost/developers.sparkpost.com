@@ -13,6 +13,7 @@ github_username:  SparkPost
 facebook_username: SparkPost
 facebook_app_id: 1078423545531734
 highlighter: pygments
+mixpanel_token: 0c8d92f4bd11446215bd4e7cb7639933
 
 collections:
   contributors:
