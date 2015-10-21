@@ -22,18 +22,18 @@ layout: default
           <div class="page-header page-header-code-examples">
             <h1 class="text-center">Our API, Your Language</h1>
             <p class="text-center">
-              Combined with your language of choice, using the awesome, super-colossal power of our API couldn't be easier.  <a href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab one of our client libraries, and get started quickly.
+              Combined with your language of choice, using the awesome, super-colossal power of our API couldn't be easier.  <a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab one of our client libraries, and get started quickly.
             </p>
           </div>
         </div>
 
         <div class="col-xs-12 hidden-xs">
-          <div class="code-examples">
+          <div id="code-examples" class="code-examples">
             <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href="#curlExample" aria-controls="curlExample" data-toggle="pill">cURL</a></li>
-              <li role="presentation"><a href="#nodeExample" data-toggle="pill"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
-              <li role="presentation"><a href="#pythonExample" data-toggle="pill"><i class="devicon devicon-python-plain"></i> Python</a></li>
-              <li role="presentation"><a href="#phpExample" data-toggle="pill"><i class="devicon devicon-php-plain"></i> PHP</a></li>
+              <li role="presentation" class="active"><a href="#curlExample" aria-controls="curlExample" data-toggle="pill" data-mp-language="cURL">cURL</a></li>
+              <li role="presentation"><a href="#nodeExample" data-toggle="pill" data-mp-language="Node.js"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
+              <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
+              <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
@@ -115,9 +115,9 @@ $results = $sparky->transmission->send([
 
           {% assign official_libs = site.data.libraries | where:"type", "official" %}
           {% if official_libs.size > 0 %}
-          <ul class="libraries">
+          <ul id="list-libraries" class="libraries">
             {% for library in official_libs %}
-            <li><a href="https://www.github.com/{{ library.github_repo }}">{{ library.name }}</a> - {{ library.description }}</li>
+            <li><a href="https://www.github.com/{{ library.github_repo }}" data-mp-library="{{ library.name }}">{{ library.name }}</a> - {{ library.description }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -128,7 +128,7 @@ $results = $sparky->transmission->send([
           <p>
             Our code samples and snippets are real-world examples in various formats that show how to use SparkPost. Integrations allow you to use SparkPost through your favorite service.
           </p>
-          <ul>
+          <ul id="list-samples">
             <li><a href="https://github.com/SparkPost/gists-and-code-snippets">Gists and code snippets</a></li>
             <li><a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
             <li><a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
@@ -146,13 +146,15 @@ $results = $sparky->transmission->send([
           </p>
           {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
           {% if events.size > 0 %}
-          {% for event in events %}
-          <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
-          <p>
-            {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
-            {{ event.location }}
-          </p>
-          {% endfor %}
+          <div id="list-events">
+            {% for event in events %}
+            <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
+            <p>
+              {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
+              {{ event.location }}
+            </p>
+            {% endfor %}
+          </div>
           {% else %}
           <p>
             We are constantly looking for new events to attend. Check back later for updates. If you would like us to attend your event, please <a href="mailto:developers@sparkpost.com?subject=Dev%20Events">let us know</a>!
@@ -165,7 +167,7 @@ $results = $sparky->transmission->send([
           <p>
             Our engineers write posts because sharing is caring. Learn a thing or two about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
           </p>
-          <ul>
+          <ul id="list-posts">
             <li><a href="https://www.sparkpost.com/blog/new-api-feature-message-events/">New API Feature: Message Events</a></li>
             <li><a href="https://www.sparkpost.com/blog/ip-whitelisting/">IP Whitelisting for API Keys</a></li>
             <li><a href="https://www.sparkpost.com/blog/i-look-like-an-engineer-figure-skater-turns-software-engineer/">I Look Like An Engineer: Figure Skater Turns Software Engineer</a></li>
