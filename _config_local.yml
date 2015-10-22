@@ -1,2 +1,3 @@
 # local development settings
 environment: developement
+mixpanel_token: d6325853ed3535538fbbcab9d59a966e
