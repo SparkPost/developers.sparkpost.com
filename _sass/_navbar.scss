@@ -8,6 +8,7 @@
   transition-timing-function: ease-out;
   background-color: $c-orange;
   border: none;
+  visibility: hidden;
   font-family: $font-family-gotham;
   font-weight: 500;
   font-style: normal;
@@ -19,10 +20,6 @@
     }
   }
 
-  .navbar-brand {
-    padding: 10px 15px;
-  }
-
   .navbar-brand,
   .navbar-nav > li > a {
     color: $c-white;
@@ -32,6 +29,29 @@
     &:active {
       color: $c-white;
     }
+  }
+
+  .navbar-brand {
+    padding: 9px 15px;
+    text-transform: none;
+
+    > img {
+      display: inline-block;
+    }
+
+    .navbar-brand-name {
+      border-left: 1px solid $c-white;
+      display: inline-block;
+      font-size: $font-size-base;
+      margin-top: 2px;
+      margin-left: 10px;
+      padding: 4px 0 4px 10px;
+    }
+  }
+
+  &.affix,
+  &.affix-top {
+    visibility: visible;
   }
 
   &.affix {
