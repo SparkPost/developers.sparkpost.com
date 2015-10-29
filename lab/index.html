@@ -4,3 +4,72 @@ title: SparkPost Lab
 ---
 {% include base.html %}
 <h1>SparkPost Lab</h1>
+
+<h2>Mini Hacks</h2>
+<p>
+    Learn how to use SparkPost by completing these three challenges. Complete 2 mini hacks for a chance to win a prize.
+    Complete the third for a second chance to win.<br />
+    Use the resources provided by the Developer Hub to help you along. Also, feel free to ask our onsite engineers for
+    assistance.
+</p>
+<ol>
+    <li>
+        <h3>Send an Email Using SparkPost</h3>
+        <p>
+            Using your new or existing SparkPost account, send an email to developers@sparkpost.com.<br />
+            Be sure to do the following:
+        </p>
+        <ul>
+            <li>Set the Subject to "SparkPost Lab: Mini Hack #1"</li>
+            <li>In the body of the email, include your first and last name and account email/</li>
+        </ul>
+
+    </li>
+    <li>
+        <h3>Receive data via a Webhook</h3>
+        <p>
+            Let's demonstrate SparkPost's ability to push to a specified place.<br />
+            To complete this challenge, you must complete the following:
+        </p>
+        <ol>
+            <li>Set up a webhook that sends data to <a href="http://requestb.in/">RequestBin</a></li>
+            <li>
+                Send an email to developers@sparkpost.com
+                <ul>
+                    <li>Subject: SparkPost Lab: Mini Hack #2</li>
+                    <li>Content: whatever you want</li>
+                </ul>
+            </li>
+            <li>
+                View your request bin, copy the output and email it to developers@sparkpost.com
+                <ul>
+                    <li>Subject: SparkPost Lab: Mini Hack #2 Data</li>
+                    <li>Content: output from request bin</li>
+                </ul>
+            </li>
+        </ol>
+    </li>
+    <li>
+        <h3>Get data via Message Events</h3>
+        <p>
+            SparkPost also give you the ability to pull specific data about a transmission.<br />
+            Do the following to complete this challenge:
+        </p>
+        <ol>
+            <li>
+                Query the API for message events where:
+                <ul>
+                    <li>The from parameter is the datetime you performed the first mini-hack</li>
+                    <li>The recipients parameter contains developers@sparkpost.com</li>
+                </ul>
+            </li>
+            <li>
+                Email the output to developers@sparkpost.com:
+                <ul>
+                    <li>Subject: SparkPost Lab: Mini Hack #3</li>
+                    <li>Content: the message events response</li>
+                </ul>
+            </li>
+        </ol>
+    </li>
+</ol>
