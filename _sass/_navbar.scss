@@ -15,7 +15,8 @@
   font-size: $font-size-base * .857142857; // 12px
 
   @media screen and (min-width: $screen-sm-min) {
-    .page-home & {
+    .page-home &,
+    .page-sparkpost-lab & {
       background-color: transparent;
     }
   }
