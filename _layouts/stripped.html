@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  {% include base.html %}
+  {% include head.html base=base %}
+
+  <body class="{% if page.title == null %}page-home{% else %}page-{{ page.title|slugify }}{% endif %}">
+
+    {{ content }}
+
+  </body>
+
+</html>
