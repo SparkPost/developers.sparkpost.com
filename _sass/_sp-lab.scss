@@ -1,0 +1,39 @@
+//
+// SparkPost Lab specific styling
+// --------------------------------------------------
+
+.page-sparkpost-lab {
+  .jumbotron {
+    background: $c-orange url("/images/sparkpost-lab-bg.png") center center;
+  }
+}
+
+.page-bb8 {
+  .img-responsive {
+    display: inline-block;
+  }
+
+  .jumbotron {
+    background: $c-orange url("/images/sparkpost-lab-bg.png") center top;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 380px) {
+    .jumbotron {
+      height: 700px;
+    }
+  }
+
+  @media screen and (min-width: 580px) {
+    .jumbotron {
+      height: 800px;
+    }
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    .jumbotron {
+      height: 1000px;
+    }
+  }
+}

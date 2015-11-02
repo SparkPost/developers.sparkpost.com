@@ -4,15 +4,9 @@
   {% include head.html base=base %}
 
   <body class="{% if page.title == null %}page-home{% else %}page-{{ page.title|slugify }}{% endif %}">
-    <div id="fb-root"></div>
-
-    {% include header.html base=base %}
 
     {{ content }}
 
-    {% include footer.html base=base %}
-
-    {% include scripts.html base=base %}
   </body>
 
 </html>
