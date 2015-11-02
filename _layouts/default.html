@@ -5,7 +5,6 @@
 
   <body class="{% if page.title == null %}page-home{% else %}page-{{ page.title|slugify }}{% endif %}">
     {% if site.environment == "production" %}
-    <script>
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -15,7 +14,6 @@
     '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-WN7C84');</script>
     <!-- End Google Tag Manager -->
-    </script>
     {% endif %}
     <div id="fb-root"></div>
 
