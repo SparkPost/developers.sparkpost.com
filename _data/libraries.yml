@@ -5,6 +5,13 @@
   language: javascript
   icon: nodejs-plain
 
+- name: java-sparkpost
+  type: official
+  description: Java library
+  github_repo: SparkPost/java-sparkpost
+  language: java
+  icon: python-plain
+
 - name: python-sparkpost
   type: official
   description: Python module
