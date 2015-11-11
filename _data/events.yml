@@ -5,6 +5,18 @@
   date_end: 2015-11-15
   location: Nashville, TN
 
+- name: Elixir and Coffee
+  type: future
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/226670406/
+  date_start: 2015-11-19
+  location: New York, NY
+
+- name: charmCityJS
+  type: future
+  url: http://www.meetup.com/charmcityjs/events/222292084/
+  date_start: 2015-12-02
+  location: Baltimore, MD
+
 - name: Insight
   type: past
   url: https://www.messagesystems.com/insight
