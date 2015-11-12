@@ -36,7 +36,9 @@ layout: default
         {% endif %}
         <div class="media-body">
           <h4 class="media-heading">{{ author.name }}</h4>
+          {% if author.company %}
           {{ author.title }}, {{ author.company }} <br/>
+          {% endif %}
           {% if author.twitter %}
           <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>
           {% endif %}
