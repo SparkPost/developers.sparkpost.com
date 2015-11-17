@@ -10,6 +10,12 @@
   date_start: 2015-12-02
   location: Baltimore, MD
 
+- name: Baltimore NodeSchool
+  type: future
+  url: http://nodeschool.io/baltimore/
+  date_start: 2015-12-05
+  location: Baltimore, MD
+
 - name: Nodevember
   type: past
   url: http://nodevember.org/
