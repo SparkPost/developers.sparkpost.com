@@ -19,6 +19,11 @@
     .page-sparkpost-lab & {
       background-color: transparent;
     }
+
+    .navbar-nav > li > a {
+      padding-top: 28px;
+      padding-bottom: 28px;
+    }
   }
 
   .navbar-brand,
@@ -35,6 +40,7 @@
   .navbar-brand {
     padding: 9px 15px;
     text-transform: none;
+    height: 70px;
 
     > img {
       display: inline-block;
@@ -58,6 +64,7 @@
   &.affix {
     background-color: $c-orange;
   }
+
 }
 
 .navbar-default {
@@ -65,8 +72,10 @@
     background-color: $c-orange;
     border: none;
     color: $c-white;
+    font-size: $font-size-base;
     padding-left: 0;
     padding-right: 0;
+    margin-top: 18px;
 
     &:hover,
     &:focus {
