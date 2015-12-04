@@ -25,6 +25,13 @@
   github_repo: SparkPost/php-sparkpost
   language: php
   icon: php-plain
+  
+- name: go-sparkpost
+  type: official
+  description: GO library
+  github_repo: SparkPost/go-sparkpost
+  language: go
+  icon: go-plain
 
 - name: nodemailer-sparkpost-transport
   type: official
