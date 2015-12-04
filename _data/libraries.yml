@@ -28,7 +28,7 @@
   
 - name: go-sparkpost
   type: official
-  description: GO library
+  description: Go library
   github_repo: SparkPost/go-sparkpost
   language: go
   icon: go-plain
