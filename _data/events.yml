@@ -1,3 +1,17 @@
+- name: Developer Week Hackathon
+  type: future
+  url: http://www.developerweek.com/hackathon/
+  date_start: 2016-02-13
+  date_end: 2016-02-14
+  location: San Francisco, CA
+  
+- name: Developer Week Conference
+  type: future
+  url: http://www.developerweek.com/conference/
+  date_start: 2016-02-16
+  date_end: 2016-02-17
+  location: San Francisco, CA
+
 - name: charmCityJS
   type: past
   url: http://www.meetup.com/charmcityjs/events/222292084/
@@ -5,7 +19,7 @@
   location: Baltimore, MD
 
 - name: Baltimore NodeSchool
-  type: future
+  type: past
   url: http://nodeschool.io/baltimore/
   date_start: 2015-12-05
   location: Baltimore, MD
