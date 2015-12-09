@@ -19,7 +19,8 @@ REPO = CONFIG["repo"] || "#{USERNAME}.github.io"
 htmlproofer_opts = {
   :disable_external => true,
   :allow_hash_href => true,
-  :verbosity => :debug
+  :verbosity => :debug,
+  :file_ignore => [ /.*\/bower_components\/.*/ ]
 }
 
 # Determine source and destination branch
