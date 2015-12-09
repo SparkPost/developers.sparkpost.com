@@ -1,5 +1,6 @@
 # Site settings
 environment: production
+destination: ./_site/
 title: SparkPost Developer Hub
 email: developers@sparkpost.com
 description: >
@@ -37,3 +38,18 @@ defaults:
 
 # Build settings
 markdown: kramdown
+
+# Deploy settings
+username: SparkPost
+repo: sparkpost.github.io
+branch: develop
+
+exclude:
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - changelog.md
+  - "*.Rmd"
+  - vendor
+  - .travis.yml
