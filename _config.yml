@@ -40,7 +40,7 @@ defaults:
 markdown: kramdown
 
 # Deploy settings
-username: SparkPost
+username: sparkpost
 repo: sparkpost.github.io
 branch: develop
 
