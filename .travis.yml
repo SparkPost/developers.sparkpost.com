@@ -1,18 +1,13 @@
 language: ruby
 rvm:
-  - 2.1
-
+- 2.1
 install:
-  # Install Jekyll and dependencies
-  - bundle install
-
+- bundle install
 script: bundle exec rake site:deploy --quiet
-
 branches:
   only:
-    - develop
-
+  - develop
 env:
   global:
-    - secure: NgRT9C08nRv2JOhfVhzjCz95sy4O2u8Kdj3owJjUiPHGDdUO+MV/X8QyEWznQQY8dpSIZY+GaebnkFWTsF+SD3buS+ITTnH/XBJMFVxCXhRwu3Xku9OYUnnGGLgxKOYaw5Cu6smhYEP3OSmUrmdg+/psgm4RbYvsNzzM29CYjtI4negqWYfB1eTpSdVpkbxYf0CTdHrzImiZxjX9e5IE1DAWICy3iRSSgsbqPg9+eTNEoC4DEfi5EeBbdciokoRIWnMX69xYwJ3S4vjCfL9SUopGvi6CpAmrBAe6WK5BY2dJR6L7DtGns7CLPBX83QoG0Vmvu8wpWTHmIAxwaz8sPdGNbcN/6XjKqjt+85Ul1SEcZkBjLdCW9nX0QCGIbibEblq95eEfnIqI9qZjKfqTVTUyjNzWOJomWyEYckL3uuRTY5jg0I998m/AFZ/tsdjN0ZkidnyzQPAMReI8LBmJGYcBYaOP14gmgtGX/neUj1NJPBKLnyXZcj9KP3n5hB+hl/FK7pSNjtwcoyTpjSM0fcw2csfQOhtigD/HG4l+Ln6KN+eWvx1W1zwlz2J8x6FB21lHBi9CAvAETxyCypu5+ORetmd1VkahopSbghkKqx4yzF0oXfiWcIj+oik7UIvsyQcsyT70bJ23c4qtBXm4jeYMQET78NUccqUcIRVgR0o=
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - secure: TSWAXbRWSGOkb+aqJQKF2HKBWRTJwskz+dRxfMNCBHo8nnWMEsC3o5JU2Ypbi79GMvOaSku68xJbV0n2z8qqk+8OTKdl1ckCGMbpjlT/VX1fTl8s4R/TXDKgXdOXoJ4j7K6nYILqjDLnCNtpc9dAWnz/FVlCtTIJkx6t9ozkJPA6vF18kmzgBdHBDPuhvNVg8exDc25NkH9ClpPCCajWY6mhfGiry0/JsCpRFOBUByAmRs5gx++hSOZafLnMGOd1szBpJLBku9FO+ckJ5XFgmO8GA8lNDZ+UlD1WvC58ao+pjxnKWkTcIqPFinLz1HEMly5LS5/fSQoNvmLyka460IkODMDmqgfB6EtUuds/GG/bMO2fSrIh3JBqYwB+nV9bgWcAwSIwJGBfEI7EgGb34uit/alaYdEPZ11/se271PZYZfTXFuEYoUAjy6i+uY7THiWhxBgEvuVPWnOdD1NmWQelahWo0Al8cq1ofWzviQYF2/vZ+yJt3wLTjUNh59Q/Uiz6w/P3kB+0TKCOezXrDNhHAhOBseJ29IhsITCMagRGz+Foeg5rkwZj4Nu+rYYkE6Zg02gTyueS4ci0iVBNfXx7aPgwdUSAq0S0AjoKQOflO2BfkG/YYyf4C4EMGFpqIl6WifcgfbmVljFCl5Nb7e3lTxSdkvFR80iW7kpguj4=
