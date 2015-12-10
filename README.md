@@ -1,7 +1,6 @@
 # SparkPost Developer Community Portal
 
-[![Build Status](https://travis-ci.org/sparkpost/sparkpost.github.io.svg?branch=develop)](https://travis-ci.org/sparkpost/sparkpost.github.io)
-
+[![Build Status](https://travis-ci.org/SparkPost/sparkpost.github.io.svg?branch=develop)](https://travis-ci.org/SparkPost/sparkpost.github.io)
 
 This is a private repo to host the SparkPost Organization Github Page which will serve as the developer community site.
 See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/DEVRELATIONS/SparkPost+Developer+Community+Portal) for more details.

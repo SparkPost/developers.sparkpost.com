@@ -53,3 +53,5 @@ exclude:
   - "*.Rmd"
   - vendor
   - .travis.yml
+  - Guardfile
+  - bower.json
