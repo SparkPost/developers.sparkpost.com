@@ -7,4 +7,4 @@ echo "Cleaning up..."
 rm -rf _site
 
 echo "Starting server."
-bundle exec jekyll serve --config _config.yml,_config_local.yml --watch --drafts --safe
+bundle exec jekyll serve --config _config.yml,_config_local.yml --watch --drafts

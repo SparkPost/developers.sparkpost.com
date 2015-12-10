@@ -14,22 +14,21 @@
     <link rel="icon" href="../images/favicon-48.png" sizes="48x48">
     <link rel="shortcut icon" href="../images/favicon.ico">
 
-    <title>SparkPost Lab - SparkPost Developer Hub</title>
+    <title>SparkPost SMTP Setup Tutorial - SparkPost Developer Hub</title>
     <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
 ">
     <meta property="og:site_name" content="SparkPost Developer Hub">
-    <meta property="og:url" content="https://developers.sparkpost.com/lab/">
+    <meta property="og:url" content="https://developers.sparkpost.com/videos/smtp_setup.html">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SparkPost Lab">
-    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
-">
-    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
+    <meta property="og:title" content="SparkPost SMTP Setup Tutorial">
+    <meta property="og:description" content="Learn how easy it is to set up SparkPost as an SMTP relay.">
+    <meta property="og:image" content="https://img.youtube.com/vi/mP7wGEF93d4/hqdefault.jpg">
 
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../bower_components/devicon/devicon.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="canonical" href="https://developers.sparkpost.com/lab/">
+    <link rel="canonical" href="https://developers.sparkpost.com/videos/smtp_setup.html">
 
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
@@ -37,7 +36,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </head>
 
 
-  <body class="page-sparkpost-lab">
+  <body class="page-sparkpost-smtp-setup-tutorial">
     
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
@@ -81,151 +80,54 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </header>
 
 
+    <div class="container content video-detail">
+  <div class="col-xs-12">
+
+    <div class="col-xs-12">
+      <p><i class="fa fa-arrow-circle-left text-muted"></i> <a href="../videos/">Back to video list</a></p>
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mP7wGEF93d4" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    
+    
+    <div class="col-xs-12 col-sm-8">
+      <h3>SparkPost SMTP Setup Tutorial</h3>
+      <p>Learn how easy it is to set up SparkPost as an SMTP relay. Don’t have an account? Get one for free: http://bit.ly/sparkpost_yt</p>
+
+      <div class="content-social">
+        <span class="twitter">
+          <a href="https://twitter.com/share" class="twitter-share-button"  data-url="https://developers.sparkpost.com/videos/smtp_setup.html" data-text="SparkPost SMTP Setup Tutorial" data-via="SparkPostDev" data-related="SparkPostDev" data-hashtags="SparkPostDevHub"></a>
+        </span>
+        <span class="facebook">
+          <div class="fb-share-button" data-href="https://developers.sparkpost.com/videos/smtp_setup.html" data-layout="button_count"></div>
+        </span>
+      </div>
+    </div>
+
+    
+    <div class="col-xs-12 col-sm-4">
+      <div class="media">
+        
+        <div class="media-left">
+          <img class="media-object" src="https://www.gravatar.com/avatar/db779c9830395c61a3ace0b31218850f?s=55" alt="David Rowley">
+        </div>
+        
+        <div class="media-body">
+          <h4 class="media-heading">David Rowley</h4>
+          
+          
+          <a href="https://www.twitter.com/dwrowley"><i class="fa fa-twitter"></i></a>
+          
+          
+          <a href="https://www.github.com/dwrowley"><i class="fa fa-github"></i></a>
+          
+        </div>
+      </div>
+    </div>
     
 
-
-
-
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-        <p><img src="/images/logo-sparkpost-lab.png" alt="SparkPost Lab" width="200"></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="container">
-      <div class="col-xs-12">
-
-        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-          <div class="page-header page-header-code-examples">
-            <h1 class="text-center">Mini Hacks</h1>
-            <p class="text-center">
-              Learn how to use SparkPost by completing these three challenges. Complete 2 mini hacks for a chance to win a prize. Complete the third for a second chance to win. Use the resources provided by the <a href="/">Developer Hub</a> to help you along. Also, feel free to ask our onsite engineers for assistance.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="container">
-      <div class="col-xs-12">
-        <hr>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <h3>Mini Hack Resources</h3>
-          <ul>
-            <li><a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Sign Up for SparkPost</a></li>
-            <li><a href="/videos/unlock_features.html">Getting Started: How To Unlock Features in SparkPost</a></li>
-            <li><a href="/videos/smtp_setup.html">SparkPost SMTP Setup Tutorial</a></li>
-            <li><a href="https://support.sparkpost.com/customer/en/portal/articles/2035409-sending-your-first-email">Sending Your First Email</a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-12 col-sm-5">
-          <h2>Send An Email Using SparkPost</h2>
-          <p>
-            Using your new or existing SparkPost account, send an email to sparkpostdevelopers@gmail.com. Be sure to do the following:
-          </p>
-          <ul>
-            <li>Set the Subject to "SparkPost Lab: Mini Hack #1"</li>
-            <li>In the body of the email, copy/paste and fill in the following:<br /><br />
-              <p>
-                Account Username/Email: <br />
-                First Name: <br />
-                Last Name: <br />
-                Email: <br />
-                Work Tel: <br />
-                Company: <br />
-                Title: <br />
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-xs-12">
-        <hr>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <h3>Mini Hack Resources</h3>
-          <ul>
-            <li><a href="http://requestb.in/">Create a RequestBin</a></li>
-            <li><a href="https://support.sparkpost.com/customer/portal/articles/1929974">Defining Webhooks</a></li>
-            <li><a href="https://support.sparkpost.com/customer/portal/articles/1976204">Webhook Event Reference</a></li>
-            <li><a href="https://en.wikipedia.org/wiki/Webhook">What are Webhooks?</a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-12 col-sm-5">
-          <h2>Receive Data Via Webhooks</h2>
-          <p>
-            Let's demonstrate SparkPost's ability to push to a specified place. To complete this challenge, you must complete the following:
-          </p>
-          <ull>
-            <li>Set up a webhook that sends data to <a href="http://requestb.in/">RequestBin</a></li>
-            <li>
-              Send an email to sparkpostdevelopers@gmail.com
-              <ul>
-                <li>Subject: SparkPost Lab: Mini Hack #2</li>
-                <li>Content: your first and last name and account email/username</li>
-              </ul>
-            </li>
-            <li>
-              View your RequestBin, copy the output and email it to sparkpostdevelopers@gmail.com
-              <ul>
-                <li>Subject: SparkPost Lab: Mini Hack #2 Data</li>
-                <li>Content: your first and last name, account email/username, and the output from request bin</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-xs-12">
-        <hr>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <h3>Mini Hack Resources</h3>
-          <ul>
-            <li><a href="https://www.sparkpost.com/api#/reference/message-events/events-samples/search-for-message-events">API Docs: Message Events</a></li>
-            <li><a href="https://www.sparkpost.com/blog/use-cases-message-events/">Use Cases for Using New Message Events API</a></li>
-            <li><a href="https://www.sparkpost.com/blog/new-api-feature-message-events/">New API Feature: Message Events</a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-12 col-sm-5">
-          <h2>Get Data Via Message Events</h2>
-          <p>
-            SparkPost also gives you the ability to pull specific data about a transmission. Do the following to complete this challenge:
-          </p>
-          <ul>
-            <li>
-              Query the API for message events where:
-              <ul>
-                <li>The from parameter is the datetime you performed the first mini-hack</li>
-                <li>The recipients parameter contains sparkpostdevelopers@gmail.com</li>
-              </ul>
-            </li>
-            <li>
-              Email the output to sparkpostdevelopers@gmail.com
-              <ul>
-                <li>Subject: SparkPost Lab: Mini Hack #3</li>
-                <li>Content: your first and last name, account email/username, and the message events response</li>
-              </ul>
-            </li>
-          </ul>
-          <br>
-        </div>
-
-      </div>
-    </div>
   </div>
 </div>
 
