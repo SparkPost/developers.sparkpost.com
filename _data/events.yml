@@ -1,3 +1,9 @@
+- name: ManhattanJS Meetup
+  type: future
+  url: http://manhattanjs.com/
+  date_start: 2016-01-13
+  location: New York, NY
+
 - name: BrookylnJS Meetup
   type: future
   url: http://brooklynjs.com/
