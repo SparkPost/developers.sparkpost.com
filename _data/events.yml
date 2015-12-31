@@ -4,6 +4,12 @@
   date_start: 2016-01-13
   location: New York, NY
 
+- name: NYC Elixir Meetup
+  type: future
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/227739880/
+  date_start: 2016-01-28
+  location: New York, NY
+
 - name: BrookylnJS Meetup
   type: future
   url: http://brooklynjs.com/
