@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/SparkPost/sparkpost.github.io.svg?branch=develop)](https://travis-ci.org/SparkPost/sparkpost.github.io)
 
 This is a private repo to host the SparkPost Organization Github Page which will serve as the developer community site.
-See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/DEVRELATIONS/SparkPost+Developer+Community+Portal) for more details.
+See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/ENG/SparkPost+Developer+Hub) for more details.
 
 ## Contributing
 Because any changes pushed to the `master` branch are immediately live, all pull requests are to be merged into the `develop` branch. 
