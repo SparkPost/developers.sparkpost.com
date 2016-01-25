@@ -4,11 +4,11 @@
   date_start: 2016-01-28
   location: New York, NY
 
-- name: BrookylnJS Meetup
+- name: ManhattanJS Meetup
   type: future
-  url: http://brooklynjs.com/
-  date_start: 2016-01-21
-  location: Brooklyn, NY
+  url: http://manhattanjs.com/
+  date_start: 2016-02-10
+  location: New York, NY
 
 - name: Developer Week Hackathon
   type: future
@@ -23,6 +23,12 @@
   date_start: 2016-02-16
   date_end: 2016-02-17
   location: San Francisco, CA
+
+- name: BrookylnJS Meetup
+  type: past
+  url: http://brooklynjs.com/
+  date_start: 2016-01-21
+  location: Brooklyn, NY
 
 - name: ManhattanJS Meetup
   type: past
