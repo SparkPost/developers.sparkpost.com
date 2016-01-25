@@ -14,21 +14,22 @@
     <link rel="icon" href="../images/favicon-48.png" sizes="48x48">
     <link rel="shortcut icon" href="../images/favicon.ico">
 
-    <title>How to Leverage the Power of SparkPost API documentation and Live Console - SparkPost Developer Hub</title>
+    <title>Email APIs & Transactional Email APIs - SparkPost Developer Hub</title>
     <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
 ">
     <meta property="og:site_name" content="SparkPost Developer Hub">
-    <meta property="og:url" content="https://developers.sparkpost.com/videos/api_console.html">
+    <meta property="og:url" content="https://developers.sparkpost.com/api/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="How to Leverage the Power of SparkPost API documentation and Live Console">
-    <meta property="og:description" content="In this video learn how to leverage the power of the SparkPost API documentation.">
-    <meta property="og:image" content="https://img.youtube.com/vi/eYoqv-GmfeY/hqdefault.jpg">
+    <meta property="og:title" content="Email APIs & Transactional Email APIs">
+    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
 
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../bower_components/devicon/devicon.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="canonical" href="https://developers.sparkpost.com/videos/api_console.html">
+    <link rel="canonical" href="https://developers.sparkpost.com/api/">
 
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
@@ -36,7 +37,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </head>
 
 
-  <body class="page-how-to-leverage-the-power-of-sparkpost-api-documentation-and-live-console">
+  <body class="page-api-docs">
     
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
@@ -80,56 +81,49 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </header>
 
 
-    <div class="container content video-detail">
-  <div class="col-xs-12">
+    <script type="text/javascript" src="https://api.apiary.io/seeds/embed.js"></script>
+<script>
+  var embed = new Apiary.Embed({
+    subdomain: 'sparkpostapi',
+    header: '.sp-menu',
 
-    <div class="col-xs-12">
-      <p><i class="fa fa-arrow-circle-left text-muted"></i> <a href="../videos/">Back to video list</a></p>
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eYoqv-GmfeY" allowfullscreen></iframe>
-      </div>
-    </div>
+    preferences: {
+      collapseMachineColumnByDefault: true,
+      fluidHumanColumn: true,
+      permalinks: true,
+    },
 
-    
-    
-    <div class="col-xs-12 col-sm-8">
-      <h3>How to Leverage the Power of SparkPost API documentation and Live Console</h3>
-      <p>In this video learn how to leverage the power of the SparkPost API documentation. The SparkPost API enables client applications to integrate with SparkPost and perform actions associated with account management, message generation and reporting.</p>
+    theme: {
+      fontFamily: "Gotham Narrow SSm A, Gotham Narrow SSm B, Gotham Narrow, Arial",
 
-      <div class="content-social">
-        <span class="twitter">
-          <a href="https://twitter.com/share" class="twitter-share-button"  data-url="https://developers.sparkpost.com/videos/api_console.html" data-text="How to Leverage the Power of SparkPost API documentation and Live Console" data-via="SparkPostDev" data-related="SparkPostDev" data-hashtags="SparkPostDevHub"></a>
-        </span>
-        <span class="facebook">
-          <div class="fb-share-button" data-href="https://developers.sparkpost.com/videos/api_console.html" data-layout="button_count"></div>
-        </span>
-      </div>
-    </div>
-
-    
-    <div class="col-xs-12 col-sm-4">
-      <div class="media">
-        
-        <div class="media-left">
-          <img class="media-object" src="https://www.gravatar.com/avatar/c670f327e4b6a998ee2e2c7a46baf95c?s=55" alt="Benjamin Dean">
-        </div>
-        
-        <div class="media-body">
-          <h4 class="media-heading">Benjamin Dean</h4>
-          
-          
-          <a href="https://www.twitter.com/bdeanindy"><i class="fa fa-twitter"></i></a>
-          
-          
-          <a href="https://www.github.com/bdeanindy"><i class="fa fa-github"></i></a>
-          
-        </div>
-      </div>
-    </div>
-    
-
-  </div>
-</div>
+      tableOfContents: {
+        section: {
+          title: {
+            text: { color: '#37aadc', },
+          },
+        },
+      },
+      humanColumn: {
+        header: {
+          breadcrumb: {
+            container: {
+              item: {
+                $section: { color: '#37aadc', },
+              }
+            }
+          }
+        },
+        content: {
+          section: {
+            title: {
+              text: { color: '#37aadc', },
+            },
+          },
+        },
+      },
+    }
+  });
+</script>
 
 
     <footer>
