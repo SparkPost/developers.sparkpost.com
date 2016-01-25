@@ -3,7 +3,7 @@
   {% include base.html %}
   {% include head.html base=base %}
 
-  <body class="{% if page.title == null %}page-home{% else %}page-{{ page.title|slugify }}{% endif %}">
+  <body class="{% if page.title == null and page.class == null %}page-home{% elsif page.class %}page-{{ page.class }}{% else %}page-{{ page.title|slugify }}{% endif %}">
     {% if site.environment == "production" %}
     <!-- Google Tag Manager -->
     <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
