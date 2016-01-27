@@ -45,7 +45,7 @@
   description: Elixir library
   github_repo: SparkPost/elixir-sparkpost
   language: elixir
-  icon: erlang-plain
+  icon: elixir-plain
 
 - name: nodemailer-sparkpost-transport
   type: official
