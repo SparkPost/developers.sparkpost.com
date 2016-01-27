@@ -35,7 +35,7 @@ layout: default
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
               <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
-              <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
+              {% comment %}<li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>{% endcomment %}
               <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
               <li role="presentation"><a href="#elixirExample" data-toggle="pill" data-mp-language="Elixir"><i class="devicon devicon-elixir-plain"></i> Elixir</a></li>
             </ul>
@@ -123,7 +123,7 @@ response = sparky.transmission.send_message(
   '<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
 )
 {% endhighlight %}
-              </div>
+              </div>{% comment %}
               <div class="tab-pane" id="javaExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight java startinline %}
@@ -153,7 +153,7 @@ private void sendEmail(String from, String[] recipients, String email) throws Sp
     logger.debug("Transmission Response: " + response);
 }
 {% endhighlight %}
-              </div>
+              </div>{% endcomment %}
               <div class="tab-pane" id="goExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight go startinline %}
