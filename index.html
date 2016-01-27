@@ -36,6 +36,7 @@ layout: default
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
               <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
               <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
+              <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
@@ -149,6 +150,47 @@ private void sendEmail(String from, String[] recipients, String email) throws Sp
     Response response = ResourceTransmissions.create(connection, 0, transmission);
 
     logger.debug("Transmission Response: " + response);
+}
+{% endhighlight %}
+              </div>
+              <div class="tab-pane" id="goExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+{% highlight go startinline %}
+package main
+
+import (
+  "log"
+  "os"
+
+  sp "github.com/SparkPost/gosparkpost"
+)
+
+func main() {
+  cfg := &sp.Config{
+    BaseUrl:    "https://api.sparkpost.com",
+    ApiKey:     "<YOUR API KEY>",
+    ApiVersion: 1,
+  }
+  var sparky sp.Client
+  err := sparky.Init(cfg)
+  if err != nil {
+    log.Fatalf("SparkPost client init failed: %s\n", err)
+  }
+
+  tx := &sp.Transmission{
+    Recipients: []string{"developers@sparkpost.com"},
+    Content: sp.Content{
+      HTML:    "<html><body><p>Testing SparkPost - the world's most awesomest email service!</p></body></html>",
+      From:    "test@sparkpostbox.com",
+      Subject: "Oh hey!",
+    },
+  }
+  id, _, err := sparky.Send(tx)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  log.Printf("Transmission sent with id [%s]\n", id)
 }
 {% endhighlight %}
               </div>
