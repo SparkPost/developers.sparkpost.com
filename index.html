@@ -34,6 +34,7 @@ layout: default
               <li role="presentation"><a href="#nodeExample" data-toggle="pill" data-mp-language="Node.js"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
+              <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
@@ -103,6 +104,21 @@ $results = $sparky->transmission->send([
       ['address'=>['email'=>'developers@sparkpost.com']]
     ]
 ]);
+{% endhighlight %}
+              </div>
+              <div class="tab-pane" id="rubyExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/ruby-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+{% highlight ruby startinline %}
+require 'sparkpost'
+
+sparky = SparkPost::Client.new('<YOUR API KEY>')
+
+response = sparky.transmission.send_message(
+  'developers@sparkpost.com',
+  'testing@sparkpostbox.com',
+  'Oh hey!',
+  '<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
+)
 {% endhighlight %}
               </div>
             </div>
