@@ -35,6 +35,7 @@ layout: default
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
               <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
+              <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
@@ -119,6 +120,36 @@ response = sparky.transmission.send_message(
   'Oh hey!',
   '<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
 )
+{% endhighlight %}
+              </div>
+              <div class="tab-pane" id="javaExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+{% highlight java startinline %}
+private void sendEmail(String from, String[] recipients, String email) throws SparkPostException {
+    TransmissionWithRecipientArray transmission = new TransmissionWithRecipientArray();
+
+    // Populate Recipients
+    List<RecipientAttributes> recipientArray = new ArrayList<RecipientAttributes>();
+    for (String recipient : recipients) {
+      RecipientAttributes recipientAttribs = new RecipientAttributes();
+      recipientAttribs.setAddress(new AddressAttributes(recipient));
+      recipientArray.add(recipientAttribs);
+    }
+    transmission.setRecipientArray(recipientArray);
+
+    transmission.setReturnPath(from);
+
+    // Populate Email Body
+    TemplateContentAttributes contentAttributes = new TemplateContentAttributes();
+    contentAttributes.setEmailRFC822(email);
+    transmission.setContentAttributes(contentAttributes);
+
+    // Send the Email
+    RestConnection connection = new RestConnection(client, getEndPoint());
+    Response response = ResourceTransmissions.create(connection, 0, transmission);
+
+    logger.debug("Transmission Response: " + response);
+}
 {% endhighlight %}
               </div>
             </div>
