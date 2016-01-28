@@ -114,6 +114,10 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
               <li role="presentation"><a href="#nodeExample" data-toggle="pill" data-mp-language="Node.js"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
+              <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
+              
+              <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
+              <li role="presentation"><a href="#elixirExample" data-toggle="pill" data-mp-language="Elixir"><i class="devicon devicon-elixir-plain"></i> Elixir</a></li>
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
@@ -177,6 +181,62 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
     <span class="p">]</span>
 <span class="p">]);</span></code></pre></div>
               </div>
+              <div class="tab-pane" id="rubyExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/ruby-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;sparkpost&#39;</span>
+
+<span class="n">sparky</span> <span class="o">=</span> <span class="no">SparkPost</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR API KEY&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">sparky</span><span class="o">.</span><span class="n">transmission</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
+  <span class="s1">&#39;developers@sparkpost.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;testing@sparkpostbox.com&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;Oh hey!&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\&#39;s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+<span class="p">)</span></code></pre></div>
+              </div>
+              <div class="tab-pane" id="goExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="nx">sp</span> <span class="s">&quot;github.com/SparkPost/gosparkpost&quot;</span>
+    <span class="s">&quot;log&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sparky</span> <span class="nx">sp</span><span class="p">.</span><span class="nx">Client</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sparky</span><span class="p">.</span><span class="nx">Init</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">ApiKey</span><span class="p">:</span> <span class="s">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;SparkPost client init failed: %s\n&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">tx</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">sp</span><span class="p">.</span><span class="nx">Transmission</span><span class="p">{</span>
+        <span class="nx">Recipients</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;developers@sparkpost.com&quot;</span><span class="p">},</span>
+        <span class="nx">Content</span><span class="p">:</span> <span class="nx">sp</span><span class="p">.</span><span class="nx">Content</span><span class="p">{</span>
+            <span class="nx">HTML</span><span class="p">:</span>    <span class="s">&quot;&lt;p&gt;Testing SparkPost - the world&#39;s most awesomest email service!&lt;/p&gt;&quot;</span><span class="p">,</span>
+            <span class="nx">From</span><span class="p">:</span>    <span class="s">&quot;test@sparkpostbox.com&quot;</span><span class="p">,</span>
+            <span class="nx">Subject</span><span class="p">:</span> <span class="s">&quot;Oh hey!&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="nx">id</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sparky</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Transmission sent with id [%s]\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
+<span class="p">}</span></code></pre></div>
+              </div>
+              <div class="tab-pane" id="elixirExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defmodule</span> <span class="nc">MyApp.Example</span>
+  <span class="kd">def</span> <span class="n">send_message</span> <span class="k">do</span>
+    <span class="nc">SparkPost</span><span class="p">.</span><span class="n">send</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&quot;developers@sparkpost.com&quot;</span><span class="p">,</span>
+      <span class="ss">from</span><span class="p">:</span> <span class="s2">&quot;test@sparkpostbox.com&quot;</span><span class="p">,</span>
+      <span class="ss">subject</span><span class="p">:</span> <span class="s2">&quot;Oh hey!&quot;</span><span class="p">,</span>
+      <span class="ss">html</span><span class="p">:</span> <span class="s2">&quot;&lt;p&gt;Testing SparkPost - the world&#39;s most awesomest email service!&lt;/p&gt;&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+              </div>
             </div>
           </div>
         </div>
@@ -208,7 +268,11 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
             
             <li><a href="https://www.github.com/SparkPost/php-sparkpost" data-mp-library="php-sparkpost">php-sparkpost</a> - PHP library</li>
             
+            <li><a href="https://www.github.com/SparkPost/ruby-sparkpost" data-mp-library="ruby-sparkpost">ruby-sparkpost</a> - Ruby library</li>
+            
             <li><a href="https://www.github.com/SparkPost/go-sparkpost" data-mp-library="go-sparkpost">go-sparkpost</a> - Go library</li>
+            
+            <li><a href="https://www.github.com/SparkPost/elixir-sparkpost" data-mp-library="elixir-sparkpost">elixir-sparkpost</a> - Elixir library</li>
             
             <li><a href="https://www.github.com/SparkPost/nodemailer-sparkpost-transport" data-mp-library="nodemailer-sparkpost-transport">nodemailer-sparkpost-transport</a> - Nodemailer transport module</li>
             
@@ -224,8 +288,10 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
           <ul id="list-samples">
             <li><a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
             <li><a href="https://zapier.com/zapbook/sparkpost/">Zapier app</a></li>
-            <li><a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a></li>
           </ul>
+          <p>
+            <a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a>
+          </p>
         </div>
 
       </div>
@@ -280,8 +346,10 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
             <li><a href="https://www.sparkpost.com/blog/webhooks-beyond-the-basics/">SparkPost Webhooks: Beyond The Basics</a></li>
             <li><a href="https://www.sparkpost.com/blog/developer-community-manager-mary-and-ember-dog/">Introducing Our New Developer Community Manager, Mary (and Ember Dog)!</a></li>
             <li><a href="https://www.sparkpost.com/blog/sparkpost-hackathon/">Developer Innovation at the SparkPost Hackathon</a></li>
-            <li><a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a></li>
           </ul>
+          <p>
+            <a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a>
+          </p>
         </div>
 
       </div>
