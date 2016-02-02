@@ -4,15 +4,14 @@
 
 
 
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="./images/favicon-16.png" sizes="16x16">
-    <link rel="icon" href="./images/favicon-32.png" sizes="32x32">
-    <link rel="icon" href="./images/favicon-48.png" sizes="48x48">
-    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="icon" href="/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/images/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/images/favicon.ico">
 
     <title>SparkPost Developer Hub</title>
     <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
@@ -25,10 +24,10 @@
 ">
     <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
 
-    <link href="./bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./bower_components/devicon/devicon.min.css" rel="stylesheet">
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bower_components/devicon/devicon.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="https://developers.sparkpost.com/">
 
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
@@ -59,16 +58,16 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
           <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="./images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="/">Developer Hub</a></li>
-          <li><a href="./api/">API Docs</a></li>
+          <li><a href="/api/">API Docs</a></li>
           <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
-          <li><a href="./videos/">Videos</a></li>
+          <li><a href="/videos/">Videos</a></li>
           <li><a href="https://support.sparkpost.com">Support</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -121,121 +120,121 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
             </ul>
             <div id="code-examples" class="tab-content">
               <div class="tab-pane active" id="curlExample">
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -XPOST <span class="se">\</span>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">curl -XPOST <span class="se">\</span>
   https://api.sparkpost.com/api/v1/transmissions <span class="se">\</span>
-  -H <span class="s2">&quot;Authorization: &lt;YOUR API KEY&gt;;&quot;</span> <span class="se">\</span>
-  -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
-  -d <span class="s1">&#39;{&quot;content&quot;: {&quot;from&quot;: &quot;testing@sparkpostbox.com&quot;, &quot;subject&quot;: &quot;Oh hey&quot;, &quot;text&quot;:&quot;Testing SparkPost - the most awesomest email service in the world&quot;}, &quot;recipients&quot;: [{&quot;address&quot;: &quot;developers@sparkpost.com&quot;}]}&#39;</span></code></pre></div>
+  -H <span class="s2">"Authorization: &lt;YOUR API KEY&gt;;"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s1">'{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers@sparkpost.com"}]}'</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="nodeExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">sparky</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SparkPost</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR API KEY&gt;&#39;</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">sparky</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SparkPost</span><span class="p">(</span><span class="s1">'&lt;YOUR API KEY&gt;'</span><span class="p">);</span>
 
 <span class="nx">sparky</span><span class="p">.</span><span class="nx">transmissions</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
-  <span class="nx">transmissionBody</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">content</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">from</span><span class="o">:</span> <span class="s1">&#39;testing@sparkpostbox.com&#39;</span><span class="p">,</span>
-      <span class="nx">subject</span><span class="o">:</span> <span class="s1">&#39;Oh hey!&#39;</span><span class="p">,</span>
-      <span class="nx">html</span><span class="o">:</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\&#39;s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
+  <span class="na">transmissionBody</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">content</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">from</span><span class="p">:</span> <span class="s1">'testing@sparkpostbox.com'</span><span class="p">,</span>
+      <span class="na">subject</span><span class="p">:</span> <span class="s1">'Oh hey!'</span><span class="p">,</span>
+      <span class="na">html</span><span class="p">:</span><span class="s1">'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;'</span>
     <span class="p">},</span>
-    <span class="nx">recipients</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span><span class="nx">address</span><span class="o">:</span> <span class="s1">&#39;developers@sparkpost.com&#39;</span><span class="p">}</span>
+    <span class="na">recipients</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="na">address</span><span class="p">:</span> <span class="s1">'developers@sparkpost.com'</span><span class="p">}</span>
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Whoops! Something went wrong&#39;</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Whoops! Something went wrong'</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Woohoo! You just sent your first mailing!&#39;</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Woohoo! You just sent your first mailing!'</span><span class="p">);</span>
   <span class="p">}</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="pythonExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sparkpost</span> <span class="kn">import</span> <span class="n">SparkPost</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sparkpost</span> <span class="kn">import</span> <span class="n">SparkPost</span>
 
-<span class="n">sparky</span> <span class="o">=</span> <span class="n">SparkPost</span><span class="p">(</span><span class="s">&#39;&lt;YOUR API KEY&gt;&#39;</span><span class="p">)</span>
+<span class="n">sparky</span> <span class="o">=</span> <span class="n">SparkPost</span><span class="p">(</span><span class="s">'&lt;YOUR API KEY&gt;'</span><span class="p">)</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">sparky</span><span class="o">.</span><span class="n">transmissions</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-    <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;developers@sparkpost.com&#39;</span><span class="p">],</span>
-    <span class="n">html</span><span class="o">=</span><span class="s">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world</span><span class="se">\&#39;</span><span class="s">s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">,</span>
-    <span class="n">from_email</span><span class="o">=</span><span class="s">&#39;testing@sparkpostbox.com&#39;</span><span class="p">,</span>
-    <span class="n">subject</span><span class="o">=</span><span class="s">&#39;Oh hey!&#39;</span><span class="p">)</span></code></pre></div>
+    <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="s">'developers@sparkpost.com'</span><span class="p">],</span>
+    <span class="n">html</span><span class="o">=</span><span class="s">'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world</span><span class="se">\'</span><span class="s">s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;'</span><span class="p">,</span>
+    <span class="n">from_email</span><span class="o">=</span><span class="s">'testing@sparkpostbox.com'</span><span class="p">,</span>
+    <span class="n">subject</span><span class="o">=</span><span class="s">'Oh hey!'</span><span class="p">)</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="phpExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="k">use</span> <span class="nx">SparkPost\SparkPost</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Ivory\HttpAdapter\Guzzle6HttpAdapter</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-php" data-lang="php">use SparkPost\SparkPost;
+use GuzzleHttp\Client;
+use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 
-<span class="nv">$httpAdapter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Guzzle6HttpAdapter</span><span class="p">(</span><span class="k">new</span> <span class="nx">Client</span><span class="p">());</span>
-<span class="nv">$sparky</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SparkPost</span><span class="p">(</span><span class="nv">$httpAdapter</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;&lt;YOUR API KEY&gt;&#39;</span><span class="p">]);</span>
+$httpAdapter = new Guzzle6HttpAdapter(new Client());
+$sparky = new SparkPost($httpAdapter, ['key'=&gt;'<span class="nt">&lt;YOUR</span> <span class="na">API</span> <span class="na">KEY</span><span class="nt">&gt;</span>']);
 
-<span class="nv">$results</span> <span class="o">=</span> <span class="nv">$sparky</span><span class="o">-&gt;</span><span class="na">transmission</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">([</span>
-    <span class="s1">&#39;from&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;testing@sparkpostbox.com&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;html&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\&#39;s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;subject&#39;</span><span class="o">=&gt;</span> <span class="s1">&#39;Oh hey!&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;recipients&#39;</span><span class="o">=&gt;</span><span class="p">[</span>
-      <span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="o">=&gt;</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;developers@sparkpost.com&#39;</span><span class="p">]]</span>
-    <span class="p">]</span>
-<span class="p">]);</span></code></pre></div>
+$results = $sparky-&gt;transmission-&gt;send([
+    'from'=&gt;'testing@sparkpostbox.com',
+    'html'=&gt;'<span class="nt">&lt;html&gt;&lt;body&gt;&lt;p&gt;</span>Testing SparkPost - the world\'s most awesomest email service!<span class="nt">&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</span>',
+    'subject'=&gt; 'Oh hey!',
+    'recipients'=&gt;[
+      ['address'=&gt;['email'=&gt;'developers@sparkpost.com']]
+    ]
+]);</code></pre></figure>
               </div>
               <div class="tab-pane" id="rubyExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/ruby-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">&#39;sparkpost&#39;</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'sparkpost'</span>
 
-<span class="n">sparky</span> <span class="o">=</span> <span class="no">SparkPost</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR API KEY&gt;&#39;</span><span class="p">)</span>
+<span class="n">sparky</span> <span class="o">=</span> <span class="no">SparkPost</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'&lt;YOUR API KEY&gt;'</span><span class="p">)</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">sparky</span><span class="o">.</span><span class="n">transmission</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span>
-  <span class="s1">&#39;developers@sparkpost.com&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;testing@sparkpostbox.com&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;Oh hey!&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\&#39;s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
-<span class="p">)</span></code></pre></div>
+<span class="n">response</span> <span class="o">=</span> <span class="n">sparky</span><span class="p">.</span><span class="nf">transmission</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span>
+  <span class="s1">'developers@sparkpost.com'</span><span class="p">,</span>
+  <span class="s1">'testing@sparkpostbox.com'</span><span class="p">,</span>
+  <span class="s1">'Oh hey!'</span><span class="p">,</span>
+  <span class="s1">'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;'</span>
+<span class="p">)</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="goExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
-<span class="kn">import</span> <span class="p">(</span>
-    <span class="nx">sp</span> <span class="s">&quot;github.com/SparkPost/gosparkpost&quot;</span>
-    <span class="s">&quot;log&quot;</span>
-<span class="p">)</span>
+</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
+    </span><span class="n">sp</span><span class="x"> </span><span class="s">"github.com/SparkPost/gosparkpost"</span><span class="x">
+    </span><span class="s">"log"</span><span class="x">
+</span><span class="p">)</span><span class="x">
 
-<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">sparky</span> <span class="nx">sp</span><span class="p">.</span><span class="nx">Client</span>
-    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sparky</span><span class="p">.</span><span class="nx">Init</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">sp</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">ApiKey</span><span class="p">:</span> <span class="s">&quot;&lt;YOUR API KEY&gt;&quot;</span><span class="p">})</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;SparkPost client init failed: %s\n&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+    </span><span class="k">var</span><span class="x"> </span><span class="n">sparky</span><span class="x"> </span><span class="n">sp</span><span class="o">.</span><span class="n">Client</span><span class="x">
+    </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">sparky</span><span class="o">.</span><span class="n">Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sp</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span><span class="n">ApiKey</span><span class="o">:</span><span class="x"> </span><span class="s">"&lt;YOUR API KEY&gt;"</span><span class="p">})</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">log</span><span class="o">.</span><span class="n">Fatalf</span><span class="p">(</span><span class="s">"SparkPost client init failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
 
-    <span class="nx">tx</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">sp</span><span class="p">.</span><span class="nx">Transmission</span><span class="p">{</span>
-        <span class="nx">Recipients</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;developers@sparkpost.com&quot;</span><span class="p">},</span>
-        <span class="nx">Content</span><span class="p">:</span> <span class="nx">sp</span><span class="p">.</span><span class="nx">Content</span><span class="p">{</span>
-            <span class="nx">HTML</span><span class="p">:</span>    <span class="s">&quot;&lt;p&gt;Testing SparkPost - the world&#39;s most awesomest email service!&lt;/p&gt;&quot;</span><span class="p">,</span>
-            <span class="nx">From</span><span class="p">:</span>    <span class="s">&quot;test@sparkpostbox.com&quot;</span><span class="p">,</span>
-            <span class="nx">Subject</span><span class="p">:</span> <span class="s">&quot;Oh hey!&quot;</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">}</span>
-    <span class="nx">id</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">sparky</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">tx</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-    <span class="p">}</span>
+    </span><span class="n">tx</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">sp</span><span class="o">.</span><span class="n">Transmission</span><span class="p">{</span><span class="x">
+        </span><span class="n">Recipients</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"developers@sparkpost.com"</span><span class="p">},</span><span class="x">
+        </span><span class="n">Content</span><span class="o">:</span><span class="x"> </span><span class="n">sp</span><span class="o">.</span><span class="n">Content</span><span class="p">{</span><span class="x">
+            </span><span class="n">HTML</span><span class="o">:</span><span class="x">    </span><span class="s">"&lt;p&gt;Testing SparkPost - the world's most awesomest email service!&lt;/p&gt;"</span><span class="p">,</span><span class="x">
+            </span><span class="n">From</span><span class="o">:</span><span class="x">    </span><span class="s">"test@sparkpostbox.com"</span><span class="p">,</span><span class="x">
+            </span><span class="n">Subject</span><span class="o">:</span><span class="x"> </span><span class="s">"Oh hey!"</span><span class="p">,</span><span class="x">
+        </span><span class="p">},</span><span class="x">
+    </span><span class="p">}</span><span class="x">
+    </span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">sparky</span><span class="o">.</span><span class="n">Send</span><span class="p">(</span><span class="n">tx</span><span class="p">)</span><span class="x">
+    </span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
+    </span><span class="p">}</span><span class="x">
 
-    <span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Transmission sent with id [%s]\n&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span>
-<span class="p">}</span></code></pre></div>
+    </span><span class="n">log</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transmission sent with id [%s]</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="elixirExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="kd">defmodule</span> <span class="nc">MyApp.Example</span>
-  <span class="kd">def</span> <span class="n">send_message</span> <span class="k">do</span>
-    <span class="nc">SparkPost</span><span class="p">.</span><span class="n">send</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&quot;developers@sparkpost.com&quot;</span><span class="p">,</span>
-      <span class="ss">from</span><span class="p">:</span> <span class="s2">&quot;test@sparkpostbox.com&quot;</span><span class="p">,</span>
-      <span class="ss">subject</span><span class="p">:</span> <span class="s2">&quot;Oh hey!&quot;</span><span class="p">,</span>
-      <span class="ss">html</span><span class="p">:</span> <span class="s2">&quot;&lt;p&gt;Testing SparkPost - the world&#39;s most awesomest email service!&lt;/p&gt;&quot;</span>
+<figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">Example</span>
+  <span class="k">def</span> <span class="n">send_message</span> <span class="k">do</span>
+    <span class="no">SparkPost</span><span class="o">.</span><span class="n">send</span> <span class="ss">to:</span> <span class="sd">"</span><span class="s2">developers@sparkpost.com"</span><span class="p">,</span>
+      <span class="ss">from:</span> <span class="sd">"</span><span class="s2">test@sparkpostbox.com"</span><span class="p">,</span>
+      <span class="ss">subject:</span> <span class="sd">"</span><span class="s2">Oh hey!"</span><span class="p">,</span>
+      <span class="ss">html:</span> <span class="sd">"</span><span class="s2">&lt;p&gt;Testing SparkPost - the world's most awesomest email service!&lt;/p&gt;"</span>
   <span class="k">end</span>
-<span class="k">end</span></code></pre></div>
+<span class="k">end</span></code></pre></figure>
               </div>
             </div>
           </div>
@@ -395,9 +394,9 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="./bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="./bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
 <!-- Twitter Tweet Button -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <!-- Facebook Share Button -->
