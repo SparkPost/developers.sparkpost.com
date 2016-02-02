@@ -114,7 +114,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
               <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
-              
+              <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
               <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
               <li role="presentation"><a href="#elixirExample" data-toggle="pill" data-mp-language="Elixir"><i class="devicon devicon-elixir-plain"></i> Elixir</a></li>
             </ul>
@@ -192,6 +192,27 @@ $results = $sparky-&gt;transmission-&gt;send([
   <span class="s1">'Oh hey!'</span><span class="p">,</span>
   <span class="s1">'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;'</span>
 <span class="p">)</span></code></pre></figure>
+              </div>
+              <div class="tab-pane" id="javaExample">
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">sparkpost</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.sparkpost.exception.SparkPostException</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SparkPost</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="n">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SparkPostException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">API_KEY</span> <span class="o">=</span> <span class="s">"&lt;YOUR API KEY&gt;"</span><span class="o">;</span>
+        <span class="n">Client</span> <span class="n">sparky</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Client</span><span class="o">(</span><span class="n">API_KEY</span><span class="o">);</span>
+
+        <span class="n">sparky</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span>
+                <span class="s">"testing@sparkpostbox.com"</span><span class="o">,</span>
+                <span class="s">"developers@sparkpost.com"</span><span class="o">,</span>
+                <span class="s">"Oh hey!"</span><span class="o">,</span>
+                <span class="s">"Testing SparkPost - the world's most awesomest email service!"</span><span class="o">,</span>
+                <span class="s">"&lt;p&gt;Testing SparkPost - the world's most awesomest email service!&lt;/p&gt;"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="goExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
