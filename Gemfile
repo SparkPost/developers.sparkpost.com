@@ -8,4 +8,4 @@ gem 'rake'
 gem 'github-pages', versions['github-pages']
 gem 'guard'
 gem 'guard-livereload'
-gem "html-proofer"
+gem 'html-proofer'
