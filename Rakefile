@@ -237,7 +237,8 @@ namespace :site do
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
-      sh "git diff --exit-code" do |ok, res|
+      sh "git diff --quiet" do |ok, res|
+        puts "Exit code: #{ok}"
         if ! ok
           puts "Nothing to deploy."
           exit
