@@ -98,7 +98,6 @@ end
 
 def check_destination
   unless Dir.exist? CONFIG["destination"]
-    puts "Cloning #{DESTINATION_BRANCH} into #{CONFIG["destination"]}"
     sh "git clone https://#{ENV['GIT_NAME']}:#{ENV['GH_TOKEN']}@github.com/#{USERNAME}/#{REPO}.git #{CONFIG["destination"]}"
   end
 end
@@ -219,7 +218,8 @@ namespace :site do
     # Make sure destination folder exists as git repo
     check_destination
 
-    sh "git checkout #{SOURCE_BRANCH}"
+    # Why was this a thing?
+    # sh "git checkout #{SOURCE_BRANCH}"
     Dir.chdir(CONFIG["destination"]) { sh "git checkout #{DESTINATION_BRANCH}" }
 
     # Generate the site

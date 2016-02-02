@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.2
 install:
-- bundle install --frozen
+- bundle install
 script: bundle exec rake site:deploy --quiet
 branches:
   only:
