@@ -1,0 +1,58 @@
+---
+layout: default
+title: Hackathon Resources
+---
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <p><img src="{{ "/images/logo-sparkpost.png" | prepend: site.baseurl }}" alt="SparkPost" width="270" /></p>
+        <h1>Hackathons</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <ul>
+      {% for hackathon in site.hackathons %}
+      <li><a href="{{ hackathon.url | prepend: site.base }}">{{ hackathon.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="row">
+    <h1>Build something awesome with email delivery and analytics made for developers.</h1>
+    <p>
+      Snapchat, Messenger, FaceTime, and Kik are all great, but email is still the king of communication. Email is universal, has zero barriers to adoption, and it’s an open standard, no matter your users’ platforms.
+    </p>
+    <p>
+      Whether it’s automated emails to verify a password, personalized messages to your user list, or a sophisticated triggered onboarding program, SparkPost provides the tools necessary to track your users’ reactions and to keep them engaged.
+    </p>
+    <p>
+      Here are a just few ways you can use SparkPost in your app:
+    </p>
+    <h2>Transactional Emails</h2>
+    <ul>
+      <li><strong>Sign-up Form</strong> - When a new user creates an account, developers can trigger welcome emails and contact information verification emails via SparkPost.</li>
+      <li><strong>Password Recovery</strong> - Developers can use SparkPost APIs to send password recovery emails to unique users.</li>
+      <li><strong>Notification and Reminders</strong> - Developers can use SparkPost to send out real-time, personalized notifications and reminders to users based on their preferences (e.g., price alerts, upgrade noti cations and task reminders).</li>
+      <li><strong>Product Purchase Receipts</strong> - Using SparkPost, developers can trigger automatic purchase receipts on in-app purchases.</li>
+    </ul>
+
+    <h2>Inbound Relay</h2>
+    <ul>
+      <li><strong>Auto-Replies</strong> - Trigger an email response to the sender.</li>
+      <li><strong>Raffle</strong> - Use email to collect entries for a giveaway and select a winner at random.</li>
+      <li><strong>Voting System</strong> - Tally and track votes by allowing participants to cast vote via email.</li>
+      <li><strong>Proxying</strong> (i.e. Support Systems, CRMs, etc.) - Create new support tickets, contacts, etc in a third party system by processing an email.</li>
+      <li><strong>Double Blind Messaging</strong> (i.e. Match.com, Craigslist) - Use the SparkPost Inbound Relay to set up anonymous messaging.</li>
+    </ul>
+
+    <h2>Data and Analytics</h2>
+    <ul>
+      <li><strong>Email Delivery Reporting Dashboards</strong> - With real-time analytics and reporting via SparkPost APIs, developers can create dashboards to monitor email deliveries, opens and bounces to better monitor their email sends.</li>
+      <li><strong>Drive Engagement</strong> - Analyse open and click data to understand how certain content works with an audience and adjust content and email frequency.</li>
+      <li><strong>Recipient List Maintenance</strong> - Watch for hard bounces, complaints, or unsubscribes and keep your list clean by removing recipients.</li>
+    </ul>
+  </div>
+</div>

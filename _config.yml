@@ -20,6 +20,8 @@ collections:
     output: true
   videos:
     output: true
+  hackathons:
+    output: true
 
 defaults:
   - scope:
@@ -34,6 +36,11 @@ defaults:
       type: contributors
     values:
       layout: contributor
+  - scope:
+      path: ""
+      type: hackathons
+    values:
+      layout: hackathon
 
 # Build settings
 markdown: kramdown

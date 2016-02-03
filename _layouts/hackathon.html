@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <h1>{{ page.title }}</h1>
+        <p>
+          {{ page.date_start | date: "%B %d" }}{% if page.date_end %}&ndash;{{ page.date_end | date: "%d" }}{% endif %}<br />
+          {{ page.location }} <br />
+          <a href="{{ page.event_url }}">{{ page.event_url }}</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    {{ content }}
+  </div>
+</div>
