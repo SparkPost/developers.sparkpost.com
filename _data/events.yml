@@ -1,9 +1,3 @@
-- name: NYC Elixir Meetup
-  type: future
-  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/227739880/
-  date_start: 2016-01-28
-  location: New York, NY
-
 - name: ManhattanJS Meetup
   type: future
   url: http://manhattanjs.com/
@@ -23,6 +17,40 @@
   date_start: 2016-02-16
   date_end: 2016-02-17
   location: San Francisco, CA
+  
+- name: BrickHack
+  type: future
+  url: https://brickhack.io/
+  date_start: 2016-03-05
+  date_end: 2016-03-06
+  location: Rochester Institute of Technology
+
+- name: Fluent Conference
+  type: future
+  url: http://conferences.oreilly.com/fluent/javascript-html-us
+  date_start: 2016-03-08
+  date_end: 2016-03-10
+  location: San Francisco, CA
+  
+- name: Bitcamp
+  type: future
+  url: http://bitca.mp/
+  date_start: 2016-04-08
+  date_end: 2016-04-10
+  location: University of Maryland
+
+- name: Signal Conference
+  type: future
+  url: https://www.twilio.com/signal
+  date_start: 2016-05-24
+  date_end: 2016-05-25
+  location: San Francisco, CA
+  
+- name: NYC Elixir Meetup
+  type: past
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/227739880/
+  date_start: 2016-01-28
+  location: New York, NY
 
 - name: BrookylnJS Meetup
   type: past
