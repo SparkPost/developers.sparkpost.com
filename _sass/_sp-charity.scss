@@ -2,8 +2,44 @@
 // SparkPost Charity Demo specific styling
 // --------------------------------------------------
 
-.page-sparkpost-charity {
+.page-charity {
   .jumbotron {
     background: $c-orange url("/images/sparkpost-charity-bg.png") center center;
+    background-size: cover;
+    padding-top: 172px;
+    padding-bottom: 100px;
+  }
+
+  @media screen and (min-width: $screen-sm-min) {
+    .panel-default {
+      &.col-sm-4 {
+        margin-right: 2%;
+        width: 32%;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .charity-logos {
+    p {
+      padding: 20px;
+    }
+
+    img {
+      max-height: 100px;
+    }
+  }
+
+  .action-container {
+    padding-bottom: 30px;
+  }
+
+  .data-container {
+    &.hide {
+      display: none;
+    }
   }
 }

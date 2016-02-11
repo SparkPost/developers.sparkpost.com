@@ -10,7 +10,7 @@ title: SparkPost Charity Demo
       <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
         <p><img src="{{ "/images/sparkheart.png" | prepend: site.baseurl }}" alt="SparkPost" height="150"></p>
         <h1>Let's give to charity</h1>
-        <p>An demonstration of what can be done with SparkPost's Inbound Domain feature.</p>
+        <p>A demonstration of what can be done with SparkPost's Inbound Domain feature.</p>
       </div>
     </div>
   </div>
@@ -20,61 +20,51 @@ title: SparkPost Charity Demo
   <div class="row">
     <div class="container">
       <div class="col-xs-12">
-        <hr>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
-          <h2>Charity Donation</h2>
-          <ul>
-            <li>Vote for your preferred charity by clicking on one of the links to the right to send an email</li>
-            <li>The Subject line determines the charity you are voting for</li>
-            <li>SparkPost will donate $x to the charity with the most votes</li>
-            <li>See the example vote processing code in <a href="https://github.com/SparkPost/sparkies">Github</a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-12 col-sm-5">
-          <h3>Choose a charity</h3>
-          <p>
-            Pick your preferred charity from the list:
-          </p>
-          <ul>
-            <li><a href="mailto:charity@hey.avocado.industries?subject=Charity%20One">Charity One</a></li>
-            <li><a href="mailto:charity@hey.avocado.industries?subject=Charity%20Two">Charity Two</a></li>
-            <li><a href="mailto:charity@hey.avocado.industries?subject=Charity%20Three">Charity Three</a></li>
-          </ul>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="container">
-      <div class="col-xs-12">
-        <hr>
         <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
           <div class="page-header page-header-code-examples">
-            <h2 class="text-center">Results</h2>
-            <div id="results_table"></div>
-            <br />
-            <button id="results_button">
-              Click here to see the results
-            </button>
+            <p class="text-center">Vote for your preferred charity by clicking on one of the images below to send an email.
+    Write the charity you are voting for on the Subject line.</p>
+            <h2 class="text-center">SparkPost will donate $500 to the chairty with the most votes.</h2>
           </div>
         </div>
 
+        <div class="col-xs-12 charity-logos">
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=American%20Red%20Cross"><img class="img-responsive" src="{{ "/images/logo-american-red-cross.png" | prepend: site.baseurl }}" alt="American Red Cross"></a></p>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=American%20Heart%20Association"><img class="img-responsive" src="{{ "/images/logo-american-heart-assoc.png" | prepend: site.baseurl }}" alt="American Heart Association"></a></p>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=Leukemia%20Lymphoma%20Society"><img class="img-responsive" src="{{ "/images/logo-leukemia-lymphoma.png" | prepend: site.baseurl }}" alt="Leukemia &amp; Lymphoma Society"></a></p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 hide" id="data-container">
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">American Red Cross</h4>
+            <h1 class="text-center" id="data-arc">0</h1>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">American Heart Association</h4>
+            <h1 class="text-center" id="data-aha">0</h1>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">Leukemia &amp; Lymphoma Society</h4>
+            <h1 class="text-center" id="data-lls">0</h1>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid action-container">
   <div class="row">
     <div class="container">
       <div class="col-xs-12">
         <hr>
-          <br /><br />
+        <p class="text-center"><button class="btn btn-charity btn-lg" id="btn-show-results">Show Results</button><p>
       </div>
     </div>
   </div>

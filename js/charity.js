@@ -1,52 +1,44 @@
 (function($) {
   $.support.cors = true;
 
-  $(document).on('click', '#results_button', function() {
-    var charity_url = $("meta[property='rwc_base_url']").attr('content') + '/summary/charity';
-    var resultsDiv = $('<div></div>').attr('id', 'results_table');
-    var x = $.ajax({
+  var charityURL = $("meta[property='rwc_base_url']").attr('content') + '/summary/charity'
+    , btnResults = $("#btn-show-results")
+    , dataContainer = $("#data-container")
+    , dataARC = $("#data-arc")
+    , dataAHA = $("#data-aha")
+    , dataLLS = $("#data-lls")
+    ;
+
+  dataContainer.hide();
+
+  btnResults.on('click', function() {
+    $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: charity_url,
+      url: charityURL,
       crossDomain: true,
       success: function(data, textStatus, jqXHR) {
-        if (data.results) {
-          var subjectCounts = [];
+        if ('results' in data) {
+          var results = {
+            "American Red Cross": 0,
+            "American Heart Association": 0,
+            "Leukemia Lymphoma Society": 0
+          };
 
-          $.each(data.results, function(i, subjectCount) {
-            if (subjectCount.subject && subjectCount.count) {
-              subjectCounts.push([subjectCount.subject, subjectCount.count]);
-            }
+          $.each(data.results, function(index, item) {
+            results[item.subject] = item.count;
           });
 
-          // Sort the tuples in descending order of vote-count
-          subjectCounts.sort(function(a, b) {
-              a = a[1];
-              b = b[1];
-              return b < a ? -1 : (b > a ? 1 : 0);
-          });
+          dataARC.text(results["American Red Cross"]);
+          dataAHA.text(results["American Heart Association"]);
+          dataLLS.text(results["Leukemia Lymphoma Society"]);
 
-          var headerRow = $('<tr></tr>');
-          headerRow.append($('<th></th>').text('Charity'));
-          headerRow.append($('<th></th>').text('# of votes'));
-          var table = $('<table></table>').addClass('foo').append(headerRow);
-
-          for (var i = 0; i < subjectCounts.length; i++) {
-            var row = $('<tr></tr>').addClass('bar');
-            row.append($('<td></td>').text(subjectCounts[i][0]));
-            row.append($('<td></td>').text(subjectCounts[i][1]));
-            table.append(row);
-          }
-
-          resultsDiv.append(table);
-          $('#results_table').replaceWith(resultsDiv);
-        }
-        else {
-          $('#results_table').replaceWith(resultsDiv.html('<p>No results yet!</p>'));
+          dataContainer.removeClass("hide");
+          dataContainer.slideDown(250);
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        $('#results_table').replaceWith(resultsDiv.html('<p>An error occurred :(</p>'));
+
       }
     });
   });
