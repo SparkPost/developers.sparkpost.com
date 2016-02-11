@@ -2,7 +2,7 @@
   $.support.cors = true;
 
   $(document).on('click', '#results_button', function() {
-    var charity_url = $("meta[property='og:rwc_base_url']").attr('content') + '/summary/charity';
+    var charity_url = $("meta[property='rwc_base_url']").attr('content') + '/summary/charity';
     var resultsDiv = $('<div></div>').attr('id', 'results_table');
     var x = $.ajax({
       type: 'GET',
