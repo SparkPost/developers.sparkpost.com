@@ -20,7 +20,15 @@ title: Hackathon Resources
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-4 col-md-push-8">
+      <h4>Current Hackathons</h4>
+      <ul class="list-group">
+        {% for hackathon in site.hackathons %}
+        <li class="list-group-item"><a href="{{ hackathon.url | prepend: site.base }}">{{ hackathon.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-8 col-md-pull-4">
       <p style="margin-top:10px">
         Snapchat, Messenger, FaceTime, and Kik are all great, but email is still the king of communication. Email is universal, has zero barriers to adoption, and it’s an open standard, no matter your users’ platforms.
       </p>
@@ -52,14 +60,6 @@ title: Hackathon Resources
         <li><strong>Email Delivery Reporting Dashboards</strong> - With real-time analytics and reporting via SparkPost APIs, developers can create dashboards to monitor email deliveries, opens and bounces to better monitor their email sends.</li>
         <li><strong>Drive Engagement</strong> - Analyse open and click data to understand how certain content works with an audience and adjust content and email frequency.</li>
         <li><strong>Recipient List Maintenance</strong> - Watch for hard bounces, complaints, or unsubscribes and keep your list clean by removing recipients.</li>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <h4>Current Hackathons</h4>
-      <ul class="list-group">
-        {% for hackathon in site.hackathons %}
-        <li class="list-group-item"><a href="{{ hackathon.url | prepend: site.base }}">{{ hackathon.title }}</a></li>
-        {% endfor %}
       </ul>
     </div>
   </div>
