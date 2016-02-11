@@ -15,6 +15,7 @@
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     <meta property="og:image" content="{% if page.video_id %}https://img.youtube.com/vi/{{ page.video_id }}/hqdefault.jpg{% else %}{{ site.url }}/images/sparkpost-facebook.png{% endif %}">
+    <meta property="og:rwc_base_url" content="{{ site.relay_webhook_consumer_url_base }}">
 
     <link href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: include.base }}" rel="stylesheet">
     <link href="{{ "/bower_components/devicon/devicon.min.css" | prepend: include.base }}" rel="stylesheet">
