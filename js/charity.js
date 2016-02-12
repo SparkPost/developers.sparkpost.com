@@ -9,9 +9,11 @@
     , dataLLS = $("#data-lls")
     ;
 
+  // hide the container for the voting stats initially
   dataContainer.hide();
 
-  btnResults.on('click', function() {
+  // retrieve reults from API
+  function getResults() {
     $.ajax({
       type: 'GET',
       dataType: 'json',
@@ -32,14 +34,30 @@
           dataARC.text(results["American Red Cross"]);
           dataAHA.text(results["American Heart Association"]);
           dataLLS.text(results["Leukemia Lymphoma Society"]);
-
-          dataContainer.removeClass("hide");
-          dataContainer.slideDown(250);
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
-
+        console.error("Could not retrieve results", errorThrown);
       }
     });
-  });
+  }
+
+  // toggle the display of the results
+  function toggleResults() {
+    if (dataContainer.hasClass("hide")) {
+      dataContainer.removeClass("hide");
+      dataContainer.slideDown(250, function() {
+        btnResults.text("Hide Results");
+      });
+    } else {
+      dataContainer.slideUp(250, function() {
+        dataContainer.addClass("hide");
+        btnResults.text("Show Results");
+      });
+    }
+  }
+
+  getResults();
+  setInterval(getResults, 5000);
+  btnResults.on('click', toggleResults);
 })(jQuery);
