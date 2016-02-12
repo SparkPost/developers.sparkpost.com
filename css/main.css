@@ -5870,6 +5870,14 @@ body {
   font-size: 12px;
   text-transform: uppercase; }
 
+.btn-charity {
+  background-color: #f00a0a;
+  color: #fff; }
+  .btn-charity:hover, .btn-charity:active, .btn-charity:visited, .btn-charity:focus, .btn-charity:active:focus {
+    box-shadow: none;
+    color: #fff;
+    outline: none; }
+
 .row-code-examples {
   overflow: hidden; }
 
@@ -6192,7 +6200,7 @@ body {
   font-style: normal;
   font-size: 12px; }
   @media screen and (min-width: 768px) {
-    .page-home .navbar, .page-sparkpost-lab .navbar {
+    .page-home .navbar, .page-sparkpost-lab .navbar, .page-charity .navbar {
       background-color: transparent; }
     .navbar .navbar-nav > li > a {
       padding-top: 28px;
@@ -6237,6 +6245,26 @@ body {
 .navbar-default .navbar-collapse.collapsing {
   border: none;
   box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.2); }
+
+.page-charity .jumbotron {
+  background: #fa6423 url("/images/sparkpost-charity-bg.png") center center;
+  background-size: cover;
+  padding-top: 172px;
+  padding-bottom: 100px; }
+@media screen and (min-width: 768px) {
+  .page-charity .panel-default.col-sm-4 {
+    margin-right: 2%;
+    width: 32%; }
+    .page-charity .panel-default.col-sm-4:last-child {
+      margin-right: 0; } }
+.page-charity .charity-logos p {
+  padding: 20px; }
+.page-charity .charity-logos img {
+  max-height: 100px; }
+.page-charity .action-container {
+  padding-bottom: 30px; }
+.page-charity .data-container.hide {
+  display: none; }
 
 .page-sparkpost-lab .jumbotron {
   background: #fa6423 url("/images/sparkpost-lab-bg.png") center center; }
