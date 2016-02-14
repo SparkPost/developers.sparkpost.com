@@ -1,0 +1,71 @@
+---
+layout: default
+class: charity
+title: SparkPost Charity Demo
+---
+{% include base.html %}
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+        <p><img src="{{ "/images/sparkheart.png" | prepend: site.baseurl }}" alt="SparkPost" height="150"></p>
+        <h1>Let's give to charity</h1>
+        <p>A demonstration of what can be done with SparkPost's Inbound Domain feature.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="container">
+      <div class="col-xs-12">
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+          <div class="page-header page-header-code-examples">
+            <p class="text-center">Vote for your preferred charity by clicking on one of the images below to send an email.
+    Write the charity you are voting for on the Subject line.</p>
+            <h2 class="text-center">SparkPost will donate $500 to the charity with the most votes.</h2>
+          </div>
+        </div>
+
+        <div class="col-xs-12 charity-logos">
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=American%20Red%20Cross"><img class="img-responsive" src="{{ "/images/logo-american-red-cross.png" | prepend: site.baseurl }}" alt="American Red Cross"></a></p>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=American%20Heart%20Association"><img class="img-responsive" src="{{ "/images/logo-american-heart-assoc.png" | prepend: site.baseurl }}" alt="American Heart Association"></a></p>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <p class="text-center"><a href="mailto:charity@hey.avocado.industries?subject=Leukemia%20Lymphoma%20Society"><img class="img-responsive" src="{{ "/images/logo-leukemia-lymphoma.png" | prepend: site.baseurl }}" alt="Leukemia &amp; Lymphoma Society"></a></p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 hide" id="data-container">
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">American Red Cross</h4>
+            <h1 class="text-center" id="data-arc">0</h1>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">American Heart Association</h4>
+            <h1 class="text-center" id="data-aha">0</h1>
+          </div>
+          <div class="col-xs-12 col-sm-4 panel panel-default">
+            <h4 class="text-center">Leukemia &amp; Lymphoma Society</h4>
+            <h1 class="text-center" id="data-lls">0</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid action-container">
+  <div class="row">
+    <div class="container">
+      <div class="col-xs-12">
+        <hr>
+        <p class="text-center"><button class="btn btn-charity btn-lg" id="btn-show-results">Show Results</button><p>
+      </div>
+    </div>
+  </div>
+</div>

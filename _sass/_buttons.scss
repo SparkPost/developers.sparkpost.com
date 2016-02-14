@@ -9,3 +9,18 @@
   font-size: $font-size-base * .857142857; // 12px
   text-transform: uppercase;
 }
+
+.btn-charity {
+  background-color: $c-red;
+  color: $c-white;
+
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus,
+  &:active:focus {
+    box-shadow: none;
+    color: $c-white;
+    outline: none;
+  }
+}
