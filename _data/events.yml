@@ -1,24 +1,4 @@
-- name: ManhattanJS Meetup
-  type: future
-  url: http://manhattanjs.com/
-  date_start: 2016-02-10
-  location: New York, NY
-
-- name: Developer Week Hackathon
-  type: future
-  url: http://www.developerweek.com/hackathon/
-  date_start: 2016-02-13
-  date_end: 2016-02-14
-  location: San Francisco, CA
-
-- name: Developer Week Conference
-  type: future
-  url: http://www.developerweek.com/conference/
-  date_start: 2016-02-16
-  date_end: 2016-02-17
-  location: San Francisco, CA
-  
-- name: BrickHack
+ - name: BrickHack
   type: future
   url: https://brickhack.io/
   date_start: 2016-03-05
@@ -46,6 +26,26 @@
   date_end: 2016-05-25
   location: San Francisco, CA
   
+- name: ManhattanJS Meetup
+  type: past
+  url: http://manhattanjs.com/
+  date_start: 2016-02-10
+  location: New York, NY
+
+- name: Developer Week Hackathon
+  type: past
+  url: http://www.developerweek.com/hackathon/
+  date_start: 2016-02-13
+  date_end: 2016-02-14
+  location: San Francisco, CA
+
+- name: Developer Week Conference
+  type: past
+  url: http://www.developerweek.com/conference/
+  date_start: 2016-02-16
+  date_end: 2016-02-17
+  location: San Francisco, CA
+
 - name: NYC Elixir Meetup
   type: past
   url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/227739880/
