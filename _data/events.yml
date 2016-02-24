@@ -1,4 +1,4 @@
- - name: BrickHack
+- name: BrickHack
   type: future
   url: https://brickhack.io/
   date_start: 2016-03-05
@@ -11,7 +11,7 @@
   date_start: 2016-03-08
   date_end: 2016-03-10
   location: San Francisco, CA
-  
+
 - name: Bitcamp
   type: future
   url: http://bitca.mp/
@@ -25,7 +25,7 @@
   date_start: 2016-05-24
   date_end: 2016-05-25
   location: San Francisco, CA
-  
+
 - name: ManhattanJS Meetup
   type: past
   url: http://manhattanjs.com/
