@@ -5863,6 +5863,13 @@ body {
 .page-api-docs iframe {
   margin-top: 26px; }
 
+/*$border-radius-large:       6px !default;*/
+/*$btn-border-radius-large:        $border-radius-large !default;*/
+/*$font-size-base:          14px !default;*/
+/*$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px*/
+/*$line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome*/
+/*$padding-large-vertical:    10px !default;*/
+/*$padding-large-horizontal:  16px !default;*/
 .btn {
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
@@ -5877,6 +5884,17 @@ body {
     box-shadow: none;
     color: #fff;
     outline: none; }
+
+.btn-link-dark-bg {
+  color: #fff; }
+  .btn-link-dark-bg:hover, .btn-link-dark-bg:focus, .btn-link-dark-bg:active {
+    color: #fff; }
+
+.btn-xlg {
+  padding: 9px 14.4px;
+  font-size: 16.2px;
+  line-height: 1.2;
+  border-radius: 0; }
 
 .row-code-examples {
   overflow: hidden; }
