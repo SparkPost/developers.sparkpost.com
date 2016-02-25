@@ -1,6 +1,13 @@
 //
 // Buttons
 // --------------------------------------------------
+/*$border-radius-large:       6px !default;*/
+/*$btn-border-radius-large:        $border-radius-large !default;*/
+/*$font-size-base:          14px !default;*/
+/*$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px*/
+/*$line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome*/
+/*$padding-large-vertical:    10px !default;*/
+/*$padding-large-horizontal:  16px !default;*/
 
 .btn {
   font-family: $font-family-gotham;
@@ -23,4 +30,18 @@
     color: $c-white;
     outline: none;
   }
+}
+
+.btn-link-dark-bg {
+  color: $c-white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $c-white;
+  }
+}
+
+.btn-xlg {
+  @include button-size(10px * .9, 16px * .9, 18px * .9, 1.3333333 * .9, 0);
 }
