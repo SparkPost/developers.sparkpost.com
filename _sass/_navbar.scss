@@ -4,11 +4,16 @@
 #banner {
   width: 100%;
   margin: 0;
-  padding: 0.2em;
+  padding: 0.3em;
   border: 0;
-  background: #0F0;
+  background: $c-green;
   text-align: center;
   color: $c-white;
+}
+
+#banner a {
+  color: $c-white;
+  text-decoration: underline;
 }
 
 .navbar {
