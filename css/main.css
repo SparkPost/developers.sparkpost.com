@@ -6206,6 +6206,19 @@ body {
       .jumbotron h1 {
         white-space: nowrap; } }
 
+#banner {
+  width: 100%;
+  margin: 0;
+  padding: 0.3em;
+  border: 0;
+  background: #9bcd5a;
+  text-align: center;
+  color: #fff; }
+
+#banner a {
+  color: #fff;
+  text-decoration: underline; }
+
 .navbar {
   transition-property: background-color;
   transition-duration: 0.25s;
