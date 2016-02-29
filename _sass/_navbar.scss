@@ -1,6 +1,15 @@
 //
 // Navbars
 // --------------------------------------------------
+#banner {
+  width: 100%;
+  margin: 0;
+  padding: 0.2em;
+  border: 0;
+  background: #0F0;
+  text-align: center;
+  color: $c-white;
+}
 
 .navbar {
   transition-property: background-color;
