@@ -5861,7 +5861,7 @@ body {
   margin-bottom: 10px; }
 
 .page-api-docs iframe {
-  margin-top: 26px; }
+  margin-top: 58px; }
 
 /*$border-radius-large:       6px !default;*/
 /*$btn-border-radius-large:        $border-radius-large !default;*/
@@ -6213,7 +6213,8 @@ body {
   border: 0;
   background: #37aadc;
   text-align: center;
-  color: #fff; }
+  color: #fff;
+  font-size: 16px; }
 
 #banner a {
   color: #fff;
