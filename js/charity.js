@@ -1,16 +1,14 @@
 (function($) {
   $.support.cors = true;
 
-  var charityURL = $("meta[property='rwc_base_url']").attr('content') + '/summary/charity'
+  var page = $(".page-charity")
+    , charityURL = $("meta[property='rwc_base_url']").attr('content') + '/summary/charity'
     , btnResults = $("#btn-show-results")
     , dataContainer = $("#data-container")
     , dataARC = $("#data-arc")
     , dataAHA = $("#data-aha")
     , dataLLS = $("#data-lls")
     ;
-
-  // hide the container for the voting stats initially
-  dataContainer.hide();
 
   // retrieve reults from API
   function getResults() {
@@ -57,7 +55,12 @@
     }
   }
 
-  getResults();
-  setInterval(getResults, 5000);
-  btnResults.on('click', toggleResults);
+  if (page.length) {
+    // hide the container for the voting stats initially
+    dataContainer.hide();
+
+    getResults();
+    setInterval(getResults, 5000);
+    btnResults.on('click', toggleResults);
+  }
 })(jQuery);
