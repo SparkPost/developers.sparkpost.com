@@ -266,18 +266,19 @@ end
           {% endif %}
         </div>
 
-        <div class="col-xs-12 col-sm-6">
+        <ul class="col-xs-12 col-sm-6">
           <h3>Engineering Posts</h3>
           <p>
             Our engineers write posts because sharing is caring. Learn a thing or two about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
           </p>
+          {% assign posts = site.data.blog_posts | sort: 'order' %}
+          {% if events.size > 0 %}
           <ul id="list-posts">
-            <li><a href="https://www.sparkpost.com/blog/using-slack-bots-sparkpost">How We Use Bots in Slack at SparkPost</a></li>
-            <li><a href="https://www.sparkpost.com/blog/mandrill-heroku-alternative-migrating-from-mandrill-to-sparkpost-on-heroku">Migrating from Mandrill to SparkPost on Heroku</a></li>
-            <li><a href="https://www.sparkpost.com/blog/leap-day-2016">Happy Leap Day!</a></li>
-            <li><a href="https://www.sparkpost.com/blog/why-sparkpost-real-deal">Why SparkPost? This Is the Real Deal.</a></li>
-            <li><a href="https://www.sparkpost.com/blog/mandrill-alternative-sparkpost-survival-guide">Mandrill Alternative: The SparkPost Survival Guide for Mandrill Users</a></li>
+            {% for post in posts %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
           </ul>
+          {% endif %}
           <p>
             <a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a>
           </p>
