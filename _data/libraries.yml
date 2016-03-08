@@ -40,6 +40,13 @@
   language: go
   icon: go-plain
 
+- name: csharp-sparkpost
+  type: official
+  description: "C# library"
+  github_repo: SparkPost/csharp-sparkpost
+  language: csharp
+  icon: csharp-plain
+
 - name: elixir-sparkpost
   type: official
   description: Elixir library
