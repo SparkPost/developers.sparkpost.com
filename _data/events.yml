@@ -1,9 +1,8 @@
-- name: Fluent Conference
+- name: NYC Elixir Meetup
   type: future
-  url: http://conferences.oreilly.com/fluent/javascript-html-us
-  date_start: 2016-03-08
-  date_end: 2016-03-10
-  location: San Francisco, CA
+  url: http://www.meetup.com/NYC-Elixir-Language-Meetup/events/229261593/
+  date_start: 2016-03-24
+  location: New York, NY
 
 - name: Bitcamp
   type: future
@@ -17,6 +16,13 @@
   url: https://www.twilio.com/signal
   date_start: 2016-05-24
   date_end: 2016-05-25
+  location: San Francisco, CA
+
+- name: Fluent Conference
+  type: past
+  url: http://conferences.oreilly.com/fluent/javascript-html-us
+  date_start: 2016-03-08
+  date_end: 2016-03-10
   location: San Francisco, CA
 
 - name: BrickHack
