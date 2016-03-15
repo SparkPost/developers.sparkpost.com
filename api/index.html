@@ -8,7 +8,12 @@ class: api-docs
   var embed = new Apiary.Embed({
     subdomain: 'sparkpostapi',
     header: '.sp-menu',
-
+    
+    codeExamples: {
+      // http://embed.apiary.io/api-reference.html#code-examples
+      javaScript: false
+    },
+    
     preferences: {
       collapseMachineColumnByDefault: true,
       fluidHumanColumn: true,
