@@ -28,13 +28,14 @@ GEM
     ffi (1.9.10)
     formatador (0.2.5)
     gemoji (2.1.0)
-    github-pages (54)
+    github-pages (59)
       RedCloth (= 4.2.9)
       github-pages-health-check (= 1.1.0)
       jekyll (= 3.0.3)
       jekyll-coffeescript (= 1.0.1)
       jekyll-feed (= 0.4.0)
       jekyll-gist (= 1.4.0)
+      jekyll-github-metadata (= 1.8.0)
       jekyll-mentions (= 1.0.1)
       jekyll-paginate (= 1.1.0)
       jekyll-redirect-from (= 0.9.1)
@@ -43,7 +44,7 @@ GEM
       jekyll-sitemap (= 0.10.0)
       jekyll-textile-converter (= 0.1.0)
       jemoji (= 0.5.1)
-      kramdown (= 1.9.0)
+      kramdown (= 1.10.0)
       liquid (= 3.0.6)
       mercenary (~> 0.3)
       rdiscount (= 2.1.8)
@@ -97,6 +98,8 @@ GEM
     jekyll-feed (0.4.0)
     jekyll-gist (1.4.0)
       octokit (~> 4.2)
+    jekyll-github-metadata (1.8.0)
+      octokit (~> 4.0)
     jekyll-mentions (1.0.1)
       html-pipeline (~> 2.3)
       jekyll (~> 3.0)
@@ -117,7 +120,7 @@ GEM
       html-pipeline (~> 2.2)
       jekyll (>= 2.0)
     json (1.8.3)
-    kramdown (1.9.0)
+    kramdown (1.10.0)
     liquid (3.0.6)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
@@ -171,7 +174,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages (= 54)
+  github-pages (= 59)
   guard
   guard-livereload
   html-proofer
