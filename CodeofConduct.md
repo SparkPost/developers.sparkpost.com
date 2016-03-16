@@ -62,6 +62,7 @@ If you feel you have been falsely or unfairly accused of violating this Code of 
 * Mary Thengvall: @mary_grace
 * Aydrian Howard: @aydrian
 * Rich Leland: @richleland
+
 We will do our best to ensure that your grievance is handled appropriately.
 
 In general, we will choose the course of action that we judge as being most in the interest of fostering a safe and friendly community.
