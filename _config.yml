@@ -49,6 +49,7 @@ defaults:
       type: faqs
     values:
       layout: faq
+      class: faq
 
 # Build settings
 markdown: kramdown
