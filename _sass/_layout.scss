@@ -17,6 +17,10 @@ body {
   }
 }
 
+.row-normal {
+  padding-bottom: 40px;
+}
+
 .row-light {
   background-color: lighten($c-sp-gray, 58%);
   padding-top: 40px;
@@ -120,5 +124,20 @@ body {
 .page-api-docs {
   iframe {
     margin-top: 58px;
+  }
+}
+
+// FAQs
+// -------------------------
+
+.faq-categories {
+  border-top: 1px solid $c-gray-lightest;
+  list-style: none;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid $c-gray-lightest;
+    font-size: $font-size-base;
+    padding: 10px;
   }
 }

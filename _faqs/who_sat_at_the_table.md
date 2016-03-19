@@ -1,5 +1,5 @@
 ---
-question: What is your quest?
+question: Who sat at the round table?
 author: aydrian_howard
 category: Knighthood
 ---
