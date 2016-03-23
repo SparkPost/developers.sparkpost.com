@@ -1,4 +1,4 @@
-The [Sparkpost Community Slack channel](slack.sparkpost.com) exists to facilitate sharing information, resources and encouragement among SparkPost users.
+The [Sparkpost Community Slack channel](http://slack.sparkpost.com/) exists to facilitate sharing information, resources and encouragement among SparkPost users.
 
 We believe our mission is best served in an environment that is friendly, safe, and accepting; free from intimidation or harassment.
 
