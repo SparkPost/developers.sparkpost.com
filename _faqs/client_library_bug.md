@@ -1,6 +1,6 @@
 ---
-question: I found bug $ABC in a SparkPost client library.
+question: I found bug X in a SparkPost client library.
 author: mary_thengvall
-category: client library
+category: Client Libraries
 ---
 Please file an issue in the GitHub project. We also really appreciate pull requests.

@@ -1,7 +1,7 @@
 ---
 question: Can attachments be sent with templates?
 author: mary_thengvall
-category: templates
+category: Templates
 ---
 If you embed the attachment in the message it can be sent, but you cannot dynamically add attachments at transmission time.
 

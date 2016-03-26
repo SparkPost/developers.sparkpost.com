@@ -3,7 +3,7 @@ layout: default
 permalink: /faqs/
 title: FAQs
 ---
-{% assign categories = site.faqs | group_by: "category" %}
+{% assign categories = site.faqs | sort: "category" | group_by: "category" %}
 <div class="container-fluid">
     <div class="row row-normal">
         <div class="container">

@@ -1,6 +1,6 @@
 ---
 question: How can I send messages to a BCC address?
 author: mary_thengvall
-category: BCC
+category: API
 ---
-Here is a reference: https://support.sparkpost.com/customer/portal/articles/1948014-how-to-add-cc-and-bcc-to-emails
+We have [a reference guide](https://support.sparkpost.com/customer/portal/articles/1948014) avialable on our support site.

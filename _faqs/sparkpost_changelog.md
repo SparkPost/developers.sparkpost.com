@@ -1,6 +1,6 @@
 ---
 question: Where can I get a list of recent SparkPost changes?
 author: mary_thengvall
-category: platform
+category: Platform
 ---
-We have a new channel #changelog for announcing new features and enhancements. If you are interested in these updates, you are welcome follow that channel. Your feedback is always appreciated.
+We maintain a [change log](https://support.sparkpost.com/customer/portal/articles/1936102-change-log) on our support site. We also have the #changelog channel in our [community Slack](http://slack.sparkpost.com) for announcing new features and enhancements.

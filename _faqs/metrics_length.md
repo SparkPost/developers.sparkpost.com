@@ -1,6 +1,6 @@
 ---
 question: How long are metrics kept around?
 author: mary_thengvall
-category: events
+category: Analytics
 ---
-Six months of data retention for our metrics, 10 days for our message events.
+The data retention for our metrics API is six months and 10 days for our message events API.
