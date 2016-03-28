@@ -95,7 +95,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <h2 id="category-api">API</h2>
                 
                 <h3><a href="/faqs/schedule_transmissions.html">How far into the future can I schedule my transmission?</a></h3>
-                <p>Use the options.start_time attribute to delay generation of messages. The scheduled time must be in the future and cannot be greater than 1 year from the time of submission. If the scheduled time does not fall in that range, the transmission is not accepted. For more information see <em>Schedule Transmissions</em> here https://developers.sparkpost.com/api/#/reference/transmissions</p>
+                <p>Use the options.start_time attribute to delay generation of messages. The scheduled time must be in the future and cannot be greater than 1 year from the time of submission. If the scheduled time does not fall in that range, the transmission is not accepted. For more information see <a href="https://developers.sparkpost.com/api/#/reference/transmissions"><em>Schedule Transmissions</em></a>.</p>
 
                 <hr>
                 
@@ -105,7 +105,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <hr>
                 
                 <h3><a href="/faqs/send_messages_bcc.html">How can I send messages to a BCC address?</a></h3>
-                <p>We have <a href="https://support.sparkpost.com/customer/portal/articles/1948014">a reference guide</a> avialable on our support site.</p>
+                <p>We have <a href="https://support.sparkpost.com/customer/portal/articles/1948014">a reference guide</a> available on our support site.</p>
 
                 <hr>
                 
@@ -124,7 +124,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <hr>
                 
                 <h3><a href="/faqs/sending_limit_increase.html">I am new to SparkPost and I need to send a large campaign later this week can I get my sending limit increased?</a></h3>
-                <p>Please email support@sparkpost.com. We allow for burst sending as well as increased sending limits on a case-by-case basis.</p>
+                <p>Please email <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#115;&#112;&#097;&#114;&#107;&#112;&#111;&#115;&#116;&#046;&#099;&#111;&#109;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#064;&#115;&#112;&#097;&#114;&#107;&#112;&#111;&#115;&#116;&#046;&#099;&#111;&#109;</a>. We allow for burst sending as well as increased sending limits on a case-by-case basis.</p>
 
                 <hr>
                 
@@ -206,7 +206,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <hr>
                 
                 <h3><a href="/faqs/test_transmission.html">How can I test my transmission without actually sending to recipients?</a></h3>
-                <p>If you append “.sink.sparkpostmail.com” to the recipients address it will be sent to our mail sink. Here is an example if you have a recipient called “someone@example.com” then use “someone@example.com.sink.sparkpostmail.com” instead. Not these messages are counted just like any other message.</p>
+                <p>If you append <code class="highlighter-rouge">.sink.sparkpostmail.com</code> to the recipients’ address it will be sent to our mail sink. Note: these messages are counted just like any other message.</p>
 
                 
                 
@@ -215,7 +215,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <h2 id="category-known-issues">Known Issues</h2>
                 
                 <h3><a href="/faqs/engagement_tracking_error.html">I'm getting the following error: 550 5.3.3 [internal] smtpapi engagement tracking render error.</a></h3>
-                <p>Please check if you have an empty body or have double curly braces in the body. Those are two known errors that should be fixed soon</p>
+                <p>Please check if you have an empty body or have double curly braces in the body. Those are two known errors that should be fixed soon.</p>
 
                 
                 
@@ -273,29 +273,29 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <h3><a href="/faqs/attachment_template.html">Can attachments be sent with templates?</a></h3>
                 <p>If you embed the attachment in the message it can be sent, but you cannot dynamically add attachments at transmission time.</p>
 
-<p>You can learn more about that here: https://www.sparkpost.com/blog/advanced-email-templates</p>
+<p>You can learn more about that here: <a href="https://www.sparkpost.com/blog/advanced-email-templates">https://www.sparkpost.com/blog/advanced-email-templates</a></p>
 
                 <hr>
                 
                 <h3><a href="/faqs/customize_template.html">How do I customize a stored template?</a></h3>
-                <p>Make sure you have `` tags in the template so you can make changes when using the template in a transmission.</p>
+                <p>Make sure you have }} tags in the template so you can make changes when using the template in a transmission.</p>
 
                 <hr>
                 
                 <h3><a href="/faqs/dynamic_template_subject.html">How can I dynamically set the subject in my template?</a></h3>
-                <p>Set the subject to something like `` which would correspond to a key in the passed in sub data. For more information see https://developers.sparkpost.com/api/#/introduction/substitutions-reference</p>
+                <p>Set the subject to something like <code class="highlighter-rouge">}}</code> which would correspond to a key in the passed in sub data. For more information see <a href="https://developers.sparkpost.com/api/#/introduction/substitutions-reference">https://developers.sparkpost.com/api/#/introduction/substitutions-reference</a></p>
 
                 <hr>
                 
                 <h3><a href="/faqs/inline_css.html">Does SparkPost inline the CSS for us like Mandrill?</a></h3>
                 <p>The option is in the api docs for Transmissions API and SMTP API. See <em>inline_css</em> here:
-Transmissions: https://developers.sparkpost.com/api/#/reference/transmissions
-SMTP API: https://developers.sparkpost.com/api/#/reference/smtp-api</p>
+<a href="https://developers.sparkpost.com/api/#/reference/transmissions">Transmissions</a>
+<a href="https://developers.sparkpost.com/api/#/reference/smtp-api">SMTP API</a></p>
 
                 <hr>
                 
                 <h3><a href="/faqs/migrate_mandrill_templates.html">Is there an easy way to migrate my Mandrill templates to SparkPost?</a></h3>
-                <p>There is a template migration tool for you. Its available as a GitHub project here: https://github.com/SparkPost/mandrill-sparkpost-templates. If you have questions, comments, suggestions (or contributions), you can reach us either here or on that GitHub project.</p>
+                <p>There is a template migration tool for you. It’s available as a <a href="https://github.com/SparkPost/mandrill-sparkpost-templates">GitHub project</a>. If you have questions, comments, suggestions (or contributions), you can reach us either via <a href="http://slack.sparkpost.com">Slack</a> or on that GitHub project.</p>
 
                 
                 
