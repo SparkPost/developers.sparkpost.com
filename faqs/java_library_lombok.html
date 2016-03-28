@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../../images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="../../images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="../../images/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="../../images/favicon.ico">
+
+    <title>SparkPost Developer Hub</title>
+    <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:site_name" content="SparkPost Developer Hub">
+    <meta property="og:url" content="https://developers.sparkpost.com/faqs/java_library_lombok.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
+    <meta property="rwc_base_url" content="https://relay-webhook-consumer.herokuapp.com">
+
+    <link href="../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../bower_components/devicon/devicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="canonical" href="https://developers.sparkpost.com/faqs/java_library_lombok.html">
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
+</head>
+
+
+  <body class="page-faq">
+    
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN7C84');</script>
+    <!-- End Google Tag Manager -->
+    
+    <div id="fb-root"></div>
+
+    <header class="site-header">
+  <nav id="nav" class="sp-menu navbar navbar-default navbar-fixed-top" data-spy="affix" data-offset-top="60">
+    <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="../../images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Developer Hub</a></li>
+          <li><a href="../../api/">API Docs</a></li>
+          <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
+          <li><a href="../../videos/">Videos</a></li>
+          <li><a href="https://support.sparkpost.com">Support</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://app.sparkpost.com/">Log In</a></li>
+          <li><a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Sign Up</a></li>
+        <ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+</header>
+
+
+    
+
+<div class="container-fluid">
+    <div>
+        <h1>I tried to build the Java library but I get a LOT of compile errors.</h1>
+        <p><p>The Java library uses Lombok to synthesize boiler plate code. You just need to add Lombok to eclipse and all those errors will go away. You can find more details in the library’s <a href="https://github.com/SparkPost/java-sparkpost/blob/master/CONTRIBUTING.md">CONTRIBUTING</a> file.</p>
+
+</p>
+        <a href="/faqs">Back to FAQs</a>
+    </div>
+    
+    <div>
+        <div class="media">
+            
+            <div class="media-left">
+                <img class="media-object" src="https://www.gravatar.com/avatar/6864864a017717ec00ca199fdaed3297?s=55" alt="Mary Thengvall">
+            </div>
+            
+            <div class="media-body">
+                <h4 class="media-heading">Mary Thengvall</h4>
+                
+                Community Manager, SparkPost <br/>
+                
+                
+                <a href="https://www.twitter.com/mary_grace"><i class="fa fa-twitter"></i></a>
+                
+                
+                <a href="https://www.github.com/mary-grace"><i class="fa fa-github"></i></a>
+                
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+    <footer>
+  <div class="container-fluid">
+    <div class="row row-dark">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
+            <h3>SparkPost</h3>
+            <p>
+              SparkPost is the email delivery service based on the Momentum platform from Message Systems. It provides the same deliverability, scalability and speed as we provide to the biggest senders in the world, in an easily integrated cloud solution.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 sp-connect">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Connect</h3>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://github.com/SparkPost"><i class="fa fa-fw fa-github"></i>&nbsp; Github</a></p>
+                <p><a href="http://slack.sparkpost.com"><i class="fa fa-fw fa-slack"></i>&nbsp; Slack</a></p>
+                <p><a href="http://stackoverflow.com/tags/sparkpost"><i class="fa fa-fw fa-stack-overflow"></i>&nbsp; Stack Overflow</a></p>
+                <p><a href="https://twitter.com/SparkPostDev"><i class="fa fa-fw fa-twitter"></i>&nbsp; Twitter</a></p>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://www.facebook.com/SparkPost"><i class="fa fa-fw fa-facebook"></i>&nbsp; Facebook</a></p>
+                <p><a href="https://www.linkedin.com/company/9486856"><i class="fa fa-fw fa-linkedin"></i>&nbsp; LinkedIn</a></p>
+                <p><a href="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"><i class="fa fa-fw fa-youtube"></i>&nbsp; YouTube</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<!-- Twitter Tweet Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- Facebook Share Button -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1078423545531734";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- dev hub custom js -->
+<script src="/js/hub.js"></script>
+<script src="/js/charity.js"></script>
+
+  </body>
+
+</html>

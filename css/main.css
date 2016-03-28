@@ -5796,13 +5796,16 @@ button.close {
   .hidden-print {
     display: none !important; } }
 body {
-  padding-top: 50px;
+  padding-top: 120px;
   font-weight: 300; }
 
 .sp-connect a {
   color: #fff; }
   .sp-connect a:hover {
     text-decoration: none; }
+
+.row-normal {
+  padding-bottom: 40px; }
 
 .row-light {
   background-color: #eeeeee;
@@ -5862,6 +5865,15 @@ body {
 
 .page-api-docs iframe {
   margin-top: 58px; }
+
+.faq-categories {
+  border-top: 1px solid #e6e6e6;
+  list-style: none;
+  padding: 0; }
+  .faq-categories li {
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 14px;
+    padding: 10px; }
 
 /*$border-radius-large:       6px !default;*/
 /*$btn-border-radius-large:        $border-radius-large !default;*/
@@ -6194,7 +6206,7 @@ body {
   background: #5a5a5a url("../images/jumbotron-devs.jpg") center center;
   background-size: cover;
   color: #fff;
-  margin-top: -50px;
+  margin-top: -80px;
   margin-bottom: 0;
   text-align: center; }
   @media screen and (min-width: 768px) {
@@ -6206,17 +6218,19 @@ body {
       .jumbotron h1 {
         white-space: nowrap; } }
 
-#banner {
+.nav-banner {
   width: 100%;
   margin: 0;
-  padding: 0.3em;
+  padding: 0.75em;
   border: 0;
   background: #37aadc;
   text-align: center;
   color: #fff;
-  font-size: 16px; }
+  font-family: "Gotham Narrow SSm A", "Gotham Narrow SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300; }
 
-#banner a {
+.nav-banner a {
   color: #fff;
   text-decoration: underline; }
 
