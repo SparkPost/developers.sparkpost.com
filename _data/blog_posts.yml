@@ -1,19 +1,19 @@
-- title: How We Use Bots in Slack at SparkPost
-  url: https://www.sparkpost.com/blog/using-slack-bots-sparkpost
+- title: Advanced Email Templates
+  url: https://www.sparkpost.com/blog/advanced-email-templates
   order: 1
 
-- title: Migrating from Mandrill to SparkPost on Heroku
-  url: https://www.sparkpost.com/blog/mandrill-heroku-alternative-migrating-from-mandrill-to-sparkpost-on-heroku
+- title: "Fluent Conf 2016: Connecting with Developers"
+  url: https://www.sparkpost.com/blog/fluent-conf-recap-2016
   order: 2
 
-- title: Happy Leap Day!
-  url: https://www.sparkpost.com/blog/leap-day-2016
+- title: Subaccounts and How We're Making SparkPost Even More Awesome
+  url: https://www.sparkpost.com/blog/subaccounts-even-more-awesome
   order: 3
 
-- title: Why SparkPost? This Is the Real Deal.
-  url: https://www.sparkpost.com/blog/why-sparkpost-real-deal
+- title: Automatic CSS Inlining with SparkPost
+  url: https://www.sparkpost.com/blog/automatic-css-inlining-sparkpost
   order: 4
 
-- title: "Mandrill Alternative: The SparkPost Survival Guide for Mandrill Users"
-  url: https://www.sparkpost.com/blog/mandrill-alternative-sparkpost-survival-guide
+- title: Using SparkPost in PHP
+  url: https://www.sparkpost.com/blog/using-sparkpost-in-php
   order: 5
