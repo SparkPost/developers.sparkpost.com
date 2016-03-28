@@ -46,7 +46,7 @@ layout: default
 {% highlight sh %}
 curl -XPOST \
   https://api.sparkpost.com/api/v1/transmissions \
-  -H "Authorization: <YOUR API KEY>;" \
+  -H "Authorization: <YOUR API KEY>" \
   -H "Content-Type: application/json" \
   -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers+curl@sparkpost.com"}]}'
 {% endhighlight %}
