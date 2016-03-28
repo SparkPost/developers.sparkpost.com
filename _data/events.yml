@@ -15,7 +15,7 @@
 
 - name: KC/DC 2016
   type: future
-  URL: http://www.kcdc.info/
+  url: http://www.kcdc.info/
   date_start: 2016-06-22
   date_end: 2016-06-24
   location: Kansas City, MO
