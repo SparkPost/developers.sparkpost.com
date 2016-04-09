@@ -1,19 +1,19 @@
-- title: "BrickHack 2016: 48 Hours of Awesome"
-  url: https://www.sparkpost.com/blog/brickhack-2016/
+- title: How to Run SparkPost in Postman
+  url: https://www.sparkpost.com/blog/how-to-run-sparkpost-postman
   order: 1
 
-- title: Advanced Email Templates
-  url: https://www.sparkpost.com/blog/advanced-email-templates
+- title: Subaccounts Now Available
+  url: https://www.sparkpost.com/blog/subaccounts-now-available
   order: 2
 
-- title: "Fluent Conf 2016: Connecting with Developers"
-  url: https://www.sparkpost.com/blog/fluent-conf-recap-2016
+- title: We’re Sponsoring Bitcamp 2016!
+  url: https://www.sparkpost.com/blog/sponsoring-bitcamp-2016
   order: 3
 
-- title: Subaccounts and How We're Making SparkPost Even More Awesome
-  url: https://www.sparkpost.com/blog/subaccounts-even-more-awesome
+- title: Here’s Your Mandrill Template Migration Tool
+  url: https://www.sparkpost.com/blog/mandrill-template-migration-tool-mst3k
   order: 4
 
-- title: Automatic CSS Inlining with SparkPost
-  url: https://www.sparkpost.com/blog/automatic-css-inlining-sparkpost
+- title: "SparkPost Afire: Introducing Smoke Signal Protocol (SSP)"
+  url: https://www.sparkpost.com/blog/sparkpost-afire-ssp
   order: 5
