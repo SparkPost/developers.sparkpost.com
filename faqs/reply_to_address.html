@@ -17,7 +17,7 @@
     <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
 ">
     <meta property="og:site_name" content="SparkPost Developer Hub">
-    <meta property="og:url" content="https://developers.sparkpost.com/faqs/suspended.html">
+    <meta property="og:url" content="https://developers.sparkpost.com/faqs/reply_to_address.html">
     <meta property="og:type" content="website">
     <meta property="og:title" content="">
     <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
@@ -29,7 +29,7 @@
     <link href="../../bower_components/devicon/devicon.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="canonical" href="https://developers.sparkpost.com/faqs/suspended.html">
+    <link rel="canonical" href="https://developers.sparkpost.com/faqs/reply_to_address.html">
 
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
@@ -86,10 +86,8 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 
 <div class="container-fluid">
     <div>
-        <h1>Why have I been suspended!?!</h1>
-        <p><p>Please <a href="https://support.sparkpost.com/customer/portal/emails/new?email[subject]=Why%20Have%20I%20Been%20Suspended?">submit a support request</a> to get more information.</p>
-
-<p>If you’re transitioning to SparkPost from another Email Service Provider, one possible cause for your account getting suspended is that your previous provider built a suppression list out of your bounces and FBL complaints. When you switch over to us, that list doesn’t come with you automagically. You’ll need to either remove those suppressions from your current lists, or copy the suppression list from Mandrill and upload it to SparkPost. Otherwise you’ll be automatically sending to everyone who had bounced or complained over the years, which is likely to cause your account to be suspended.</p>
+        <h1>Can we use email addresses which are not a part of the configured sending domain in "reply-to" field?</h1>
+        <p><p>Yes, you can use any email in the reply-to field. This is a good way to send on behalf of your users and allow the recipient to continue the conversation over email, while still be clear that you were the sender.</p>
 </p>
         <a href="/faqs">Back to FAQs</a>
     </div>
@@ -98,19 +96,17 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
         <div class="media">
             
             <div class="media-left">
-                <img class="media-object" src="https://www.gravatar.com/avatar/6864864a017717ec00ca199fdaed3297?s=55" alt="Mary Thengvall">
+                <img class="media-object" src="https://www.gravatar.com/avatar/8a66db487ea735684e338133c0c311e4?s=55" alt="Chris Wilson">
             </div>
             
             <div class="media-body">
-                <h4 class="media-heading">Mary Thengvall</h4>
+                <h4 class="media-heading">Chris Wilson</h4>
                 
-                Community Manager, SparkPost <br/>
-                
-                
-                <a href="https://www.twitter.com/mary_grace"><i class="fa fa-twitter"></i></a>
+                Solution Architect, SparkPost <br/>
                 
                 
-                <a href="https://www.github.com/mary-grace"><i class="fa fa-github"></i></a>
+                
+                <a href="https://www.github.com/yepher"><i class="fa fa-github"></i></a>
                 
             </div>
         </div>

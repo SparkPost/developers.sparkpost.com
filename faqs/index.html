@@ -94,6 +94,11 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <h2 id="category-api">API</h2>
                 
+                <h3><a href="/faqs/get_transmissions.html">Why can't I do GET on a transmission?</a></h3>
+                <p>Only multi-recipient transmissions can be queried via list. For more information on how to list an array of transmission summary objects, see the <a href="https://developers.sparkpost.com/api/#/reference/transmissions/list/list-all-transmissions">API Documentation</a>.</p>
+
+                <hr>
+                
                 <h3><a href="/faqs/schedule_transmissions.html">How far into the future can I schedule my transmission?</a></h3>
                 <p>Use the options.start_time attribute to delay generation of messages. The scheduled time must be in the future and cannot be greater than 1 year from the time of submission. If the scheduled time does not fall in that range, the transmission is not accepted. For more information see <a href="https://developers.sparkpost.com/api/#/reference/transmissions"><em>Schedule Transmissions</em></a>.</p>
 
@@ -136,6 +141,8 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 <h3><a href="/faqs/suspended.html">Why have I been suspended!?!</a></h3>
                 <p>Please <a href="https://support.sparkpost.com/customer/portal/emails/new?email[subject]=Why%20Have%20I%20Been%20Suspended?">submit a support request</a> to get more information.</p>
 
+<p>If you’re transitioning to SparkPost from another Email Service Provider, one possible cause for your account getting suspended is that your previous provider built a suppression list out of your bounces and FBL complaints. When you switch over to us, that list doesn’t come with you automagically. You’ll need to either remove those suppressions from your current lists, or copy the suppression list from Mandrill and upload it to SparkPost. Otherwise you’ll be automatically sending to everyone who had bounced or complained over the years, which is likely to cause your account to be suspended.</p>
+
                 
                 
                 <hr>
@@ -176,6 +183,13 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 
                 <hr>
                 
+                <h3><a href="/faqs/dkim_verification.html">I set up DKIM hours ago but it still hasn't been verified.</a></h3>
+                <p>It’s possible that you’ve set up your zone record incorrectly. Most providers will automatically append your domain name to whatever subdomain/host name you enter, so make sure you haven’t included your domain in the subdomain/host field when you registered.</p>
+
+<p>e.g. if your domain is <code class="highlighter-rouge">example.com</code> and your DKIM record is <code class="highlighter-rouge">spch0316._domainkey</code>, don’t include <code class="highlighter-rouge">spch0316._domainkey.example.com</code> in your subdomain/host field.</p>
+
+                <hr>
+                
                 <h3><a href="/faqs/domain_xyz.html">I am trying to add domain.xyz (literally .xyz) but I get this error: There is a problem creating this domain. Please contact support.</a></h3>
                 <p>Sorry we don’t currently support .xyz domains.</p>
 
@@ -188,6 +202,11 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <h3><a href="/faqs/invalid_domain.html">I'm using 'Sarah @ Example' <noreply@example.com>. The error was: Invalid domain: Unconfigured or unverified sending domain.</a></h3>
                 <p>This is a known issue when using an “@” in the friendly name. We are working on fixing this issue.</p>
+
+                <hr>
+                
+                <h3><a href="/faqs/reply_to_address.html">Can we use email addresses which are not a part of the configured sending domain in "reply-to" field?</a></h3>
+                <p>Yes, you can use any email in the reply-to field. This is a good way to send on behalf of your users and allow the recipient to continue the conversation over email, while still be clear that you were the sender.</p>
 
                 <hr>
                 
