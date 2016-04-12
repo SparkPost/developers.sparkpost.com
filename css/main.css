@@ -6333,3 +6333,25 @@ body {
 
 .text-orange {
   color: #fa6423; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0; }
+
+.row.padded {
+  padding: 20px 0; }
+.row.top-padded {
+  padding-top: 20px; }
+.row.bottom-padded {
+  padding-bottom: 20px; }
+.row.padded-big {
+  padding: 50px 0; }
+.row.top-padded-big {
+  padding-top: 50px; }
+.row.bottom-padded-big {
+  padding-bottom: 50px; }
+.row.padded-giant {
+  padding: 100px 0; }
+.row.top-padded-giant {
+  padding-top: 100px; }
+.row.bottom-padded-giant {
+  padding-bottom: 100px; }
