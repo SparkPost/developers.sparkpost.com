@@ -18,7 +18,8 @@ The following must be installed in order run Jekyll locally.
 ### Local Development Setup
 1. Clone the repo `git clone git@github.com:SparkPost/sparkpost.github.io.git`
 2. Switch to the repo directory `cd sparkpost.github.io`
-3. Run `./script/bootstrap` to install dependencies
+3. Run `./script/bootstrap` to install dependencies  
+   - note: if you get `An error occurred while installing eventmachine` you may need to make sure openssl is installed on a newer Mac OS X. To do this, first try `brew install openssl`, if already installed, try `brew link openssl --force`
 4. Run `./script/server` to start the built-in development server. *The server will watch for changes and regenerate automatically.*
 5. Optional - in a separate terminal tab, run `bundle exec guard` to trigger livereload when files change
 6. Open <http://localhost:4000/> to view the site
