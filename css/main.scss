@@ -106,3 +106,44 @@ $jumbotron-heading-font-size: ceil(($font-size-base * 3.5)) !default;
         "sp-lab",
         "type"
 ;
+
+
+// bootstrap overrides
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0;
+}
+
+$row-padding: 20px;
+$row-padding-big: 50px;
+$row-padding-giant: 100px;
+
+.row {
+  &.padded {
+    padding: $row-padding 0;
+  }
+  &.top-padded {
+    padding-top: $row-padding;
+  }
+  &.bottom-padded {
+    padding-bottom: $row-padding;
+  }
+  &.padded-big {
+    padding: $row-padding-big 0;
+  }
+  &.top-padded-big {
+    padding-top: $row-padding-big;
+  }
+  &.bottom-padded-big {
+    padding-bottom: $row-padding-big;
+  }
+  &.padded-giant {
+    padding: $row-padding-giant 0;
+  }
+  &.top-padded-giant {
+    padding-top: $row-padding-giant;
+  }
+  &.bottom-padded-giant {
+    padding-bottom: $row-padding-giant;
+  }
+}
