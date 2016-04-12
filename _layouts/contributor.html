@@ -4,11 +4,9 @@ layout: default
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      {% if page.gravatar %}
-        <br />
-        <img src="https://www.gravatar.com/avatar/{{ page.gravatar }}?s=150" class="img-thumbnail" alt="{{ page.name }}" />
-        <br />
-      {% endif %}
+      <br />
+      <img src="{{ page.email | to_gravatar: 150 }}" class="img-thumbnail" alt="{{ page.name }}" />
+      <br />
       <h3>{{ page.name }}<h3>
       <h4>{{ page.title }}</h4>
       <h4>{{ page.company }}</h4>

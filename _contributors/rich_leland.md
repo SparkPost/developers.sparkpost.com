@@ -6,5 +6,4 @@ company: SparkPost
 email: rich.leland@sparkpost.com
 twitter: richleland
 github: richleland
-gravatar: c377a23147df735d46372bbd610f55b2
 ---
