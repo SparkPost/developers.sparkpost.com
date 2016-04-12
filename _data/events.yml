@@ -1,10 +1,20 @@
-
-- name: Bitcamp
+- name: London React Meetup
   type: future
-  url: http://bitca.mp/
-  date_start: 2016-04-08
-  date_end: 2016-04-10
-  location: University of Maryland
+  url: https://skillsmatter.com/meetups/8060-london-react-meetup
+  date_start: 2016-04-20
+  location: ":uk: London, UK"
+
+- name: QueensJS
+  type: future
+  url: http://www.meetup.com/QueensJS/
+  date_start: 2016-05-04
+  location: New York, NY
+
+- name: ManhattanJS
+  type: future
+  url: http://manhattanjs.com/
+  date_start: 2016-06-08
+  location: New York, NY
 
 - name: Signal Conference
   type: future
@@ -19,6 +29,13 @@
   date_start: 2016-06-22
   date_end: 2016-06-24
   location: Kansas City, MO
+
+- name: Bitcamp
+  type: past
+  url: http://bitca.mp/
+  date_start: 2016-04-08
+  date_end: 2016-04-10
+  location: University of Maryland
 
 - name: NYC Elixir Meetup
   type: past

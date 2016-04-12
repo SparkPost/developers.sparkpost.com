@@ -59,6 +59,9 @@ username: sparkpost
 repo: sparkpost.github.io
 branch: develop
 
+gems:
+  - jemoji
+
 exclude:
   - README.md
   - Rakefile
