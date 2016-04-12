@@ -1,35 +1,35 @@
 ---
-layout: default
+layout: default-grid
 ---
 {% assign author = site.contributors | where: "id", page.author %}
 {% assign author = author[0] %}
-<div class="container-fluid">
-    <div>
-        <h1>{{ page.question }}</h1>
-        <p>{{ content }}</p>
-        <a href="/faqs">Back to FAQs</a>
+<div class="col-md-8">
+  <div class="row padded">
+      <p><a href="/faqs">&laquo; Back to FAQs</a></p>
+      <h1>{{ page.question }}</h1>
+      <div>{{ content }}</div>
+  </div>
+  {% if author %}
+  <div class="row bottom-padded-giant">
+      <div class="media">
+          {% if author.gravatar %}
+          <div class="media-left">
+              <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
+          </div>
+          {% endif %}
+          <div class="media-body">
+              <h4 class="media-heading">{{ author.name }}</h4>
+              {% if author.company %}
+              {{ author.title }}, {{ author.company }} <br/>
+              {% endif %}
+              {% if author.twitter %}
+              <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>
+              {% endif %}
+              {% if author.github %}
+              <a href="https://www.github.com/{{ author.github }}"><i class="fa fa-github"></i></a>
+              {% endif %}
+          </div>
+      </div>
     </div>
-    {% if author %}
-    <div>
-        <div class="media">
-            {% if author.gravatar %}
-            <div class="media-left">
-                <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
-            </div>
-            {% endif %}
-            <div class="media-body">
-                <h4 class="media-heading">{{ author.name }}</h4>
-                {% if author.company %}
-                {{ author.title }}, {{ author.company }} <br/>
-                {% endif %}
-                {% if author.twitter %}
-                <a href="https://www.twitter.com/{{ author.twitter }}"><i class="fa fa-twitter"></i></a>
-                {% endif %}
-                {% if author.github %}
-                <a href="https://www.github.com/{{ author.github }}"><i class="fa fa-github"></i></a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-    {% endif %}
 </div>
+{% endif %}
