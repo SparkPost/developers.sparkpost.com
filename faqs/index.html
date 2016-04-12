@@ -217,6 +217,22 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <hr>
                 
+                <h2 id="category-inbound-relay">Inbound Relay</h2>
+                
+                <h3><a href="/faqs/relay_webhooks_attachments.html">How can I get attachments from Relay Webhooks?</a></h3>
+                <p>The attachments are in the RFC_822 content. There is not currently an API to automatically parse those out but we are looking into it.</p>
+
+                <hr>
+                
+                <h3><a href="/faqs/relay_webhooks_setup.html">What are "Inbound Relay Webhooks" and how do I set them up?</a></h3>
+                <p>Relay webhooks are different from our regular webhooks. Instead of getting information about each message you send through our system (regular webhooks), with “inbound relay” you get information whenever someone sends an email to a domain you’ve set up with us.</p>
+
+<p>To learn more about use-cases and how to set them up, <a href="https://support.sparkpost.com/customer/portal/articles/2039614-enabling-inbound-email-relaying-relay-webhooks">see this support article</a>.</p>
+
+                
+                
+                <hr>
+                
                 <h2 id="category-integration">Integration</h2>
                 
                 <h3><a href="/faqs/sparkpost_gitlab.html">How can I use SparkPost in GitLab?</a></h3>
@@ -333,11 +349,6 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <h3><a href="/faqs/oauth_webhooks.html">Do I need to use OAuth2 for webhooks?</a></h3>
                 <p>This depends on your server that receives the webhooks. If it requires OAuth2 authentication you will need to input the appropriate credentials.</p>
-
-                <hr>
-                
-                <h3><a href="/faqs/relay_webhooks_attachments.html">How can I get attachments from Relay Webhooks?</a></h3>
-                <p>The attachments are in the RFC_822 content. There is not currently an API to automatically parse those out but we are looking into it.</p>
 
                 <hr>
                 
