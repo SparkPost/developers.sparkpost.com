@@ -29,11 +29,9 @@ layout: default
     {% if author %}
     <div class="col-xs-12 col-sm-4">
       <div class="media">
-        {% if author.gravatar %}
         <div class="media-left">
-          <img class="media-object" src="https://www.gravatar.com/avatar/{{ author.gravatar }}?s=55" alt="{{ author.name }}">
+          <img class="media-object" src="{{ author.email | to_gravatar: 55 }}" alt="{{ author.name }}" alt="{{ author.name }}">
         </div>
-        {% endif %}
         <div class="media-body">
           <h4 class="media-heading">{{ author.name }}</h4>
           {% if author.company %}
