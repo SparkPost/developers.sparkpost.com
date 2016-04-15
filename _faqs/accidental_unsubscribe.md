@@ -3,4 +3,4 @@ question: I'm testing gmail's "unsubscribe" button, I have unsubscribed my addre
 author: mary_thengvall
 category: Suppression Lists
 ---
-Removing an entry from the suppression list can take up to two hours to take effect.
+Removing an entry from the suppression list can take up to 75 minutes to take effect.
