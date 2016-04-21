@@ -85,6 +85,11 @@
 
 }
 
+/* Hack to get around the transparency applied in media queries which accidentally has more specificity because CSS ugh */
+.site-header .navbar {
+  background-color: $c-orange;
+}
+
 .navbar-default {
   .navbar-toggle {
     background-color: $c-orange;

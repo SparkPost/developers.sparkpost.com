@@ -2,6 +2,11 @@
 // General layout items
 // --------------------------------------------------
 
+html {
+  /* To match the footer for vertically short pages, avoids nasty white stripe below footer */
+  background-color: $c-sp-gray;
+}
+
 body {
   font-weight: 300;
 }
@@ -36,7 +41,7 @@ body {
 }
 
 .row-dark {
-  background-color: lighten($c-sp-gray, 4%);
+  background-color: $c-sp-gray;
   color: $c-white;
   padding-bottom: 20px;
 }
