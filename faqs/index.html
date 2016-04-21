@@ -195,11 +195,6 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 
                 <hr>
                 
-                <h3><a href="/faqs/guaranteed_transmission_rates.html">I need to send from ANY domain.</a></h3>
-                <p>SparkPost requires you to verify the domain you send from. You can do this with SPF, DKIM in your DNS record or sending an email to abuse@example.com or postmaster@example.com. You only need one of these in order for SparkPost to consider it a valid sending domain.</p>
-
-                <hr>
-                
                 <h3><a href="/faqs/invalid_domain.html">I'm using 'Sarah @ Example' <noreply@example.com>. The error was: Invalid domain: Unconfigured or unverified sending domain.</a></h3>
                 <p>This is a known issue when using an “@” in the friendly name. We are working on fixing this issue.</p>
 
@@ -207,6 +202,11 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <h3><a href="/faqs/reply_to_address.html">Can we use email addresses which are not a part of the configured sending domain in "reply-to" field?</a></h3>
                 <p>Yes, you can use any email in the reply-to field. This is a good way to send on behalf of your users and allow the recipient to continue the conversation over email, while still be clear that you were the sender.</p>
+
+                <hr>
+                
+                <h3><a href="/faqs/send_from_any_domain.html">I need to send from ANY domain.</a></h3>
+                <p>SparkPost requires you to verify the domain you send from. You can do this with SPF, DKIM in your DNS record or sending an email to abuse@example.com or postmaster@example.com. You only need one of these in order for SparkPost to consider it a valid sending domain.</p>
 
                 <hr>
                 
@@ -349,6 +349,13 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
                 
                 <h3><a href="/faqs/oauth_webhooks.html">Do I need to use OAuth2 for webhooks?</a></h3>
                 <p>This depends on your server that receives the webhooks. If it requires OAuth2 authentication you will need to input the appropriate credentials.</p>
+
+                <hr>
+                
+                <h3><a href="/faqs/post_to_endpoint_failed.html">Why do I get the error "POST to webhook target URL failed"?</a></h3>
+                <p>To use webhooks, you have to have a place for us to send event data, which you specify as the “target URL” when you create a webhook. If that URL does not accept HTTP POST requests containing JSON data and then return a 200 response, then webhooks won’t work for you. To verify this, we send a test payload to your URL whenever you create or update the webhook. If the test payload fails, you get this error.</p>
+
+<p>To fix, take a look at the status code that came back, displayed below the error, and get in touch with whoever manages your target URL to find out why it’s not responding successfully to POST requests.</p>
 
                 <hr>
                 
