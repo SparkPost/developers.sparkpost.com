@@ -3,7 +3,6 @@
 // --------------------------------------------------
 
 body {
-  padding-top: 120px;
   font-weight: 300;
 }
 
@@ -122,8 +121,22 @@ body {
 // -------------------------
 
 .page-api-docs {
+  .site-header {
+
+    .navbar {
+      margin-bottom: 0;
+
+      .nav-banner {
+        display: none;
+      }
+    }
+  }
+
   iframe {
-    margin-top: 58px;
+    // margin-top: 58px;
+  }
+  footer {
+    display: none;
   }
 }
 
