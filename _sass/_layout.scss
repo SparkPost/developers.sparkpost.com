@@ -2,8 +2,12 @@
 // General layout items
 // --------------------------------------------------
 
+html {
+  /* To match the footer for vertically short pages, avoids nasty white stripe below footer */
+  background-color: $c-sp-gray;
+}
+
 body {
-  padding-top: 120px;
   font-weight: 300;
 }
 
@@ -37,7 +41,7 @@ body {
 }
 
 .row-dark {
-  background-color: lighten($c-sp-gray, 4%);
+  background-color: $c-sp-gray;
   color: $c-white;
   padding-bottom: 20px;
 }
@@ -122,8 +126,22 @@ body {
 // -------------------------
 
 .page-api-docs {
+  .site-header {
+
+    .navbar {
+      margin-bottom: 0;
+
+      .nav-banner {
+        display: none;
+      }
+    }
+  }
+
   iframe {
-    margin-top: 58px;
+    // margin-top: 58px;
+  }
+  footer {
+    display: none;
   }
 }
 
