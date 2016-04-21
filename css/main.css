@@ -5795,8 +5795,11 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+html {
+  /* To match the footer for vertically short pages, avoids nasty white stripe below footer */
+  background-color: #5a5a5a; }
+
 body {
-  padding-top: 120px;
   font-weight: 300; }
 
 .sp-connect a {
@@ -5818,7 +5821,7 @@ body {
       margin-bottom: 10px; }
 
 .row-dark {
-  background-color: #646464;
+  background-color: #5a5a5a;
   color: #fff;
   padding-bottom: 20px; }
 
@@ -5863,8 +5866,12 @@ body {
 .libraries li {
   margin-bottom: 10px; }
 
-.page-api-docs iframe {
-  margin-top: 58px; }
+.page-api-docs .site-header .navbar {
+  margin-bottom: 0; }
+  .page-api-docs .site-header .navbar .nav-banner {
+    display: none; }
+.page-api-docs footer {
+  display: none; }
 
 .faq-categories {
   border-top: 1px solid #e6e6e6;
@@ -6240,11 +6247,11 @@ body {
   transition-timing-function: ease-out;
   background-color: #fa6423;
   border: none;
-  visibility: hidden;
   font-family: "Gotham SSm A", "Gotham SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: normal;
-  font-size: 12px; }
+  font-size: 12px;
+  border-radius: 0px; }
   @media screen and (min-width: 768px) {
     .page-home .navbar, .page-sparkpost-lab .navbar, .page-charity .navbar {
       background-color: transparent; }
@@ -6276,6 +6283,10 @@ body {
     visibility: visible; }
   .navbar.affix {
     background-color: #fa6423; }
+
+/* Hack to get around the transparency applied in media queries which accidentally has more specificity because CSS ugh */
+.site-header .navbar {
+  background-color: #fa6423; }
 
 .navbar-default .navbar-toggle {
   background-color: #fa6423;
