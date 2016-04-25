@@ -8,7 +8,7 @@
 require 'rake'
 require 'date'
 require 'yaml'
-require 'html/proofer'
+require 'htmlproofer'
 
 CONFIG = YAML.load(File.read('_config.yml'))
 USERNAME = CONFIG["username"] || ENV['GIT_NAME']
