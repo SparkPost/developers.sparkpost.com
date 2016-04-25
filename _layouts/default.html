@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   {% include base.html %}
-  {% include head.html base=base %}
+  {% include head.html %}
 
   <body class="{% if page.title == null and page.class == null %}page-home{% elsif page.class %}page-{{ page.class }}{% else %}page-{{ page.title|slugify }}{% endif %}">
     {% if site.environment == "production" %}
