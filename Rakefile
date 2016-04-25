@@ -226,7 +226,7 @@ namespace :site do
     sh "bundle exec jekyll build"
 
     # Test the Generated site
-    HTML::Proofer.new(CONFIG["destination"], htmlproofer_opts).run
+    HTMLProofer.new(CONFIG["destination"], htmlproofer_opts).run
 
     # Detect pull request
     if ENV['TRAVIS_PULL_REQUEST'].to_s.to_i > 0
