@@ -116,7 +116,6 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
               <li role="presentation"><a href="#nodeExample" data-toggle="pill" data-mp-language="Node.js"><i class="devicon devicon-nodejs-plain"></i> Nodejs</a></li>
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
-              <li role="presentation"><a href="#rubyExample" data-toggle="pill" data-mp-language="Ruby"><i class="devicon devicon-ruby-plain"></i> Ruby</a></li>
               <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
               <li role="presentation"><a href="#csharpExample" data-toggle="pill" data-mp-language="CSharp"><i class="devicon devicon-csharp-plain"></i> C#</a></li>
               <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
@@ -184,19 +183,6 @@ $results = $sparky-&gt;transmission-&gt;send([
       ['address'=&gt;['email'=&gt;'developers+php@sparkpost.com']]
     ]
 ]);</code></pre></figure>
-              </div>
-              <div class="tab-pane" id="rubyExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/ruby-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'sparkpost'</span>
-
-<span class="n">sparky</span> <span class="o">=</span> <span class="no">SparkPost</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">'&lt;YOUR API KEY&gt;'</span><span class="p">)</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">sparky</span><span class="p">.</span><span class="nf">transmission</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span>
-  <span class="s1">'developers+ruby@sparkpost.com'</span><span class="p">,</span>
-  <span class="s1">'testing@sparkpostbox.com'</span><span class="p">,</span>
-  <span class="s1">'Oh hey!'</span><span class="p">,</span>
-  <span class="s1">'&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;'</span>
-<span class="p">)</span></code></pre></figure>
               </div>
               <div class="tab-pane" id="javaExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
@@ -311,8 +297,6 @@ $results = $sparky-&gt;transmission-&gt;send([
             <li><a href="https://www.github.com/SparkPost/python-sparkpost" data-mp-library="python-sparkpost">python-sparkpost</a> - Python module</li>
             
             <li><a href="https://www.github.com/SparkPost/php-sparkpost" data-mp-library="php-sparkpost">php-sparkpost</a> - PHP library</li>
-            
-            <li><a href="https://www.github.com/SparkPost/ruby-sparkpost" data-mp-library="ruby-sparkpost">ruby-sparkpost</a> - Ruby library</li>
             
             <li><a href="https://www.github.com/SparkPost/go-sparkpost" data-mp-library="go-sparkpost">go-sparkpost</a> - Go library</li>
             
