@@ -1,7 +1,7 @@
-- name: QueensJS
+- name: ManhattanJS
   type: future
-  url: http://www.meetup.com/QueensJS/events/230553814/
-  date_start: 2016-05-04
+  url: http://manhattanjs.com/
+  date_start: 2016-05-11
   location: New York, NY
 
 - name: ManhattanJS
@@ -16,6 +16,12 @@
   date_start: 2016-05-24
   date_end: 2016-05-25
   location: San Francisco, CA
+
+- name: QueensJS
+  type: past
+  url: http://www.meetup.com/QueensJS/events/230553814/
+  date_start: 2016-05-04
+  location: New York, NY
 
 - name: KC/DC 2016
   type: future
