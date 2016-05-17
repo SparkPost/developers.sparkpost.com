@@ -26,13 +26,6 @@
   language: php
   icon: php-plain
 
-- name: ruby-sparkpost
-  type: official
-  description: Ruby library
-  github_repo: SparkPost/ruby-sparkpost
-  language: ruby
-  icon: ruby-plain
-
 - name: go-sparkpost
   type: official
   description: Go library
