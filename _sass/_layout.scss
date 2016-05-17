@@ -159,3 +159,148 @@ body {
     padding: 10px;
   }
 }
+
+// API Reference
+// --------------------------
+
+.page-api-reference {
+  color: $c-gray-darker;
+
+  .site-header {
+    .navbar {
+      margin-bottom: 0;
+    }
+
+    .nav-banner {
+      display: none;
+    }
+  }
+
+  #menublock {
+//    @extend .col-xs-12;
+    @extend .col-sm-3;
+    background-color: $c-gray-darker;
+    padding: 0px;
+  }
+
+  #contentblock {
+//    @extend .col-xs-12;
+    @extend .col-sm-9;
+    // Aglio's Olio theme uses markdown-it with markdown-it-anchor which emits
+    // <a class="permalink">&para;</a> after each heading.
+    // This is simpler than forking Olio.
+    a.permalink {
+      visibility: hidden;
+    }
+
+    // <TABLE> becomes <TABLE class="table">
+    // .table is the basic Bootstrap table layout
+    TABLE {
+      @extend .table;
+    }
+
+    h1 {
+      font-size: 20pt;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 17pt;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 14pt;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: 11pt;
+      font-weight: bold;
+    }
+
+    .method {
+      padding-top: 4px;
+      padding-bottom: 10px;
+    }
+
+    .param-annotation {
+      font-size: 9pt;
+    }
+
+    .markdown, .resource {
+      // Wrap code to avoid huge overflow into the right margin.
+      // The metrics API endpoints are worst for this: lots of query params.
+      // Taken from https://css-tricks.com/snippets/css/make-pre-text-wrap/
+      CODE {
+        //white-space: pre-wrap;
+        //white-space: -moz-pre-wrap;
+        //white-space: -pre-wrap;
+        //white-space: -o-pre-wrap;
+        word-wrap: break-word;
+      }
+
+      TABLE {
+        @extend .table;
+      }
+    }
+  } // #contentblock
+
+  nav#apimenu {
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 20px;
+
+    // Endpoint heading: Transmissions, Metrics, ...
+    .heading {
+      padding-bottom: 10px;
+      a {
+        color: $c-gray-light;
+        font-weight: bold;
+        font-size: 10pt; 
+      }
+    }
+
+    // Currently selected endpoint page
+    .current {
+      a {
+        color: $sp-orange;
+      }
+    }
+
+    // Hide submenus for all menu items..
+    .collapse-content {
+      display: none;
+    }
+
+    // ...except the current one
+    .current + .collapse-content {
+      display: block;
+    }
+
+    // Submenu items within an endpoint
+    ul {
+      padding-bottom: 3px;
+
+      li {
+        padding-bottom: 15px;
+
+        a {
+          color: white;
+        }
+
+        // Requests within an endpoint section
+        // - slight indent
+        // - each item flush with next
+        // - sub-sub-menus flush with outer menu
+        ul {
+          padding-left: 10px;
+          padding-bottom: 0px;
+          li {
+            padding-bottom: 0px;
+          }
+        }
+      }
+    }
+  } // nav#apimenu
+}
