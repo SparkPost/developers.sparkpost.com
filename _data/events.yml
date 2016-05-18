@@ -1,8 +1,9 @@
-- name: ManhattanJS
+- name: KC/DC 2016
   type: future
-  url: http://manhattanjs.com/
-  date_start: 2016-05-11
-  location: New York, NY
+  url: http://www.kcdc.info/
+  date_start: 2016-06-22
+  date_end: 2016-06-24
+  location: Kansas City, MO
 
 - name: ManhattanJS
   type: future
@@ -23,13 +24,12 @@
   date_start: 2016-05-04
   location: New York, NY
 
-- name: KC/DC 2016
-  type: future
-  url: http://www.kcdc.info/
-  date_start: 2016-06-22
-  date_end: 2016-06-24
-  location: Kansas City, MO
-
+- name: ManhattanJS
+  type: past
+  url: http://manhattanjs.com/
+  date_start: 2016-05-11
+  location: New York, NY
+  
 - name: London React Meetup
   type: past
   url: https://skillsmatter.com/meetups/8060-london-react-meetup
