@@ -169,7 +169,7 @@ body {
   // http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height
   // http://www.bootply.com/127827
   @media screen and (min-width: 768px) {
-    .row {
+    #apipage .row {
       display: -webkit-box;
       display: -moz-box;
       display: -ms-flexbox;
@@ -185,24 +185,26 @@ body {
     @extend .table;
   }
 
-  h1 {
-    font-size: 20pt;
-    font-weight: bold;
-  }
+  #menublock, #contentblock {
+    h1 {
+      font-size: 20pt;
+      font-weight: bold;
+    }
 
-  h2 {
-    font-size: 17pt;
-    font-weight: bold;
-  }
+    h2 {
+      font-size: 17pt;
+      font-weight: bold;
+    }
 
-  h3 {
-    font-size: 14pt;
-    font-weight: bold;
-  }
+    h3 {
+      font-size: 14pt;
+      font-weight: bold;
+    }
 
-  h4 {
-    font-size: 11pt;
-    font-weight: bold;
+    h4 {
+      font-size: 11pt;
+      font-weight: bold;
+    }
   }
 
   .site-header {
