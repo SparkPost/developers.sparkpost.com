@@ -166,6 +166,45 @@ body {
 .page-api-reference {
   color: $c-gray-darker;
 
+  // http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height
+  // http://www.bootply.com/127827
+  @media screen and (min-width: 768px) {
+    .row {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      flex: 1 0 auto;
+    }
+  }
+
+  // <TABLE> becomes <TABLE class="table">
+  // .table is the basic Bootstrap table layout
+  TABLE {
+    @extend .table;
+  }
+
+  h1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 17pt;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 11pt;
+    font-weight: bold;
+  }
+
   .site-header {
     .navbar {
       margin-bottom: 0;
@@ -177,14 +216,12 @@ body {
   }
 
   #menublock {
-//    @extend .col-xs-12;
     @extend .col-sm-3;
     background-color: $c-gray-darker;
     padding: 0px;
   }
 
   #contentblock {
-//    @extend .col-xs-12;
     @extend .col-sm-9;
     // Aglio's Olio theme uses markdown-it with markdown-it-anchor which emits
     // <a class="permalink">&para;</a> after each heading.
@@ -193,35 +230,33 @@ body {
       visibility: hidden;
     }
 
-    // <TABLE> becomes <TABLE class="table">
-    // .table is the basic Bootstrap table layout
-    TABLE {
-      @extend .table;
-    }
-
-    h1 {
-      font-size: 20pt;
-      font-weight: bold;
-    }
-
-    h2 {
-      font-size: 17pt;
-      font-weight: bold;
-    }
-
-    h3 {
-      font-size: 14pt;
-      font-weight: bold;
-    }
-
-    h4 {
-      font-size: 11pt;
-      font-weight: bold;
-    }
-
     .method {
       padding-top: 4px;
       padding-bottom: 10px;
+    }
+
+    .headers {
+      padding-bottom: 10px;
+
+      ul {
+        padding-left: 20px;
+        li {
+          list-style-type: none;
+        }
+      }
+    }
+
+    .request {
+      .uri {
+        padding-left: 20px;
+      }
+    }
+
+    .param-value-list {
+      li {
+        font-family: Monospace;
+        font-size: 8pt;
+      }
     }
 
     .param-annotation {
@@ -239,11 +274,10 @@ body {
         //white-space: -o-pre-wrap;
         word-wrap: break-word;
       }
-
-      TABLE {
-        @extend .table;
-      }
     }
+
+    @import "_api-syntax-highlighting"
+
   } // #contentblock
 
   nav#apimenu {
@@ -294,10 +328,11 @@ body {
         // - each item flush with next
         // - sub-sub-menus flush with outer menu
         ul {
-          padding-left: 10px;
           padding-bottom: 0px;
           li {
             padding-bottom: 0px;
+            color: white;
+            list-style: disc inside none;
           }
         }
       }
