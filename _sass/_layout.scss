@@ -160,24 +160,11 @@ body {
   }
 }
 
-// API Reference
+// API Reference: aka static API docs
 // --------------------------
 
 .page-api-reference {
   color: $c-gray-darker;
-
-  // http://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height
-  // http://www.bootply.com/127827
-  @media screen and (min-width: 768px) {
-    #apipage .row {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      flex: 1 0 auto;
-    }
-  }
 
   // <TABLE> becomes <TABLE class="table">
   // .table is the basic Bootstrap table layout
@@ -185,29 +172,68 @@ body {
     @extend .table;
   }
 
-  #menublock, #contentblock {
-    h1 {
-      font-size: 20pt;
-      font-weight: bold;
+  h1 {
+    font-size: 20pt;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 17pt;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 14pt;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 11pt;
+    font-weight: bold;
+  }
+
+  // Small+ screens: scroll menu and content independently 
+  @media (min-width: 768px) {
+
+    // Padding above each anchored header to account for the fixed header and 
+    // ensure navigating scrolls to the correct position.
+    h2:before, h3:before, h4:before {
+      display: block;
+      content: " ";
+      margin-top: -80px;
+      height: 80px;
+      visibility: hidden;
+    }
+    .site-header {
+      // Disable scroll to avoid awkward title bar scroll movement
+      overflow-y: hidden;
+      position: fixed;
+      width: 100%;
+      z-index: 2000;
     }
 
-    h2 {
-      font-size: 17pt;
-      font-weight: bold;
+    #menublock {
+      position: absolute;
+      top: 76px;
+      overflow-y: scroll;
+      height: 100%;
     }
 
-    h3 {
-      font-size: 14pt;
-      font-weight: bold;
-    }
-
-    h4 {
-      font-size: 11pt;
-      font-weight: bold;
+    #contentblock {
+      margin-left: 25%;
+      position: absolute;
+      top: 76px;
+      overflow-y: scroll;
+      height: 100%;
     }
   }
 
   .site-header {
+    NAV .container {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .navbar {
       margin-bottom: 0;
     }
@@ -220,16 +246,24 @@ body {
   #menublock {
     @extend .col-sm-3;
     background-color: $c-gray-darker;
-    padding: 0px;
+    padding-left: 15px;
   }
 
   #contentblock {
     @extend .col-sm-9;
+    background-color: white;
+
     // Aglio's Olio theme uses markdown-it with markdown-it-anchor which emits
     // <a class="permalink">&para;</a> after each heading.
     // This is simpler than forking Olio.
     a.permalink {
       visibility: hidden;
+    }
+
+    .request {
+      .uri {
+        padding-left: 20px;
+      }
     }
 
     .method {
@@ -245,12 +279,6 @@ body {
         li {
           list-style-type: none;
         }
-      }
-    }
-
-    .request {
-      .uri {
-        padding-left: 20px;
       }
     }
 
@@ -278,14 +306,14 @@ body {
       }
     }
 
-    @import "_api-syntax-highlighting"
+    @import "_api-syntax-highlighting";
 
   } // #contentblock
 
   nav#apimenu {
     padding-top: 20px;
-    padding-left: 25px;
-    padding-right: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
 
     // Endpoint heading: Transmissions, Metrics, ...
     .heading {
@@ -304,7 +332,7 @@ body {
       }
     }
 
-    // Hide submenus for all menu items..
+    // Hide submenus for all menu items
     .collapse-content {
       display: none;
     }
@@ -341,3 +369,4 @@ body {
     }
   } // nav#apimenu
 }
+
