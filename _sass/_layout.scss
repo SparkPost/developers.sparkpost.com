@@ -166,8 +166,10 @@ body {
 .page-api-reference {
   color: $c-gray-darker;
 
-  // <TABLE> becomes <TABLE class="table">
-  // .table is the basic Bootstrap table layout
+  /*
+   * <TABLE> becomes <TABLE class="table">
+   * .table is the basic Bootstrap table layout
+   */
   TABLE {
     @extend .table;
   }
@@ -192,11 +194,13 @@ body {
     font-weight: bold;
   }
 
-  // Small+ screens: scroll menu and content independently 
+  // Small+ screens: scroll menu and content independently
   @media (min-width: 768px) {
 
-    // Padding above each anchored header to account for the fixed header and 
-    // ensure navigating scrolls to the correct position.
+    /*
+     * Padding above each anchored header to account for the fixed header and 
+     * ensure navigating scrolls to the correct position.
+     */
     h2:before, h3:before, h4:before {
       display: block;
       content: " ";
@@ -204,29 +208,36 @@ body {
       height: 80px;
       visibility: hidden;
     }
+
     .site-header {
       // Disable scroll to avoid awkward title bar scroll movement
-      overflow-y: hidden;
+      overflow: hidden;
       position: fixed;
       width: 100%;
-      z-index: 2000;
+      top: 0;
+      left: 0;
+      z-index: 100; // Keep site-header above contentblock as it scrolls
     }
 
     #menublock {
-      position: absolute;
+      position: fixed;
       top: 76px;
-      overflow-y: scroll;
-      height: 100%;
+      left: 0;
+      bottom: 0; // This forces menublock to screen height rather than the height of children set at load-time 
+      overflow-x: hidden;
+      overflow-y: auto;
+      z-index: 0;
     }
 
+    /*
+     * Left margin to avoid menublock
+     * Top margin to avoid site-header
+     */
     #contentblock {
       margin-left: 25%;
-      position: absolute;
-      top: 76px;
-      overflow-y: scroll;
-      height: 100%;
+      margin-top: 76px;
     }
-  }
+  } /* @media */
 
   .site-header {
     NAV .container {
@@ -243,6 +254,10 @@ body {
     }
   }
 
+  footer {
+    display: none;
+  }
+
   #menublock {
     @extend .col-sm-3;
     background-color: $c-gray-darker;
@@ -253,9 +268,11 @@ body {
     @extend .col-sm-9;
     background-color: white;
 
-    // Aglio's Olio theme uses markdown-it with markdown-it-anchor which emits
-    // <a class="permalink">&para;</a> after each heading.
-    // This is simpler than forking Olio.
+    /*
+     * Aglio's Olio theme uses markdown-it with markdown-it-anchor which emits
+     * <a class="permalink">&para;</a> after each heading.
+     * This is simpler than forking Olio.
+     */
     a.permalink {
       visibility: hidden;
     }
@@ -294,14 +311,12 @@ body {
     }
 
     .markdown, .resource {
-      // Wrap code to avoid huge overflow into the right margin.
-      // The metrics API endpoints are worst for this: lots of query params.
-      // Taken from https://css-tricks.com/snippets/css/make-pre-text-wrap/
+      /*
+       * Wrap code to avoid huge overflow into the right margin.
+       * The metrics API endpoints are worst for this: lots of query params.
+       * Taken from https://css-tricks.com/snippets/css/make-pre-text-wrap/
+       */
       CODE {
-        //white-space: pre-wrap;
-        //white-space: -moz-pre-wrap;
-        //white-space: -pre-wrap;
-        //white-space: -o-pre-wrap;
         word-wrap: break-word;
       }
     }
@@ -353,10 +368,12 @@ body {
           color: white;
         }
 
-        // Requests within an endpoint section
-        // - slight indent
-        // - each item flush with next
-        // - sub-sub-menus flush with outer menu
+        /*
+         * Requests within an endpoint section
+         *  - slight indent
+         *  - each item flush with next
+         *  - sub-sub-menus flush with outer menu
+         */
         ul {
           padding-bottom: 0px;
           li {
