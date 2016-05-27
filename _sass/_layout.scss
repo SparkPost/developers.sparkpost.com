@@ -360,6 +360,9 @@ body {
     // Submenu items within an endpoint
     ul {
       padding-bottom: 3px;
+      padding-left: 12px;
+      list-style: none;
+      border-left: 6px solid #4E4E4E;
 
       li {
         padding-bottom: 15px;
@@ -376,10 +379,14 @@ body {
          */
         ul {
           padding-bottom: 0px;
+          border-color: dimgray;
+          border-width: 2px;
+          padding-left: 7px;
+
           li {
             padding-bottom: 0px;
             color: white;
-            list-style: disc inside none;
+            list-style: none;
           }
         }
       }
