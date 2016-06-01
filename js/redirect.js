@@ -2,7 +2,7 @@
 	var PATH = location.pathname, HASH = location.hash,  PATH_SPACE = '_', HASH_SPACE = '-';	
 
 	// check if we are on the API page with an Apiary hash
-	if (PATH === '/api/' && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
+	if ((PATH === '/api/' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
 		var newPath = convertHashToPath(HASH);
 
 		redirect('http://ewandennis.github.io/staticapi' + PATH + newPath);
