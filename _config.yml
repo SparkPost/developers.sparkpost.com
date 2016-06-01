@@ -8,7 +8,7 @@ description: >
   developers. Our developer hub is a collection of resources to help you succeed
   with SparkPost. What will you build?
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://sparkpost.github.io" # the base hostname & protocol for your site
+url: "https://developers.sparkpost.com" # the base hostname & protocol for your site
 twitter_username: SparkPostDev
 github_username:  SparkPost
 facebook_username: SparkPost

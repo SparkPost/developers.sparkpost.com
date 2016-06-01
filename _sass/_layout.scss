@@ -167,10 +167,10 @@ body {
   color: $c-gray-darker;
 
   /*
-   * <TABLE> becomes <TABLE class="table">
+   * <table> becomes <table class="table">
    * .table is the basic Bootstrap table layout
    */
-  TABLE {
+  table {
     @extend .table;
   }
 
@@ -240,7 +240,7 @@ body {
   } /* @media */
 
   .site-header {
-    NAV .container {
+    nav .container {
       margin-left: auto;
       margin-right: auto;
     }
@@ -316,7 +316,7 @@ body {
        * The metrics API endpoints are worst for this: lots of query params.
        * Taken from https://css-tricks.com/snippets/css/make-pre-text-wrap/
        */
-      CODE {
+      code {
         word-wrap: break-word;
       }
     }
@@ -325,7 +325,7 @@ body {
 
   } // #contentblock
 
-  nav#apimenu {
+  #apimenu {
     padding-top: 20px;
     padding-left: 5px;
     padding-right: 5px;
