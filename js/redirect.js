@@ -1,5 +1,5 @@
 (function($) {
-	var PATH = location.pathname, HASH = location.hash,  PATH_SPACE = '_', HASH_SPACE = '-';	
+	var PATH = location.pathname, HASH = location.hash, EXTENSION = '.html', PATH_SPACE = '_', HASH_SPACE = '-';	
 
 	// check if we are on the API page with an Apiary hash
 	if ((PATH === '/api/' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
@@ -19,11 +19,14 @@
 		var type     = getType(hashPath);
 		var endpoint = getEndpoint(hashPath);
 		var method   = getMethod(hashPath);
-		var path     = ''; 
+		var path     = customMapping(type, endpoint, method);
+
+		if (path.length > 0)
+			return path;
 
 		switch (type) {
 			case 'introduction':
-				path = 'index.html';
+				path = 'index' + EXTENSION;
 
 				// add endpoint
 				path += ('#header-' + (method || endpoint)).replace(/-|_/g, HASH_SPACE);
@@ -31,7 +34,7 @@
 
 			case 'reference':
 				// add endpoint
-				path = (endpoint + PATH_SPACE + 'api.html').replace(/-|_/g, PATH_SPACE);
+				path = (endpoint + PATH_SPACE + 'api' + EXTENSION).replace(/-|_/g, PATH_SPACE);
 
 				// add method if it has one
 				if (method.length > 0)
@@ -39,6 +42,32 @@
 
 				break;
 		}
+
+		return path;
+	}
+
+
+	/** 
+	* returns the a unique path if nesseseary
+	*
+	*/
+	function customMapping(type, endpoint, method) {
+		var path = '';
+		switch (endpoint) {
+			case 'substitutions-reference':
+				// add endpoint 
+				path += (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
+
+				// add header if it has one
+				if (method.length > 0)
+					path += ('#header-' + method).replace(/-|_/g, HASH_SPACE);
+
+				break;
+			case 'smtp-api':
+				path = (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
+				break;
+		}
+		
 
 		return path;
 	}
