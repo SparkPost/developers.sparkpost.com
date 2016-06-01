@@ -9,7 +9,6 @@
 	}
 
 
-
 	function redirect(url) {
 		console.log(url);
 		// window.location.replace(url);
@@ -20,13 +19,26 @@
 		var type     = getType(hashPath);
 		var endpoint = getEndpoint(hashPath);
 		var method   = getMethod(hashPath);
+		var path     = ''; 
 
-		// add endpoint
-		var path = (endpoint + PATH_SPACE + 'api.html').replace(/-|_/g, PATH_SPACE);
+		switch (type) {
+			case 'introduction':
+				path = 'index.html';
 
-		// add method if its a reference
-		if (type === 'reference' && method.length > 0)
-			path += ('#' + endpoint + HASH_SPACE + method).replace(/-|_/g, HASH_SPACE);
+				// add endpoint
+				path += ('#header-' + (method || endpoint)).replace(/-|_/g, HASH_SPACE);
+				break;
+
+			case 'reference':
+				// add endpoint
+				path = (endpoint + PATH_SPACE + 'api.html').replace(/-|_/g, PATH_SPACE);
+
+				// add method if it has one
+				if (method.length > 0)
+					path += ('#' + endpoint + HASH_SPACE + method).replace(/-|_/g, HASH_SPACE);
+
+				break;
+		}
 
 		return path;
 	}
