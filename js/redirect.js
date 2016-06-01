@@ -29,16 +29,16 @@
 				path = 'index' + EXTENSION;
 
 				// add endpoint
-				path += ('#header-' + (method || endpoint)).replace(/-|_/g, HASH_SPACE);
+				path += buildHash('#header-' + (method || endpoint));
 				break;
 
 			case 'reference':
 				// add endpoint
-				path = (endpoint + PATH_SPACE + 'api' + EXTENSION).replace(/-|_/g, PATH_SPACE);
+				path = buildPath(endpoint);
 
 				// add method if it has one
 				if (method.length > 0)
-					path += ('#' + endpoint + HASH_SPACE + method).replace(/-|_/g, HASH_SPACE);
+					path += buildHash('#' + endpoint + HASH_SPACE + method);
 
 				break;
 		}
@@ -60,9 +60,43 @@
 
 				// add header if it has one
 				if (method.length > 0)
-					path += ('#header-' + method).replace(/-|_/g, HASH_SPACE);
+					path += buildHash('#header-' + method);
 
 				break;
+
+			case 'relay-webhooks':
+				if (method === 'retrieve-update-and-delete') {
+					path  = buildPath(endpoint);
+					path += buildHash('#' + endpoint + HASH_SPACE + 'retrieve,-update,-and-delete');
+				}
+				break;
+
+			case 'sending-domains':
+				if (method === 'retrieve-update-and-delete') {
+					path  = buildPath(endpoint);
+					path += buildHash('#' + endpoint + HASH_SPACE + 'retrieve,-update,-and-delete');
+				}
+				break;
+
+			case 'suppression-list':
+				if (method === 'bulk-insertupdate') {
+					path  = buildPath(endpoint);
+					path += buildHash('#' + endpoint + HASH_SPACE + 'bulk-insert-update');
+				}
+				else if (method === 'retrieve-delete') {
+					path  = buildPath(endpoint);
+					path += buildHash('#' + endpoint + HASH_SPACE + 'retrieve,-delete');
+				}
+				break;
+
+			case 'tracking-domains':
+				if (method === 'retrieve-update-and-delete') {
+					path  = buildPath(endpoint);
+					path += buildHash('#' + endpoint + HASH_SPACE + 'retrieve,-update,-and-delete');
+				}
+				break;
+
+
 			case 'smtp-api':
 				path = (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
 				break;
@@ -88,6 +122,14 @@
 		var parts = hashPath.split('/');
 
 		return parts.length >= 3 ? parts[2] : '';
+	}
+
+	function buildPath(endpoint) {
+		return (endpoint + PATH_SPACE + 'api' + EXTENSION).replace(/-|_/g, PATH_SPACE);
+	}
+
+	function buildHash(hash) {
+		return hash.replace(/-|_/g, HASH_SPACE);
 	}
 
 })(jQuery);
