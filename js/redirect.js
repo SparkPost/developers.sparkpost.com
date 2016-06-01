@@ -10,8 +10,7 @@
 
 
 	function redirect(url) {
-		console.log(url);
-		// window.location.replace(url);
+		window.location.replace(url);
 	}
 
 	function convertHashToPath(hash) {
@@ -49,7 +48,7 @@
 
 	/** 
 	* returns the a unique path if nesseseary
-	*
+	* default returns a blank string
 	*/
 	function customMapping(type, endpoint, method) {
 		var path = '';
@@ -129,7 +128,7 @@
 	}
 
 	function buildHash(hash) {
-		return hash.replace(/-|_/g, HASH_SPACE);
+		return hash.replace(/-|_/g, HASH_SPACE).replace('email-rfc822', 'email_rfc822');
 	}
 
 })(jQuery);
