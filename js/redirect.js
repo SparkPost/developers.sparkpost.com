@@ -25,7 +25,7 @@
 
 		switch (type) {
 			case 'introduction':
-				path = 'index' + EXTENSION;
+				path = '/';
 
 				// add endpoint
 				path += buildHash('#header-' + (method || endpoint));
