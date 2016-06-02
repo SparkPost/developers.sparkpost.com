@@ -1,5 +1,5 @@
 (function($) {
-	var PATH = location.pathname, HASH = location.hash, EXTENSION = '.html', PATH_SPACE = '_', HASH_SPACE = '-';	
+	var PATH = location.pathname, HASH = location.hash, EXTENSION = '', PATH_SPACE = '_', HASH_SPACE = '-';	
 
 	// check if we are on the API page with an Apiary hash
 	if ((PATH === '/api/' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
@@ -55,7 +55,7 @@
 		switch (endpoint) {
 			case 'substitutions-reference':
 				// add endpoint 
-				path += (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
+				path += buildPath(endpoint);
 
 				// add header if it has one
 				if (method.length > 0)
@@ -94,11 +94,6 @@
 					path += buildHash('#' + endpoint + HASH_SPACE + 'retrieve,-update,-and-delete');
 				}
 				break;
-
-
-			case 'smtp-api':
-				path = (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
-				break;
 		}
 		
 
@@ -124,7 +119,7 @@
 	}
 
 	function buildPath(endpoint) {
-		return (endpoint + PATH_SPACE + 'api' + EXTENSION).replace(/-|_/g, PATH_SPACE);
+		return (endpoint + EXTENSION).replace(/-|_/g, PATH_SPACE);
 	}
 
 	function buildHash(hash) {
