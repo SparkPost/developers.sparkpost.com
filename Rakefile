@@ -20,7 +20,8 @@ htmlproofer_opts = {
   :disable_external => true,
   :allow_hash_href => true,
   :verbosity => :debug,
-  :file_ignore => [ /.*\/bower_components\/.*/ ]
+  :file_ignore => [ /.*\/bower_components\/.*/ ],
+  :assume_extension => true
 }
 
 # Determine source and destination branch

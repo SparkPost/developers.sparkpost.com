@@ -25,6 +25,34 @@ The following must be installed in order run Jekyll locally.
 6. Open <http://localhost:4000/> to view the site
 7. When finished hit `ctrl + c` in the terminal window to stop the server
 
+### API Documentation Development Setup
+
+The API documentation is generated from [sparkpost-api-documentation-DEV](https://github.com/SparkPost/sparkpost-api-documentation-DEV].  See the [README](https://github.com/SparkPost/sparkpost-api-documentation-DEV/blob/master/README.md) in that repo for details on that build process.
+
+For an easy dev setup:
+
+- Check out sparkpost-api-documentation-DEV
+- Check out sparkpost.github.io alongside
+- Start the API docs watch-and-build process:
+
+```bash
+cd sparkpost-api-documentation-DEV
+grunt staticDev
+# This will write to ../sparkpost.github.io/_api by default
+```
+
+- Start the DevHub watch-and-build process:
+
+```bash
+cd ../sparkpost.github.io
+./script/server
+# This will regenerate the DevHub when API docs files are changed
+```
+
+[Visit the local DevHub site](http://localhost:4000/).
+
+Now when you change either the API docs or DevHub code, the site will be regenerated.
+
 ### Submitting Updates
 1. Make sure you are on the `develop` branch `git checkout develop`
 2. Pull latest changes from Github `git pull origin develop`

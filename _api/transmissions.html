@@ -1,0 +1,860 @@
+---
+layout: default
+title: API Reference
+---
+<div id="apipage" class="container-fluid"><div class="row"><div id="menublock"><nav id="apimenu"><div class="resource-group"><div class="heading"><a href="index" class="text-uppercase">Overview</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="index#header-api-endpoints">API Endpoints</a></li><li><a href="index#header-sparkpost-api-endpoint">SparkPost API Endpoint</a></li><li><a href="index#header-sparkpost-elite-api-endpoint">SparkPost Elite API Endpoint</a></li><li><a href="index#header-api-conventions">API Conventions</a></li><li><a href="index#header-authentication">Authentication</a></li><li><a href="index#header-using-postman">Using Postman</a></li><li><a href="index#header-using-curl">Using cURL</a></li><li><a href="index#header-subaccounts">Subaccounts</a></li><li><a href="index#header-terminology">Terminology</a></li><li><a href="index#header-managing-subaccount-data-as-a-service-provider">Managing subaccount data as a Service Provider</a></li><li><a href="index#header-managing-master-account-data-as-a-service-provider">Managing master account data as a Service Provider</a></li><li><a href="index#header-smtp-relay-endpoints">SMTP Relay Endpoints</a></li><li><a href="index#header-sparkpost-smtp-endpoint">SparkPost SMTP Endpoint</a></li><li><a href="index#header-sparkpost-elite-smtp-endpoint">SparkPost Elite SMTP Endpoint</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="substitutions-reference" class="text-uppercase">Substitutions Reference</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="substitutions-reference#header-key-features">Key Features</a></li><li><a href="substitutions-reference#header-substitution-data">Substitution Data</a></li><li><a href="substitutions-reference#header-template-start-and-end-markers">Template Start and End Markers</a></li><li><a href="substitutions-reference#header-determination-of-expressions-and-statements">Determination of Expressions and Statements</a></li><li><a href="substitutions-reference#header-missing-substitution-values">Missing Substitution Values</a></li><li><a href="substitutions-reference#header-statements-on-their-own-line">Statements on Their Own Line</a></li><li><a href="substitutions-reference#header-escaping-start-and-end-tags">Escaping Start and End Tags</a></li><li><a href="substitutions-reference#header-escaping-html-values">Escaping HTML Values</a></li><li><a href="substitutions-reference#header-preventing-html-escaping">Preventing HTML Escaping</a></li><li><a href="substitutions-reference#header-personalized-links">Personalized Links</a></li><li><a href="substitutions-reference#header-link-names">Link Names</a></li><li><a href="substitutions-reference#header-unsubscribe-links">Unsubscribe Links</a></li><li><a href="substitutions-reference#header-per-link-disabling-of-click-tracking">Per-link Disabling of Click Tracking</a></li><li><a href="substitutions-reference#header-custom-link-sub-paths">Custom Link Sub-Paths</a></li><li><a href="substitutions-reference#header-link-attributes-in-text-parts">Link Attributes in Text Parts</a></li><li><a href="substitutions-reference#header-substitutions-syntax-examples">Substitutions Syntax Examples</a></li><li><a href="substitutions-reference#header-basic-substitution">Basic Substitution</a></li><li><a href="substitutions-reference#header-referencing-a-nested-object">Referencing a Nested Object</a></li><li><a href="substitutions-reference#header-if-then-else-syntax">if then else Syntax</a></li><li><a href="substitutions-reference#header-if-not-syntax">if not Syntax</a></li><li><a href="substitutions-reference#header-elseif-syntax">elseif Syntax</a></li><li><a href="substitutions-reference#header-expressions-in-conditionals-(,-,-,-,-,-)">Expressions in Conditionals (, , , , , )</a></li><li><a href="substitutions-reference#header-relational-and-logical-operators">Relational and Logical Operators</a></li><li><a href="substitutions-reference#header-array-iteration">Array Iteration</a></li><li><a href="substitutions-reference#header-links-and-substitution-expressions-within-substitution-values">Links and Substitution Expressions Within Substitution Values</a></li><li><a href="substitutions-reference#header-default-values">Default Values</a></li><li><a href="substitutions-reference#header-macros">Macros</a></li><li><a href="substitutions-reference#header-reserved-recipient-substitution-variables">Reserved Recipient Substitution Variables</a></li><li><a href="substitutions-reference#header-substitutions-in-email_rfc822-headers">Substitutions in email_rfc822 Headers</a></li><li><a href="substitutions-reference#header-encoding-rules">Encoding Rules</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="account" class="text-uppercase">Account</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="account#header-using-postman">Using Postman</a></li><li><a href="account#account-account-get">Get your account information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="inbound-domains" class="text-uppercase">Inbound Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="inbound-domains#header-inbound-domains-attributes">Inbound Domains Attributes</a></li><li><a href="inbound-domains#header-using-postman">Using Postman</a></li><li><a href="inbound-domains#inbound-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-create-and-list-post">Create an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-create-and-list-get">List all Inbound Domains</a></li></ul></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-get">Retrieve an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-delete">Delete an Inbound Domain</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="metrics" class="text-uppercase">Metrics</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="metrics#header-data-retention">Data retention</a></li><li><a href="metrics#header-using-postman">Using Postman</a></li><li><a href="metrics#header-metrics-api-deliverability-glossary">Metrics API Deliverability Glossary</a></li><li><a href="metrics#metrics-discoverability-links-get">Metrics Discoverability Links</a></li><li><a href="metrics#metrics-deliverability-metrics-get">Deliverability Metrics Summary</a></li><li><a href="metrics#metrics-deliverability-metrics-by-domain-get">Deliverability Metrics by Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-get">Deliverability Metrics by Binding</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-group-get">Deliverability Metrics by Binding Group</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-ip-get">Deliverability Metrics by Sending IP</a></li><li><a href="metrics#metrics-deliverability-metrics-by-ip-pool-get">Deliverability Metrics by IP Pool</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-domain-get">Deliverability Metrics by Sending Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-subaccount-get">Deliverability Metrics by Subaccount</a></li><li><a href="metrics#metrics-deliverability-metrics-by-campaign-get">Deliverability Metrics by Campaign</a></li><li><a href="metrics#metrics-deliverability-metrics-by-template-get">Deliverability Metrics by Template</a></li><li><a href="metrics#metrics-deliverability-metrics-by-watched-domain-get">Deliverability Metrics by Watched Domain</a></li><li><a href="metrics#metrics-time-series-get">Time-Series Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-get">Bounce Reason Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-by-domain-get">Bounce Reason Metrics By Domain</a></li><li><a href="metrics#metrics-bounce-classifications-get">Bounce Classification Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-get">Rejection Reason Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-by-domain-get">Rejection Reason Metrics By Domain</a></li><li><a href="metrics#metrics-delay-reasons-get">Delay Reason Metrics</a></li><li><a href="metrics#metrics-delay-reasons-by-domain-get">Delay Reason Metrics By Domain</a></li><li><a href="metrics#metrics-engagement-details-get">Engagement Details</a></li><li><a href="metrics#metrics-deliveries-by-attempt-get">Deliveries By Attempt</a></li><li><a href="metrics#metrics-binding-groups-list-get">Bindings Groups List</a></li><li><a href="metrics#metrics-binding-groups-list-get-1">Bindings List</a></li><li><a href="metrics#metrics-ip-pools-list-get">IP Pools List</a></li><li><a href="metrics#metrics-sending-ips-list-get">Sending IPs List</a></li><li><a href="metrics#metrics-campaigns-list-get">Campaigns List</a></li><li><a href="metrics#metrics-domains-list-get">Domains List</a></li><li><a href="metrics#metrics-nodes-list-get">Nodes List</a></li><li><a href="metrics#metrics-protocols-list-get">Protocols List</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="message-events" class="text-uppercase">Message Events</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="message-events#header-data-retention">Data retention</a></li><li><a href="message-events#header-using-postman">Using Postman</a></li><li><a href="message-events#header-copyrights">Copyrights</a></li><li><a href="message-events#message-events-events-documentation-get">Documentation</a></li><li><a href="message-events#message-events-events-samples-get">Samples</a></li><li><a href="message-events#message-events-message-events-get">Search for Message Events</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="relay-webhooks" class="text-uppercase">Relay Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="relay-webhooks#header-using-postman">Using Postman</a></li><li><a href="relay-webhooks#header-relay-webhooks-object-properties">Relay Webhooks Object Properties</a></li><li><a href="relay-webhooks#header-match-object-properties">Match Object Properties</a></li><li><a href="relay-webhooks#header-field-definitions">Field Definitions</a></li><li><a href="relay-webhooks#header-content-attributes">Content Attributes</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-create-and-list-post">Create a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list-get">List all Relay Webhooks</a></li></ul></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-get">Retrieve a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-put">Update a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-delete">Delete a Relay Webhook</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="sending-domains" class="text-uppercase">Sending Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="sending-domains#header-using-postman">Using Postman</a></li><li><a href="sending-domains#header-sending-domain-attributes">Sending Domain Attributes</a></li><li><a href="sending-domains#header-dkim-attributes">DKIM Attributes</a></li><li><a href="sending-domains#header-status-attributes">Status Attributes</a></li><li><a href="sending-domains#header-verify-attributes">Verify Attributes</a></li><li><a href="sending-domains#header-dns-attributes">DNS Attributes</a></li><li><a href="sending-domains#sending-domains-create">Create</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-create-post">Create a Sending Domain</a></li><li><a href="sending-domains#sending-domains-create-get">List all Sending Domains</a></li></ul></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-get">Retrieve a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-put">Update a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-delete">Delete a Sending Domain</a></li></ul></li><li><a href="sending-domains#sending-domains-verify-post">Verify a Sending Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="subaccounts" class="text-uppercase">Subaccounts</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection">Subaccounts Collection</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection-get">List subaccounts</a></li><li><a href="subaccounts#subaccounts-subaccounts-collection-post">Create new subaccount</a></li></ul></li><li><a href="subaccounts#subaccounts-subaccounts-entity">Subaccounts Entity</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-entity-get">List specific subaccount</a></li><li><a href="subaccounts#subaccounts-subaccounts-entity-put">Edit a subaccount</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="suppression-list" class="text-uppercase">Suppression List</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="suppression-list#header-using-postman">Using Postman</a></li><li><a href="suppression-list#header-list-entry-attributes">List Entry Attributes</a></li><li><a href="suppression-list#suppression-list-bulk-insert-update-put">Insert or Update List Entries</a></li><li><a href="suppression-list#suppression-list-search-get">Search for List Entries</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete">Retrieve, Delete</a><ul class="list-unstyled"><li><a href="suppression-list#suppression-list-retrieve,-delete-get">Retrieve a Recipient Suppression Status</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-delete">Delete a List Entry</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-put">Insert or Update a List Entry</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="templates" class="text-uppercase">Templates</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="templates#header-using-postman">Using Postman</a></li><li><a href="templates#header-template-attributes">Template Attributes</a></li><li><a href="templates#header-content-attributes">Content Attributes</a></li><li><a href="templates#header-header-notes">Header Notes</a></li><li><a href="templates#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="templates#header-options-attributes">Options Attributes</a></li><li><a href="templates#header-error-attributes">Error Attributes</a></li><li><a href="templates#templates-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="templates#templates-create-and-list-post">Create a Template</a></li><li><a href="templates#templates-create-and-list-get">List all Templates</a></li></ul></li><li><a href="templates#templates-retrieve-get">Retrieve a Template</a></li><li><a href="templates#templates-update-put">Update a Template</a></li><li><a href="templates#templates-preview-post">Preview a Template</a></li><li><a href="templates#templates-delete-delete">Delete a Template</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="tracking-domains" class="text-uppercase">Tracking Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="tracking-domains#header-using-postman">Using Postman</a></li><li><a href="tracking-domains#header-tracking-domains-attributes">Tracking Domains Attributes</a></li><li><a href="tracking-domains#header-port-secure-attributes">Port/Secure Attributes</a></li><li><a href="tracking-domains#header-status-attributes">Status Attributes</a></li><li><a href="tracking-domains#tracking-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-create-and-list-post">Create a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-create-and-list-get">List all Tracking Domains</a></li></ul></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-get">Retrieve a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-put">Update a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-delete">Delete a Tracking Domain</a></li></ul></li><li><a href="tracking-domains#tracking-domains-verify-post">Verify a Tracking Domain</a></li></ul></div></div><div class="resource-group"><div class="heading current"><a href="transmissions" class="text-uppercase">Transmissions</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="transmissions#header-using-postman">Using Postman</a></li><li><a href="transmissions#header-transmission-attributes">Transmission Attributes</a></li><li><a href="transmissions#header-options-attributes">Options Attributes</a></li><li><a href="transmissions#header-inline-content-attributes">Inline Content Attributes</a></li><li><a href="transmissions#header-header-notes">Header Notes</a></li><li><a href="transmissions#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="transmissions#header-attachment-attributes">Attachment Attributes</a></li><li><a href="transmissions#header-inline-image-attributes">Inline Image Attributes</a></li><li><a href="transmissions#header-using-a-stored-template">Using a Stored Template</a></li><li><a href="transmissions#header-using-a-stored-recipient-list">Using a Stored Recipient List</a></li><li><a href="transmissions#header-scheduled-transmissions">Scheduled Transmissions</a></li><li><a href="transmissions#transmissions-create-post">Create a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="transmissions#transmissions-retrieve-and-delete-get">Retrieve a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete-delete">Delete a Transmission</a></li></ul></li><li><a href="transmissions#transmissions-list-get">List all Transmissions</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="webhooks" class="text-uppercase">Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="webhooks#header-using-postman">Using Postman</a></li><li><a href="webhooks#header-webhooks-object-properties">Webhooks Object Properties</a></li><li><a href="webhooks#webhooks-events-documentation-get">Documentation</a></li><li><a href="webhooks#webhooks-events-samples-get">Samples</a></li><li><a href="webhooks#webhooks-create-post">Create a Webhook</a></li><li><a href="webhooks#webhooks-retrieve-get">Retrieve Webhook Details</a></li><li><a href="webhooks#webhooks-list-get">List all Webhooks</a></li><li><a href="webhooks#webhooks-update-and-delete">Update and Delete</a><ul class="list-unstyled"><li><a href="webhooks#webhooks-update-and-delete-put">Update a Webhook</a></li><li><a href="webhooks#webhooks-update-and-delete-delete">Delete a Webhook</a></li></ul></li><li><a href="webhooks#webhooks-validate-post">Validate a Webhook</a></li><li><a href="webhooks#webhooks-batch-status-get">Retrieve Status Information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="smtp-api" class="text-uppercase">SMTP API</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="smtp-api#header-options-attributes">Options Attributes</a></li><li><a href="smtp-api#header-sending-messages-with-cc,-bcc,-and-archive-recipients">Sending Messages with cc, bcc, and archive Recipients</a></li><li><a href="smtp-api#header-comments-on-header-length">Comments on Header Length</a></li></ul></div></div></nav></div><div id="contentblock"><header><h1 id="top"></h1></header><section class="resource-group searchable"><h2 id="transmissions" class="group-heading">Transmissions <a href="#transmissions" class="permalink"></a></h2><div class="markdown"><p><a name="transmissions-api"></a></p>
+<p>A transmission is a collection of messages belonging to the same campaign.  It is also known as a mailing.  The Transmissions API provides the means to manage transmissions.  Messages in the transmissions are generated and sent to a specified list of recipients using a specified message template. The recipient list can be a stored list created using the Recipient Lists API, or it can be created “inline” as part of a transmission.  Similarly, the message template can be a stored template created using the Templates API, or it can be created “inline” as part of a transmission.  Messages are generated for the transmission for all specified recipients using the message template and performing substitution of data as necessary.</p>
+<p>In addition, engagement tracking options can be set in the transmission to track message opens and clicks.</p>
+<h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
+<p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
+<p><a href="https://www.getpostman.com/run-collection/81ee1dd2790d7952b76a"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
+<h2 id="header-transmission-attributes">Transmission Attributes <a class="permalink" href="#header-transmission-attributes" aria-hidden="true">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>ID of the transmission</td>
+<td>no</td>
+<td>Read only.  A unique ID is generated for each transmission on submission.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>string</td>
+<td>State of the transmission</td>
+<td>no</td>
+<td>Read only.  Valid responses are “submitted”, “Generating”, “Success”, or “Canceled”.</td>
+</tr>
+<tr>
+<td>options</td>
+<td>JSON object</td>
+<td>JSON object in which transmission options are defined</td>
+<td>no</td>
+<td>For a full description, see the Options Attributes.</td>
+</tr>
+<tr>
+<td>recipients</td>
+<td>JSON array or JSON object</td>
+<td>Inline recipient objects or object containing stored recipient list ID</td>
+<td>yes</td>
+<td>Specify a stored recipient list or specify recipients inline.  When using a stored recipient list, specify the “list_id” as described in Using a Stored Recipient List.  Otherwise, provide the recipients inline using the fields described in the Recipient List API documentation for Recipient Attributes.</td>
+</tr>
+<tr>
+<td>campaign_id</td>
+<td>string</td>
+<td>Name of the campaign</td>
+<td>no</td>
+<td>Maximum length - 64 bytes</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Description of the transmission</td>
+<td>no</td>
+<td>Maximum length - 1024 bytes</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>JSON object</td>
+<td>Transmission level metadata containing key/value pairs</td>
+<td>no</td>
+<td>Metadata is available during events through the Webhooks and is provided to the substitution engine.  A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is available with recipient metadata taking precedence over transmission metadata when there are conflicts.</td>
+</tr>
+<tr>
+<td>substitution_data</td>
+<td>JSON object</td>
+<td>Key/value pairs that are provided to the substitution engine</td>
+<td>no</td>
+<td>Recipient substitution data takes precedence over transmission substitution data. Unlike metadata, substitution data is not included in Webhook events.</td>
+</tr>
+<tr>
+<td>return_path</td>
+<td>string</td>
+<td>Email to use for envelope FROM ( <strong>Note:</strong> SparkPost Elite only )</td>
+<td>yes</td>
+<td>To support Variable Envelope Return Path (VERP), this field can also optionally be specified inside of the address object of a specific recipient in order to give the recipient a unique envelope MAIL FROM.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>JSON object</td>
+<td>Content that will be used to construct a message</td>
+<td>yes</td>
+<td>Specify a stored template or specify inline template content. When using a stored template, specify the “template_id” as described in Using a Stored Template.  Otherwise, provide the inline content using the fields described in Inline Content Attributes.  Maximum size - 20MBs</td>
+</tr>
+<tr>
+<td>total_recipients</td>
+<td>number</td>
+<td>Computed total recipients</td>
+<td>no</td>
+<td>Read only</td>
+</tr>
+<tr>
+<td>num_generated</td>
+<td>number</td>
+<td>Computed total number of messages generated</td>
+<td>no</td>
+<td>Read only</td>
+</tr>
+<tr>
+<td>num_failed_generation</td>
+<td>number</td>
+<td>Computed total number of failed messages</td>
+<td>no</td>
+<td>Read only</td>
+</tr>
+<tr>
+<td>num_invalid_recipients</td>
+<td>number</td>
+<td>Number of recipients that failed input validation</td>
+<td>no</td>
+<td>Read only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-options-attributes">Options Attributes <a class="permalink" href="#header-options-attributes" aria-hidden="true">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_time</td>
+<td style="text-align:center">string</td>
+<td>Delay generation of messages until this datetime.  For additional information, see Scheduled Transmissions.</td>
+<td>no - defaults to immediate generation</td>
+<td>Format YYYY-MM-DDTHH:MM:SS±HH:MM or “now”. Example: ‘2015-02-11T08:00:00-04:00’.</td>
+</tr>
+<tr>
+<td>open_tracking</td>
+<td style="text-align:center">boolean</td>
+<td>Whether open tracking is enabled for this transmission</td>
+<td>no</td>
+<td>If not specified, the setting at template level is used, or defaults to true.</td>
+</tr>
+<tr>
+<td>click_tracking</td>
+<td style="text-align:center">boolean</td>
+<td>Whether click tracking is enabled for this transmission</td>
+<td>no</td>
+<td>If not specified, the setting at template level is used, or defaults to true.</td>
+</tr>
+<tr>
+<td>transactional</td>
+<td style="text-align:center">boolean</td>
+<td>Whether message is transactional or non-transactional for unsubscribe and suppression purposes</td>
+<td>no</td>
+<td>If not specified, the setting at template level is used, or defaults to false.</td>
+</tr>
+<tr>
+<td>sandbox</td>
+<td style="text-align:center">boolean</td>
+<td>Whether or not to use the sandbox sending domain ( <strong>Note:</strong> SparkPost only )</td>
+<td>no</td>
+<td>Defaults to false.</td>
+</tr>
+<tr>
+<td>skip_suppression</td>
+<td style="text-align:center">boolean</td>
+<td>Whether or not to ignore customer suppression rules, for this transmission only.  Only applicable if your configuration supports this parameter. ( <strong>Note:</strong> SparkPost Elite only )</td>
+<td>no - Defaults to false</td>
+<td>Unlike most other options, this flag is omitted on a GET transmission response unless the flag’s value is true.</td>
+</tr>
+<tr>
+<td>ip_pool</td>
+<td style="text-align:center">string</td>
+<td>The name of a dedicated IP pool associated with your account ( <strong>Note:</strong> SparkPost only ).  If this field is not provided, the account’s default dedicated IP pool is used (if such a pool exists).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”.  Please note that this option does not apply to subaccounts.</td>
+<td>no</td>
+<td>For more information on dedicated IPs, see the <a href="https://support.sparkpost.com/customer/en/portal/articles/2002977-dedicated-ip-addresses">Support Center</a></td>
+</tr>
+<tr>
+<td>inline_css</td>
+<td style="text-align:center">boolean</td>
+<td>Whether or not to perform CSS inlining in HTML content</td>
+<td>no - Defaults to false</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-inline-content-attributes">Inline Content Attributes <a class="permalink" href="#header-inline-content-attributes" aria-hidden="true">¶</a></h3>
+<p>The following attributes are used when specifying inline content in the transmission’s “content” JSON object. Note that these attributes should not be present if using a stored template.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td style="text-align:center">string</td>
+<td>HTML content for the email’s text/html MIME part</td>
+<td>At a minimum, html or text is required.</td>
+<td>Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported.</td>
+</tr>
+<tr>
+<td>text</td>
+<td style="text-align:center">string</td>
+<td>Text content for the email’s text/plain MIME part</td>
+<td>At a minimum, html or text is required.</td>
+<td>Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported.</td>
+</tr>
+<tr>
+<td>subject</td>
+<td style="text-align:center">string</td>
+<td>Email subject line</td>
+<td>yes</td>
+<td>Expected in the UTF-8 charset without RFC2047 encoding.  Substitution syntax is supported.</td>
+</tr>
+<tr>
+<td>from</td>
+<td style="text-align:center">string or JSON</td>
+<td>Address <em>“from” : <a href="mailto:%22deals@company.com">&quot;deals@company.com</a>&quot;</em> or JSON object composed of the “name” and “email” fields <em>“from” : { “name” : “My Company”, “email” : <a href="mailto:%22deals@company.com">&quot;deals@company.com</a>&quot; }</em> used to compose the email’s “From” header</td>
+<td>yes</td>
+<td>Substitution syntax is supported.</td>
+</tr>
+<tr>
+<td>reply_to</td>
+<td style="text-align:center">string</td>
+<td>Email address used to compose the email’s “Reply-To” header</td>
+<td>no</td>
+<td>Substitution syntax is supported.</td>
+</tr>
+<tr>
+<td>headers</td>
+<td style="text-align:center">JSON</td>
+<td>JSON dictionary containing headers other than “Subject”, “From”, “To”, and “Reply-To”</td>
+<td>no</td>
+<td>See the Header Notes.</td>
+</tr>
+<tr>
+<td>attachments</td>
+<td style="text-align:center">JSON</td>
+<td>JSON array of attachments.</td>
+<td>no</td>
+<td>For a full description, see Attachment Attributes.</td>
+</tr>
+<tr>
+<td>inline_images</td>
+<td style="text-align:center">JSON</td>
+<td>JSON array of inline images.</td>
+<td>no</td>
+<td>For a full description, see Inline Image Attributes.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="header-header-notes">Header Notes <a class="permalink" href="#header-header-notes" aria-hidden="true">¶</a></h4>
+<ul>
+<li>
+<p>Headers such as “Content-Type” and “Content-Transfer-Encoding” are not allowed here as they are auto generated upon construction of the email.</p>
+</li>
+<li>
+<p>The “To” header should not be specified here, since it is generated from each recipient’s <em><a href="http://address.name">address.name</a></em> and <em>address.email</em>.</p>
+</li>
+<li>
+<p>Each header value is expected in the UTF-8 charset without RFC2047 encoding.</p>
+</li>
+<li>
+<p>Substitution syntax is supported.</p>
+</li>
+</ul>
+<h4 id="header-email_rfc822-notes">email_rfc822 Notes <a class="permalink" href="#header-email_rfc822-notes" aria-hidden="true">¶</a></h4>
+<p>Alternately, the content JSON object may contain a single “email_rfc822” field.  email_rfc822 is mutually exclusive with all of the above fields.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email_rfc822</td>
+<td style="text-align:center">string</td>
+<td>Pre-built message with the format as described by the <a href="http://tools.ietf.org/html/rfc2046#section-5.2.1">message/rfc822 Content-Type</a></td>
+<td>no</td>
+<td>See the email_rfc822 Notes.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Substitutions will be applied in the top-level headers and the first non-attachment text/plain and
+first non-attachment text/html MIME parts only.</p>
+</li>
+<li>
+<p>Lone <code>LF</code>s and lone <code>CR</code>s are allowed. The system will convert line endings to <code>CRLF</code> where
+necessary.</p>
+</li>
+<li>
+<p>The provided email_rfc822 should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.</p>
+</li>
+<li>
+<p>The provided email_rfc822 should NOT contain the SMTP terminator <code>\r\n.\r\n</code>.  The system always adds this terminator.</p>
+</li>
+<li>
+<p>The provided email_rfc822 in MIME format will be rejected if SparkPost and SparkPost Elite cannot parse the contents into a MIME tree.</p>
+</li>
+</ul>
+<h3 id="header-attachment-attributes">Attachment Attributes <a class="permalink" href="#header-attachment-attributes" aria-hidden="true">¶</a></h3>
+<p><strong>Note: we do not allow attachments that have been known to contain malicious content including, but not limited to, bat, doc, docx, exe, xls, xlsx, and zip files.</strong></p>
+<p>Attachments for a transmission are specified in the content.attachments JSON array where each JSON object in the array is described by the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td style="text-align:center">string</td>
+<td>The MIME type of the attachment; e.g., “text/plain”, “image/jpeg”, “audio/mp3”, “video/mp4”, “application/msword”, “application/pdf”, etc., including the “charset” parameter (text/html; charset=“UTF-8”) if needed. The value will apply “as-is” to the “Content-Type” header of the generated MIME part for the attachment.</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td style="text-align:center">string</td>
+<td>The filename of the attachment (for example, “document.pdf”). This is inserted into the filename parameter of the Content-Disposition header.</td>
+<td>yes</td>
+<td>Maximum length - 255 bytes</td>
+</tr>
+<tr>
+<td>data</td>
+<td style="text-align:center">string</td>
+<td>The content of the attachment as a Base64 encoded string.  The string should not contain \r\n line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each.</td>
+<td>yes</td>
+<td>The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-inline-image-attributes">Inline Image Attributes <a class="permalink" href="#header-inline-image-attributes" aria-hidden="true">¶</a></h3>
+<p>Inline images for a transmission are specified in the content.inline_images JSON array where each JSON object in the array is described by the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td style="text-align:center">string</td>
+<td>The MIME type of the image; e.g., “image/jpeg”.  The value will apply “as-is” to the “Content-Type” header of the generated MIME part for the image.</td>
+<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td style="text-align:center">string</td>
+<td>The name of the inline image, which will be inserted into the Content-ID header. The image should be referenced in your HTML content using &lt;img src=“cid:THIS_NAME”&gt;. The name must be unique within the content.inline_images array.</td>
+<td>yes</td>
+<td>Maximum length - 255 bytes</td>
+</tr>
+<tr>
+<td>data</td>
+<td style="text-align:center">string</td>
+<td>The content of the image as a Base64 encoded string.  The string should not contain \r\n line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each.</td>
+<td>yes</td>
+<td>The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-using-a-stored-template">Using a Stored Template <a class="permalink" href="#header-using-a-stored-template" aria-hidden="true">¶</a></h3>
+<p>The following attributes are used when specifying a stored template in the transmission’s “content” JSON object. Note that these attributes should not be present when using inline content.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>template_id</td>
+<td style="text-align:center">string</td>
+<td>ID of the stored template to use</td>
+<td>yes</td>
+<td>Specify this field when using a stored template.  Maximum length – 64 bytes</td>
+</tr>
+<tr>
+<td>use_draft_template</td>
+<td style="text-align:center">boolean</td>
+<td>Whether or not to use a draft template</td>
+<td>no - defaults to false</td>
+<td>If this field is set to true and no draft template exists, the transmission will fail.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-using-a-stored-recipient-list">Using a Stored Recipient List <a class="permalink" href="#header-using-a-stored-recipient-list" aria-hidden="true">¶</a></h3>
+<p>The following recipients attribute is used when specifying a stored recipient list in the transmission. Note that this attribute should not be present when specifying recipients inline.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list_id</td>
+<td style="text-align:center">string</td>
+<td>Identifier of the stored recipient list to use</td>
+<td>yes</td>
+<td>Specify this field when using a stored recipient list.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-scheduled-transmissions">Scheduled Transmissions <a class="permalink" href="#header-scheduled-transmissions" aria-hidden="true">¶</a></h3>
+<p>Use the <em>options.start_time</em> attribute to delay generation of messages.  The scheduled time cannot be greater than 1 year from the time of submission.  If the scheduled time does not pass validation, the transmission is not accepted.  Transmissions with a scheduled time in the past <em>are</em> accepted and undergo immediate generation.</p>
+</div><div class="resource searchable"><h3 id="transmissions-create" class="resource-heading">Create <a href="#transmissions-create" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="transmissions-create-post" class="action-heading"><div class="name">Create a Transmission</div></h4><div class="method">POST<code class="uri">/api/v1/transmissions{?num_rcpt_errors}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>num_rcpt_errors</td><td class="markdown"><p>Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.</p>
+Example:<code>num_rcpt_errors=3</code></td></tr></table></div><div class="markdown"><p>You can create a transmission in a number of ways. In all cases, you can use the <strong>num_rcpt_errors</strong> parameter to limit the number of recipient errors returned.</p>
+<p><strong>Note:</strong> The “return_path” in the POST request body applies to SparkPost Elite only.</p>
+<p><strong>Note:</strong> Sending limits apply to SparkPost only. When a transmission is created in SparkPost, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</p>
+<h4 id="header-using-inline-email-part-content">Using Inline Email Part Content <a class="permalink" href="#header-using-inline-email-part-content" aria-hidden="true">¶</a></h4>
+<p>Create a transmission using inline email part content.</p>
+<h4 id="header-using-inline-rfc822-content">Using Inline RFC822 Content <a class="permalink" href="#header-using-inline-rfc822-content" aria-hidden="true">¶</a></h4>
+<p>Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.</p>
+<h4 id="header-using-a-stored-recipients-list">Using a Stored Recipients List <a class="permalink" href="#header-using-a-stored-recipients-list" aria-hidden="true">¶</a></h4>
+<p>Create a transmission using a stored recipients list by specifying the “list_id” in the “recipients” attribute.</p>
+<h4 id="header-using-a-stored-template-1">Using a Stored Template <a class="permalink" href="#header-using-a-stored-template-1" aria-hidden="true">¶</a></h4>
+<p>Create a transmission using a stored template by specifying the “template_id” in the “content” attribute.  The “use_draft_template” field is optional and indicates whether to use a draft version or the published version of the template when generating messages.</p>
+<h4 id="header-scheduling-transmissions">Scheduling Transmissions <a class="permalink" href="#header-scheduling-transmissions" aria-hidden="true">¶</a></h4>
+<p>Create a scheduled transmission to be generated and sent at a future time by specifying “start_time” in the “options” attribute.</p>
+<p>Scheduling a transmission that specifies a stored template will use the LATEST version of the template available at the time of scheduled generation.  The use of published versus draft versions follows the same logic in all transmission requests, whether scheduled or immediate generation. When “use_draft_template” is not specified (or set to false), the latest published version of the specified stored template is used. If “use_draft_template” is set to true, the latest draft version is used in the transmission instead.</p>
+<p>Once message generation has been initiated, all messages in the transmission will use the template selected at the start of the generation. If a template update is made during the generation of a transmission that uses that template, the template update will succeed but the transmission will continue to use the version that was selected at the start of the generation.</p>
+</div><h3>Example: Create Transmission Using Inline Email Part Content</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
+  "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        <span class="hljs-string">"greeting"</span>,
+        <span class="hljs-string">"prehistoric"</span>,
+        <span class="hljs-string">"fred"</span>,
+        <span class="hljs-string">"flintstone"</span>
+      ]</span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">customer_type</span>": <span class="hljs-value"><span class="hljs-string">"Platinum"</span>
+      </span>}
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Flintstone"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Big Christmas savings!"</span></span>,
+    "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Sales &lt;sales@flintstone.com&gt;"</span></span>,
+    "<span class="hljs-attribute">headers</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">X-Customer-Campaign-ID</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n&lt;/p&gt;&lt;p&gt;Hurry, this offer is only to {{user_type}}\n&lt;/p&gt;&lt;p&gt;{{sender}}&lt;/p&gt;"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Transmission with Inline RFC822 Content</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
+  "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        <span class="hljs-string">"greeting"</span>,
+        <span class="hljs-string">"prehistoric"</span>,
+        <span class="hljs-string">"fred"</span>,
+        <span class="hljs-string">"flintstone"</span>
+      ]</span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Will Smith"</span>
+      </span>}
+    </span>},
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"abc@flintstone.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Fintstone"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        <span class="hljs-string">"greeting"</span>,
+        <span class="hljs-string">"prehistoric"</span>,
+        <span class="hljs-string">"fred"</span>,
+        <span class="hljs-string">"flintstone"</span>
+      ]</span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"MD"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred"</span>
+      </span>}
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">email_rfc822</span>": <span class="hljs-value"><span class="hljs-string">"Content-Type: text/plain\r\nTo: \"{{address.name}}\" &lt;{{address.email}}&gt;\r\n\r\n Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}\r\n"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Transmission with Stored Recipient List</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">list_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_sales_2013"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Flintstone"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Big Christmas savings!"</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n&lt;/p&gt;&lt;p&gt;Hurry, this offer is only to {{user_type}}\n&lt;/p&gt;&lt;p&gt;{{sender}}&lt;/p&gt;"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Transmission with Stored Template</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving_campaign"</span></span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_offer"</span></span>,
+    "<span class="hljs-attribute">use_draft_template</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
+  "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">subkey</span>": <span class="hljs-value"><span class="hljs-string">"subvalue"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        <span class="hljs-string">"greeting"</span>,
+        <span class="hljs-string">"prehistoric"</span>,
+        <span class="hljs-string">"fred"</span>,
+        <span class="hljs-string">"flintstone"</span>
+      ]</span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">subrcptkey</span>": <span class="hljs-value"><span class="hljs-string">"subrcptvalue"</span>
+      </span>}
+    </span>},
+    {
+      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"456@bounces.flintstone.com"</span></span>,
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"abc@flintstone.com"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
+        <span class="hljs-string">"greeting"</span>,
+        <span class="hljs-string">"prehistoric"</span>,
+        <span class="hljs-string">"fred"</span>,
+        <span class="hljs-string">"flintstone"</span>
+      ]</span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"MD"</span>
+      </span>}
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"transmission created, but with validation errors"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"2000"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">rcpt_to_errors</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"required field is missing"</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"address.email is required for each recipient"</span></span>,
+        "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1400"</span>
+      </span>}
+    ]</span>,
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950530"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Number of Messages Exceeds Sending Limit</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">list_id</span>": <span class="hljs-value"><span class="hljs-string">"list_exceeds_sending_limit"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Flintstone"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Big Christmas savings!"</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n&lt;/p&gt;&lt;p&gt;Hurry, this offer is only to {{user_type}}\n&lt;/p&gt;&lt;p&gt;{{sender}}&lt;/p&gt;"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 420)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Exceed Sending Limit (hourly)"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"2101"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr><h3>Example: Create Scheduled Transmission</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fall Sale"</span></span>,
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"fall"</span></span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"deals@company.com"</span></span>,
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-11T08:00:00-04:00"</span></span>,
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">list_id</span>": <span class="hljs-value"><span class="hljs-string">"all_subscribers"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"fall_deals"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Transmission with attachments</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"attachment_example"</span></span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"billing@company.example"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Example Company"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Billing statement"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;b&gt;Please see your attached billing statement&lt;/b&gt;"</span></span>,
+    "<span class="hljs-attribute">attachments</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"application/pdf"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"billing.pdf"</span></span>,
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-string">"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"</span>
+      </span>},
+      {
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"text/plain; charset=UTF-8"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"explanation.txt"</span></span>,
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-string">"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"</span>
+      </span>}
+    ]
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Transmission with inline images</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"inline_image_example"</span></span>,
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span>
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"marketing@company.example"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Example Company"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Inline image example"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;html&gt;&lt;body&gt;Here is your inline image!&lt;br&gt; &lt;img src=\"cid:my_image.jpeg\"&gt;&lt;/body&gt;&lt;/html&gt;"</span></span>,
+    "<span class="hljs-attribute">inline_images</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"image/jpeg"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"my_image.jpeg"</span></span>,
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-string">"VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"</span>
+      </span>}
+    ]
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="transmissions-retrieve-and-delete" class="resource-heading">Retrieve and Delete <a href="#transmissions-retrieve-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="transmissions-retrieve-and-delete-get" class="action-heading"><div class="name">Retrieve a Transmission</div></h4><div class="method">GET<code class="uri">/api/v1/transmissions/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the transmission</p>
+Example:<code>id=11714265276872</code></td></tr></table></div><div class="markdown"><p>Retrieve the details about a transmission by specifying its ID in the URI path.</p>
+<p>The response for a transmission using an inline template will include “template_id”:“inline”.  Inline templates cannot be specifically queried.</p>
+<p><strong>Note:</strong> The “return_path” is returned in the response for SparkPost Elite only.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/transmissions/<span class="hljs-attribute" title="id">11714265276872</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">transmission</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11750520427380741"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"Success"</span></span>,
+      "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"white_christmas"</span></span>,
+      "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"Bob's template"</span></span>,
+        "<span class="hljs-attribute">use_draft_template</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span></span>,
+      "<span class="hljs-attribute">rcpt_list_chunk_size</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+      "<span class="hljs-attribute">rcpt_list_total_chunks</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+      "<span class="hljs-attribute">num_rcpts</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">num_generated</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+      "<span class="hljs-attribute">num_failed_gen</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+      "<span class="hljs-attribute">generation_start_time</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-22T15:12:59+00:00"</span></span>,
+      "<span class="hljs-attribute">generation_end_time</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-22T15:13:00+00:00"</span></span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">key1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+      </span>}
+    </span>}
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="transmissions-retrieve-and-delete-delete" class="action-heading"><div class="name">Delete a Transmission</div></h4><div class="method">DELETE<code class="uri">/api/v1/transmissions/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the transmission</p>
+Example:<code>id=11714265276872</code></td></tr></table></div><div class="markdown"><p>Delete a transmission by specifying its ID in the URI path.</p>
+<p>Only transmissions which are scheduled for future generation may be deleted.</p>
+<p>Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/transmissions/<span class="hljs-attribute" title="id">11714265276872</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="transmissions-list" class="resource-heading">List <a href="#transmissions-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="transmissions-list-get" class="action-heading"><div class="name">List all Transmissions</div></h4><div class="method">GET<code class="uri">/api/v1/transmissions{?campaign_id,template_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>campaign_id</td><td class="markdown"><p>ID of the campaign used by the transmissions</p>
+Example:<code>campaign_id=thanksgiving</code></td></tr><tr><td>template_id</td><td class="markdown"><p>ID of the template used by the transmissions</p>
+Example:<code>template_id=thanksgiving_template</code></td></tr></table></div><div class="markdown"><p>List an array of transmission summary objects.  A transmission summary object contains the “template_id”, “id”, “campaign_id”, “description”, and “state”.  The following lists are supported:</p>
+<ul>
+<li>
+<p>All multi-recipient transmissions</p>
+</li>
+<li>
+<p>Multi-recipient transmissions using a specific template</p>
+</li>
+<li>
+<p>Multi-recipient transmissions for a campaign</p>
+</li>
+<li>
+<p>Multi-recipient transmissions for a campaign that use a specific template</p>
+</li>
+</ul>
+<p>Note that single recipient transmissions are not returned.</p>
+<p>By default, the list includes all transmissions for all campaigns.  Use the <strong>template_id</strong> parameter to specify a template and the <strong>campaign_id</strong> parameter to specify a campaign.</p>
+<p>The response for transmissions using an inline template will include “template_id”:“inline”.  Inline templates cannot be specifically queried.</p>
+<p>The example response shows a query on <em>campaign_id=thanksgiving</em>, with <strong>template_id</strong> not specified as part of the query.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/transmissions?<span class="hljs-attribute">campaign_id=</span><span class="hljs-literal">thanksgiving</span>&<span class="hljs-attribute">template_id=</span><span class="hljs-literal">thanksgiving_template</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"winter_sale"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11713562166689858"</span></span>,
+      "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"submitted"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"inline"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11713562166689979"</span></span>,
+      "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"submitted"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving_template"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11713048079237202"</span></span>,
+      "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"submitted"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>

@@ -1,22 +1,22 @@
 <header class="site-header">
   <nav id="nav" class="sp-menu navbar navbar-default">
     <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
-    <div class="container">
+    <div id="navbar-container" class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="{{ "/images/logo-sparkpost-white.png" | prepend: include.base }}" alt="SparkPost" width="150"></a>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="{{ "/images/logo-sparkpost-white.png" | prepend: site.baseurl }}" alt="SparkPost" width="150"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/">Developer Hub</a></li>
-          <li><a href="{{ "/api/" | prepend: include.base }}">API Docs</a></li>
+          <li><a href="{{ "/" | prepend: site.baseurl }}">Developer Hub</a></li>
+          <li><a href="{{ "/api/" | prepend: site.baseurl }}">API Docs</a></li>
           <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
-          <li><a href="{{ "/videos/" | prepend: include.base }}">Videos</a></li>
+          <li><a href="{{ "/videos/" | prepend: site.baseurl }}">Videos</a></li>
           <li><a href="https://support.sparkpost.com">Support</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

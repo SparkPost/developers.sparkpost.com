@@ -25,6 +25,8 @@ collections:
     output: true
   faqs:
     output: true
+  api:
+    output: true
 
 defaults:
   - scope:

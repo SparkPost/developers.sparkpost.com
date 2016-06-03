@@ -1,7 +1,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ "/bower_components/jquery/dist/jquery.min.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/jquery/dist/jquery.min.js" | prepend: site.baseurl }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ "/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js" | prepend: include.base }}"></script>
+<script src="{{ "/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 <!-- Twitter Tweet Button -->
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <!-- Facebook Share Button -->
@@ -13,5 +13,6 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <!-- dev hub custom js -->
-<script src="/js/hub.js"></script>
-<script src="/js/charity.js"></script>
+<script src="{{ "/js/hub.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/charity.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/redirect.js" | prepend: site.baseurl }}"></script>
