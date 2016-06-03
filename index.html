@@ -117,7 +117,6 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
               <li role="presentation"><a href="#pythonExample" data-toggle="pill" data-mp-language="Python"><i class="devicon devicon-python-plain"></i> Python</a></li>
               <li role="presentation"><a href="#phpExample" data-toggle="pill" data-mp-language="PHP"><i class="devicon devicon-php-plain"></i> PHP</a></li>
               <li role="presentation"><a href="#javaExample" data-toggle="pill" data-mp-language="Java"><i class="devicon devicon-java-plain"></i> Java</a></li>
-              <li role="presentation"><a href="#csharpExample" data-toggle="pill" data-mp-language="CSharp"><i class="devicon devicon-csharp-plain"></i> C#</a></li>
               <li role="presentation"><a href="#goExample" data-toggle="pill" data-mp-language="Go"><i class="devicon devicon-go-plain"></i> Go</a></li>
               <li role="presentation"><a href="#elixirExample" data-toggle="pill" data-mp-language="Elixir"><i class="devicon devicon-elixir-plain"></i> Elixir</a></li>
             </ul>
@@ -205,25 +204,6 @@ $results = $sparky-&gt;transmission-&gt;send([
     <span class="o">}</span>
 <span class="o">}</span></code></pre></figure>
               </div>
-              <div class="tab-pane" id="csharpExample">
-                  <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/csharp-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">SparkPost</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">transmission</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Transmission</span><span class="p">();</span>
-<span class="n">transmission</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">From</span><span class="p">.</span><span class="n">Email</span> <span class="p">=</span> <span class="s">"testing@sparkpostbox.com"</span><span class="p">;</span>
-<span class="n">transmission</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Subject</span> <span class="p">=</span> <span class="s">"Oh hey!"</span><span class="p">;</span>
-<span class="n">transmission</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">"Testing SparkPost - the world\'s most awesomest email service!"</span><span class="p">;</span>
-<span class="n">transmission</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">Html</span> <span class="p">=</span> <span class="s">"&lt;html&gt;&lt;body&gt;&lt;p&gt;Testing SparkPost - the world\'s most awesomest email service!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"</span><span class="p">;</span>
-
-<span class="n">var</span> <span class="n">recipient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Recipient</span>
-<span class="p">{</span>
-    <span class="n">Address</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Address</span> <span class="p">{</span> <span class="n">Email</span> <span class="p">=</span> <span class="s">"developers+csharp@sparkpost.com"</span> <span class="p">}</span>
-<span class="p">};</span>
-<span class="n">transmission</span><span class="p">.</span><span class="n">Recipients</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">recipient</span><span class="p">);</span>
-
-<span class="n">var</span> <span class="n">sparky</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Client</span><span class="p">(</span><span class="s">"&lt;YOUR API KEY&gt;"</span><span class="p">);</span>
-<span class="n">sparky</span><span class="p">.</span><span class="n">Transmissions</span><span class="p">.</span><span class="nf">Send</span><span class="p">(</span><span class="n">transmission</span><span class="p">);</span></code></pre></figure>
-              </div>
               <div class="tab-pane" id="goExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 <figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
@@ -299,8 +279,6 @@ $results = $sparky-&gt;transmission-&gt;send([
             <li><a href="https://www.github.com/SparkPost/php-sparkpost" data-mp-library="php-sparkpost">php-sparkpost</a> - PHP library</li>
             
             <li><a href="https://www.github.com/SparkPost/go-sparkpost" data-mp-library="go-sparkpost">go-sparkpost</a> - Go library</li>
-            
-            <li><a href="https://www.github.com/SparkPost/csharp-sparkpost" data-mp-library="csharp-sparkpost">csharp-sparkpost</a> - C# library</li>
             
             <li><a href="https://www.github.com/SparkPost/elixir-sparkpost" data-mp-library="elixir-sparkpost">elixir-sparkpost</a> - Elixir library</li>
             
