@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/images/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>API Reference - SparkPost Developer Hub</title>
+    <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:site_name" content="SparkPost Developer Hub">
+    <meta property="og:url" content="https://developers.sparkpost.com/api/substitutions-reference.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="API Reference">
+    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
+    <meta property="rwc_base_url" content="https://relay-webhook-consumer.herokuapp.com">
+
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bower_components/devicon/devicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="https://developers.sparkpost.com/api/substitutions-reference.html">
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
+</head>
+
+
+  <body class="page-api-reference">
+    
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN7C84');</script>
+    <!-- End Google Tag Manager -->
+    
+    <div id="fb-root"></div>
+
+    <header class="site-header">
+  <nav id="nav" class="sp-menu navbar navbar-default">
+    <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
+    <div id="navbar-container" class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Developer Hub</a></li>
+          <li><a href="/api/">API Docs</a></li>
+          <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
+          <li><a href="/videos/">Videos</a></li>
+          <li><a href="https://support.sparkpost.com">Support</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://app.sparkpost.com/">Log In</a></li>
+          <li><a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Sign Up</a></li>
+        <ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+</header>
+
+
+    <div id="apipage" class="container-fluid"><div class="row"><div id="menublock"><nav id="apimenu"><div class="resource-group"><div class="heading"><a href="index" class="text-uppercase">Overview</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="index#header-api-endpoints">API Endpoints</a></li><li><a href="index#header-sparkpost-api-endpoint">SparkPost API Endpoint</a></li><li><a href="index#header-sparkpost-elite-api-endpoint">SparkPost Elite API Endpoint</a></li><li><a href="index#header-api-conventions">API Conventions</a></li><li><a href="index#header-authentication">Authentication</a></li><li><a href="index#header-using-postman">Using Postman</a></li><li><a href="index#header-using-curl">Using cURL</a></li><li><a href="index#header-subaccounts">Subaccounts</a></li><li><a href="index#header-terminology">Terminology</a></li><li><a href="index#header-managing-subaccount-data-as-a-service-provider">Managing subaccount data as a Service Provider</a></li><li><a href="index#header-managing-master-account-data-as-a-service-provider">Managing master account data as a Service Provider</a></li><li><a href="index#header-smtp-relay-endpoints">SMTP Relay Endpoints</a></li><li><a href="index#header-sparkpost-smtp-endpoint">SparkPost SMTP Endpoint</a></li><li><a href="index#header-sparkpost-elite-smtp-endpoint">SparkPost Elite SMTP Endpoint</a></li></ul></div></div><div class="resource-group"><div class="heading current"><a href="substitutions-reference" class="text-uppercase">Substitutions Reference</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="substitutions-reference#header-key-features">Key Features</a></li><li><a href="substitutions-reference#header-substitution-data">Substitution Data</a></li><li><a href="substitutions-reference#header-template-start-and-end-markers">Template Start and End Markers</a></li><li><a href="substitutions-reference#header-determination-of-expressions-and-statements">Determination of Expressions and Statements</a></li><li><a href="substitutions-reference#header-missing-substitution-values">Missing Substitution Values</a></li><li><a href="substitutions-reference#header-statements-on-their-own-line">Statements on Their Own Line</a></li><li><a href="substitutions-reference#header-escaping-start-and-end-tags">Escaping Start and End Tags</a></li><li><a href="substitutions-reference#header-escaping-html-values">Escaping HTML Values</a></li><li><a href="substitutions-reference#header-preventing-html-escaping">Preventing HTML Escaping</a></li><li><a href="substitutions-reference#header-personalized-links">Personalized Links</a></li><li><a href="substitutions-reference#header-link-names">Link Names</a></li><li><a href="substitutions-reference#header-unsubscribe-links">Unsubscribe Links</a></li><li><a href="substitutions-reference#header-per-link-disabling-of-click-tracking">Per-link Disabling of Click Tracking</a></li><li><a href="substitutions-reference#header-custom-link-sub-paths">Custom Link Sub-Paths</a></li><li><a href="substitutions-reference#header-link-attributes-in-text-parts">Link Attributes in Text Parts</a></li><li><a href="substitutions-reference#header-substitutions-syntax-examples">Substitutions Syntax Examples</a></li><li><a href="substitutions-reference#header-basic-substitution">Basic Substitution</a></li><li><a href="substitutions-reference#header-referencing-a-nested-object">Referencing a Nested Object</a></li><li><a href="substitutions-reference#header-if-then-else-syntax">if then else Syntax</a></li><li><a href="substitutions-reference#header-if-not-syntax">if not Syntax</a></li><li><a href="substitutions-reference#header-elseif-syntax">elseif Syntax</a></li><li><a href="substitutions-reference#header-expressions-in-conditionals-(,-,-,-,-,-)">Expressions in Conditionals (, , , , , )</a></li><li><a href="substitutions-reference#header-relational-and-logical-operators">Relational and Logical Operators</a></li><li><a href="substitutions-reference#header-array-iteration">Array Iteration</a></li><li><a href="substitutions-reference#header-links-and-substitution-expressions-within-substitution-values">Links and Substitution Expressions Within Substitution Values</a></li><li><a href="substitutions-reference#header-default-values">Default Values</a></li><li><a href="substitutions-reference#header-macros">Macros</a></li><li><a href="substitutions-reference#header-reserved-recipient-substitution-variables">Reserved Recipient Substitution Variables</a></li><li><a href="substitutions-reference#header-substitutions-in-email_rfc822-headers">Substitutions in email_rfc822 Headers</a></li><li><a href="substitutions-reference#header-encoding-rules">Encoding Rules</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="account" class="text-uppercase">Account</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="account#header-using-postman">Using Postman</a></li><li><a href="account#account-account-get">Get your account information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="inbound-domains" class="text-uppercase">Inbound Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="inbound-domains#header-inbound-domains-attributes">Inbound Domains Attributes</a></li><li><a href="inbound-domains#header-using-postman">Using Postman</a></li><li><a href="inbound-domains#inbound-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-create-and-list-post">Create an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-create-and-list-get">List all Inbound Domains</a></li></ul></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-get">Retrieve an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-delete">Delete an Inbound Domain</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="metrics" class="text-uppercase">Metrics</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="metrics#header-data-retention">Data retention</a></li><li><a href="metrics#header-using-postman">Using Postman</a></li><li><a href="metrics#header-metrics-api-deliverability-glossary">Metrics API Deliverability Glossary</a></li><li><a href="metrics#metrics-discoverability-links-get">Metrics Discoverability Links</a></li><li><a href="metrics#metrics-deliverability-metrics-get">Deliverability Metrics Summary</a></li><li><a href="metrics#metrics-deliverability-metrics-by-domain-get">Deliverability Metrics by Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-get">Deliverability Metrics by Binding</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-group-get">Deliverability Metrics by Binding Group</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-ip-get">Deliverability Metrics by Sending IP</a></li><li><a href="metrics#metrics-deliverability-metrics-by-ip-pool-get">Deliverability Metrics by IP Pool</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-domain-get">Deliverability Metrics by Sending Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-subaccount-get">Deliverability Metrics by Subaccount</a></li><li><a href="metrics#metrics-deliverability-metrics-by-campaign-get">Deliverability Metrics by Campaign</a></li><li><a href="metrics#metrics-deliverability-metrics-by-template-get">Deliverability Metrics by Template</a></li><li><a href="metrics#metrics-deliverability-metrics-by-watched-domain-get">Deliverability Metrics by Watched Domain</a></li><li><a href="metrics#metrics-time-series-get">Time-Series Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-get">Bounce Reason Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-by-domain-get">Bounce Reason Metrics By Domain</a></li><li><a href="metrics#metrics-bounce-classifications-get">Bounce Classification Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-get">Rejection Reason Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-by-domain-get">Rejection Reason Metrics By Domain</a></li><li><a href="metrics#metrics-delay-reasons-get">Delay Reason Metrics</a></li><li><a href="metrics#metrics-delay-reasons-by-domain-get">Delay Reason Metrics By Domain</a></li><li><a href="metrics#metrics-engagement-details-get">Engagement Details</a></li><li><a href="metrics#metrics-deliveries-by-attempt-get">Deliveries By Attempt</a></li><li><a href="metrics#metrics-binding-groups-list-get">Bindings Groups List</a></li><li><a href="metrics#metrics-binding-groups-list-get-1">Bindings List</a></li><li><a href="metrics#metrics-ip-pools-list-get">IP Pools List</a></li><li><a href="metrics#metrics-sending-ips-list-get">Sending IPs List</a></li><li><a href="metrics#metrics-campaigns-list-get">Campaigns List</a></li><li><a href="metrics#metrics-domains-list-get">Domains List</a></li><li><a href="metrics#metrics-nodes-list-get">Nodes List</a></li><li><a href="metrics#metrics-protocols-list-get">Protocols List</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="message-events" class="text-uppercase">Message Events</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="message-events#header-data-retention">Data retention</a></li><li><a href="message-events#header-using-postman">Using Postman</a></li><li><a href="message-events#header-copyrights">Copyrights</a></li><li><a href="message-events#message-events-events-documentation-get">Documentation</a></li><li><a href="message-events#message-events-events-samples-get">Samples</a></li><li><a href="message-events#message-events-message-events-get">Search for Message Events</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="relay-webhooks" class="text-uppercase">Relay Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="relay-webhooks#header-using-postman">Using Postman</a></li><li><a href="relay-webhooks#header-relay-webhooks-object-properties">Relay Webhooks Object Properties</a></li><li><a href="relay-webhooks#header-match-object-properties">Match Object Properties</a></li><li><a href="relay-webhooks#header-field-definitions">Field Definitions</a></li><li><a href="relay-webhooks#header-content-attributes">Content Attributes</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-create-and-list-post">Create a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list-get">List all Relay Webhooks</a></li></ul></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-get">Retrieve a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-put">Update a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-delete">Delete a Relay Webhook</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="sending-domains" class="text-uppercase">Sending Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="sending-domains#header-using-postman">Using Postman</a></li><li><a href="sending-domains#header-sending-domain-attributes">Sending Domain Attributes</a></li><li><a href="sending-domains#header-dkim-attributes">DKIM Attributes</a></li><li><a href="sending-domains#header-status-attributes">Status Attributes</a></li><li><a href="sending-domains#header-verify-attributes">Verify Attributes</a></li><li><a href="sending-domains#header-dns-attributes">DNS Attributes</a></li><li><a href="sending-domains#sending-domains-create">Create</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-create-post">Create a Sending Domain</a></li><li><a href="sending-domains#sending-domains-create-get">List all Sending Domains</a></li></ul></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-get">Retrieve a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-put">Update a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-delete">Delete a Sending Domain</a></li></ul></li><li><a href="sending-domains#sending-domains-verify-post">Verify a Sending Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="subaccounts" class="text-uppercase">Subaccounts</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection">Subaccounts Collection</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection-get">List subaccounts</a></li><li><a href="subaccounts#subaccounts-subaccounts-collection-post">Create new subaccount</a></li></ul></li><li><a href="subaccounts#subaccounts-subaccounts-entity">Subaccounts Entity</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-entity-get">List specific subaccount</a></li><li><a href="subaccounts#subaccounts-subaccounts-entity-put">Edit a subaccount</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="suppression-list" class="text-uppercase">Suppression List</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="suppression-list#header-using-postman">Using Postman</a></li><li><a href="suppression-list#header-list-entry-attributes">List Entry Attributes</a></li><li><a href="suppression-list#suppression-list-bulk-insert-update-put">Insert or Update List Entries</a></li><li><a href="suppression-list#suppression-list-search-get">Search for List Entries</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete">Retrieve, Delete</a><ul class="list-unstyled"><li><a href="suppression-list#suppression-list-retrieve,-delete-get">Retrieve a Recipient Suppression Status</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-delete">Delete a List Entry</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-put">Insert or Update a List Entry</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="templates" class="text-uppercase">Templates</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="templates#header-using-postman">Using Postman</a></li><li><a href="templates#header-template-attributes">Template Attributes</a></li><li><a href="templates#header-content-attributes">Content Attributes</a></li><li><a href="templates#header-header-notes">Header Notes</a></li><li><a href="templates#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="templates#header-options-attributes">Options Attributes</a></li><li><a href="templates#header-error-attributes">Error Attributes</a></li><li><a href="templates#templates-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="templates#templates-create-and-list-post">Create a Template</a></li><li><a href="templates#templates-create-and-list-get">List all Templates</a></li></ul></li><li><a href="templates#templates-retrieve-get">Retrieve a Template</a></li><li><a href="templates#templates-update-put">Update a Template</a></li><li><a href="templates#templates-preview-post">Preview a Template</a></li><li><a href="templates#templates-delete-delete">Delete a Template</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="tracking-domains" class="text-uppercase">Tracking Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="tracking-domains#header-using-postman">Using Postman</a></li><li><a href="tracking-domains#header-tracking-domains-attributes">Tracking Domains Attributes</a></li><li><a href="tracking-domains#header-port-secure-attributes">Port/Secure Attributes</a></li><li><a href="tracking-domains#header-status-attributes">Status Attributes</a></li><li><a href="tracking-domains#tracking-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-create-and-list-post">Create a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-create-and-list-get">List all Tracking Domains</a></li></ul></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-get">Retrieve a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-put">Update a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-delete">Delete a Tracking Domain</a></li></ul></li><li><a href="tracking-domains#tracking-domains-verify-post">Verify a Tracking Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="transmissions" class="text-uppercase">Transmissions</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="transmissions#header-using-postman">Using Postman</a></li><li><a href="transmissions#header-transmission-attributes">Transmission Attributes</a></li><li><a href="transmissions#header-options-attributes">Options Attributes</a></li><li><a href="transmissions#header-inline-content-attributes">Inline Content Attributes</a></li><li><a href="transmissions#header-header-notes">Header Notes</a></li><li><a href="transmissions#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="transmissions#header-attachment-attributes">Attachment Attributes</a></li><li><a href="transmissions#header-inline-image-attributes">Inline Image Attributes</a></li><li><a href="transmissions#header-using-a-stored-template">Using a Stored Template</a></li><li><a href="transmissions#header-using-a-stored-recipient-list">Using a Stored Recipient List</a></li><li><a href="transmissions#header-scheduled-transmissions">Scheduled Transmissions</a></li><li><a href="transmissions#transmissions-create-post">Create a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="transmissions#transmissions-retrieve-and-delete-get">Retrieve a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete-delete">Delete a Transmission</a></li></ul></li><li><a href="transmissions#transmissions-list-get">List all Transmissions</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="webhooks" class="text-uppercase">Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="webhooks#header-using-postman">Using Postman</a></li><li><a href="webhooks#header-webhooks-object-properties">Webhooks Object Properties</a></li><li><a href="webhooks#webhooks-events-documentation-get">Documentation</a></li><li><a href="webhooks#webhooks-events-samples-get">Samples</a></li><li><a href="webhooks#webhooks-create-post">Create a Webhook</a></li><li><a href="webhooks#webhooks-retrieve-get">Retrieve Webhook Details</a></li><li><a href="webhooks#webhooks-list-get">List all Webhooks</a></li><li><a href="webhooks#webhooks-update-and-delete">Update and Delete</a><ul class="list-unstyled"><li><a href="webhooks#webhooks-update-and-delete-put">Update a Webhook</a></li><li><a href="webhooks#webhooks-update-and-delete-delete">Delete a Webhook</a></li></ul></li><li><a href="webhooks#webhooks-validate-post">Validate a Webhook</a></li><li><a href="webhooks#webhooks-batch-status-get">Retrieve Status Information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="smtp-api" class="text-uppercase">SMTP API</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="smtp-api#header-options-attributes">Options Attributes</a></li><li><a href="smtp-api#header-sending-messages-with-cc,-bcc,-and-archive-recipients">Sending Messages with cc, bcc, and archive Recipients</a></li><li><a href="smtp-api#header-comments-on-header-length">Comments on Header Length</a></li></ul></div></div></nav></div><div id="contentblock">
+
+<header><h1 id="top">Substitutions Reference</h1></header><div class="markdown"><p><a name="substitutions-reference"></a></p>
+<h3 id="header-key-features">Key Features <a class="permalink" href="#header-key-features" aria-hidden="true">¶</a></h3>
+<ul>
+<li>
+<p>Substitutions applied in top-level headers, text/plain, and text/html parts of REST API injected messages (SMTP message substitutions currently not supported)</p>
+</li>
+<li>
+<p>Key/value substitutions using substitution data provided in an arbitrary JSON object format</p>
+</li>
+<li>
+<p>Conditional statements such as if, then, else, elseif</p>
+</li>
+<li>
+<p>Looping over JSON arrays using each</p>
+</li>
+<li>
+<p>Execution of built-in macros</p>
+</li>
+<li>
+<p>Support for default values provided as a backup for substitution data that does not exist</p>
+</li>
+<li>
+<p>Automatic HTML escaping of substitution values appearing in HTML parts of content</p>
+</li>
+<li>
+<p>Automatic encoding of UTF-8 substitution values appearing in email headers</p>
+</li>
+</ul>
+<h3 id="header-substitution-data">Substitution Data <a class="permalink" href="#header-substitution-data" aria-hidden="true">¶</a></h3>
+<p>Substitutions are applied per recipient using substitution data provided as part of
+the transmission and recipient JSON structures.  In the simplest case, substitution data is a JSON
+object of key/value pairs of recipient-specific data.  In a more complex case,
+the substitution data can consist of nested JSON objects and even arrays of objects.
+This allows the template writer to write statements that loop over an array of JSON objects
+and substitute values that exist in each object in the array, for example, an array of customer orders.</p>
+<p>The following is a simple example of JSON substitution data:</p>
+<pre><code>{
+  "<span class="hljs-attribute">name</span>" : <span class="hljs-value"><span class="hljs-string">"Clark"</span></span>,
+  "<span class="hljs-attribute">age</span>" : <span class="hljs-value"><span class="hljs-number">40</span></span>,
+  "<span class="hljs-attribute">state</span>" : <span class="hljs-value"><span class="hljs-string">"MD"</span></span>,
+  "<span class="hljs-attribute">is_member</span>" : <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</code></pre>
+<p>See the examples in the following sections for more complex substitution data structures.</p>
+<p><strong>UTF-8 support</strong>: UTF-8 substitution <em>values</em> are supported, but UTF-8 substitution <em>keys</em> are not supported.</p>
+<p>Substitution keys can be composed of any string of US-ASCII letters,
+digits, and underscores, not beginning
+with a digit, with the exception of the following keywords:</p>
+<ul>
+<li>
+<p>and, break, do, else, elseif</p>
+</li>
+<li>
+<p>end, false, for, function, if</p>
+</li>
+<li>
+<p>in, local, nil ,not, or ,each</p>
+</li>
+<li>
+<p>repeat, return, then, true, until, while</p>
+</li>
+</ul>
+<p><strong>Metadata</strong>: Transmissions and recipients also support a “metadata” JSON object.
+Metadata can be used in substitutions in the same way as substitution data.</p>
+<h3 id="header-template-start-and-end-markers">Template Start and End Markers <a class="permalink" href="#header-template-start-and-end-markers" aria-hidden="true">¶</a></h3>
+<p>As with some other templating languages, the start and end markers are defined as double curly braces.  For example:</p>
+<pre><code><span class="hljs-expansion">{{value}}</span></code></pre>
+<p>Whitespace within the braces is ignored.  All of the following are equivalent:</p>
+<pre><code><span class="hljs-expansion">{{ value }}</span>
+<span class="hljs-expansion">{{value}}</span>
+<span class="hljs-expansion">{{  value   }}</span></code></pre>
+<p>However, no spaces are allowed when substitution data is used in a query string.
+In the following example, no whitespace is allowed within the braces:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://company.com/dailydeals?user=</span></span></span><span class="hljs-expression">{{<span class="hljs-variable">user</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">&amp;offercode=</span></span></span><span class="hljs-expression">{{<span class="hljs-variable">offercode</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span>&gt;</span>
+Check out the amazing offers for today ONLY!
+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</span></code></pre>
+<p>In all cases, the two braces must be adjacent, and there can be no space between them.
+The following will not be interpreted as a template:</p>
+<pre><code><span class="hljs-collection">{ <span class="hljs-collection">{ value }</span> }</span></code></pre>
+<h3 id="header-determination-of-expressions-and-statements">Determination of Expressions and Statements <a class="permalink" href="#header-determination-of-expressions-and-statements" aria-hidden="true">¶</a></h3>
+<p>When compiling a template, the substitution engine looks at the text between each pair of curly braces
+and determines whether it should be treated as an expression or a statement.  The
+difference being, expressions return a value, and statements do not return a value.
+However, there is no need to use a different syntax when writing an expression
+(as is done in some templating languages).</p>
+<p>Expressions return values that are inserted into the template content.  The following are examples:</p>
+<pre><code><span class="hljs-expansion">{{ name }}</span>
+<span class="hljs-expansion">{{ age }}</span>
+<span class="hljs-expansion">{{ airports[code].city }}</span>
+<span class="hljs-expansion">{{ name or <span class="hljs-string">'Customer'</span> }}</span></code></pre>
+<p>Statements do not return a value but implement logic using keywords such as if, else, not, end,
+each.  The following are examples:</p>
+<pre><code><span class="hljs-expansion">{{ <span class="hljs-keyword">if</span> name == <span class="hljs-string">"Clark"</span> }}</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">if</span> empty(myarray) }}</span>
+<span class="hljs-expansion">{{ each orders }}</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">end</span> }}</span></code></pre>
+<h3 id="header-missing-substitution-values">Missing Substitution Values <a class="permalink" href="#header-missing-substitution-values" aria-hidden="true">¶</a></h3>
+<p>An empty string is substituted for keys that do not appear in the substitution
+data or are present in the substitution data but have a value of JSON null.</p>
+<p>When <code>name</code> does not exist, the following example will render as <strong>Hello []</strong>.</p>
+<pre><code><span class="hljs-constant">Hello</span> [<span class="hljs-expansion">{{ name }}</span>]</code></pre>
+<p>When <code>name</code> is null, the following expression resolves to <strong>You don’t have a name!</strong>:</p>
+<pre><code><span class="hljs-expansion">{{ <span class="hljs-keyword">if</span> name }}</span>
+<span class="hljs-constant">Your</span> name is <span class="hljs-expansion">{{name}}</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">else</span> }}</span>
+<span class="hljs-constant">You</span> don<span class="hljs-string">'t have a name!
+{{ end }}
+</span></code></pre>
+<p>When the orders array is null, nothing is rendered in the following example:</p>
+<pre><code><span class="hljs-expansion">{{ each orders }}</span>
+<span class="hljs-constant">Price</span> is <span class="hljs-expansion">{{loop_var}}</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">end</span> }}</span></code></pre>
+<h3 id="header-statements-on-their-own-line">Statements on Their Own Line <a class="permalink" href="#header-statements-on-their-own-line" aria-hidden="true">¶</a></h3>
+<p>Substitution statements that exist on their own line of the template will <strong>not</strong>
+produce a blank line in the resulting output.  This is a convenience to the
+template writer.  In addition, any whitespace after the closing <strong>}}</strong> and before
+the <code>LF</code> or <code>CRLF</code> will <strong>not</strong> be present in the output.</p>
+<p>These rules do not apply to substitution expressions.</p>
+<p>In the following example, the template will render without blank lines:</p>
+<pre><code><span class="hljs-constant">Start</span> <span class="hljs-keyword">of</span> template
+<span class="hljs-expansion">{{ <span class="hljs-keyword">if</span> state == <span class="hljs-string">"MD"</span> }}</span>
+<span class="hljs-constant">Maryland</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">end</span> }}</span>
+<span class="hljs-constant">End</span> <span class="hljs-keyword">of</span> template</code></pre>
+<p>Yielding the output:</p>
+<pre><code><span class="hljs-operator"><span class="hljs-keyword">Start</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">template</span>
+Maryland
+<span class="hljs-keyword">End</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">template</span>
+</span></code></pre>
+<h3 id="header-escaping-start-and-end-tags">Escaping Start and End Tags <a class="permalink" href="#header-escaping-start-and-end-tags" aria-hidden="true">¶</a></h3>
+<p>If you want a pair of opening or closing braces to appear in the content,
+you must escape them.  Use one of the following macros:</p>
+<ul>
+<li>
+<p><code>opening_double_curly()</code></p>
+</li>
+<li>
+<p><code>closing_double_curly()</code></p>
+</li>
+<li>
+<p><code>opening_triple_curly()</code></p>
+</li>
+<li>
+<p><code>closing_triple_curly()</code></p>
+</li>
+</ul>
+<p>For example:</p>
+<pre><code><span class="hljs-constant">Here</span> is a <span class="hljs-symbol">curly:</span> <span class="hljs-expansion">{{ opening_double_curly() }}</span></code></pre>
+<p>will yield:</p>
+<pre><code>Here <span class="hljs-keyword">is</span> a curly: {{</code></pre>
+<h3 id="header-escaping-html-values">Escaping HTML Values <a class="permalink" href="#header-escaping-html-values" aria-hidden="true">¶</a></h3>
+<p>The substitution engine automatically HTML escapes substitution values before they are
+inserted into the HTML part of the content.  Substitution values inserted into
+plain text portions of content are not HTML escaped.  In order to prevent
+HTML escaping, use triple curly braces.</p>
+<h3 id="header-preventing-html-escaping">Preventing HTML Escaping <a class="permalink" href="#header-preventing-html-escaping" aria-hidden="true">¶</a></h3>
+<p>The substitution engine supports triple curly braces to signify that HTML escaping should not occur.</p>
+<p>Example substitution data:</p>
+<pre><code>{
+  "<span class="hljs-attribute">custom_html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Hello&lt;/p&gt;"</span>
+</span>}</code></pre>
+<p>Example template HTML part:</p>
+<pre><code>&lt;body&gt;
+<span class="hljs-expansion">{{{ custom_html }}</span>}
+&lt;<span class="hljs-regexp">/body&gt;
+</span></code></pre>
+<p>Example of the resulting rendered HTML:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></code></pre>
+<p>Example of using double curly braces renders angle brackets incorrectly:</p>
+<pre><code><span class="hljs-tag">&lt;body&gt;</span>
+&amp;<span class="hljs-operator">lt</span>;p&amp;<span class="hljs-operator">gt</span>;Hello&amp;<span class="hljs-operator">lt</span>;/p&amp;<span class="hljs-operator">gt</span>;
+<span class="hljs-tag">&lt;/body&gt;</span></code></pre>
+<h3 id="header-personalized-links">Personalized Links <a class="permalink" href="#header-personalized-links" aria-hidden="true">¶</a></h3>
+<p>Personalized links are supported.  A personalized link is defined as a target link that has one or more substitutions.
+For example:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://company.com/dailydeals?user=</span></span></span><span class="hljs-expression">{{<span class="hljs-variable">user</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">&amp;offercode=</span></span></span><span class="hljs-expression">{{<span class="hljs-variable">offercode</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">"</span>&gt;</span>Go!<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</span></code></pre>
+<p>In this case <code>{{user}}</code> and <code>{{offercode}}</code> are the items taken from the substitution data or metadata.</p>
+<p>The substitution engine automatically URL encodes substitution values before they are
+inserted into URLs.  For example, if ‘user’ and ‘offercode’ are defined in the substitution_data as</p>
+<pre><code>{
+  "<span class="hljs-attribute">user</span>" : <span class="hljs-value"><span class="hljs-string">"Spark Post"</span></span>,
+  "<span class="hljs-attribute">offercode</span>" : <span class="hljs-value"><span class="hljs-string">"ABC/ZYZ"</span>
+</span>}</code></pre>
+<p>Then the above URL will be correctly rendered as</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"https://company.com/dailydeals?user=Spark%20Post&amp;offercode=ABC%2FZYZ"</span>&gt;</span>Go!<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<p>In order to disable URL encoding, use triple curly braces.  This is useful if you
+have an entire URL suffix which needs to be substituted.  For example:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.company.com/</span></span></span><span class="hljs-expression">{{{<span class="hljs-variable">the</span>_<span class="hljs-variable">entire</span>_<span class="hljs-variable">suffix</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">}"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</span></code></pre>
+<p>where the substitution_data looks like:</p>
+<pre><code>{
+  "<span class="hljs-attribute">the_entire_suffix</span>" : <span class="hljs-value"><span class="hljs-string">"groups/join?user=clark"</span>
+</span>}</code></pre>
+<p>Since triple curlies are used, the substitution value will <em>not</em> be URL encoded
+and the URL will render as expected:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.company.com/groups/join?user=clark"</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<p>Triple curlies are also necessary if the entire URL resides in substitution data:</p>
+<pre><code>{
+  "<span class="hljs-attribute">the_entire_url</span>" : <span class="hljs-value"><span class="hljs-string">"http://www.company.com/dailydeals?user=foo&amp;offercode=bar"</span>
+</span>}</code></pre>
+<p>This URL can be inserted into the template using triple curlies:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"</span></span></span><span class="hljs-expression">{{{<span class="hljs-variable">the</span>_<span class="hljs-variable">entire</span>_<span class="hljs-variable">url</span>}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-value">}"</span>&gt;</span>Go!<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</span></code></pre>
+<h3 id="header-link-names">Link Names <a class="permalink" href="#header-link-names" aria-hidden="true">¶</a></h3>
+<p>Name all links using the <strong>data-msys-linkname</strong> custom attribute.  The link name has a maximum length of 63 characters and is truncated if it exceeds that limit. For example:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.example.com"</span> <span class="hljs-attribute">data-msys-linkname</span>=<span class="hljs-value">"banner"</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<p>If this attribute is not specified, the link name will fall back to <strong>Raw URL</strong>.</p>
+<p>The link name will be incorporated into the click-tracked link and will be tracked in engagement events.</p>
+<h3 id="header-unsubscribe-links">Unsubscribe Links <a class="permalink" href="#header-unsubscribe-links" aria-hidden="true">¶</a></h3>
+<p>It is possible to indicate that a link in your content be used to generate an unsubscribe event from SparkPost. This is done with the <strong>data-msys-unsubscribe</strong> custom attribute. For example:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.example.com/unsub_handler?id=1234"</span> <span class="hljs-attribute">data-msys-unsubscribe</span>=<span class="hljs-value">"1"</span>&gt;</span>Unsubscribe<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<p>More information can be found <a href="https://support.sparkpost.com/customer/portal/articles/1929894-setting-up-unsubscribe-links">here</a>.</p>
+<h3 id="header-per-link-disabling-of-click-tracking">Per-link Disabling of Click Tracking <a class="permalink" href="#header-per-link-disabling-of-click-tracking" aria-hidden="true">¶</a></h3>
+<p>When click-tracking is enabled for a transmission individual links can be skipped using the <strong>data-msys-clicktrack</strong> custom attribute. For example:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.example.com/"</span> <span class="hljs-attribute">data-msys-clicktrack</span>=<span class="hljs-value">"0"</span>&gt;</span>Click<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<h3 id="header-custom-link-sub-paths">Custom Link Sub-Paths <a class="permalink" href="#header-custom-link-sub-paths" aria-hidden="true">¶</a></h3>
+<p>It is possible to add a custom sub-path to a tracked URL using the <strong>data-msys-sublink</strong> custom attribute. For example:</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://www.example.com/"</span> <span class="hljs-attribute">data-msys-sublink</span>=<span class="hljs-value">"custom_path"</span>&gt;</span>Click<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span></code></pre>
+<p>The tracked link generated will look like this:</p>
+<pre><code>http://<span class="hljs-tag">&lt;<span class="hljs-title">hostname</span>&gt;</span>/f/custom_path/<span class="hljs-tag">&lt;<span class="hljs-title">encoded</span> <span class="hljs-attribute">target</span> <span class="hljs-attribute">url</span>&gt;</span></code></pre>
+<p>An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links in SparkPost Elite can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&amp;%20Sub-Pathing">here</a>.</p>
+<h3 id="header-link-attributes-in-text-parts">Link Attributes in Text Parts <a class="permalink" href="#header-link-attributes-in-text-parts" aria-hidden="true">¶</a></h3>
+<p>The sections above describing the <strong>data-msys-</strong>* link attributes all show HTML <code>&lt;a&gt;</code> tag examples. However it is also possible to specify all of the same custom attributes for links in the <code>text</code> part of a message using a double-square-bracket notation. For example:</p>
+<pre><code><span class="hljs-link_url">http://www.example.com</span>[<span class="hljs-link_label">[data-msys-clicktrack="0"</span>]]</code></pre>
+<h3 id="header-substitutions-syntax-examples">Substitutions Syntax Examples <a class="permalink" href="#header-substitutions-syntax-examples" aria-hidden="true">¶</a></h3>
+<p>This section contains syntax examples based on the following JSON substitution data:</p>
+<pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Clark Griswold"</span></span>,
+  "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">street</span>": <span class="hljs-value"><span class="hljs-string">"Hemlock"</span></span>,
+    "<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-string">"203A"</span></span>,
+    "<span class="hljs-attribute">city</span>": <span class="hljs-value"><span class="hljs-string">"Chicago"</span></span>,
+    "<span class="hljs-attribute">state</span>": <span class="hljs-value"><span class="hljs-string">"IL"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">40</span></span>,
+  "<span class="hljs-attribute">signed_up</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">rejected_sign_up</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+  "<span class="hljs-attribute">children</span>": <span class="hljs-value">[
+    <span class="hljs-string">"Rusty"</span>,
+    <span class="hljs-string">"Audrey"</span>
+  ]</span>,
+  "<span class="hljs-attribute">shopping_cart</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">item_name</span>": <span class="hljs-value"><span class="hljs-string">"Jacket"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">39.99</span></span>,
+      "<span class="hljs-attribute">a_nested_array</span>": <span class="hljs-value">[
+        {
+          "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"v2"</span>
+        </span>},
+        {
+          "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"v1"</span>
+        </span>}
+      ]
+    </span>},
+    {
+      "<span class="hljs-attribute">item_name</span>": <span class="hljs-value"><span class="hljs-string">"Gloves"</span></span>,
+      "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">5.00</span>
+    </span>}
+  ]
+</span>}</code></pre>
+<h4 id="header-basic-substitution">Basic Substitution <a class="permalink" href="#header-basic-substitution" aria-hidden="true">¶</a></h4>
+<pre><code><span class="hljs-constant">Hello</span> <span class="hljs-expansion">{{name}}</span></code></pre>
+<h4 id="header-referencing-a-nested-object">Referencing a Nested Object <a class="permalink" href="#header-referencing-a-nested-object" aria-hidden="true">¶</a></h4>
+<pre><code><span class="hljs-constant">Street</span>: <span class="hljs-expansion">{{address.street}}</span></code></pre>
+<h4 id="header-if-then-else-syntax">if then else Syntax <a class="permalink" href="#header-if-then-else-syntax" aria-hidden="true">¶</a></h4>
+<p>Notice the “then” is not required.  The following are equivalent:</p>
+<pre><code><span class="hljs-expansion">{{<span class="hljs-keyword">if</span> signed_up}}</span>
+<span class="hljs-constant">Welcome</span>
+<span class="hljs-expansion">{{<span class="hljs-keyword">else</span>}}</span>
+<span class="hljs-constant">Don</span><span class="hljs-string">'t forget to sign up!
+{{end}}
+
+{{if signed_up then}}
+Welcome
+{{else}}
+Don'</span>t forget to sign up!
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span></code></pre>
+<h4 id="header-if-not-syntax">if not Syntax <a class="permalink" href="#header-if-not-syntax" aria-hidden="true">¶</a></h4>
+<pre><code><span class="hljs-expansion">{{<span class="hljs-keyword">if</span> not signed_up}}</span>
+<span class="hljs-constant">Don</span><span class="hljs-string">'t forget to sign up!
+{{end}}
+</span></code></pre>
+<h4 id="header-elseif-syntax">elseif Syntax <a class="permalink" href="#header-elseif-syntax" aria-hidden="true">¶</a></h4>
+<pre><code><span class="hljs-expansion">{{<span class="hljs-keyword">if</span> signed_up}}</span>
+<span class="hljs-constant">Welcome</span>
+<span class="hljs-expansion">{{elseif rejected_sign_up}}</span>
+<span class="hljs-constant">We</span> won<span class="hljs-string">'t bug you
+{{else}}
+Please sign up
+{{end}}
+</span></code></pre>
+<h4 id="header-expressions-in-conditionals-(,-,-,-,-,-)">Expressions in Conditionals (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>and</code>, <code>or</code>) <a class="permalink" href="#header-expressions-in-conditionals-(,-,-,-,-,-)" aria-hidden="true">¶</a></h4>
+<pre><code><span class="hljs-expansion">{{<span class="hljs-keyword">if</span> age &gt; <span class="hljs-number">30</span>}}</span>
+<span class="hljs-keyword">do</span> something
+<span class="hljs-expansion">{{<span class="hljs-keyword">else</span>}}</span>
+<span class="hljs-keyword">do</span> something <span class="hljs-keyword">else</span>
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span>
+
+<span class="hljs-expansion">{{<span class="hljs-keyword">if</span> address.state == <span class="hljs-string">"MD"</span>}}</span>
+<span class="hljs-keyword">do</span> something
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span>
+
+-- multi part conditionals
+<span class="hljs-expansion">{{<span class="hljs-keyword">if</span> age &gt; <span class="hljs-number">30</span> and address.state == <span class="hljs-string">"MD"</span>}}</span>
+<span class="hljs-keyword">do</span> something
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span></code></pre>
+<h3 id="header-relational-and-logical-operators">Relational and Logical Operators <a class="permalink" href="#header-relational-and-logical-operators" aria-hidden="true">¶</a></h3>
+<p>The relational and logical operators are as follows:</p>
+<p><strong>Relational Operators</strong></p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x == y</td>
+<td>x is equal to y</td>
+</tr>
+<tr>
+<td>x != y</td>
+<td>x is not equal to y</td>
+</tr>
+<tr>
+<td>x &lt; y</td>
+<td>x is less than y</td>
+</tr>
+<tr>
+<td>x &gt; y</td>
+<td>x is greater than y</td>
+</tr>
+<tr>
+<td>x &lt;= y</td>
+<td>x is less than or equal to y</td>
+</tr>
+<tr>
+<td>x &gt;= y</td>
+<td>x is greater than or equal to y</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Logical Operators</strong></p>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>and</td>
+</tr>
+<tr>
+<td>or</td>
+</tr>
+<tr>
+<td>not</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Length Operator</strong></p>
+<p>The length operator <code>#</code> gives the length of an array. From the sample data above: <code>#shopping_cart</code> produces <code>2</code>.</p>
+<h3 id="header-array-iteration">Array Iteration <a class="permalink" href="#header-array-iteration" aria-hidden="true">¶</a></h3>
+<p>The substitution language uses the <code>each</code> keyword for iteration.
+The value at each index of an array can be accessed within the each loop by using the <code>loop_var</code> variable. When using the <code>each</code> keyword to iterate over an array, the <code>loop_index</code> variable can be used to get the current index.</p>
+<p>These examples continue to use the sample data given above.</p>
+<p>For example, use the following syntax to iterate over a JSON array of strings
+(children) and print out the value of each string:</p>
+<pre><code><span class="hljs-expansion">{{ each children }}</span>
+<span class="hljs-constant">You</span> have a child named <span class="hljs-expansion">{{loop_var}}</span>
+<span class="hljs-expansion">{{ <span class="hljs-keyword">end</span> }}</span></code></pre>
+<p>To iterate over an array of objects, the syntax is the same,
+but access to the nested fields of the object is done using dot notation:</p>
+<pre><code><span class="hljs-constant">Your</span> shopping cart has items in <span class="hljs-symbol">it:</span>
+
+<span class="hljs-expansion">{{each shopping_cart}}</span>
+<span class="hljs-constant">Item</span>: <span class="hljs-expansion">{{loop_var.item_name}}</span>, <span class="hljs-constant">Price</span>: <span class="hljs-expansion">{{loop_var.item_price}}</span>
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span></code></pre>
+<p>Nested loops are possible.  When nested loops are in use, loop variables must
+be accessed using <code>loop_vars.&lt;name of the array&gt;</code> (notice it is plural <code>loop_vars</code> and not <code>loop_var</code>).
+The following example uses <code>shopping_cart</code> and <code>a_nested_array</code>:</p>
+<pre><code><span class="hljs-expansion">{{each shopping_cart}}</span>
+  <span class="hljs-constant">Item</span>: <span class="hljs-expansion">{{loop_vars.shopping_cart.item_name}}</span>, <span class="hljs-constant">Price</span>: <span class="hljs-expansion">{{loop_vars.shopping_cart.item_price}}</span>
+  <span class="hljs-constant">This</span> item has the following nested <span class="hljs-symbol">values:</span>
+  <span class="hljs-expansion">{{each loop_vars.shopping_cart.a_nested_array}}</span>
+    <span class="hljs-constant">Nested</span> <span class="hljs-symbol">value:</span> <span class="hljs-expansion">{{loop_vars.a_nested_array.key}}</span>
+  <span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span>
+<span class="hljs-expansion">{{<span class="hljs-keyword">end</span>}}</span></code></pre>
+<p>The preceding example uses indentation for ease of reading.
+The indentation will appear in the rendered content, so it is not advisable to indent a production template.</p>
+<h3 id="header-links-and-substitution-expressions-within-substitution-values">Links and Substitution Expressions Within Substitution Values <a class="permalink" href="#header-links-and-substitution-expressions-within-substitution-values" aria-hidden="true">¶</a></h3>
+<p>Sometimes it may be convenient to place links and substitution expressions not only within
+a template, but within substitution values themselves.  For example, the ‘my_html_chunk’ substitution value
+below contains a link as well as a substitution expression referencing a username:</p>
+<pre><code>{
+  "<span class="hljs-attribute">substitution_data</span>" : <span class="hljs-value">{
+    "<span class="hljs-attribute">my_html_chunk</span>" : <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;&lt;a href = \"http://www.example.com?q={{username}}\"&gt;Click here&lt;/a&gt;&lt;/p&gt;"</span></span>,
+    "<span class="hljs-attribute">username</span>" : <span class="hljs-value"><span class="hljs-string">"foo"</span>
+  </span>}
+</span>}</code></pre>
+<p>By default, this will not work. In general, the rules are as follows:</p>
+<ul>
+<li>
+<p>Links within substitution values are <em>not</em> automatically converted to click trackable links.</p>
+</li>
+<li>
+<p>Substitution expressions within substitution values are <em>not</em> automatically executed.</p>
+</li>
+</ul>
+<p>Using the above substitution_data and the following template:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Attempting to insert a chunk of html:<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+</span><span class="hljs-expression">{{{ <span class="hljs-variable">my</span>_<span class="hljs-variable">html</span>_<span class="hljs-variable">chunk</span> }}</span><span class="xml">}
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+</span></code></pre>
+<p>Will result in the following unexpected rendered content:</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Attempting to insert a chunk of html:<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span> = "<span class="hljs-attribute">http:</span>//<span class="hljs-attribute">www.example.com</span>?<span class="hljs-attribute">q</span>=</span></span><span class="hljs-expression">{{<span class="hljs-variable">username</span>}}</span><span class="xml"><span class="hljs-tag">"&gt;</span>Click here<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+</span></code></pre>
+<p>Notice that the <strong>username</strong> variable was not replaced
+and the link was not converted into a click trackable form.</p>
+<p>In order to correct this problem, the system must be informed of the need to perform such
+substitutions and link tracking.  This can be accomplished with two steps:</p>
+<ol>
+<li>The html chunk must be specified in the transmission level substitution data underneath a special
+<code>dynamic_html</code> json object.  All key value pairs underneath dynamic_html will undergo substitutions as well
+as link tracking.</li>
+</ol>
+<p>In the above example, the transmission level substitution data would need to be structured as:</p>
+<pre><code>{
+  "<span class="hljs-attribute">substitution_data</span>" : <span class="hljs-value">{
+    "<span class="hljs-attribute">dynamic_html</span>" : <span class="hljs-value">{
+      "<span class="hljs-attribute">my_html_chunk</span>" : <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;&lt;a href = \"http://www.example.com?q={{username}}\"&gt;Click here&lt;/a&gt;&lt;/p&gt;"</span>
+    </span>}
+  </span>}
+</span>}</code></pre>
+<ol start="2">
+<li>The render_dynamic_content() macro must be used to wrap all uses of dynamic_html variables.
+Continuing with the example above, the template would
+need to be structured as:</li>
+</ol>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>Attempting to insert a chunk of html:<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+</span><span class="hljs-expression">{{ <span class="hljs-variable">render</span>_<span class="hljs-variable">dynamic</span>_<span class="hljs-variable">content</span>(<span class="hljs-variable">dynamic</span>_<span class="hljs-variable">html.my</span>_<span class="hljs-variable">html</span>_<span class="hljs-variable">chunk</span>) }}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+</span></code></pre>
+<p>The dynamic content will be correctly inserted <em>without</em> html escaping,
+regardless of whether double or triple curly braces are used.  There is no need to use triple curly braces in this case.</p>
+<p>To insert dynamic content into the text/plain part of a message, one must place the dynamic content into the transmission
+level substitution variable <code>dynamic_plain</code>.  For example:</p>
+<pre><code>{
+  "<span class="hljs-attribute">substitution_data</span>" : <span class="hljs-value">{
+    "<span class="hljs-attribute">dynamic_plain</span>" : <span class="hljs-value">{
+      "<span class="hljs-attribute">my_plain_text_chunk</span>" : <span class="hljs-value"><span class="hljs-string">"A chunk of plain text content with a link and a substitution. http://www.example.com?q={{username}}"</span>
+    </span>}
+  </span>}
+</span>}</code></pre>
+<p>As with dynamic_html, dynamic_plain variables must be wrapped in the render_dynamic_content() macro when used
+in the template:</p>
+<pre><code><span class="hljs-constant">Attempting</span> to insert a chunk <span class="hljs-keyword">of</span> plain <span class="hljs-symbol">text:</span>
+<span class="hljs-expansion">{{ render_dynamic_content(dynamic_plain.my_plain_text_chunk) }}</span></code></pre>
+<p>Finally, as a more realistic example, render_dynamic_content can also be used inside an ‘each’ loop. Full transmission json examples follow.</p>
+<p><strong>Note:</strong> The following example applies to SparkPost only.</p>
+<pre><code>{
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"foo@example.com"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The A-Team"</span></span>,
+        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer2"</span>, <span class="hljs-string">"offer1"</span> ]
+      </span>}
+    </span>},
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"bar@example.com"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Johnnie Rico"</span></span>,
+        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer3"</span> ]
+      </span>}
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">dynamic_html</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/1?name={{name}}\"&gt;Premium-brand wirecutters&lt;/a&gt;"</span></span>,
+      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/2?name={{name}}\"&gt;Corks&lt;/a&gt;"</span></span>,
+      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/3?name={{name}}\"&gt;Super-effective bug spray&lt;/a&gt;"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">dynamic_plain</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}"</span></span>,
+      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"Corks -- http://t.com/offer/2?name={{name}}"</span></span>,
+      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"Super-effective bug spray -- http://t.com/offer/3?name={{name}}"</span>
+    </span>}
+  </span>}
+  <span class="hljs-string">"content"</span>: {
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Today's special offers&lt;/p&gt;&lt;ul&gt;\n{{each offers}}\n&lt;li&gt;{{render_dynamic_content(dynamic_html[loop_var])}}&lt;/li&gt;\n{{end}}\n&lt;/ul&gt;"</span></span>,
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"offers"</span>
+  </span>}
+</span>}</code></pre>
+<p><strong>Note:</strong> The following example applies to SparkPost Elite only.</p>
+<pre><code>{
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"foo@example.com"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The A-Team"</span></span>,
+        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer2"</span>, <span class="hljs-string">"offer1"</span> ]
+      </span>}
+    </span>},
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"bar@example.com"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Johnnie Rico"</span></span>,
+        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer3"</span> ]
+      </span>}
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">dynamic_html</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/1?name={{name}}\"&gt;Premium-brand wirecutters&lt;/a&gt;"</span></span>,
+      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/2?name={{name}}\"&gt;Corks&lt;/a&gt;"</span></span>,
+      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/3?name={{name}}\"&gt;Super-effective bug spray&lt;/a&gt;"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">dynamic_plain</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}"</span></span>,
+      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"Corks -- http://t.com/offer/2?name={{name}}"</span></span>,
+      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"Super-effective bug spray -- http://t.com/offer/3?name={{name}}"</span>
+    </span>}
+  </span>}
+  <span class="hljs-string">"content"</span>: {
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Today's special offers&lt;/p&gt;&lt;ul&gt;\n{{each offers}}\n&lt;li&gt;{{render_dynamic_content(dynamic_html[loop_var])}}&lt;/li&gt;\n{{end}}\n&lt;/ul&gt;"</span></span>,
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"offers"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span>
+</span>}</code></pre>
+<h3 id="header-default-values">Default Values <a class="permalink" href="#header-default-values" aria-hidden="true">¶</a></h3>
+<p>To create default values, use <code>or</code> syntax.  In the following example,
+if <code>name</code> does not exist as a substitution key, then the expression <code>null or 'Customer'</code>
+will evaluate as <code>Customer</code>.</p>
+<pre><code><span class="hljs-constant">Hello</span> <span class="hljs-expansion">{{ name or <span class="hljs-string">'Customer'</span> }}</span></code></pre>
+<h3 id="header-macros">Macros <a class="permalink" href="#header-macros" aria-hidden="true">¶</a></h3>
+<p>Macros are function calls that may or may not take arguments.  The currently available macros are:</p>
+<p><strong>empty</strong></p>
+<p>This function takes a JSON array as an argument and returns true if the array is empty or false if the array is not empty.
+This is useful for determining whether to include a header in a dynamically
+generated HTML table and blocking iteration of the table if it is empty.</p>
+<p>Example:</p>
+<pre><code><span class="xml"></span><span class="hljs-expression">{{ <span class="hljs-variable"><span class="hljs-keyword">if</span></span> <span class="hljs-variable">not</span> <span class="hljs-variable">empty</span>(<span class="hljs-variable">shopping</span>_<span class="hljs-variable">cart</span>) }}</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-title">table</span> <span class="hljs-attribute">border</span> = "<span class="hljs-attribute">1</span>"&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">th</span>&gt;</span>Price<span class="hljs-tag">&lt;/<span class="hljs-title">th</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+</span><span class="hljs-expression">{{ <span class="hljs-variable"><span class="hljs-keyword">each</span></span> <span class="hljs-variable">shopping</span>_<span class="hljs-variable">cart</span> }}</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-title">tr</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span></span><span class="hljs-expression">{{<span class="hljs-variable">loop</span>_<span class="hljs-variable">var.item</span>_<span class="hljs-variable">name</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">td</span>&gt;</span>$</span><span class="hljs-expression">{{<span class="hljs-variable">loop</span>_<span class="hljs-variable">var.item</span>_<span class="hljs-variable">price</span>}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">td</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">tr</span>&gt;</span>
+</span><span class="hljs-expression">{{ <span class="hljs-variable">end</span> }}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-title">table</span>&gt;</span>
+</span><span class="hljs-expression">{{ <span class="hljs-variable"><span class="hljs-keyword">else</span></span> }}</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-title">b</span>&gt;</span>Buy something!<span class="hljs-tag">&lt;/<span class="hljs-title">b</span>&gt;</span>
+</span><span class="hljs-expression">{{ <span class="hljs-variable">end</span> }}</span><span class="xml">
+</span></code></pre>
+<p><strong>Braces Macros</strong></p>
+<p>The four macros for outputting braces are listed below followed by their output:</p>
+<ul>
+<li>
+<p><code>opening_double_curly()</code> - {{</p>
+</li>
+<li>
+<p><code>closing_double_curly()</code> - }}</p>
+</li>
+<li>
+<p><code>opening_triple_curly()</code> - {{{</p>
+</li>
+<li>
+<p><code>closing_triple_curly()</code> - }}}</p>
+</li>
+</ul>
+<h3 id="header-reserved-recipient-substitution-variables">Reserved Recipient Substitution Variables <a class="permalink" href="#header-reserved-recipient-substitution-variables" aria-hidden="true">¶</a></h3>
+<p>The following substitution variables are reserved and automatically available for each recipient:</p>
+<ul>
+<li>
+<p><code>address.name</code>: Recipient’s name from the <em><a href="http://address.name">address.name</a></em> recipient json field</p>
+</li>
+<li>
+<p><code>email</code> and <code>address.email</code>: Recipient’s email address from the <em>address</em> or <em>address.email</em> recipient json field</p>
+</li>
+<li>
+<p><code>return_path</code>: Return path from the transmission or recipients json field ( <strong>Note:</strong> SparkPost Elite only )</p>
+</li>
+</ul>
+<p><strong>Note:</strong> The following example applies to SparkPost only.</p>
+<pre><code><span class="hljs-constant">Hello</span> <span class="hljs-expansion">{{address.name}}</span>
+<span class="hljs-constant">Your</span> email is <span class="hljs-expansion">{{address.email}}</span></code></pre>
+<p><strong>Note:</strong> The following example applies to SparkPost Elite only.</p>
+<pre><code><span class="hljs-constant">Hello</span> <span class="hljs-expansion">{{address.name}}</span>
+<span class="hljs-constant">Your</span> email is <span class="hljs-expansion">{{address.email}}</span> and your <span class="hljs-keyword">return</span> path is <span class="hljs-expansion">{{return_path}}</span></code></pre>
+<h3 id="header-substitutions-in-email_rfc822-headers">Substitutions in email_rfc822 Headers <a class="permalink" href="#header-substitutions-in-email_rfc822-headers" aria-hidden="true">¶</a></h3>
+<p>When it is desirable to have substitutions in RFC2047 encoded headers which are folded, be sure that
+each line of the header is separately RFC2047 encoded.  Otherwise, the server will not be able to decode
+the header to look for substitution syntax.</p>
+<p><strong>Correct:</strong></p>
+<pre><code><span class="hljs-keyword">Subject: </span>=?gb2312?<span class="hljs-keyword">B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=?=
+</span>   =?gb2312?<span class="hljs-keyword">B?ztLE3M3Mz8Kyo8Gntvg=?= </span></code></pre>
+<p><strong>Incorrect:</strong></p>
+<pre><code><span class="hljs-keyword">Subject: </span>=?gb2312?<span class="hljs-keyword">B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
+</span>   ztLE3M3Mz8Kyo8Gntvg=?=</code></pre>
+<h3 id="header-encoding-rules">Encoding Rules <a class="permalink" href="#header-encoding-rules" aria-hidden="true">¶</a></h3>
+<ul>
+<li>
+<p>If after substitution, a text/plain or text/html part contains 8-bit data,
+then that part will be quoted-printable encoded before being placed back into the
+MIME structure.  The Content-Type will be updated appropriately.</p>
+</li>
+<li>
+<p>If after substitution, a header value contains 8-bit data, then the header
+value will be RFC2047 base64 encoded before being written back to the headers structure.</p>
+</li>
+</ul>
+</div>
+
+</div></div></div>
+
+    <footer>
+  <div class="container-fluid">
+    <div class="row row-dark">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
+            <h3>SparkPost</h3>
+            <p>
+              SparkPost is the email delivery service based on the Momentum platform from Message Systems. It provides the same deliverability, scalability and speed as we provide to the biggest senders in the world, in an easily integrated cloud solution.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 sp-connect">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Connect</h3>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://github.com/SparkPost"><i class="fa fa-fw fa-github"></i>&nbsp; Github</a></p>
+                <p><a href="http://slack.sparkpost.com"><i class="fa fa-fw fa-slack"></i>&nbsp; Slack</a></p>
+                <p><a href="http://stackoverflow.com/tags/sparkpost"><i class="fa fa-fw fa-stack-overflow"></i>&nbsp; Stack Overflow</a></p>
+                <p><a href="https://twitter.com/SparkPostDev"><i class="fa fa-fw fa-twitter"></i>&nbsp; Twitter</a></p>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://www.facebook.com/SparkPost"><i class="fa fa-fw fa-facebook"></i>&nbsp; Facebook</a></p>
+                <p><a href="https://www.linkedin.com/company/9486856"><i class="fa fa-fw fa-linkedin"></i>&nbsp; LinkedIn</a></p>
+                <p><a href="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"><i class="fa fa-fw fa-youtube"></i>&nbsp; YouTube</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<!-- Twitter Tweet Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- Facebook Share Button -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1078423545531734";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- dev hub custom js -->
+<script src="/js/hub.js"></script>
+<script src="/js/charity.js"></script>
+<script src="/js/redirect.js"></script>
+
+  </body>
+
+</html>

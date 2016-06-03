@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/images/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>API Reference - SparkPost Developer Hub</title>
+    <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:site_name" content="SparkPost Developer Hub">
+    <meta property="og:url" content="https://developers.sparkpost.com/api/relay-webhooks.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="API Reference">
+    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
+    <meta property="rwc_base_url" content="https://relay-webhook-consumer.herokuapp.com">
+
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bower_components/devicon/devicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="https://developers.sparkpost.com/api/relay-webhooks.html">
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
+</head>
+
+
+  <body class="page-api-reference">
+    
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN7C84');</script>
+    <!-- End Google Tag Manager -->
+    
+    <div id="fb-root"></div>
+
+    <header class="site-header">
+  <nav id="nav" class="sp-menu navbar navbar-default">
+    <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
+    <div id="navbar-container" class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Developer Hub</a></li>
+          <li><a href="/api/">API Docs</a></li>
+          <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
+          <li><a href="/videos/">Videos</a></li>
+          <li><a href="https://support.sparkpost.com">Support</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://app.sparkpost.com/">Log In</a></li>
+          <li><a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Sign Up</a></li>
+        <ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+</header>
+
+
+    <div id="apipage" class="container-fluid"><div class="row"><div id="menublock"><nav id="apimenu"><div class="resource-group"><div class="heading"><a href="index" class="text-uppercase">Overview</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="index#header-api-endpoints">API Endpoints</a></li><li><a href="index#header-sparkpost-api-endpoint">SparkPost API Endpoint</a></li><li><a href="index#header-sparkpost-elite-api-endpoint">SparkPost Elite API Endpoint</a></li><li><a href="index#header-api-conventions">API Conventions</a></li><li><a href="index#header-authentication">Authentication</a></li><li><a href="index#header-using-postman">Using Postman</a></li><li><a href="index#header-using-curl">Using cURL</a></li><li><a href="index#header-subaccounts">Subaccounts</a></li><li><a href="index#header-terminology">Terminology</a></li><li><a href="index#header-managing-subaccount-data-as-a-service-provider">Managing subaccount data as a Service Provider</a></li><li><a href="index#header-managing-master-account-data-as-a-service-provider">Managing master account data as a Service Provider</a></li><li><a href="index#header-smtp-relay-endpoints">SMTP Relay Endpoints</a></li><li><a href="index#header-sparkpost-smtp-endpoint">SparkPost SMTP Endpoint</a></li><li><a href="index#header-sparkpost-elite-smtp-endpoint">SparkPost Elite SMTP Endpoint</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="substitutions-reference" class="text-uppercase">Substitutions Reference</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="substitutions-reference#header-key-features">Key Features</a></li><li><a href="substitutions-reference#header-substitution-data">Substitution Data</a></li><li><a href="substitutions-reference#header-template-start-and-end-markers">Template Start and End Markers</a></li><li><a href="substitutions-reference#header-determination-of-expressions-and-statements">Determination of Expressions and Statements</a></li><li><a href="substitutions-reference#header-missing-substitution-values">Missing Substitution Values</a></li><li><a href="substitutions-reference#header-statements-on-their-own-line">Statements on Their Own Line</a></li><li><a href="substitutions-reference#header-escaping-start-and-end-tags">Escaping Start and End Tags</a></li><li><a href="substitutions-reference#header-escaping-html-values">Escaping HTML Values</a></li><li><a href="substitutions-reference#header-preventing-html-escaping">Preventing HTML Escaping</a></li><li><a href="substitutions-reference#header-personalized-links">Personalized Links</a></li><li><a href="substitutions-reference#header-link-names">Link Names</a></li><li><a href="substitutions-reference#header-unsubscribe-links">Unsubscribe Links</a></li><li><a href="substitutions-reference#header-per-link-disabling-of-click-tracking">Per-link Disabling of Click Tracking</a></li><li><a href="substitutions-reference#header-custom-link-sub-paths">Custom Link Sub-Paths</a></li><li><a href="substitutions-reference#header-link-attributes-in-text-parts">Link Attributes in Text Parts</a></li><li><a href="substitutions-reference#header-substitutions-syntax-examples">Substitutions Syntax Examples</a></li><li><a href="substitutions-reference#header-basic-substitution">Basic Substitution</a></li><li><a href="substitutions-reference#header-referencing-a-nested-object">Referencing a Nested Object</a></li><li><a href="substitutions-reference#header-if-then-else-syntax">if then else Syntax</a></li><li><a href="substitutions-reference#header-if-not-syntax">if not Syntax</a></li><li><a href="substitutions-reference#header-elseif-syntax">elseif Syntax</a></li><li><a href="substitutions-reference#header-expressions-in-conditionals-(,-,-,-,-,-)">Expressions in Conditionals (, , , , , )</a></li><li><a href="substitutions-reference#header-relational-and-logical-operators">Relational and Logical Operators</a></li><li><a href="substitutions-reference#header-array-iteration">Array Iteration</a></li><li><a href="substitutions-reference#header-links-and-substitution-expressions-within-substitution-values">Links and Substitution Expressions Within Substitution Values</a></li><li><a href="substitutions-reference#header-default-values">Default Values</a></li><li><a href="substitutions-reference#header-macros">Macros</a></li><li><a href="substitutions-reference#header-reserved-recipient-substitution-variables">Reserved Recipient Substitution Variables</a></li><li><a href="substitutions-reference#header-substitutions-in-email_rfc822-headers">Substitutions in email_rfc822 Headers</a></li><li><a href="substitutions-reference#header-encoding-rules">Encoding Rules</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="account" class="text-uppercase">Account</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="account#header-using-postman">Using Postman</a></li><li><a href="account#account-account-get">Get your account information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="inbound-domains" class="text-uppercase">Inbound Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="inbound-domains#header-inbound-domains-attributes">Inbound Domains Attributes</a></li><li><a href="inbound-domains#header-using-postman">Using Postman</a></li><li><a href="inbound-domains#inbound-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-create-and-list-post">Create an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-create-and-list-get">List all Inbound Domains</a></li></ul></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-get">Retrieve an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-delete">Delete an Inbound Domain</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="metrics" class="text-uppercase">Metrics</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="metrics#header-data-retention">Data retention</a></li><li><a href="metrics#header-using-postman">Using Postman</a></li><li><a href="metrics#header-metrics-api-deliverability-glossary">Metrics API Deliverability Glossary</a></li><li><a href="metrics#metrics-discoverability-links-get">Metrics Discoverability Links</a></li><li><a href="metrics#metrics-deliverability-metrics-get">Deliverability Metrics Summary</a></li><li><a href="metrics#metrics-deliverability-metrics-by-domain-get">Deliverability Metrics by Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-get">Deliverability Metrics by Binding</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-group-get">Deliverability Metrics by Binding Group</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-ip-get">Deliverability Metrics by Sending IP</a></li><li><a href="metrics#metrics-deliverability-metrics-by-ip-pool-get">Deliverability Metrics by IP Pool</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-domain-get">Deliverability Metrics by Sending Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-subaccount-get">Deliverability Metrics by Subaccount</a></li><li><a href="metrics#metrics-deliverability-metrics-by-campaign-get">Deliverability Metrics by Campaign</a></li><li><a href="metrics#metrics-deliverability-metrics-by-template-get">Deliverability Metrics by Template</a></li><li><a href="metrics#metrics-deliverability-metrics-by-watched-domain-get">Deliverability Metrics by Watched Domain</a></li><li><a href="metrics#metrics-time-series-get">Time-Series Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-get">Bounce Reason Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-by-domain-get">Bounce Reason Metrics By Domain</a></li><li><a href="metrics#metrics-bounce-classifications-get">Bounce Classification Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-get">Rejection Reason Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-by-domain-get">Rejection Reason Metrics By Domain</a></li><li><a href="metrics#metrics-delay-reasons-get">Delay Reason Metrics</a></li><li><a href="metrics#metrics-delay-reasons-by-domain-get">Delay Reason Metrics By Domain</a></li><li><a href="metrics#metrics-engagement-details-get">Engagement Details</a></li><li><a href="metrics#metrics-deliveries-by-attempt-get">Deliveries By Attempt</a></li><li><a href="metrics#metrics-binding-groups-list-get">Bindings Groups List</a></li><li><a href="metrics#metrics-binding-groups-list-get-1">Bindings List</a></li><li><a href="metrics#metrics-ip-pools-list-get">IP Pools List</a></li><li><a href="metrics#metrics-sending-ips-list-get">Sending IPs List</a></li><li><a href="metrics#metrics-campaigns-list-get">Campaigns List</a></li><li><a href="metrics#metrics-domains-list-get">Domains List</a></li><li><a href="metrics#metrics-nodes-list-get">Nodes List</a></li><li><a href="metrics#metrics-protocols-list-get">Protocols List</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="message-events" class="text-uppercase">Message Events</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="message-events#header-data-retention">Data retention</a></li><li><a href="message-events#header-using-postman">Using Postman</a></li><li><a href="message-events#header-copyrights">Copyrights</a></li><li><a href="message-events#message-events-events-documentation-get">Documentation</a></li><li><a href="message-events#message-events-events-samples-get">Samples</a></li><li><a href="message-events#message-events-message-events-get">Search for Message Events</a></li></ul></div></div><div class="resource-group"><div class="heading current"><a href="relay-webhooks" class="text-uppercase">Relay Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="relay-webhooks#header-using-postman">Using Postman</a></li><li><a href="relay-webhooks#header-relay-webhooks-object-properties">Relay Webhooks Object Properties</a></li><li><a href="relay-webhooks#header-match-object-properties">Match Object Properties</a></li><li><a href="relay-webhooks#header-field-definitions">Field Definitions</a></li><li><a href="relay-webhooks#header-content-attributes">Content Attributes</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-create-and-list-post">Create a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list-get">List all Relay Webhooks</a></li></ul></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-get">Retrieve a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-put">Update a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-delete">Delete a Relay Webhook</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="sending-domains" class="text-uppercase">Sending Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="sending-domains#header-using-postman">Using Postman</a></li><li><a href="sending-domains#header-sending-domain-attributes">Sending Domain Attributes</a></li><li><a href="sending-domains#header-dkim-attributes">DKIM Attributes</a></li><li><a href="sending-domains#header-status-attributes">Status Attributes</a></li><li><a href="sending-domains#header-verify-attributes">Verify Attributes</a></li><li><a href="sending-domains#header-dns-attributes">DNS Attributes</a></li><li><a href="sending-domains#sending-domains-create">Create</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-create-post">Create a Sending Domain</a></li><li><a href="sending-domains#sending-domains-create-get">List all Sending Domains</a></li></ul></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-get">Retrieve a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-put">Update a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-delete">Delete a Sending Domain</a></li></ul></li><li><a href="sending-domains#sending-domains-verify-post">Verify a Sending Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="subaccounts" class="text-uppercase">Subaccounts</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection">Subaccounts Collection</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection-get">List subaccounts</a></li><li><a href="subaccounts#subaccounts-subaccounts-collection-post">Create new subaccount</a></li></ul></li><li><a href="subaccounts#subaccounts-subaccounts-entity">Subaccounts Entity</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-entity-get">List specific subaccount</a></li><li><a href="subaccounts#subaccounts-subaccounts-entity-put">Edit a subaccount</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="suppression-list" class="text-uppercase">Suppression List</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="suppression-list#header-using-postman">Using Postman</a></li><li><a href="suppression-list#header-list-entry-attributes">List Entry Attributes</a></li><li><a href="suppression-list#suppression-list-bulk-insert-update-put">Insert or Update List Entries</a></li><li><a href="suppression-list#suppression-list-search-get">Search for List Entries</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete">Retrieve, Delete</a><ul class="list-unstyled"><li><a href="suppression-list#suppression-list-retrieve,-delete-get">Retrieve a Recipient Suppression Status</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-delete">Delete a List Entry</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-put">Insert or Update a List Entry</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="templates" class="text-uppercase">Templates</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="templates#header-using-postman">Using Postman</a></li><li><a href="templates#header-template-attributes">Template Attributes</a></li><li><a href="templates#header-content-attributes">Content Attributes</a></li><li><a href="templates#header-header-notes">Header Notes</a></li><li><a href="templates#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="templates#header-options-attributes">Options Attributes</a></li><li><a href="templates#header-error-attributes">Error Attributes</a></li><li><a href="templates#templates-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="templates#templates-create-and-list-post">Create a Template</a></li><li><a href="templates#templates-create-and-list-get">List all Templates</a></li></ul></li><li><a href="templates#templates-retrieve-get">Retrieve a Template</a></li><li><a href="templates#templates-update-put">Update a Template</a></li><li><a href="templates#templates-preview-post">Preview a Template</a></li><li><a href="templates#templates-delete-delete">Delete a Template</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="tracking-domains" class="text-uppercase">Tracking Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="tracking-domains#header-using-postman">Using Postman</a></li><li><a href="tracking-domains#header-tracking-domains-attributes">Tracking Domains Attributes</a></li><li><a href="tracking-domains#header-port-secure-attributes">Port/Secure Attributes</a></li><li><a href="tracking-domains#header-status-attributes">Status Attributes</a></li><li><a href="tracking-domains#tracking-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-create-and-list-post">Create a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-create-and-list-get">List all Tracking Domains</a></li></ul></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-get">Retrieve a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-put">Update a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-delete">Delete a Tracking Domain</a></li></ul></li><li><a href="tracking-domains#tracking-domains-verify-post">Verify a Tracking Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="transmissions" class="text-uppercase">Transmissions</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="transmissions#header-using-postman">Using Postman</a></li><li><a href="transmissions#header-transmission-attributes">Transmission Attributes</a></li><li><a href="transmissions#header-options-attributes">Options Attributes</a></li><li><a href="transmissions#header-inline-content-attributes">Inline Content Attributes</a></li><li><a href="transmissions#header-header-notes">Header Notes</a></li><li><a href="transmissions#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="transmissions#header-attachment-attributes">Attachment Attributes</a></li><li><a href="transmissions#header-inline-image-attributes">Inline Image Attributes</a></li><li><a href="transmissions#header-using-a-stored-template">Using a Stored Template</a></li><li><a href="transmissions#header-using-a-stored-recipient-list">Using a Stored Recipient List</a></li><li><a href="transmissions#header-scheduled-transmissions">Scheduled Transmissions</a></li><li><a href="transmissions#transmissions-create-post">Create a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="transmissions#transmissions-retrieve-and-delete-get">Retrieve a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete-delete">Delete a Transmission</a></li></ul></li><li><a href="transmissions#transmissions-list-get">List all Transmissions</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="webhooks" class="text-uppercase">Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="webhooks#header-using-postman">Using Postman</a></li><li><a href="webhooks#header-webhooks-object-properties">Webhooks Object Properties</a></li><li><a href="webhooks#webhooks-events-documentation-get">Documentation</a></li><li><a href="webhooks#webhooks-events-samples-get">Samples</a></li><li><a href="webhooks#webhooks-create-post">Create a Webhook</a></li><li><a href="webhooks#webhooks-retrieve-get">Retrieve Webhook Details</a></li><li><a href="webhooks#webhooks-list-get">List all Webhooks</a></li><li><a href="webhooks#webhooks-update-and-delete">Update and Delete</a><ul class="list-unstyled"><li><a href="webhooks#webhooks-update-and-delete-put">Update a Webhook</a></li><li><a href="webhooks#webhooks-update-and-delete-delete">Delete a Webhook</a></li></ul></li><li><a href="webhooks#webhooks-validate-post">Validate a Webhook</a></li><li><a href="webhooks#webhooks-batch-status-get">Retrieve Status Information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="smtp-api" class="text-uppercase">SMTP API</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="smtp-api#header-options-attributes">Options Attributes</a></li><li><a href="smtp-api#header-sending-messages-with-cc,-bcc,-and-archive-recipients">Sending Messages with cc, bcc, and archive Recipients</a></li><li><a href="smtp-api#header-comments-on-header-length">Comments on Header Length</a></li></ul></div></div></nav></div><div id="contentblock"><header><h1 id="top"></h1></header><section class="resource-group searchable"><h2 id="relay-webhooks" class="group-heading">Relay Webhooks <a href="#relay-webhooks" class="permalink"></a></h2><div class="markdown"><p><strong>Note:</strong> The Relay Webhooks API is available for SparkPost only.</p>
+<p>By configuring a relay webhook for a specified inbound domain, those inbound messages can be forwarded to a specified target over HTTP.  Before you create a relay webhook, be sure to first create an inbound domain that is properly configured. To create an inbound domain for your account, please use our Inbound Domains API. The Relay Webhooks API provides the means to create, list, retrieve, update, and delete a relay webhook.</p>
+<h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
+<p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
+<p><a href="https://www.getpostman.com/run-collection/81ee1dd2790d7952b76a"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
+<h2 id="header-relay-webhooks-object-properties">Relay Webhooks Object Properties <a class="permalink" href="#header-relay-webhooks-object-properties" aria-hidden="true">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>User-friendly name</td>
+<td>no</td>
+<td>example: <code>Inbound Customer Replies</code></td>
+</tr>
+<tr>
+<td>target</td>
+<td>string</td>
+<td>URL of the target to which to POST relay batches</td>
+<td>yes</td>
+<td>example: <code>https://webhooks.customer.example/replies</code></td>
+</tr>
+<tr>
+<td>auth_token</td>
+<td>string</td>
+<td>Authentication token to present in the X-MessageSystems-Webhook-Token header of POST requests to target</td>
+<td>no</td>
+<td>Use this token in your target application to confirm that data is coming from the Relay Webhooks API. example: <code>5ebe2294ecd0e0f08eab7690d2a6ee69</code></td>
+</tr>
+<tr>
+<td>match</td>
+<td>object</td>
+<td>Restrict which inbound messages will be relayed to the target</td>
+<td>yes</td>
+<td>See Match Object Properties. example: <code>&quot;match&quot;: { &quot;protocol&quot;: &quot;SMTP&quot;, &quot;domain&quot;: &quot;replies.customer.example&quot; }</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-match-object-properties">Match Object Properties <a class="permalink" href="#header-match-object-properties" aria-hidden="true">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protocol</td>
+<td>string</td>
+<td>Inbound messaging protocol associated with this webhook</td>
+<td>no - defaults to “SMTP”</td>
+<td></td>
+</tr>
+<tr>
+<td>domain</td>
+<td>string</td>
+<td>Inbound domain associated with this webhook</td>
+<td>yes</td>
+<td>To create an inbound domain for your account, please use the Inbound Domains API.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="header-field-definitions">Field Definitions <a class="permalink" href="#header-field-definitions" aria-hidden="true">¶</a></h2>
+<p>The following fields will be included in the JSON object posted to the relay webhooks target:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>object</td>
+<td>Content that will be used to construct a relay message</td>
+<td>For a full description, see the Content Attributes.</td>
+</tr>
+<tr>
+<td>friendly_from</td>
+<td>string</td>
+<td>Email address used to compose the “From” header</td>
+<td></td>
+</tr>
+<tr>
+<td>msg_from</td>
+<td>string</td>
+<td>SMTP envelope from</td>
+<td></td>
+</tr>
+<tr>
+<td>rcpt_to</td>
+<td>string</td>
+<td>SMTP envelope to</td>
+<td></td>
+</tr>
+<tr>
+<td>webhook_id</td>
+<td>string</td>
+<td>ID of the relay webhook which triggered this relay message</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-content-attributes">Content Attributes <a class="permalink" href="#header-content-attributes" aria-hidden="true">¶</a></h3>
+<p>Content for a relay webhook is described in a JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>string</td>
+<td>Contents of the first text/html part of the message</td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>Contents of the first text/plain part of the message</td>
+<td></td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>“Subject” header value (decoded from email)</td>
+<td></td>
+</tr>
+<tr>
+<td>to</td>
+<td>array of strings</td>
+<td>“To” header value (decoded from email), RFC2822 address list</td>
+<td></td>
+</tr>
+<tr>
+<td>cc</td>
+<td>array of strings</td>
+<td>“CC” header value (decoded from email), RFC2822 address list</td>
+<td></td>
+</tr>
+<tr>
+<td>headers</td>
+<td>array of objects</td>
+<td>Ordered array of email top-level headers</td>
+<td>This array preserves ordering and allows for multiple occurrences of a header (e.g.: to support trace headers such as “Received”).</td>
+</tr>
+<tr>
+<td>email_rfc822</td>
+<td>string</td>
+<td>Raw MIME content for an email</td>
+<td>If the Raw MIME content contains at least one non UTF-8 encoded character, the entire “email_rfc822” JSON value will be base64 encoded and the “email_rfc822_is_base64” JSON boolean value will be set to true</td>
+</tr>
+<tr>
+<td>email_rfc822_is_base64</td>
+<td>boolean</td>
+<td>Whether or not the “email_rfc822” value is base64 encoded</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><div class="resource searchable"><h3 id="relay-webhooks-create-and-list" class="resource-heading">Create and List <a href="#relay-webhooks-create-and-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="relay-webhooks-create-and-list-post" class="action-heading"><div class="name">Create a Relay Webhook</div></h4><div class="method">POST<code class="uri">/api/v1/relay-webhooks</code></div><div class="markdown"><p>Create a relay webhook by providing a <strong>relay webhooks object</strong> as the POST request body.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
+  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
+  "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+  "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="relay-webhooks-create-and-list-get" class="action-heading"><div class="name">List all Relay Webhooks</div></h4><div class="method">GET<code class="uri">/api/v1/relay-webhooks</code></div><div class="markdown"><p>List all your relay webhooks.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
+      "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
+      "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
+        "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
+      </span>}
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="relay-webhooks-retrieve,-update,-and-delete" class="resource-heading">Retrieve, Update, and Delete <a href="#relay-webhooks-retrieve,-update,-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="relay-webhooks-retrieve,-update,-and-delete-get" class="action-heading"><div class="name">Retrieve a Relay Webhook</div></h4><div class="method">GET<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
+Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Retrieve a specific relay webhook by specifying the webhook ID in the URI path.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
+    "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
+    "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
+    </span>}
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="relay-webhooks-retrieve,-update,-and-delete-put" class="action-heading"><div class="name">Update a Relay Webhook</div></h4><div class="method">PUT<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
+Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Update a relay webhook by specifying the webhook ID in the URI path.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New Replies Webhook"</span></span>,
+  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhook.customer.example/replies"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="relay-webhooks-retrieve,-update,-and-delete-delete" class="action-heading"><div class="name">Delete a Relay Webhook</div></h4><div class="method">DELETE<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
+Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Delete a relay webhook by specifying the webhook ID in the URI path.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr></div></div></div></section></div></div></div>
+
+    <footer>
+  <div class="container-fluid">
+    <div class="row row-dark">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
+            <h3>SparkPost</h3>
+            <p>
+              SparkPost is the email delivery service based on the Momentum platform from Message Systems. It provides the same deliverability, scalability and speed as we provide to the biggest senders in the world, in an easily integrated cloud solution.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 sp-connect">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Connect</h3>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://github.com/SparkPost"><i class="fa fa-fw fa-github"></i>&nbsp; Github</a></p>
+                <p><a href="http://slack.sparkpost.com"><i class="fa fa-fw fa-slack"></i>&nbsp; Slack</a></p>
+                <p><a href="http://stackoverflow.com/tags/sparkpost"><i class="fa fa-fw fa-stack-overflow"></i>&nbsp; Stack Overflow</a></p>
+                <p><a href="https://twitter.com/SparkPostDev"><i class="fa fa-fw fa-twitter"></i>&nbsp; Twitter</a></p>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://www.facebook.com/SparkPost"><i class="fa fa-fw fa-facebook"></i>&nbsp; Facebook</a></p>
+                <p><a href="https://www.linkedin.com/company/9486856"><i class="fa fa-fw fa-linkedin"></i>&nbsp; LinkedIn</a></p>
+                <p><a href="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"><i class="fa fa-fw fa-youtube"></i>&nbsp; YouTube</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<!-- Twitter Tweet Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- Facebook Share Button -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1078423545531734";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- dev hub custom js -->
+<script src="/js/hub.js"></script>
+<script src="/js/charity.js"></script>
+<script src="/js/redirect.js"></script>
+
+  </body>
+
+</html>

@@ -54,7 +54,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
     <header class="site-header">
   <nav id="nav" class="sp-menu navbar navbar-default">
     <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
-    <div class="container">
+    <div id="navbar-container" class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -86,7 +86,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
   <div class="container">
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-        <p><img src="images/logo-sparkpost.png" alt="SparkPost" width="270" /></p>
+        <p><img src="/images/logo-sparkpost.png" alt="SparkPost" width="270" /></p>
         <h1>Build Something Awesome.</h1>
         <p>The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?</p>
         <p><a class="btn btn-xlg btn-primary mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Try for free</a> <br><a class="btn btn-link btn-link-dark-bg" href="https://www.sparkpost.com/pricing"><small>View pricing</small></a></p>
@@ -445,6 +445,7 @@ $results = $sparky-&gt;transmission-&gt;send([
 <!-- dev hub custom js -->
 <script src="/js/hub.js"></script>
 <script src="/js/charity.js"></script>
+<script src="/js/redirect.js"></script>
 
   </body>
 

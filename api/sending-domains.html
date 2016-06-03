@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+  
+
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/images/favicon-48.png" sizes="48x48">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+    <title>API Reference - SparkPost Developer Hub</title>
+    <meta name="description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:site_name" content="SparkPost Developer Hub">
+    <meta property="og:url" content="https://developers.sparkpost.com/api/sending-domains.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="API Reference">
+    <meta property="og:description" content="SparkPost provides email delivery and analytics built for developers. Our developer hub is a collection of resources to help you succeed with SparkPost. What will you build?
+">
+    <meta property="og:image" content="https://developers.sparkpost.com/images/sparkpost-facebook.png">
+    <meta property="rwc_base_url" content="https://relay-webhook-consumer.herokuapp.com">
+
+    <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/bower_components/devicon/devicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cloud.typography.com/6240112/779488/css/fonts.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="https://developers.sparkpost.com/api/sending-domains.html">
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
+</head>
+
+
+  <body class="page-api-reference">
+    
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-WN7C84"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WN7C84');</script>
+    <!-- End Google Tag Manager -->
+    
+    <div id="fb-root"></div>
+
+    <header class="site-header">
+  <nav id="nav" class="sp-menu navbar navbar-default">
+    <div class="nav-banner">Hi, Mandrill users! <a href="https://www.sparkpost.com/mandrill-migration-guide">Let us help you with the switch.</a></div>
+    <div id="navbar-container" class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="https://www.sparkpost.com"><img src="/images/logo-sparkpost-white.png" alt="SparkPost" width="150"></a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Developer Hub</a></li>
+          <li><a href="/api/">API Docs</a></li>
+          <li><a href="https://www.sparkpost.com/blog/category/developer/">Blog</a></li>
+          <li><a href="/videos/">Videos</a></li>
+          <li><a href="https://support.sparkpost.com">Support</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://app.sparkpost.com/">Log In</a></li>
+          <li><a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Sign Up</a></li>
+        <ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav>
+</header>
+
+
+    <div id="apipage" class="container-fluid"><div class="row"><div id="menublock"><nav id="apimenu"><div class="resource-group"><div class="heading"><a href="index" class="text-uppercase">Overview</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="index#header-api-endpoints">API Endpoints</a></li><li><a href="index#header-sparkpost-api-endpoint">SparkPost API Endpoint</a></li><li><a href="index#header-sparkpost-elite-api-endpoint">SparkPost Elite API Endpoint</a></li><li><a href="index#header-api-conventions">API Conventions</a></li><li><a href="index#header-authentication">Authentication</a></li><li><a href="index#header-using-postman">Using Postman</a></li><li><a href="index#header-using-curl">Using cURL</a></li><li><a href="index#header-subaccounts">Subaccounts</a></li><li><a href="index#header-terminology">Terminology</a></li><li><a href="index#header-managing-subaccount-data-as-a-service-provider">Managing subaccount data as a Service Provider</a></li><li><a href="index#header-managing-master-account-data-as-a-service-provider">Managing master account data as a Service Provider</a></li><li><a href="index#header-smtp-relay-endpoints">SMTP Relay Endpoints</a></li><li><a href="index#header-sparkpost-smtp-endpoint">SparkPost SMTP Endpoint</a></li><li><a href="index#header-sparkpost-elite-smtp-endpoint">SparkPost Elite SMTP Endpoint</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="substitutions-reference" class="text-uppercase">Substitutions Reference</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="substitutions-reference#header-key-features">Key Features</a></li><li><a href="substitutions-reference#header-substitution-data">Substitution Data</a></li><li><a href="substitutions-reference#header-template-start-and-end-markers">Template Start and End Markers</a></li><li><a href="substitutions-reference#header-determination-of-expressions-and-statements">Determination of Expressions and Statements</a></li><li><a href="substitutions-reference#header-missing-substitution-values">Missing Substitution Values</a></li><li><a href="substitutions-reference#header-statements-on-their-own-line">Statements on Their Own Line</a></li><li><a href="substitutions-reference#header-escaping-start-and-end-tags">Escaping Start and End Tags</a></li><li><a href="substitutions-reference#header-escaping-html-values">Escaping HTML Values</a></li><li><a href="substitutions-reference#header-preventing-html-escaping">Preventing HTML Escaping</a></li><li><a href="substitutions-reference#header-personalized-links">Personalized Links</a></li><li><a href="substitutions-reference#header-link-names">Link Names</a></li><li><a href="substitutions-reference#header-unsubscribe-links">Unsubscribe Links</a></li><li><a href="substitutions-reference#header-per-link-disabling-of-click-tracking">Per-link Disabling of Click Tracking</a></li><li><a href="substitutions-reference#header-custom-link-sub-paths">Custom Link Sub-Paths</a></li><li><a href="substitutions-reference#header-link-attributes-in-text-parts">Link Attributes in Text Parts</a></li><li><a href="substitutions-reference#header-substitutions-syntax-examples">Substitutions Syntax Examples</a></li><li><a href="substitutions-reference#header-basic-substitution">Basic Substitution</a></li><li><a href="substitutions-reference#header-referencing-a-nested-object">Referencing a Nested Object</a></li><li><a href="substitutions-reference#header-if-then-else-syntax">if then else Syntax</a></li><li><a href="substitutions-reference#header-if-not-syntax">if not Syntax</a></li><li><a href="substitutions-reference#header-elseif-syntax">elseif Syntax</a></li><li><a href="substitutions-reference#header-expressions-in-conditionals-(,-,-,-,-,-)">Expressions in Conditionals (, , , , , )</a></li><li><a href="substitutions-reference#header-relational-and-logical-operators">Relational and Logical Operators</a></li><li><a href="substitutions-reference#header-array-iteration">Array Iteration</a></li><li><a href="substitutions-reference#header-links-and-substitution-expressions-within-substitution-values">Links and Substitution Expressions Within Substitution Values</a></li><li><a href="substitutions-reference#header-default-values">Default Values</a></li><li><a href="substitutions-reference#header-macros">Macros</a></li><li><a href="substitutions-reference#header-reserved-recipient-substitution-variables">Reserved Recipient Substitution Variables</a></li><li><a href="substitutions-reference#header-substitutions-in-email_rfc822-headers">Substitutions in email_rfc822 Headers</a></li><li><a href="substitutions-reference#header-encoding-rules">Encoding Rules</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="account" class="text-uppercase">Account</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="account#header-using-postman">Using Postman</a></li><li><a href="account#account-account-get">Get your account information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="inbound-domains" class="text-uppercase">Inbound Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="inbound-domains#header-inbound-domains-attributes">Inbound Domains Attributes</a></li><li><a href="inbound-domains#header-using-postman">Using Postman</a></li><li><a href="inbound-domains#inbound-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-create-and-list-post">Create an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-create-and-list-get">List all Inbound Domains</a></li></ul></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-get">Retrieve an Inbound Domain</a></li><li><a href="inbound-domains#inbound-domains-retrieve-and-delete-delete">Delete an Inbound Domain</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="metrics" class="text-uppercase">Metrics</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="metrics#header-data-retention">Data retention</a></li><li><a href="metrics#header-using-postman">Using Postman</a></li><li><a href="metrics#header-metrics-api-deliverability-glossary">Metrics API Deliverability Glossary</a></li><li><a href="metrics#metrics-discoverability-links-get">Metrics Discoverability Links</a></li><li><a href="metrics#metrics-deliverability-metrics-get">Deliverability Metrics Summary</a></li><li><a href="metrics#metrics-deliverability-metrics-by-domain-get">Deliverability Metrics by Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-get">Deliverability Metrics by Binding</a></li><li><a href="metrics#metrics-deliverability-metrics-by-binding-group-get">Deliverability Metrics by Binding Group</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-ip-get">Deliverability Metrics by Sending IP</a></li><li><a href="metrics#metrics-deliverability-metrics-by-ip-pool-get">Deliverability Metrics by IP Pool</a></li><li><a href="metrics#metrics-deliverability-metrics-by-sending-domain-get">Deliverability Metrics by Sending Domain</a></li><li><a href="metrics#metrics-deliverability-metrics-by-subaccount-get">Deliverability Metrics by Subaccount</a></li><li><a href="metrics#metrics-deliverability-metrics-by-campaign-get">Deliverability Metrics by Campaign</a></li><li><a href="metrics#metrics-deliverability-metrics-by-template-get">Deliverability Metrics by Template</a></li><li><a href="metrics#metrics-deliverability-metrics-by-watched-domain-get">Deliverability Metrics by Watched Domain</a></li><li><a href="metrics#metrics-time-series-get">Time-Series Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-get">Bounce Reason Metrics</a></li><li><a href="metrics#metrics-bounce-reasons-by-domain-get">Bounce Reason Metrics By Domain</a></li><li><a href="metrics#metrics-bounce-classifications-get">Bounce Classification Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-get">Rejection Reason Metrics</a></li><li><a href="metrics#metrics-rejection-reasons-by-domain-get">Rejection Reason Metrics By Domain</a></li><li><a href="metrics#metrics-delay-reasons-get">Delay Reason Metrics</a></li><li><a href="metrics#metrics-delay-reasons-by-domain-get">Delay Reason Metrics By Domain</a></li><li><a href="metrics#metrics-engagement-details-get">Engagement Details</a></li><li><a href="metrics#metrics-deliveries-by-attempt-get">Deliveries By Attempt</a></li><li><a href="metrics#metrics-binding-groups-list-get">Bindings Groups List</a></li><li><a href="metrics#metrics-binding-groups-list-get-1">Bindings List</a></li><li><a href="metrics#metrics-ip-pools-list-get">IP Pools List</a></li><li><a href="metrics#metrics-sending-ips-list-get">Sending IPs List</a></li><li><a href="metrics#metrics-campaigns-list-get">Campaigns List</a></li><li><a href="metrics#metrics-domains-list-get">Domains List</a></li><li><a href="metrics#metrics-nodes-list-get">Nodes List</a></li><li><a href="metrics#metrics-protocols-list-get">Protocols List</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="message-events" class="text-uppercase">Message Events</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="message-events#header-data-retention">Data retention</a></li><li><a href="message-events#header-using-postman">Using Postman</a></li><li><a href="message-events#header-copyrights">Copyrights</a></li><li><a href="message-events#message-events-events-documentation-get">Documentation</a></li><li><a href="message-events#message-events-events-samples-get">Samples</a></li><li><a href="message-events#message-events-message-events-get">Search for Message Events</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="relay-webhooks" class="text-uppercase">Relay Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="relay-webhooks#header-using-postman">Using Postman</a></li><li><a href="relay-webhooks#header-relay-webhooks-object-properties">Relay Webhooks Object Properties</a></li><li><a href="relay-webhooks#header-match-object-properties">Match Object Properties</a></li><li><a href="relay-webhooks#header-field-definitions">Field Definitions</a></li><li><a href="relay-webhooks#header-content-attributes">Content Attributes</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-create-and-list-post">Create a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-create-and-list-get">List all Relay Webhooks</a></li></ul></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-get">Retrieve a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-put">Update a Relay Webhook</a></li><li><a href="relay-webhooks#relay-webhooks-retrieve,-update,-and-delete-delete">Delete a Relay Webhook</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading current"><a href="sending-domains" class="text-uppercase">Sending Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="sending-domains#header-using-postman">Using Postman</a></li><li><a href="sending-domains#header-sending-domain-attributes">Sending Domain Attributes</a></li><li><a href="sending-domains#header-dkim-attributes">DKIM Attributes</a></li><li><a href="sending-domains#header-status-attributes">Status Attributes</a></li><li><a href="sending-domains#header-verify-attributes">Verify Attributes</a></li><li><a href="sending-domains#header-dns-attributes">DNS Attributes</a></li><li><a href="sending-domains#sending-domains-create">Create</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-create-post">Create a Sending Domain</a></li><li><a href="sending-domains#sending-domains-create-get">List all Sending Domains</a></li></ul></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-get">Retrieve a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-put">Update a Sending Domain</a></li><li><a href="sending-domains#sending-domains-retrieve,-update,-and-delete-delete">Delete a Sending Domain</a></li></ul></li><li><a href="sending-domains#sending-domains-verify-post">Verify a Sending Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="subaccounts" class="text-uppercase">Subaccounts</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection">Subaccounts Collection</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-collection-get">List subaccounts</a></li><li><a href="subaccounts#subaccounts-subaccounts-collection-post">Create new subaccount</a></li></ul></li><li><a href="subaccounts#subaccounts-subaccounts-entity">Subaccounts Entity</a><ul class="list-unstyled"><li><a href="subaccounts#subaccounts-subaccounts-entity-get">List specific subaccount</a></li><li><a href="subaccounts#subaccounts-subaccounts-entity-put">Edit a subaccount</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="suppression-list" class="text-uppercase">Suppression List</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="suppression-list#header-using-postman">Using Postman</a></li><li><a href="suppression-list#header-list-entry-attributes">List Entry Attributes</a></li><li><a href="suppression-list#suppression-list-bulk-insert-update-put">Insert or Update List Entries</a></li><li><a href="suppression-list#suppression-list-search-get">Search for List Entries</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete">Retrieve, Delete</a><ul class="list-unstyled"><li><a href="suppression-list#suppression-list-retrieve,-delete-get">Retrieve a Recipient Suppression Status</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-delete">Delete a List Entry</a></li><li><a href="suppression-list#suppression-list-retrieve,-delete-put">Insert or Update a List Entry</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><a href="templates" class="text-uppercase">Templates</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="templates#header-using-postman">Using Postman</a></li><li><a href="templates#header-template-attributes">Template Attributes</a></li><li><a href="templates#header-content-attributes">Content Attributes</a></li><li><a href="templates#header-header-notes">Header Notes</a></li><li><a href="templates#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="templates#header-options-attributes">Options Attributes</a></li><li><a href="templates#header-error-attributes">Error Attributes</a></li><li><a href="templates#templates-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="templates#templates-create-and-list-post">Create a Template</a></li><li><a href="templates#templates-create-and-list-get">List all Templates</a></li></ul></li><li><a href="templates#templates-retrieve-get">Retrieve a Template</a></li><li><a href="templates#templates-update-put">Update a Template</a></li><li><a href="templates#templates-preview-post">Preview a Template</a></li><li><a href="templates#templates-delete-delete">Delete a Template</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="tracking-domains" class="text-uppercase">Tracking Domains</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="tracking-domains#header-using-postman">Using Postman</a></li><li><a href="tracking-domains#header-tracking-domains-attributes">Tracking Domains Attributes</a></li><li><a href="tracking-domains#header-port-secure-attributes">Port/Secure Attributes</a></li><li><a href="tracking-domains#header-status-attributes">Status Attributes</a></li><li><a href="tracking-domains#tracking-domains-create-and-list">Create and List</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-create-and-list-post">Create a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-create-and-list-get">List all Tracking Domains</a></li></ul></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete">Retrieve, Update, and Delete</a><ul class="list-unstyled"><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-get">Retrieve a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-put">Update a Tracking Domain</a></li><li><a href="tracking-domains#tracking-domains-retrieve,-update,-and-delete-delete">Delete a Tracking Domain</a></li></ul></li><li><a href="tracking-domains#tracking-domains-verify-post">Verify a Tracking Domain</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="transmissions" class="text-uppercase">Transmissions</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="transmissions#header-using-postman">Using Postman</a></li><li><a href="transmissions#header-transmission-attributes">Transmission Attributes</a></li><li><a href="transmissions#header-options-attributes">Options Attributes</a></li><li><a href="transmissions#header-inline-content-attributes">Inline Content Attributes</a></li><li><a href="transmissions#header-header-notes">Header Notes</a></li><li><a href="transmissions#header-email_rfc822-notes">email_rfc822 Notes</a></li><li><a href="transmissions#header-attachment-attributes">Attachment Attributes</a></li><li><a href="transmissions#header-inline-image-attributes">Inline Image Attributes</a></li><li><a href="transmissions#header-using-a-stored-template">Using a Stored Template</a></li><li><a href="transmissions#header-using-a-stored-recipient-list">Using a Stored Recipient List</a></li><li><a href="transmissions#header-scheduled-transmissions">Scheduled Transmissions</a></li><li><a href="transmissions#transmissions-create-post">Create a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete">Retrieve and Delete</a><ul class="list-unstyled"><li><a href="transmissions#transmissions-retrieve-and-delete-get">Retrieve a Transmission</a></li><li><a href="transmissions#transmissions-retrieve-and-delete-delete">Delete a Transmission</a></li></ul></li><li><a href="transmissions#transmissions-list-get">List all Transmissions</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="webhooks" class="text-uppercase">Webhooks</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="webhooks#header-using-postman">Using Postman</a></li><li><a href="webhooks#header-webhooks-object-properties">Webhooks Object Properties</a></li><li><a href="webhooks#webhooks-events-documentation-get">Documentation</a></li><li><a href="webhooks#webhooks-events-samples-get">Samples</a></li><li><a href="webhooks#webhooks-create-post">Create a Webhook</a></li><li><a href="webhooks#webhooks-retrieve-get">Retrieve Webhook Details</a></li><li><a href="webhooks#webhooks-list-get">List all Webhooks</a></li><li><a href="webhooks#webhooks-update-and-delete">Update and Delete</a><ul class="list-unstyled"><li><a href="webhooks#webhooks-update-and-delete-put">Update a Webhook</a></li><li><a href="webhooks#webhooks-update-and-delete-delete">Delete a Webhook</a></li></ul></li><li><a href="webhooks#webhooks-validate-post">Validate a Webhook</a></li><li><a href="webhooks#webhooks-batch-status-get">Retrieve Status Information</a></li></ul></div></div><div class="resource-group"><div class="heading"><a href="smtp-api" class="text-uppercase">SMTP API</a></div><div class="collapse-content"><ul class="list-unstyled"><li><a href="smtp-api#header-options-attributes">Options Attributes</a></li><li><a href="smtp-api#header-sending-messages-with-cc,-bcc,-and-archive-recipients">Sending Messages with cc, bcc, and archive Recipients</a></li><li><a href="smtp-api#header-comments-on-header-length">Comments on Header Length</a></li></ul></div></div></nav></div><div id="contentblock"><header><h1 id="top"></h1></header><section class="resource-group searchable"><h2 id="sending-domains" class="group-heading">Sending Domains <a href="#sending-domains" class="permalink"></a></h2><div class="markdown"><p><a name="sending-domains-api"></a></p>
+<p>A sending domain is a domain that is used to indicate who an email is from via the “From:” header. Using a custom sending domain enables you to control what recipients see as the From value in their email clients. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages. The Sending Domains API provides the means to create, list, retrieve, update, and verify a custom sending domain.</p>
+<h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
+<p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
+<p><a href="https://www.getpostman.com/run-collection/81ee1dd2790d7952b76a"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
+<h2 id="header-sending-domain-attributes">Sending Domain Attributes <a class="permalink" href="#header-sending-domain-attributes" aria-hidden="true">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain</td>
+<td style="text-align:center">string</td>
+<td>Name of the sending domain</td>
+<td>yes</td>
+<td>The domain name will be used as the “From:” header address in the email.</td>
+</tr>
+<tr>
+<td>tracking_domain</td>
+<td style="text-align:center">string</td>
+<td>Associated tracking domain</td>
+<td>no</td>
+<td>example: &quot;<a href="http://click.example1.com">click.example1.com</a>&quot;. <strong>Note</strong>: tracking domain and sending domain must belong to the same subaccount to be linked together.</td>
+</tr>
+<tr>
+<td>status</td>
+<td style="text-align:center">JSON object</td>
+<td>JSON object containing status details, including whether this domain’s ownership has been verified</td>
+<td>no</td>
+<td>Read only. For a full description, see the Status Attributes.</td>
+</tr>
+<tr>
+<td>dkim</td>
+<td style="text-align:center">JSON object</td>
+<td>JSON object in which DKIM key configuration is defined</td>
+<td>no</td>
+<td>For a full description, see the DKIM Attributes.</td>
+</tr>
+<tr>
+<td>generate_dkim</td>
+<td style="text-align:center">boolean</td>
+<td>Whether to generate a DKIM keypair on creation</td>
+<td>no</td>
+<td>defaults to true</td>
+</tr>
+<tr>
+<td>dkim_key_length</td>
+<td style="text-align:center">number</td>
+<td>Size, in bits, of the DKIM private key to be generated.</td>
+<td>no</td>
+<td>This option only applies if generate_dkim is ‘true’. Private key size defaults to 1024. Note that public keys for private keys longer than 1024 bits will be longer that 255 characters.  Because of this, the public key TXT record in DNS will need to contain multiple strings, see <a href="https://tools.ietf.org/html/rfc7208#section-3.3">RFC 7208, section 3.3</a> for an example of how the SPF spec addresses this</td>
+</tr>
+<tr>
+<td>shared_with_subaccounts</td>
+<td style="text-align:center">boolean</td>
+<td>Setting to true allows this domain to be used by subaccounts</td>
+<td>no</td>
+<td>Defaults to false, only available to domains belonging to a master account.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-dkim-attributes">DKIM Attributes <a class="permalink" href="#header-dkim-attributes" aria-hidden="true">¶</a></h3>
+<p>DKIM uses a pair of public and private keys to authenticate your emails. The DKIM key configuration is described in a JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>signing_domain</td>
+<td style="text-align:center">string</td>
+<td>Signing Domain Identifier (SDID)</td>
+<td>no</td>
+<td>This will be used in the d= field of the DKIM Signature. If signing_domain is not specified, or is set to the empty string (&quot;&quot;), then the Sending Domain will be used as the signing domain. ( <strong>Note</strong>: signing_domain is only available in SparkPost Elite. In <a href="http://SparkPost.com">SparkPost.com</a>, the Sending Domain is always used as the signing domain. )</td>
+</tr>
+<tr>
+<td>private</td>
+<td style="text-align:center">string</td>
+<td>DKIM private key</td>
+<td>yes</td>
+<td>The private key will be used to create the DKIM Signature.</td>
+</tr>
+<tr>
+<td>public</td>
+<td style="text-align:center">string</td>
+<td>DKIM public key</td>
+<td>yes</td>
+<td>The public key will be retrieved from DNS of the sending domain.</td>
+</tr>
+<tr>
+<td>selector</td>
+<td style="text-align:center">string</td>
+<td>DomainKey selector</td>
+<td>yes</td>
+<td>The DomainKey selector will be used to indicate the DKIM public key location.</td>
+</tr>
+<tr>
+<td>headers</td>
+<td style="text-align:center">string</td>
+<td>Header fields to be included in the DKIM signature</td>
+<td>no</td>
+<td><strong>This field is currently ignored.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-status-attributes">Status Attributes <a class="permalink" href="#header-status-attributes" aria-hidden="true">¶</a></h3>
+<p>Detailed status for this sending domain is described in a JSON object with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ownership_verified</td>
+<td style="text-align:center">boolean</td>
+<td>Whether domain ownership has been verified</td>
+<td>false</td>
+<td>Read only. This field will return “true” if any of dkim_status, spf_status, abuse_at_status, or postmaster_at_status are “true”.</td>
+</tr>
+<tr>
+<td>dkim_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of DKIM configuration</td>
+<td>unverified</td>
+<td>Read only. Valid values are “unverified”, “pending”, “invalid” or “valid”.</td>
+</tr>
+<tr>
+<td>spf_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of SPF configuration</td>
+<td>unverified</td>
+<td>Read only. Valid values are “unverified”, “pending”, “invalid” or “valid”.</td>
+</tr>
+<tr>
+<td>abuse_at_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of abuse@ mailbox</td>
+<td>unverified</td>
+<td>Read only. Valid values are “unverified”, “pending”, “invalid” or “valid”.</td>
+</tr>
+<tr>
+<td>postmaster_at_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of postmaster@ mailbox</td>
+<td>unverified</td>
+<td>Read only. Valid values are “unverified”, “pending”, “invalid” or “valid”.</td>
+</tr>
+<tr>
+<td>compliance_status</td>
+<td style="text-align:center">string</td>
+<td>Compliance status</td>
+<td></td>
+<td>Valid values are “pending”, “valid”, or “blocked”.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-verify-attributes">Verify Attributes <a class="permalink" href="#header-verify-attributes" aria-hidden="true">¶</a></h3>
+<p>These are the valid request options for verifying a Sending Domain:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+<th>Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dkim_verify</td>
+<td style="text-align:center">boolean</td>
+<td>Request verification of DKIM record</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>spf_verify</td>
+<td style="text-align:center">boolean</td>
+<td>Request verification of SPF record</td>
+<td>no</td>
+<td></td>
+</tr>
+<tr>
+<td>postmaster_at_verify</td>
+<td style="text-align:center">boolean</td>
+<td>Request an email with a verification link to be sent to the sending domain’s postmaster@ mailbox.</td>
+<td>no</td>
+<td><a href="http://SparkPost.com">SparkPost.com</a> only</td>
+</tr>
+<tr>
+<td>abuse_at_verify</td>
+<td style="text-align:center">boolean</td>
+<td>Request an email with a verification link to be sent to the sending domain’s abuse@ mailbox.</td>
+<td>no</td>
+<td><a href="http://SparkPost.com">SparkPost.com</a> only</td>
+</tr>
+<tr>
+<td>postmaster_at_token</td>
+<td style="text-align:center">string</td>
+<td>A token retrieved from the verification link contained in the postmaster@ verification email.</td>
+<td>no</td>
+<td><a href="http://SparkPost.com">SparkPost.com</a> only</td>
+</tr>
+<tr>
+<td>abuse_at_token</td>
+<td style="text-align:center">string</td>
+<td>A token retrieved from the verification link contained in the abuse@ verification email.</td>
+<td>no</td>
+<td><a href="http://SparkPost.com">SparkPost.com</a> only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-dns-attributes">DNS Attributes <a class="permalink" href="#header-dns-attributes" aria-hidden="true">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th style="text-align:center">Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dkim_record</td>
+<td style="text-align:center">string</td>
+<td>DNS DKIM record for the registered Sending Domain</td>
+</tr>
+<tr>
+<td>spf_record</td>
+<td style="text-align:center">string</td>
+<td>DNS SPF record for the registered Sending Domain</td>
+</tr>
+<tr>
+<td>dkim_error</td>
+<td style="text-align:center">string</td>
+<td>Error message describing reason for DKIM verification failure</td>
+</tr>
+<tr>
+<td>spf_error</td>
+<td style="text-align:center">string</td>
+<td>Error message describing reason for SPF verification failure</td>
+</tr>
+</tbody>
+</table>
+</div><div class="resource searchable"><h3 id="sending-domains-create" class="resource-heading">Create <a href="#sending-domains-create" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="sending-domains-create-post" class="action-heading"><div class="name">Create a Sending Domain</div></h4><div class="method">POST<code class="uri">/api/v1/sending-domains</code></div><div class="markdown"><p>Create a sending domain by providing a <strong>sending domain object</strong> as the POST request body.</p>
+<p>To use a DKIM Signing Domain Identifier different to the Sending Domain, set the dkim.signing_domain field. ( <strong>Note</strong>: dkim.signing_domain is only available in SparkPost Elite. )</p>
+<p><strong>Note</strong>: For some SparkPost Elite customers, Sending Domains will be set to verified automatically when they are created, and can be used to send messages immediately. For these customers, there is no need to use the “verify” endpoint to verify Sending Domains. To find out if this applies in your SparkPost Elite environment, please contact support <a href="mailto:support@sparkpostelite.com">support@sparkpostelite.com</a>, or contact your TAM.</p>
+</div><h3>Example: Create New Sending Domain with Auto-Generated DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+  "results": {
+    "message": "Successfully Created domain.",
+    "domain": "example1.com"
+    "dkim": {
+      "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+      "selector": "scph0316",
+      "signing_domain": "",
+      "headers": "from:to:subject:date"
+    }
+  }
+}</pre></div></div><hr><h3>Example: Create Sending Domain without DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
+  "<span class="hljs-attribute">generate_dkim</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Created domain."</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Provide Pre-Generated DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
+  "<span class="hljs-attribute">tracking_domain</span>": <span class="hljs-value"><span class="hljs-string">"click.example1.com"</span></span>,
+  "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-string">"MIICXgIBAAKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQABAoGBAITb3BCRPBi5lGhHdn+1RgC7cjUQEbSb4eFHm+ULRwQ0UIPWHwiVWtptZ09usHq989fKp1g/PfcNzm8c78uTS6gCxfECweFCRK6EdO6cCCr1cfWvmBdSjzYhODUdQeyWZi2ozqd0FhGWoV4VHseh4iLj36DzleTLtOZj3FhAo1WJAkEA68T+KkGeDyWwvttYtuSiQCCTrXYAWTQnkIUxduCp7Ap6tVeIDn3TaXTj74UbEgaNgLhjG4bX//fdeDW6PaK9YwJBAM6xJmwHLPMgwNVjiz3u/6fhY3kaZTWcxtMkXCjh1QE82KzDwqyrCg7EFjTtFysSHCAZxXZMcivGl4TZLHnydJUCQQCx16+M+mAatuiCnvxlQUMuMiSTNK6Amzm45u9v53nlZeY3weYMYFdHdfe1pebMiwrT7MI9clKebz6svYJVmdtXAkApDAc8VuR3WB7TgdRKNWdyGJGfoD1PO1ZE4iinOcoKV+IT1UCY99Kkgg6C7j62n/8T5OpRBvd5eBPpHxP1F9BNAkEA5Nf2VO9lcTetksHdIeKK+F7sio6UZn0Rv7iUo3ALrN1D1cGfWIh2dj3ko1iSreyNVSwGW0ePP27qDmU+u6/Y1g=="</span></span>,
+    "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+    "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
+    "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Created domain."</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
+    <span class="hljs-string">"dkim"</span>: {
+      "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+      "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
+      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
+    </span>}
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="sending-domains-create-get" class="action-heading"><div class="name">List all Sending Domains</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains</code></div><div class="markdown"><p>List an overview of all sending domains in the system.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": [
+        {
+            "domain": "example1.com",
+            "tracking_domain": "click.example1.com",
+            "status": {
+                "ownership_verified": true,
+                "spf_status": "valid",
+                "abuse_at_status": "valid",
+                "dkim_status": "valid",
+                "compliance_status": "valid",
+                "postmaster_at_status": "valid"
+            },
+            "shared_with_subaccounts": false
+        },
+        {
+            "domain": "example2.com",
+            "status": {
+                "ownership_verified": false,
+                "spf_status": "pending",
+                "abuse_at_status": "pending",
+                "dkim_status": "pending",
+                "compliance_status": "pending",
+                "postmaster_at_status": "pending"
+            },
+            "shared_with_subaccounts": false
+        }
+    ]
+}
+```</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-retrieve,-update,-and-delete" class="resource-heading">Retrieve, Update, and Delete <a href="#sending-domains-retrieve,-update,-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-domains-retrieve,-update,-and-delete-get" class="action-heading"><div class="name">Retrieve a Sending Domain</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Retrieve a sending domain by specifying its domain name in the URI path.  The response includes details about its DKIM key configuration.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": {
+        "tracking_domain": "click.example1.com",
+        "status": {
+            "ownership_verified": false,
+            "spf_status": "pending",
+            "abuse_at_status": "pending",
+            "dkim_status": "pending",
+            "compliance_status": "pending",
+            "postmaster_at_status": "pending"
+        },
+        "dkim": {
+            "headers": "from:to:subject:date",
+            "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+            "selector": "hello_selector"
+        },
+        "shared_with_subaccounts": false
+    }
+}
+```</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="sending-domains-retrieve,-update,-and-delete-put" class="action-heading"><div class="name">Update a Sending Domain</div></h4><div class="method">PUT<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Update the attributes of an existing sending domain by specifying its domain name in the URI path and use a <strong>sending domain object</strong> as the PUT request body.</p>
+<p>If a tracking domain is specified, it will replace any currently specified tracking domain.  If the supplied tracking domain is a blank string, it will clear any currently specified tracking domain. Note that if a tracking domain is not specified, any currently specified tracking domain will remain intact.</p>
+<p>If a dkim object is provided in the update request, it must contain all relevant fields whether they are being changed or not.  The new dkim object will completely overwrite the existing one.</p>
+<p>To remove the DKIM Signing Domain Identifier for a Sending Domain, use the empty string for the value of the dkim.signing_domain field. ( <strong>Note</strong>: dkim.signing_domain is only available in SparkPost Elite. )</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">tracking_domain</span>": <span class="hljs-value"><span class="hljs-string">"click.example1.com"</span></span>,
+  "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">private</span>": <span class="hljs-value"><span class="hljs-string">"MIICXgIBAAKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQABAoGBAITb3BCRPBi5lGhHdn+1RgC7cjUQEbSb4eFHm+ULRwQ0UIPWHwiVWtptZ09usHq989fKp1g/PfcNzm8c78uTS6gCxfECweFCRK6EdO6cCCr1cfWvmBdSjzYhODUdQeyWZi2ozqd0FhGWoV4VHseh4iLj36DzleTLtOZj3FhAo1WJAkEA68T+KkGeDyWwvttYtuSiQCCTrXYAWTQnkIUxduCp7Ap6tVeIDn3TaXTj74UbEgaNgLhjG4bX//fdeDW6PaK9YwJBAM6xJmwHLPMgwNVjiz3u/6fhY3kaZTWcxtMkXCjh1QE82KzDwqyrCg7EFjTtFysSHCAZxXZMcivGl4TZLHnydJUCQQCx16+M+mAatuiCnvxlQUMuMiSTNK6Amzm45u9v53nlZeY3weYMYFdHdfe1pebMiwrT7MI9clKebz6svYJVmdtXAkApDAc8VuR3WB7TgdRKNWdyGJGfoD1PO1ZE4iinOcoKV+IT1UCY99Kkgg6C7j62n/8T5OpRBvd5eBPpHxP1F9BNAkEA5Nf2VO9lcTetksHdIeKK+F7sio6UZn0Rv7iUo3ALrN1D1cGfWIh/Y1g=="</span></span>,
+    "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+    "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"hello_selector"</span></span>,
+    "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Updated Domain."</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="sending-domains-retrieve,-update,-and-delete-delete" class="action-heading"><div class="name">Delete a Sending Domain</div></h4><div class="method">DELETE<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Delete an existing sending domain.</p>
+<p><strong>Warning:</strong> Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 204)</h4></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-verify" class="resource-heading">Verify <a href="#sending-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="sending-domains-verify-post" class="action-heading"><div class="name">Verify a Sending Domain</div></h4><div class="method">POST<code class="uri">/api/v1/sending-domains/verify</code></div><div class="markdown"><p>The verify resource operates differently depending on the provided request fields:</p>
+<ul>
+<li>
+<p>Including the fields “dkim_verify” and/or “spf_verify” in the request initiates a check against the associated DNS record type for the specified sending domain.</p>
+</li>
+<li>
+<p>Including the fields “postmaster_at_verify” and/or “abuse_at_verify” in the request results in an email sent to the specified sending domain’s postmaster@ and/or abuse@ mailbox where a verification link can be clicked.</p>
+</li>
+<li>
+<p>Including the fields “postmaster_at_token” and/or “abuse_at_token” in the request initiates a check of the provided token(s) against the stored token(s) for the specified sending domain.</p>
+</li>
+</ul>
+<p>DKIM public key verification requires the following:</p>
+<ul>
+<li>
+<p>A valid DKIM record must be in the DNS for the sending domain being verified.</p>
+</li>
+<li>
+<p>The record must use the sending domain’s public key in the “p=” tag.</p>
+</li>
+<li>
+<p>If a k= tag is defined, it must be set to “rsa”.</p>
+</li>
+<li>
+<p>If an h= tag is defined, it must be set to “sha256”.</p>
+</li>
+</ul>
+<p>SPF verification requires the following:</p>
+<ul>
+<li>
+<p>A valid SPF record must be in the DNS for the sending domain being verified.</p>
+</li>
+<li>
+<p>The record must contain “v=spf1”.</p>
+</li>
+<li>
+<p>The record must contain “include:sparkpostmail.com”.</p>
+</li>
+<li>
+<p>The record must use either “~all” or “-all”.</p>
+</li>
+</ul>
+<p>The domain’s “status” object is returned on success.</p>
+</div><h3>Example: Verify DKIM and SPF</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">dkim_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">spf_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": {
+        "ownership_verified": true,
+        "spf_status": "valid",
+        "dns": {
+            "dkim_record": "k=rsa; h=sha256; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+            "spf_record": "v=spf1 include:sparkpostmail.com ~all"
+        },
+        "compliance_status": "pending",
+        "dkim_status": "valid",
+        "abuse_at_status": "unverified",
+        "postmaster_at_status": "unverified"
+    }
+}
+```</pre></div></div><hr><h3>Example: Initiate postmaster@ email</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">postmaster_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": {
+        "ownership_verified": false,
+        "spf_status": "unverified",
+        "compliance_status": "valid",
+        "dkim_status": "unverified",
+        "abuse_at_status": "unverified",
+        "postmaster_at_status": "unverified"
+    }
+}
+```</pre></div></div><hr><h3>Example: Verify postmaster@ correct token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">postmaster_at_token</span>": <span class="hljs-value"><span class="hljs-string">"rcayptmrczdnrnqfsxyrzljmtsxvjzxb"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": {
+        "ownership_verified": true,
+        "spf_status": "unverified",
+        "compliance_status": "valid",
+        "dkim_status": "unverified",
+        "abuse_at_status": "unverified",
+        "postmaster_at_status": "valid"
+    }
+}
+```</pre></div></div><hr><h3>Example: Verify abuse@ incorrect token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">abuse_at_token</span>": <span class="hljs-value"><span class="hljs-string">"AN_INCORRECT_OR_EXPIRED_TOKEN"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+    "results": {
+        "ownership_verified": false,
+        "spf_status": "unverified",
+        "compliance_status": "valid",
+        "dkim_status": "unverified",
+        "abuse_at_status": "unverified",
+        "postmaster_at_status": "unverified"
+    }
+}
+```</pre></div></div><hr><h3>Example: Unable to process abuse@ request</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">abuse_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
+{
+   "errors": [
+      {
+         "message": "Failed to generate message",
+         "description": "Failed to generate verification email",
+         "code": "1901"
+      }
+   ]
+}
+```</pre></div></div><hr></div></div></div></section></div></div></div>
+
+    <footer>
+  <div class="container-fluid">
+    <div class="row row-dark">
+      <div class="container">
+        <div class="col-xs-12">
+          <div class="col-xs-12 col-sm-6">
+            <h3>SparkPost</h3>
+            <p>
+              SparkPost is the email delivery service based on the Momentum platform from Message Systems. It provides the same deliverability, scalability and speed as we provide to the biggest senders in the world, in an easily integrated cloud solution.
+            </p>
+          </div>
+          <div class="col-xs-12 col-sm-6 sp-connect">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Connect</h3>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://github.com/SparkPost"><i class="fa fa-fw fa-github"></i>&nbsp; Github</a></p>
+                <p><a href="http://slack.sparkpost.com"><i class="fa fa-fw fa-slack"></i>&nbsp; Slack</a></p>
+                <p><a href="http://stackoverflow.com/tags/sparkpost"><i class="fa fa-fw fa-stack-overflow"></i>&nbsp; Stack Overflow</a></p>
+                <p><a href="https://twitter.com/SparkPostDev"><i class="fa fa-fw fa-twitter"></i>&nbsp; Twitter</a></p>
+              </div>
+              <div class="col-xs-6">
+                <p><a href="https://www.facebook.com/SparkPost"><i class="fa fa-fw fa-facebook"></i>&nbsp; Facebook</a></p>
+                <p><a href="https://www.linkedin.com/company/9486856"><i class="fa fa-fw fa-linkedin"></i>&nbsp; LinkedIn</a></p>
+                <p><a href="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"><i class="fa fa-fw fa-youtube"></i>&nbsp; YouTube</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+<!-- Twitter Tweet Button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<!-- Facebook Share Button -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1078423545531734";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- dev hub custom js -->
+<script src="/js/hub.js"></script>
+<script src="/js/charity.js"></script>
+<script src="/js/redirect.js"></script>
+
+  </body>
+
+</html>
