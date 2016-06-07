@@ -87,32 +87,6 @@ body {
 }
 
 
-// Video pages
-// -------------------------
-
-.video-thumb {
-  margin-bottom: 50px;
-
-  img {
-    border: 1px solid $c-gray-lighter;
-  }
-}
-
-.video-detail {
-
-  .media {
-    margin-top: 20px;
-
-    .media-object {
-      border-radius: 50%;
-    }
-  }
-}
-
-.embed-responsive {
-  border: 1px solid $c-gray-lighter;
-}
-
 // Libraries page
 // -------------------------
 

@@ -19,8 +19,6 @@ relay_webhook_consumer_url_base: "https://relay-webhook-consumer.herokuapp.com"
 collections:
   contributors:
     output: true
-  videos:
-    output: true
   hackathons:
     output: true
   faqs:
@@ -29,13 +27,6 @@ collections:
     output: true
 
 defaults:
-  - scope:
-      path: ""
-      type: videos
-    values:
-      layout: video
-      video_height: 315
-      video_width: 560
   - scope:
       path: ""
       type: contributors
