@@ -5953,19 +5953,6 @@ body {
   .content-social .twitter iframe {
     margin-top: -2px; }
 
-.video-thumb {
-  margin-bottom: 50px; }
-  .video-thumb img {
-    border: 1px solid #cccccc; }
-
-.video-detail .media {
-  margin-top: 20px; }
-  .video-detail .media .media-object {
-    border-radius: 50%; }
-
-.embed-responsive {
-  border: 1px solid #cccccc; }
-
 .libraries li {
   margin-bottom: 10px; }
 
