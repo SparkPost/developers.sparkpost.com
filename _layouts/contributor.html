@@ -19,16 +19,5 @@ layout: default
     </div>
     <div class="col-md-9">
       {{ content }}
-
-      <h3>Contributions</h3>
-      {% assign videos = site.videos | where: "author", page.id %}
-      {% if videos.size > 0 %}
-      <h4>Videos</h4>
-      <ul>
-      {% for video in videos %}
-        <li><a href="{{ video.url }}">{{ video.title }}</a></li>
-      {% endfor %}
-      </ul>
-      {% endif %}
     </div>
 </div>
