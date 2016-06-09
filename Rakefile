@@ -238,24 +238,18 @@ namespace :site do
       exit
     end
 
-    # check if there are any changes - if not, no need to proceed
-    sh "git diff --exit-code" do |ok, res|
-      if ok
-        puts 'No changes detected. No need to commit and push.'
-        exit
-      end
-    end
-
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
+      # check if there are any changes - if not, no need to proceed
       # Exits with 1 if there were differences and 0 means no differences.
-      ##sh "git diff --quiet" do |clean, res|
-      #  if clean
-      #    puts "Nothing to deploy."
-      #    exit
-      #  end
-      #end
+      sh "git diff --exit-code" do |clean, res|
+        if clean
+          puts 'No changes detected. No need to commit and push.'
+          exit
+        end
+      end
+
       sh "git add --all ."
       sh "git commit -m 'Updating to #{USERNAME}/#{REPO}@#{sha}.'"
       sh "git push --quiet origin #{DESTINATION_BRANCH}"
