@@ -238,6 +238,14 @@ namespace :site do
       exit
     end
 
+    # check if there are any changes - if not, no need to proceed
+    sh "git diff --quiet" do |ok, res|
+      if ! ok
+        puts 'No changes detected. No need to commit and push.'
+        exit
+      end
+    end
+
     # Commit and push to github
     sha = `git log`.match(/[a-z0-9]{40}/)[0]
     Dir.chdir(CONFIG["destination"]) do
