@@ -239,8 +239,8 @@ namespace :site do
     end
 
     # check if there are any changes - if not, no need to proceed
-    sh "git diff --quiet" do |ok, res|
-      if ! ok
+    sh "git diff --exit-code" do |ok, res|
+      if ok
         puts 'No changes detected. No need to commit and push.'
         exit
       end
