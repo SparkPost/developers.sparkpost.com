@@ -2,8 +2,7 @@
 
 [![Build Status](https://travis-ci.org/SparkPost/sparkpost.github.io.svg?branch=develop)](https://travis-ci.org/SparkPost/sparkpost.github.io) [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
 
-This is a private repo to host the SparkPost Organization Github Page which will serve as the developer community site.
-See the associated [Confluence Page](https://confluence.int.messagesystems.com/display/ENG/SparkPost+Developer+Hub) for more details.
+This repo hosts the code that powers the [SparkPost Developer Hub](https://developers.sparkpost.com/).
 
 ## Contributing
 Because any changes pushed to the `master` branch are immediately live, all pull requests are to be merged into the `develop` branch. 
@@ -27,16 +26,16 @@ The following must be installed in order run Jekyll locally.
 
 ### API Documentation Development Setup
 
-The API documentation is generated from [sparkpost-api-documentation-DEV](https://github.com/SparkPost/sparkpost-api-documentation-DEV].  See the [README](https://github.com/SparkPost/sparkpost-api-documentation-DEV/blob/master/README.md) in that repo for details on that build process.
+The API documentation is generated from [sparkpost-api-documentation](https://github.com/SparkPost/sparkpost-api-documentation). See the [README](https://github.com/SparkPost/sparkpost-api-documentation/blob/master/README.md) in that repo for details on that build process.
 
 For an easy dev setup:
 
-- Check out sparkpost-api-documentation-DEV
+- Check out sparkpost-api-documentation
 - Check out sparkpost.github.io alongside
 - Start the API docs watch-and-build process:
 
 ```bash
-cd sparkpost-api-documentation-DEV
+cd sparkpost-api-documentation
 grunt staticDev
 # This will write to ../sparkpost.github.io/_api by default
 ```
