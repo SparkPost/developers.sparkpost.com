@@ -1,19 +1,19 @@
-- title: "Twilio Signal: 4 Reasons We're Excited to See You"
-  url: https://www.sparkpost.com/blog/twilio-signal-2016/
+- title: The Differences Between Using SMTP or API with SparkPost
+  url: https://www.sparkpost.com/blog/differences-sending-smtp-api
   order: 1
  
-- title: Forwarding Inbound Email with Heroku
-  url: https://www.sparkpost.com/blog/forwarding-inbound-email-with-heroku/
+- title: "Community Spotlight: Chris Pitt’s SparkPost Tutorials"
+  url: https://www.sparkpost.com/blog/chris-pitt-sparkpost-tutorials
   order: 2
 
-- title: White Label SPF With SparkPost
-  url: https://www.sparkpost.com/blog/white-label-spf-with-sparkpost/
+- title: "Under The Hood: The SparkPost Tech Stack"
+  url: https://www.sparkpost.com/blog/sparkpost-email-infrastructure-tech-stack
   order: 3
 
-- title: "Community Pull Requests: You Spoke, We Listened"
-  url: https://www.sparkpost.com/blog/pull-requests-you-spoke-we-listened/
+- title: On Being a Cloud Software Architect
+  url: https://www.sparkpost.com/blog/cloud-software-architect-qa
   order: 4
 
-- title: "Introducing our Bitcamp 2016 Winners: Piggy Pennies"
-  url: https://www.sparkpost.com/blog/bitcamp-2016-piggy-pennies/
+- title: "Community Spotlight: C# Library Lead Darren Cauthon"
+  url: https://www.sparkpost.com/blog/community-spotlight-c-library
   order: 5
