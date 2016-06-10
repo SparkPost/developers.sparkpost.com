@@ -271,22 +271,21 @@ title: API Reference
 <p><strong>Note</strong>: For some SparkPost Elite customers, Sending Domains will be set to verified automatically when they are created, and can be used to send messages immediately. For these customers, there is no need to use the “verify” endpoint to verify Sending Domains. To find out if this applies in your SparkPost Elite environment, please contact support <a href="mailto:support@sparkpostelite.com">support@sparkpostelite.com</a>, or contact your TAM.</p>
 </div><h3>Example: Create New Sending Domain with Auto-Generated DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-  "results": {
-    "message": "Successfully Created domain.",
-    "domain": "example1.com"
-    "dkim": {
-      "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-      "selector": "scph0316",
-      "signing_domain": "",
-      "headers": "from:to:subject:date"
-    }
-  }
-}</pre></div></div><hr><h3>Example: Create Sending Domain without DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Created domain."</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
+    <span class="hljs-string">"dkim"</span>: {
+      "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+      "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
+      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
+    </span>}
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Create Sending Domain without DKIM Keypair</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
   "<span class="hljs-attribute">generate_dkim</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Created domain."</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
@@ -300,7 +299,7 @@ title: API Reference
     "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
     "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Created domain."</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
@@ -312,59 +311,55 @@ title: API Reference
     </span>}
   </span>}
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="sending-domains-create-get" class="action-heading"><div class="name">List all Sending Domains</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains</code></div><div class="markdown"><p>List an overview of all sending domains in the system.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": [
-        {
-            "domain": "example1.com",
-            "tracking_domain": "click.example1.com",
-            "status": {
-                "ownership_verified": true,
-                "spf_status": "valid",
-                "abuse_at_status": "valid",
-                "dkim_status": "valid",
-                "compliance_status": "valid",
-                "postmaster_at_status": "valid"
-            },
-            "shared_with_subaccounts": false
-        },
-        {
-            "domain": "example2.com",
-            "status": {
-                "ownership_verified": false,
-                "spf_status": "pending",
-                "abuse_at_status": "pending",
-                "dkim_status": "pending",
-                "compliance_status": "pending",
-                "postmaster_at_status": "pending"
-            },
-            "shared_with_subaccounts": false
-        }
-    ]
-}
-```</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-retrieve,-update,-and-delete" class="resource-heading">Retrieve, Update, and Delete <a href="#sending-domains-retrieve,-update,-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-domains-retrieve,-update,-and-delete-get" class="action-heading"><div class="name">Retrieve a Sending Domain</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
+      "<span class="hljs-attribute">tracking_domain</span>": <span class="hljs-value"><span class="hljs-string">"click.example1.com"</span></span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example2.com"</span></span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+        "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+        "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+        "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-retrieve,-update,-and-delete" class="resource-heading">Retrieve, Update, and Delete <a href="#sending-domains-retrieve,-update,-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-domains-retrieve,-update,-and-delete-get" class="action-heading"><div class="name">Retrieve a Sending Domain</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
 Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Retrieve a sending domain by specifying its domain name in the URI path.  The response includes details about its DKIM key configuration.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": {
-        "tracking_domain": "click.example1.com",
-        "status": {
-            "ownership_verified": false,
-            "spf_status": "pending",
-            "abuse_at_status": "pending",
-            "dkim_status": "pending",
-            "compliance_status": "pending",
-            "postmaster_at_status": "pending"
-        },
-        "dkim": {
-            "headers": "from:to:subject:date",
-            "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-            "selector": "hello_selector"
-        },
-        "shared_with_subaccounts": false
-    }
-}
-```</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="sending-domains-retrieve,-update,-and-delete-put" class="action-heading"><div class="name">Update a Sending Domain</div></h4><div class="method">PUT<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">tracking_domain</span>": <span class="hljs-value"><span class="hljs-string">"click.example1.com"</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span></span>,
+      "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+      "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"hello_selector"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="sending-domains-retrieve,-update,-and-delete-put" class="action-heading"><div class="name">Update a Sending Domain</div></h4><div class="method">PUT<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
 Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Update the attributes of an existing sending domain by specifying its domain name in the URI path and use a <strong>sending domain object</strong> as the PUT request body.</p>
 <p>If a tracking domain is specified, it will replace any currently specified tracking domain.  If the supplied tracking domain is a blank string, it will clear any currently specified tracking domain. Note that if a tracking domain is not specified, any currently specified tracking domain will remain intact.</p>
 <p>If a dkim object is provided in the update request, it must contain all relevant fields whether they are being changed or not.  The new dkim object will completely overwrite the existing one.</p>
@@ -377,7 +372,7 @@ Example:<code>domain=example1.com</code></td></tr></table></div><div class="mark
     "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"hello_selector"</span></span>,
     "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully Updated Domain."</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span>
@@ -385,7 +380,8 @@ Example:<code>domain=example1.com</code></td></tr></table></div><div class="mark
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="sending-domains-retrieve,-update,-and-delete-delete" class="action-heading"><div class="name">Delete a Sending Domain</div></h4><div class="method">DELETE<code class="uri">/api/v1/sending-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
 Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>Delete an existing sending domain.</p>
 <p><strong>Warning:</strong> Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 204)</h4></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-verify" class="resource-heading">Verify <a href="#sending-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="sending-domains-verify-post" class="action-heading"><div class="name">Verify a Sending Domain</div></h4><div class="method">POST<code class="uri">/api/v1/sending-domains/verify</code></div><div class="markdown"><p>The verify resource operates differently depending on the provided request fields:</p>
+</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 204)</h4></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-verify" class="resource-heading">Verify <a href="#sending-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="sending-domains-verify-post" class="action-heading"><div class="name">Verify a Sending Domain</div></h4><div class="method">POST<code class="uri">/api/v1/sending-domains/{domain}/verify</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td>domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Name of the domain</p>
+Example:<code>domain=example1.com</code></td></tr></table></div><div class="markdown"><p>The verify resource operates differently depending on the provided request fields:</p>
 <ul>
 <li>
 <p>Including the fields “dkim_verify” and/or “spf_verify” in the request initiates a check against the associated DNS record type for the specified sending domain.</p>
@@ -428,73 +424,63 @@ Example:<code>domain=example1.com</code></td></tr></table></div><div class="mark
 </li>
 </ul>
 <p>The domain’s “status” object is returned on success.</p>
-</div><h3>Example: Verify DKIM and SPF</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Example: Verify DKIM and SPF</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">dkim_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
   "<span class="hljs-attribute">spf_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": {
-        "ownership_verified": true,
-        "spf_status": "valid",
-        "dns": {
-            "dkim_record": "k=rsa; h=sha256; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-            "spf_record": "v=spf1 include:sparkpostmail.com ~all"
-        },
-        "compliance_status": "pending",
-        "dkim_status": "valid",
-        "abuse_at_status": "unverified",
-        "postmaster_at_status": "unverified"
-    }
-}
-```</pre></div></div><hr><h3>Example: Initiate postmaster@ email</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dns</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">dkim_record</span>": <span class="hljs-value"><span class="hljs-string">"k=rsa; h=sha256; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
+      "<span class="hljs-attribute">spf_record</span>": <span class="hljs-value"><span class="hljs-string">"v=spf1 include:sparkpostmail.com ~all"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Initiate postmaster@ email</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">postmaster_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": {
-        "ownership_verified": false,
-        "spf_status": "unverified",
-        "compliance_status": "valid",
-        "dkim_status": "unverified",
-        "abuse_at_status": "unverified",
-        "postmaster_at_status": "unverified"
-    }
-}
-```</pre></div></div><hr><h3>Example: Verify postmaster@ correct token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Verify postmaster@ correct token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">postmaster_at_token</span>": <span class="hljs-value"><span class="hljs-string">"rcayptmrczdnrnqfsxyrzljmtsxvjzxb"</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": {
-        "ownership_verified": true,
-        "spf_status": "unverified",
-        "compliance_status": "valid",
-        "dkim_status": "unverified",
-        "abuse_at_status": "unverified",
-        "postmaster_at_status": "valid"
-    }
-}
-```</pre></div></div><hr><h3>Example: Verify abuse@ incorrect token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Verify abuse@ incorrect token</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">abuse_at_token</span>": <span class="hljs-value"><span class="hljs-string">"AN_INCORRECT_OR_EXPIRED_TOKEN"</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-    "results": {
-        "ownership_verified": false,
-        "spf_status": "unverified",
-        "compliance_status": "valid",
-        "dkim_status": "unverified",
-        "abuse_at_status": "unverified",
-        "postmaster_at_status": "unverified"
-    }
-}
-```</pre></div></div><hr><h3>Example: Unable to process abuse@ request</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+  </span>}
+</span>}</pre></div></div><hr><h3>Example: Unable to process abuse@ request</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">abuse_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>```
-{
-   "errors": [
-      {
-         "message": "Failed to generate message",
-         "description": "Failed to generate verification email",
-         "code": "1901"
-      }
-   ]
-}
-```</pre></div></div><hr></div></div></div></section></div></div></div>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Failed to generate message"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Failed to generate verification email"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1901"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>
