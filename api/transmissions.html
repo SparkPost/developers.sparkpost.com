@@ -255,7 +255,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 <tr>
 <td>ip_pool</td>
 <td style="text-align:center">string</td>
-<td>The name of a dedicated IP pool associated with your account ( <strong>Note:</strong> SparkPost only ).  If this field is not provided, the account’s default dedicated IP pool is used (if such a pool exists).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”.  Please note that this option does not apply to subaccounts.</td>
+<td>The ID of a dedicated IP pool associated with your account ( <strong>Note:</strong> SparkPost only ).  If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”.  Please note that this option does not apply to subaccounts.</td>
 <td>no</td>
 <td>For more information on dedicated IPs, see the <a href="https://support.sparkpost.com/customer/en/portal/articles/2002977-dedicated-ip-addresses">Support Center</a></td>
 </tr>
