@@ -129,7 +129,7 @@ substitution_data provided in the X-MSYS-API header will be ignored.</p>
 <tr>
 <td>ip_pool</td>
 <td>string</td>
-<td>The name of a dedicated IP pool associated with your account ( <strong>Note:</strong> SparkPost only ).  If this field is not provided, the account’s default dedicated IP pool is used (if such a pool exists).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”. Please note that this option does not apply to subaccounts.</td>
+<td>The ID of a dedicated IP pool associated with your account ( <strong>Note:</strong> SparkPost only ).  If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”. Please note that this option does not apply to subaccounts.</td>
 <td>no</td>
 <td>For more information on dedicated IPs, see the <a href="https://support.sparkpost.com/customer/en/portal/articles/2002977-dedicated-ip-addresses">Support Center</a></td>
 </tr>
