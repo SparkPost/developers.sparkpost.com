@@ -27,7 +27,7 @@ GEM
     ffi (1.9.10)
     formatador (0.2.5)
     gemoji (2.1.0)
-    github-pages (82)
+    github-pages (83)
       github-pages-health-check (= 1.1.0)
       jekyll (= 3.1.6)
       jekyll-coffeescript (= 1.0.1)
@@ -41,7 +41,7 @@ GEM
       jekyll-seo-tag (= 2.0.0)
       jekyll-sitemap (= 0.10.0)
       jemoji (= 0.6.2)
-      kramdown (= 1.10.0)
+      kramdown (= 1.11.1)
       liquid (= 3.0.6)
       listen (= 3.0.6)
       mercenary (~> 0.3)
@@ -117,7 +117,7 @@ GEM
       html-pipeline (~> 2.2)
       jekyll (>= 3.0)
     json (1.8.3)
-    kramdown (1.10.0)
+    kramdown (1.11.1)
     liquid (3.0.6)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
@@ -156,7 +156,7 @@ GEM
       faraday (~> 0.8, < 0.10)
     shellany (0.0.1)
     slop (3.6.0)
-    terminal-table (1.5.2)
+    terminal-table (1.6.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     typhoeus (0.8.0)
@@ -169,7 +169,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages (= 82)
+  github-pages (= 83)
   guard
   guard-livereload
   html-proofer
