@@ -98,14 +98,14 @@ substitution_data provided in the X-MSYS-API header will be ignored.</p>
 <td>boolean</td>
 <td>Whether open tracking is enabled for this SMTP message</td>
 <td>no</td>
-<td>Defaults to false.</td>
+<td>Defaults to false (see note below).</td>
 </tr>
 <tr>
 <td>click_tracking</td>
 <td>boolean</td>
 <td>Whether click tracking is enabled for this SMTP message</td>
 <td>no</td>
-<td>Defaults to false.</td>
+<td>Defaults to false (see note below).</td>
 </tr>
 <tr>
 <td>transactional</td>
@@ -144,6 +144,7 @@ substitution_data provided in the X-MSYS-API header will be ignored.</p>
 </tr>
 </tbody>
 </table>
+<p><strong>Note:</strong> The <code>open_tracking</code> and <code>click_tracking</code> variables may also be set account-wide in your <a href="https://app.sparkpost.com/account/smtp">SMTP relay account settings</a>.</p>
 <h2 id="header-sending-messages-with-cc,-bcc,-and-archive-recipients">Sending Messages with cc, bcc, and archive Recipients <a class="permalink" href="#header-sending-messages-with-cc,-bcc,-and-archive-recipients" aria-hidden="true">¶</a></h2>
 <p>When submitting an email via SMTP that includes the X-MSYS-API header, you may specify a JSON array for cc, bcc, and archive lists.  For each address in each of these arrays, a message will be generated. Messages will be generated with the following headers:</p>
 <ul>
