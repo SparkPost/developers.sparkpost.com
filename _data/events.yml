@@ -6,13 +6,13 @@
   location: Kansas City, MO
 
 - name: ManhattanJS
-  type: future
+  type: past
   url: http://manhattanjs.com/
   date_start: 2016-06-08
   location: New York, NY
 
 - name: Signal Conference
-  type: future
+  type: past
   url: https://www.twilio.com/signal
   date_start: 2016-05-24
   date_end: 2016-05-25
