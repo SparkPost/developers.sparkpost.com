@@ -1,11 +1,27 @@
 (function($) {
-  var PATH = location.pathname, HASH = location.hash, EXTENSION = '', PATH_SPACE = '-', HASH_SPACE = '-';
+  var PATH = location.pathname
+    , HASH = location.hash
+    , EXTENSION = ''
+    , PATH_SPACE = '-'
+    , HASH_SPACE = '-'
+    , customRedirects;
+
+  customRedirects = {
+    '#header-subaccounts': '/api/subaccounts#header-introduction',
+    '#header-terminology': '/api/subaccounts#header-terminology',
+    '#header-managing-subaccount-data-as-a-service-provider': '/api/subaccounts#header-managing-subaccount-data-as-a-service-provider',
+    '#header-managing-master-account-data-as-a-service-provider': '/api/subaccounts#header-managing-master-account-data-as-a-service-provider'
+  };
 
   // check if we are on the API page with an Apiary hash
-  if ((PATH === '/api/' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
+  if ((PATH === '/api/' || PATH === '/api/index' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
     var newPath = convertHashToPath(HASH);
 
     redirect(location.protocol + '//' + location.host + PATH + newPath);
+  } else if ((PATH === '/api/' || PATH === '/api/index' || PATH === '/api/index.html')) {
+    if (HASH in customRedirects) {
+      redirect(location.protocol + '//' + location.host + customRedirects[HASH]);
+    }
   }
 
 
@@ -50,6 +66,7 @@
    */
   function customMapping(type, endpoint, method) {
     var path = '';
+    console.log(endpoint);
     switch (endpoint) {
       case 'substitutions-reference':
         // add endpoint
