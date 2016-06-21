@@ -14,12 +14,11 @@
   };
 
   // check if we are on the API page with an Apiary hash
-  if ((PATH === '/api/' || PATH === '/api/index' || PATH === '/api/index.html') && (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0)) {
-    var newPath = convertHashToPath(HASH);
-
-    redirect(location.protocol + '//' + location.host + PATH + newPath);
-  } else if ((PATH === '/api/' || PATH === '/api/index' || PATH === '/api/index.html')) {
-    if (HASH in customRedirects) {
+  if (PATH === '/api/' || PATH === '/api/index' || PATH === '/api/index.html') {
+    if (HASH.indexOf('introduction') >= 0 || HASH.indexOf('reference') >= 0) {
+      var newPath = convertHashToPath(HASH);
+      redirect(location.protocol + '//' + location.host + PATH + newPath);
+    } else if (HASH in customRedirects) {
       redirect(location.protocol + '//' + location.host + customRedirects[HASH]);
     }
   }
