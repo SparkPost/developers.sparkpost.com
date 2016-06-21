@@ -66,7 +66,6 @@
    */
   function customMapping(type, endpoint, method) {
     var path = '';
-    console.log(endpoint);
     switch (endpoint) {
       case 'substitutions-reference':
         // add endpoint
