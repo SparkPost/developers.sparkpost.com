@@ -21,8 +21,6 @@ collections:
     output: true
   hackathons:
     output: true
-  faqs:
-    output: true
   api:
     output: true
 
@@ -37,12 +35,6 @@ defaults:
       type: hackathons
     values:
       layout: hackathon
-  - scope:
-      path: ""
-      type: faqs
-    values:
-      layout: faq
-      class: faq
 
 # Build settings
 markdown: kramdown
