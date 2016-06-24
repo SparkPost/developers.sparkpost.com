@@ -19,6 +19,8 @@
     "bootstrap-sass": "~3.3.5",
     "devicon": "*",
     "font-awesome": "~4.4.0",
-    "jquery": "2.1.4"
+    "jquery": "2.1.4",
+    "algolia-autocomplete.js": "^0.20.1",
+    "algoliasearch": "^3.16.0"
   }
 }
