@@ -22,6 +22,7 @@ description: "Manage your suppression list - a list of recipient email addresses
 </ul>
 <p>Transactional messages are single recipient messages that are used operationally, e.g. to reset a password or confirm a purchase; while non-transactional messages are used to run email campaigns where a list of recipients are targeted, e.g. advertising a sales event.</p>
 <p>In addition to the customer-specific exclusion list, Message Systems maintains a global suppression list across all customers.</p>
+<p><strong>Note: SparkPost supports a suppression list of up to 1,000,000 entries. It is therefore a good idea to periodically update your own database with recent suppressions and then purge the list in SparkPost. If you use the <a href="recipient-lists">SparkPost recipient list capability</a>, your lists should also be maintained in a similar manner.</strong></p>
 <h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
 <p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
 <p><a href="https://www.getpostman.com/run-collection/81ee1dd2790d7952b76a"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
