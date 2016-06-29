@@ -1,5 +1,17 @@
-- name: KC/DC 2016
+- name: ManhattanJS
   type: future
+  url: http://manhattanjs.com/
+  date_start: 2016-07-13
+  location: New York, NY
+
+- name: QueensJS
+  type: future
+  url: http://www.meetup.com/QueensJS/events/232040343/
+  date_start: 2016-07-06
+  location: New York, NY
+
+- name: KC/DC 2016
+  type: past
   url: http://www.kcdc.info/
   date_start: 2016-06-22
   date_end: 2016-06-24
