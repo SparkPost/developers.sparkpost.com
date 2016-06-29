@@ -261,7 +261,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </tbody>
 </table>
 </div><div class="resource searchable"><h3 id="relay-webhooks-create-and-list" class="resource-heading">Create and List <a href="#relay-webhooks-create-and-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="relay-webhooks-create-and-list-post" class="action-heading"><div class="name">Create a Relay Webhook</div></h4><div class="method">POST<code class="uri">/api/v1/relay-webhooks</code></div><div class="markdown"><p>Create a relay webhook by providing a <strong>relay webhooks object</strong> as the POST request body.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
   "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
   "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
@@ -273,8 +273,47 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid params"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Domain '(domain)' is not a registered inbound domain"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1200"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Domain '(domain)' is already in use"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"required field is missing"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"field '(field_name)' is required"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1400"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error validating domain name syntax for domain: '(domain)'"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="relay-webhooks-create-and-list-get" class="action-heading"><div class="name">List all Relay Webhooks</div></h4><div class="method">GET<code class="uri">/api/v1/relay-webhooks</code></div><div class="markdown"><p>List all your relay webhooks.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span></span>,
@@ -287,9 +326,16 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
       </span>}
     </span>}
   ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="relay-webhooks-retrieve,-update,-and-delete" class="resource-heading">Retrieve, Update, and Delete <a href="#relay-webhooks-retrieve,-update,-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="relay-webhooks-retrieve,-update,-and-delete-get" class="action-heading"><div class="name">Retrieve a Relay Webhook</div></h4><div class="method">GET<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
 Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Retrieve a specific relay webhook by specifying the webhook ID in the URI path.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
     "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
@@ -299,18 +345,100 @@ Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div cl
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
     </span>}
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="relay-webhooks-retrieve,-update,-and-delete-put" class="action-heading"><div class="name">Update a Relay Webhook</div></h4><div class="method">PUT<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
 Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Update a relay webhook by specifying the webhook ID in the URI path.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New Replies Webhook"</span></span>,
   "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhook.customer.example/replies"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid params"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Domain ('domain') is not a registered inbound domain"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1200"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"UPDATE requires a webhook_id in the URI"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Domain '(domain)' is already in use"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error validating domain name syntax for domain: '(domain)'"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="relay-webhooks-retrieve,-update,-and-delete-delete" class="action-heading"><div class="name">Delete a Relay Webhook</div></h4><div class="method">DELETE<code class="uri">/api/v1/relay-webhooks/{webhook_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">webhook_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Webhook ID</p>
 Example:<code>webhook_id=12013026328707075</code></td></tr></table></div><div class="markdown"><p>Delete a relay webhook by specifying the webhook ID in the URI path.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr></div></div></div></section></div></div></div>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"DELETE requires a webhook_id in the URI"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>
 
     <footer>
   <div class="container-fluid">

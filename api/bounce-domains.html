@@ -152,15 +152,79 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </table>
 </div><div class="resource searchable"><h3 id="bounce-domains-create-and-list" class="resource-heading">Create and List <a href="#bounce-domains-create-and-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="bounce-domains-create-and-list-post" class="action-heading"><div class="name">Create a Bounce Domain</div></h4><div class="method">POST<code class="uri">/api/v1/bounce-domains</code></div><div class="markdown"><p>Create a Bounce Domain.</p>
 <p><strong>Note:</strong> Only one custom bounce domain is permitted per account at this time.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/bounce-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/bounce-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"8000"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"only one bounce domain can be created"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Can't create more than one bounce domain."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7000"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"restricted domain"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Please contact us at support@sparkpost.com to get this domain authorized for your account."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"A bounce domain with similar attributes already exists."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error validating domain name syntax for domain: 'example..domain.com'"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error domain name length too short for domain: 'ex'"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error domain name contains no '.'(s) for domain: 'exampledomaincom'"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error domain name contains invalid characters or spaces for domain: 'example*&amp;#.domain.com'"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1400"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"required field is missing"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Missing required field: (domain) is required"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="bounce-domains-create-and-list-get" class="action-heading"><div class="name">List Bounce Domains</div></h4><div class="method">GET<code class="uri">/api/v1/bounce-domains</code></div><div class="markdown"><p>Retrieve a list of all bounce domains.</p>
 <p><strong>Note:</strong> Only one custom bounce domain is permitted per account at this time.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/bounce-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/bounce-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span></span>,
@@ -173,7 +237,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="bounce-domains-retrieve-and-delete" class="resource-heading">Retrieve and Delete <a href="#bounce-domains-retrieve-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="bounce-domains-retrieve-and-delete-get" class="action-heading"><div class="name">Retrieve a Bounce Domain</div></h4><div class="method">GET<code class="uri">/api/v1/bounce-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>domain name</p>
 Example:<code>domain=example.domain.com</code></td></tr></table></div><div class="markdown"><p>Retrieve an existing bounce domain.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span></span>,
     "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
@@ -182,16 +246,40 @@ Example:<code>domain=example.domain.com</code></td></tr></table></div><div class
       "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
     </span>}
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"8001"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"bounce domain does not exist"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Resource not found: example.domain.com"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="bounce-domains-retrieve-and-delete-delete" class="action-heading"><div class="name">Delete a Bounce Domain</div></h4><div class="method">DELETE<code class="uri">/api/v1/bounce-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>domain name</p>
 Example:<code>domain=example.domain.com</code></td></tr></table></div><div class="markdown"><p>Delete an existing bounce domain.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 204)</h4></div><hr></div></div></div><div class="resource searchable"><h3 id="bounce-domains-verify" class="resource-heading">Verify <a href="#bounce-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="bounce-domains-verify-post" class="action-heading"><div class="name">Verify a Bounce Domain</div></h4><div class="method">POST<code class="uri">/api/v1/bounce-domains/{domain}/verify</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>domain name</p>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 204)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"8001"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"bounce domain does not exist"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Resource not found: example.domain.com"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="bounce-domains-verify" class="resource-heading">Verify <a href="#bounce-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="bounce-domains-verify-post" class="action-heading"><div class="name">Verify a Bounce Domain</div></h4><div class="method">POST<code class="uri">/api/v1/bounce-domains/{domain}/verify</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>domain name</p>
 Example:<code>domain=example.domain.com</code></td></tr></table></div><div class="markdown"><p>Initiate a check against the CNAME DNS record for the specified bounce domain. The domain’s <code>status</code> object is returned on success.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/bounce-domains/<span class="hljs-attribute" title="domain">example.domain.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Resource not found: example.domain.com"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div></section></div></div></div>
 
     <footer>

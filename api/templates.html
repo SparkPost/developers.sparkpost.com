@@ -364,7 +364,7 @@ necessary.</p>
 </ul>
 <h4 id="header-create-rfc822">Create RFC822 <a class="permalink" href="#header-create-rfc822" aria-hidden="true">¶</a></h4>
 <p>Fully formed email_rfc822 content may be provided instead of the “text”, “html”, “from”, and “subject” parts, as shown in the example.</p>
-</div><h3>Example: Create Basic Template</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Basic Template</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
   "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"marketing@bounces.company.example"</span></span>,
@@ -375,7 +375,25 @@ necessary.</p>
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11806290401558530"</span>
   </span>}
-</span>}</pre></div></div><hr><h3>Example: Create Parts</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unconfigured or unverified sending domain."</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7001"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid domain"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">part</span>": <span class="hljs-value"><span class="hljs-string">"text"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Error while compiling part text: line 4: syntax error near 'age'"</span></span>,
+      "<span class="hljs-attribute">line</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"3000"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"substitution language syntax error in template content"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Parts</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
   "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
@@ -400,7 +418,7 @@ necessary.</p>
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span>
   </span>}
-</span>}</pre></div></div><hr><h3>Example: Create RFC822</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create RFC822</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"another_summer_sale"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
   "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
@@ -430,7 +448,7 @@ necessary.</p>
 <p>description: Template description</p>
 </li>
 </ul>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
@@ -452,7 +470,7 @@ updated version is returned. Use the <strong>draft</strong> query parameter to s
 template.</p>
 <p>The result will include a “last_update_time” field. The “last_update_time” is the time the template was last updated, for both draft and published versions.</p>
 <p>If the template was used for message generation, the result will also include a “last_use” field. The “last_use” time represents the last time any version of this template was used (draft or published).</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">draft=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">draft=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
@@ -493,7 +511,7 @@ changed or not.</p>
 <p>Publishing a template is a specific case of an update.  The body of the PUT
 request should contain the <code>&quot;published&quot;: true</code> field as shown in the example. The
 <strong>update_published</strong> query parameter does not apply.</p>
-</div><h3>Example: Update</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Update</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
   </span>}</span>,
@@ -508,9 +526,9 @@ request should contain the <code>&quot;published&quot;: true</code> field as sho
     "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Updated: Check out these deals !"</span></span>,
     "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;b&gt;Updated: Check out these deals !&lt;/b&gt;"</span>
   </span>}
-</span>}</pre></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr><h3>Example: Publish</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Publish</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
-</span>}</pre></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr></div></div></div><div class="resource searchable"><h3 id="templates-preview" class="resource-heading">Preview <a href="#templates-preview" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="templates-preview-post" class="action-heading"><div class="name">Preview a Template</div></h4><div class="method">POST<code class="uri">/api/v1/templates/{id}/preview{?draft}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template</p>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><hr></div></div></div><div class="resource searchable"><h3 id="templates-preview" class="resource-heading">Preview <a href="#templates-preview" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="templates-preview-post" class="action-heading"><div class="name">Preview a Template</div></h4><div class="method">POST<code class="uri">/api/v1/templates/{id}/preview{?draft}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template</p>
 Example:<code>id=11714265276872</code></td></tr><tr><td class="markdown">draft</td><td class="markdown"><p>If true, previews the most recent draft template.  If false, previews the most recent published template.  If not provided, previews the most recent template version regardless of draft or published.</p>
 Example:<code>draft=true</code></td></tr></table></div><div class="markdown"><p>Preview the most recent version of an existing template by specifying {id}/preview in the URI path
 and providing “substitution_data” as part of the POST request body.
@@ -518,7 +536,7 @@ The template’s content will be expanded using the substitution data provided a
 in the response. By default, the most recently updated version is returned.  Use the <strong>draft</strong> query parameter to specify a draft or published
 template.</p>
 <p>See the Substitutions Reference section for more information.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>/preview?<span class="hljs-attribute">draft=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>/preview?<span class="hljs-attribute">draft=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Natalie"</span></span>,
     "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">35</span></span>,
@@ -542,7 +560,23 @@ template.</p>
 Example:<code>id=11714265276872</code></td></tr></table></div><div class="markdown"><p>Delete a template by specifying its ID in the URI path.
 If the template delete API call succeeds, then ALL versions of the template will be deleted from the system (both published AND draft versions).</p>
 <p>If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><hr></div></div></div></section></div></div></div>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Template does not exist"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Template is in use by msg generation"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>
 
     <footer>
   <div class="container-fluid">

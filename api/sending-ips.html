@@ -113,7 +113,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 </tbody>
 </table>
 </div><div class="resource searchable"><h3 id="sending-ips-sending-ips" class="resource-heading">Sending IPs <a href="#sending-ips-sending-ips" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-ips-sending-ips-get" class="action-heading"><div class="name">Get all sending IPs</div></h4><div class="method">GET<code class="uri">/api/v1/sending-ips</code></div><div class="markdown"><p>Gets all IP addresses.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-ips</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-ips</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789.123"</span></span>,
@@ -128,12 +128,24 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-ips-sending-ip-resource" class="resource-heading">Sending IP Resource <a href="#sending-ips-sending-ip-resource" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-ips-sending-ip-resource-get" class="action-heading"><div class="name">Get a Sending IP</div></h4><div class="method">GET<code class="uri">/api/v1/sending-ips/{external_ip}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">external_ip</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The external IP of the sending IP</p>
 Example:<code>external_ip=123.456.789.012</code></td></tr></table></div><div class="markdown"><p>Retrieves a specific sending IP.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-ips/<span class="hljs-attribute" title="external_ip">123.456.789.012</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-ips/<span class="hljs-attribute" title="external_ip">123.456.789.012</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"123.456.789.012"</span></span>,
     "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta472a.sparkpostmail.com"</span></span>,
     "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"cool_kids"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"external ip must be a valid IPv4 address"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Sending IP does not exist"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="sending-ips-sending-ip-resource-put" class="action-heading"><div class="name">Update a Sending IP</div></h4><div class="method">PUT<code class="uri">/api/v1/sending-ips/{external_ip}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">external_ip</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The external IP of the sending IP to update</p>
 Example:<code>external_ip=123.456.789.012</code></td></tr></table></div><div class="markdown"><p>Updates the IP Pool of a sending IP.</p>
 <h4 id="header-request-body-attributes">Request Body Attributes <a class="permalink" href="#header-request-body-attributes" aria-hidden="true">¶</a></h4>
@@ -155,12 +167,24 @@ Example:<code>external_ip=123.456.789.012</code></td></tr></table></div><div cla
 </tr>
 </tbody>
 </table>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/sending-ips/<span class="hljs-attribute" title="external_ip">123.456.789.012</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/sending-ips/<span class="hljs-attribute" title="external_ip">123.456.789.012</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"too_cool_for_pool"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Updated IP Pool."</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP Pool glibglob does not exist."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Sending IP does not exist"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div></section></div></div></div>
 
     <footer>
