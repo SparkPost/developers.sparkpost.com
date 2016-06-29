@@ -170,7 +170,7 @@ recipient list “id” is not provided in the POST request body, one will be ge
 in the results body.  Use the <strong>num_rcpt_errors</strong> parameter to limit the number of recipient errors
 returned.</p>
 <p><strong>Note:</strong> The “return_path” in the POST request body applies to SparkPost Elite only.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/recipient-lists?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/recipient-lists?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"unique_id_4_graduate_students_list"</span></span>,
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"graduate_students"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An email list of graduate students at UMBC"</span></span>,
@@ -236,13 +236,36 @@ returned.</p>
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"unique_id_4_graduate_students_list"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"graduate_students"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"At least one valid recipient is required"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"5002"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"List already exists"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"5001"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' already exists"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List id 'rcptlist_id_students_list' cannot start with 'rcptlist_'"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="recipient-lists-retrieve" class="resource-heading">Retrieve <a href="#recipient-lists-retrieve" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="recipient-lists-retrieve-get" class="action-heading"><div class="name">Retrieve a Recipient List</div></h4><div class="method">GET<code class="uri">/api/v1/recipient-lists/{id}{?show_recipients}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Identifier of the recipient list</p>
 Example:<code>id=unique_id_4_graduate_students</code></td></tr><tr><td class="markdown">show_recipients</td><td class="markdown"><p>If set to true, return attributes for all recipients.
 If not specified, return only recipient list attributes.</p>
 Example:<code>show_recipients=true</code></td></tr></table></div><div class="markdown"><p>Retrieve details about a specified recipient list by specifying its id in the URI path.  To
 retrieve the recipients contained in a list, the list must be specified and the <strong>show_recipients</strong> parameter must be set to true.</p>
 <p><strong>Note:</strong> The “return_path” in the POST request body applies to SparkPost Elite only.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students</span>?<span class="hljs-attribute">show_recipients=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students</span>?<span class="hljs-attribute">show_recipients=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"unique_id_4_graduate_students_list"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"graduate_students"</span></span>,
@@ -290,9 +313,17 @@ retrieve the recipients contained in a list, the list must be specified and the 
       </span>}
     ]
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' does not exist"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="recipient-lists-list" class="resource-heading">List <a href="#recipient-lists-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="recipient-lists-list-get" class="action-heading"><div class="name">List all Recipient Lists</div></h4><div class="method">GET<code class="uri">/api/v1/recipient-lists</code></div><div class="markdown"><p>List a summary of all recipient lists.  The recipients for each list are not included in the
 results.  To retrieve recipient details, use the RETRIEVE API for a specified recipient list.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/recipient-lists</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/recipient-lists</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"unique_id_4_graduate_students_list"</span></span>,
@@ -353,7 +384,7 @@ number of rejected recipients will only be returned if a “recipients” array 
 “attributes” object for the recipient list.</p>
 </li>
 </ul>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students_list</span>?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students_list</span>?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"updated_graduate_students"</span></span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An email list of graduate students at UMBC"</span></span>,
   "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
@@ -400,6 +431,53 @@ number of rejected recipients will only be returned if a “recipients” array 
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"unique_id_4_graduate_students_list"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"updated_graduate_students"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid uri"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1101"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"PUT requires a recipient list id in the URI"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"At least one valid recipient is required"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"5002"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' does not exist"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' is in use by msg generation"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' is in use by another request"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List id 'unique_id_4_graduate_students_list' does not match the list being updated"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="recipient-lists-delete" class="resource-heading">Delete <a href="#recipient-lists-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action delete"><h4 id="recipient-lists-delete-delete" class="action-heading"><div class="name">Delete a Recipient List</div></h4><div class="method">DELETE<code class="uri">/api/v1/recipient-lists/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Identifier of the recipient list</p>
 Example:<code>id=unique_id_4_graduate_students_list</code></td></tr></table></div><div class="markdown"><p>Permanently delete the specified recipient list.</p>
 <p>Once a recipient list is deleted, it
@@ -407,4 +485,28 @@ cannot be recovered.  Before deleting a list, ensure that it is no longer needed
 list is needed again, the list must be resubmitted with the CREATE API.</p>
 <p>If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is
 submitted or generating.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students_list</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><hr></div></div></div></section></div></div></div>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/recipient-lists/<span class="hljs-attribute" title="id">unique_id_4_graduate_students_list</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid uri"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1101"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"DELETE requires a recipient list id in the URI"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' does not exist"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"List 'unique_id_4_graduate_students_list' is in use by msg generation"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>

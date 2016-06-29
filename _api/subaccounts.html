@@ -73,7 +73,7 @@ Subaccounts are a way for service providers to provision and manage their custom
 </li>
 </ul>
 </div><div class="resource searchable"><h3 id="subaccounts-subaccounts-collection" class="resource-heading">Subaccounts Collection <a href="#subaccounts-subaccounts-collection" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="subaccounts-subaccounts-collection-get" class="action-heading"><div class="name">List subaccounts</div></h4><div class="method">GET<code class="uri">/api/v1/subaccounts</code></div><div class="markdown"><p>Endpoint for retrieving a list of your subaccounts. This endpoint only returns information about the subaccounts themselves, not the data associated with the subaccount.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/subaccounts</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/subaccounts</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
@@ -147,7 +147,7 @@ Subaccounts are a way for service providers to provision and manage their custom
 </tr>
 </tbody>
 </table>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/subaccounts</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/subaccounts</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sparkle Ponies"</span></span>,
   "<span class="hljs-attribute">key_label</span>": <span class="hljs-value"><span class="hljs-string">"API Key for Sparkle Ponies Subaccount"</span></span>,
   "<span class="hljs-attribute">key_grants</span>": <span class="hljs-value">[
@@ -165,9 +165,52 @@ Subaccounts are a way for service providers to provision and manage their custom
     "<span class="hljs-attribute">label</span>": <span class="hljs-value"><span class="hljs-string">"API Key for Sparkle Ponies Subaccount"</span></span>,
     "<span class="hljs-attribute">short_key</span>": <span class="hljs-value"><span class="hljs-string">"cf80"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"`name` is a required field"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"name"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"`key_label` is a required field"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"key_label"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"`key_grants` is a required field"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"key_grants"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid `key_grants value`. Supported values are: 'smtp/inject', 'sending_domains/manage', 'message_events/view', 'suppression_lists/manage'"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"key_grants"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"`key_valid_ips` must be an Array"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"key_valid_ips"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"`key_valid_ips` must have valid netmask values"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"key_valid_ips"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool must be 20 characters or less"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"an_ip_pool_name_that_is_too_long"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool must be alphanumeric and underscore"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"$invalid chars"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="subaccounts-subaccounts-entity" class="resource-heading">Subaccounts Entity <a href="#subaccounts-subaccounts-entity" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="subaccounts-subaccounts-entity-get" class="action-heading"><div class="name">List specific subaccount</div></h4><div class="method">GET<code class="uri">/api/v1/subaccounts/{subaccount_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">subaccount_id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Identifier of subaccount</p>
 Example:<code>subaccount_id=123</code></td></tr></table></div><div class="markdown"><p>Endpoint for retrieving information about a specific subaccount.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/subaccounts/<span class="hljs-attribute" title="subaccount_id">123</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/subaccounts/<span class="hljs-attribute" title="subaccount_id">123</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Joes Garage"</span></span>,
@@ -212,11 +255,19 @@ Example:<code>subaccountID=123</code></td></tr></table></div><div class="markdow
 </tr>
 </tbody>
 </table>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/subaccounts/</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/subaccounts/</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hey Joe! Garage and Parts"</span></span>,
   "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"suspended"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully updated subaccount information"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool must be 20 characters or less"</span></span>,
+      "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"ip_pool"</span></span>,
+      "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"an_ip_pool_name_that_is_too_long"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div></section></div></div></div>

@@ -63,9 +63,32 @@ You can have multiple inbound domains but each domain must be globally unique.</
 <p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
 <p><a href="https://www.getpostman.com/run-collection/81ee1dd2790d7952b76a"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
 </div><div class="resource searchable"><h3 id="inbound-domains-create-and-list" class="resource-heading">Create and List <a href="#inbound-domains-create-and-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="inbound-domains-create-and-list-post" class="action-heading"><div class="name">Create an Inbound Domain</div></h4><div class="method">POST<code class="uri">/api/v1/inbound-domains</code></div><div class="markdown"><p>Create an inbound domain by providing an <strong>inbound domains object</strong> as the POST request body.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"inbounddomain.test.com"</span>
-</span>}</pre></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr><h3>Example: Missing Domain</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Restricted domain"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Please contact us at support@sparkpost.com to get this domain authorized for your account."</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7000"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"An inbound domain with similar attributes already exists"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Missing Domain</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"required field is missing"</span></span>,
@@ -73,7 +96,7 @@ You can have multiple inbound domains but each domain must be globally unique.</
       "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1400"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr><h3>Example: Invalid Domain</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Invalid Domain</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"inbounddomain"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
@@ -84,7 +107,7 @@ You can have multiple inbound domains but each domain must be globally unique.</
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action get"><h4 id="inbound-domains-create-and-list-get" class="action-heading"><div class="name">List all Inbound Domains</div></h4><div class="method">GET<code class="uri">/api/v1/inbound-domains</code></div><div class="markdown"><p>List all your inbound domains.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/inbound-domains</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"inbounddomain.test.com"</span>
@@ -93,12 +116,55 @@ You can have multiple inbound domains but each domain must be globally unique.</
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"inbounddomain2.test.com"</span>
     </span>}
   ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="inbound-domains-retrieve-and-delete" class="resource-heading">Retrieve and Delete <a href="#inbound-domains-retrieve-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="inbound-domains-retrieve-and-delete-get" class="action-heading"><div class="name">Retrieve an Inbound Domain</div></h4><div class="method">GET<code class="uri">/api/v1/inbound-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Domain name</p>
 Example:<code>domain=inbounddomain.test.com</code></td></tr></table></div><div class="markdown"><p>Retrieve an inbound domain by specifying its domain name in the URI path.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/inbound-domains/<span class="hljs-attribute" title="domain">inbounddomain.test.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/inbound-domains/<span class="hljs-attribute" title="domain">inbounddomain.test.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"inbounddomain.test.com"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="inbound-domains-retrieve-and-delete-delete" class="action-heading"><div class="name">Delete an Inbound Domain</div></h4><div class="method">DELETE<code class="uri">/api/v1/inbound-domains/{domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Domain name</p>
 Example:<code>domain=inbounddomain.test.com</code></td></tr></table></div><div class="markdown"><p>Delete an inbound domain by specifying its domain name in the URI path.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/inbound-domains/<span class="hljs-attribute" title="domain">inbounddomain.test.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 200)</h4></div><hr></div></div></div></section></div></div></div>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/inbound-domains/<span class="hljs-attribute" title="domain">inbounddomain.test.com</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 401)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unauthorized Tenant"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1303"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 409)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource conflict"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Domain currently being used in a relay-webhook. Please delete the relay-webhook first."</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1602"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>

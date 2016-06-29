@@ -72,7 +72,7 @@ description: "Manage your suppression list - a list of recipient email addresses
 <p>If the recipient entry was added to the list by Compliance, it cannot be updated.</p>
 <p>If an email address is duplicated in a single request, only the first instance will be processed.</p>
 <p><em>Note:</em> <code>email</code>, which is an alias of <code>recipient</code>, attribute is supported but deprecated.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_1@example.com"</span></span>,
@@ -93,36 +93,88 @@ description: "Manage your suppression list - a list of recipient email addresses
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid email address: example.com"</span>
     </span>}
   ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 500)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unable to update suppression list"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Suppression List successfully updated"</span>
+  </span>}
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="suppression-list-search" class="resource-heading">Search <a href="#suppression-list-search" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="suppression-list-search-get" class="action-heading"><div class="name">Search for List Entries</div></h4><div class="method">GET<code class="uri">/api/v1/suppression-list{?to,from,types,sources,limit}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">to</td><td class="markdown"><p>Datetime the entries were last updated, in the format of YYYY-MM-DDTHH:mm:ssZ</p>
 Example:<code>to=2014-07-20T09:00:00%2B0000</code></td></tr><tr><td class="markdown">from</td><td class="markdown"><p>Datetime the entries were last updated, in the format YYYY-MM-DDTHH:mm:ssZ</p>
 Example:<code>from=2014-07-20T09:00:00%2B0000</code></td></tr><tr><td class="markdown">types</td><td class="markdown"><p>Types of entries to include in the search, i.e. entries with “transactional” and/or “non_transactional” keys set to true</p>
 </td></tr><tr><td class="markdown">sources</td><td class="markdown"><p>Sources of the entries to include in the search, i.e. entries that were added by this source</p>
 </td></tr><tr><td class="markdown">limit</td><td class="markdown"><p>Maximum number of results to return.  Must be between 1 and 100000. Default value is 100000.</p>
 Example:<code>limit=5</code></td></tr></table></div><div class="markdown"><p>Perform a filtered search for entries in your customer-specific exclusion list.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/suppression-list?<span class="hljs-attribute">to=</span><span class="hljs-literal">2014-07-20T09:00:00%2B0000</span>&<span class="hljs-attribute">from=</span><span class="hljs-literal">2014-07-20T09:00:00%2B0000</span>&<span class="hljs-attribute">types=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">sources=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">5</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 500)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/suppression-list?<span class="hljs-attribute">to=</span><span class="hljs-literal">2014-07-20T09:00:00%2B0000</span>&<span class="hljs-attribute">from=</span><span class="hljs-literal">2014-07-20T09:00:00%2B0000</span>&<span class="hljs-attribute">types=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">sources=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">5</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 500)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Unable to perform search"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"from must be a valid date"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
+      "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">non_transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Bounce Rule"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"550: this email address does not exist #55"</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="suppression-list-retrieve,-delete" class="resource-heading">Retrieve, Delete <a href="#suppression-list-retrieve,-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="suppression-list-retrieve,-delete-get" class="action-heading"><div class="name">Retrieve a Recipient Suppression Status</div></h4><div class="method">GET<code class="uri">/api/v1/suppression-list/</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">recipient_email (required, string, `rcpt_1@example.com`)</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Recipient email address</p>
 </td></tr></table></div><div class="markdown"><p>Retrieve the suppression status for a specific recipient by specifying the recipient’s email address in the URI path.</p>
 <p>If the recipient is not in the customer-specific exclusion list, an HTTP status of 404 is returned. If the recipient is in the list, an HTTP status of 200 is returned with the full suppression status in the response body.</p>
 <p>In addition to the list entry attributes, the response body also includes “created” and “updated” timestamps.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Recipient could not be found"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_1@example.com"</span></span>,
+      "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">non_transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Manually Added"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any non-transactional emails."</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00.000Z"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00.000Z"</span>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="suppression-list-retrieve,-delete-delete" class="action-heading"><div class="name">Delete a List Entry</div></h4><div class="method">DELETE<code class="uri">/api/v1/suppression-list/</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">recipient_email (required, string, `rcpt_1@example.com`)</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Recipient email address</p>
 </td></tr></table></div><div class="markdown"><p>Delete a recipient from the list by specifying the recipient’s email address in the URI path.</p>
 <p>If the recipient is not in the customer-specific exclusion list, an HTTP status of 404 is returned. If the recipient is in the list, an HTTP status of 204 is returned indicating a successful deletion.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Recipient could not be found"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="suppression-list-retrieve,-delete-put" class="action-heading"><div class="name">Insert or Update a List Entry</div></h4><div class="method">PUT<code class="uri">/api/v1/suppression-list/</code></div><div class="markdown"><p>The PUT method on this endpoint has been removed in favor of the Bulk Insert/Update method.</p>
-</div></div></div></div></section></div></div></div>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 403)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Recipient could not be removed - Compliance"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 204)</h4></div><div class="panel-body">Empty response body</div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="suppression-list-retrieve,-delete-put" class="action-heading"><div class="name">Insert or Update a List Entry</div></h4><div class="method">PUT<code class="uri">/api/v1/suppression-list/</code></div><div class="markdown"><p>The PUT method on this endpoint has been removed in favor of the Bulk Insert/Update method.</p>
+</div><h3>Examples</h3><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 405)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Method Not Allowed"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>

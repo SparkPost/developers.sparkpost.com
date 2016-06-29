@@ -39,7 +39,7 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 </tbody>
 </table>
 </div><div class="resource searchable"><h3 id="ip-pools-ip-pools" class="resource-heading">IP Pools <a href="#ip-pools-ip-pools" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="ip-pools-ip-pools-get" class="action-heading"><div class="name">List IP Pools</div></h4><div class="method">GET<code class="uri">/api/v1/ip-pools</code></div><div class="markdown"><p>Lists all IP Pools.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span></span>,
@@ -77,7 +77,7 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 </tr>
 </tbody>
 </table>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
@@ -85,7 +85,7 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
   </span>}
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="ip-pools-ip-pools-resource" class="resource-heading">IP Pools Resource <a href="#ip-pools-ip-pools-resource" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="ip-pools-ip-pools-resource-get" class="action-heading"><div class="name">Get IP Pool</div></h4><div class="method">GET<code class="uri">/api/v1/ip-pools/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The IP Pool’s ID</p>
 Example:<code>id=marketing</code></td></tr></table></div><div class="markdown"><p>Retrieves a specific IP Pool.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span></span>,
@@ -100,6 +100,12 @@ Example:<code>id=marketing</code></td></tr></table></div><div class="markdown"><
       </span>}
     ]
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP pool not found."</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="ip-pools-ip-pools-resource-put" class="action-heading"><div class="name">Update an IP Pool</div></h4><div class="method">PUT<code class="uri">/api/v1/ip-pools/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The IP Pool’s ID</p>
 Example:<code>id=marketing</code></td></tr></table></div><div class="markdown"><p>Updates an IP pool’s name. To update sending IP pool assignments see <a href="sending-ips.html">Sending IPs</a>.</p>
 <h4 id="header-request-body-attributes-1">Request Body Attributes <a class="permalink" href="#header-request-body-attributes-1" aria-hidden="true">¶</a></h4>
@@ -121,13 +127,37 @@ Example:<code>id=marketing</code></td></tr></table></div><div class="markdown"><
 </tr>
 </tbody>
 </table>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated Marketing Pool"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated Marketing Pool"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing"</span>
   </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP Pool default is reserved and cannot be updated."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP Pool not_a_real_pool does not exist."</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action delete"><h4 id="ip-pools-ip-pools-resource-delete" class="action-heading"><div class="name">Delete an IP Pool</div></h4><div class="method">DELETE<code class="uri">/api/v1/ip-pools/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The IP Pool’s ID</p>
 Example:<code>id=marketing</code></td></tr></table></div><div class="markdown"><p>Deletes an IP Pool and moves all sending IPs in that pool to the default pool. The default pool cannot be deleted.</p>
-</div><h3>Example</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="response"><h4>Response: (HTTP status code: 204)</h4></div><hr></div></div></div></section></div></div></div>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>DELETE&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 204)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP Pool default is reserved."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"IP Pool marketing does not exist."</span>
+    </span>}
+  ]
+</span>}</pre></div></div><hr></div></div></div></section></div></div></div>
