@@ -96,29 +96,6 @@ body {
   }
 }
 
-// API docs container
-// -------------------------
-
-.page-api-docs {
-  .site-header {
-
-    .navbar {
-      margin-bottom: 0;
-
-      .nav-banner {
-        display: none;
-      }
-    }
-  }
-
-  iframe {
-    // margin-top: 58px;
-  }
-  footer {
-    display: none;
-  }
-}
-
 // FAQs
 // -------------------------
 
@@ -237,6 +214,70 @@ body {
     @extend .col-sm-3;
     background-color: $c-gray-darker;
     padding-left: 15px;
+
+    .algolia-autocomplete {
+      width: 100%;
+      margin-top: 15px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .algolia-autocomplete {
+      color: #55555a;
+      font-size: 10pt;
+
+      // Font Awesome search icon: i.fa-search
+      #searchBadge {
+        position: absolute;
+        padding: 7px 0 0 7px;
+        left: 0px;
+        top: 0px;
+        height: 30px;
+        font-size: 15px;
+      }
+
+      .aa-input {
+        border: 0;
+        width: 100%;
+        min-height: 30px;
+        text-indent: 27px;
+      }
+
+      .aa-dropdown-menu {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height:  400px;
+        width: 100%;
+        background-color: #fff;
+        padding: 0;
+
+        .aa-suggestion {
+          cursor: pointer;
+          padding: 15px 10px 15px 27px;
+
+          a {
+            color: #55555a;
+          }
+
+          a:hover {
+            text-decoration: none;
+          }
+
+          em {
+            font-weight: bold;
+            font-style: normal;
+          }
+        }
+
+        .aa-cursor {
+          background-color: #DAD8E0;
+        }
+      }
+
+      .suggestion-section {
+        font-size: 75%;
+      }
+    }
   }
 
   #contentblock {
