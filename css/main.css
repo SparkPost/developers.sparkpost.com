@@ -5956,13 +5956,6 @@ body {
 .libraries li {
   margin-bottom: 10px; }
 
-.page-api-docs .site-header .navbar {
-  margin-bottom: 0; }
-  .page-api-docs .site-header .navbar .nav-banner {
-    display: none; }
-.page-api-docs footer {
-  display: none; }
-
 .faq-categories {
   border-top: 1px solid #e6e6e6;
   list-style: none;
@@ -6038,6 +6031,47 @@ body {
   .page-api-reference #menublock {
     background-color: #333333;
     padding-left: 15px; }
+    .page-api-reference #menublock .algolia-autocomplete {
+      width: 100%;
+      margin-top: 15px;
+      margin-left: auto;
+      margin-right: auto; }
+    .page-api-reference #menublock .algolia-autocomplete {
+      color: #55555a;
+      font-size: 10pt; }
+      .page-api-reference #menublock .algolia-autocomplete #searchBadge {
+        position: absolute;
+        padding: 7px 0 0 7px;
+        left: 0px;
+        top: 0px;
+        height: 30px;
+        font-size: 15px; }
+      .page-api-reference #menublock .algolia-autocomplete .aa-input {
+        border: 0;
+        width: 100%;
+        min-height: 30px;
+        text-indent: 27px; }
+      .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 400px;
+        width: 100%;
+        background-color: #fff;
+        padding: 0; }
+        .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+          cursor: pointer;
+          padding: 15px 10px 15px 27px; }
+          .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu .aa-suggestion a {
+            color: #55555a; }
+          .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu .aa-suggestion a:hover {
+            text-decoration: none; }
+          .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+            font-weight: bold;
+            font-style: normal; }
+        .page-api-reference #menublock .algolia-autocomplete .aa-dropdown-menu .aa-cursor {
+          background-color: #DAD8E0; }
+      .page-api-reference #menublock .algolia-autocomplete .suggestion-section {
+        font-size: 75%; }
   .page-api-reference #contentblock {
     background-color: white;
     /*
