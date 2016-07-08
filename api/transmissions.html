@@ -521,7 +521,6 @@ necessary.</p>
 <p>Use the <em>options.start_time</em> attribute to delay generation of messages.  The scheduled time cannot be greater than 31 days from the time of submission.  If the scheduled time does not pass validation, the transmission is not accepted.  Transmissions with a scheduled time in the past <em>are</em> accepted and undergo immediate generation.</p>
 </div><div class="resource searchable"><h3 id="transmissions-create" class="resource-heading">Create <a href="#transmissions-create" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="transmissions-create-post" class="action-heading"><div class="name">Create a Transmission</div></h4><div class="method">POST<code class="uri">/api/v1/transmissions{?num_rcpt_errors}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">num_rcpt_errors</td><td class="markdown"><p>Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.</p>
 <em>Example: 3</em></td></tr></table></div><div class="markdown"><p>You can create a transmission in a number of ways. In all cases, you can use the <strong>num_rcpt_errors</strong> parameter to limit the number of recipient errors returned.</p>
-<p><strong>Note:</strong> The “return_path” in the POST request body applies to SparkPost Elite only.</p>
 <p><strong>Note:</strong> Sending limits apply to SparkPost only. When a transmission is created in SparkPost, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</p>
 <h4 id="header-using-inline-email-part-content">Using Inline Email Part Content <a class="permalink" href="#header-using-inline-email-part-content" aria-hidden="true">¶</a></h4>
 <p>Create a transmission using inline email part content.</p>
@@ -537,20 +536,26 @@ necessary.</p>
 <p>Once message generation has been initiated, all messages in the transmission will use the template selected at the start of the generation. If a template update is made during the generation of a transmission that uses that template, the template update will succeed but the transmission will continue to use the version that was selected at the start of the generation.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission Using Inline Email Part Content</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">sandbox</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"sp_shared"</span></span>,
+    "<span class="hljs-attribute">inline_css</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
   "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span></span>,
+    "<span class="hljs-attribute">education_level</span>": <span class="hljs-value"><span class="hljs-string">"college"</span>
   </span>}</span>,
   "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span>
+    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span></span>,
+    "<span class="hljs-attribute">holiday_name</span>": <span class="hljs-value"><span class="hljs-string">"Christmas"</span>
   </span>}</span>,
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
@@ -562,10 +567,12 @@ necessary.</p>
         <span class="hljs-string">"flintstone"</span>
       ]</span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
         "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
       </span>}</span>,
       "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">customer_type</span>": <span class="hljs-value"><span class="hljs-string">"Platinum"</span>
+        "<span class="hljs-attribute">customer_type</span>": <span class="hljs-value"><span class="hljs-string">"Platinum"</span></span>,
+        "<span class="hljs-attribute">year</span>": <span class="hljs-value"><span class="hljs-string">"Freshman"</span>
       </span>}
     </span>}
   ]</span>,
@@ -588,30 +595,38 @@ necessary.</p>
     "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>```
+{
+  "errors" : [
     {
-      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unconfigured or unverified sending domain."</span></span>,
-      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7001"</span></span>,
-      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid domain"</span>
-    </span>}
+      "description" : "Unconfigured or unverified sending domain.",
+      "code" : "7001",
+      "message" : "Invalid domain"
+    }
   ]
-</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Inline RFC822 Content</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+}
+```</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Inline RFC822 Content</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">sandbox</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">inline_css</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
   "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span></span>,
+    "<span class="hljs-attribute">education_level</span>": <span class="hljs-value"><span class="hljs-string">"college"</span>
   </span>}</span>,
   "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span>
+    "<span class="hljs-attribute">sender</span>": <span class="hljs-value"><span class="hljs-string">"Big Store Team"</span></span>,
+    "<span class="hljs-attribute">holiday_name</span>": <span class="hljs-value"><span class="hljs-string">"Christmas"</span>
   </span>}</span>,
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
@@ -623,16 +638,19 @@ necessary.</p>
         <span class="hljs-string">"flintstone"</span>
       ]</span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
         "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
       </span>}</span>,
       "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Will Smith"</span>
+        "<span class="hljs-attribute">first_name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma"</span></span>,
+        "<span class="hljs-attribute">customer_type</span>": <span class="hljs-value"><span class="hljs-string">"Platinum"</span></span>,
+        "<span class="hljs-attribute">year</span>": <span class="hljs-value"><span class="hljs-string">"Freshman"</span>
       </span>}
     </span>},
     {
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"abc@flintstone.com"</span></span>,
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Fintstone"</span>
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Flintstone"</span>
       </span>}</span>,
       "<span class="hljs-attribute">tags</span>": <span class="hljs-value">[
         <span class="hljs-string">"greeting"</span>,
@@ -641,10 +659,13 @@ necessary.</p>
         <span class="hljs-string">"flintstone"</span>
       ]</span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"MD"</span>
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-string">"33"</span></span>,
+        "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"NY"</span>
       </span>}</span>,
       "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred"</span>
+        "<span class="hljs-attribute">first_name</span>": <span class="hljs-value"><span class="hljs-string">"Fred"</span></span>,
+        "<span class="hljs-attribute">customer_type</span>": <span class="hljs-value"><span class="hljs-string">"Sliver"</span></span>,
+        "<span class="hljs-attribute">year</span>": <span class="hljs-value"><span class="hljs-string">"Senior"</span>
       </span>}
     </span>}
   ]</span>,
@@ -665,9 +686,62 @@ necessary.</p>
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid domain"</span>
     </span>}
   ]
-</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Stored Recipient List</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission Using CC Header</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">sandbox</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"sp_shared"</span></span>,
+    "<span class="hljs-attribute">inline_css</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
+
+  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span>
+      </span>}
+    </span>},
+    {
+      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"pebbles@flintstone.com"</span></span>,
+        "<span class="hljs-attribute">header_to</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span>
+      </span>}
+    </span>}
+  ]</span>,
+  "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fred Flintstone"</span></span>,
+      "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Big Christmas savings!"</span></span>,
+    "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Sales &lt;sales@flintstone.com&gt;"</span></span>,
+    "<span class="hljs-attribute">headers</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">CC</span>": <span class="hljs-value"><span class="hljs-string">"pebbles@flintstone.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"</span></span>,
+  }
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>```
+{
+  "errors" : [
+    {
+      "description" : "Unconfigured or unverified sending domain.",
+      "code" : "7001",
+      "message" : "Invalid domain"
+    }
+  ]
+}
+```</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Stored Recipient List</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">list_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_sales_2013"</span>
   </span>}</span>,
@@ -704,16 +778,16 @@ necessary.</p>
     "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_offer"</span></span>,
     "<span class="hljs-attribute">use_draft_template</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}</span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"bounces-christmas-campaign@flintstone.com"</span></span>,
   "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span>
+    "<span class="hljs-attribute">user_type</span>": <span class="hljs-value"><span class="hljs-string">"students"</span></span>,
+    "<span class="hljs-attribute">age_group</span>": <span class="hljs-value"><span class="hljs-string">"18-35"</span>
   </span>}</span>,
   "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">subkey</span>": <span class="hljs-value"><span class="hljs-string">"subvalue"</span>
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"shopping"</span></span>,
+    "<span class="hljs-attribute">holiday</span>": <span class="hljs-value"><span class="hljs-string">"Thanksgiving"</span>
   </span>}</span>,
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
-      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"123@bounces.flintstone.com"</span></span>,
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"wilma@flintstone.com"</span></span>,
         "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma Flintstone"</span>
@@ -725,14 +799,15 @@ necessary.</p>
         <span class="hljs-string">"flintstone"</span>
       ]</span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
         "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"Bedrock"</span>
       </span>}</span>,
       "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">subrcptkey</span>": <span class="hljs-value"><span class="hljs-string">"subrcptvalue"</span>
+        "<span class="hljs-attribute">first_name</span>": <span class="hljs-value"><span class="hljs-string">"Wilma"</span></span>,
+        "<span class="hljs-attribute">last_name</span>": <span class="hljs-value"><span class="hljs-string">"Flintstone"</span>
       </span>}
     </span>},
     {
-      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"456@bounces.flintstone.com"</span></span>,
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"abc@flintstone.com"</span>
       </span>}</span>,
@@ -743,6 +818,7 @@ necessary.</p>
         <span class="hljs-string">"flintstone"</span>
       ]</span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-string">"33"</span></span>,
         "<span class="hljs-attribute">place</span>": <span class="hljs-value"><span class="hljs-string">"MD"</span>
       </span>}
     </span>}
@@ -812,7 +888,6 @@ necessary.</p>
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Scheduled Transmission</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fall Sale"</span></span>,
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"fall"</span></span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"deals@company.com"</span></span>,
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"2015-10-11T08:00:00-04:00"</span></span>,
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
@@ -894,7 +969,6 @@ necessary.</p>
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="transmissions-retrieve-and-delete" class="resource-heading">Retrieve and Delete <a href="#transmissions-retrieve-and-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="transmissions-retrieve-and-delete-get" class="action-heading"><div class="name">Retrieve a Transmission</div></h4><div class="method">GET<code class="uri">/api/v1/transmissions/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the transmission</p>
 <em>Example: 11714265276872</em></td></tr></table></div><div class="markdown"><p>Retrieve the details about a transmission by specifying its ID in the URI path.</p>
 <p>The response for a transmission using an inline template will include “template_id”:“inline”.  Inline templates cannot be specifically queried.</p>
-<p><strong>Note:</strong> The “return_path” is returned in the response for SparkPost Elite only.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/transmissions/<span class="hljs-attribute" title="id">11714265276872</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">transmission</span>": <span class="hljs-value">{
@@ -906,7 +980,6 @@ necessary.</p>
         "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"Bob's template"</span></span>,
         "<span class="hljs-attribute">use_draft_template</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
       </span>}</span>,
-      "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"fred@flintstone.com"</span></span>,
       "<span class="hljs-attribute">rcpt_list_chunk_size</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
       "<span class="hljs-attribute">rcpt_list_total_chunks</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
       "<span class="hljs-attribute">num_rcpts</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
@@ -916,7 +989,7 @@ necessary.</p>
       "<span class="hljs-attribute">generation_end_time</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-22T15:13:00+00:00"</span></span>,
       "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
       "<span class="hljs-attribute">metadata</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">key1</span>": <span class="hljs-value"><span class="hljs-string">"value1"</span>
+        "<span class="hljs-attribute">is_snowing</span>": <span class="hljs-value"><span class="hljs-string">"yes"</span>
       </span>}</span>,
       "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
@@ -968,9 +1041,9 @@ necessary.</p>
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unable to delete a transmission that has completed (state=Success)"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="transmissions-list" class="resource-heading">List <a href="#transmissions-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="transmissions-list-get" class="action-heading"><div class="name">List all Transmissions</div></h4><div class="method">GET<code class="uri">/api/v1/transmissions{?campaign_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">campaign_id</td><td class="markdown"><p>ID of the campaign used by the transmissions</p>
-<em>Example: thanksgiving</em></td></tr><tr><td class="markdown">template_id (optional, string,`thanksgiving_template`)</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template used by the transmissions</p>
-</td></tr></table></div><div class="markdown"><p>List an array of transmission summary objects.  A transmission summary object contains the “template_id”, “id”, “campaign_id”, “description”, and “state”.  The following lists are supported:</p>
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="transmissions-list" class="resource-heading">List <a href="#transmissions-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="transmissions-list-get" class="action-heading"><div class="name">List all Transmissions</div></h4><div class="method">GET<code class="uri">/api/v1/transmissions{?campaign_id,template_id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">campaign_id</td><td class="markdown"><p>ID of the campaign used by the transmissions</p>
+<em>Example: thanksgiving</em></td></tr><tr><td class="markdown">template_id</td><td class="markdown"><p>ID of the template used by the transmissions</p>
+<em>Example: thanksgiving-template</em></td></tr></table></div><div class="markdown"><p>List an array of transmission summary objects.  A transmission summary object contains the “template_id”, “id”, “campaign_id”, “description”, and “state”.  The following lists are supported:</p>
 <ul>
 <li>
 <p>All multi-recipient transmissions</p>
@@ -989,7 +1062,7 @@ necessary.</p>
 <p>By default, the list includes all transmissions for all campaigns.  Use the <strong>template_id</strong> parameter to specify a template and the <strong>campaign_id</strong> parameter to specify a campaign.</p>
 <p>The response for transmissions using an inline template will include “template_id”:“inline”.  Inline templates cannot be specifically queried.</p>
 <p>The example response shows a query on <em>campaign_id=thanksgiving</em>, with <strong>template_id</strong> not specified as part of the query.</p>
-</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/transmissions?<span class="hljs-attribute">campaign_id=</span><span class="hljs-literal">thanksgiving</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/transmissions?<span class="hljs-attribute">campaign_id=</span><span class="hljs-literal">thanksgiving</span>&<span class="hljs-attribute">template_id=</span><span class="hljs-literal">thanksgiving-template</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
@@ -1011,7 +1084,7 @@ necessary.</p>
     </span>},
     {
       "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving_template"</span>
+        "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving-template"</span>
       </span>}</span>,
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11713048079237202"</span></span>,
       "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"thanksgiving"</span></span>,

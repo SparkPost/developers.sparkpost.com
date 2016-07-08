@@ -219,7 +219,7 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 <td style="text-align:center">string</td>
 <td>Compliance status</td>
 <td></td>
-<td>Valid values are “pending”, “valid”, or “blocked”.</td>
+<td>Read only. Valid values are “pending”, “valid”, or “blocked”.</td>
 </tr>
 </tbody>
 </table>
@@ -227,8 +227,9 @@ mixpanel.init("0c8d92f4bd11446215bd4e7cb7639933");</script><!-- end Mixpanel -->
 <p><strong>NOTE:</strong> For SparkPost, only domain is required in the POST request body. The values for port (80) and secure (false) are not configurable.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/tracking-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span></span>,
-  "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">8080</span></span>,
-  "<span class="hljs-attribute">secure</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>,
+  "<span class="hljs-attribute">secure</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+  "<span class="hljs-attribute">default</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span>

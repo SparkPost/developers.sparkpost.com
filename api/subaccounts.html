@@ -232,7 +232,9 @@ Subaccounts are a way for service providers to provision and manage their custom
     <span class="hljs-string">"suppression_lists/manage"</span>,
     <span class="hljs-string">"tracking_domains/view"</span>,
     <span class="hljs-string">"tracking_domains/manage"</span>
-  ]
+  ]</span>,
+  "<span class="hljs-attribute">key_valid_ips</span>": <span class="hljs-value">[]</span>,
+  "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">""</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">subaccount_id</span>": <span class="hljs-value"><span class="hljs-number">888</span></span>,
@@ -332,7 +334,8 @@ Subaccounts are a way for service providers to provision and manage their custom
 </table>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/subaccounts/</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hey Joe! Garage and Parts"</span></span>,
-  "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"suspended"</span>
+  "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"suspended"</span></span>,
+  "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">""</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Successfully updated subaccount information"</span>
