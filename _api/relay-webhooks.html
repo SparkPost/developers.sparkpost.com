@@ -240,7 +240,7 @@ description: "Manage relay webhooks, a way to instruct SparkPost to accept inbou
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/relay-webhooks</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
   "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
-  "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+  "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">"5ebe2294ecd0e0f08eab7690d2a6ee69"</span></span>,
   "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
     "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
@@ -295,7 +295,7 @@ description: "Manage relay webhooks, a way to instruct SparkPost to accept inbou
       "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
       "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
-      "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">"5ebe2294ecd0e0f08eab7690d2a6ee69"</span></span>,
       "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
         "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
@@ -315,7 +315,7 @@ description: "Manage relay webhooks, a way to instruct SparkPost to accept inbou
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Replies Webhook"</span></span>,
     "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhooks.customer.example/replies"</span></span>,
-    "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">"5ebe2294ecd0e0f08eab7690d2a6ee69"</span></span>,
     "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.example.com"</span>
@@ -339,7 +339,12 @@ description: "Manage relay webhooks, a way to instruct SparkPost to accept inbou
 <em>Example: 12013026328707075</em></td></tr></table></div><div class="markdown"><p>Update a relay webhook by specifying the webhook ID in the URI path.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/relay-webhooks/<span class="hljs-attribute" title="webhook_id">12013026328707075</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New Replies Webhook"</span></span>,
-  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhook.customer.example/replies"</span>
+  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://webhook.customer.example/replies"</span></span>,
+  "<span class="hljs-attribute">auth_token</span>": <span class="hljs-value"><span class="hljs-string">"A different auth token"</span></span>,
+  "<span class="hljs-attribute">match</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">protocol</span>": <span class="hljs-value"><span class="hljs-string">"SMTP"</span></span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"email.a-different-domain.com"</span>
+  </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"12013026328707075"</span>

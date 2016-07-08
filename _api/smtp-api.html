@@ -11,9 +11,38 @@ you can now specify a campaign id, metadata,
 tags, IP pool, Cc, Bcc, and archive recipient lists and disable open and/or click tracking.</p>
 <p><strong>Note</strong>: To use this option you should be familiar with how to encode
 options as JSON strings, as the value of the header field is a JSON object that specifies the relevant options:</p>
-<pre><code>X-MSYS-<span class="hljs-string">API:</span> {<span class="hljs-string">"options"</span> : {<span class="hljs-string">"open_tracking"</span> : <span class="hljs-literal">false</span>, <span class="hljs-string">"click_tracking"</span> : <span class="hljs-literal">true</span>},
-   <span class="hljs-string">"metadata"</span> : {<span class="hljs-string">"key"</span> : <span class="hljs-string">"value"</span>}, <span class="hljs-string">"tags"</span> : [<span class="hljs-string">"cat"</span>, <span class="hljs-string">"dog"</span>], <span class="hljs-string">"campaign_id"</span> :
-   <span class="hljs-string">"my_campaign"</span>}</code></pre>
+<pre><code>X-MSYS-API: {
+  <span class="hljs-string">"campaign_id"</span>: <span class="hljs-string">"my_campaign"</span>,
+  <span class="hljs-string">"metadata"</span> : {
+    <span class="hljs-string">"has_pets"</span>: true,
+    <span class="hljs-string">"pet_name"</span>: <span class="hljs-string">"Spot"</span>
+  },
+  <span class="hljs-string">"cc"</span>: [
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"cc_recip_1@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"CC 1"</span> },
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"cc_recip_2@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"CC 2"</span> }
+  ],
+  <span class="hljs-string">"bcc"</span>: [
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"bcc_recip_1@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"BCC 1"</span> }
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"bcc_recip_2@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"BCC 2"</span> }
+  ],
+  <span class="hljs-string">"archive"</span>: [
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"archive_recip_1@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"Archive 1"</span> }
+    { <span class="hljs-string">"email"</span>: <span class="hljs-string">"archive_recip_2@gmail.com"</span>, <span class="hljs-string">"name"</span>: <span class="hljs-string">"Archive 2"</span> }
+  ],
+  <span class="hljs-string">"tags"</span>: [
+    <span class="hljs-string">"cat"</span>,
+    <span class="hljs-string">"dog"</span>
+  ],
+  <span class="hljs-string">"options"</span> : {
+    <span class="hljs-string">"open_tracking"</span>: false,
+    <span class="hljs-string">"click_tracking"</span>: false,
+    <span class="hljs-string">"transactional"</span>: false,
+    <span class="hljs-string">"sandbox"</span>: false,
+    <span class="hljs-string">"skip_suppression"</span>: false,
+    <span class="hljs-string">"ip_pool"</span>: <span class="hljs-string">"sp_shared"</span>,
+    <span class="hljs-string">"inline_css"</span>: false
+  }
+}</code></pre>
 <p>Click and open tracking are disabled by default in SMTP messages sent through SparkPost.  To enable click and open tracking in SMTP messages, add the X-MSYS-API header as follows:</p>
 <pre><code>X-MSYS-<span class="hljs-string">API:</span> { <span class="hljs-string">"options"</span> : { <span class="hljs-string">"open_tracking"</span> : <span class="hljs-literal">true</span>, <span class="hljs-string">"click_tracking"</span> : <span class="hljs-literal">true</span> } }</code></pre>
 <p><strong>Note</strong>: Key-Value <a href="substitutions-reference.html">Substitutions</a> are not supported in SMTP API.
@@ -211,8 +240,8 @@ substitution_data provided in the X-MSYS-API header will be ignored.</p>
 longer than 998 characters, it will need to be folded across multiple lines before the message is injected.  An example
 of a folded header:</p>
 <pre><code>X-MSYS-<span class="hljs-string">API:</span> {<span class="hljs-string">"options"</span> : {<span class="hljs-string">"open_tracking"</span> : <span class="hljs-literal">false</span>, <span class="hljs-string">"click_tracking"</span> : <span class="hljs-literal">true</span>},
-   <span class="hljs-string">"metadata"</span> : {<span class="hljs-string">"key"</span> : <span class="hljs-string">"value"</span>}, <span class="hljs-string">"tags"</span> : [<span class="hljs-string">"cat"</span>, <span class="hljs-string">"dog"</span>], <span class="hljs-string">"campaign_id"</span> :
-   <span class="hljs-string">"my_campaign"</span>}</code></pre>
+   <span class="hljs-string">"metadata"</span> : {<span class="hljs-string">"has_pets"</span> : <span class="hljs-literal">true</span>, <span class="hljs-string">"pet_name"</span>: <span class="hljs-string">"Spot"</span> }, <span class="hljs-string">"tags"</span> : [<span class="hljs-string">"cat"</span>,
+   <span class="hljs-string">"dog"</span>], <span class="hljs-string">"campaign_id"</span> : <span class="hljs-string">"my_campaign"</span>}</code></pre>
 <p>Be aware that when the header is unfolded on the receiving system, as per rfc2822 (<a href="https://www.ietf.org/rfc/rfc2822.txt">https://www.ietf.org/rfc/rfc2822.txt</a>),
 a single space will be added between each line of the header.</p>
 <p>For example:</p>

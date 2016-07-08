@@ -477,7 +477,6 @@ in the template:</p>
 <pre><code><span class="hljs-constant">Attempting</span> to insert a chunk <span class="hljs-keyword">of</span> plain <span class="hljs-symbol">text:</span>
 <span class="hljs-expansion">{{ render_dynamic_content(dynamic_plain.my_plain_text_chunk) }}</span></code></pre>
 <p>Finally, as a more realistic example, render_dynamic_content can also be used inside an ‘each’ loop. Full transmission json examples follow.</p>
-<p><strong>Note:</strong> The following example applies to SparkPost only.</p>
 <pre><code>{
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
@@ -517,48 +516,6 @@ in the template:</p>
     "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
     "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"offers"</span>
   </span>}
-</span>}</code></pre>
-<p><strong>Note:</strong> The following example applies to SparkPost Elite only.</p>
-<pre><code>{
-  "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"foo@example.com"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"The A-Team"</span></span>,
-        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer2"</span>, <span class="hljs-string">"offer1"</span> ]
-      </span>}
-    </span>},
-    {
-      "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"bar@example.com"</span>
-      </span>}</span>,
-      "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Johnnie Rico"</span></span>,
-        "<span class="hljs-attribute">offers</span>": <span class="hljs-value">[ <span class="hljs-string">"offer3"</span> ]
-      </span>}
-    </span>}
-  ]</span>,
-  "<span class="hljs-attribute">substitution_data</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">dynamic_html</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/1?name={{name}}\"&gt;Premium-brand wirecutters&lt;/a&gt;"</span></span>,
-      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/2?name={{name}}\"&gt;Corks&lt;/a&gt;"</span></span>,
-      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"http://t.com/offer/3?name={{name}}\"&gt;Super-effective bug spray&lt;/a&gt;"</span>
-    </span>}</span>,
-    "<span class="hljs-attribute">dynamic_plain</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">offer1</span>": <span class="hljs-value"><span class="hljs-string">"Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}"</span></span>,
-      "<span class="hljs-attribute">offer2</span>": <span class="hljs-value"><span class="hljs-string">"Corks -- http://t.com/offer/2?name={{name}}"</span></span>,
-      "<span class="hljs-attribute">offer3</span>": <span class="hljs-value"><span class="hljs-string">"Super-effective bug spray -- http://t.com/offer/3?name={{name}}"</span>
-    </span>}
-  </span>}
-  <span class="hljs-string">"content"</span>: {
-    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n"</span></span>,
-    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Today's special offers&lt;/p&gt;&lt;ul&gt;\n{{each offers}}\n&lt;li&gt;{{render_dynamic_content(dynamic_html[loop_var])}}&lt;/li&gt;\n{{end}}\n&lt;/ul&gt;"</span></span>,
-    "<span class="hljs-attribute">from</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
-    "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"offers"</span>
-  </span>}</span>,
-  "<span class="hljs-attribute">return_path</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span>
 </span>}</code></pre>
 <h2 id="header-default-values">Default Values <a class="permalink" href="#header-default-values" aria-hidden="true">¶</a></h2>
 <p>To create default values, use <code>or</code> syntax.  In the following example,
