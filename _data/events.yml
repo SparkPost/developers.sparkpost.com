@@ -1,3 +1,9 @@
+- name: QueensJS
+  type: future
+  url: http://www.meetup.com/QueensJS
+  date_start: 2016-08-03
+  location: New York, NY
+
 - name: ManhattanJS
   type: future
   url: http://manhattanjs.com/
@@ -5,7 +11,7 @@
   location: New York, NY
 
 - name: QueensJS
-  type: future
+  type: past
   url: http://www.meetup.com/QueensJS/events/232040343/
   date_start: 2016-07-06
   location: New York, NY
