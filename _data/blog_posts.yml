@@ -1,19 +1,19 @@
+- title: 5 Productivity Tips from Experienced Developers
+  url: https://www.sparkpost.com/blog/5-productivity-tips-developers
+  order: 1
+  
+- title: Meet Our Summer 2016 Engineering Interns
+  url: https://www.sparkpost.com/blog/engineering-interns-intro-2016/
+  order: 2
+
 - title: How to Set Up SparkPost as Your SMTP Relay
   url: https://www.sparkpost.com/blog/setup-sparkpost-smtp-relay
-  order: 1
+  order: 3
 
 - title: "Community Spotlight: SparkPost Rails Gem Contributor Dave Goerlich"
   url: https://www.sparkpost.com/blog/sparkpost-rails-gem-dave-goerlich
-  order: 2
+  order: 4
 
 - title: 5 Inbound Email Processing Use Cases For Your Apps
   url: https://www.sparkpost.com/blog/5-inbound-email-processing-use-cases/
-  order: 3
-
-- title: The Differences Between Using SMTP or API with SparkPost
-  url: https://www.sparkpost.com/blog/differences-sending-smtp-api
-  order: 4
- 
-- title: "Community Spotlight: Chris Pitt’s SparkPost Tutorials"
-  url: https://www.sparkpost.com/blog/chris-pitt-sparkpost-tutorials
   order: 5
