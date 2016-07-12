@@ -394,26 +394,23 @@ necessary.</p>
     </span>}
   ]
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Parts</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/templates</code></p><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">id</span>" : <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
-  "<span class="hljs-attribute">name</span>" : <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
-  "<span class="hljs-attribute">published</span>" : <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Template for a Summer Sale!"</span>
-  <span class="hljs-string">"options"</span>: {
-    "<span class="hljs-attribute">open_tracking</span>" : <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-    "<span class="hljs-attribute">click_tracking</span>" : <span class="hljs-value"><span class="hljs-literal">true</span>
+  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
+  "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Template for a Summer Sale!"</span></span>,
+  "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
   </span>}</span>,
   "<span class="hljs-attribute">content</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">from</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">email</span>": <span class="hljs-value"><span class="hljs-string">"marketing@bounces.company.example"</span></span>,
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Example Company Marketing"</span>
     </span>}</span>,
-
     "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Summer deals for "</span></span>,
     "<span class="hljs-attribute">reply_to</span>": <span class="hljs-value"><span class="hljs-string">"Summer deals &lt;summer_deals@company.example&gt;"</span></span>,
-
     "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Check out these deals !"</span></span>,
     "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;b&gt;Check out these deals !&lt;/b&gt;"</span></span>,
-
     "<span class="hljs-attribute">headers</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">X-Customer-Campaign-ID</span>": <span class="hljs-value"><span class="hljs-string">"Summer2014"</span>
     </span>}
