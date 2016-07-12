@@ -595,17 +595,15 @@ necessary.</p>
     "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>```
-{
-  "errors" : [
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
-      "description" : "Unconfigured or unverified sending domain.",
-      "code" : "7001",
-      "message" : "Invalid domain"
-    }
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unconfigured or unverified sending domain."</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7001"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid domain"</span>
+    </span>}
   ]
-}
-```</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Inline RFC822 Content</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Inline RFC822 Content</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
@@ -688,7 +686,7 @@ necessary.</p>
   ]
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission Using CC Header</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
-      "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
+    "<span class="hljs-attribute">start_time</span>": <span class="hljs-value"><span class="hljs-string">"now"</span></span>,
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
@@ -698,7 +696,6 @@ necessary.</p>
   </span>}</span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
-
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">address</span>": <span class="hljs-value">{
@@ -722,25 +719,23 @@ necessary.</p>
     "<span class="hljs-attribute">headers</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">CC</span>": <span class="hljs-value"><span class="hljs-string">"pebbles@flintstone.com"</span>
     </span>}</span>,
-    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"</span></span>,
-  }
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"</span>
+  </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">total_rejected_recipients</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
     "<span class="hljs-attribute">total_accepted_recipients</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"11668787484950529"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>```
-{
-  "errors" : [
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
     {
-      "description" : "Unconfigured or unverified sending domain.",
-      "code" : "7001",
-      "message" : "Invalid domain"
-    }
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unconfigured or unverified sending domain."</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7001"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Invalid domain"</span>
+    </span>}
   ]
-}
-```</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Stored Recipient List</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Create Transmission with Stored Recipient List</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/transmissions?<span class="hljs-attribute">num_rcpt_errors=</span><span class="hljs-literal">3</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_campaign"</span></span>,
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">list_id</span>": <span class="hljs-value"><span class="hljs-string">"christmas_sales_2013"</span>
