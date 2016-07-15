@@ -1,3 +1,10 @@
+- name: Nodevember
+  type: future
+  url: http://nodevember.org/
+  date_start: 2016-11-20
+  date_end: 2016-11-21
+  location: Nashville, TN
+
 - name: QueensJS
   type: future
   url: http://www.meetup.com/QueensJS
@@ -5,7 +12,7 @@
   location: New York, NY
 
 - name: ManhattanJS
-  type: future
+  type: past
   url: http://manhattanjs.com/
   date_start: 2016-07-13
   location: New York, NY
