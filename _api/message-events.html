@@ -125,18 +125,21 @@ description: "Query detailed message event data for further analysis and process
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/message-events/events/samples?<span class="hljs-attribute">events=</span><span class="hljs-literal">bounce</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"bounce"</span></span>,
       "<span class="hljs-attribute">bounce_class</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
       "<span class="hljs-attribute">campaign_id</span>": <span class="hljs-value"><span class="hljs-string">"Example Campaign Name"</span></span>,
       "<span class="hljs-attribute">customer_id</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
       "<span class="hljs-attribute">delv_method</span>": <span class="hljs-value"><span class="hljs-string">"esmtp"</span></span>,
       "<span class="hljs-attribute">device_token</span>": <span class="hljs-value"><span class="hljs-string">"45c19189783f867973f6e6a5cca60061ffe4fa77c547150563a1192fa9847f8a"</span></span>,
       "<span class="hljs-attribute">error_code</span>": <span class="hljs-value"><span class="hljs-string">"554"</span></span>,
+      "<span class="hljs-attribute">event_id</span>": <span class="hljs-value"><span class="hljs-string">"92356927693813856"</span></span>,
+      "<span class="hljs-attribute">friendly_from</span>": <span class="hljs-value"><span class="hljs-string">"sender@example.com"</span></span>,
       "<span class="hljs-attribute">ip_address</span>": <span class="hljs-value"><span class="hljs-string">"127.0.0.1"</span></span>,
-      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-string">"0e0d94b7-9085-4e3c-ab30-e3f2cd9c273e"</span></span>,
+      "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"Example-Ip-Pool"</span></span>,
+      "<span class="hljs-attribute">message_id</span>": <span class="hljs-value"><span class="hljs-string">"000443ee14578172be22"</span></span>,
       "<span class="hljs-attribute">msg_from</span>": <span class="hljs-value"><span class="hljs-string">"sender@example.com"</span></span>,
       "<span class="hljs-attribute">msg_size</span>": <span class="hljs-value"><span class="hljs-string">"1337"</span></span>,
       "<span class="hljs-attribute">num_retries</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
-      "<span class="hljs-attribute">raw_reason</span>": <span class="hljs-value"><span class="hljs-string">"MAIL REFUSED - IP (17.99.99.99) is in black list"</span></span>,
       "<span class="hljs-attribute">rcpt_meta</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">customKey</span>": <span class="hljs-value"><span class="hljs-string">"customValue"</span>
       </span>}</span>,
@@ -145,15 +148,25 @@ description: "Query detailed message event data for further analysis and process
         <span class="hljs-string">"US"</span>
       ]</span>,
       "<span class="hljs-attribute">rcpt_to</span>": <span class="hljs-value"><span class="hljs-string">"recipient@example.com"</span></span>,
+      "<span class="hljs-attribute">raw_rcpt_to</span>": <span class="hljs-value"><span class="hljs-string">"recipient@example.com"</span></span>,
       "<span class="hljs-attribute">rcpt_type</span>": <span class="hljs-value"><span class="hljs-string">"cc"</span></span>,
+      "<span class="hljs-attribute">raw_reason</span>": <span class="hljs-value"><span class="hljs-string">"MAIL REFUSED - IP (17.99.99.99) is in black list"</span></span>,
       "<span class="hljs-attribute">reason</span>": <span class="hljs-value"><span class="hljs-string">"MAIL REFUSED - IP (a.b.c.d) is in black list"</span></span>,
       "<span class="hljs-attribute">routing_domain</span>": <span class="hljs-value"><span class="hljs-string">"example.com"</span></span>,
+      "<span class="hljs-attribute">sending_ip</span>": <span class="hljs-value"><span class="hljs-string">"127.0.0.1"</span></span>,
+      "<span class="hljs-attribute">sms_coding</span>": <span class="hljs-value"><span class="hljs-string">"ASCII"</span></span>,
+      "<span class="hljs-attribute">sms_dst</span>": <span class="hljs-value"><span class="hljs-string">"7876712656"</span></span>,
+      "<span class="hljs-attribute">sms_dst_npi</span>": <span class="hljs-value"><span class="hljs-string">"E164"</span></span>,
+      "<span class="hljs-attribute">sms_dst_ton</span>": <span class="hljs-value"><span class="hljs-string">"International"</span></span>,
+      "<span class="hljs-attribute">sms_src</span>": <span class="hljs-value"><span class="hljs-string">"1234"</span></span>,
+      "<span class="hljs-attribute">sms_src_npi</span>": <span class="hljs-value"><span class="hljs-string">"E164"</span></span>,
+      "<span class="hljs-attribute">sms_src_ton</span>": <span class="hljs-value"><span class="hljs-string">"Unknown"</span></span>,
+      "<span class="hljs-attribute">subaccount_id</span>": <span class="hljs-value"><span class="hljs-string">"101"</span></span>,
       "<span class="hljs-attribute">subject</span>": <span class="hljs-value"><span class="hljs-string">"Summer deals are here!"</span></span>,
       "<span class="hljs-attribute">template_id</span>": <span class="hljs-value"><span class="hljs-string">"templ-1234"</span></span>,
       "<span class="hljs-attribute">template_version</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
-      "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"2015-11-24T16:15:54.000+00:00"</span></span>,
-      "<span class="hljs-attribute">transmission_id</span>": <span class="hljs-value"><span class="hljs-string">"65832150921904138"</span></span>,
-      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"bounce"</span>
+      "<span class="hljs-attribute">timestamp</span>": <span class="hljs-value"><span class="hljs-string">"2016-02-02T19:50:00.000+00:00"</span></span>,
+      "<span class="hljs-attribute">transmission_id</span>": <span class="hljs-value"><span class="hljs-string">"65832150921904138"</span>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="message-events-message-events" class="resource-heading">Message Events <a href="#message-events-message-events" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="message-events-message-events-get" class="action-heading"><div class="name">Search for Message Events</div></h4><div class="method">GET<code class="uri">/api/v1/message-events{?bounce_classes,campaign_ids,delimiter,events,friendly_froms,from,message_ids,page,per_page,reason,recipients,subaccounts,template_ids,timezone,to,transmission_ids}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">bounce_classes</td><td class="markdown"><p>delimited list of bounce classification codes to search. (See <a href="https://support.sparkpost.com/customer/portal/articles/1929896">Bounce Classification Codes.</a>)</p>
