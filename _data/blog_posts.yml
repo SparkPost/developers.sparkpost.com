@@ -1,20 +1,23 @@
+- title: Developer Productivity Tools and Anti-Patterns
+  url: https://www.sparkpost.com/blog/developer-productivity-tools-anti-patterns
+  order: 1
+
+- title: "Robble Robble: Our Obsession with Slack Bots and Productivity"
+  url: https://www.sparkpost.com/blog/slack-bots-productivity
+  order: 2
+  
+- title: "Email for Developers: A Survival Guide"
+  url: https://www.sparkpost.com/blog/email-for-developers-survival-guide
+  order: 3
+
 - title: 3 Email Testing Tools To Save You Time
   url: https://www.sparkpost.com/blog/email-testing-tools
-  order: 1
+  order: 4
 
 - title: 5 Productivity Tips from our Community
   url: https://www.sparkpost.com/blog/5-productivity-tips-developers
-  order: 2
-  
-- title: Meet Our Summer 2016 Engineering Interns
-  url: https://www.sparkpost.com/blog/engineering-interns-intro-2016/
-  order: 3
-
-- title: How to Set Up SparkPost as Your SMTP Relay
-  url: https://www.sparkpost.com/blog/setup-sparkpost-smtp-relay
-  order: 4
-
-- title: "Community Spotlight: SparkPost Rails Gem Contributor Dave Goerlich"
-  url: https://www.sparkpost.com/blog/sparkpost-rails-gem-dave-goerlich
   order: 5
+  
+
+
 
