@@ -5,11 +5,30 @@
   date_end: 2016-11-21
   location: Nashville, TN
 
+- name: CodeDaze
+  type: future
+  url: http://www.codedaze.io/
+  date_start: 2016-09-14
+  date_end: 2016-09-16
+  location: Buffalo, NY
+
+- name: "CascadiaFest: Node Day"
+  type: future
+  url: http://2016.cascadiafest.org/
+  date_start: 2016-08-05
+  location: Semiahmoo, WA
+
 - name: QueensJS
   type: future
   url: http://www.meetup.com/QueensJS
   date_start: 2016-08-03
   location: New York, NY
+  
+- name: npmCamp
+  type: future
+  url: http://npm.camp
+  date_start: 2016-07-30
+  location: Oakland, CA
 
 - name: ManhattanJS
   type: past
