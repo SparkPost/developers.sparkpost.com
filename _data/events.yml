@@ -12,20 +12,26 @@
   date_end: 2016-09-16
   location: Buffalo, NY
 
-- name: "CascadiaFest: Node Day"
+- name: BrooklynJS
   type: future
+  url: http://brooklynjs.com/
+  date_start: 2016-08-18
+  location: Brooklyn, NY
+  
+- name: "CascadiaFest: Node Day"
+  type: past
   url: http://2016.cascadiafest.org/
   date_start: 2016-08-05
   location: Semiahmoo, WA
 
 - name: QueensJS
-  type: future
+  type: past
   url: http://www.meetup.com/QueensJS
   date_start: 2016-08-03
   location: New York, NY
   
 - name: npmCamp
-  type: future
+  type: past
   url: http://npm.camp
   date_start: 2016-07-30
   location: Oakland, CA
