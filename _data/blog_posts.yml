@@ -1,22 +1,21 @@
+- title: "What's in Our Technical Operations Stack?"
+  url: https://www.sparkpost.com/blog/technical-operations-stack
+  order: 1
+
 - title: How SparkPost Built the Best Email API for Developers
   url: https://www.sparkpost.com/blog/best-email-api-developers/
-  order: 1
+  order: 2
 
 - title: Developer Productivity Tools and Anti-Patterns
   url: https://www.sparkpost.com/blog/developer-productivity-tools-anti-patterns
-  order: 2
+  order: 3
 
 - title: "Robble Robble: Our Obsession with Slack Bots and Productivity"
   url: https://www.sparkpost.com/blog/slack-bots-productivity
-  order: 3
+  order: 4
   
 - title: "Email for Developers: A Survival Guide"
   url: https://www.sparkpost.com/blog/email-for-developers-survival-guide
-  order: 4
-
-- title: 3 Email Testing Tools To Save You Time
-  url: https://www.sparkpost.com/blog/email-testing-tools
   order: 5
-
 
 
