@@ -1,20 +1,19 @@
+- title: "Scalable Reporting for 25% of all Non-Spam Email"
+  url: https://www.sparkpost.com/blog/scalable-reporting-25-percent-worlds-legitimate-email
+  order: 1
+
 - title: Continuous Integration and Deployment at SparkPost
   url: https://www.sparkpost.com/blog/continuous-integration-deployment
-  order: 1
+  order: 2
 
 - title: "What's in Our Technical Operations Stack?"
   url: https://www.sparkpost.com/blog/technical-operations-stack
-  order: 2
+  order: 3
 
 - title: How SparkPost Built the Best Email API for Developers
   url: https://www.sparkpost.com/blog/best-email-api-developers/
-  order: 3
+  order: 4
 
 - title: Developer Productivity Tools and Anti-Patterns
   url: https://www.sparkpost.com/blog/developer-productivity-tools-anti-patterns
-  order: 4
-
-- title: "Robble Robble: Our Obsession with Slack Bots and Productivity"
-  url: https://www.sparkpost.com/blog/slack-bots-productivity
   order: 5
-
