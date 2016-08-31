@@ -1,0 +1,28 @@
+#!/bin/sh
+###############################################################################
+# Purges CloudFront cache. Pass in $CLOUDFRONT_DISTRUBUTION_ID
+###############################################################################
+
+# Don't run the script on PRs
+if [[ -n "${TRAVIS_PULL_REQUEST}" && "${TRAVIS_PULL_REQUEST}" != "false"  ]]; then
+  echo -e '\nPULL REQUEST DETECTED. EXITING.\n'
+  exit 0
+fi
+
+# Only run script on master branch
+if [[ $TRAVIS_BRANCH == 's3' ]]; then
+    echo -e "\nPURGING CLOUDFRONT CACHE...\n"
+else
+    echo -e "\nNON-MASTER BRANCH DETECTED. EXITING.\n"
+    exit 0
+fi
+
+
+# install the awscli
+pip install awscli
+
+# Allow `awscli` to make requests to CloudFront.
+aws configure set preview.cloudfront true
+
+# Invalidate every object in the targeted distribution.
+aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths /*
