@@ -9,8 +9,8 @@ if [[ -n "${TRAVIS_PULL_REQUEST}" && "${TRAVIS_PULL_REQUEST}" != "false"  ]]; th
   exit 0
 fi
 
-# Only run script on master branch
-if [[ $TRAVIS_BRANCH == 's3' ]]; then
+# Only run script on develop branch
+if [[ $TRAVIS_BRANCH == 'develop' ]]; then
     echo -e "\nPURGING CLOUDFRONT CACHE...\n"
 else
     echo -e "\nNON-MASTER BRANCH DETECTED. EXITING.\n"
