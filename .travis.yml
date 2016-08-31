@@ -3,6 +3,7 @@ rvm:
 - 2.2
 install:
 - bundle install
+- pip install awscli
 script: bundle exec rake site:deploy --quiet
 branches:
   only:

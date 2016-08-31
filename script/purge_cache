@@ -19,7 +19,7 @@ fi
 
 
 # install the awscli
-pip install awscli
+#pip install awscli
 
 # Allow `awscli` to make requests to CloudFront.
 aws configure set preview.cloudfront true
