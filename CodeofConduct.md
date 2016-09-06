@@ -7,6 +7,7 @@ We believe our mission is best served in an environment that is friendly, safe, 
 * We're here to help:
 Mary Thengvall: @mary_grace
 Aydrian Howard: @aydrian
+Ewan Dennis: @edennis-sp
 * Abusive behavior is never tolerated.
 * Data published to SparkPost Community is hosted at the discretion of the administrators, and may be removed.
 * Violations of this code may result in swift and permanent expulsion from the SparkPost Community Slack.
@@ -33,7 +34,7 @@ We expect all members of the SparkPost community, including administrators, user
 
 This policy covers the usage of the SparkPost Slack community, as well as the SparkPost website, and any SparkPost-related events. This Code of Conduct is in addition to, and does not in any way nullify or invalidate, any other terms or conditions related to use of SparkPost.
 
-The definitions of various subjective terms such as "discriminatory", "hateful", or "confusing" will be decided at the sole discretion of the SparkPost administrators: Rich Leland, Aydrian Howard, and Mary Thengvall.
+The definitions of various subjective terms such as "discriminatory", "hateful", or "confusing" will be decided at the sole discretion of the SparkPost administrators: Ewan Dennis, Aydrian Howard, and Mary Thengvall.
 
 #Friendly, Harassment-Free Space
 We are committed to providing a friendly, safe, and welcoming environment for all, regardless of gender identity, sexual orientation, disability, ethnicity, religion, age, physical appearance, body size, race, or similar personal characteristics.
@@ -60,7 +61,7 @@ Content must not be malware. For example, content (code, video, pictures, words,
 Content name, description, and other visible metadata must not include abusive, inappropriate, or harassing content.
 
 #Reporting Violations of this Code of Conduct
-If you believe someone is harassing you or has otherwise violated this Code of Conduct, please reach out to Mary Thengvall (@mary_grace), Aydrian Howard (@aydrian), or Rich Leland (@richleland) and send us an abuse report. Please include as much detail as possible as it is easiest for us to address issues when we have more context.
+If you believe someone is harassing you or has otherwise violated this Code of Conduct, please reach out to Mary Thengvall (@mary_grace), Aydrian Howard (@aydrian), or Ewan Dennis (@edennis-sp) and send us an abuse report. Please include as much detail as possible as it is easiest for us to address issues when we have more context.
 
 All complaints will be reviewed and investigated, and will result in a response that is deemed necessary and appropriate to the circumstances. The SparkPost administrators are obligated to maintain confidentiality with regard to the reporter of an incident. In general, we will choose the course of action that we judge as being most in the interest of fostering a safe and friendly community.
 
