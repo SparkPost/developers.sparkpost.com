@@ -1,19 +1,19 @@
+- title: How to Get the Most Out of Your First Hackathon Experience
+  url: https://www.sparkpost.com/blog/first-hackathon-experience/
+  order: 1
+
+- title: "Community Spotlight: Major League Hacking"
+  url: https://www.sparkpost.com/blog/community-spotlight-major-league-hacking
+  order: 2
+
 - title: How SparkPost Built A Robust Webhooks Delivery Infrastructure
   url: https://www.sparkpost.com/blog/webhooks-infrastructure/
-  order: 1
+  order: 3
 
 - title: "All Things Delivered: SparkPost Live Stream"
   url: https://www.sparkpost.com/blog/all-things-delivered-sparkpost-livestream
-  order: 2
+  order: 4
 
 - title: "Scalable Reporting for 25% of all Non-Spam Email"
   url: https://www.sparkpost.com/blog/scalable-reporting-25-percent-worlds-legitimate-email
-  order: 3
-
-- title: Continuous Integration and Deployment at SparkPost
-  url: https://www.sparkpost.com/blog/continuous-integration-deployment
-  order: 4
-
-- title: "What's in Our Technical Operations Stack?"
-  url: https://www.sparkpost.com/blog/technical-operations-stack
   order: 5
