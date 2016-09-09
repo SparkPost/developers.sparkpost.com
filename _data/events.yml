@@ -4,6 +4,13 @@
   date_start: 2016-11-20
   date_end: 2016-11-21
   location: Nashville, TN
+  
+- name: Baltimore Innovation Week: Dev Day
+  type: future
+  url: http://2016.baltimoreinnovationweek.com/events#view=block&filter=track.dev
+  date_start: 2016-09-22
+  date_end: 2016-10-01
+  location: Baltimore, MD
 
 - name: CodeDaze
   type: future
