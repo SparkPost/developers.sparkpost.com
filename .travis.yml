@@ -20,8 +20,8 @@ notifications:
     secure: TET5NbblvZ0d3nTJyOzDSHZ3WUOCArpH8F64LSGZF/WQ87vqFbpyQSIqX7776fL4qYblPAc/hjOUtLH+hRzmHRVhKaZsLCCwcmL7/EHQe8jHt3lNrF8QWmwwFMs13oqmi+PAB3hpkX9Y4mKjyjLnjB0vqDnLMV4ktrnZ/GtM69i5hCIyaxKiYzp+uX7JOWop7JEtn9nDPT/IWzEYN2bxHw7G35BG8Ks0QK8LfSTcVruN2AJ1veFg1PbjE+kx6Brj37+4D3Pwn7mtcTmDAkygQtdCZFzaCzQTtY0PG3peKwp6lPQBJzmeo1IALydDvhuZ3CNgw7Vufazal0Bs476ip/w197EvgAtCOu1NWNQWAbl7DtnifXE/CnkPpkI5NeijpiVIulDe09aCh9LpwO+21CSG0kxIxWNJauK9tPPSYDBlZbB+V1A/kXXg+BLONbv5CfNRAN1azDRG71kxC68NKlfsPqPbp/IBZqa4J7X+jllPOw77k8qtwpj8me5+ctfzsl9Yi4Fyf9LQxpbdgmFCjyvefd7q6xRVSrj1zNZWWY4LhItfS9tdSHP7vNLFHhZ+mLQ4dpnSA9pHBC5LpYPYdcpJEL48tMn8QYXOGUIdpbZyrt/DfC1rYgeWKz33aWDLnxD89RK/eomRd7JPKihFPzDlDF2jFmKL2Oxd8TzMBPc=
 deploy:
   provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  access_key_id: $ENG_AWS_ACCESS_KEY_ID
+  secret_access_key: $ENG_AWS_SECRET_ACCESS_KEY
   skip_cleanup: true
   bucket: developers.sparkpost.com
   local-dir: _site
