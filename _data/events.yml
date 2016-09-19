@@ -4,6 +4,13 @@
   date_start: 2016-11-20
   date_end: 2016-11-21
   location: Nashville, TN
+
+- name: MLH Prime: Southwest Regional
+  type: future
+  url: https://prime.mlh.io/events/southwest-regional/
+  date_start: 2016-11-12
+  date_end: 2016-11-13
+  location: Austin, TX
   
 - name: "Baltimore Innovation Week: Dev Day"
   type: future
@@ -13,7 +20,7 @@
   location: Baltimore, MD
 
 - name: CodeDaze
-  type: future
+  type: past
   url: http://www.codedaze.io/
   date_start: 2016-09-14
   date_end: 2016-09-16
