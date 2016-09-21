@@ -4,11 +4,9 @@ rvm:
 install:
 - bundle install
 - pip install --user awscli
-script: bundle exec rake site:deploy --quiet
 branches:
   only:
   - develop
-  - s3
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
