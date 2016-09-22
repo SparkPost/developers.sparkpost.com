@@ -4,6 +4,7 @@ rvm:
 install:
 - bundle install
 - pip install --user awscli
+script: bundle exec rake site:build --quiet
 branches:
   only:
   - develop
