@@ -1,6 +1,6 @@
 # SparkPost Developer Community Portal
 
-[![Build Status](https://travis-ci.org/SparkPost/sparkpost.github.io.svg?branch=develop)](https://travis-ci.org/SparkPost/sparkpost.github.io) [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
+[![Build Status](https://travis-ci.org/SparkPost/developers.sparkpost.com.svg?branch=develop)](https://travis-ci.org/SparkPost/developers.sparkpost.com) [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
 
 This repo hosts the code that powers the [SparkPost Developer Hub](https://developers.sparkpost.com/).
 
@@ -15,8 +15,8 @@ The following must be installed in order run Jekyll locally.
 - [RubyGems](http://rubygems.org/pages/download)
 
 ### Local Development Setup
-1. Clone the repo `git clone git@github.com:SparkPost/sparkpost.github.io.git`
-2. Switch to the repo directory `cd sparkpost.github.io`
+1. Clone the repo `git clone git@github.com:SparkPost/developers.sparkpost.com.git`
+2. Switch to the repo directory `cd developers.sparkpost.com`
 3. Run `./script/bootstrap` to install dependencies  
    - note: if you get `An error occurred while installing eventmachine` you may need to make sure openssl is installed on a newer Mac OS X. To do this, first try `brew install openssl`, if already installed, try `brew link openssl --force`
 4. Run `./script/server` to start the built-in development server. *The server will watch for changes and regenerate automatically.*
@@ -31,19 +31,19 @@ The API documentation is generated from [sparkpost-api-documentation](https://gi
 For an easy dev setup:
 
 - Check out sparkpost-api-documentation
-- Check out sparkpost.github.io alongside
+- Check out developers.sparkpost.com alongside
 - Start the API docs watch-and-build process:
 
 ```bash
 cd sparkpost-api-documentation
 grunt staticDev
-# This will write to ../sparkpost.github.io/_api by default
+# This will write to ../developers.sparkpost.com/_api by default
 ```
 
 - Start the DevHub watch-and-build process:
 
 ```bash
-cd ../sparkpost.github.io
+cd ../developers.sparkpost.com
 ./script/server
 # This will regenerate the DevHub when API docs files are changed
 ```
@@ -60,5 +60,5 @@ Now when you change either the API docs or DevHub code, the site will be regener
 5. Run `rake site:test` to test your changes. (We use [html-proofer](https://github.com/gjtorikian/html-proofer) for testing)
 6. Commit any changes `git commit -am "Some relevant message"`
 7. Push your branch to Github `git push origin ISSUE-XX`
-8. Create a [Pull Request](https://github.com/SparkPost/sparkpost.github.io/pulls) to submit changes for review
+8. Create a [Pull Request](https://github.com/SparkPost/developers.sparkpost.com/pulls) to submit changes for review
 9. Once your Pull Request has been reviewed and merged, delete your branch

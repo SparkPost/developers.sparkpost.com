@@ -12,7 +12,7 @@ require 'html-proofer'
 
 CONFIG = YAML.load(File.read('_config.yml'))
 USERNAME = CONFIG["username"] || ENV['GIT_NAME']
-REPO = CONFIG["repo"] || "#{USERNAME}.github.io"
+REPO = CONFIG["repo"]
 
 
 # Available Options https://github.com/gjtorikian/html-proofer#configuration
