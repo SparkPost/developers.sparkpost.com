@@ -26,7 +26,7 @@ deploy:
   local-dir: _site
   acl: public_read
   on:
-    repo: SparkPost/sparkpost.github.io
+    repo: SparkPost/developers.sparkpost.com
     branch: develop
 after_deploy:
   - ./script/purge_cache
