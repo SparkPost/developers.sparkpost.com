@@ -11,6 +11,13 @@
   date_start: 2016-11-12
   date_end: 2016-11-13
   location: Austin, TX
+
+- name: SD Hacks 2016
+  type: future
+  url: http://sdhacks.io
+  date_start: 2016-09-30
+  date_end: 2016-10-02
+  location: San Diego, CA
   
 - name: "Baltimore Innovation Week: Dev Day"
   type: future
