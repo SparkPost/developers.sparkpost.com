@@ -41,7 +41,7 @@ markdown: kramdown
 
 # Deploy settings
 username: sparkpost
-repo: sparkpost.github.io
+repo: developers.sparkpost.com
 branch: develop
 
 gems:
