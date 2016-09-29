@@ -2,3 +2,4 @@ bin
 _site/
 .sass-cache
 vendor
+.idea/
