@@ -1,19 +1,19 @@
+- title: 3 Lessons I’ve Learned from Attending Hackathons
+  url: https://www.sparkpost.com/blog/3-hackathon-lessons-learned/
+  order: 1
+
 - title: "Post Hackathon Advice: What Should You Do Now?"
   url: https://www.sparkpost.com/blog/post-hackathon-advice/
-  order: 1
+  order: 2
+
+- title: Why SparkPost Chose AWS Over A Data Center
+  url: https://www.sparkpost.com/blog/aws-instead-data-center/
+  order: 3
 
 - title: What Hackathon Judges Look For
   url: https://www.sparkpost.com/blog/present-project-hackathon-judges
-  order: 2
+  order: 4
 
 - title: How to Get the Most Out of Your First Hackathon Experience
   url: https://www.sparkpost.com/blog/first-hackathon-experience/
-  order: 3
-
-- title: "Community Spotlight: Major League Hacking"
-  url: https://www.sparkpost.com/blog/community-spotlight-major-league-hacking
-  order: 4
-
-- title: How SparkPost Built A Robust Webhooks Delivery Infrastructure
-  url: https://www.sparkpost.com/blog/webhooks-infrastructure/
   order: 5
