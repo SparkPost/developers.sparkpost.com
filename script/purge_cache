@@ -25,4 +25,4 @@ fi
 aws configure set preview.cloudfront true
 
 # Invalidate every object in the targeted distribution.
-aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths /*
+aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
