@@ -1,3 +1,15 @@
+- name: ManhattanJS
+  type: future
+  url: http://manhattanjs.com/
+  date_start: 2016-10-12
+  location: Manhattan, NY
+
+- name: BrooklynJS
+  type: future
+  url: http://brooklynjs.com/
+  date_start: 2016-11-17
+  location: Manhattan, NY
+
 - name: Nodevember
   type: future
   url: http://nodevember.org/
@@ -13,14 +25,14 @@
   location: Austin, TX
 
 - name: SD Hacks 2016
-  type: future
+  type: past
   url: http://sdhacks.io
   date_start: 2016-09-30
   date_end: 2016-10-02
   location: San Diego, CA
   
 - name: "Baltimore Innovation Week: Dev Day"
-  type: future
+  type: past
   url: http://2016.baltimoreinnovationweek.com/events#view=block&filter=track.dev
   date_start: 2016-09-22
   date_end: 2016-10-01
