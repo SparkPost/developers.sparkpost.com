@@ -1,19 +1,22 @@
+- title: "Google Apps and SparkPost: Building a Notification System for Small Business"
+  url: https://www.sparkpost.com/blog/google-apps-and-sparkpost-notification
+  order: 1
+ 
+ - title: Upcoming Improvements to the Suppression List API
+  url: https://www.sparkpost.com/blog/suppression-list-api-updates
+  order: 2
+ 
 - title: 3 Lessons I’ve Learned from Attending Hackathons
   url: https://www.sparkpost.com/blog/3-hackathon-lessons-learned/
-  order: 1
+  order: 3
 
 - title: "Post Hackathon Advice: What Should You Do Now?"
   url: https://www.sparkpost.com/blog/post-hackathon-advice/
-  order: 2
+  order: 4
 
 - title: Why SparkPost Chose AWS Over A Data Center
   url: https://www.sparkpost.com/blog/aws-instead-data-center/
-  order: 3
-
-- title: What Hackathon Judges Look For
-  url: https://www.sparkpost.com/blog/present-project-hackathon-judges
-  order: 4
-
-- title: How to Get the Most Out of Your First Hackathon Experience
-  url: https://www.sparkpost.com/blog/first-hackathon-experience/
   order: 5
+
+
+
