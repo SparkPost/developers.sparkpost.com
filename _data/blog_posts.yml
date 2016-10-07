@@ -2,7 +2,7 @@
   url: https://www.sparkpost.com/blog/google-apps-and-sparkpost-notification
   order: 1
 
-- title: Upcoming Improvements to the Suppression List API
+- title: "Upcoming Improvements to the Suppression List API"
   url: https://www.sparkpost.com/blog/suppression-list-api-updates
   order: 2
 
@@ -14,6 +14,6 @@
   url: https://www.sparkpost.com/blog/post-hackathon-advice/
   order: 4
 
-- title: Why SparkPost Chose AWS Over A Data Center
+- title: "Why SparkPost Chose AWS Over A Data Center"
   url: https://www.sparkpost.com/blog/aws-instead-data-center/
   order: 5
