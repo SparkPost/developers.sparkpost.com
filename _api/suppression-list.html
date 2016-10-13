@@ -164,6 +164,34 @@ description: "Manage your suppression list - a list of recipient email addresses
       "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span>
     </span>}
   ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><div class="markdown"><div class="description"><div class="alert alert-warning">
+  <strong>Coming Soon!</strong>
+  <p>Please note that this is an upcoming breaking change to this endpoint's response body. This new response style replaces the HTTP 200 response
+  described above. If a recipient is suppressed at both a transactional and non-transaction level, two objects will be returned in the response
+  body instead of one. Also, there will be a new key of "type", which will inform which suppression type (transactional or non-transactional)
+  the object is referencing.</p>
+</div>
+</div></div><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
+      "<span class="hljs-attribute">non_transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"non_transactional"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Bounce Rule"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"550: this email address does not exist #55"</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"test@example.com"</span></span>,
+      "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"transactional"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Bounce Rule"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"550: this email address does not exist #55"</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T01:01:01+00:00"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="suppression-list-retrieve,-delete" class="resource-heading">Retrieve, Delete <a href="#suppression-list-retrieve,-delete" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="suppression-list-retrieve,-delete-get" class="action-heading"><div class="name">Retrieve a Recipient Suppression Status</div></h4><div class="method">GET<code class="uri">/api/v1/suppression-list/{recipient_email}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">recipient_email</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>Recipient email address</p>
 <em>Example: rcpt@example.com</em></td></tr></table></div><div class="markdown"><p>Retrieve the suppression status for a specific recipient by specifying the recipient’s email address in the URI path.</p>
 <p>If the recipient is not in the customer-specific exclusion list, an HTTP status of 404 is returned. If the recipient is in the list, an HTTP status of 200 is returned with the full suppression status in the response body.</p>
@@ -210,6 +238,34 @@ description: "Manage your suppression list - a list of recipient email addresses
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"transactional"</span></span>,
       "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Manually Added"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any further emails."</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><div class="markdown"><div class="description"><div class="alert alert-warning">
+  <strong>Coming Soon!</strong>
+  <p>Please note that this is an upcoming breaking change to this endpoint's response body. This new response style replaces the HTTP 200 response
+  described above. If a recipient is suppressed at both a transactional and non-transaction level, two objects will be returned in the response
+  body instead of one. Also, there will be a new key of "type", which will inform which suppression type (transactional or non-transactional)
+  the object is referencing.</p>
+</div>
+</div></div><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_1@example.com"</span></span>,
+      "<span class="hljs-attribute">non_transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"non_transactional"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Manually Added"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any non-transactional emails."</span></span>,
+      "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span></span>,
+      "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_1@example.com"</span></span>,
+      "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"transactional"</span></span>,
+      "<span class="hljs-attribute">source</span>": <span class="hljs-value"><span class="hljs-string">"Manually Added"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any transactional emails."</span></span>,
       "<span class="hljs-attribute">created</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span></span>,
       "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2015-01-01T12:00:00+00:00"</span>
     </span>}
