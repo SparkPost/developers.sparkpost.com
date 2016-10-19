@@ -92,22 +92,27 @@ response = sparky.transmissions.send(
               </div>
               <div class="tab-pane" id="phpExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-{% highlight php startinline %}
+{% highlight php %}
+<?php
 use SparkPost\SparkPost;
 use GuzzleHttp\Client;
-use Ivory\HttpAdapter\Guzzle6HttpAdapter;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
-$httpAdapter = new Guzzle6HttpAdapter(new Client());
-$sparky = new SparkPost($httpAdapter, ['key'=>'<YOUR API KEY>']);
+$httpClient = new GuzzleAdapter(new Client());
+$sparky = new SparkPost($httpClient, ['key' => '<YOUR API KEY>']);
 
-$results = $sparky->transmission->send([
-    'from'=>'testing@sparkpostbox.com',
-    'html'=>'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
-    'subject'=> 'Oh hey!',
-    'recipients'=>[
-      ['address'=>['email'=>'developers+php@sparkpost.com']]
-    ]
+$sparky->setOptions(['async' => false]);
+$results = $sparky->transmissions->post([
+  'content' => [
+    'from' => 'testing@sparkpostbox.com',
+    'subject' => 'Oh hey!',
+    'html' => '<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
+  ],
+  'recipients' => [
+    ['address' => ['email'=>'developers+php@sparkpost.com']]
+  ]
 ]);
+?>
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="javaExample">
