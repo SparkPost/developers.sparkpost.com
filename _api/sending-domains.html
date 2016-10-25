@@ -73,7 +73,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 </tbody>
 </table>
 <h3 id="header-dkim-attributes">DKIM Attributes <a class="permalink" href="#header-dkim-attributes" aria-hidden="true">¶</a></h3>
-<p>DKIM uses a pair of public and private keys to authenticate your emails. ( <strong>Note</strong>: Only PKCS#1 format is supported at this time. ) The DKIM key configuration is described in a JSON object with the following fields:</p>
+<p>DKIM uses a pair of public and private keys to authenticate your emails. PKCS #1 and PKCS #8 formats are supported. We do not support password-protected keys. ( <strong>Note</strong>: The public/private key pair must match a single format as the API will reject mismatching pairs. ) The DKIM key configuration is described in a JSON object with the following fields:</p>
 <table>
 <thead>
 <tr>
