@@ -359,7 +359,6 @@ necessary.</p>
 </li>
 </ul>
 <h3 id="header-attachment-attributes">Attachment Attributes <a class="permalink" href="#header-attachment-attributes" aria-hidden="true">¶</a></h3>
-<p><strong>Note: we do not allow attachments that have been known to contain malicious content including, but not limited to, bat, doc, docx, exe, xls, xlsx, and zip files.</strong></p>
 <p>Attachments for a transmission are specified in the content.attachments JSON array where each JSON object in the array is described by the following fields:</p>
 <table>
 <thead>
@@ -952,9 +951,10 @@ necessary.</p>
       "<span class="hljs-attribute">apns</span>": <span class="hljs-value">{
         "<span class="hljs-attribute">aps</span>": <span class="hljs-value">{
           "<span class="hljs-attribute">alert</span>": <span class="hljs-value">{
-            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"You have IOS deals"</span></span>,
-            "<span class="hljs-attribute">badge</span>": <span class="hljs-value"><span class="hljs-number">1</span>
-          </span>}
+            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Badge adjust alert message"</span></span>,
+            "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"Hello John. I am resetting your badge to zero"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">badge</span>": <span class="hljs-value"><span class="hljs-number">0</span>
         </span>}
       </span>}</span>,
       "<span class="hljs-attribute">gcm</span>": <span class="hljs-value">{
