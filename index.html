@@ -56,7 +56,6 @@ var SparkPost = require('sparkpost');
 var sparky = new SparkPost('<YOUR API KEY>');
 
 sparky.transmissions.send({
-  transmissionBody: {
     content: {
       from: 'testing@sparkpostbox.com',
       subject: 'Oh hey!',
@@ -65,15 +64,15 @@ sparky.transmissions.send({
     recipients: [
       {address: 'developers+nodejs@sparkpost.com'}
     ]
-  }
-}, function(err, res) {
-  if (err) {
+  })
+  .then(data => {
+    console.log('Woohoo! You just sent your first mailing!');
+    console.log(data);
+  })
+  .catch(err => {
     console.log('Whoops! Something went wrong');
     console.log(err);
-  } else {
-    console.log('Woohoo! You just sent your first mailing!');
-  }
-});
+  });
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="pythonExample">
