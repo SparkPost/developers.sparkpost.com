@@ -1,8 +1,8 @@
-- name: BrooklynJS
+- name: "AWS re:Invent - Coffee with Aydrian"
   type: future
-  url: http://brooklynjs.com/
-  date_start: 2016-11-17
-  location: NYC, NY
+  url: http://pages.sparkpost.com/aws-reinvent-dev-coffee.html
+  date_start: 2016-11-30
+  location: Las Vegas, NV
 
 - name: Nodevember
   type: future
@@ -10,6 +10,12 @@
   date_start: 2016-11-20
   date_end: 2016-11-21
   location: Nashville, TN
+
+- name: BrooklynJS
+  type: future
+  url: http://brooklynjs.com/
+  date_start: 2016-11-17
+  location: NYC, NY
 
 - name: "MLH Prime: Southwest Regional"
   type: future
