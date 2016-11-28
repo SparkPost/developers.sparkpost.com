@@ -1,19 +1,19 @@
-- title: "SparkPost Client Libraries: Oh The Places You’ll Go!"
-  url: https://www.sparkpost.com/blog/client-libraries/#.WB0e25MrLOQ
+- title: "Thank You From Our Community Manager"
+  url: https://www.sparkpost.com/blog/community-thank-you-2016/#.WDw1gOErJE4
   order: 1
 
-- title: "Blacklists 101: What They Are and How They Work"
-  url: https://www.sparkpost.com/blog/blacklists-101/#.WB0e4JMrLOQ
+- title: "How We Use User Agents To Identify API User Groups"
+  url: https://www.sparkpost.com/blog/user-agents-api-user-groups/#.WDw1g-ErJE4
   order: 2
 
-- title: "How We Built Our Shiny New DKIM Validator"
-  url: https://www.sparkpost.com/blog/dkim-validator/#.WB0e4pMrLOQ
+- title: "Community Thoughts: Tech and Programming Language Predictions"
+  url: https://www.sparkpost.com/blog/programming-language-predictions/#.WDw1iuErJE4
   order: 3
 
-- title: "Developer Networking Tips: How To Build Your Connections"
-  url: https://www.sparkpost.com/blog/developer-networking-tips/#.WB0e5pMrLOQ
+- title: "How to Think Async: A Primer"
+  url: https://www.sparkpost.com/blog/asynchronous-programming/#.WDw1j-ErJE4
   order: 4
 
-- title: "Email Tools in an API World"
-  url: https://www.sparkpost.com/blog/email-tools-api-world
+- title: "SparkPost Client Libraries: Oh The Places You’ll Go!"
+  url: https://www.sparkpost.com/blog/client-libraries/#.WB0e25MrLOQ
   order: 5
