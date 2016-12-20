@@ -1,20 +1,19 @@
+- title: "Community Driven Development at SparkPost"
+  url: https://www.sparkpost.com/blog/community-driven-development/#.WFmalaIrLOQ
+  order: 1
+
+- title: "AWS re:Invent: An Insider’s Perspective"
+  url: https://www.sparkpost.com/blog/aws-reinvent-recap/#.WFmanqIrLOQ
+  order: 2
+
 - title: "New Major Release of the SparkPost Node.js Client Library"
   url: https://www.sparkpost.com/blog/sparkpost-node-js-client-library/#.WEr4tKIrLUI
-  order: 1
+  order: 3
 
 - title: "Intern Update: Where They Landed After Leaving The Nest"
   url: https://www.sparkpost.com/blog/intern-update/#.WEGdAOErLUI
-  order: 2
+  order: 4
   
 - title: "Thank You From Our Community Manager"
   url: https://www.sparkpost.com/blog/community-thank-you-2016/#.WDw1gOErJE4
-  order: 3
-
-- title: "How We Use User Agents To Identify API User Groups"
-  url: https://www.sparkpost.com/blog/user-agents-api-user-groups/#.WDw1g-ErJE4
-  order: 4
-
-- title: "Community Thoughts: Tech and Programming Language Predictions"
-  url: https://www.sparkpost.com/blog/programming-language-predictions/#.WDw1iuErJE4
   order: 5
-
