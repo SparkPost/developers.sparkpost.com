@@ -1,19 +1,19 @@
-- title: "2016 Hackathon Review and Where You Can Find Us In 2017"
-  url: https://www.sparkpost.com/blog/2016-hackathon-review/
+- title: "How To Build a Resolution Reminder App"
+  url: https://www.sparkpost.com/blog/build-resolution-reminder-app/
   order: 1
+ 
+ - title: "2016 Hackathon Review and Where You Can Find Us In 2017"
+  url: https://www.sparkpost.com/blog/2016-hackathon-review/
+  order: 2
 
 - title: "Community Driven Development at SparkPost"
   url: https://www.sparkpost.com/blog/community-driven-development/#.WFmalaIrLOQ
-  order: 2
+  order: 3
 
 - title: "AWS re:Invent: An Insider’s Perspective"
   url: https://www.sparkpost.com/blog/aws-reinvent-recap/#.WFmanqIrLOQ
-  order: 3
+  order: 4
 
 - title: "New Major Release of the SparkPost Node.js Client Library"
   url: https://www.sparkpost.com/blog/sparkpost-node-js-client-library/#.WEr4tKIrLUI
-  order: 4
-
-- title: "Intern Update: Where They Landed After Leaving The Nest"
-  url: https://www.sparkpost.com/blog/intern-update/#.WEGdAOErLUI
   order: 5
