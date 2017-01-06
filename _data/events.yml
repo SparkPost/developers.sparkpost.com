@@ -1,8 +1,30 @@
-- name: BrooklynJS
+- name: "O'Reilly Fluent Conference"
   type: future
-  url: http://brooklynjs.com/
-  date_start: 2017-01-19
-  location: Brooklyn, NY
+  url: http://conferences.oreilly.com/fluent/fl-ca
+  date_start: 2017-06-19
+  date_end: 2017-06-22
+  location: San Jose, CA
+  
+- name: "O'Reilly Velocity Conference"
+  type: future
+  url: http://conferences.oreilly.com/velocity/vl-ca
+  date_start: 2017-06-19
+  date_end: 2017-06-22
+  location: San Jose, CA
+
+- name: "MLH Prime: West Coast Regional"
+  type: future
+  url: https://prime.mlh.io/events/west-coast-regional/
+  date_start: 2017-03-25
+  date_end: 2017-03-26
+  location: Los Angeles, CA
+
+- name: "SCaLE (Southern California Linux Expo)"
+  type: future
+  url: socallinuxexpo.org
+  date_start: 2017-03-02
+  date_end: 2017-03-05
+  location: Pasadena Convention Center
 
 - name: "BrickHack 2017"
   type: future
@@ -10,7 +32,19 @@
   date_start: 2017-02-11
   date_end: 2017-02-12
   location: Rochester Institute of Technology
- 
+
+- name: BrooklynJS
+  type: future
+  url: http://brooklynjs.com/
+  date_start: 2017-01-19
+  location: Brooklyn, NY
+
+- name: NYC Elixir Meetup
+  type: future
+  url: https://www.meetup.com/NYC-Elixir/events/236727242/
+  date_start: 2017-01-17
+  location: Brooklyn, NY
+  
 - name: "AWS re:Invent - Coffee with Aydrian"
   type: past
   url: http://pages.sparkpost.com/aws-reinvent-dev-coffee.html
