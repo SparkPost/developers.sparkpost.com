@@ -1,19 +1,19 @@
+- title: "Everything You Need to Know About the SparkPost WordPress Plugin"
+  url: https://www.sparkpost.com/blog/sparkpost-wordpress-plugin/
+  order: 1
+
 - title: "How To Build a Resolution Reminder App"
   url: https://www.sparkpost.com/blog/build-resolution-reminder-app/
-  order: 1
+  order: 2
  
 - title: "2016 Hackathon Review and Where You Can Find Us In 2017"
   url: https://www.sparkpost.com/blog/2016-hackathon-review/
-  order: 2
+  order: 3
 
 - title: "Community Driven Development at SparkPost"
   url: https://www.sparkpost.com/blog/community-driven-development/#.WFmalaIrLOQ
-  order: 3
+  order: 4
 
 - title: "AWS re:Invent: An Insider’s Perspective"
   url: https://www.sparkpost.com/blog/aws-reinvent-recap/#.WFmanqIrLOQ
-  order: 4
-
-- title: "New Major Release of the SparkPost Node.js Client Library"
-  url: https://www.sparkpost.com/blog/sparkpost-node-js-client-library/#.WEr4tKIrLUI
   order: 5
