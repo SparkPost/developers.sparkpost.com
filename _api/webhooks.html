@@ -132,10 +132,21 @@ begin to be pushed to the target URL specified in the POST request body.</p>
     ]
   </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">400</span></span>,
-    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"POST to webhook tokens URL failed"</span>
-  </span>}
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+      {
+          "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">400</span></span>,
+          "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"POST to webhook tokens URL failed"</span></span>,
+          "<span class="hljs-attribute">response</span>": <span class="hljs-value">{
+              "<span class="hljs-attribute">body</span>": <span class="hljs-value"><span class="hljs-string">"response body"</span></span>,
+              "<span class="hljs-attribute">headers</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">connection</span>": <span class="hljs-value"><span class="hljs-string">"close"</span></span>,
+                  "<span class="hljs-attribute">content-length</span>": <span class="hljs-value"><span class="hljs-string">"536"</span></span>,
+                  "<span class="hljs-attribute">content-type</span>": <span class="hljs-value"><span class="hljs-string">"text/html; charset=iso-8859-1"</span></span>,
+              }</span>,
+              "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">502</span>
+          </span>}
+      </span>}
+  ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="webhooks-retrieve" class="resource-heading">Retrieve <a href="#webhooks-retrieve" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="webhooks-retrieve-get" class="action-heading"><div class="name">Retrieve Webhook Details</div></h4><div class="method">GET<code class="uri">/api/v1/webhooks/{id}{?timezone}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>UUID identifying a webhook</p>
 <em>Example: 12affc24-f183-11e3-9234-3c15c2c818c2</em></td></tr><tr><td class="markdown">timezone</td><td class="markdown"><p>Standard timezone identification string, defaults to <code>UTC</code></p>
 <em>Example: America/New_York</em></td></tr></table></div><div class="markdown"><p>Retrieve details about a webhook by specifying its id in the URI path.</p>
