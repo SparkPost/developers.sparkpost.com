@@ -18,7 +18,7 @@ description: "Manage your suppression list - a list of recipient email addresses
 <p>In addition to your suppression list, SparkPost maintains a global suppression list across all customers.</p>
 <h2 id="header-recipient-database-maintenance">Recipient Database Maintenance <a class="permalink" href="#header-recipient-database-maintenance" aria-hidden="true">¶</a></h2>
 <p><strong>When initially configuring your SparkPost account, we <em>strongly recommend</em> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</strong></p>
-<p><strong>SparkPost supports bulk importing or manually adding up to 1,000,000 suppression list entries.</strong></p>
+<p><strong>SparkPost supports bulk importing or manually adding up to 1,000,000 suppression list entries total.</strong></p>
 <p>It is also good practice to maintain your own recipient database by unsubscribing or removing recipients based on the bounce, unsubscribe and spam complaint events provided by SparkPost. These events are available from <a href="webhooks">webhooks</a>, <a href="message-events">message events</a> and your suppression list. A 24-hour time-windowed suppression list search <a href="#suppression-list-search-get">as outlined below</a> is useful here.</p>
 <h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
 <p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
@@ -79,24 +79,20 @@ description: "Manage your suppression list - a list of recipient email addresses
 </tr>
 </tbody>
 </table>
-</div><div class="resource searchable"><h3 id="suppression-list-bulk-insert-update" class="resource-heading">Bulk Insert/Update <a href="#suppression-list-bulk-insert-update" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action put"><h4 id="suppression-list-bulk-insert-update-put" class="action-heading"><div class="name">Insert or Update List Entries</div></h4><div class="method">PUT<code class="uri">/api/v1/suppression-list/</code></div><div class="markdown"><p>Bulk insert or update entries in the suppression list by providing a JSON object, with a “recipients” key containing an array of recipients to insert or update, as the PUT request body. Maximum size of the JSON object is 50mb. At a minimum, each recipient must have a valid email address and a suppression type: “transactional” or “non_transactional”. The optional “description” key can be used to include an explanation of what type of message should be suppressed.</p>
-<p>If the recipient entry was added to the list by Compliance, it cannot be updated.</p>
-<p>If an email address is duplicated in a single request, only the first instance will be processed.</p>
-<p>Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, that some of your suppression entries may have been
-successfully inserted or updated. If this occurs, please re-submit your original request again for processing.</p>
-<p><em>Note:</em> <code>email</code>, which is an alias of <code>recipient</code>, attribute is supported but deprecated.
-<em>Note:</em> <code>transactional</code> and <code>non_transactional</code>, attributes are supported but deprecated. Please use type instead.</p>
+</div><div class="resource searchable"><h3 id="suppression-list-bulk-insert-update" class="resource-heading">Bulk Insert/Update <a href="#suppression-list-bulk-insert-update" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action put"><h4 id="suppression-list-bulk-insert-update-put" class="action-heading"><div class="name">Insert or Update List Entries</div></h4><div class="method">PUT<code class="uri">/api/v1/suppression-list/</code></div><div class="markdown"><p>Bulk insert or update entries in the suppression list by providing a JSON object, with a “recipients” key containing an array of recipients to insert or update, as the PUT request body. Maximum size of the JSON object is 50mb. Maximum recipients at a time is 10,000. At a minimum, each recipient must have a valid email address and a suppression type: “transactional” or “non_transactional”. The optional “description” key can be used to include an explanation of what type of message should be suppressed.</p>
+<p>If the recipient was added to the list by Compliance, it cannot be updated.</p>
+<p>Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, that some of your suppression entries may have been successfully inserted or updated. If this occurs, please re-submit your original request again for processing.</p>
+<p><em>Note:</em> The <code>email</code> attribute is deprecated. Use <code>recipient</code> instead.</p>
+<p><em>Note:</em> The attributes <code>transactional</code> and <code>non_transactional</code> are deprecated. Use <code>type</code> instead.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/suppression-list/</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">recipients</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_1@example.com"</span></span>,
-      "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"transactional"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any transactional emails."</span>
     </span>},
     {
       "<span class="hljs-attribute">recipient</span>": <span class="hljs-value"><span class="hljs-string">"rcpt_2@example.com"</span></span>,
-      "<span class="hljs-attribute">non_transactional</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"non_transactional"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"User requested to not receive any non-transactional emails."</span>
     </span>}
