@@ -34,13 +34,13 @@
   location: Rochester Institute of Technology
 
 - name: BrooklynJS
-  type: future
+  type: past
   url: http://brooklynjs.com/
   date_start: 2017-01-19
   location: Brooklyn, NY
 
 - name: NYC Elixir Meetup
-  type: future
+  type: past
   url: https://www.meetup.com/NYC-Elixir/events/236727242/
   date_start: 2017-01-17
   location: Brooklyn, NY
