@@ -12,12 +12,12 @@
   date_end: 2017-06-22
   location: San Jose, CA
 
-- name: "MLH Prime: West Coast Regional"
+- name: "Codeland"
   type: future
-  url: https://prime.mlh.io/events/west-coast-regional/
-  date_start: 2017-03-25
-  date_end: 2017-03-26
-  location: Los Angeles, CA
+  url: http://codelandconf.com/
+  date_start: 2017-04-21
+  date_end: 2017-04-22
+  location: Microsoft Technology Center, NYC
 
 - name: "SCaLE (Southern California Linux Expo)"
   type: future
