@@ -46,7 +46,7 @@ curl -XPOST \
   https://api.sparkpost.com/api/v1/transmissions \
   -H "Authorization: <YOUR API KEY>" \
   -H "Content-Type: application/json" \
-  -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers+curl@sparkpost.com"}]}'
+  -d '{"options": {"sandbox": true}, "content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers+curl@sparkpost.com"}]}'
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="nodeExample">
@@ -56,6 +56,9 @@ const SparkPost = require('sparkpost');
 const sparky = new SparkPost('<YOUR API KEY>');
 
 sparky.transmissions.send({
+    options: {
+      sandbox: true
+    },
     content: {
       from: 'testing@sparkpostbox.com',
       subject: 'Oh hey!',
@@ -83,6 +86,7 @@ from sparkpost import SparkPost
 sparky = SparkPost('<YOUR API KEY>')
 
 response = sparky.transmissions.send(
+    use_sandbox=True,
     recipients=['developers+python@sparkpost.com'],
     html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
     from_email='testing@sparkpostbox.com',
@@ -102,6 +106,9 @@ $sparky = new SparkPost($httpClient, ['key' => '<YOUR API KEY>']);
 
 $sparky->setOptions(['async' => false]);
 $results = $sparky->transmissions->post([
+  'options' => [
+    'sandbox' => true
+  ],
   'content' => [
     'from' => 'testing@sparkpostbox.com',
     'subject' => 'Oh hey!',
