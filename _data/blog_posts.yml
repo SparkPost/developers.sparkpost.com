@@ -1,19 +1,19 @@
+- title: "A Guide to Using SparkPost with Python"
+  url: https://www.sparkpost.com/blog/using-sparkpost-python/
+  order: 1
+
 - title: "Email Basics Part 2: Putting the Pieces Together"
   url: https://www.sparkpost.com/blog/email-basics-pt-2/
-  order: 1
+  order: 2
 
 - title: "Upcoming SparkPost API Transmission Endpoint Changes"
   url: https://www.sparkpost.com/blog/upcoming-api-transmission-endpoint-changes/
-  order: 2
+  order: 3
 
 - title: "From Zero to Superhero: Email Basics for Developers Just Starting Out"
   url: https://www.sparkpost.com/blog/developer-superhero-email-basics/
-  order: 3
+  order: 4
 
 - title: "Everything You Need to Know About the SparkPost WordPress Plugin"
   url: https://www.sparkpost.com/blog/sparkpost-wordpress-plugin/
-  order: 4
-
-- title: "How To Build a Resolution Reminder App"
-  url: https://www.sparkpost.com/blog/build-resolution-reminder-app/
   order: 5
