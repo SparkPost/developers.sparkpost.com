@@ -163,6 +163,7 @@ func main() {
 
     tx := &sp.Transmission{
         Recipients: []string{"developers+go@sparkpost.com"},
+        Options:    &sp.TxOptions{Sandbox: true},
         Content: sp.Content{
             HTML:    "<p>Testing SparkPost - the world's most awesomest email service!</p>",
             From:    "test@sparkpostbox.com",
