@@ -181,12 +181,19 @@ func main() {
               <div class="tab-pane" id="elixirExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight elixir startinline %}
-defmodule MyApp.Example
-  def send_message do
-    SparkPost.send to: "developers+elixir@sparkpost.com",
-      from: "test@sparkpostbox.com",
-      subject: "Oh hey!",
-      html: "<p>Testing SparkPost - the world's most awesomest email service!</p>"
+alias SparkPost.{Content, Transmission}
+
+defmodule MyApp do
+  def main(args) do
+    Transmission.send(%Transmission{
+      recipients: ["developers+elixir@sparkpost.com"],
+      content: %Content.Inline{
+        from: "test@sparkpostbox.com",
+        subject: "Oh hey!",
+        html: "<p>Testing SparkPost - the world's most awesomest email service!</p>",
+      },
+      options: %Transmission.Options{sandbox: true}
+    })
   end
 end
 {% endhighlight %}
