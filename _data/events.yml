@@ -27,14 +27,14 @@
   location: Pasadena Convention Center
 
 - name: "BrickHack 2017"
-  type: future
+  type: past
   url: https://brickhack.io/
   date_start: 2017-02-11
   date_end: 2017-02-12
   location: Rochester Institute of Technology
 
 - name: ManhattanJS
-  type: future
+  type: past
   url: https://ti.to/manhattanjs/feb2017
   date_start: 2017-02-08
   location: Manhattan, NY
