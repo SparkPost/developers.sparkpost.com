@@ -142,7 +142,18 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 </ul>
 <p>The SMTP relay optionally supports advanced API features using the <a href="smtp-api.html">SMTP API</a>.  To create an API key, login to your SparkPost <a href="https://app.sparkpost.com/account/credentials">Account Credentials</a> page.</p>
 <h2 id="header-rate-limiting">Rate Limiting <a class="permalink" href="#header-rate-limiting" aria-hidden="true">¶</a></h2>
-<p>Note: To prevent abuse, our servers enforce request rate limiting, which may trigger responses with HTTP status code 429. If you use the sandbox domain (<a href="http://sparkpostbox.com">sparkpostbox.com</a>) for testing you are limited to 50 emails.</p>
+<p>Note: To prevent abuse, our servers enforce request rate limiting, which may trigger responses with HTTP status code 429. SparkPost implements rate limiting on the following API endpoints:</p>
+<ul>
+<li>
+<p><code>/api/v1/message-events</code></p>
+</li>
+<li>
+<p><code>/api/v1/metrics/*</code></p>
+</li>
+</ul>
+<p>The limits imposed here are dynamic but as a general rule, polling these endpoints more than once in 2 minutes may encounter rate limiting and a 429 status code.</p>
+<p><strong>Alternatives To Polling:</strong> For some common use cases, the SparkPost API offers more efficient alternatives to polling, especially of the message events endpoint. For instance, A single call to the <a href="api/metrics.html#metrics-deliverability-metrics-get">metrics deliverability summary</a> endpoint offers a summary of deliveries, bounces, opens, clicks and more for some time period. If your application requires low latency access to each message event, using a <a href="/api/webhooks.html">webhook-based</a> process will be more efficient than polling message events and will avoid rate limiting.</p>
+<p><strong>Sandbox Domain Limits: <a href="http://sparkpostbox.com">sparkpostbox.com</a>:</strong> If you use the sandbox domain (<a href="http://sparkpostbox.com">sparkpostbox.com</a>) for testing you are limited to 50 emails for the lifetime of your SparkPost account.</p>
 <h2 id="header-errors">Errors <a class="permalink" href="#header-errors" aria-hidden="true">¶</a></h2>
 <p>If your account has been suspended due to concern about a possible violation of our <a href="https://www.sparkpost.com/policies">Messaging Policy</a> please contact us at <a href="mailto:compliance@sparkpost.com">compliance@sparkpost.com</a>.</p>
 <p>When you make an API call you may receive an error message in response. Either there is something wrong with your request or something went wrong on our end. Errors respond with an error code and JSON that contains a more precise message, description and API code.</p>
