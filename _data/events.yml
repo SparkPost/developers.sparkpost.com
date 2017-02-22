@@ -1,3 +1,9 @@
+- name: QueensJS
+  type: future
+  url: https://www.meetup.com/QueensJS/events/237508996/
+  date_start: 2017-03-01
+  location: New York, NY
+
 - name: "O'Reilly Fluent Conference"
   type: future
   url: http://conferences.oreilly.com/fluent/fl-ca
