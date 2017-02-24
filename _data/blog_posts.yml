@@ -1,19 +1,19 @@
+- title: "Mailgun Migration Guide: Moving from Mailgun to SparkPost"
+  url: https://www.sparkpost.com/blog/mailgun-migration-guide/
+  order: 1
+
 - title: "Meet Jesse James, Our New Developer Advocate"
   url: https://www.sparkpost.com/blog/new-developer-advocate-jesse/
-  order: 1
+  order: 2
 
 - title: "Our DevOps Journey: Focusing on Deployment Automation"
   url: https://www.sparkpost.com/blog/devops-journey-deployment-automation/
-  order: 2
+  order: 3
 
 - title: "A Guide to Using SparkPost with Python"
   url: https://www.sparkpost.com/blog/using-sparkpost-python/
-  order: 3
+  order: 4
 
 - title: "Email Basics Part 2: Putting the Pieces Together"
   url: https://www.sparkpost.com/blog/email-basics-pt-2/
-  order: 4
-
-- title: "Upcoming SparkPost API Transmission Endpoint Changes"
-  url: https://www.sparkpost.com/blog/upcoming-api-transmission-endpoint-changes/
   order: 5
