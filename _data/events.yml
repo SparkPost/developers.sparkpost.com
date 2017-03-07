@@ -26,8 +26,14 @@
   date_end: 2017-04-22
   location: Microsoft Technology Center, NYC
 
-- name: "SCaLE (Southern California Linux Expo)"
+- name: NYC Elixir Meetup
   type: future
+  url: https://www.meetup.com/NYC-Elixir/events/238115248/
+  date_start: 2017-03-07
+  location: New York, NY
+
+- name: "SCaLE (Southern California Linux Expo)"
+  type: past
   url: socallinuxexpo.org
   date_start: 2017-03-02
   date_end: 2017-03-05
