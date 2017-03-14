@@ -426,7 +426,7 @@ template.</p>
   </span>}
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="templates-update" class="resource-heading">Update <a href="#templates-update" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action put"><h4 id="templates-update-put" class="action-heading"><div class="name">Update a Template</div></h4><div class="method">PUT<code class="uri">/api/v1/templates/{id}{?update_published}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template</p>
 <em>Example: 11714265276872</em></td></tr><tr><td class="markdown">update_published</td><td class="markdown"><p>If true, directly overwrite the existing published template.  If false, create a new draft.</p>
-<em>Example: true</em></td></tr></table></div><div class="markdown"><p>Update an existing template by specifying its ID in the URI path and use a <strong>template object</strong> as the PUT request body.
+<p><em>Default: false</em></p><em>Example: true</em></td></tr></table></div><div class="markdown"><p>Update an existing template by specifying its ID in the URI path and use a <strong>template object</strong> as the PUT request body.
 By default, the update will result in a new draft version, but the published version can be overwritten directly by using the <strong>update_published</strong> query parameter.</p>
 <p>The “name” field may be modified, but the “id” field is read only.</p>
 <p>If a content object is provided in the update request, it must
