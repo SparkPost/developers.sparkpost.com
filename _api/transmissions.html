@@ -162,9 +162,9 @@ description: "Use the transmissions API to send a batch of messages through Spar
 <tr>
 <td>transactional</td>
 <td style="text-align:center">boolean</td>
-<td>Whether message is transactional or non-transactional for unsubscribe and suppression purposes )</td>
+<td>Whether message is <a href="https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/">transactional</a> for unsubscribe and suppression purposes<br><span class="label label-info"><strong>Note</strong></span> no <code>List-Unsubscribe</code> header is included in transactional messages.</td>
 <td>no</td>
-<td>If not specified, the setting at template level is used, or defaults to false. <span class="label label-info"><strong>Note</strong></span> no <code>List-Unsubscribe</code> header is included in transactional messages.</td>
+<td>If not specified, the setting at template level is used, or defaults to false.</td>
 </tr>
 <tr>
 <td>sandbox</td>
@@ -190,7 +190,7 @@ description: "Use the transmissions API to send a batch of messages through Spar
 <tr>
 <td>inline_css</td>
 <td style="text-align:center">boolean</td>
-<td>Whether to perform CSS inlining in HTML content</td>
+<td>Whether to perform CSS inlining in HTML content<br><span class="label label-info"><strong>Note</strong></span> only rules in <code>head &gt; style</code> elements will be inlined</td>
 <td>no - Defaults to false</td>
 <td></td>
 </tr>
