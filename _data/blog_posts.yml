@@ -1,19 +1,19 @@
+- title: "SparkPost Labs: A/B Test API"
+  url: https://www.sparkpost.com/blog/sparkpost-labs-ab-test-api/
+  order: 1
+
 - title: "Take The New SparkPost CLI For A Spin"
   url: https://www.sparkpost.com/blog/new-sparkpost-cli/
-  order: 1
+  order: 2
 
 - title: "SparkPost and PostgreSQL"
   url: https://www.sparkpost.com/blog/sparkpost-postgresql/
-  order: 2
+  order: 3
 
 - title: "A Success Story: How We’re Building Our Internal Community at SparkPost"
   url: https://www.sparkpost.com/blog/building-internal-community/
-  order: 3
+  order: 4
 
 - title: "Mailgun Migration Guide: Moving from Mailgun to SparkPost"
   url: https://www.sparkpost.com/blog/mailgun-migration-guide/
-  order: 4
-
-- title: "Meet Jesse James, Our New Developer Advocate"
-  url: https://www.sparkpost.com/blog/new-developer-advocate-jesse/
   order: 5
