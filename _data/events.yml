@@ -25,6 +25,12 @@
   date_start: 2017-05-20
   location: New York, NY
 
+- name: "AngelHack SF"
+  type: future
+  url: http://angelhack.com/angelhack-global-hackathon-series-san-francisco/
+  date_start: 2017-05-06
+  location: San Francisco, CA
+
 - name: "Codeland"
   type: future
   url: http://codelandconf.com/
