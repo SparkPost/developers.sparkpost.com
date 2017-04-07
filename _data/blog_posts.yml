@@ -1,19 +1,19 @@
+- title: "Getting More Sleep, One Amazon SQS Message At A Time"
+  url: https://www.sparkpost.com/blog/amazon-sqs/
+  order: 1
+
+- title: "Introducing SparkPost FEELs: Our New Feedback Empathy and Emoji Loops"
+  url: https://www.sparkpost.com/blog/sparkpost-feels/
+  order: 2
+
+- title: "Introducing The SparkPost Email Tools Suite"
+  url: https://www.sparkpost.com/blog/sparkpost-email-tools-suite/
+  order: 3  
+
 - title: "Tracking Recipient Preferences With The User Agent Header in PHP"
   url: https://www.sparkpost.com/blog/preferences-user-agent-header-php/
-  order: 1
+  order: 4
 
 - title: "SparkPost Labs: A/B Test API"
   url: https://www.sparkpost.com/blog/sparkpost-labs-ab-test-api/
-  order: 2
-
-- title: "Take The New SparkPost CLI For A Spin"
-  url: https://www.sparkpost.com/blog/new-sparkpost-cli/
-  order: 3
-
-- title: "SparkPost and PostgreSQL"
-  url: https://www.sparkpost.com/blog/sparkpost-postgresql/
-  order: 4
-
-- title: "A Success Story: How We’re Building Our Internal Community at SparkPost"
-  url: https://www.sparkpost.com/blog/building-internal-community/
   order: 5
