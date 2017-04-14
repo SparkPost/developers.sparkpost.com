@@ -97,17 +97,11 @@ Subaccounts are a way for service providers to provision and manage their custom
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="subaccounts-subaccounts-summary" class="resource-heading">Subaccounts Summary <a href="#subaccounts-subaccounts-summary" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="subaccounts-subaccounts-summary-get" class="action-heading"><div class="name">Retrieve Subaccounts Summary</div></h4><div class="method">GET<code class="uri">/api/v1/subaccounts/summary</code></div><div class="markdown"><p>Retrieve the total number of subaccounts for an account.</p>
-<p>Request (application/json)</p>
-<p>Headers</p>
-<pre><code><span class="hljs-attribute">Authorization</span>: <span class="hljs-string">14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf</span>
-       <span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/json</span></code></pre>
-<p>Response 200 (application/json; charset=utf-8)</p>
-<p>{
-“results”: {
-“total”: 46
-}
-}</p>
-</div><h3>Examples</h3><hr></div></div><div class="searchable"><div class="action post"><h4 id="subaccounts-subaccounts-summary-post" class="action-heading"><div class="name">Create new subaccount</div></h4><div class="method">POST<code class="uri">/api/v1/subaccounts/summary</code></div><div class="markdown"><p>Provisions a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants, which are limited to: <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, and <code>transmissions/modify</code>.</p>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/subaccounts/summary</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">46</span>
+  </span>}
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action post"><h4 id="subaccounts-subaccounts-summary-post" class="action-heading"><div class="name">Create new subaccount</div></h4><div class="method">POST<code class="uri">/api/v1/subaccounts/summary</code></div><div class="markdown"><p>Provisions a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants, which are limited to: <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, and <code>transmissions/modify</code>.</p>
 <p>Subaccounts are allowed to send mail using the SMTP protocol or Transmissions API, retrieve sending statistics via the Message Events API, manage their Sending Domains, manage their Suppression List.</p>
 <div class="alert alert-info"><strong>Note</strong>: Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</div>
 <h4 id="header-request-body-attributes">Request Body Attributes <a class="permalink" href="#header-request-body-attributes" aria-hidden="true">¶</a></h4>
