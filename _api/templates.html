@@ -425,9 +425,11 @@ template.</p>
     </span>}
   </span>}
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="templates-update" class="resource-heading">Update <a href="#templates-update" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action put"><h4 id="templates-update-put" class="action-heading"><div class="name">Update a Template</div></h4><div class="method">PUT<code class="uri">/api/v1/templates/{id}{?update_published}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template</p>
-<em>Example: 11714265276872</em></td></tr><tr><td class="markdown">update_published</td><td class="markdown"><p>If true, directly overwrite the existing published template.  If false, create a new draft.</p>
-<p><em>Default: false</em></p><em>Example: true</em></td></tr></table></div><div class="markdown"><p>Update an existing template by specifying its ID in the URI path and use a <strong>template object</strong> as the PUT request body.
-By default, the update will result in a new draft version, but the published version can be overwritten directly by using the <code>update_published</code> query parameter.</p>
+<em>Example: 11714265276872</em></td></tr><tr><td class="markdown">update_published</td><td class="markdown"><p>If true, directly overwrite the existing published template.  If false, update the existing draft.</p>
+<p><em>Default: false</em></p><em>Example: false</em></td></tr></table></div><div class="markdown"><p>Update an existing template by specifying its ID in the URI path and a <strong>template object</strong> as the PUT request body.
+By default, an update operates on an existing draft version.
+An existing published version can be overwritten directly by setting the <code>update_published</code> query parameter to <code>true</code>.</p>
+<div class="alert alert-info"><strong>Note</strong>: Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</div>
 <p>The <code>name</code> field may be modified, but the <code>id</code> field is read only.</p>
 <p>If a content object is provided in the update request, it must
 contain all relevant content fields whether they are being changed or not.
@@ -435,10 +437,10 @@ The new content will completely overwrite the existing content.</p>
 <p>The example shows an update that will rename the template, enable open tracking,
 and update the content all in one API call. All content fields are included whether they are being
 changed or not.</p>
-<p>Publishing a template is a specific case of an update.  The body of the PUT
-request should contain the <code>&quot;published&quot;: true</code> field as shown in the example. The
-<code>update_published</code> query parameter does not apply.</p>
-</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Update</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+<p>Publishing a template is a special kind of update.
+It uses the most recent draft version to create a new published version, even if one does not already exist.
+The body of the PUT request should contain the <code>&quot;published&quot;: true</code> field as shown in the second example below (<code>Publish</code>).</p>
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Update</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">false</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">options</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">open_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
   </span>}</span>,
@@ -453,7 +455,8 @@ request should contain the <code>&quot;published&quot;: true</code> field as sho
     "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"Updated: Check out these deals {{name}}!"</span></span>,
     "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;b&gt;Updated: Check out these deals {{name}}!&lt;/b&gt;"</span>
   </span>}
-</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Publish</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">true</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><div class="markdown"><div class="description"><p>When publishing a draft template, <code>update_published</code> should be omitted, or specified as <code>false</code>.</p>
+</div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Publish</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/templates/<span class="hljs-attribute" title="id">11714265276872</span>?<span class="hljs-attribute">update_published=</span><span class="hljs-literal">false</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body">Empty response body</div></div><hr></div></div></div><div class="resource searchable"><h3 id="templates-preview" class="resource-heading">Preview <a href="#templates-preview" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="templates-preview-post" class="action-heading"><div class="name">Preview a Template</div></h4><div class="method">POST<code class="uri">/api/v1/templates/{id}/preview{?draft}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>ID of the template</p>
 <em>Example: 11714265276872</em></td></tr><tr><td class="markdown">draft</td><td class="markdown"><p>If true, previews the most recent draft template.  If false, previews the most recent published template.  If not provided, previews the most recent template version regardless of draft or published.</p>
