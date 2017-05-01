@@ -1,19 +1,19 @@
+- title: "Getting Started with React: Angular Edition"
+  url: https://www.sparkpost.com/blog/react-angular-edition/
+  order: 1
+
 - title: "Building Email Chatbots with SparkPost"
   url: https://www.sparkpost.com/blog/email-chatbots/
-  order: 1
+  order: 2
 
 - title: "Getting Started with CppUTest"
   url: https://www.sparkpost.com/blog/getting-started-cpputest/
-  order: 2
+  order: 3
 
 - title: "Getting More Sleep, One Amazon SQS Message At A Time"
   url: https://www.sparkpost.com/blog/amazon-sqs/
-  order: 3
+  order: 4
 
 - title: "Introducing SparkPost FEELs: Our New Feedback Empathy and Emoji Loops"
   url: https://www.sparkpost.com/blog/sparkpost-feels/
-  order: 4
-
-- title: "Introducing The SparkPost Email Tools Suite"
-  url: https://www.sparkpost.com/blog/sparkpost-email-tools-suite/
   order: 5
