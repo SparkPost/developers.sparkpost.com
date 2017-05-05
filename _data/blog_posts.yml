@@ -1,19 +1,19 @@
+- title: "Delivering Sweet Tunes with SparkPost and the Spotify API"
+  url: https://www.sparkpost.com/blog/spotify-api-jukepost/
+  order: 1
+
+- title: "Configuration Management and Provisioning in AWS with CloudFormation, Ansible, and Puppet"
+  url: https://www.sparkpost.com/blog/configuration-management-and-provisioning/
+  order: 2
+
 - title: "Getting Started with React: Angular Edition"
   url: https://www.sparkpost.com/blog/react-angular-edition/
-  order: 1
+  order: 3
 
 - title: "Building Email Chatbots with SparkPost"
   url: https://www.sparkpost.com/blog/email-chatbots/
-  order: 2
+  order: 4
 
 - title: "Getting Started with CppUTest"
   url: https://www.sparkpost.com/blog/getting-started-cpputest/
-  order: 3
-
-- title: "Getting More Sleep, One Amazon SQS Message At A Time"
-  url: https://www.sparkpost.com/blog/amazon-sqs/
-  order: 4
-
-- title: "Introducing SparkPost FEELs: Our New Feedback Empathy and Emoji Loops"
-  url: https://www.sparkpost.com/blog/sparkpost-feels/
   order: 5
