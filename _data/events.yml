@@ -46,10 +46,23 @@
   date_start: 2017-05-20
   location: New York, NY
 
+- name: "SFHTML5"
+  type: future
+  url: https://www.meetup.com/sfhtml5/events/238958220/
+  date_start: 2017-05-12
+  location: San Francisco, CA
+
 - name: "AngelHack SF"
   type: past
   url: http://angelhack.com/angelhack-global-hackathon-series-san-francisco/
   date_start: 2017-05-06
+  date_end: 2017-05-07
+  location: San Francisco, CA
+
+- name: "WaffleJS"
+  type: past
+  url: http://wafflejs.com/
+  date_start: 2017-05-03
   location: San Francisco, CA
 
 - name: "Codeland"
