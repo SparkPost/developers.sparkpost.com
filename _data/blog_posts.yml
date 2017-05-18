@@ -1,19 +1,19 @@
-- title: "Partnerships, Integrations, and APIs, Oh My!"
-  url: https://www.sparkpost.com/blog/partnerships-integrations-apis
+- title: "Sending Scheduled Mailings Simply with SparkPost"
+  url: https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/
   order: 1
 
-- title: "Google Apps and SparkPost: Building a Notification System for Small Business"
-  url: https://www.sparkpost.com/blog/google-apps-and-sparkpost-notification
+- title: "Delivering Sweet Tunes with SparkPost and the Spotify API"
+  url: https://www.sparkpost.com/blog/spotify-api-jukepost/
   order: 2
 
-- title: "Upcoming Improvements to the Suppression List API"
-  url: https://www.sparkpost.com/blog/suppression-list-api-updates
+- title: "Configuration Management and Provisioning in AWS with CloudFormation, Ansible, and Puppet"
+  url: https://www.sparkpost.com/blog/configuration-management-and-provisioning/
   order: 3
 
-- title: "3 Lessons I've Learned from Attending Hackathons"
-  url: https://www.sparkpost.com/blog/3-hackathon-lessons-learned/
+- title: "Getting Started with React: Angular Edition"
+  url: https://www.sparkpost.com/blog/react-angular-edition/
   order: 4
 
-- title: "Post Hackathon Advice: What Should You Do Now?"
-  url: https://www.sparkpost.com/blog/post-hackathon-advice/
+- title: "Building Email Chatbots with SparkPost"
+  url: https://www.sparkpost.com/blog/email-chatbots/
   order: 5

@@ -46,17 +46,19 @@ curl -XPOST \
   https://api.sparkpost.com/api/v1/transmissions \
   -H "Authorization: <YOUR API KEY>" \
   -H "Content-Type: application/json" \
-  -d '{"content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers+curl@sparkpost.com"}]}'
+  -d '{"options": {"sandbox": true}, "content": {"from": "testing@sparkpostbox.com", "subject": "Oh hey", "text":"Testing SparkPost - the most awesomest email service in the world"}, "recipients": [{"address": "developers+curl@sparkpost.com"}]}'
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="nodeExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight js %}
-var SparkPost = require('sparkpost');
-var sparky = new SparkPost('<YOUR API KEY>');
+const SparkPost = require('sparkpost');
+const sparky = new SparkPost('<YOUR API KEY>');
 
 sparky.transmissions.send({
-  transmissionBody: {
+    options: {
+      sandbox: true
+    },
     content: {
       from: 'testing@sparkpostbox.com',
       subject: 'Oh hey!',
@@ -65,15 +67,15 @@ sparky.transmissions.send({
     recipients: [
       {address: 'developers+nodejs@sparkpost.com'}
     ]
-  }
-}, function(err, res) {
-  if (err) {
+  })
+  .then(data => {
+    console.log('Woohoo! You just sent your first mailing!');
+    console.log(data);
+  })
+  .catch(err => {
     console.log('Whoops! Something went wrong');
     console.log(err);
-  } else {
-    console.log('Woohoo! You just sent your first mailing!');
-  }
-});
+  });
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="pythonExample">
@@ -84,6 +86,7 @@ from sparkpost import SparkPost
 sparky = SparkPost('<YOUR API KEY>')
 
 response = sparky.transmissions.send(
+    use_sandbox=True,
     recipients=['developers+python@sparkpost.com'],
     html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
     from_email='testing@sparkpostbox.com',
@@ -103,6 +106,9 @@ $sparky = new SparkPost($httpClient, ['key' => '<YOUR API KEY>']);
 
 $sparky->setOptions(['async' => false]);
 $results = $sparky->transmissions->post([
+  'options' => [
+    'sandbox' => true
+  ],
   'content' => [
     'from' => 'testing@sparkpostbox.com',
     'subject' => 'Oh hey!',
@@ -157,6 +163,7 @@ func main() {
 
     tx := &sp.Transmission{
         Recipients: []string{"developers+go@sparkpost.com"},
+        Options:    &sp.TxOptions{Sandbox: true},
         Content: sp.Content{
             HTML:    "<p>Testing SparkPost - the world's most awesomest email service!</p>",
             From:    "test@sparkpostbox.com",
@@ -175,12 +182,19 @@ func main() {
               <div class="tab-pane" id="elixirExample">
                 <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight elixir startinline %}
-defmodule MyApp.Example
-  def send_message do
-    SparkPost.send to: "developers+elixir@sparkpost.com",
-      from: "test@sparkpostbox.com",
-      subject: "Oh hey!",
-      html: "<p>Testing SparkPost - the world's most awesomest email service!</p>"
+alias SparkPost.{Content, Transmission}
+
+defmodule MyApp do
+  def main(args) do
+    Transmission.send(%Transmission{
+      recipients: ["developers+elixir@sparkpost.com"],
+      content: %Content.Inline{
+        from: "test@sparkpostbox.com",
+        subject: "Oh hey!",
+        html: "<p>Testing SparkPost - the world's most awesomest email service!</p>",
+      },
+      options: %Transmission.Options{sandbox: true}
+    })
   end
 end
 {% endhighlight %}

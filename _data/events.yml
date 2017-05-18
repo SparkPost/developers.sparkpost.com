@@ -1,18 +1,149 @@
-- name: BrooklynJS
+- name: "AngelHack Silicon Valley"
   type: future
-  url: http://brooklynjs.com/
-  date_start: 2016-11-17
+  url: http://angelhack.com/angelhack-global-hackathon-series-silicon-valley/
+  date_start: 2017-07-29
+  date_end: 2017-07-30
+  location: San Mateo, CA
+
+- name: "QCon"
+  type: future
+  url: https://qconnewyork.com/
+  date_start: 2017-06-26
+  date_end: 2017-06-30
+  location: New York, NY
+
+- name: "O'Reilly Fluent Conference"
+  type: future
+  url: http://conferences.oreilly.com/fluent/fl-ca
+  date_start: 2017-06-19
+  date_end: 2017-06-22
+  location: San Jose, CA
+  
+- name: "O'Reilly Velocity Conference"
+  type: future
+  url: http://conferences.oreilly.com/velocity/vl-ca
+  date_start: 2017-06-19
+  date_end: 2017-06-22
+  location: San Jose, CA
+
+- name: "AngelHack Manhattan"
+  type: future
+  url: http://angelhack.com/angelhack-global-hackathon-series-manhattan/
+  date_start: 2017-06-10
+  date_end: 2017-06-11
+  location: New York, NY
+
+- name: "Twilio Signal Conference"
+  type: future
+  url: https://www.twilio.com/signal
+  date_start: 2017-05-24
+  date_end: 2017-05-25
+  location: San Francisco, CA
+
+- name: "Empire City Elixir Conference"
+  type: future
+  url: http://empex.co/
+  date_start: 2017-05-20
+  location: New York, NY
+
+- name: "SFHTML5"
+  type: future
+  url: https://www.meetup.com/sfhtml5/events/238958220/
+  date_start: 2017-05-12
+  location: San Francisco, CA
+
+- name: "AngelHack SF"
+  type: past
+  url: http://angelhack.com/angelhack-global-hackathon-series-san-francisco/
+  date_start: 2017-05-06
+  date_end: 2017-05-07
+  location: San Francisco, CA
+
+- name: "WaffleJS"
+  type: past
+  url: http://wafflejs.com/
+  date_start: 2017-05-03
+  location: San Francisco, CA
+
+- name: "Codeland"
+  type: past
+  url: http://codelandconf.com/
+  date_start: 2017-04-21
+  date_end: 2017-04-22
+  location: Microsoft Technology Center, NYC
+
+- name: Bitcamp
+  type: past
+  url: http://bitca.mp/
+  date_start: 2017-04-07
+  date_end: 2017-04-09
+  location: University of Maryland
+
+- name: NYC Elixir Meetup
+  type: past
+  url: https://www.meetup.com/NYC-Elixir/events/238115248/
+  date_start: 2017-03-07
+  location: New York, NY
+
+- name: "SCaLE (Southern California Linux Expo)"
+  type: past
+  url: socallinuxexpo.org
+  date_start: 2017-03-02
+  date_end: 2017-03-05
+  location: Pasadena Convention Center
+
+- name: QueensJS
+  type: past
+  url: https://www.meetup.com/QueensJS/events/237508996/
+  date_start: 2017-03-01
+  location: New York, NY
+
+- name: "BrickHack 2017"
+  type: past
+  url: https://brickhack.io/
+  date_start: 2017-02-11
+  date_end: 2017-02-12
+  location: Rochester Institute of Technology
+
+- name: ManhattanJS
+  type: past
+  url: https://ti.to/manhattanjs/feb2017
+  date_start: 2017-02-08
   location: Manhattan, NY
 
+- name: BrooklynJS
+  type: past
+  url: http://brooklynjs.com/
+  date_start: 2017-01-19
+  location: Brooklyn, NY
+
+- name: NYC Elixir Meetup
+  type: past
+  url: https://www.meetup.com/NYC-Elixir/events/236727242/
+  date_start: 2017-01-17
+  location: Brooklyn, NY
+  
+- name: "AWS re:Invent - Coffee with Aydrian"
+  type: past
+  url: http://pages.sparkpost.com/aws-reinvent-dev-coffee.html
+  date_start: 2016-11-30
+  location: Las Vegas, NV
+
 - name: Nodevember
-  type: future
+  type: past
   url: http://nodevember.org/
   date_start: 2016-11-20
   date_end: 2016-11-21
   location: Nashville, TN
 
+- name: BrooklynJS
+  type: past
+  url: http://brooklynjs.com/
+  date_start: 2016-11-17
+  location: NYC, NY
+
 - name: "MLH Prime: Southwest Regional"
-  type: future
+  type: past
   url: https://prime.mlh.io/events/southwest-regional/
   date_start: 2016-11-12
   date_end: 2016-11-13
