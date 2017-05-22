@@ -65,6 +65,9 @@ Subaccounts are a way for service providers to provision and manage their custom
 </li>
 <li>
 <p>For POST/PUT/DELETE requests, omitting <code>X-MSYS-SUBACCOUNT</code> will result in the same behavior as setting <code>X-MSYS-SUBACCOUNT</code> to <code>0</code></p>
+<ul>
+<li>When creating, updating, or deleting a webhook, <code>X-MSYS-SUBACCOUNT</code> must be set explicitly. Omitting the <code>X-MSYS-SUBACCOUNT</code> header will create a webhook for the entire account, while setting <code>X-MSYS-SUBACCOUNT</code> to <code>0</code> will create a webhook for the Master Account only.</li>
+</ul>
 </li>
 <li>
 <p>For GET requests, omitting <code>X-MSYS-SUBACCOUNT</code> will result in Master Account and Subaccount data in the response</p>
