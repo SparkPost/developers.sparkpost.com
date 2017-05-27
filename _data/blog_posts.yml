@@ -1,19 +1,19 @@
+- title: "Charm your SparkPost Recipient and Suppression Lists with Python"
+  url: https://www.sparkpost.com/blog/recipient-suppression-lists-python/
+  order: 1
+
+- title: "RESTful API Versioning Best Practices: Why v1 is #1"
+  url: https://www.sparkpost.com/blog/api-versioning-best-practices/
+  order: 2
+
+- title: "Updated Support Docs: A Better Way To Find The Resources You Need"
+  url: https://www.sparkpost.com/blog/updated-support-docs/
+  order: 3
+
 - title: "Sending Scheduled Mailings Simply with SparkPost"
   url: https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/
-  order: 1
+  order: 4
 
 - title: "Delivering Sweet Tunes with SparkPost and the Spotify API"
   url: https://www.sparkpost.com/blog/spotify-api-jukepost/
-  order: 2
-
-- title: "Configuration Management and Provisioning in AWS with CloudFormation, Ansible, and Puppet"
-  url: https://www.sparkpost.com/blog/configuration-management-and-provisioning/
-  order: 3
-
-- title: "Getting Started with React: Angular Edition"
-  url: https://www.sparkpost.com/blog/react-angular-edition/
-  order: 4
-
-- title: "Building Email Chatbots with SparkPost"
-  url: https://www.sparkpost.com/blog/email-chatbots/
   order: 5
