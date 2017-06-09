@@ -1,19 +1,19 @@
+- title: "DEVintersection: Let's Talk APIs, Swag and Mouse Ears"
+  url: https://www.sparkpost.com/blog/devintersection-apis-mouse-ears/
+  order: 1
+
+- title: "Operating DNS on the AWS Network: Challenges and Lessons"
+  url: https://www.sparkpost.com/blog/dns-aws-network-lessons/
+  order: 2
+
 - title: "Product Announcement: Webhooks by Subaccount and Multiple Bounce Domains"
   url: https://www.sparkpost.com/blog/webhooks-by-subaccount-bounce-domains/
-  order: 1
+  order: 3
 
 - title: "Charm your SparkPost Recipient and Suppression Lists with Python"
   url: https://www.sparkpost.com/blog/recipient-suppression-lists-python/
-  order: 2
+  order: 4
 
 - title: "RESTful API Versioning Best Practices: Why v1 is #1"
   url: https://www.sparkpost.com/blog/api-versioning-best-practices/
-  order: 3
-
-- title: "Updated Support Docs: A Better Way To Find The Resources You Need"
-  url: https://www.sparkpost.com/blog/updated-support-docs/
-  order: 4
-
-- title: "Sending Scheduled Mailings Simply with SparkPost"
-  url: https://www.sparkpost.com/blog/sending-scheduled-mailings-simply/
   order: 5
