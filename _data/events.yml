@@ -11,6 +11,13 @@
   date_end: 2017-07-30
   location: San Mateo, CA
 
+- name: "devopsdays DC"
+  type: future
+  url: https://www.devopsdays.org/events/2017-washington-dc/welcome/
+  date_start: 2017-07-17
+  date_end: 2017-07-18
+  location: Washington, DC
+
 - name: "QCon"
   type: future
   url: https://qconnewyork.com/
