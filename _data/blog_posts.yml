@@ -1,19 +1,19 @@
+- title: "Running Your First Technical Workshop: The "I Have No Idea What I'm Doing" Edition"
+  url: https://www.sparkpost.com/blog/running-technical-workshop/
+  order: 1
+
+- title: "Introducing Our SendGrid Template Migration Tool"
+  url: https://www.sparkpost.com/blog/sendgrid-template-migration-tool/
+  order: 2
+
 - title: "DEVintersection: Let's Talk APIs, Swag and Mouse Ears"
   url: https://www.sparkpost.com/blog/devintersection-apis-mouse-ears/
-  order: 1
+  order: 3
 
 - title: "Operating DNS on the AWS Network: Challenges and Lessons"
   url: https://www.sparkpost.com/blog/dns-aws-network-lessons/
-  order: 2
+  order: 4
 
 - title: "Product Announcement: Webhooks by Subaccount and Multiple Bounce Domains"
   url: https://www.sparkpost.com/blog/webhooks-by-subaccount-bounce-domains/
-  order: 3
-
-- title: "Charm your SparkPost Recipient and Suppression Lists with Python"
-  url: https://www.sparkpost.com/blog/recipient-suppression-lists-python/
-  order: 4
-
-- title: "RESTful API Versioning Best Practices: Why v1 is #1"
-  url: https://www.sparkpost.com/blog/api-versioning-best-practices/
   order: 5
