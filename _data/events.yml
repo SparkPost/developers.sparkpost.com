@@ -1,3 +1,9 @@
+- name: "SFHTML5"
+  type: past
+  url: https://www.meetup.com/sfhtml5/events/238957406/
+  date_start: 2017-07-28
+  location: San Francisco, CA
+
 - name: "WaffleJS"
   type: future
   url: https://wafflejs.com/
@@ -26,20 +32,20 @@
   location: New York, NY
 
 - name: "SFHTML5"
-  type: future
+  type: past
   url: https://www.meetup.com/sfhtml5/events/238957406/
   date_start: 2017-06-23
   location: San Francisco, CA
 
 - name: "O'Reilly Fluent Conference"
-  type: future
+  type: past
   url: http://conferences.oreilly.com/fluent/fl-ca
   date_start: 2017-06-19
   date_end: 2017-06-22
   location: San Jose, CA
   
 - name: "O'Reilly Velocity Conference"
-  type: future
+  type: past
   url: http://conferences.oreilly.com/velocity/vl-ca
   date_start: 2017-06-19
   date_end: 2017-06-22
