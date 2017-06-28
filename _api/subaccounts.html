@@ -126,17 +126,17 @@ Subaccounts are a way for service providers to provision and manage their custom
 </tr>
 <tr>
 <td>key_label</td>
-<td>yes</td>
+<td>no</td>
 <td>string</td>
 <td>User friendly identifier for the initial subaccount api key</td>
-<td></td>
+<td>Required if <code>setup_api_key</code> is true.</td>
 </tr>
 <tr>
 <td>key_grants</td>
-<td>yes</td>
+<td>no</td>
 <td>Array</td>
 <td>List of grants to give to the initial subaccount api key</td>
-<td>Valid values are <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/view</code>, and <code>webhooks/manage</code></td>
+<td>Required if <code>setup_api_key</code> is true. Valid values are <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/view</code>, and <code>webhooks/manage</code></td>
 </tr>
 <tr>
 <td>key_valid_ips</td>
@@ -151,6 +151,13 @@ Subaccounts are a way for service providers to provision and manage their custom
 <td>string</td>
 <td>The ID of the default IP Pool assigned to this subaccount’s transmissions</td>
 <td>If the supplied <code>ip_pool</code> is an empty string or not present, no default <code>ip_pool</code> will be assigned<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> customers: IPs are managed through your TAM.</td>
+</tr>
+<tr>
+<td>setup_api_key</td>
+<td>no</td>
+<td>boolean</td>
+<td>Whether or not to create an API key for the subaccount</td>
+<td>An API key can be created a later time. Defaults to true.</td>
 </tr>
 </tbody>
 </table>
