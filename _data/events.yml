@@ -1,8 +1,8 @@
-- name: "SFHTML5"
-  type: past
-  url: https://www.meetup.com/sfhtml5/events/238957406/
-  date_start: 2017-07-28
-  location: San Francisco, CA
+- name: "QueensJS"
+  type: future
+  url: https://www.meetup.com/queensjs/
+  date_start: 2017-08-02
+  location: New York, NY
 
 - name: "WaffleJS"
   type: future
@@ -17,6 +17,12 @@
   date_end: 2017-07-30
   location: San Mateo, CA
 
+- name: "SFHTML5"
+  type: past
+  url: https://www.meetup.com/sfhtml5/events/238957406/
+  date_start: 2017-07-28
+  location: San Francisco, CA
+
 - name: "devopsdays DC"
   type: future
   url: https://www.devopsdays.org/events/2017-washington-dc/welcome/
@@ -24,8 +30,14 @@
   date_end: 2017-07-18
   location: Washington, DC
 
-- name: "QCon"
+- name: "WaffleJS"
   type: future
+  url: https://wafflejs.com/
+  date_start: 2017-07-12
+  location: San Francisco, CA
+
+- name: "QCon"
+  type: past
   url: https://qconnewyork.com/
   date_start: 2017-06-26
   date_end: 2017-06-30
