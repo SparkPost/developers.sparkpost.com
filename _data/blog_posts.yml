@@ -1,19 +1,19 @@
+- title: "Using Slack Emojis Almost Everywhere"
+  url: https://www.sparkpost.com/blog/slack-emojis/
+  order: 1
+
 - title: "Community Spotlight: How Topol Makes Creating Beautiful HTML Email Templates Easy"
   url: https://www.sparkpost.com/blog/topol-html-email-templates/
-  order: 1
+  order: 2
 
 - title: "Running Your First Technical Workshop: The 'I Have No Idea What I'm Doing' Edition"
   url: https://www.sparkpost.com/blog/running-technical-workshop/
-  order: 2
+  order: 3
 
 - title: "Introducing Our SendGrid Template Migration Tool"
   url: https://www.sparkpost.com/blog/sendgrid-template-migration-tool/
-  order: 3
+  order: 4
 
 - title: "DEVintersection: Let's Talk APIs, Swag and Mouse Ears"
   url: https://www.sparkpost.com/blog/devintersection-apis-mouse-ears/
-  order: 4
-
-- title: "Operating DNS on the AWS Network: Challenges and Lessons"
-  url: https://www.sparkpost.com/blog/dns-aws-network-lessons/
   order: 5
