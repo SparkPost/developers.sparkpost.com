@@ -102,7 +102,7 @@ Subaccounts are a way for service providers to provision and manage their custom
       "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"active"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action post"><h4 id="subaccounts-subaccounts-collection-post" class="action-heading"><div class="name">Create a new Subaccount</div></h4><div class="method">POST<code class="uri">/api/v1/subaccounts</code></div><div class="markdown"><p>Provisions a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants, which are limited to: <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/manage</code>, and <code>webhooks/view</code>.</p>
+</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action post"><h4 id="subaccounts-subaccounts-collection-post" class="action-heading"><div class="name">Create a new Subaccount</div></h4><div class="method">POST<code class="uri">/api/v1/subaccounts</code></div><div class="markdown"><p>Provisions a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants, which are limited to: <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/modify</code>, and <code>webhooks/view</code>.</p>
 <p>Subaccounts are allowed to send mail using the SMTP protocol or Transmissions API, retrieve sending statistics via the Message Events API, manage their Sending Domains, manage their Suppression List.</p>
 <div class="alert alert-info"><strong>Note</strong>: Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</div>
 <h4 id="header-request-body-attributes">Request Body Attributes <a class="permalink" href="#header-request-body-attributes" aria-hidden="true">¶</a></h4>
@@ -136,7 +136,7 @@ Subaccounts are a way for service providers to provision and manage their custom
 <td>no</td>
 <td>Array</td>
 <td>List of grants to give to the initial subaccount api key</td>
-<td>Required if <code>setup_api_key</code> is true. Valid values are <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/view</code>, and <code>webhooks/manage</code></td>
+<td>Required if <code>setup_api_key</code> is true. Valid values are <code>smtp/inject</code>, <code>sending_domains/manage</code>, <code>tracking_domains/view</code>, <code>tracking_domains/manage</code>, <code>message_events/view</code>, <code>suppression_lists/manage</code>, <code>transmissions/view</code>, <code>transmissions/modify</code>, <code>webhooks/view</code>, and <code>webhooks/modify</code></td>
 </tr>
 <tr>
 <td>key_valid_ips</td>
@@ -171,7 +171,7 @@ Subaccounts are a way for service providers to provision and manage their custom
     <span class="hljs-string">"suppression_lists/manage"</span>,
     <span class="hljs-string">"tracking_domains/view"</span>,
     <span class="hljs-string">"tracking_domains/manage"</span>,
-    <span class="hljs-string">"webhooks/manage"</span>,
+    <span class="hljs-string">"webhooks/modify"</span>,
     <span class="hljs-string">"webhooks/view"</span>
   ]</span>,
   "<span class="hljs-attribute">key_valid_ips</span>": <span class="hljs-value">[]</span>,
