@@ -24,14 +24,14 @@
   location: San Francisco, CA
 
 - name: "devopsdays DC"
-  type: future
+  type: past
   url: https://www.devopsdays.org/events/2017-washington-dc/welcome/
   date_start: 2017-07-17
   date_end: 2017-07-18
   location: Washington, DC
 
 - name: "WaffleJS"
-  type: future
+  type: past
   url: https://wafflejs.com/
   date_start: 2017-07-12
   location: San Francisco, CA
