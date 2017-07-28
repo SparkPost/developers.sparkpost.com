@@ -1,19 +1,19 @@
+- title: "How And Why We Simplified The SparkPost PHP Client Library"
+  url: https://www.sparkpost.com/blog/php-client-library-2-0/
+  order: 1
+
+- title: "How to Design a Better Onboarding Experience"
+  url: https://www.sparkpost.com/blog/better-onboarding-experience/
+  order: 2
+
+- title: "The Sticking Power Of The SparkPost Flame"
+  url: https://www.sparkpost.com/blog/sticking-power-sparkpost-stickers/
+  order: 3
+
 - title: "Event Data Made Easy with SparkPost Message Events"
   url: https://www.sparkpost.com/blog/sparkpost-message-events-api/
-  order: 1
+  order: 4
 
 - title: "Using Slack Emojis Almost Everywhere"
   url: https://www.sparkpost.com/blog/slack-emojis/
-  order: 2
-
-- title: "Community Spotlight: How Topol Makes Creating Beautiful HTML Email Templates Easy"
-  url: https://www.sparkpost.com/blog/topol-html-email-templates/
-  order: 3
-
-- title: "Running Your First Technical Workshop: The 'I Have No Idea What I'm Doing' Edition"
-  url: https://www.sparkpost.com/blog/running-technical-workshop/
-  order: 4
-
-- title: "Introducing Our SendGrid Template Migration Tool"
-  url: https://www.sparkpost.com/blog/sendgrid-template-migration-tool/
   order: 5
