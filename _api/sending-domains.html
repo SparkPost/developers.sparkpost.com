@@ -86,6 +86,13 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>no</td>
 <td>Read only. Format: YYYY-MM-DDTHH:MM:SS±HH:MM</td>
 </tr>
+<tr>
+<td>delegated</td>
+<td style="text-align:center">boolean</td>
+<td>Whether this domain was delegated to SparkPost by the customer</td>
+<td>no</td>
+<td>Defaults to <code>false</code>. Read only. Will not be present if false. <br><br>Only available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
+</tr>
 </tbody>
 </table>
 <h3 id="header-dkim-attributes">DKIM Attributes <a class="permalink" href="#header-dkim-attributes" aria-hidden="true">¶</a></h3>
@@ -213,7 +220,6 @@ description: "Manage sending domains, which are used to indicate who an email is
 </table>
 <h3 id="header-verify-attributes">Verify Attributes <a class="permalink" href="#header-verify-attributes" aria-hidden="true">¶</a></h3>
 <p>These are the valid request options for verifying a Sending Domain:</p>
-<div class="alert alert-info"><strong>Note</strong>: CNAME and Email-based domain verification is available for SparkPost accounts only.</div>
 <table>
 <thead>
 <tr>
@@ -237,7 +243,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td style="text-align:center">boolean</td>
 <td>Request verification of CNAME record</td>
 <td>no</td>
-<td>CNAME verification is a pre-requisite for the domain to be used as a bounce domain.  See the <a href="#sending-domains-verify-post">verify endpoint</a>.<br><br>Not available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
+<td>CNAME verification is a pre-requisite for the domain to be used as a bounce domain.  See the <a href="#sending-domains-verify-post">verify endpoint</a>.</td>
 </tr>
 <tr>
 <td>spf_verify</td>
@@ -500,6 +506,9 @@ description: "Manage sending domains, which are used to indicate who an email is
 <p>Including the fields <code>postmaster_at_token</code> and/or <code>abuse_at_token</code> in the request initiates a check of the provided token(s) against the stored token(s) for the specified sending domain.</p>
 </li>
 </ul>
+<ul>
+<li></li>
+</ul>
 <p><strong>DKIM</strong> public key verification requires the following:</p>
 <ul>
 <li>
@@ -534,9 +543,14 @@ description: "Manage sending domains, which are used to indicate who an email is
 </table>
 <p><strong>CNAME</strong> verification requires the following:</p>
 <ul>
-<li>A valid CNAME record in DNS with value <code>sparkpostmail.com</code></li>
+<li>
+<p><strong>SparkPost</strong> A valid CNAME record in DNS with value <code>sparkpostmail.com</code></p>
+</li>
+<li>
+<p><span class="label label-warning"><strong>Enterprise</strong></span> A valid CNAME record in DNS with value <code>&lt;public_tenant_id&gt;.mail.e.sparkpost.com</code></p>
+</li>
 </ul>
-<p>An example CNAME record for domain <em>mail<span></span>.example.com</em>:</p>
+<p>An example CNAME record for a <strong>SparkPost</strong> customer with domain <em>mail<span></span>.example.com</em>:</p>
 <table>
 <thead>
 <tr>
@@ -553,8 +567,24 @@ description: "Manage sending domains, which are used to indicate who an email is
 </tr>
 </tbody>
 </table>
+<p>An example CNAME record for a <strong>SparkPost Enterprise</strong> customer with public_tenant_id <em>foo</em> and with domain <em>mail<span></span>.example.com</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Hostname</th>
+<th style="text-align:center">Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mail<span></span>.example.com</td>
+<td style="text-align:center">CNAME</td>
+<td>foo.mail.e.sparkpost<span></span>.com</td>
+</tr>
+</tbody>
+</table>
 <p>With the CNAME record in place and verified via “cname_verify”:true, the domain will be eligible to be used as a bounce domain by including it as part of the transmission return_path or SMTP MAIL FROM email address. Bounce domains are used to report bounces, which are emails that were rejected from the recipient server. By adding a CNAME-verified bounce domain to your account, you can customize the address that is used for the <code>Return-Path</code> header, which is the destination for out of band (OOB) bounces.  For additional details on CNAME-verification, please see this <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">support article</a>.</p>
-<div class="alert alert-info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts, your TAM will handle bounce domain verification for you.</div><br>
 <p><strong>SPF</strong> verification requires the following:</p>
 <div class="alert alert-warning"><strong>Note</strong>: SPF sending domain verification is deprecated. You can use DKIM, CNAME, and/or email to verify your sending domain. We recommend using DKIM since it has authentication benefits.</div>
 <ul>
