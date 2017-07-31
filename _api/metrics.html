@@ -830,8 +830,7 @@ in the world.</p>
 <em>Example: summer-sale</em></td></tr><tr><td class="markdown">sending_domains</td><td class="markdown"><p>delimited list of sending domains to include</p>
 <em>Example: sales.sender.com,company.net</em></td></tr><tr><td class="markdown">subaccounts</td><td class="markdown"><p>delimited list of subaccount ids to include<br><span class="label label-info"><strong>Note</strong></span> providing <code>?subaccounts=0</code> will filter out all subaccount data, and only return master account data</p>
 <em>Example: 123,125,127</em></td></tr><tr><td class="markdown">limit</td><td class="markdown"><p>Maximum number of results to return within range [1, 10000]</p>
-<p><em>Default: 1000</em></p><em>Example: 5</em></td></tr></table></div><div class="markdown"><p>Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link
-name (or URL if no link name exists).</p>
+<p><em>Default: 1000</em></p><em>Example: 5</em></td></tr></table></div><div class="markdown"><p>Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, <a href="/api/substitutions-reference.html#header-link-names">read about the <code>data-msys-link-name</code> HTML attribute here</a>.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/metrics/deliverability/link-name?<span class="hljs-attribute">from=</span><span class="hljs-literal">2014-07-11T09:00</span>&<span class="hljs-attribute">to=</span><span class="hljs-literal">2014-07-20T00:00</span>&<span class="hljs-attribute">delimiter=</span><span class="hljs-literal">:</span>&<span class="hljs-attribute">timezone=</span><span class="hljs-literal">America/New_York</span>&<span class="hljs-attribute">campaigns=</span><span class="hljs-literal">Black Friday</span>&<span class="hljs-attribute">templates=</span><span class="hljs-literal">summer-sale</span>&<span class="hljs-attribute">subaccounts=</span><span class="hljs-literal">123,125,127</span>&<span class="hljs-attribute">sending_domains=</span><span class="hljs-literal">sales.sender.com,company.net</span>&<span class="hljs-attribute">metrics=</span><span class="hljs-literal"></span>&<span class="hljs-attribute">limit=</span><span class="hljs-literal">5</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
@@ -840,7 +839,7 @@ name (or URL if no link name exists).</p>
       "<span class="hljs-attribute">count_raw_clicked</span>": <span class="hljs-value"><span class="hljs-number">456</span>
     </span>},
     {
-      "<span class="hljs-attribute">link_name</span>": <span class="hljs-value"><span class="hljs-string">"http://www.test.com/buy/our/stuff/now"</span></span>,
+      "<span class="hljs-attribute">link_name</span>": <span class="hljs-value"><span class="hljs-string">"Raw URL"</span></span>,
       "<span class="hljs-attribute">count_clicked</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
       "<span class="hljs-attribute">count_raw_clicked</span>": <span class="hljs-value"><span class="hljs-number">456</span>
     </span>}
