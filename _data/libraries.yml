@@ -49,10 +49,24 @@
 
 - name: csharp-sparkpost
   type: community
-  description: "C# library by Darren Cauthon"
+  description: "C# library"
   github_repo: darrencauthon/csharp-sparkpost
   language: csharp
   icon: csharp-plain
+
+- name: sparkpost-rails
+  type: community
+  description: Sparkpost delivery method for ActionMailer
+  github_repo: the-refinery/sparkpost_rails
+  language: ruby
+  icon: ruby-plain
+
+- name: simple-spark
+  type: community
+  description: Ruby library
+  github_repo: leadmachineapp/simple_spark
+  language: ruby
+  icon: ruby-plain
 
 #- name: fake-community-lib
 #  type: community
