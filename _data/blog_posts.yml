@@ -1,19 +1,19 @@
-- title: "How And Why We Simplified The SparkPost PHP Client Library"
-  url: https://www.sparkpost.com/blog/php-client-library-2-0/
+- title: "Meet Our New West Coast Developer Advocate"
+  url: https://www.sparkpost.com/blog/west-coast-developer-advocate/
   order: 1
 
-- title: "How to Design a Better Onboarding Experience"
-  url: https://www.sparkpost.com/blog/better-onboarding-experience/
+- title: "Community Spotlight: Rise And Shine With This Alexa Skill"
+  url: https://www.sparkpost.com/blog/community-spotlight-alexa-skill/
   order: 2
 
-- title: "The Sticking Power Of The SparkPost Flame"
-  url: https://www.sparkpost.com/blog/sticking-power-sparkpost-stickers/
+- title: "Our Top 5 Email Template Hacks"
+  url: https://www.sparkpost.com/blog/email-template-hacks/
   order: 3
 
-- title: "Event Data Made Easy with SparkPost Message Events"
-  url: https://www.sparkpost.com/blog/sparkpost-message-events-api/
+- title: "PHP Frameworks In The Wild: A Closer Look at the PHP Ecosystem"
+  url: https://www.sparkpost.com/blog/php-frameworks/
   order: 4
 
-- title: "Using Slack Emojis Almost Everywhere"
-  url: https://www.sparkpost.com/blog/slack-emojis/
+- title: "How And Why We Simplified The SparkPost PHP Client Library"
+  url: https://www.sparkpost.com/blog/php-client-library-2-0/
   order: 5
