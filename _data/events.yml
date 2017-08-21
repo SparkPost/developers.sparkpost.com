@@ -1,24 +1,31 @@
-- name: "QueensJS"
+- name: "AWS re:Invent"
   type: future
+  url: https://reinvent.awsevents.com
+  date_start: 2017-11-27
+  date_end: 2017-12-01
+  location: Las Vegas, NV
+
+- name: "QueensJS"
+  type: past
   url: https://www.meetup.com/queensjs/
   date_start: 2017-08-02
   location: New York, NY
 
 - name: "WaffleJS"
-  type: future
+  type: past
   url: https://wafflejs.com/
   date_start: 2017-08-02
   location: San Francisco, CA
 
 - name: "AngelHack Silicon Valley"
-  type: future
+  type: past
   url: http://angelhack.com/angelhack-global-hackathon-series-silicon-valley/
   date_start: 2017-07-29
   date_end: 2017-07-30
   location: San Mateo, CA
 
 - name: "SFHTML5"
-  type: future
+  type: past
   url: https://www.meetup.com/sfhtml5/events/238958291/
   date_start: 2017-07-28
   location: San Francisco, CA
