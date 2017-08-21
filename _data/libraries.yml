@@ -47,9 +47,16 @@
   language: javascript
   icon: nodejs-plain
 
-- name: fake-community-lib
+- name: csharp-sparkpost
   type: community
-  description: This isn't real (Delete after styling)
-  github_repo: aydrian/fake-community-lib
-  language: java
-  icon: java-plain
+  description: "C# library by Darren Cauthon"
+  github_repo: darrencauthon/csharp-sparkpost
+  language: csharp
+  icon: csharp-plain
+
+#- name: fake-community-lib
+#  type: community
+#  description: This isn't real (Delete after styling)
+#  github_repo: aydrian/fake-community-lib
+#  language: java
+#  icon: java-plain
