@@ -5,6 +5,34 @@
   date_end: 2017-12-01
   location: Las Vegas, NV
 
+- name: "QCon San Francisco"
+  type: future
+  url: https://qconsf.com/
+  date_start: 2017-11-13
+  date_end: 2017-11-17
+  location: San Francisco, CA
+
+- name: "DEVintersection"
+  type: future
+  url: https://devintersection.com
+  date_start: 2017-10-31
+  date_end: 2017-11-02
+  location: Las Vegas, NV
+
+- name: "CalHacks"
+  type: future
+  url: https://calhacks.io/
+  date_start: 2017-10-06
+  date_end: 2017-10-08
+  location: Berkeley, CA
+
+- name: "Cloud+Data NEXT Conference"
+  type: future
+  url: http://cdsea17.xnextcon.com/
+  date_start: 2017-09-15
+  date_end: 2017-09-16
+  location: Seattle, WA
+
 - name: "QueensJS"
   type: past
   url: https://www.meetup.com/queensjs/
