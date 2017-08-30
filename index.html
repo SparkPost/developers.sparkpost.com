@@ -293,7 +293,17 @@ sparky.Transmissions.Send(transmission);
             {% for event in events %}
             <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
             <p>
-              {{ event.date_start | date: "%B %d" }}{% if event.date_end %}&ndash;{{ event.date_end | date: "%d" }}{% endif %}<br>
+              {{ event.date_start | date: "%b %e" }}
+              {% if event.date_end %}
+                &ndash;
+                {% assign month_start = event.date_start | date: "%b" %}
+                {% assign month_end = event.date_end | date: "%b" %}
+                {% if month_start == month_end %}
+                  {{ event.date_end | date: "%e" }}
+                {% else %}
+                  {{ event.date_end | date: "%b %e" }}
+                {% endif %}
+              {% endif %}<br>
               {{ event.location }}
             </p>
             {% endfor %}
