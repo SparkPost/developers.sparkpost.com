@@ -115,7 +115,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td style="text-align:center">string</td>
 <td>Signing Domain Identifier (SDID)</td>
 <td>no</td>
-<td><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> This will be used in the <code>d=</code> field of the DKIM Signature. If <code>signing_domain</code> is not specified, or is set to the empty string (&quot;&quot;), then the Sending Domain will be used as the signing domain.<br>By default, SparkPost uses the Sending Domain as the signing domain.</td>
+<td>This will be used in the <code>d=</code> field of the DKIM Signature. If <code>signing_domain</code> is not specified, or is set to the empty string (&quot;&quot;), then the Sending Domain will be used as the signing domain.<br>By default, SparkPost uses the Sending Domain as the signing domain. <br><br>Only available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
 </tr>
 <tr>
 <td>private</td>
@@ -165,7 +165,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td style="text-align:center">boolean</td>
 <td>Whether domain ownership has been verified</td>
 <td>false</td>
-<td>Read only. This field will return <code>true</code> if any of dkim_status, cname_status, spf_status, abuse_at_status, or postmaster_at_status are <code>true</code> or ownership has been verified previously.</td>
+<td>Read only. This field will return <code>true</code> if any of dkim_status, cname_status, mx_status, spf_status, abuse_at_status, or postmaster_at_status are <code>true</code> or ownership has been verified previously.</td>
 </tr>
 <tr>
 <td>dkim_status</td>
@@ -180,6 +180,13 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>Verification status of CNAME configuration</td>
 <td>unverified</td>
 <td>Read only. Valid values are <code>unverified</code>, <code>pending</code>, <code>invalid</code> or <code>valid</code>.</td>
+</tr>
+<tr>
+<td>mx_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of MX configuration</td>
+<td>unverified</td>
+<td>Read only. Valid values are <code>unverified</code>, <code>pending</code>, <code>invalid</code> or <code>valid</code>.<br><br>Only available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
 </tr>
 <tr>
 <td>spf_status</td>
@@ -387,15 +394,16 @@ description: "Manage sending domains, which are used to indicate who an email is
       "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-list" class="resource-heading">List <a href="#sending-domains-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-domains-list-get" class="action-heading"><div class="name">List all Sending Domains</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains{?ownership_verified,dkim_status,cname_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">ownership_verified</td><td class="markdown"><p>Ownership verified flag.  Valid values are <code>true</code> or <code>false</code>.  If not provided, returns a list of all domains regardless of ownership verification.</p>
+</span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-domains-list" class="resource-heading">List <a href="#sending-domains-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-domains-list-get" class="action-heading"><div class="name">List all Sending Domains</div></h4><div class="method">GET<code class="uri">/api/v1/sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">ownership_verified</td><td class="markdown"><p>Ownership verified flag.  Valid values are <code>true</code> or <code>false</code>.  If not provided, returns a list of all domains regardless of ownership verification.</p>
 <em>Example: true</em></td></tr><tr><td class="markdown">dkim_status</td><td class="markdown"><p>DKIM status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of DKIM status.</p>
 <em>Example: valid</em></td></tr><tr><td class="markdown">cname_status</td><td class="markdown"><p>CNAME status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of CNAME status.</p>
-<em>Example: valid</em></td></tr><tr><td class="markdown">abuse_at_status</td><td class="markdown"><p>abuse@ status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of abuse@ status.</p>
+<em>Example: valid</em></td></tr><tr><td class="markdown">mx_status</td><td class="markdown"><p>MX status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of MX status.</p>
+<em>Example: unverified</em></td></tr><tr><td class="markdown">abuse_at_status</td><td class="markdown"><p>abuse@ status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of abuse@ status.</p>
 <em>Example: unverified</em></td></tr><tr><td class="markdown">postmaster_at_status</td><td class="markdown"><p>postmaster@ status filter.  Valid values are <code>valid</code>, <code>invalid</code>, <code>unverified</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of postmaster@ status.</p>
 <em>Example: unverified</em></td></tr><tr><td class="markdown">compliance_status</td><td class="markdown"><p>compliance status filter.  Valid values are <code>valid</code>, <code>blocked</code>, or <code>pending</code>.  If not provided, returns a list of all domains regardless of compliance status.</p>
 <em>Example: valid</em></td></tr><tr><td class="markdown">is_default_bounce_domain</td><td class="markdown"><p>Is default bounce domain flag.  Valid values are <code>true</code> or <code>false</code>.  If not provided, returns a list of all domains regardless of whether it is the default bounce domain.</p>
 <em>Example: false</em></td></tr></table></div><div class="markdown"><p>List an overview of all sending domains in the system.  By default, all domains are returned.  Use the query parameters to filter on the various status options.</p>
-</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains?<span class="hljs-attribute">ownership_verified=</span><span class="hljs-literal">true</span>&<span class="hljs-attribute">dkim_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">cname_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">abuse_at_status=</span><span class="hljs-literal">unverified</span>&<span class="hljs-attribute">postmaster_at_status=</span><span class="hljs-literal">unverified</span>&<span class="hljs-attribute">compliance_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">is_default_bounce_domain=</span><span class="hljs-literal">false</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+</div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/sending-domains?<span class="hljs-attribute">ownership_verified=</span><span class="hljs-literal">true</span>&<span class="hljs-attribute">dkim_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">cname_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">mx_status=</span><span class="hljs-literal">unverified</span>&<span class="hljs-attribute">abuse_at_status=</span><span class="hljs-literal">unverified</span>&<span class="hljs-attribute">postmaster_at_status=</span><span class="hljs-literal">unverified</span>&<span class="hljs-attribute">compliance_status=</span><span class="hljs-literal">valid</span>&<span class="hljs-attribute">is_default_bounce_domain=</span><span class="hljs-literal">false</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
     {
       "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
@@ -406,6 +414,7 @@ description: "Manage sending domains, which are used to indicate who an email is
         "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
       </span>}</span>,
@@ -420,6 +429,7 @@ description: "Manage sending domains, which are used to indicate who an email is
         "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
       </span>}</span>,
@@ -438,6 +448,7 @@ description: "Manage sending domains, which are used to indicate who an email is
       "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
       "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
       "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
       "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
       "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span>
     </span>}</span>,
@@ -541,6 +552,22 @@ description: "Manage sending domains, which are used to indicate who an email is
 </tr>
 </tbody>
 </table>
+<p><strong>SPF</strong> verification requires the following:</p>
+<div class="alert alert-warning"><strong>Note</strong>: SPF sending domain verification is deprecated. You can use DKIM, CNAME, and/or email to verify your sending domain. We recommend using DKIM since it has authentication benefits.</div>
+<ul>
+<li>
+<p>A valid SPF record must be in the DNS for the sending domain being verified.</p>
+</li>
+<li>
+<p>The record must contain <code>v=spf1</code>.</p>
+</li>
+<li>
+<p>The record must contain <code>include:sparkpostmail.com</code>.</p>
+</li>
+<li>
+<p>The record must use either <code>~all</code> or <code>-all</code>.</p>
+</li>
+</ul>
 <p><strong>CNAME</strong> verification requires the following:</p>
 <ul>
 <li>
@@ -584,23 +611,18 @@ description: "Manage sending domains, which are used to indicate who an email is
 </tr>
 </tbody>
 </table>
-<p>With the CNAME record in place and verified via “cname_verify”:true, the domain will be eligible to be used as a bounce domain by including it as part of the transmission return_path or SMTP MAIL FROM email address. Bounce domains are used to report bounces, which are emails that were rejected from the recipient server. By adding a CNAME-verified bounce domain to your account, you can customize the address that is used for the <code>Return-Path</code> header, which is the destination for out of band (OOB) bounces.  For additional details on CNAME-verification, please see this <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">support article</a>.</p>
-<p><strong>SPF</strong> verification requires the following:</p>
-<div class="alert alert-warning"><strong>Note</strong>: SPF sending domain verification is deprecated. You can use DKIM, CNAME, and/or email to verify your sending domain. We recommend using DKIM since it has authentication benefits.</div>
+<p><strong>MX</strong> verification is available to <strong>Enterprise</strong> customers only. There is no way to initiate MX verification through the /verify endpoint. Please contact your TAM if you want to verify your domain with MX.</p></div><p></p>
+<p><strong>Using a Sending Domain as a Bounce Domain</strong></p>
+<div>A Sending Domain is eligible to be used as a Bounce Domain if one of the following conditions is met:</div>
 <ul>
 <li>
-<p>A valid SPF record must be in the DNS for the sending domain being verified.</p>
+<p>A CNAME record in place and verified via “cname_verify”:true</p>
 </li>
 <li>
-<p>The record must contain <code>v=spf1</code>.</p>
-</li>
-<li>
-<p>The record must contain <code>include:sparkpostmail.com</code>.</p>
-</li>
-<li>
-<p>The record must use either <code>~all</code> or <code>-all</code>.</p>
+<p>An MX verified domain (<span class="label label-warning"><strong>Enterprise</strong></span> only)</p>
 </li>
 </ul>
+<p>Eligible domains may be used as a bounce domain by including it as part of the transmission return_path or SMTP MAIL FROM email address. Bounce domains are used to report bounces, which are emails that were rejected from the recipient server. By adding a bounce domain to your account, you can customize the address that is used for the <code>Return-Path</code> header, which is the destination for out of band (OOB) bounces.  For additional details on CNAME-verification, please see this <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">support article</a>.</p>
 <p>The domain’s <code>status</code> object is returned on success.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Verify DKIM</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">dkim_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
@@ -612,6 +634,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     </span>}</span>,
     "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
     "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
@@ -627,6 +650,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     </span>}</span>,
     "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
     "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
@@ -641,6 +665,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
     "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
@@ -653,6 +678,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
     "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
   </span>}
@@ -665,6 +691,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
     "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
@@ -678,4 +705,4 @@ description: "Manage sending domains, which are used to indicate who an email is
       "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1901"</span>
     </span>}
   ]
-</span>}</pre></div></div><hr></div></div></div></section></div></div></div>
+</span>}</pre></div></div><hr></div></div></section></div></div></div>
