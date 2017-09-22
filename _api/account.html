@@ -87,6 +87,12 @@ description: "Get your SparkPost account information, including subscription sta
 <td>account quota usage details</td>
 <td>Specify ‘include=usage’ in query string to include usage info (see <a href="#header-usage-properties">Usage Properties</a> section)</td>
 </tr>
+<tr>
+<td>support</td>
+<td>object</td>
+<td>Support entitlement details</td>
+<td>See <a href="#header-support-properties">Support Properties</a></td>
+</tr>
 </tbody>
 </table>
 <h4 id="header-subscription-properties">Subscription Properties <a class="permalink" href="#header-subscription-properties" aria-hidden="true">¶</a></h4>
@@ -203,6 +209,28 @@ description: "Get your SparkPost account information, including subscription sta
 <td>end</td>
 <td>string</td>
 <td>ISO date when this period ends</td>
+</tr>
+</tbody>
+</table>
+<p>#### Support Properties</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>phone</td>
+<td>boolean</td>
+<td>account is entitled to phone support</td>
+</tr>
+<tr>
+<td>online</td>
+<td>boolean</td>
+<td>account is entitled to online support</td>
 </tr>
 </tbody>
 </table>
