@@ -1,19 +1,19 @@
+- title: "Calm your Suppression List Anxieties with Python"
+  url: https://www.sparkpost.com/blog/suppression-list-python/
+  order: 1
+
+- title: "Archiving Emails: A How-To Guide for Tracking Sent Mail"
+  url: https://www.sparkpost.com/blog/archiving-emails/
+  order: 2
+
 - title: "Getting Started with SparkPost in Java"
   url: https://www.sparkpost.com/blog/sparkpost-in-java/
-  order: 1
+  order: 3
 
 - title: "Getting Started with C# and SparkPost"
   url: https://www.sparkpost.com/blog/csharp-and-sparkpost/
-  order: 2
+  order: 4
 
 - title: "A Guide to Using SparkPost with Node.js"
   url: https://www.sparkpost.com/blog/guide-using-sparkpost-node-js/
-  order: 3
-
-- title: "Upcoming API Transmission Endpoint Changes"
-  url: https://www.sparkpost.com/blog/upcoming-api-transmission-endpoint-changes/
-  order: 4
-
-- title: "Styling SparkPost: Why We Chose To Use CSS Modules"
-  url: https://www.sparkpost.com/blog/why-chose-css-modules/
   order: 5
