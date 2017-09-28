@@ -165,7 +165,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td style="text-align:center">boolean</td>
 <td>Whether domain ownership has been verified</td>
 <td>false</td>
-<td>Read only. This field will return <code>true</code> if any of dkim_status, cname_status, mx_status, spf_status, abuse_at_status, or postmaster_at_status are <code>true</code> or ownership has been verified previously.</td>
+<td>Read only. This field will return <code>true</code> if any of dkim_status, cname_status, mx_status, spf_status, abuse_at_status, postmaster_at_status, or verification_mailbox_status are <code>true</code> or ownership has been verified previously.</td>
 </tr>
 <tr>
 <td>dkim_status</td>
@@ -210,18 +210,25 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>Read only. Valid values are <code>unverified</code>, <code>pending</code>, <code>invalid</code> or <code>valid</code>.</td>
 </tr>
 <tr>
+<td>verification_mailbox_status</td>
+<td style="text-align:center">string</td>
+<td>Verification status of nominated anyone@ mailbox</td>
+<td>unverified</td>
+<td>Read only. Valid values are <code>unverified</code>, <code>pending</code>, <code>invalid</code> or <code>valid</code>.</td>
+</tr>
+<tr>
+<td>verification_mailbox</td>
+<td style="text-align:center">string</td>
+<td>Nominated anyone@ verification mailbox email address local part</td>
+<td></td>
+<td>Read only. This field will only be returned if it was set on a prior POST to verify a sending domain using verification_mailbox.</td>
+</tr>
+<tr>
 <td>compliance_status</td>
 <td style="text-align:center">string</td>
 <td>Compliance status</td>
 <td></td>
 <td>Valid values are <code>pending</code>, <code>valid</code>, or <code>blocked</code>.</td>
-</tr>
-<tr>
-<td>verification_mailbox_status</td>
-<td style="text-align:center">string</td>
-<td>reserved</td>
-<td>unverified</td>
-<td>Read only. This field is unused.</td>
 </tr>
 </tbody>
 </table>
@@ -260,6 +267,20 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td><span class="label label-danger"><strong>Deprecated</strong></span></td>
 </tr>
 <tr>
+<td>verification_mailbox_verify</td>
+<td style="text-align:center">boolean</td>
+<td>Request an email with a verification link to be sent to a nominated mailbox on the sending domain.</td>
+<td>no</td>
+<td>The nominated mailbox is specified in the verification_mailbox field.  The mailbox can be any valid mailbox for the domain other than “postmaster” or “abuse”.  Not available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
+</tr>
+<tr>
+<td>verification_mailbox</td>
+<td style="text-align:center">string</td>
+<td>The nominated mailbox email address local part to be used when requesting email with a verification link be sent.</td>
+<td>no</td>
+<td>Required if “verification_mailbox_verify” = true. Not available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
+</tr>
+<tr>
 <td>postmaster_at_verify</td>
 <td style="text-align:center">boolean</td>
 <td>Request an email with a verification link to be sent to the sending domain’s postmaster@ mailbox.</td>
@@ -272,6 +293,13 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>Request an email with a verification link to be sent to the sending domain’s abuse@ mailbox.</td>
 <td>no</td>
 <td></td>
+</tr>
+<tr>
+<td>verification_mailbox_token</td>
+<td style="text-align:center">string</td>
+<td>A token retrieved from the verification link contained in the verification email.</td>
+<td>no</td>
+<td><br><br>Not available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
 </tr>
 <tr>
 <td>postmaster_at_token</td>
@@ -416,7 +444,9 @@ description: "Manage sending domains, which are used to indicate who an email is
         "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
-        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+        "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+        "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"susan.calvin"</span>
       </span>}</span>,
       "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       "<span class="hljs-attribute">is_default_bounce_domain</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
@@ -431,7 +461,8 @@ description: "Manage sending domains, which are used to indicate who an email is
         "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
         "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
         "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
-        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+        "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+        "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
       </span>}</span>,
       "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       "<span class="hljs-attribute">is_default_bounce_domain</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
@@ -444,13 +475,14 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">tracking_domain</span>": <span class="hljs-value"><span class="hljs-string">"click.example1.com"</span></span>,
     "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-      "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
-      "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
-      "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
-      "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
+      "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+      "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+      "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+      "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
       "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
       "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
-      "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span>
+      "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+      "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
     </span>}</span>,
     "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span></span>,
@@ -514,11 +546,14 @@ description: "Manage sending domains, which are used to indicate who an email is
 <p>Including the fields <code>postmaster_at_verify</code> and/or <code>abuse_at_verify</code> in the request results in an email sent to the specified sending domain’s postmaster@ and/or abuse@ mailbox where a verification link can be clicked.</p>
 </li>
 <li>
-<p>Including the fields <code>postmaster_at_token</code> and/or <code>abuse_at_token</code> in the request initiates a check of the provided token(s) against the stored token(s) for the specified sending domain.</p>
+<p>Including the fields <code>verification_mailbox_verify</code> and <code>verification_mailbox</code> in the request results in an email sent to the specified mailbox where a verification link can be clicked.</p>
 </li>
-</ul>
-<ul>
-<li></li>
+<li>
+<p>For <code>postmaster_at_verify</code>, <code>abuse_at_verify</code> and <code>verification_mailbox_verify</code> ownership verification, if the request is made a 2nd time another email will be sent with a new verification link. If the link in the previously sent message is subsequently clicked it will not verify domain ownership. However, if the link in the most recent email is clicked it will verify domain ownership.</p>
+</li>
+<li>
+<p>Including the fields <code>verification_mailbox_token</code> and/or <code>postmaster_at_token</code> and/or <code>abuse_at_token</code> in the request initiates a check of the provided token(s) against the stored token(s) for the specified sending domain.</p>
+</li>
 </ul>
 <p><strong>DKIM</strong> public key verification requires the following:</p>
 <ul>
@@ -638,7 +673,8 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
     "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
-    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Verify CNAME</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">cname_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
@@ -654,7 +690,8 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"pending"</span></span>,
     "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
-    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Initiate postmaster@ email</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">postmaster_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
@@ -667,7 +704,8 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
-    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Verify postmaster@ correct token</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">postmaster_at_token</span>": <span class="hljs-value"><span class="hljs-string">"rcayptmrczdnrnqfsxyrzljmtsxvjzxb"</span>
@@ -680,8 +718,68 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
-    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Initiate anyone@ email</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">verification_mailbox_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"susan.calvin"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"susan.calvin"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Verify anyone@ correct token</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">verification_mailbox_token</span>": <span class="hljs-value"><span class="hljs-string">"bxzjvxstmjlzryxsfqnrndzcrmtpyacr"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ownership_verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">spf_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">dkim_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"susan.calvin"</span>
+  </span>}
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Initiate anyone@ email without verification_mailbox</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">verification_mailbox_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"required field is missing"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"verification_mailbox field required to verify mailbox"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1400"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Initiate anyone@ email with verification_mailbox set to postmaster</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">verification_mailbox_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"postmaster"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 422)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"invalid data format/type"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"verification_mailbox field cannot be 'postmaster' or 'abuse'"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1300"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Initiate anyone@ email for sending domain with a DMARC policy</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">verification_mailbox_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+  "<span class="hljs-attribute">verification_mailbox</span>": <span class="hljs-value"><span class="hljs-string">"denis.ritchie"</span>
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Domain not allowed"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Verification by address is not available for Sending Domains with a DMARC policy"</span></span>,
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"7003"</span>
+    </span>}
+  ]
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Verify abuse@ incorrect token</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">abuse_at_token</span>": <span class="hljs-value"><span class="hljs-string">"AN_INCORRECT_OR_EXPIRED_TOKEN"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
@@ -693,7 +791,8 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">mx_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
     "<span class="hljs-attribute">abuse_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
-    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
+    "<span class="hljs-attribute">postmaster_at_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span></span>,
+    "<span class="hljs-attribute">verification_mailbox_status</span>": <span class="hljs-value"><span class="hljs-string">"unverified"</span>
   </span>}
 </span>}</pre></div></div><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request: Unable to process abuse@ request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/sending-domains/<span class="hljs-attribute" title="domain">example1.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">abuse_at_verify</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
