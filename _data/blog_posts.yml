@@ -1,19 +1,19 @@
+- title: "Email Events On Your Terms: Webhooks, Databases, AWS, and more!"
+  url: https://www.sparkpost.com/blog/webhooks-databases-aws/
+  order: 1
+
+- title: "What GoT’s Casterly Rock Can Tell SaaS About Email Security"
+  url: https://www.sparkpost.com/blog/saas-phishing-email-security/
+  order: 2
+
 - title: "Calm your Suppression List Anxieties with Python"
   url: https://www.sparkpost.com/blog/suppression-list-python/
-  order: 1
+  order: 3
 
 - title: "Archiving Emails: A How-To Guide for Tracking Sent Mail"
   url: https://www.sparkpost.com/blog/archiving-emails/
-  order: 2
+  order: 4
 
 - title: "Getting Started with SparkPost in Java"
   url: https://www.sparkpost.com/blog/sparkpost-in-java/
-  order: 3
-
-- title: "Getting Started with C# and SparkPost"
-  url: https://www.sparkpost.com/blog/csharp-and-sparkpost/
-  order: 4
-
-- title: "A Guide to Using SparkPost with Node.js"
-  url: https://www.sparkpost.com/blog/guide-using-sparkpost-node-js/
   order: 5
