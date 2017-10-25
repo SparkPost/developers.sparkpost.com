@@ -101,8 +101,7 @@ sparky.Transmissions.Send(transmission);
           <p>
             Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
           </p>
-          {% assign events = site.data.events | where:"type", "future" | sort: 'date_start' %}
-          {% if events.size > 0 %}
+         
           <div id="list-events">
             <h4><a href="https://devintersection.com">DEVintersection</a></h4>
             <p>
