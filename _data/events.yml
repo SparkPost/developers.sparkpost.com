@@ -27,14 +27,14 @@
   location: Las Vegas, NV
 
 - name: "LAUNCHScale"
-  type: future
+  type: past
   url: http://www.launchscale.net/agenda/
   date_start: 2017-10-17
   date_end: 2017-10-18
   location: San Francisco, CA
 
 - name: "CalHacks"
-  type: future
+  type: past
   url: https://calhacks.io/
   date_start: 2017-10-06
   date_end: 2017-10-08
