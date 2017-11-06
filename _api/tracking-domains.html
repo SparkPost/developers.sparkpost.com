@@ -37,7 +37,7 @@ description: "Manage tracking domains, which are used to wrap links in engagemen
 <tr>
 <td>port</td>
 <td>integer</td>
-<td>Determines the port to be used when constructing the tracking URL</td>
+<td>Determines the port to be used when constructing the tracking URL (This value is not configurable by SparkPost customers.)</td>
 <td>no</td>
 <td>Example: <code>8080</code></td>
 </tr>
@@ -46,7 +46,7 @@ description: "Manage tracking domains, which are used to wrap links in engagemen
 <td>boolean</td>
 <td>Should the tracking URL should use https?</td>
 <td>no</td>
-<td>If <code>false</code> (the default), http will be used.<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> customers may set <code>&quot;secure&quot;: true</code> to use https</td>
+<td>If <code>false</code> (the default), http will be used.<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"></span></a></td>
 </tr>
 <tr>
 <td>default</td>
@@ -151,7 +151,7 @@ description: "Manage tracking domains, which are used to wrap links in engagemen
 </tbody>
 </table>
 </div><div class="resource searchable"><h3 id="tracking-domains-create-and-list" class="resource-heading">Create and List <a href="#tracking-domains-create-and-list" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="tracking-domains-create-and-list-post" class="action-heading"><div class="name">Create a Tracking Domain</div></h4><div class="method">POST<code class="uri">/api/v1/tracking-domains</code></div><div class="markdown"><p>Create a tracking domain. A tracking domain cannot be set as the default until it is verified.</p>
-<div class="alert alert-info"><strong>Note</strong>: For SparkPost customers, only the domain is required in the POST request body. The values for <tt>port</tt> (80) and <tt>secure</tt> (false) are not configurable.</div></div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/tracking-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
+<div class="alert alert-info"><strong>Note</strong>: The value for <tt>port</tt> is not configurable by SparkPost customers. <tt>port</tt> will be 80 for Non-Secure and 443 for Secure.</div></div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/tracking-domains</code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"example.domain.com"</span></span>,
   "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>,
   "<span class="hljs-attribute">secure</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
@@ -276,7 +276,7 @@ description: "Manage tracking domains, which are used to wrap links in engagemen
 <em>Example: example.domain.com</em></td></tr></table></div><div class="markdown"><p>Update the attributes of an existing tracking domain.  A tracking domain cannot be
 set as the default until it is verified.  If a tracking domain is set to the default,
 and there is already a default domain, the default is changed.</p>
-<div class="alert alert-info"><strong>Note</strong>: For SparkPost customers, <tt>port</tt> (80) and <tt>secure</tt> (false) cannot be updated since they are not configurable.</div></div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/tracking-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
+<div class="alert alert-info"><strong>Note</strong>: <tt>port</tt> is not configurable by SparkPost customers.</div></div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/tracking-domains/<span class="hljs-attribute" title="domain">example.domain.com</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">port</span>": <span class="hljs-value"><span class="hljs-number">80</span></span>,
   "<span class="hljs-attribute">secure</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
   "<span class="hljs-attribute">default</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
@@ -311,11 +311,11 @@ and there is already a default domain, the default is changed.</p>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="tracking-domains-verify" class="resource-heading">Verify <a href="#tracking-domains-verify" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action post"><h4 id="tracking-domains-verify-post" class="action-heading"><div class="name">Verify a Tracking Domain</div></h4><div class="method">POST<code class="uri">/api/v1/tracking-domains/{domain}/verify</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">domain</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>domain name</p>
-<em>Example: example.domain.com</em></td></tr></table></div><div class="markdown"><p>Initiate a check against the CNAME DNS record for the specified tracking domain. The domain’s <code>status</code> object is returned on success.</p>
+<em>Example: example.domain.com</em></td></tr></table></div><div class="markdown"><p>Initiate a check against the configured redirect for the specified tracking domain. The domain’s <code>status</code> object is returned on success.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/tracking-domains/<span class="hljs-attribute" title="domain">example.domain.com</span>/verify</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><h5>Response Headers</h5><div class="headers"><ul><li><strong>Content-Type: </strong>application/json; charset=utf-8</li></ul></div><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">verified</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
-    "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span></span>,
+    "<span class="hljs-attribute">cname_status</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
     "<span class="hljs-attribute">compliance_status</span>": <span class="hljs-value"><span class="hljs-string">"valid"</span>
   </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
@@ -324,6 +324,14 @@ and there is already a default domain, the default is changed.</p>
       "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1600"</span></span>,
       "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"resource not found"</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Resource not found: example.domain.com"</span>
+    </span>}
+  ]
+</span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
+  "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"1404"</span></span>,
+      "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"request to remote endpoint failed"</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Unable to reach http://test.messagesystems.com:80. Please verify that your redirect is functioning."</span>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div></section></div></div></div>
