@@ -5,8 +5,7 @@ We believe our mission is best served in an environment that is friendly, safe, 
 #tl;dr
 * Be actively kind.
 * We're here to help:
-Mary Thengvall: @mary_grace
-Aydrian Howard: @aydrian
+Avi Goldman: @agoldman
 Ewan Dennis: @edennis-sp
 * Abusive behavior is never tolerated.
 * Data published to SparkPost Community is hosted at the discretion of the administrators, and may be removed.
