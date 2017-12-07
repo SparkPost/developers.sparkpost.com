@@ -71,6 +71,20 @@ to produce recipient specific email messages.  The Templates API provides the me
 <td>no</td>
 <td>Defaults to <code>false</code>.  Only available to templates  belonging to a master account.</td>
 </tr>
+<tr>
+<td>has_draft</td>
+<td style="text-align:center">boolean</td>
+<td>Whether the template has a draft version</td>
+<td>read-only</td>
+<td></td>
+</tr>
+<tr>
+<td>has_published</td>
+<td style="text-align:center">boolean</td>
+<td>Whether the template has a published version</td>
+<td>read-only</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h3 id="header-content-attributes">Content Attributes <a class="permalink" href="#header-content-attributes" aria-hidden="true">¶</a></h3>
@@ -395,6 +409,12 @@ necessary.</p>
 <li>
 <p>last_update_time: The time the template was last updated.</p>
 </li>
+<li>
+<p>has_draft: flag indicating whether the template has a draft version.</p>
+</li>
+<li>
+<p>has_published: flag indicating whether the template has a published version.</p>
+</li>
 </ul>
 <p>Additional, templates owned by the Master subaccount will have the following field:</p>
 <ul>
@@ -407,6 +427,8 @@ necessary.</p>
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
       "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">has_draft</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">has_published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">last_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-08-11T12:12:12+00:00"</span></span>,
       "<span class="hljs-attribute">shared_with_subaccount</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
     </span>},
@@ -415,6 +437,8 @@ necessary.</p>
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"daily"</span></span>,
       "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">has_draft</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">has_published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">last_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-08-10T14:15:16+00:00"</span></span>,
       "<span class="hljs-attribute">shared_with_subaccount</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}
@@ -451,6 +475,8 @@ necessary.</p>
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Fall Sale!"</span></span>,
       "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">has_draft</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">has_published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">last_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-08-10T14:15:16+00:00"</span></span>,
       "<span class="hljs-attribute">shared_with_subaccount</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
     </span>},
@@ -459,6 +485,8 @@ necessary.</p>
       "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"weekly"</span></span>,
       "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
       "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">has_draft</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">has_published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
       "<span class="hljs-attribute">last_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2017-08-08T16:15:26+00:00"</span></span>,
       "<span class="hljs-attribute">shared_with_subaccount</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
     </span>}
@@ -476,6 +504,8 @@ template.</p>
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"summer_sale"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Summer Sale!"</span></span>,
     "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">has_draft</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">has_published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">shared_with_subaccounts</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">last_update_time</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-22T15:12:59+00:00"</span></span>,
