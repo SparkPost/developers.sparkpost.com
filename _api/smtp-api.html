@@ -38,7 +38,7 @@ description: "Use the X-MSYS-API header to customize options for messages sent v
     <span class="hljs-string">"transactional"</span>: false,
     <span class="hljs-string">"sandbox"</span>: false,
     <span class="hljs-string">"skip_suppression"</span>: false,
-    <span class="hljs-string">"ip_pool"</span>: <span class="hljs-string">"sp_shared"</span>,
+    <span class="hljs-string">"ip_pool"</span>: <span class="hljs-string">"my_ip_pool"</span>,
     <span class="hljs-string">"inline_css"</span>: false
   }
 }</code></pre>
@@ -156,7 +156,7 @@ description: "Use the X-MSYS-API header to customize options for messages sent v
 <tr>
 <td>ip_pool</td>
 <td>string</td>
-<td>The ID of a dedicated IP pool associated with your account.  If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of “sp_shared”.</td>
+<td>The ID of a dedicated IP pool associated with your account.  If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).</td>
 <td>no</td>
 <td><span class="label label-primary"><strong>SparkPost</strong></span> For more information on dedicated IPs, see the <a href="https://support.sparkpost.com/customer/en/portal/articles/2002977-dedicated-ip-addresses">Support Center</a></td>
 </tr>

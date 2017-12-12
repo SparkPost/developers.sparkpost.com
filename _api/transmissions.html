@@ -184,7 +184,7 @@ description: "Use the transmissions API to send a batch of messages through Spar
 <tr>
 <td>ip_pool</td>
 <td style="text-align:center">string</td>
-<td>The ID of a dedicated IP pool associated with your account. If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).  To explicitly bypass the account’s default dedicated IP pool and instead fallback to the shared pool, specify a value of <code>sp_shared</code>.</td>
+<td>The ID of a dedicated IP pool associated with your account. If this field is not provided, the account’s default dedicated IP pool is used (if there are IPs assigned to it).</td>
 <td>no</td>
 <td><span class="label label-primary"><strong>SparkPost</strong></span> accounts may use IP pools. For more information on dedicated IPs, see the <a href="https://support.sparkpost.com/customer/en/portal/articles/2002977-dedicated-ip-addresses">Support Center</a></td>
 </tr>
@@ -508,7 +508,7 @@ necessary.</p>
     "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">sandbox</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"sp_shared"</span></span>,
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"my_ip_pool"</span></span>,
     "<span class="hljs-attribute">inline_css</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}</span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
@@ -656,7 +656,7 @@ necessary.</p>
     "<span class="hljs-attribute">click_tracking</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">transactional</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">sandbox</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
-    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"sp_shared"</span></span>,
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"my_ip_pool"</span></span>,
     "<span class="hljs-attribute">inline_css</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}</span>,
   "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"Christmas Campaign Email"</span></span>,
