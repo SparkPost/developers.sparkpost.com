@@ -2,153 +2,120 @@
 layout: default
 ---
 <div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-        <p><img src="{{ "/images/logo-sparkpost.png" | prepend: site.baseurl }}" alt="SparkPost" width="270" /></p>
-        <h1>SparkPost & C#</h1>
-        <p>Email isn’t as simple as it looks, but it doesn’t have to be difficult. Here at SparkPost we take care of making sure your messages get delivered on-time and to the inbox, and provide you with APIs that make it easy to integrate email messaging into your applications.</p>
-        <p><a class="btn btn-xlg btn-primary mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Try for free</a> <br><a class="btn btn-link btn-link-dark-bg" href="https://www.sparkpost.com/pricing"><small>View pricing</small></a></p>
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+            <p><img src="{{ "/images/logo-sparkpost.png" | prepend: site.baseurl }}" alt="SparkPost" width="270" /></p>
+            <h1>SparkPost & C#</h1>
+            <p>Email isn’t as simple as it looks, but it doesn’t have to be difficult. Here at SparkPost we take care of making sure your messages get delivered on-time and to the inbox, and provide you with APIs that make it easy to integrate email messaging into your applications.</p>
+            <p><a class="btn btn-xlg btn-primary mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Try for free</a> <br><a class="btn btn-link btn-link-dark-bg" href="https://www.sparkpost.com/pricing"><small>View pricing</small></a></p>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
-
 <div class="container-fluid">
-  <div class="row row-code-examples">
-    <div class="container">
-      <div class="col-xs-12">
-
-        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-          <div class="page-header page-header-code-examples">
-            <h1 class="text-center">Simplify Email Sending With C#</h1>
-            <p class="text-center">
-              Add email to your application faster with Sparkpost. <a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab our C# client library, and get started quickly.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-xs-12 hidden-xs">
-          <div id="code-examples" class="code-examples">
-            <ul class="nav nav-pills">
-              <li role="presentation" class="active"><a href="#csharpExample" data-toggle="pill" aria-controls="csharpExample" data-mp-language="CSharp"><i class="devicon devicon-csharp-plain"></i> C#</a></li>
-            </ul>
-            <div id="code-examples" class="tab-content">
-              <div class="tab-pane active" id="csharpExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/csharp"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
-{% highlight csharp startinline %}
-// Maintained by community member Darren Cauthon, endorsed by SparkPost
-using SparkPost;
-
-var transmission = new Transmission();
-transmission.Content.From.Email = "testing@sparkpostbox.com";
-transmission.Content.Subject = "Oh hey!";
-transmission.Content.Text = "Testing SparkPost - the world\'s most awesomest email service!";
-transmission.Content.Html = "<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>";
-
-var recipient = new Recipient
-{
-  Address = new Address { Email = "developers+csharp@sparkpost.com" }
-};
-transmission.Recipients.Add(recipient);
-
-var sparky = new Client("<YOUR API KEY>");
-sparky.Transmissions.Send(transmission);
-{% endhighlight %}
-              </div>
+   <div class="row row-code-examples">
+      <div class="container">
+         <div class="col-xs-12">
+            <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+               <div class="page-header page-header-code-examples">
+                  <h1 class="text-center">Simplify Email Sending With C#</h1>
+                  <p class="text-center">
+                     Add email to your application faster with Sparkpost. <a class="mp-signup" href="https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab our C# client library, and get started quickly.
+                  </p>
+               </div>
             </div>
-          </div>
-        </div>
+            <div class="col-xs-12 hidden-xs">
+               <div id="code-examples" class="code-examples">
+                  <ul class="nav nav-pills">
+                     <li role="presentation" class="active"><a href="#csharpExample" data-toggle="pill" aria-controls="csharpExample" data-mp-language="CSharp"><i class="devicon devicon-csharp-plain"></i> C#</a></li>
+                  </ul>
+                  <div id="code-examples" class="tab-content">
+                     <div class="tab-pane active" id="csharpExample">
+                        <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/csharp"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                        {% highlight csharp startinline %}
+                        // Maintained by community member Darren Cauthon, endorsed by SparkPost
+                        using SparkPost;
+                        var transmission = new Transmission();
+                        transmission.Content.From.Email = "testing@sparkpostbox.com";
+                        transmission.Content.Subject = "Oh hey!";
+                        transmission.Content.Text = "Testing SparkPost - the world\'s most awesomest email service!";
+                        transmission.Content.Html = "
+                        <html>
+                           <body>
+                              <p>Testing SparkPost - the world\'s most awesomest email service!</p>
+                           </body>
+                        </html>
+                        ";
+                        var recipient = new Recipient
+                        {
+                        Address = new Address { Email = "developers+csharp@sparkpost.com" }
+                        };
+                        transmission.Recipients.Add(recipient);
+                        var sparky = new Client("
+                        <YOUR API KEY>
+                        ");
+                        sparky.Transmissions.Send(transmission);
+                        {% endhighlight %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
-
 <div class="container-fluid">
-  <div class="row row-light">
-    <div class="container">
-      <div class="col-xs-12">
-
-        <div class="col-xs-12 col-sm-6">
-          <h3>Client Library</h3>
-          <p>Our C# client library is easily installed using NuGet:</p>
-
-<p><blockquote>PM> Install-Package SparkPost</blockquote></p>
-
-<p>See it on GitHub at <a href="https://github.com/SparkPost/csharp">https://github.com/SparkPost/csharp</a>.</p>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-6">
-          <h3>Blog Posts</h3>
-          <p>Learn more about sending mail with C# and SparkPost:</p>
-          <ul id="list-posts">
-            <li><a href="https://www.sparkpost.com/blog/csharp-and-sparkpost/">Getting Started with C# and SparkPost</a></li>
-			<li><a href="https://www.sparkpost.com/blog/sparkpost-templates-csharp/">Using Templates with C# and SparkPost</a></li>
-			<li><a href="https://www.sparkpost.com/blog/metrics-api-csharp/">Using the SparkPost Metrics API with C#</a></li>
-			<li><a href="https://www.sparkpost.com/blog/community-spotlight-c-library/">Community Spotlight: C# Library Lead Darren Cauthon</a></li>
-          </ul>
-          <p>
-            <a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a>
-          </p>
-        </div>
-
+   <div class="row row-light">
+      <div class="container">
+         <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6">
+               <h3>Client Library</h3>
+               <p>Our C# client library is easily installed using NuGet:</p>
+               <p>
+               <blockquote>PM> Install-Package SparkPost</blockquote>
+               </p>
+               <p>See it on GitHub at <a href="https://github.com/SparkPost/csharp">https://github.com/SparkPost/csharp</a>.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+               <h3>Blog Posts</h3>
+               <p>Learn more about sending mail with C# and SparkPost:</p>
+               <ul id="list-posts">
+                  <li><a href="https://www.sparkpost.com/blog/csharp-and-sparkpost/">Getting Started with C# and SparkPost</a></li>
+                  <li><a href="https://www.sparkpost.com/blog/sparkpost-templates-csharp/">Using Templates with C# and SparkPost</a></li>
+                  <li><a href="https://www.sparkpost.com/blog/metrics-api-csharp/">Using the SparkPost Metrics API with C#</a></li>
+                  <li><a href="https://www.sparkpost.com/blog/community-spotlight-c-library/">Community Spotlight: C# Library Lead Darren Cauthon</a></li>
+                  <li><a href="https://www.sparkpost.com/blog/azure-functions/">How To Create A Basic Webhook Consumer With Azure Functions</a></li>
+               </ul>
+               <p>
+                  <a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a>
+               </p>
+            </div>
+         </div>
+         <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6">
+               <h3>Upcoming Events</h3>
+               <p>
+                  Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
+               </p>
+               <div id="list-events">
+                  <h4><a href="https://ndc-london.com/">NDC London</a></h4>
+                  <p>Jan 15 &ndash; Jan 19
+                     <br>
+                     London, UK
+                  </p>
+               </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+               <h3>Samples</h3>
+               <p>
+                  Samples you can use to get started sending email with C# and SparkPost:
+               </p>
+               <ul id="list-samples">
+                  <li><a href="https://github.com/SparkPost/azure-csharp-webhook-sample">A .NET Core sample that receives and processes SparkPost webhook events in C#.</a></li>
+               </ul>
+            </div>
+         </div>
       </div>
-
-      <div class="col-xs-12">
-
-        <div class="col-xs-12 col-sm-6">
-          <h3>Upcoming Events</h3>
-          <p>
-            Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these upcoming events.
-          </p>
-         
-          <div id="list-events">
-            <h4><a href="https://devintersection.com">DEVintersection</a></h4>
-            <p>
-              Oct 31
-              
-                &ndash;
-                
-                
-                
-                  Nov  1
-                
-              <br>
-              Las Vegas, NV
-            </p>
-            
-            <h4><a href="https://live360events.com/events/orlando-2017/home.aspx">Live 360!</a></h4>
-            <p>
-              Nov 14
-              
-                &ndash;
-                
-                
-                
-                  16
-                
-              <br>
-              Orlando, FL
-            </p>
-            
-           
-        </div>
-		</div>
-
-        <div class="col-xs-12 col-sm-6">
-          <h3>Samples</h3>
-          <p>
-            Samples you can use to get started sending email with C# and SparkPost:
-          </p>
-          <ul id="list-samples">
-            <li><a href="https://github.com/SparkPost/azure-csharp-webhook-sample">A .NET Core sample that receives and processes SparkPost webhook events in C#.</a></li>
-          </ul>
-          
-        </div>
-
-      </div>
-    </div>
-
-  </div>
+   </div>
 </div>
