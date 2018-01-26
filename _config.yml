@@ -13,7 +13,6 @@ twitter_username: SparkPostDev
 github_username:  SparkPost
 facebook_username: SparkPost
 facebook_app_id: 1078423545531734
-mixpanel_token: 0c8d92f4bd11446215bd4e7cb7639933
 relay_webhook_consumer_url_base: "https://relay-webhook-consumer.herokuapp.com"
 
 collections:
