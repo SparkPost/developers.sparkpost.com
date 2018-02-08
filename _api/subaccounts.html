@@ -152,8 +152,8 @@ Subaccounts are a way for service providers to provision and manage their custom
 <td>ip_pool</td>
 <td>no</td>
 <td>string</td>
-<td>The ID of the default IP Pool assigned to this subaccount’s transmissions</td>
-<td>If the supplied <code>ip_pool</code> is an empty string or not present, no default <code>ip_pool</code> will be assigned<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> customers: IPs are managed through your TAM.</td>
+<td>The ID of an IP Pool in which to restrict this subaccount’s mail deliveries.</td>
+<td>If the supplied <code>ip_pool</code> is an empty string or not present, this subaccount may use any of the account’s IP Pools.<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> customers: please consult with your TAM on IP management.</td>
 </tr>
 <tr>
 <td>setup_api_key</td>
@@ -276,8 +276,8 @@ Subaccounts are a way for service providers to provision and manage their custom
 <td>ip_pool</td>
 <td>no</td>
 <td>string</td>
-<td>The ID of the default IP Pool assigned to this subaccount’s transmissions</td>
-<td>If the supplied <code>ip_pool</code> is an empty string, it will clear any currently specified <code>ip_pool</code></td>
+<td>The ID of an IP Pool in which to restrict this subaccount’s mail deliveries.</td>
+<td>If the supplied <code>ip_pool</code> is an empty string or not present, this subaccount may use any of the account’s IP Pools.<br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> customers: please consult with your TAM on IP management.</td>
 </tr>
 </tbody>
 </table>
