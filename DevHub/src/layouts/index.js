@@ -4,9 +4,15 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
 // import './index.css'
-import './grid.css'
+import './global-styles.css'
 import Header from '../components/header'
 import Footer from '../components/footer'
+
+import {injectGlobal} from 'styled-components'
+
+injectGlobal`
+  @import 'https://cloud.typography.com/6240112/779488/css/fonts.css'
+`
 
 const TemplateWrapper = ({ children }) => (
   <div>
