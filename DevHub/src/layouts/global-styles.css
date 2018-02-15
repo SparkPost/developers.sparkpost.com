@@ -1,0 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica', sans-serif;
+}
