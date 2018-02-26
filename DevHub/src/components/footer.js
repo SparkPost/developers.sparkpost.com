@@ -35,7 +35,7 @@ const SubmitButton = styled.div`
 `;
 
 export default () => (
-  <footer style={{backgroundColor: grayscale('dark')}}>
+  <footer style={{backgroundColor: grayscale('dark'), color: grayscale('white'), padding: '38px 0 62px'}}>
     <Container>
       <Row>
         <Column w="2">

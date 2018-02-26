@@ -20,15 +20,15 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
-	padding: 38px 0 62px;
-    color: #fff;
     font-size: 14px;
     display: flex;
     flex-flow: row wrap;
+    width: 100%;
 `;
 
 const Column = styled.div`
 	width: ${props => (props.w / 12 * 100)}%;
+    padding: 0 15px;
 `;
 
 export {Container, Row, Column}
