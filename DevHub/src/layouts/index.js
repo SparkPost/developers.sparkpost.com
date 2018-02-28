@@ -5,8 +5,8 @@ import Helmet from 'react-helmet'
 
 // import './index.css'
 import './global-styles.css'
-import Header from '../components/header'
-import Footer from '../components/footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 import {injectGlobal} from 'styled-components'
 
@@ -23,7 +23,6 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'SparkPost' },
       ]}
     />
-    <Header />
     {children()}
     <Footer />
   </div>

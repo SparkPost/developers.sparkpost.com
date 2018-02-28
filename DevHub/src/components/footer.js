@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {color, grayscale} from '../utils/colors'
-import {Container, Row, Column} from '../utils/grid'
+import {Container, Row, Column} from '../components/Grid'
 
 const ColumnHeader = styled.p`
   font-weight: 600;
