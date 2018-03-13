@@ -1,6 +1,12 @@
+import React from 'React'
 import styled from 'styled-components'
 
-const Container = styled.div`
+const ContainerOuter = styled.div`
+    padding: 24px;
+    ${props => props.background && 'background-color: ' + props.background + ';'}
+`;
+
+const ContainerInner = styled.div`
 	margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -18,6 +24,14 @@ const Container = styled.div`
         width: 1170px;
     }
 `;
+
+const Container = (props) => (
+    <ContainerOuter background={props.background}>
+        <ContainerInner>
+            {props.children}
+        </ContainerInner>
+    </ContainerOuter>
+)
 
 const Row = styled.div`
     font-size: 14px;

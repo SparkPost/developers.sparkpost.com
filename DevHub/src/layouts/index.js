@@ -14,8 +14,9 @@ injectGlobal`
   @import 'https://cloud.typography.com/6240112/779488/css/fonts.css'
 `
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = ({ children, location }) => (
   <div>
+    <Header path={location.pathname} />
     <Helmet
       title="SparkPost Developer"
       meta={[
