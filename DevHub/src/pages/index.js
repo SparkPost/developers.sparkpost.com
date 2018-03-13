@@ -6,6 +6,7 @@ import {color, grayscale} from '../utils/colors'
 import Card from '../components/Card'
 import ClientLibrary from '../components/ClientLibrary'
 import Event from '../components/Event'
+import BlogPost from '../components/BlogPost'
 
 const Title = styled.h1`
 	text-align: center;
@@ -14,6 +15,7 @@ const Title = styled.h1`
 const Subtitle = styled.p`
 	text-align: center;
 	${props => props.dark && 'color: white;'}
+	margin-bottom: 36px;
 `;
 
 const SectionTitle = styled.h2`
@@ -23,7 +25,7 @@ const SectionTitle = styled.h2`
 
 const IndexPage = () => (
 	<div>
-		<Container style={{backgroundColor: grayscale('light')}}>
+		<Container background={grayscale('light')}>
 			<Title>SparkPost Developers</Title>
 			<Subtitle>Fast, flexible email integration for websites or applications big and small</Subtitle>
 			<Row>
@@ -96,7 +98,7 @@ const IndexPage = () => (
 				<Column w="1"></Column>
 			</Row>
 		</Container>
-		<Container style={{backgroundColor: grayscale('dark')}}>
+		<Container background={grayscale('dark')}>
 			<SectionTitle dark>Dev Events</SectionTitle>
 			<Subtitle dark>Whether you're using SparkPost or want to know more about us, we would love to meet you in person! Come say hi to the SparkPost team at one of these events.</Subtitle>
 			<Row>
@@ -113,6 +115,26 @@ const IndexPage = () => (
 					<Event />
 				</Column>
 				<Column w="2"></Column>
+			</Row>
+		</Container>
+		<Container background={grayscale('light')}>
+			<SectionTitle>Engineering Blog</SectionTitle>
+			<Row>
+				<Column w="1"></Column>
+				<Column w="10">
+					<Row>
+						<Column w="4">
+							<BlogPost />
+						</Column>
+						<Column w="4">
+							<BlogPost />
+						</Column>
+						<Column w="4">
+							<BlogPost />
+						</Column>
+					</Row>
+				</Column>
+				<Column w="1"></Column>
 			</Row>
 		</Container>
 	</div>
