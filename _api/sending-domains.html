@@ -115,7 +115,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td style="text-align:center">string</td>
 <td>Signing Domain Identifier (SDID)</td>
 <td>no</td>
-<td>This will be used in the <code>d=</code> field of the DKIM Signature. If <code>signing_domain</code> is not specified, or is set to the empty string (&quot;&quot;), then the Sending Domain will be used as the signing domain.<br>By default, SparkPost uses the Sending Domain as the signing domain. <br><br>Only available in <span class="label label-warning"><strong>Enterprise</strong></span></td>
+<td>This will be used in the <code>d=</code> field of the DKIM Signature. If <code>signing_domain</code> is not specified, or is set to the empty string (&quot;&quot;), then the Sending Domain will be used as the signing domain.<br>By default, SparkPost uses the Sending Domain as the signing domain. <br><br>Only writable in <span class="label label-warning"><strong>Enterprise</strong></span></td>
 </tr>
 <tr>
 <td>private</td>
@@ -374,7 +374,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
       "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
-      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
       "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
     </span>}
   </span>}
@@ -402,7 +402,7 @@ description: "Manage sending domains, which are used to indicate who an email is
     "<span class="hljs-attribute">dkim</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-string">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB"</span></span>,
       "<span class="hljs-attribute">selector</span>": <span class="hljs-value"><span class="hljs-string">"scph0316"</span></span>,
-      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+      "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"example1.com"</span></span>,
       "<span class="hljs-attribute">headers</span>": <span class="hljs-value"><span class="hljs-string">"from:to:subject:date"</span>
     </span>}
   </span>}
