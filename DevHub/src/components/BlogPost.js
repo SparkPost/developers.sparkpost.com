@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
 	background-color: white;
 	text-align: center;
+	height: 100%;
 `;
 
 const Image = styled.div`
@@ -14,7 +15,6 @@ const Image = styled.div`
 
 const Text = styled.div`
 	padding: 0 24px;
-	height: 300px;
 `;
 
 const ByLine = styled.p`
