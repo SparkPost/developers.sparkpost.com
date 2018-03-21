@@ -13,6 +13,7 @@ const CodeBlock = styled.code`
 	display: block;
 	background-color: white;
 	padding: 8px;
+	font-family: 'Monaco';
 `;
 
 const SectionTitle = styled.h3`
