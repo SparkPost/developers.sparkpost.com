@@ -26,7 +26,7 @@ const ContainerInner = styled.div`
 `;
 
 const Container = (props) => (
-    <ContainerOuter background={props.background}>
+    <ContainerOuter className={props.className} background={props.background}>
         <ContainerInner>
             {props.children}
         </ContainerInner>
