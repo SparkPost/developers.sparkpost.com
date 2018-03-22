@@ -51,7 +51,7 @@ export default () => (
   <Footer>
     <Container>
       <Row>
-        <Column w="2">
+        <Column md="2">
           <ColumnHeader uppercase>About</ColumnHeader>
           <ColumnList>
             <MenuItem>About Us</MenuItem>
@@ -62,14 +62,14 @@ export default () => (
             <MenuItem>Press</MenuItem>
           </ColumnList>
         </Column>
-        <Column w="2">
+        <Column md="2">
           <ColumnHeader uppercase>Support</ColumnHeader>
           <ColumnList>
             <MenuItem>Help &amp; Docs</MenuItem>
             <MenuItem>Report Abuse</MenuItem>
           </ColumnList>
         </Column>
-        <Column w="2">
+        <Column md="2">
           <ColumnHeader uppercase>Solutions</ColumnHeader>
           <ColumnList>
             <MenuItem>Enterprise</MenuItem>
@@ -78,8 +78,7 @@ export default () => (
             <MenuItem>Digital Publishing</MenuItem>
           </ColumnList>
         </Column>
-        <Column w="1"></Column>
-        <Column w="5">
+        <Column md="5" mdOffset="1">
           <ColumnHeader>Subscribe to our newsletter</ColumnHeader>
           <div>
             <SubscribeForm>
