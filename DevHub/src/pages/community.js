@@ -4,6 +4,11 @@ import {Container, Row, Column} from '../components/Grid'
 import Card from '../components/Card'
 import {grayscale, color} from '../utils/colors'
 
+const Header = styled(Container)`
+	padding-top: 152px;
+	padding-bottom: 48px;
+`;
+
 const Title = styled.h1`
 	text-align: center;
 	color: ${color('gray')};
@@ -38,7 +43,7 @@ const StarsCell = styled.td`
 
 export default () => (
 	<div>
-		<Container background={grayscale('light')}>
+		<Header background={grayscale('light')}>
 			<Title>Open Source Software</Title>
 			<Row>
 				<Column md="8" mdOffset="2">
@@ -57,7 +62,7 @@ export default () => (
 					</Card>
 				</Column>
 			</Row>
-		</Container>
+		</Header>
 		<Container background={grayscale('white')}>
 			<Row>
 				<Column md="8" mdOffset="2">
