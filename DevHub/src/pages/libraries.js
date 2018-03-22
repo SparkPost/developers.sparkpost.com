@@ -17,9 +17,9 @@ const CodeBlock = styled.code`
 	font-family: 'Monaco';
 `;
 
-const SectionTitle = styled.h3`
+const SectionTitle = styled.h2`
 	text-align: center;
-	${props => props.dark && 'color: white;'}
+	color: ${props => props.dark ? grayscale('white') : grayscale('dark')};
 `;
 
 export default () => (
