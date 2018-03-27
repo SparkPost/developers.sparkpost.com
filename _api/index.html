@@ -15,6 +15,7 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 <p>Features available only to SparkPost Enterprise customers are marked <strong>SparkPost Enterprise customers only</strong>.</p>
 </li>
 </ul>
+<p>In addition, SparkPost is available in multiple regions. “SparkPost” refers to the SparkPost service hosted in North America. “SparkPost EU” refers to the SparkPost service hosted in Western Europe. <a href="https://app.sparkpost.com/">SparkPost</a> and <a href="https://app.eu.sparkpost.com/">SparkPost EU</a> operate independently. An account created with SparkPost cannot be used with SparkPost EU, and vice-versa. Customers may use accounts in both regions.</p>
 <h2 id="header-api-endpoints">API Endpoints <a class="permalink" href="#header-api-endpoints" aria-hidden="true">¶</a></h2>
 <table>
 <thead>
@@ -27,6 +28,10 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 <tr>
 <td><code>https://api.sparkpost.com/api/v1</code></td>
 <td>SparkPost and SparkPost Premium</td>
+</tr>
+<tr>
+<td><code>https://api.eu.sparkpost.com/api/v1</code></td>
+<td>SparkPost EU and SparkPost Premium EU</td>
 </tr>
 <tr>
 <td><code>https://api.sparkpost.com/api/labs</code></td>
@@ -77,7 +82,7 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 <p>To authenticate with the APIs, specify the “Authorization” header with each request. The value of the Authorization header must be a valid API key or basic auth with the API key as username and an empty password.</p>
 </li>
 <li>
-<p>Administrators can <a href="https://app.sparkpost.com/account/credentials">generate an API key</a>. Please take care to record and safeguard your API keys at all times. You cannot retrieve an API key after it has been created.</p>
+<p>Administrators can <a href="https://app.sparkpost.com/account/credentials">generate an API key</a> (<a href="https://app.eu.sparkpost.com/account/credentials">EU</a>). Please take care to record and safeguard your API keys at all times. You cannot retrieve an API key after it has been created.</p>
 </li>
 <li>
 <p>For examples of supplying the Authorization header, refer to the cURL example below or any of the individual API request examples.</p>
@@ -112,7 +117,7 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 <div class="alert alert-info"><strong>Note</strong>: SparkPost Enterprise customers should contact their Technical Account Manager for SMTP details.</div>
 <ul>
 <li>
-<p>Host: <a href="http://smtp.sparkpostmail.com">smtp.sparkpostmail.com</a></p>
+<p>Host: <a href="http://smtp.sparkpostmail.com">smtp.sparkpostmail.com</a> (SparkPost) or <a href="http://smtp.eu.sparkpostmail.com">smtp.eu.sparkpostmail.com</a> (SparkPost EU)</p>
 </li>
 <li>
 <p>Port: 587 or 2525</p>
@@ -139,7 +144,7 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 </li>
 </ul>
 <div class="alert alert-info"><strong>Note</strong>: Port 2525 is provided as an alternate port for cases where port 587 is blocked (such as a Google Compute Engine environment).</div>
-<p>The SMTP relay optionally supports advanced API features using the <a href="smtp-api.html">SMTP API</a>.  To create an API key, login to your SparkPost <a href="https://app.sparkpost.com/account/credentials">Account Credentials</a> page.</p>
+<p>The SMTP relay optionally supports advanced API features using the <a href="smtp-api.html">SMTP API</a>.  To create an API key, login to your SparkPost <a href="https://app.sparkpost.com/account/credentials">Account Credentials</a> page (<a href="https://app.eu.sparkpost.com/account/credentials">EU</a>).</p>
 <h2 id="header-smtp-security">SMTP Security <a class="permalink" href="#header-smtp-security" aria-hidden="true">¶</a></h2>
 <div class="alert alert-danger"><strong>Note</strong>: Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</div>
 <p>SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.</p>

@@ -260,13 +260,6 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>CNAME verification is a pre-requisite for the domain to be used as a bounce domain.  See the <a href="#sending-domains-verify-post">verify endpoint</a>.</td>
 </tr>
 <tr>
-<td>spf_verify</td>
-<td style="text-align:center">boolean</td>
-<td>Request verification of SPF record</td>
-<td>no</td>
-<td><span class="label label-danger"><strong>Deprecated</strong></span></td>
-</tr>
-<tr>
 <td>verification_mailbox_verify</td>
 <td style="text-align:center">boolean</td>
 <td>Request an email with a verification link to be sent to a nominated mailbox on the sending domain.</td>
@@ -338,11 +331,6 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>DNS CNAME record for the registered Sending Domain</td>
 </tr>
 <tr>
-<td>spf_record</td>
-<td style="text-align:center">string</td>
-<td>DNS SPF record for the registered Sending Domain</td>
-</tr>
-<tr>
 <td>dkim_error</td>
 <td style="text-align:center">string</td>
 <td>Error message describing reason for DKIM verification failure</td>
@@ -351,11 +339,6 @@ description: "Manage sending domains, which are used to indicate who an email is
 <td>cname_error</td>
 <td style="text-align:center">string</td>
 <td>Error message describing reason for CNAME verification failure</td>
-</tr>
-<tr>
-<td>spf_error</td>
-<td style="text-align:center">string</td>
-<td>Error message describing reason for SPF verification failure</td>
 </tr>
 </tbody>
 </table>
@@ -540,7 +523,7 @@ description: "Manage sending domains, which are used to indicate who an email is
 <em>Example: example1.com</em></td></tr></table></div><div class="markdown"><p>The verify resource operates differently depending on the provided request fields:</p>
 <ul>
 <li>
-<p>Including the fields <code>dkim_verify</code>, <code>cname_verify</code>, and/or <code>spf_verify</code> in the request initiates a check against the associated DNS record type for the specified sending domain.</p>
+<p>Including the fields <code>dkim_verify</code> or <code>cname_verify</code> in the request initiates a check against the associated DNS record type for the specified sending domain.</p>
 </li>
 <li>
 <p>Including the fields <code>postmaster_at_verify</code> and/or <code>abuse_at_verify</code> in the request results in an email sent to the specified sending domain’s postmaster@ and/or abuse@ mailbox where a verification link can be clicked.</p>
@@ -587,26 +570,13 @@ description: "Manage sending domains, which are used to indicate who an email is
 </tr>
 </tbody>
 </table>
-<p><strong>SPF</strong> verification requires the following:</p>
-<div class="alert alert-warning"><strong>Note</strong>: SPF sending domain verification is deprecated. You can use DKIM, CNAME, and/or email to verify your sending domain. We recommend using DKIM since it has authentication benefits.</div>
-<ul>
-<li>
-<p>A valid SPF record must be in the DNS for the sending domain being verified.</p>
-</li>
-<li>
-<p>The record must contain <code>v=spf1</code>.</p>
-</li>
-<li>
-<p>The record must contain <code>include:sparkpostmail.com</code>.</p>
-</li>
-<li>
-<p>The record must use either <code>~all</code> or <code>-all</code>.</p>
-</li>
-</ul>
 <p><strong>CNAME</strong> verification requires the following:</p>
 <ul>
 <li>
 <p><strong>SparkPost</strong> A valid CNAME record in DNS with value <code>sparkpostmail.com</code></p>
+</li>
+<li>
+<p><strong>SparkPost EU</strong> A valid CNAME record in DNS with value <code>eu.sparkpostmail.com</code></p>
 </li>
 <li>
 <p><span class="label label-warning"><strong>Enterprise</strong></span> A valid CNAME record in DNS with value <code>&lt;public_tenant_id&gt;.mail.e.sparkpost.com</code></p>

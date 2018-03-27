@@ -8,8 +8,9 @@ description: "Manage inbound domains, which enable you to customize the address 
 Inbound domains are used in conjunction with Relay Webhooks.
 You can have multiple inbound domains but each domain must be globally unique.</p>
 <p>Before you can use your inbound domain (e.g. <code>inbounddomain.test.com</code>),
-you will need to add MX records to your DNS settings.
-The following DNS settings are for all plans <strong>except SparkPost Enterprise:</strong></p>
+you will need to add MX records to your DNS settings. The DNS settings required
+depend on whether you are a SparkPost, SparkPost EU or SparkPost Enterprise customer.</p>
+<p>The following DNS settings are for SparkPost:</p>
 <table>
 <thead>
 <tr>
@@ -36,6 +37,37 @@ The following DNS settings are for all plans <strong>except SparkPost Enterprise
 <td><code>inbounddomain.test.com</code></td>
 <td>MX</td>
 <td><a href="http://rx3.sparkpostmail.com">rx3.sparkpostmail.com</a></td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p>The following DNS settings are for SparkPost EU:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Data</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>inbounddomain.test.com</code></td>
+<td>MX</td>
+<td><a href="http://rx1.eu.sparkpostmail.com">rx1.eu.sparkpostmail.com</a></td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>inbounddomain.test.com</code></td>
+<td>MX</td>
+<td><a href="http://rx2.eu.sparkpostmail.com">rx2.eu.sparkpostmail.com</a></td>
+<td>10</td>
+</tr>
+<tr>
+<td><code>inbounddomain.test.com</code></td>
+<td>MX</td>
+<td><a href="http://rx3.eu.sparkpostmail.com">rx3.eu.sparkpostmail.com</a></td>
 <td>10</td>
 </tr>
 </tbody>
