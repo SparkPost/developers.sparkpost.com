@@ -16,9 +16,9 @@ const Title = styled.h1`
 const Subtitle = styled.p`
   text-align: center;
   color: ${props => (props.dark ? grayscale('white') : color('gray'))};
-  margin-bottom: 36px;
+  margin-bottom: 2rem;
   line-height: 28px;
-  font-size: 18px;
+  font-size: 1rem;
 `
 
 const SectionTitle = styled.h2`
@@ -28,7 +28,7 @@ const SectionTitle = styled.h2`
 
 const IndexPage = () => (
   <div>
-    <Container background={grayscale('light')}>
+    <Container background={'light'}>
       <Title>SparkPost Developers</Title>
       <Row>
         <Column md={8} mdOffset={2}>
@@ -96,7 +96,7 @@ const IndexPage = () => (
         </Column>
       </Row>
     </Container>
-    <Container background={grayscale('dark')}>
+    <Container background={'dark'}>
       <SectionTitle dark>Dev Events</SectionTitle>
       <Row>
         <Column md={8} mdOffset={2}>
