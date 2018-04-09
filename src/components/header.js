@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import Link from './Link'
 import styled from 'styled-components'
 import { grayscale, color } from '../utils/colors'
 import { Container, Row, Column } from './Grid'
@@ -15,22 +15,26 @@ const InnerContainer = Row.extend`
 
 const Nav = styled.nav``
 
-const NavItem = styled.span`
+const NavItem = styled(Link)`
   padding: 8px 14px;
   font-weight: 800;
   display: inline-block;
   line-height: 36px;
-  ${props => props.active && 'border-top: 4px solid ' + color('orange')};
+  color: inherit;
+  text-decoration: none;
+  ${props => props.active && `border-top: 4px solid ${color('orange')}`};
 `
 
 const SecondaryNav = styled.div`
   text-align: right;
 `
 
-const SecondaryNavItem = styled.span`
+const SecondaryNavItem = styled(Link)`
   padding: 8px 14px;
   display: inline-block;
   line-height: 36px;
+  color: inherit;
+  text-decoration: none;
 `
 
 export default ({ path }) => (
