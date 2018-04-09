@@ -1,5 +1,6 @@
-import React from 'React'
+import React from 'react'
 import styled from 'styled-components'
+import { grayscale } from '../utils/colors'
 
 const ContainerOuter = styled.div`
   padding: 24px;
@@ -25,9 +26,9 @@ const ContainerInner = styled.div`
   }
 `
 
-const Container = props => (
-  <ContainerOuter className={props.className} background={props.background}>
-    <ContainerInner>{props.children}</ContainerInner>
+const Container = ({ background, children, ...props }) => (
+  <ContainerOuter {...props} background={grayscale(background)}>
+    <ContainerInner>{children}</ContainerInner>
   </ContainerOuter>
 )
 
