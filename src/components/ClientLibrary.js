@@ -1,9 +1,8 @@
 import React from 'React'
-//import Img from 'gatsby-image'
-import Styled from 'styled-components'
+import styled from 'styled-components'
 import { grayscale } from '../utils/colors'
 
-const Wrapper = Styled.div`
+const Wrapper = styled.div`
 	border: 1px solid ${grayscale('light')};
 	height: 75px;
 	padding: 8px 12px;
