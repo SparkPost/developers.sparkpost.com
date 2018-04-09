@@ -8,7 +8,7 @@ import './global-styles.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-import {injectGlobal} from 'styled-components'
+import { injectGlobal } from 'styled-components'
 
 injectGlobal`
   @import 'https://cloud.typography.com/6240112/779488/css/fonts.css'
@@ -20,7 +20,11 @@ const TemplateWrapper = ({ children, location }) => (
     <Helmet
       title="SparkPost Developer"
       meta={[
-        { name: 'description', content: 'The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?' },
+        {
+          name: 'description',
+          content:
+            'The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?',
+        },
         { name: 'keywords', content: 'SparkPost' },
       ]}
     />

@@ -1,43 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
-import {color, grayscale} from '../utils/colors'
-import {Container, Row, Column} from '../components/Grid'
+import { color, grayscale } from '../utils/colors'
+import { Container, Row, Column } from '../components/Grid'
 
 const Footer = styled.footer`
   background-color: ${grayscale('dark')};
   color: ${grayscale('white')};
   padding: 38px 0 62px;
-`;
+`
 
 const ColumnHeader = styled.p`
   font-weight: 600;
   margin-top: 24px;
-  text-transform: ${props => props.uppercase ? 'uppercase' : 'initial'};
+  text-transform: ${props => (props.uppercase ? 'uppercase' : 'initial')};
   font-family: 'Gotham SSm A', 'Gotham SSm B', 'Helvetica', sans-serif;
   font-size: 14px;
-`;
+`
 
 const ColumnList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-`;
+`
 
 const MenuItem = styled.li`
   line-height: 1.5;
   font-size: 14px;
-`;
+`
 
 const SubscribeForm = styled.form`
   display: table;
   width: 100%;
-`;
+`
 
 const EmailInput = styled.input`
   display: table-cell;
   width: 100%;
   padding: 6px;
-`;
+`
 
 const SubmitButton = styled.div`
   display: table-cell;
@@ -45,7 +45,7 @@ const SubmitButton = styled.div`
   vertical-align: middle;
   text-transform: uppercase;
   text-align: center;
-`;
+`
 
 export default () => (
   <Footer>
