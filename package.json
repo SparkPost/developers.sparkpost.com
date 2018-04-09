@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "developers.sparkpost.com",
+  "description": "SparkPost Developer Hub",
   "version": "1.0.0",
   "author": "SparkPost <dev-relations@sparkpost.com>",
   "dependencies": {
