@@ -15,6 +15,7 @@ const Section = styled.section`
 
   ${props => props.light && css`
     background-color: ${grayscale('light')};
+    border-bottom: 1px solid ${grayscale(7)};
   `}
 `
 
