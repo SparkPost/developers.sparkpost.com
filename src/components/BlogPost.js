@@ -48,15 +48,15 @@ const ReadMore = styled(Link)`
   }
 `
 
-export default ({ date, author, authorLink, title, description, link }) => (
+export default ({ image, date, author, title, description, link }) => (
   <Wrapper>
-    <Image />
+    <Image style={{ backgroundImage: `url(${image})` }} />
     <Text>
       <ByLine>
-        {date} by <Author to={authorLink}>{author}</Author>
+        {date} by <Author to={author && author.link}>{author && author.name}</Author>
       </ByLine>
       <Title>{title}</Title>
-      <p>{description}</p>
+      <div dangerouslySetInnerHTML={{ __html: description }} />
       <ReadMore to={link}>read more <i className="fa fa-chevron-right"></i></ReadMore>
     </Text>
   </Wrapper>

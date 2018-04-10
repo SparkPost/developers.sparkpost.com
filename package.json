@@ -5,10 +5,11 @@
   "author": "SparkPost <dev-relations@sparkpost.com>",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "gatsby": "^1.9.145",
+    "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.32",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-styled-components": "^2.0.6",
+    "gatsby-source-wordpress": "^2.0.76",
     "is-absolute-url": "^2.1.0",
     "polished": "^1.9.2",
     "react-sticky": "^6.0.2",
@@ -27,6 +28,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "prettier": "^1.9.2"
   }
 }

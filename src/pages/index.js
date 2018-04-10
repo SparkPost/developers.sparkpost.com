@@ -26,7 +26,7 @@ const SectionTitle = styled.h2`
   color: ${props => (props.dark ? grayscale('white') : grayscale('dark'))};
 `
 
-const IndexPage = () => (
+const IndexPage = (props) => (
   <div>
     <Section light>
       <Container>
@@ -131,15 +131,17 @@ const IndexPage = () => (
         <Row>
           <Column md={12}>
             <Row>
-              <Column md={4}>
-                <BlogPost />
-              </Column>
-              <Column md={4}>
-                <BlogPost />
-              </Column>
-              <Column md={4}>
-                <BlogPost />
-              </Column>
+              {props.pageResources.json.data.allWordpressPost.edges.map(({ node }) => (
+                <Column md={4} key={node.title}>
+                  <BlogPost
+                    image={node.fields.media}
+                    date={node.date}
+                    author={node.author}
+                    title={node.title}
+                    description={node.excerpt}
+                    link={node.link} />
+                </Column>
+              ))}
             </Row>
           </Column>
         </Row>
@@ -149,3 +151,26 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+
+export const pageQuery = graphql`
+  query indexQuery {
+    allWordpressPost(sort: {fields: [date], order: DESC}, limit: 3) {
+      edges {
+        node {
+          fields {
+            media
+          }
+          link
+          title
+          excerpt
+          date(formatString: "MMM D, YYYY")
+          author {
+            name
+            link
+          }
+        }
+      }
+    }
+  }
+`
