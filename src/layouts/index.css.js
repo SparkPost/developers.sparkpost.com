@@ -1,10 +1,10 @@
 import { injectGlobal } from 'styled-components'
-import { grayscale } from '../utils/colors'
+import { color, grayscale } from '../utils/colors'
+import { font, weight } from '../utils/fonts'
 import normalize from 'styled-normalize'
 
-
 injectGlobal`
-  @import 'https://cloud.typography.com/6240112/779488/css/fonts.css';
+  // @import 'https://cloud.typography.com/6240112/779488/css/fonts.css';
 
   ${normalize}
 
@@ -19,7 +19,7 @@ injectGlobal`
   /** Typography */
 
   html, body {
-    font-family: 'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Helvetica', sans-serif;
+    font-family: ${font('primary')};
     font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -55,5 +55,11 @@ injectGlobal`
   p {
     font-size: .888888889rem;
     line-height: 1.5;
+  }
+
+  a {
+    transition: .15s;
+    color: ${color('blue')};
+    font-weight: ${weight('medium')};
   }
 `
