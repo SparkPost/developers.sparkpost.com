@@ -89,13 +89,12 @@ description: "Documentation for sending via SMTP or HTTP with the SparkPost API.
 </li>
 </ul>
 <h2 id="header-api-examples">API examples <a class="permalink" href="#header-api-examples" aria-hidden="true">¶</a></h2>
-<p>SparkPost Enterprise customers should make sure to change the API endpoint domain in all the example calls to the domain for their specific environment.</p>
+<p>SparkPost Enterprise and SparkPost EU customers should make sure to change the API endpoint domain in all the example calls to the domain for their specific environment.</p>
 <h2 id="header-using-postman">Using Postman <a class="permalink" href="#header-using-postman" aria-hidden="true">¶</a></h2>
 <p>If you use <a href="https://www.getpostman.com/">Postman</a> you can click the following button to import the SparkPost API as a collection:</p>
 <p><a href="https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb"><img src="https://s3.amazonaws.com/postman-static/run-button.png" alt="Run in Postman"></a></p>
 <p>In order to use most of the requests in the collection, you must define your SparkPost API key as a Postman variable called <code>API_KEY</code>.</p>
 <p>Additionally, if you are a SparkPost Enterprise or SparkPost EU customer, you must set the Postman variable <code>BASE_URL</code> to the appropriate host (e.g. <code>https://api.eu.sparkpost.com</code> for SparkPost EU). More information on setting up Postman environments and variables can be found <a href="https://www.getpostman.com/docs/v6/postman/environments_and_globals/variables">here</a>.</p>
-<div class="alert alert-info"><strong>Note</strong>: SparkPost Enterprise customers will need to change the endpoint in the URL field for each call</div>
 <h2 id="header-using-curl">Using cURL <a class="permalink" href="#header-using-curl" aria-hidden="true">¶</a></h2>
 <p>If you are using cURL to call the API, you must include the resource URI in quotes when you pass in multiple query parameters separated by an <code>&amp;</code>.</p>
 <p>For example:</p>
