@@ -10,7 +10,13 @@ injectGlobal`
 
   html {
     box-sizing: border-box;
+    background: ${grayscale('light')};
   }
+
+  body {
+    background: ${grayscale('white')};
+  }
+
   *, *:before, *:after {
     box-sizing: inherit;
     position: relative;
@@ -38,11 +44,11 @@ injectGlobal`
   }
 
   h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   h5 {
@@ -67,5 +73,17 @@ injectGlobal`
 
   a:hover {
     text-decoration: underline; 
+  }
+
+  .textLeft {
+    text-align: left;
+  }
+
+  .textCenter {
+    text-align: center;
+  }
+
+  .textRight {
+    text-align: right;
   }
 `
