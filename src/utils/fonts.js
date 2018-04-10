@@ -7,6 +7,9 @@ const fontMap = {
   primary: `'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Helvetica', sans-serif`,
   secondary: `'Gotham SSm A', 'Gotham SSm B', 'Helvetica', sans-serif`,
   monospace: 'monospace',
+
+  primary: `'Gotham Narrow', 'Helvetica', sans-serif`,
+  secondary: `'Gotham', 'Helvetica', sans-serif`,
 }
 
 /*
@@ -36,4 +39,9 @@ function weight(w) {
   return weightMap[w]
 }
 
-export { font, weight }
+const uppercase = `
+  font-family: ${font('secondary')};
+  text-transform: uppercase;
+`
+
+export { font, weight, uppercase }
