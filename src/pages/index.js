@@ -130,7 +130,7 @@ const IndexPage = () => (
       <Container>
         <SectionTitle>Engineering Blog</SectionTitle>
         <Row>
-          <Column md={10} mdOffset={1}>
+          <Column md={12}>
             <Row>
               <Column md={4}>
                 <BlogPost />
