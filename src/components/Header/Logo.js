@@ -5,9 +5,13 @@ import { grayscale, color } from '../../utils/colors'
 import { font, weight } from '../../utils/fonts'
 
 const Logo = styled.div`
-  height: 1.66667rem;
-  top: -3px;
-  margin-right: 1rem;
+  height: 1.78rem;
+  top: -8px;
+  margin-right: 2rem;
+
+  a:hover {
+    opacity: .7;
+  }
 `
 
 const Svg = styled((props) => (
@@ -28,22 +32,32 @@ const Flame = styled((props) => (
   fill: ${color('orange')};
 `
 
-const Developers = styled((props) => (<span {...props}>developers</span>))`
-  font-family: ${font('secondary')};
+const Divider = styled.span`
+  height: 68%;
+  width: 1px;
+  background: ${grayscale(7)};
+  display: inline-block;
+  margin: 0 .4rem;
+`
+
+const Developers = styled((props) => (
+  <Link.Unstyled {...props} to="/">developers</Link.Unstyled>
+))`
   font-weight: 600;
   color: ${color('orange')};
-  margin-left: .25rem;
-  padding-left: .25rem;
+  font-size: .888888889rem;
   top: -2px;
-  border-left: 1px solid ${grayscale(7)};
 `
 
 export default () => (
   <Logo>
-    <Svg>
-      <Base />
-      <Flame />
-    </Svg>
+    <Link to="https://sparkpost.com">
+      <Svg>
+        <Base />
+        <Flame />
+      </Svg>
+    </Link>
+    <Divider />
     <Developers />
   </Logo>
 )
