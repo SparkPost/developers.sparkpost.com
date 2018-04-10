@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
 import { color, grayscale } from '../utils/colors'
 import { Container, Row, Column } from '../components/Grid'
 import Section from '../components/Section'
