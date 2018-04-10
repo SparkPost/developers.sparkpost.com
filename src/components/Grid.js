@@ -2,12 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { grayscale } from '../utils/colors'
 
-const ContainerOuter = styled.div`
-  padding: 24px;
-  ${props => props.background && 'background-color: ' + props.background + ';'};
-`
-
-const ContainerInner = styled.div`
+const Container = styled.div`
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
@@ -26,14 +21,7 @@ const ContainerInner = styled.div`
   }
 `
 
-const Container = ({ background, children, ...props }) => (
-  <ContainerOuter {...props} background={grayscale(background)}>
-    <ContainerInner>{children}</ContainerInner>
-  </ContainerOuter>
-)
-
 const Row = styled.div`
-  font-size: 14px;
   display: flex;
   flex-flow: row wrap;
   width: 100%;
