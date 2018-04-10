@@ -20,6 +20,7 @@ injectGlobal`
 
   html, body {
     font-family: ${font('primary')};
+    font-weight: ${weight('light')};
     font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
