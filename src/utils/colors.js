@@ -100,7 +100,7 @@ function shadow(level) {
 
   if (level > 1) {
     for (let i = 2; i <= level; i++) {
-      boxShadow += ' ' + shadowMap[i]
+      boxShadow += ', ' + shadowMap[i]
     }
   }
 
