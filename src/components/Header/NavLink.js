@@ -3,7 +3,7 @@ import Link from '../Link'
 import styled, { css } from 'styled-components'
 import { grayscale, color } from '../../utils/colors'
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link.Unstyled)`
   padding: 1.1rem .75rem;
   font-weight: 500;
   display: inline-block;
