@@ -11,6 +11,7 @@ const Section = styled.section`
     background-color: ${grayscale('dark')};
     background-image: url(${hex});
     background-size: cover;
+    color: ${grayscale('white')};
   `}
 
   ${props => props.light && css`
