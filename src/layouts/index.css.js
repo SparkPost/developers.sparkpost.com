@@ -62,5 +62,10 @@ injectGlobal`
     transition: .15s;
     color: ${color('blue')};
     font-weight: ${weight('medium')};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline; 
   }
 `
