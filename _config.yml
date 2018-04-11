@@ -9,7 +9,7 @@ description: >
   with SparkPost. What will you build?
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://developers.sparkpost.com" # the base hostname & protocol for your site
-twitter_username: SparkPostDev
+twitter_username: SparkPost
 github_username:  SparkPost
 facebook_username: SparkPost
 facebook_app_id: 1078423545531734
