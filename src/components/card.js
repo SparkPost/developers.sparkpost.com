@@ -4,15 +4,13 @@ import { color, grayscale, shadow } from '../utils/colors'
 
 import Link from './Link'
 
-const Wrapper = styled(Link)`
+const Wrapper = styled(Link.Unstyled)`
   display: block;
   border-top: .333333333rem solid ${props => props.color};
   background-color: ${grayscale('white')};
   padding: 1rem 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
   box-shadow: ${shadow(1)};
-  text-decoration: none;
-  color: inherit;
   font-weight: inherit;
 
   &:hover {
