@@ -3,9 +3,9 @@ import GatsbyLink from 'gatsby-link'
 import isAbsoluteUrl from 'is-absolute-url'
 import styled from 'styled-components'
 
-function Link ({ to = null, ...props }) {
-  return to && isAbsoluteUrl(to) ? (
-    <a href={to} {...props} />
+function Link ({ to = null, onClick, ...props }) {
+  return (to && isAbsoluteUrl(to)) || onClick ? (
+    <a href={to} onClick={onClick} {...props} />
   ) : (
     <GatsbyLink to={to} {...props} />
   )
