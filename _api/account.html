@@ -343,6 +343,11 @@ Usage details are not returned by default, specify ‘include=usage’ in the qu
 <td>boolean</td>
 <td>Set to <code>false</code> to exclude the initial open tracking pixel from top of emails</td>
 </tr>
+<tr>
+<td>click_tracking</td>
+<td>boolean</td>
+<td>Set to <code>false</code> to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)</td>
+</tr>
 </tbody>
 </table>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/account</code></p><!-- Weed out the noisy obvious headers--><pre>{
