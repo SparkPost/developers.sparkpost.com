@@ -7,7 +7,7 @@ import { color, grayscale } from '../utils/colors'
 import { weight } from '../utils/fonts'
 
 function Link ({ to = null, onClick, ...props }) {
-  return (to && isAbsoluteUrl(to)) || onClick ? (
+  return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (
     <a href={to} onClick={onClick} {...props} />
   ) : (
     <GatsbyLink to={to} {...props} />
