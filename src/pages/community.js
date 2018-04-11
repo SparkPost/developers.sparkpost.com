@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import styled from 'styled-components'
 import { Container, Row, Column } from '../components/Grid'
 import Card from '../components/Card'

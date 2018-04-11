@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import styled from 'styled-components'
 import { grayscale } from  '../utils/colors'
 import { weight, font, uppercase } from '../utils/fonts'

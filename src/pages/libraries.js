@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import { Container, Row, Column } from '../components/Grid'
 import { grayscale, color } from '../utils/colors'
 import styled from 'styled-components'
