@@ -1,19 +1,6 @@
 ---
 layout: default
 ---
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
-        <p><img src="{{ "/images/logo-sparkpost.png" | prepend: site.baseurl }}" alt="SparkPost" width="270" /></p>
-        <h1>Build Something Awesome.</h1>
-        <p>The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?</p>
-        <p><a class="btn btn-xlg btn-primary mp-signup" href="https://app.sparkpost.com/join?src=Dev-Website&sfdcid=701600000011daf">Try for free</a> <br><a class="btn btn-link btn-link-dark-bg" href="https://www.sparkpost.com/pricing"><small>View pricing</small></a></p>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container-fluid">
   <div class="row row-code-examples">
     <div class="container">
@@ -23,7 +10,10 @@ layout: default
           <div class="page-header page-header-code-examples">
             <h1 class="text-center">Our API, Your Language</h1>
             <p class="text-center">
-              Combined with your language of choice, using the awesome, super-colossal power of our API couldn't be easier.  <a class="mp-signup" href="https://app.sparkpost.com/join?src=Dev-Website&sfdcid=701600000011daf">Create an account</a>, grab one of our client libraries, and get started quickly.
+              Send using your favorite language with any of our official or community supported client libraries.
+            </p>
+            <p class="text-center">
+              Create a free <a class="mp-signup" href="https://app.sparkpost.com/join?src=Dev-Website&sfdcid=701600000011daf">developer account</a> to get started.
             </p>
           </div>
         </div>
@@ -51,7 +41,7 @@ curl -XPOST \
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="nodeExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/node-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight js %}
 const SparkPost = require('sparkpost');
 const sparky = new SparkPost('<YOUR API KEY>');
@@ -80,7 +70,7 @@ sparky.transmissions.send({
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="pythonExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/python-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight python %}
 from sparkpost import SparkPost
 
@@ -95,7 +85,7 @@ response = sparky.transmissions.send(
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="phpExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/php-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight php %}
 <?php
 use SparkPost\SparkPost;
@@ -123,7 +113,7 @@ $results = $sparky->transmissions->post([
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="javaExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/java-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight java startinline %}
 package com.sparkpost;
 
@@ -146,7 +136,7 @@ public class SparkPost {
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="goExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/go-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight go startinline %}
 package main
 
@@ -181,7 +171,7 @@ func main() {
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="elixirExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/sparkpost/elixir-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight elixir startinline %}
 alias SparkPost.{Content, Transmission}
 
@@ -201,7 +191,7 @@ end
 {% endhighlight %}
               </div>
               <div class="tab-pane" id="csharpExample">
-                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/darrencauthon/csharp-sparkpost"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
+                <a class="btn btn-default btn-sm btn-gh" href="https://github.com/darrencauthon/csharp-sparkpost" target="_blank"><i class="fa fa-fw fa-github"></i>&nbsp; View on Github</a>
 {% highlight csharp startinline %}
 // Maintained by community member Darren Cauthon, endorsed by SparkPost
 using SparkPost;
@@ -245,7 +235,7 @@ sparky.Transmissions.Send(transmission);
           {% if official_libs.size > 0 %}
           <ul id="list-libraries" class="libraries">
             {% for library in official_libs %}
-            <li><a href="https://www.github.com/{{ library.github_repo }}" data-mp-library="{{ library.name }}">{{ library.name }}</a> - {{ library.description }}</li>
+            <li><a href="https://www.github.com/{{ library.github_repo }}" data-mp-library="{{ library.name }}" target="_blank">{{ library.name }}</a> - {{ library.description }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -254,7 +244,7 @@ sparky.Transmissions.Send(transmission);
           <hX>Community Libraries</hX>
           <ul id="list-libraries" class="libraries">
             {% for library in community_libs %}
-            <li><a href="https://www.github.com/{{ library.github_repo }}" data-mp-library="{{ library.name }}">{{ library.name }}</a> - {{ library.description }}</li>
+            <li><a href="https://www.github.com/{{ library.github_repo }}" target="_blank" data-mp-library="{{ library.name }}">{{ library.name }}</a> - {{ library.description }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -263,7 +253,7 @@ sparky.Transmissions.Send(transmission);
         <div class="col-xs-12 col-sm-6">
           <h3>Engineering Posts</h3>
           <p>
-            Our engineers write posts because sharing is caring. Learn a thing or two about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
+            Our engineers write posts because sharing is caring. Learn about our software and the awesome team of engineers behind SparkPost. Have a read and let us know what you think!
           </p>
           {% assign posts = site.data.blog_posts | sort: 'order' %}
           {% if posts.size > 0 %}
@@ -274,7 +264,7 @@ sparky.Transmissions.Send(transmission);
           </ul>
           {% endif %}
           <p>
-            <a href="https://www.sparkpost.com/blog/category/developer/">More posts from our engineers</a>
+            <a href="https://www.sparkpost.com/blog/category/developer/" target="_blank">More posts from our engineers</a>
           </p>
         </div>
 
@@ -291,7 +281,7 @@ sparky.Transmissions.Send(transmission);
           {% if events.size > 0 %}
           <div id="list-events">
             {% for event in events %}
-            <h4><a href="{{ event.url }}">{{ event.name }}</a></h4>
+            <h4><a href="{{ event.url }}" target="_blank">{{ event.name }}</a></h4>
             <p>
               {{ event.date_start | date: "%b %e" }}
               {% if event.date_end %}
@@ -321,8 +311,9 @@ sparky.Transmissions.Send(transmission);
             Our code samples and snippets are real-world examples in various formats that show how to use SparkPost. Integrations allow you to use SparkPost through your favorite service.
           </p>
           <ul id="list-samples">
-            <li><a href="https://elements.heroku.com/addons/sparkpost">Heroku add-on</a></li>
-            <li><a href="https://zapier.com/zapbook/sparkpost/">Zapier app</a></li>
+            <li><a href="https://aws.amazon.com/marketplace/pp/B075ZJX4H8" target="_blank">AWS Marketplace</a></li>
+            <li><a href="https://elements.heroku.com/addons/sparkpost" target="_blank">Heroku add-on</a></li>
+            <li><a href="https://zapier.com/zapbook/sparkpost/" target="_blank">Zapier app</a></li>
           </ul>
           <p>
             <a href="https://support.sparkpost.com/customer/en/portal/topics/780292-integrations/articles">More integrations</a>
