@@ -20,7 +20,7 @@ const Nav = styled.nav`
 export default ({ path }) => (
   <Nav>
     <ul>
-      <li><NavLink to="/" active={path === '/'}>API Docs</NavLink></li>
+      <li><NavLink to="/" active={path === '/'}>API Reference</NavLink></li>
       <li><NavLink to="/libraries" active={path === '/libraries'}>Libraries</NavLink></li>
       <li><NavLink to="/community" active={path === '/community'}>Community</NavLink></li>
       <li><NavLink to="/changelog" active={path === '/changelog'}>Changelog</NavLink></li>
