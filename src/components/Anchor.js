@@ -15,29 +15,40 @@ function Anchor({ title, children, ...props }) {
 Anchor.Link = ({ title, ...props }) => {
   const slug = slugify(title).toLowerCase()
 
-  return (<Link.Unstyled {...props} to={`#${slug}`} />)
+  return (<Link.Unstyled title={title} {...props} to={`#${slug}`} />)
 }
 
-Anchor.Target = ({ title, ...props }) => {
+Anchor.Target = ({ title, children, ...props }) => {
   const slug = slugify(title).toLowerCase()
 
-  return (<Target id={slug} title={title} {...props} />)
+  return (
+    <Target {...props}>
+      <Id id={slug} />
+      {children}
+    </Target>)
 }
 
 const AnchorLink = styled(Anchor.Link)`
   position: absolute;
   right: 0;
-  transform: translate(0, -50%);
-  top: 50%;
+  bottom: 0;
+  margin-right: -1.5rem;
   opacity: 0;
+  padding-left: 1.5rem;
 `
 
 const Target = styled.div`
-  padding-right: 1.5rem;
 
   &:hover ${AnchorLink} {
     opacity: 1;
   }
+`
+
+const Id = styled.span`
+  display: block; 
+  margin-top: -4rem; 
+  height: 4rem;
+  visibility: hidden;
 `
 
 export default Anchor
