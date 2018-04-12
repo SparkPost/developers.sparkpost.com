@@ -85,5 +85,5 @@ injectGlobal`
 
   .textRight {
     text-align: right;
-  }
+  }  
 `

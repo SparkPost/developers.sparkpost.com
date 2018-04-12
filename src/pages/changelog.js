@@ -66,7 +66,7 @@ const Button = Link.Action.withComponent(Anchor.Link).extend`
 `
 
 // Panel Body styles with Anchor.Target functionality
-const Notes = Body.withComponent(Anchor.Target).extend`
+const Notes = Body.extend`
   display: none;
   border-top: 1px solid ${grayscale('light')};
 
@@ -84,7 +84,9 @@ class Changelog extends React.Component {
     this.state = { expanded: props.expanded || false }
   }
 
-  toggleNotes = () => {
+  toggleNotes = (e) => {
+    if (this.state.expanded) e.preventDefault()
+
     this.setState({ expanded: !this.state.expanded })
   }
 
@@ -93,9 +95,7 @@ class Changelog extends React.Component {
       <Panel>
         <Header>
           <Anchor title="December 8, 2017">
-            <PanelTitle>
-              December 8, 2017
-            </PanelTitle>
+            <PanelTitle>December 8, 2017</PanelTitle>
           </Anchor>
           <Button title="December 8, 2017 Notes" expanded={this.state.expanded} onClick={this.toggleNotes}>notes <i className="fa fa-chevron-right"></i></Button>
         </Header>
@@ -121,10 +121,12 @@ class Changelog extends React.Component {
             </ul>
           </p>
         </Body>
-        <Notes expanded={this.state.expanded} title="December 8, 2017 Notes">
-          <h4>Title goes here</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dolores fugiat non dignissimos voluptate, veniam sunt debitis numquam aliquam aperiam.</p>
-        </Notes>
+        <Anchor.Target title="December 8, 2017 Notes">
+          <Notes expanded={this.state.expanded}>
+            <h4>Title goes here</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dolores fugiat non dignissimos voluptate, veniam sunt debitis numquam aliquam aperiam.</p>
+          </Notes>
+        </Anchor.Target>
       </Panel>)
   }
 }
