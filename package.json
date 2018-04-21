@@ -10,6 +10,7 @@
     "gatsby-plugin-netlify-cms": "^1.0.12",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-styled-components": "^2.0.6",
+    "gatsby-source-github": "0.0.1",
     "gatsby-source-wordpress": "^2.0.76",
     "is-absolute-url": "^2.1.0",
     "polished": "^1.9.2",
