@@ -1,7 +1,20 @@
 {
   "changes": [
     {
-      "date": "2018-04-21"
+      "date": "2018-04-21",
+      "sections": [
+        {
+          "title": "Added",
+          "items": [
+            {
+              "text": "added a thing"
+            },
+            {
+              "text": "oh and another thing"
+            }
+          ]
+        }
+      ]
     },
     {
       "date": "2018-04-21"
