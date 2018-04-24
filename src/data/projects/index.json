@@ -1,5 +1,20 @@
-[
-  { "name": "heml", "featured": true, "color": "blue" },
-  { "name": "php-sparkpost", "featured": true, "color": "mustard" },
-  { "name": "node-sparkpost" }
-]
+{
+  "projects": [
+    {
+      "name": "heml",
+      "featured": true,
+      "color": "blue"
+    },
+    {
+      "name": "php-sparkpost"
+    },
+    {
+      "name": "node-sparkpost"
+    },
+    {
+      "name": "wordpress-sparkpost",
+      "featured": true,
+      "color": "green"
+    }
+  ]
+}
