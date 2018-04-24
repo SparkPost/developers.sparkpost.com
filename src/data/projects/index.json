@@ -6,15 +6,15 @@
       "color": "blue"
     },
     {
+      "name": "wordpress-sparkpost",
+      "featured": true,
+      "color": "green"
+    },
+    {
       "name": "php-sparkpost"
     },
     {
       "name": "node-sparkpost"
-    },
-    {
-      "name": "wordpress-sparkpost",
-      "featured": true,
-      "color": "green"
     }
   ]
 }
