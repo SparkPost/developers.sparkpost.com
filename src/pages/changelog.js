@@ -6,11 +6,7 @@ import { Container, Row, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
 import Anchor from '../components/Anchor'
-
-const Title = styled.h1`
-  text-align: center;
-  color: ${color('gray')};
-`
+import Panel from '../components/Panel'
 
 const Subtitle = styled.p`
   text-align: center;
@@ -18,37 +14,6 @@ const Subtitle = styled.p`
   margin-bottom: 2rem;
   line-height: 28px;
   font-size: 1rem;
-`
-
-const SectionTitle = styled.h2`
-  text-align: center;
-  color: ${props => (props.dark ? grayscale('white') : grayscale('dark'))};
-`
-
-const Panel = styled.div`
-  background: ${grayscale('white')};
-  box-shadow: ${shadow(1)};
-`
-
-const Header = styled.div`
-  padding: .888888889rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid ${grayscale(8)};
-`
-
-const PanelTitle = styled.h3`
-  margin: 0;
-`
-
-
-const Body = styled.div`
-  padding: 1.5rem 1rem;
-
-  > * {
-    margin-top: 0;
-  }
 `
 
 // Link.Action styles with Anchor.Link functionality
@@ -59,74 +24,65 @@ const Button = Link.Action.withComponent(Anchor.Link).extend`
     transition: .15s;
   }
 
-  ${props => props.expanded && css`
-    i {
-      transform: rotate(90deg);
-    }`}
+  ${props => props.expanded && css` i { transform: rotate(90deg); }`}
 `
 
-// Panel Body styles with Anchor.Target functionality
-const Notes = Body.extend`
-  display: none;
-  border-top: 1px solid ${grayscale('light')};
-
-
-  ${props => props.expanded && css`
-  display: block;
-  `}
-`
-
-class Changelog extends React.Component {
-
+class Change extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = { expanded: props.expanded || false }
+    this.state = { expanded: !!props.expanded }
   }
 
   toggleNotes = (e) => {
+    // don't jump down when closing the notes area
     if (this.state.expanded) e.preventDefault()
 
     this.setState({ expanded: !this.state.expanded })
   }
 
+  renderToggle() {
+    return this.props.notes && (
+      <Button
+        title={`${this.props.date} Notes`}
+        expanded={this.state.expanded}
+        onClick={this.toggleNotes}>
+          notes <i className="fa fa-chevron-right"></i>
+      </Button>
+    )
+  }
+
+  renderContent() {
+    return this.props.sections && this.props.sections.map(({ title, items }) => (
+      <div>
+        <h4>{title}</h4>
+        <ul>
+          {items && items.map(({ text }) => <li>{text}</li>)}
+        </ul>
+      </div>
+    ))
+  }
+
+  renderNotes() {
+    return this.props.notes && this.state.expanded && (
+      <Anchor.Target title={`${this.props.date} Notes`}>
+        <Panel.Section>{this.props.notes}</Panel.Section>
+      </Anchor.Target>
+    )
+  }
+
+
   render() {
     return (
       <Panel>
-        <Header>
-          <Anchor title="December 8, 2017">
-            <PanelTitle>December 8, 2017</PanelTitle>
+        <Panel.Header right={this.renderToggle()}>
+          <Anchor title={this.props.date}>
+            <Panel.Title>{this.props.date}</Panel.Title>
           </Anchor>
-          <Button title="December 8, 2017 Notes" expanded={this.state.expanded} onClick={this.toggleNotes}>notes <i className="fa fa-chevron-right"></i></Button>
-        </Header>
-        <Body>
-          <h4>Added</h4>
-          <p>
-            <ul>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-            </ul>
-          </p>
-          <h4>Removed</h4>
-          <p>
-            <ul>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-              <li>Lorem ipsum dolor sit amet.</li>
-            </ul>
-          </p>
-        </Body>
-        <Anchor.Target title="December 8, 2017 Notes">
-          <Notes expanded={this.state.expanded}>
-            <h4>Title goes here</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa dolores fugiat non dignissimos voluptate, veniam sunt debitis numquam aliquam aperiam.</p>
-          </Notes>
-        </Anchor.Target>
+        </Panel.Header>
+        <Panel.Section>
+          {this.renderContent()}
+        </Panel.Section>
+        {this.renderNotes()}
       </Panel>)
   }
 }
@@ -135,7 +91,7 @@ const ChangelogPage = (props) => (
   <div>
     <Section light>
       <Container>
-        <Title>Changelog</Title>
+        <h1 className="textCenter">Changelog</h1>
         <Row>
           <Column md={8} mdOffset={2}>
             <Subtitle>
@@ -145,7 +101,11 @@ const ChangelogPage = (props) => (
         </Row>
         <Row>
           <Column md={8} mdOffset={2}>
-            <Changelog expanded={props.location.hash === '#December-8-2017-Notes'} />
+            {props.data.changelogJson.changes.map((change) => (
+              <Change
+                {...change}
+                expanded={props.location.hash === `#${Anchor.slugify(`${change.date} Notes`)}`} />
+            ))}
           </Column>
         </Row>
       </Container>
@@ -154,3 +114,20 @@ const ChangelogPage = (props) => (
 )
 
 export default ChangelogPage
+
+export const pageQuery = graphql`
+query changelogQuery {
+  changelogJson {
+    changes {
+      date(formatString: "MMMM D, YYYY")
+      notes
+      sections {
+        title
+        items {
+          text
+        }
+      }
+    }
+  }
+}
+`
