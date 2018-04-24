@@ -1,0 +1,5 @@
+[
+  { "name": "heml", "featured": true, "color": "blue" },
+  { "name": "php-sparkpost", "featured": true, "color": "mustard" },
+  { "name": "node-sparkpost" }
+]
