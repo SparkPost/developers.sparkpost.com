@@ -17,12 +17,12 @@ const Header = styled.header`
   `}
 `
 
-const Wrapper = styled(Container)`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: .833333333rem;
-  display: flex;
+  padding: 0 2rem;
 `
 
 const Primary = styled.div`
