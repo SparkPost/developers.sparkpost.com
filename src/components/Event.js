@@ -8,6 +8,7 @@ const Calendar = styled.div`
   border-top: 5px solid ${color('orange')};
   height: 9rem;
   width: 9rem;
+  margin: auto;
 `
 
 const Month = styled.p`
@@ -39,12 +40,17 @@ const Info = styled.div`
   color: white;
 `
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+]
+
 export default ({ start, end, name, location }) => {
   const startDate = new Date(start)
   const endDate = new Date(end)
 
-  const startMonth = startDate.getMonth()
+  const startMonth = monthNames[startDate.getMonth()]
   const startDay = startDate.getDate()
+  const isSameMonth = startDate.getMonth() === endDate.getMonth()
 
   return (
     <div>
@@ -53,7 +59,7 @@ export default ({ start, end, name, location }) => {
         <Day>{startDay}</Day>
       </Calendar>
       <Title>{name}</Title>
-      <Info>{startMonth} {startDay} - {endDate.getMonth() === startMonth ? '' : endDate.getMonth() } {endDate.getDate()}</Info>
+      <Info>{startMonth} {startDay} - { isSameMonth ? '' : monthNames[endDate.getMonth()]} {endDate.getDate()}</Info>
       <Info>{location}</Info>
     </div>)
 }
