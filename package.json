@@ -5,13 +5,16 @@
   "author": "SparkPost <dev-relations@sparkpost.com>",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "gatsby": "^1.9.247",
+    "gatsby": "^1.9.253",
     "gatsby-link": "^1.6.32",
+    "gatsby-plugin-google-tagmanager": "^1.0.18",
     "gatsby-plugin-netlify-cms": "^1.0.12",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-styled-components": "^2.0.6",
+    "gatsby-source-filesystem": "^1.5.33",
     "gatsby-source-github": "0.0.1",
     "gatsby-source-wordpress": "^2.0.76",
+    "gatsby-transformer-json": "^1.0.16",
     "is-absolute-url": "^2.1.0",
     "polished": "^1.9.2",
     "react-sticky": "^6.0.2",
@@ -25,8 +28,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\""
   },
   "devDependencies": {
     "axios": "^0.18.0",
