@@ -12,14 +12,16 @@ function Anchor({ title, children, ...props }) {
   )
 }
 
+Anchor.slugify = (title) => slugify(title).toLowerCase()
+
 Anchor.Link = ({ title, ...props }) => {
-  const slug = slugify(title).toLowerCase()
+  const slug = Anchor.slugify(title)
 
   return (<Link.Unstyled title={title} {...props} to={`#${slug}`} />)
 }
 
 Anchor.Target = ({ title, children, ...props }) => {
-  const slug = slugify(title).toLowerCase()
+  const slug = Anchor.slugify(title)
 
   return (
     <Target {...props}>
