@@ -41,7 +41,7 @@ const Divider = styled.span`
 `
 
 const Developers = styled((props) => (
-  <Link.Unstyled {...props} to="/">developers</Link.Unstyled>
+  <Link.Unstyled {...props} to="/">dev</Link.Unstyled>
 ))`
   font-weight: 600;
   color: ${color('orange')};
