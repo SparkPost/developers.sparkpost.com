@@ -16,6 +16,7 @@ const Image = styled.div`
   height: 0;
   padding-bottom: 76.1111111%;
   background-color: ${grayscale(8)};
+  background-size: cover;
   margin: 0 0 .75rem 0;
 `
 
