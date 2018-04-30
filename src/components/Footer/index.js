@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, grayscale } from '../utils/colors'
-import { Container, Row, Column } from '../components/Grid'
+import { color, grayscale } from '../../utils/colors'
+import { Container, Row, Column } from '../../components/Grid'
 
 const Footer = styled.footer`
   background-color: ${grayscale('dark')};
