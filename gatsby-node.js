@@ -10,19 +10,18 @@ exports.onCreateNode = async ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators
 
   if (node.internal.type === `wordpress__POST`) {
+    let mediaUrl = ''
     try {
-      let mediaUrl = ''
-      
       if (node._links.wp_featuredmedia) {
-        const media = await axios.get(`${node._links.wp_featuredmedia[0].href}?_embed`)
+        const media = await axios.get(`${node._links.wp_featuredmedia[0].href}`)
 
         mediaUrl = media.data.guid.rendered
       }
-
-      createNodeField({ node, name: `media`, value: mediaUrl })
     }
     catch(e) {
     }
+
+    createNodeField({ node, name: `media`, value: mediaUrl })
   }
 }
 
