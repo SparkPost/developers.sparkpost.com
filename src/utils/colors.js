@@ -14,9 +14,7 @@ const colorMap = {
   magenta: '#b94696',
   mustard: '#e3af00',
   teal: '#0097b3',
-
-  // Alert
-  alert: '#f00a0a',
+  red: '#f00a0a',
 
   // Hovers
   orangeDark: '#e9591b',
@@ -48,17 +46,6 @@ const grayscaleMap = {
 }
 
 /*
- * Outputs breakpoint value 📱
- */
-const breakpointMap = {
-  sm: '450px', // 30em,
-  md: '720px', // 48em,
-  lg: '960px', // 64em,
-  xl: '1200px', // 80em,
-  xxl: '1470px', //98em,
-}
-
-/*
  * Outputs box shadow 🆒
  */
 const shadowMap = {
@@ -83,13 +70,6 @@ function grayscale(i) {
   return grayscaleMap[i]
 }
 
-function breakpoint(size) {
-  if (!breakpointMap[size]) {
-    console.log(`Breakpoint ${size} undefined`)
-  }
-
-  return breakpointMap[size]
-}
 
 function shadow(level) {
   let boxShadow = shadowMap[1]
@@ -107,4 +87,4 @@ function shadow(level) {
   return boxShadow
 }
 
-export { color, grayscale, breakpoint, shadow }
+export { color, grayscale, shadow }

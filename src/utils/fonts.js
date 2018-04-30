@@ -6,7 +6,7 @@ import { rgba } from 'polished'
 const fontMap = {
   primary: `'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Helvetica', sans-serif`,
   secondary: `'Gotham SSm A', 'Gotham SSm B', 'Helvetica', sans-serif`,
-  monospace: 'monospace',
+  monospace: 'Source Code Pro, monospace',
 
   primary: `'Gotham Narrow', 'Helvetica', sans-serif`,
   secondary: `'Gotham', 'Helvetica', sans-serif`,
@@ -41,7 +41,15 @@ function weight(w) {
 
 const uppercase = `
   font-family: ${font('secondary')};
+  font-weight: 400;
   text-transform: uppercase;
 `
 
-export { font, weight, uppercase }
+const monospace = `
+  -webkit-font-smoothing: initial;
+  font-family: ${font('monospace')};
+  font-size: 85%;
+  font-weight: 400;
+`
+
+export { font, weight, uppercase, monospace }
