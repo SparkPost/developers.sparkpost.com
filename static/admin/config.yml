@@ -1,0 +1,105 @@
+backend:
+  name: github
+  repo: SparkPost/developers.sparkpost.com
+  branch: next
+
+media_folder: static/media
+public_folder: /media
+
+collections: 
+  - label: Integrations
+    name: integrations
+    label_singular: Integration
+    folder: "/src/data/integrations"
+    create: true
+    extension: md
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Website, name: url, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: Official Partner or integration?, name: official, widget: boolean }
+      - { label: Body, name: body, widget: markdown }
+  - label: Libraries
+    name: libraries
+    label_singular: Library
+    folder: "/src/data/libraries"
+    create: true
+    extension: json
+    fields:
+      - { label: Create page?, name: has_page, widget: boolean }
+      - { label: Title, name: title, widget: string }
+      - { label: Language, name: language, widget: string }
+      - { label: Repository Owner, name: repo_owner, widget: string }
+      - { label: Repository Name, name: repo_name, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: Code Sample, name: code_sample, widget: text, required: false }
+      - { label: Description, name: description, widget: markdown, required, false }
+      - label: Other tools
+        name: other_tools
+        widget: list
+        required: false
+        fields:
+          - { label: Repository Owner, name: name, widget: string }
+          - { label: Repository Name, name: name, widget: string }
+  - label: Data
+    name: data
+    editor:
+      preview: false
+    files:
+      - label: Changelog
+        name: changelog
+        file: "/src/data/changelog/index.json"
+        fields:
+          - 
+            label: Changes
+            name: changes
+            label_singular: Change
+            widget: list
+            fields:
+              - { label: Date, name: date, widget: date }
+              - 
+                label: Section
+                name: sections
+                widget: list
+                fields:
+                  - { label: Title, name: title, widget: string, default: "Added" }
+                  - label: Item
+                    name: items
+                    widget: list
+                    fields:
+                      - { label: Text, name: text, widget: string, default: "" }
+              - { label: Notes, name: notes, widget: markdown, required: false }
+      - label: Events
+        name: events
+        file: "/src/data/events/index.json"
+        fields:
+          - 
+            label: Events
+            name: events
+            label_singular: Event
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Start Date, name: start_date, widget: date }
+              - { label: End Date, name: end_date, widget: date }
+              - { label: URL, name: url, widget: string }
+              - { label: Location, name: location, widget: string }
+              - label: Languages
+                name: languages
+                label_singular: Language
+                widget: list
+                fields:
+                  - { label: Language, name: language, widget: relation, collection: libraries, searchFields: [ "label" ] }
+      - label: Projects
+        name: projects
+        file: "/src/data/projects/index.json"
+        fields:
+          - 
+            label: Projects
+            name: projects
+            label_singular: Project
+            widget: list
+            fields:
+              - { label: Repository Name, name: name, widget: string }
+              - { label: Featured, name: featured, widget: boolean }
+              - { label: Color, name: color, widget: select, options: ["gray", "orange", "blue", "green", "magenta", "mustard", "teal", "red"]}
