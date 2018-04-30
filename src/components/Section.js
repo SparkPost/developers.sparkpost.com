@@ -6,6 +6,7 @@ import hex from '../assets/hex.png'
 
 const Section = styled.section`
   padding: 4rem 0 5rem 0;
+  border-bottom: 1px solid ${grayscale(7)};
 
   ${props => props.dark && css`
     background-color: ${grayscale('dark')};
@@ -16,7 +17,10 @@ const Section = styled.section`
 
   ${props => props.light && css`
     background-color: ${grayscale('light')};
-    border-bottom: 1px solid ${grayscale(7)};
+  `}
+
+  ${props => props.small && css`
+    padding: 1rem 0 2rem 0;
   `}
 `
 
