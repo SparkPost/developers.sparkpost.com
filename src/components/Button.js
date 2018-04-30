@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
-import { grayscale, color } from '../utils/colors'
-import { weight } from '../utils/fonts'
+import { grayscale, color, shadow } from '../utils/colors'
+import { weight, uppercase } from '../utils/fonts'
 
 const hoverSelector = css`&:hover ${props => (props.hover || props.active) && `, &`}`
 const activeSelector = css`&:active ${props => props.active && `, &`}`
@@ -18,6 +18,23 @@ const Button = styled.button`
   &[disabled] {
     opacity: .5;
   }
+  
+  // block button
+  ${props => props.block && css`
+    display: block;
+    width: 100%;
+  `}
+
+  // size=small
+  ${props => props.size === 'small' && css`
+    font-size: .666666667rem;
+    padding: .6em 1.25em;
+  `}
+
+  // size=large
+  ${props => props.size === 'large' && css`
+    padding: .8em 2em;
+  `}
   
   // default
   color: ${grayscale('medium')};
@@ -53,6 +70,19 @@ const Button = styled.button`
     ${hoverSelector} {
       background: ${color('blueDark')};
       border-color: #1F79A1;
+    }
+  `}
+
+  // outline
+  ${props => props.outline && css`
+    color: ${grayscale('medium')};
+    background: ${grayscale('white')};
+    border-color: ${grayscale(7)};
+    box-shadow: ${shadow(1)};
+
+    ${hoverSelector} {
+      background: #f1f1f2;
+      border-color: ${grayscale(7)};
     }
   `}
 `
