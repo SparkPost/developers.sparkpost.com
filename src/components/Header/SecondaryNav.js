@@ -21,7 +21,7 @@ const colorMap = {
   none: color('green'),
   minor: color('mustard'),
   major: color('orange'),
-  critical: color('alert')
+  critical: color('red')
 }
 
 const StatusIcon = styled.div`
@@ -42,7 +42,9 @@ class SecondaryNav extends React.Component {
 
   componentDidMount() {
     scriptjs('https://cdn.statuspage.io/se-v2.js', () => {
-      var sp = new StatusPage.page({ page: '7ky1q6zd3fyp'})
+      if (!window.StatusPage) return
+
+      const sp = new StatusPage.page({ page: '7ky1q6zd3fyp'})
 
       sp.summary({
         success: (data) => {
@@ -57,9 +59,9 @@ class SecondaryNav extends React.Component {
     return (
       <Nav>
         <SecondaryNavLink to="https://status.sparkpost.com" target="_blank"><StatusIcon status={this.state.status} /> Status</SecondaryNavLink>
-        <SecondaryNavLink to="https://sparkpost.com/blog">Blog</SecondaryNavLink>
-        <SecondaryNavLink to="https://sparkpost.com/docs">Docs</SecondaryNavLink>
-        <SecondaryNavLink to="https://app.sparkpost.com/">Your Dashboard</SecondaryNavLink>
+        <SecondaryNavLink to="/changelog">Changelog</SecondaryNavLink>
+        <SecondaryNavLink to="https://www.sparkpost.com/blog/category/developer">Blog</SecondaryNavLink>
+        <SecondaryNavLink to="https://app.sparkpost.com/join">Sign Up</SecondaryNavLink>
       </Nav>
     )
   }
