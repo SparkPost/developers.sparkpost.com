@@ -9,12 +9,20 @@ import 'font-awesome/css/font-awesome.min.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+function onApiPage(location) {
+  return location.pathname.startsWith('/api')
+}
+
 const TemplateWrapper = ({ children, location }) => (
   <div>
     <StickyContainer>
       <Sticky>
         {({ style, isSticky, distanceFromTop }) => (
-            <div style={{ ...style, zIndex: 10 }}><Header path={location.pathname} isSticky={isSticky && distanceFromTop !== 0} /></div>
+            <div style={{ ...style, zIndex: 10 }}>
+              <Header
+                path={location.pathname}
+                isSticky={isSticky && distanceFromTop !== 0 || onApiPage(location) || location.pathname === '/integraion'} />
+            </div>
           )}
       </Sticky>
       <Helmet
@@ -30,7 +38,7 @@ const TemplateWrapper = ({ children, location }) => (
         ]}
       />
       {children()}
-      <Footer />
+      {!onApiPage(location) && <Footer />}
     </StickyContainer>
   </div>
 )
