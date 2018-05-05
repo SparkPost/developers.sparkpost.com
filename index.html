@@ -77,10 +77,10 @@ from sparkpost import SparkPost
 sparky = SparkPost('<YOUR API KEY>')
 
 response = sparky.transmissions.send(
-    use_sandbox=True,
-    recipients=['developers+python@sparkpost.com'],
-    html='<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
-    from_email='testing@sparkpostbox.com',
+    use_sandbox = True,
+    recipients = ['developers+python@sparkpost.com'],
+    html = '<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>',
+    from_email = 'testing@sparkpostbox.com',
     subject='Oh hey!')
 {% endhighlight %}
               </div>
