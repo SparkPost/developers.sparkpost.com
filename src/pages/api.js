@@ -8,7 +8,7 @@ import Section from '../components/Section'
 import Link from '../components/Link'
 import Button from '../components/Button'
 import map from '../utils/map'
-import { keyBy, mapValues, castArray } from 'lodash'
+import { last, get, keyBy, mapValues, castArray, uniqBy } from 'lodash'
 
 // markdown
 const unified = require('unified')
@@ -40,20 +40,49 @@ const RenderBlock = styled(({ title, children, ...props }) => (
     {children}
   </div>
 ))`
-  border-radius: 0 5px 5px 5px;
-  border: 1px solid blue;
-  margin: 2rem 1rem 1rem;
-  padding: .5rem;
+  // border-radius: 0 5px 5px 5px;
+  // border: 1px solid blue;
+  // margin: 2rem 1rem 1rem;
+  // padding: .5rem;
+
+  // .renderBlockTitle {
+  //   border-radius: 5px 5px 0 0;
+  //   border: 1px solid blue;
+  //   border-bottom-color: white;
+  //   transform: translateY(-100%);
+  //   position: absolute;
+  //   top: 0;
+  //   left: -1px;
+  //   padding: .25rem;
+  // }
 
   .renderBlockTitle {
-    border-radius: 5px 5px 0 0;
-    border: 1px solid blue;
-    border-bottom-color: white;
-    transform: translateY(-100%);
-    position: absolute;
-    top: 0;
-    left: -1px;
-    padding: .25rem;
+    display: none;
+  }
+`
+
+const ColumnsWrapper = styled.div`
+  display: flex;
+`
+
+const Left = styled.div`
+  width: 60%;
+`
+
+const Right =styled.div`
+  width: 40%;
+  background: ${grayscale('dark')};
+  // background: #212121;
+  color: ${grayscale('white')};
+
+  pre {
+    color: inherit;
+    overflow: auto;
+    border: 0;
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid ${grayscale('medium')};
+    // -webkit-font-smoothing: inherit;
   }
 `
 
@@ -91,8 +120,13 @@ function ResourceGroup({ resourceGroup }) {
   return (
     <div>
       <RenderBlock title="resource group">
-        {title && <h1>{title}</h1>}
-        {copy && <Markdown>{copy}</Markdown>}
+        <ColumnsWrapper>
+          <Left>
+            {title && <h1>{title}</h1>}
+            {copy && <Markdown>{copy}</Markdown>}
+          </Left>
+          <Right></Right>
+        </ColumnsWrapper>
         {resourceGroup.resources.map((resource) => (
           <Resource resource={resource} />
         ))}
@@ -107,14 +141,48 @@ function Resource({ resource }) {
   return (
     <div>
       <RenderBlock title="resource">
-        {title && <h3>{title}</h3>}
-        {copy && <Markdown>{copy}</Markdown>}
+        <ColumnsWrapper>
+          <Left>
+            {title && <h3>{title}</h3>}
+            {copy && <Markdown>{copy}</Markdown>}
+          </Left>
+          <Right></Right>
+        </ColumnsWrapper>
         {resource.transitions.map((transition) => (
           <Transition transition={transition} />
         ))}
       </RenderBlock>
     </div>
   )
+}
+
+function mergeDuplicateTransactions(transactions) {
+  const transactionsArray = transactions.map((transition) => transition.clone())
+  
+  // get all the unique transactions based on their request.
+  // For every identical transaction after, add its response to the first one
+  const uniqueTransactions = transactionsArray.reduce((arr, transaction) => {
+    // first element will always be unique
+    if (arr.length === 0) return [ transaction ]
+  
+    const lastTransaction = last(arr)  
+    
+    // TODO: also check against the method and headers
+    if (get(lastTransaction.request.messageBody, 'content') === get(transaction.request.messageBody, 'content')) {
+      
+      // we are setting up a responses array since we are adding this response onto the last request
+      lastTransaction.responses = lastTransaction.responses || [ lastTransaction.response ]
+
+      lastTransaction.responses.push(transaction.response)
+
+      return arr
+    }
+
+    return [ ...arr, transaction ]
+  }, [])
+
+
+  return minim.toElement(uniqueTransactions)
 }
 
 function Transition({ transition }) {
@@ -125,12 +193,19 @@ function Transition({ transition }) {
   return (
     <div>
       <RenderBlock title="transition">
-        {title && <h4>{title}</h4>}
-        {transition.hrefVariables && <Parameters parameters={transition.hrefVariables} />}
-        {copy && <Markdown>{copy}</Markdown>}
-        {transition.transactions.map((transaction) => (
-          <Transaction transaction={transaction} />
-        ))}
+        <ColumnsWrapper>
+          <Left>
+            {title && <h4>{title}</h4>}
+            {transition.hrefVariables && <Parameters parameters={transition.hrefVariables} />}
+          {'' /*add in body attributes here*/}
+            {copy && <Markdown>{copy}</Markdown>}
+          </Left>
+          <Right>
+            {transition.transactions.length && mergeDuplicateTransactions(transition.transactions).map((transaction) => (
+              <Transaction transaction={transaction} />
+            ))}
+          </Right>
+        </ColumnsWrapper>
       </RenderBlock>
     </div>
   )
@@ -145,7 +220,9 @@ function Transaction({ transaction }) {
         <h4>{title || 'Examples'}</h4>
         {copy && <Markdown>{copy}</Markdown>}
         {transaction.request && <Request request={transaction.request} />}
-        {transaction.response && <Response response={transaction.response} />}
+        {transaction.responses ? 
+          transaction.responses.map((response) => <Response response={response} />) :
+          transaction.response && <Response response={transaction.response} />}
       </RenderBlock>
     </div>
   )
@@ -170,8 +247,6 @@ function Request({ request }) {
 
 function Response({ response }) {
   const { title, copy, statusCode } = values(response, ['title', 'copy', 'statusCode'])
-
-  console.log(response)
 
   return (
     <div>
