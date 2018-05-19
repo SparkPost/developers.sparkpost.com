@@ -25,14 +25,29 @@ const colorMap = {
 }
 
 const StatusIcon = styled.div`
-  display: inline-block;
-  width: .5rem;
-  height: .5rem;
+  display: block;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -4px;
   background: ${props => colorMap[props.status]};
-  margin-right: .25rem;
   transition: .25s;
 `
+
+const ChangelogIcon = styled.div`
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: -4px;
+  background: ${color('orange')};
+`
+
+
 
 class SecondaryNav extends React.Component {
   constructor(props) {
@@ -58,8 +73,12 @@ class SecondaryNav extends React.Component {
 
     return (
       <Nav>
-        <SecondaryNavLink to="https://status.sparkpost.com" target="_blank"><StatusIcon status={this.state.status} /> Status</SecondaryNavLink>
-        <SecondaryNavLink to="/changelog">Changelog</SecondaryNavLink>
+        <SecondaryNavLink to="https://status.sparkpost.com" target="_blank">
+          <span><StatusIcon status={this.state.status} /> Status</span>
+        </SecondaryNavLink>
+        <SecondaryNavLink to="/changelog">
+          <span><ChangelogIcon /> Changelog</span>
+        </SecondaryNavLink>
         <SecondaryNavLink to="https://www.sparkpost.com/blog/category/developer">Blog</SecondaryNavLink>
         <SecondaryNavLink to="https://app.sparkpost.com/join">Sign Up</SecondaryNavLink>
       </Nav>
