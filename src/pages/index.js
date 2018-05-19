@@ -11,13 +11,7 @@ import Event from '../components/Event'
 import BlogPost from '../components/BlogPost'
 import Link from '../components/Link'
 import map from '../utils/map'
-
-import elixir from '../assets/libraries/elixir.png'
-import go from '../assets/libraries/go.png'
-import java from '../assets/libraries/java.png'
-import node from '../assets/libraries/node.png'
-import php from '../assets/libraries/php.png'
-import python from '../assets/libraries/python.png'
+import { get } from 'lodash'
 
 const Title = styled.h1`
   text-align: center;
@@ -63,7 +57,7 @@ const CodeSample = styled((({ children, ...props }) => <pre {...props}><Code>{ch
 
 const IndexPage = (props) => {
   const now = new Date()
-  const upcomingEvents = props.data.eventsJson.events.filter(({ end_date }) => new Date(end_date) > now)
+  const upcomingEvents = get(props, 'data.eventsJson.events', []).filter(({ end_date }) => new Date(end_date) > now)
 
   return (
     <div>
@@ -114,36 +108,36 @@ const IndexPage = (props) => {
                             </CodeSamples>*/}
               <Row>
                 <Column md={4}>
-                  <ClientLibrary img={node} title="Node.js" />
+                  <ClientLibrary title="Node.js" />
                 </Column>
                 <Column md={4}>
-                  <ClientLibrary img={php} title="PHP" />
+                  <ClientLibrary title="PHP" />
                 </Column>
                 <Column md={4}>
-                  <ClientLibrary img={python} title="Python" />
-                </Column>
-              </Row>
-              <Row>
-                <Column md={4}>
-                  <ClientLibrary img={java} title="Java" />
-                </Column>
-                <Column md={4}>
-                  <ClientLibrary img={elixir} title="Elixir" />
-                </Column>
-                <Column md={4}>
-                  <ClientLibrary img="" title="NodeMailer" />
+                  <ClientLibrary title="Python" />
                 </Column>
               </Row>
               <Row>
                 <Column md={4}>
-                  <ClientLibrary img={go} title="Go" />
+                  <ClientLibrary title="Java" />
+                </Column>
+                <Column md={4}>
+                  <ClientLibrary title="Elixir" />
+                </Column>
+                <Column md={4}>
+                  <ClientLibrary title="NodeMailer" />
+                </Column>
+              </Row>
+              <Row>
+                <Column md={4}>
+                  <ClientLibrary title="Go" />
                 </Column>
               </Row>
             </Column>
           </Row>
         </Container>
       </Section>
-      {upcomingEvents && <Section dark>
+      {!!upcomingEvents.length && <Section dark>
         <Container>
           <SectionTitle dark>Dev Events</SectionTitle>
           <Row>
