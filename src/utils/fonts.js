@@ -25,7 +25,7 @@ const weightMap = {
 
 function font(f) {
   if (!fontMap[f]) {
-    console.log(`Font ${c} undefined`)
+    console.log(`Font ${f} undefined`)
   }
 
   return fontMap[f]
@@ -33,7 +33,7 @@ function font(f) {
 
 function weight(w) {
   if (!weightMap[w]) {
-    console.log(`Weight ${c} undefined`)
+    console.log(`Weight ${w} undefined`)
   }
 
   return weightMap[w]
