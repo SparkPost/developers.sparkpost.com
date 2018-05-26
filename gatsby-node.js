@@ -1,12 +1,6 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
 const axios = require('axios')
 
-exports.onCreateNode = async ({ node, boundActionCreators, getNode }) => {
+exports.onCreateNode = async ({ node, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
 
   if (node.internal.type === `wordpress__POST`) {
