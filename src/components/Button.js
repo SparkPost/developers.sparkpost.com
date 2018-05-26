@@ -10,7 +10,7 @@ const Button = styled.button`
   ${uppercase}
   border: 1px solid transparent;
   padding: .6em 1.8em;
-  font-size: .833333333em;
+  font-size: .9375em; // 15px
   font-weight: ${weight('bold')};
   outline: 0;
   cursor: pointer;
