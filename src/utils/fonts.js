@@ -46,7 +46,6 @@ const uppercase = `
 `
 
 const monospace = `
-  -webkit-font-smoothing: initial;
   font-family: ${font('monospace')};
   font-size: 85%;
   font-weight: 400;
