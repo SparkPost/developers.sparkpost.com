@@ -8,15 +8,61 @@ module.exports = {
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-     {
-        resolve: `gatsby-source-wordpress`,
-        options: {
-          baseUrl: 'sparkpost.com',
-          protocol: 'https',
-          hostingWPCOM: false,
-          useACF: false,
-          excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
-        }
+    /** data sourcing */
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+      },
+    },
+    `gatsby-transformer-json`,
+    `gatsby-transformer-api-elements`,
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        baseUrl: 'sparkpost.com',
+        protocol: 'https',
+        hostingWPCOM: false,
+        useACF: false,
+        excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
       }
+    },
+    {
+      resolve: 'gatsby-source-github',
+      options: {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 
+        },
+        queries: [
+          `{
+            search(type: REPOSITORY, query: "is:public user:SparkPost", first: 100) {
+              edges {
+                node {
+                  ... on Repository {
+                    name
+                    url
+                    description
+                    stargazers {
+                      totalCount
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+        ],
+      }
+    },
+
+    /** Analytics
+     ** Note: Google Analytics and HotJar is added through GTM */
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: 'GTM-WN7C84',
+        includeInDevelopment: false,
+      }
+    },
   ],
 }
