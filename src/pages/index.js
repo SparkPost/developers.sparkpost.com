@@ -15,7 +15,6 @@ import { get } from 'lodash'
 
 const Title = styled.h1`
   text-align: center;
-  color: ${color('gray')};
 `
 
 const Subtitle = styled.p`

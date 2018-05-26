@@ -195,6 +195,4 @@ query libraryQuery {
       }
     }
   }
-}
-
-`
+}`
