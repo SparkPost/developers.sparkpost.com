@@ -57,6 +57,29 @@ const EmailInput = styled.input`
   border: none;
 `
 
+const SocialIcons = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0 0;
+`
+
+const SocialIcon = styled(({ to, icon, ...props }) => (
+  <li {...props}>
+    <Link.Unstyled to={to} target="_blank">
+      <i className={`fa fa-${icon}`}></i>
+    </Link.Unstyled>
+  </li>
+))`
+  display: inline-block;
+  font-size: 1.166666667rem;
+  margin-right: 1.25rem;
+  color: ${grayscale(5)};
+
+  &:hover {
+    color: ${grayscale('white')};
+  }
+`
+
 export default () => (
   <React.Fragment>
     <Footer>
@@ -97,6 +120,15 @@ export default () => (
                 <Button primary>Submit</Button>
               </SubscribeForm>
             </div>
+            <SocialIcons>
+              <SocialIcon to="https://www.facebook.com/sparkpost/" icon="facebook-square" />
+              <SocialIcon to="https://twitter.com/SparkPost" icon="twitter" />
+              <SocialIcon to="https://www.linkedin.com/company/sparkpost" icon="linkedin-square" />
+              <SocialIcon to="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ" icon="youtube" />
+              <SocialIcon to="http://www.slideshare.net/SparkPost" icon="slideshare" />
+              <SocialIcon to="http://slack.sparkpost.com/" icon="slack" />
+              <SocialIcon to="https://github.com/SparkPost" icon="github" />
+            </SocialIcons>
           </Column>
         </Row>
       </Container>
