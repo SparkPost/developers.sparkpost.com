@@ -8,6 +8,7 @@ import './index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import zIndex from '../utils/zIndex'
 
 function onApiPage(location) {
   return location.pathname.startsWith('/api')
@@ -18,7 +19,7 @@ const TemplateWrapper = ({ children, location }) => (
     <StickyContainer>
       <Sticky>
         {({ style, isSticky, distanceFromTop }) => (
-            <div style={{ ...style, zIndex: 10 }}>
+            <div style={{ ...style, zIndex: zIndex('header') }}>
               <Header
                 path={location.pathname}
                 isSticky={isSticky && distanceFromTop !== 0 || onApiPage(location) || location.pathname === '/integraion'} />

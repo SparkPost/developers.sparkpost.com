@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 import { color, grayscale } from '../utils/colors'
+import zIndex from '../utils/zIndex'
 
 const arrowMargin = `10px`
 
@@ -26,7 +27,7 @@ const Tip = styled.div`
 const Tooltip = styled.div`
   display: block;
   position: absolute;
-  z-index: 1;
+  z-index: ${zIndex('tooltip')};
   top: 100%;
   left: 0;
   width: 11rem;
