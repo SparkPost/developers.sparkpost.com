@@ -1,0 +1,112 @@
+[
+  {
+    "category": "Introduction",
+    "pages": [
+      {
+        "title": "Overview",
+        "file": "overview.apib"
+      },
+      {
+        "title": "Errors",
+        "file": "errors.apib"
+      },
+      {
+        "title": "Substitutions Reference",
+        "file": "substitutions-reference.apib"
+      },
+      {
+        "title": "Labs",
+        "file": "labs.apib"
+      }
+    ]
+  },
+  {
+    "category": "Sending",
+    "pages": [
+      {
+        "title": "Transmissions",
+        "file": "transmissions.apib"
+      },
+      {
+        "title": "SMTP",
+        "file": "smtp.apib"
+      },
+      {
+        "title": "A/b Testing",
+        "file": "ab-testing.apib",
+        "labs": true
+      },
+      {
+        "title": "Sending Domains",
+        "file": "sending-domains.apib"
+      },
+      {
+        "title": "Tracking Domains",
+        "file": "tracking-domains.apib"
+      },
+      {
+        "title": "Templates",
+        "file": "templates.apib"
+      },
+      {
+        "title": "Recipient Lists",
+        "file": "recipient-lists.apib"
+      },
+      {
+        "title": "Suppression List",
+        "file": "suppression-list.apib"
+      },
+      {
+        "title": "Sending IPs",
+        "file": "sending-ips.apib"
+      },
+      {
+        "title": "IP Pools",
+        "file": "ip-pools.apib"
+      }
+    ]
+  },
+  {
+    "category": "Analyics",
+    "pages": [
+      {
+        "title": "Metrics",
+        "file": "metrics.apib"
+      },
+      {
+        "title": "Message Events",
+        "file": "message-events.apib"
+      },
+      {
+        "title": "Webhooks",
+        "file": "webhooks.apib"
+      }
+    ]
+  },
+  {
+    "category": "Accounts",
+    "pages": [
+      {
+        "title": "Account",
+        "file": "account.apib"
+      },
+      {
+        "title": "Subaccounts",
+        "file": "subaccounts.apib"
+      }
+    ]
+  },
+  {
+    "category": "Receiving",
+    "pages": [
+      {
+        "title": "Inbound Domains",
+        "file": "inbound-domains.apib"
+      },
+      {
+        "title": "Relay Webhooks",
+        "file": "relay-webhooks.apib"
+      }
+    ]
+  }
+]

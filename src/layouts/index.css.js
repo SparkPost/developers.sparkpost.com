@@ -44,6 +44,10 @@ injectGlobal`
     margin: 0 0 1rem 0;
   }
 
+  h1, h2 {
+    color: ${grayscale('dark')};
+  }
+
   h1 {
     font-size: 1.666666667rem;
   }
@@ -70,6 +74,14 @@ injectGlobal`
 
   p, td, tr {
     line-height: 1.65;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+  }
+
+  li p {
+    margin-bottom: .333333333rem; 
   }
 
   a {
@@ -105,7 +117,7 @@ injectGlobal`
     font-weight: 500;
     padding: 2px 4px;
     border-radius: 2px;
-    border: 1px solid ${grayscale(8)};
+    // border: 1px solid ${grayscale(8)};
   }
 
   pre {

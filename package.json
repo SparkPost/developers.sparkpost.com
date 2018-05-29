@@ -18,6 +18,8 @@
     "gatsby-transformer-json": "^1.0.16",
     "is-absolute-url": "^2.1.0",
     "lodash": "^4.17.10",
+    "minim": "^0.20.5",
+    "minim-parse-result": "^0.10.0",
     "polished": "^1.9.2",
     "react-sticky": "^6.0.2",
     "rehype-highlight": "^2.1.0",

@@ -1,28 +1,24 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
+import { rgba, lighten, saturate } from 'polished'
 import { color, grayscale, shadow } from '../utils/colors'
 import { uppercase, weight, monospace } from '../utils/fonts'
 import { Container, Row, Column } from '../components/Grid'
-import Section from '../components/Section'
 import Link from '../components/Link'
 import Button from '../components/Button'
+import MarkdownBase from '../components/Markdown'
+import Tooltip from '../components/Tooltip'
 import map from '../utils/map'
-import { last, get, keyBy, mapValues, castArray, uniqBy } from 'lodash'
-
-// markdown
-const unified = require('unified')
-const parseMarkdown = require('remark-parse')
-const remark2rehype = require('remark-rehype')
-const markdownToHtml = require('rehype-stringify')
-
-import {
-  Wrapper, Sidebar, Reference, Content, Layout
-} from '../components/API'
+import { isString, isEmpty, first, last, get, keyBy, mapValues, uniqBy } from 'lodash'
+import ToC from '../data/api/table-of-contents.json'
+import { Sidebar, Search, Navigation, Content, Debug } from '../components/api'
+import dataStructureToJSON from '../utils/api/data-structure-to-json'
 
 import parseResult from 'minim-parse-result'
 const minim = require('minim').namespace()
 minim.use(parseResult)
+
+const debug = false
 
 function values(element, props = []) {
   const obj = {}
@@ -34,82 +30,131 @@ function values(element, props = []) {
   return obj
 }
 
-const RenderBlock = styled(({ title, children, ...props }) => (
-  <div {...props}>
-    <div className="renderBlockTitle">{title}</div>
-    {children}
-  </div>
-))`
-  // border-radius: 0 5px 5px 5px;
-  // border: 1px solid blue;
-  // margin: 2rem 1rem 1rem;
-  // padding: .5rem;
+const StyledMarkdown = styled(MarkdownBase)``
 
-  // .renderBlockTitle {
-  //   border-radius: 5px 5px 0 0;
-  //   border: 1px solid blue;
-  //   border-bottom-color: white;
-  //   transform: translateY(-100%);
-  //   position: absolute;
-  //   top: 0;
-  //   left: -1px;
-  //   padding: .25rem;
-  // }
+const Section = styled.div`
+  &&& {
+    width: 100%;
+    padding: 0;
+  }
 
-  .renderBlockTitle {
-    display: none;
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  > *:not(${StyledMarkdown}),
+  ${StyledMarkdown} > div > * {
+    width: 55%;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 `
 
-const ColumnsWrapper = styled.div`
-  display: flex;
-`
-
-const Left = styled.div`
-  width: 60%;
-`
-
-const Right =styled.div`
-  width: 40%;
+const Right = styled.div`
+  float: right;
+  width: 45% !important;
+  padding: 0 1.5rem;
+  z-index: 1;
   background: ${grayscale('dark')};
-  // background: #212121;
   color: ${grayscale('white')};
+  
+  background: #1d1d1d; // dark theme
+  background: #212125; // dark theme
+  color: ${grayscale(7)}; // dark theme
 
   pre {
-    color: inherit;
+    color: ${grayscale(8)};
     overflow: auto;
     border: 0;
     font-weight: 500;
     background: transparent;
     border: 1px solid ${grayscale('medium')};
-    // -webkit-font-smoothing: inherit;
+    border-color: #38383b; // dark theme
+    code {
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      text-shadow: 0px 1px 2px rgba(0,0,0,1);
+    }
+
+    .hljs-string {
+      color: ${saturate(0.1, lighten(0.05, color('green')))};
+    }
+
+    .hljs-number, .hljs-literal {
+      color: ${lighten(0.15, color('blue'))};
+    }
   }
 `
 
-function Markdown({ children }) {
-  const markdown = castArray(children).join('')
+const DataStructureContext = React.createContext([])
 
-  return (<div dangerouslySetInnerHTML={{ __html: String(unified()
-  .use(parseMarkdown)
-  .use(remark2rehype)
-  .use(markdownToHtml)
-  .processSync(markdown)) }}></div>)
+
+function Markdown(props) {
+  const components = {
+    table(props) {
+      return (<div><table {...props} /></div>)
+    },
+    p(props) {
+      const hasComponent = React.Children.map(props.children, x => (
+        x.type && (
+          x.type.name === 'dataStructure' ||
+          x.type.name === 'note'
+        )
+      )).includes(true)
+
+      return hasComponent ? <React.Fragment {...props} /> : <p {...props} />
+    },
+    note({ children }) {
+      return (<div><div className="alert alert-info"><strong>Note</strong>: {children}</div></div>)
+    },
+    "data-structure": ({ id, sample }) => (
+      <DataStructureContext.Consumer>
+        {(dataStructures) => (
+        <React.Fragment>
+          <Section>
+            {sample !== undefined && <Right>
+              <HttpTitle>Response</HttpTitle>
+              <Json>{generateSample(dataStructures.find((dataStructure) => {
+                return id.toLowerCase() === dataStructure.content.id.toValue().toLowerCase()
+              }), dataStructures)}</Json>
+            </Right>}
+            <DataStructure dataStructure={dataStructures.find((dataStructure) => {
+              return id.toLowerCase() === dataStructure.content.id.toValue().toLowerCase()
+            })} />
+          </Section>
+        </React.Fragment>
+        )}
+      </DataStructureContext.Consumer>
+    )
+  }
+  
+  return (<StyledMarkdown components={components} {...props} />)
 }
+
 
 function API({ api }) {
   // get meta data for rendering in <head>
-  const meta = mapValues(keyBy(api.attributes.toValue().meta, 'key'), 'value')
+  const meta = mapValues(keyBy(api.attributes.get('meta').toValue(), 'key'), 'value')
   
   // we don't seem to use these since we just have a single resource group
-  const { title, description } = values(api, [ 'title', 'description' ])
+  const { title, description, copy } = values(api, [ 'title', 'description', 'copy' ])
+
+
+  const dataStructures = api.dataStructures.first ? api.dataStructures.first.content : null
 
   return (
     <div>
-      <RenderBlock title="api">
-        {api.resourceGroups.map((resourceGroup) => (
-          <ResourceGroup resourceGroup={resourceGroup} />
-        ))}
-      </RenderBlock>
+      <DataStructureContext.Provider value={dataStructures}>
+        <Debug title="api" enable={debug}>
+          {title && <h1>{title}</h1>}
+          {copy && <Markdown>{copy}</Markdown>}
+          {api.resourceGroups.map((resourceGroup) => (
+            <ResourceGroup resourceGroup={resourceGroup} />
+          ))}
+        </Debug>
+      </DataStructureContext.Provider>
     </div>
   )
 }
@@ -119,18 +164,29 @@ function ResourceGroup({ resourceGroup }) {
 
   return (
     <div>
-      <RenderBlock title="resource group">
-        <ColumnsWrapper>
-          <Left>
-            {title && <h1>{title}</h1>}
-            {copy && <Markdown>{copy}</Markdown>}
-          </Left>
-          <Right></Right>
-        </ColumnsWrapper>
+      <Debug title="resource group" enable={debug}>
+        <Section>
+          {title && (
+            <h1 style={{
+              display: 'flex',
+              justifyContent: 'space-between'
+            }}>
+              <span>{title}</span>
+              <Tooltip content="Import the SparkPost API as a Postman collection">
+                <a style={{
+                  lineHeight: '1rem'
+                }} href="https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb" target="_blank">
+                  <img src="https://run.pstmn.io/button.svg" alt="Run in Postman"/>
+                </a>
+              </Tooltip>
+            </h1>
+          )}
+          {copy && <Markdown>{copy}</Markdown>}
+        </Section>
         {resourceGroup.resources.map((resource) => (
           <Resource resource={resource} />
         ))}
-      </RenderBlock>
+      </Debug>
     </div>
   )
 }
@@ -140,18 +196,15 @@ function Resource({ resource }) {
 
   return (
     <div>
-      <RenderBlock title="resource">
-        <ColumnsWrapper>
-          <Left>
-            {title && <h3>{title}</h3>}
-            {copy && <Markdown>{copy}</Markdown>}
-          </Left>
-          <Right></Right>
-        </ColumnsWrapper>
+      <Debug title="resource" enable={debug}>
+        <Section style={{ marginTop: '3rem' }}>
+          {/* title is driven through the transition */ title && <h3>{title}</h3>} 
+          {copy && <Markdown>{copy}</Markdown>}
+        </Section>
         {resource.transitions.map((transition) => (
-          <Transition transition={transition} />
+          <Transition transition={transition} resource={resource} />
         ))}
-      </RenderBlock>
+      </Debug>
     </div>
   )
 }
@@ -185,81 +238,176 @@ function mergeDuplicateTransactions(transactions) {
   return minim.toElement(uniqueTransactions)
 }
 
-function Transition({ transition }) {
+function Transition({ transition, resource }) {
   const {
     title, copy, method
   } = values(transition, ['title', 'copy', 'method'])
 
   return (
     <div>
-      <RenderBlock title="transition">
-        <ColumnsWrapper>
-          <Left>
-            {title && <h4>{title}</h4>}
-            {transition.hrefVariables && <Parameters parameters={transition.hrefVariables} />}
-          {'' /*add in body attributes here*/}
-            {copy && <Markdown>{copy}</Markdown>}
-          </Left>
+      <Debug title="transition" enable={debug}>
+        <Section>
           <Right>
             {transition.transactions.length && mergeDuplicateTransactions(transition.transactions).map((transaction) => (
-              <Transaction transaction={transaction} />
+              <Transaction transaction={transaction} transition={transition} resource={resource} />
             ))}
           </Right>
-        </ColumnsWrapper>
-      </RenderBlock>
+          {title && <h3>{title}</h3>}
+          {copy && <Markdown>{copy}</Markdown>}
+          {transition.hrefVariables && <Parameters parameters={transition.hrefVariables} />}
+          {transition.data && <DataStructure dataStructure={transition.data} />}
+        </Section>
+      </Debug>
     </div>
   )
 }
 
-function Transaction({ transaction }) {
+function Transaction({ transaction, transition, resource }) {
   const { title, copy } = values(transaction, ['title', 'copy'])
 
   return (
     <div>
-      <RenderBlock title="transaction">
-        <h4>{title || 'Examples'}</h4>
+      <Debug title="transaction" enable={debug}>
+        {title && <h4>{title}</h4>}
         {copy && <Markdown>{copy}</Markdown>}
-        {transaction.request && <Request request={transaction.request} />}
+        {transaction.request && <Request
+            request={transaction.request}
+            transition={transition}
+            resource={resource} />}
         {transaction.responses ? 
-          transaction.responses.map((response) => <Response response={response} />) :
-          transaction.response && <Response response={transaction.response} />}
-      </RenderBlock>
+          <Responses responses={transaction.responses} /> :
+          <Responses responses={[ transaction.response ]} /> }
+      </Debug>
     </div>
   )
 }
 
-function Request({ request }) {
+
+function format(content) {
+  return JSON.stringify(JSON.parse(content.trim()), null, 2)
+}
+
+const HttpTitle = styled.h4`
+  font-size: .888888889rem;
+  font-weight: ${weight('medium')};
+`
+
+function Json({ children, ...props }) {
+  return (<Markdown {...props}>
+          {`\`\`\`json
+${children}
+\`\`\``}</Markdown>)
+}
+
+function Request({ request, transition, resource }) {
   const { title, copy, method } = values(request, ['title', 'copy', 'method'])
 
   return (
     <div>
-      <RenderBlock title="request">
-        <h4>{title ? `Request: ${title}` : `Request`}</h4>
+      <Debug title="request" enable={debug}>
+        <HttpTitle>{title ? `Request: ${title}` : `Request`}</HttpTitle>
         {copy && <Markdown>{copy}</Markdown>}
-        {method && <div>{method}</div>}
+        <pre style={{padding: `.5rem`}}><code>{method && (
+          <React.Fragment>{method} {(transition.href || {}).content || resource.href.content}</React.Fragment>
+        )}</code></pre>
         {request.messageBody && (
-          <pre><code>{request.messageBody.content}</code></pre>
+          <Json>{format(request.messageBody.content)}</Json>
         )}
-      </RenderBlock>
+      </Debug>
     </div>
   )
 }
 
-function Response({ response }) {
-  const { title, copy, statusCode } = values(response, ['title', 'copy', 'statusCode'])
+class Responses extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { activeIndex: 0 }
+  }
 
+  setActiveResponse = (i) => {
+    this.setState({ activeIndex: i })
+  }
+
+  render() {
+    return (
+      <div>
+        <Debug title="responses" enable={debug}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            // marginTop: '4rem',
+            paddingTop: '2rem',
+            // borderTop: `1px solid ${grayscale('medium')}`,
+            // borderTopColor: '#38383b' // dark theme'
+          }}>
+            <HttpTitle style={{margin: 0}}>Response</HttpTitle>
+            <div style={{ display: 'flex' }}>
+              {this.props.responses.map((response, i) => (
+                <StatusCode
+                  code={response.statusCode.toValue()}
+                  active={i === this.state.activeIndex}
+                  onClick={() => this.setActiveResponse(i)} />
+              ))}
+            </div>
+          </div>
+          {/*copy && <Markdown>{copy}</Markdown>*/ '' /*is it possible to have copy in requests/responses?*/} 
+          {
+            this.props.responses.map((response, i) => (
+              <React.Fragment>
+                <Json style={{
+                  display: i === this.state.activeIndex ? 'block' : 'none'
+                }}>{response.messageBody ? format(response.messageBody.content) : '// Empty response body'}</Json>
+                {response.copy && <Markdown style={{
+                  display: i === this.state.activeIndex ? 'block' : 'none'
+                }}>{response.copy.toValue()}</Markdown>}
+              </React.Fragment>
+            ))
+          }
+          
+        </Debug>
+      </div>
+    )
+  }
+}
+
+const StatusCodeWrapper = styled.button`
+  font: inherit;
+  color: ${grayscale('white')};
+  background: transparent;
+  border: 0;
+  ${monospace}
+  padding: .166666667rem .5rem;
+  border-radius: 2px;
+  outline: 0;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    margin-right: .333333333rem;
+    height: .333333333rem;
+    width: .333333333rem;
+    border-radius: 50%;
+
+    ${props => props.code.startsWith('2') && `background: ${color('green')}`}
+    ${props => props.code.startsWith('3') && `background: ${color('mustard')}`}
+    ${props => props.code.startsWith('4') && `background: ${color('orange')}`}
+    ${props => props.code.startsWith('5') && `background: ${color('red')}`}
+  }
+
+  ${props => props.active && `
+    background: ${grayscale('medium')};
+    background: #38383b; // dark theme
+  `}
+`
+
+function StatusCode({ code, active, ...props }) {
   return (
-    <div>
-      <RenderBlock title="response">
-        <h4>(HTTP status code: {statusCode})</h4>
-        {copy && <Markdown>{copy}</Markdown> /*is it possible to have copy in requests/responses*/} 
-        <pre><code>{response.messageBody ? response.messageBody.content : '// Empty response body'}</code></pre>
-        
-      </RenderBlock>
-    </div>
-  )
+    <StatusCodeWrapper {...props} code={`${code}`} active={active}>
+      {code}
+    </StatusCodeWrapper>)
 }
-
 
 
 function Parameters({ parameters }) {
@@ -275,27 +423,252 @@ function Parameters({ parameters }) {
             <div>{key} - <Markdown>{description}</Markdown> <br /> Example: {value} Default: {defaultValue}</div>
             <hr />
           </div>
-
         )
       })}
     </div>)
 }
 
 
-const IndexPage = (props) => {
-  const { api } = minim.fromRefract(props.data.allFury.edges[0].node.ast)
+function DataStructure({ dataStructure }) {
+  const jsonArray = dataStructureToJSON(dataStructure)
+
+  return (<Attributes id={dataStructure.content.id.toValue()}>{
+    jsonArray.map((props) => <Attribute {...props} />)
+  }</Attributes>)
+}
+
+function generateSample(dataStructure, dataStructures) {
+  const jsonArray = !!dataStructure._storedElement ? dataStructureToJSON(dataStructure, dataStructures) : dataStructure
+
+
+  // use value or first sample. make sure it works with nested objects.
+  return JSON.stringify(buildSample(jsonArray), null, 2)
+}
+
+function buildSample(jsonArray) {
+  return mapValues(keyBy(jsonArray.map(({
+    name, type, value, samples, children, enumerations
+  }) => {
+    if (type === 'object') {
+      return {
+        name,
+        value: buildSample(children)
+      }
+    }
+
+    return {
+      name,
+      value: !isEmpty(value) && value || first(samples) || first(enumerations)
+    }
+  }), 'name'), 'value')
+}
+
+
+function Attributes({ id, children }) {
+  return (
+    <AttributesWrapper>
+    <h4>{id} Attributes</h4>
+      {children}
+    </AttributesWrapper>)
+}
+
+const AttributesWrapper = styled.div`
+  > h4 {
+    // border-bottom: 1px solid ${grayscale(7)};
+  }
+`
+
+function toType(obj) {
+  return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+}
+
+const types = [ 'boolean', 'string', 'number', 'object', 'array', 'enum' ]
+
+function Attribute(props) {
+
+  const {
+    name,
+    type,
+    description,
+    required,
+    samples,
+    children,
+    value,
+    default: defaultValue,
+    enumerations
+  } = props
+
+  const sample = first(samples)
+  const actualType = types.includes(type) ? type : 'object'
+
+  // TODO: figure out how to have arbitrarily set properties
+  // let properties
+
+  // // we have an object that has some extra properties on it
+  // if (actualType === 'object' && toType(value) === 'array') {
+  //   properties = mapValues(keyBy(value, 'key'), 'value')
+
+  //   console.log(properties)
+  // }
 
   return (
-    <Wrapper>
-      <Sidebar />
-      <Reference>
-        <Content>
-          <Layout>
-            <API api={api} />
-          </Layout>
-        </Content>
-      </Reference>
-    </Wrapper>
+    <AttributeWrapper>
+      <AttributeProperties>
+        <Name>{name}</Name>
+        <Type>{actualType /*generate link to dereferenced type */}{actualType === 'array' && sample && ` of ${toType(first(sample))}s`}</Type> {'' /* if its an array, array of what??? */}
+        {'' /* required, value, and default are all mutually exlusive */}
+        {required && <Required>required</Required>}
+        {actualType !== 'object' && !isEmpty(value) && <React.Fragment>, value is <code>{isString(value) ? value : JSON.stringify(value)}</code></React.Fragment>}
+        {actualType !== 'object' && defaultValue && <React.Fragment>, default is <code>{isString(defaultValue) ? defaultValue : JSON.stringify(defaultValue)}</code></React.Fragment>}
+      </AttributeProperties>
+      <Markdown>{description}</Markdown>
+      {'' /* samples should be shown through example JSON blobs */}
+      {'' /* type !== 'object' && sample && <div>Example: <code>{isString(sample) ? sample : JSON.stringify(sample)}</code></div> */}
+      {enumerations && <div>Values: {JSON.stringify(enumerations)}</div>}
+      {children && children.length > 0 && (
+        <AttributeChildren>
+          {children.map((props) => <Attribute {...props} />)}
+        </AttributeChildren>
+        )}
+    </AttributeWrapper>)
+}
+
+const AttributeWrapper = styled.div`
+  padding: .888888889rem 0;
+  border-bottom: 1px solid ${grayscale(8)};
+
+  ${AttributesWrapper} &:first-of-type {
+    border-top: 1px solid ${grayscale(8)};
+    // padding-top: 0;
+  }
+
+  p {
+    font-size: .833333333rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+`
+
+const AttributeProperties = styled.div`
+  padding-bottom: .25rem;
+  font-size: .777777778rem;
+  font-weight: ${weight('medium')};
+  color: ${grayscale(4)};
+  
+  code {
+    color: ${grayscale('medium')};
+  }
+
+`
+
+const Name = styled.span`
+  display: inline-block;
+  font-size: .888888889rem;
+  margin-right: .666666667rem;
+  color: ${grayscale('medium')};
+`
+const Type = styled.span`
+  diplay: inline-block;
+`
+
+const Required = styled.span`
+  diplay: inline-block;
+  margin-left: .666666667rem;
+  color: ${color('mustard')};
+`
+
+const ChildrenWrapper = styled.div`
+  border: 1px solid ${grayscale(8)};
+  border-radius: 4px;
+  margin: .833333333rem 0 .333333333rem 1rem;
+
+  &:before {
+    width: .5rem;
+  }
+
+  ${AttributeWrapper} {
+    padding-left: .5rem;
+    padding-right: .5rem;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+`
+
+class AttributeChildren extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { open: false }
+  }
+
+  toggleOpen = () => {
+    this.setState({ open: !this.state.open })
+  }
+
+  render() {
+    return (
+      <ChildrenWrapper>
+        <ChildrenToggle onClick={this.toggleOpen}>
+          {this.state.open ? 'Hide' : 'Show'} attributes
+        </ChildrenToggle>
+        {this.state.open && this.props.children}
+      </ChildrenWrapper>
+    )
+  }
+}
+
+
+const ChildrenToggle = styled.button`
+  color: ${color('blue')};
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: ${weight('medium')};
+  font-size: .777777778rem;
+  padding: .5rem 1rem;
+  outline: 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+
+
+
+
+
+
+
+
+const IndexPage = (props) => {
+  const { api } = minim.fromRefract(props.data.allApiElement.edges[0].node.ast)
+
+  // console.log(api.resourceGroups.first.resources.map((resources) => resources.title.toValue()))
+
+  // console.log(JSON.stringify(props.data.allApiElement.edges[0].node.ast, null, 2))
+
+  return (
+    <div>
+      <Sidebar>
+        <Search />
+        <Navigation navigation={ToC} />
+      </Sidebar>
+      <Content>
+        <Right style={{
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          right: 0
+        }} />
+        <API api={api} />
+      </Content>
+    </div>
   )
 }
 
@@ -304,7 +677,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
 query apiQuery {
-  allFury {
+  allApiElement {
     edges {
       node {
         ast
