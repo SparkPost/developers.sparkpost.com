@@ -76,9 +76,9 @@ class SecondaryNav extends React.Component {
         <SecondaryNavLink to="https://status.sparkpost.com" target="_blank">
           <span><StatusIcon status={this.state.status} /> Status</span>
         </SecondaryNavLink>
-        <SecondaryNavLink to="/changelog">
+        {'' /* <SecondaryNavLink to="/changelog">
           <span><ChangelogIcon /> Changelog</span>
-        </SecondaryNavLink>
+        </SecondaryNavLink> */}
         <SecondaryNavLink to="https://www.sparkpost.com/blog/category/developer">Blog</SecondaryNavLink>
         <SecondaryNavLink to="https://app.sparkpost.com/join">Sign Up</SecondaryNavLink>
       </Nav>
