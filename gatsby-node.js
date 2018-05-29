@@ -19,3 +19,33 @@ exports.onCreateNode = async ({ node, boundActionCreators }) => {
   }
 }
 
+// Add Babel plugin
+let babelPluginExists = false
+try {
+  require.resolve(`babel-plugin-styled-components`)
+  babelPluginExists = true
+} catch (e) {
+  // Ignore
+}
+
+exports.modifyBabelrc = ({ babelrc, stage }) => {
+
+  if (babelPluginExists) {
+    if (stage === 'develop') {
+      return {
+        ...babelrc,
+        plugins: babelrc.plugins.concat([
+          [
+            'babel-plugin-styled-components',
+            {
+              displayName: true,
+              minify: false
+            },
+          ],
+        ]),
+      }
+    }
+  }
+
+  return babelrc
+}
