@@ -32,6 +32,18 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 <td></td>
 </tr>
 <tr>
+<td>signing_domain</td>
+<td>string</td>
+<td>DKIM verified signing domain</td>
+<td></td>
+</tr>
+<tr>
+<td>fbl_signing_domain</td>
+<td>string</td>
+<td>FBL Signing Domain for the pool</td>
+<td>Used only for emails to domains that require DKIM for FBL</td>
+</tr>
+<tr>
 <td>ips</td>
 <td>array of objects</td>
 <td>Sending IPs within the pool</td>
@@ -41,24 +53,21 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 </table>
 </div><div class="resource searchable"><h3 id="ip-pools-ip-pools" class="resource-heading">IP Pools <a href="#ip-pools-ip-pools" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="ip-pools-ip-pools-get" class="action-heading"><div class="name">List IP Pools</div></h4><div class="method">GET<code class="uri">/api/v1/ip-pools</code></div><div class="markdown"><p>Lists all IP Pools.</p>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>GET&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">results</span>": <span class="hljs-value">[
-    {
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span></span>,
-      "<span class="hljs-attribute">ips</span>": <span class="hljs-value">[]
-    </span>},
-    {
-      "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
-      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Default"</span></span>,
-      "<span class="hljs-attribute">ips</span>": <span class="hljs-value">[
-        {
-          "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"54.244.54.135"</span></span>,
-          "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta472a.sparkpostmail.com"</span>
-        </span>}
-      ]
-    </span>}
-  ]
-</span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action post"><h4 id="ip-pools-ip-pools-post" class="action-heading"><div class="name">Create an IP Pool</div></h4><div class="method">POST<code class="uri">/api/v1/ip-pools</code></div><div class="markdown"><p>Creates an IP Pool and returns a unique ID based on the name. This ID is used for sending with this pool.</p>
+        "<span class="hljs-attribute">results</span>": <span class="hljs-value">[{
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span></span>,
+            "<span class="hljs-attribute">ips</span>": <span class="hljs-value">[]</span>,
+            "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"example.com"</span>
+            <span class="hljs-string">"fbl_signing_domain"</span>: <span class="hljs-string">"sparkpostmail.com"</span>
+        </span>}, {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Default"</span></span>,
+            "<span class="hljs-attribute">ips</span>": <span class="hljs-value">[{
+                "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"54.244.54.135"</span></span>,
+                "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta472a.sparkpostmail.com"</span>
+            </span>}]
+        </span>}]
+    </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action post"><h4 id="ip-pools-ip-pools-post" class="action-heading"><div class="name">Create an IP Pool</div></h4><div class="method">POST<code class="uri">/api/v1/ip-pools</code></div><div class="markdown"><p>Creates an IP Pool and returns a unique ID based on the name. This ID is used for sending with this pool.</p>
 <h4 id="header-request-body-attributes">Request Body Attributes <a class="permalink" href="#header-request-body-attributes" aria-hidden="true">¶</a></h4>
 <table>
 <thead>
@@ -76,10 +85,23 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 <td>Name of the IP Pool</td>
 <td>yes</td>
 </tr>
+<tr>
+<td>signing_domain</td>
+<td>string</td>
+<td>Domain to use as the DKIM verified signing domain</td>
+<td>no</td>
+</tr>
+<tr>
+<td>fbl_signing_domain</td>
+<td>string</td>
+<td>FBL Signing Domain for the pool</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>POST&nbsp;/api/v1/ip-pools</code></p><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span>
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span></span>,
+  "<span class="hljs-attribute">fbl_signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"sparkpostmail.com"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span>
@@ -90,6 +112,7 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing_ip_pool"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Marketing IP Pool"</span></span>,
+    "<span class="hljs-attribute">fbl_signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"sparkpostmail.com"</span></span>,
     "<span class="hljs-attribute">ips</span>": <span class="hljs-value">[
       {
         "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"54.244.54.135"</span></span>,
@@ -99,7 +122,8 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
         "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"54.244.54.137"</span></span>,
         "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta474a.sparkpostmail.com"</span>
       </span>}
-    ]
+    ]</span>,
+    "<span class="hljs-attribute">signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"example.com"</span>
   </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 404)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
@@ -109,6 +133,7 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
   ]
 </span>}</pre></div></div><hr></div></div><div class="searchable"><div class="action put"><h4 id="ip-pools-ip-pools-resource-put" class="action-heading"><div class="name">Update an IP Pool</div></h4><div class="method">PUT<code class="uri">/api/v1/ip-pools/{id}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">id</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The IP Pool’s ID</p>
 <em>Example: marketing</em></td></tr></table></div><div class="markdown"><p>Updates an IP pool’s name. To update sending IP pool assignments see <a href="sending-ips.html">Sending IPs</a>.</p>
+<p>To remove a signing domain, the value passed in should be the empty string.</p>
 <h4 id="header-request-body-attributes-1">Request Body Attributes <a class="permalink" href="#header-request-body-attributes-1" aria-hidden="true">¶</a></h4>
 <table>
 <thead>
@@ -126,13 +151,27 @@ description: "Manage IP pools, which allow you to group and assign dedicated IPs
 <td>Name of the IP Pool</td>
 <td>yes</td>
 </tr>
+<tr>
+<td>signing_domain</td>
+<td>string</td>
+<td>Domain to use as the DKIM verified signing domain</td>
+<td>no</td>
+</tr>
+<tr>
+<td>fbl_signing_domain</td>
+<td>string</td>
+<td>FBL Signing Domain for the pool</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"> <code>PUT&nbsp;/api/v1/ip-pools/<span class="hljs-attribute" title="id">marketing</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
-  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated Marketing Pool"</span>
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated Marketing Pool"</span></span>,
+  "<span class="hljs-attribute">fbl_signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"sparkpostmail.com"</span>
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated Marketing Pool"</span></span>,
+    "<span class="hljs-attribute">fbl_signing_domain</span>": <span class="hljs-value"><span class="hljs-string">"sparkpostmail.com"</span></span>,
     "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"marketing"</span>
   </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
