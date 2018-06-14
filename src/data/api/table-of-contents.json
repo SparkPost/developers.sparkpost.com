@@ -4,19 +4,18 @@
     "pages": [
       {
         "title": "Overview",
-        "file": "overview.apib"
+        "file": "index.apib",
+        "path": "/api/"
       },
       {
         "title": "Errors",
-        "file": "errors.apib"
-      },
-      {
-        "title": "Substitutions Reference",
-        "file": "substitutions-reference.apib"
+        "file": "errors.apib",
+        "path": "/api/errors/"
       },
       {
         "title": "Labs",
-        "file": "labs.apib"
+        "file": "labs.apib",
+        "path": "/api/labs/"
       }
     ]
   },
@@ -25,44 +24,59 @@
     "pages": [
       {
         "title": "Transmissions",
-        "file": "transmissions.apib"
+        "file": "transmissions.apib",
+        "path": "/api/transmissions/"
       },
       {
         "title": "SMTP",
-        "file": "smtp.apib"
+        "file": "smtp.apib",
+        "path": "/api/smtp/"
       },
       {
-        "title": "A/b Testing",
+        "title": "A/B Testing",
         "file": "ab-testing.apib",
+        "path": "/api/ab-testing/",
         "labs": true
       },
       {
         "title": "Sending Domains",
-        "file": "sending-domains.apib"
+        "file": "sending-domains.apib",
+        "path": "/api/sending-domains/"
       },
       {
         "title": "Tracking Domains",
-        "file": "tracking-domains.apib"
+        "file": "tracking-domains.apib",
+        "path": "/api/tracking-domains/"
       },
       {
         "title": "Templates",
-        "file": "templates.apib"
+        "file": "templates.apib",
+        "path": "/api/templates/"
+      },
+      {
+        "title": "Substitutions Reference",
+        "file": "substitutions-reference.apib",
+        "path": "/api/substitutions-reference/"
       },
       {
         "title": "Recipient Lists",
-        "file": "recipient-lists.apib"
+        "file": "recipient-lists.apib",
+        "path": "/api/recipient-lists/"
       },
       {
         "title": "Suppression List",
-        "file": "suppression-list.apib"
+        "file": "suppression-list.apib",
+        "path": "/api/suppression-list/"
       },
       {
         "title": "Sending IPs",
-        "file": "sending-ips.apib"
+        "file": "sending-ips.apib",
+        "path": "/api/sending-ips/"
       },
       {
         "title": "IP Pools",
-        "file": "ip-pools.apib"
+        "file": "ip-pools.apib",
+        "path": "/api/ip-pools/"
       }
     ]
   },
@@ -71,15 +85,18 @@
     "pages": [
       {
         "title": "Metrics",
-        "file": "metrics.apib"
+        "file": "metrics.apib",
+        "path": "/api/metrics/"
       },
       {
         "title": "Message Events",
-        "file": "message-events.apib"
+        "file": "message-events.apib",
+        "path": "/api/message-events/"
       },
       {
         "title": "Webhooks",
-        "file": "webhooks.apib"
+        "file": "webhooks.apib",
+        "path": "/api/webhooks/"
       }
     ]
   },
@@ -88,11 +105,13 @@
     "pages": [
       {
         "title": "Account",
-        "file": "account.apib"
+        "file": "account.apib",
+        "path": "/api/account"
       },
       {
         "title": "Subaccounts",
-        "file": "subaccounts.apib"
+        "file": "subaccounts.apib",
+        "path": "/api/subaccounts"
       }
     ]
   },
@@ -101,11 +120,13 @@
     "pages": [
       {
         "title": "Inbound Domains",
-        "file": "inbound-domains.apib"
+        "file": "inbound-domains.apib",
+        "path": "/api/inbound-domains"
       },
       {
         "title": "Relay Webhooks",
-        "file": "relay-webhooks.apib"
+        "file": "relay-webhooks.apib",
+        "path": "/api/relay-webhooks"
       }
     ]
   }
