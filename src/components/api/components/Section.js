@@ -4,13 +4,8 @@ import Right from './Right'
 
 export default styled.div`
   display: flex;
-  flex-wrap: wrap;
-
-  ${Right} {
-    order: 1;
-    float: none;
-    width: 100% !important;
-  }
+  flex-wrap: nowrap;
+  flex-direction: column;
 
   ${mediaQuery('md', `
     clear: both;

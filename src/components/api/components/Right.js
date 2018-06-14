@@ -1,11 +1,20 @@
 import styled from 'styled-components'
 import { lighten, saturate } from 'polished'
+import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale } from 'utils/colors'
 
 export default styled.div`
-  float: right;
-  width: 45% !important;
-  padding: 0 1.5rem;
+  order: 1;
+  float: none;
+  width: 100%;
+  padding: 0 2rem 1rem;
+
+  ${mediaQuery('md', `
+    float: right;
+    width: 45%;
+    padding: 0 1.5rem;
+  `)}
+
   z-index: 1;
   background: ${grayscale('dark')};
   color: ${grayscale('white')};

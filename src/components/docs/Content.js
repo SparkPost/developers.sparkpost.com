@@ -16,6 +16,7 @@ const Content = styled.div`
   overflow: auto;
   
   .block {
+    width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
 

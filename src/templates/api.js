@@ -695,11 +695,14 @@ const minim = require('minim').namespace()
 minim.use(parseResult)
 
 const RightBackground = styled(Right)`
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+
   ${mediaQuery('md', `
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
+    display: block;
   `)}
 `
 
