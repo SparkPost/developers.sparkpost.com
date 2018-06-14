@@ -14,6 +14,9 @@ const Button = styled.button`
   font-weight: ${weight('bold')};
   outline: 0;
   cursor: pointer;
+  border-radius: 2px;
+  margin-right: .5rem;
+
 
   &[disabled] {
     opacity: .5;

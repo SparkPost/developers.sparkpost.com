@@ -10,6 +10,8 @@ const Wrapper = styled.div`
   border: 1px solid ${grayscale(7)};
   text-align: center;
   height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
 `
 
 const Image = styled.div`

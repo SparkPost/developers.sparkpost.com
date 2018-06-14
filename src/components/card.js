@@ -17,6 +17,9 @@ const Wrapper = styled(Link.Unstyled)`
   height: 100%;
   box-shadow: ${shadow(1)};
   font-weight: inherit;
+  border-radius: 2px;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
 
   &:hover {
     box-shadow: ${shadow(2)};
