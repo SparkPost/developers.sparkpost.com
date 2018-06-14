@@ -22,22 +22,14 @@ const TemplateWrapper = ({ children, location }) => (
             <div style={{ ...style, zIndex: zIndex('header') }}>
               <Header
                 path={location.pathname}
-                isSticky={isSticky && distanceFromTop !== 0 || onApiPage(location) || location.pathname === '/integraion'} />
+                isSticky={true || isSticky && distanceFromTop !== 0 || onApiPage(location) || location.pathname === '/integraion'} />
             </div>
           )}
       </Sticky>
       <Helmet
         defaultTitle="SparkPost Developers"
-        titleTemplate="%s - SparkPost"
-        meta={[
-          {
-            name: 'description',
-            content:
-              'The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?',
-          },
-          { name: 'keywords', content: 'SparkPost' },
-        ]}
-      >
+        titleTemplate="%s - SparkPost">
+        <meta name="description" content="The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?" />
         {'' /* favicon and app data */}
         <link rel="apple-touch-icon" sizes="180x180" href={withPrefix('/favicons/apple-touch-icon.png')} />
         <link rel="icon" type="image/png" href={withPrefix('/favicons/favicon-32x32.png')} sizes="32x32" />
