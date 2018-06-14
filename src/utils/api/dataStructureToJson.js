@@ -13,12 +13,19 @@ function renderBase(attribute) {
 
 // See https://github.com/apiaryio/mson/blob/master/MSON%20Specification.md#353-type-attribute
 function renderTypeAttributes(member) {
-  const typeAttributes = member.attributes.get('typeAttributes')
+  const typeAttributes = member.attributes && member.attributes.get('typeAttributes')
   const valueAttributes = member.value.attributes
   
   const properties = {
     ...valueAttributes.toValue(),
     required: typeAttributes ? typeAttributes.contains('required') : false
+  }
+
+  if (valueAttributes.get('enumerations')) {
+    properties.enumerations = valueAttributes.get('enumerations').map((enumeration) => ({
+      type: enumeration.element,
+      value: enumeration.toValue()
+    }))
   }
 
   return properties
@@ -74,7 +81,7 @@ function renderAttribute(attribute, dataStructures) {
           return {
             ...renderBase(attribute),
             type: 'object',
-            children: dataStructureToJSON(dataStructure)
+            children: dataStructureToJson(dataStructure)
           }
         }
       }
@@ -93,8 +100,8 @@ function renderMember(member, dataStructures) {
 }
 
 
-function dataStructureToJSON(dataStructure, dataStructures) {
+function dataStructureToJson(dataStructure, dataStructures) {
   return dataStructure.content.map((value, key, member) => renderMember(member, dataStructures))
 }
 
-export default dataStructureToJSON
+export default dataStructureToJson
