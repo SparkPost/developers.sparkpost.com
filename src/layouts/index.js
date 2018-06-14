@@ -14,7 +14,7 @@ function onApiPage(location) {
   return location.pathname.startsWith('/api')
 }
 
-const TemplateWrapper = ({ children, location }) => (
+const TemplateWrapper = ({ data, children, location }) => (
   <div>
     <StickyContainer>
       <Sticky>
@@ -33,13 +33,10 @@ const TemplateWrapper = ({ children, location }) => (
         )}
       </Sticky>
       <Helmet
-        defaultTitle="SparkPost Developers"
+        defaultTitle={data.site.siteMetadata.title}
         titleTemplate="%s - SparkPost"
       >
-        <meta
-          name="description"
-          content="The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?"
-        />
+        <meta name="description" content={data.site.siteMetadata.description} />
         {'' /* favicon and app data */}
         <link
           rel="apple-touch-icon"
@@ -82,3 +79,14 @@ TemplateWrapper.propTypes = {
 }
 
 export default TemplateWrapper
+
+export const query = graphql`
+  query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
