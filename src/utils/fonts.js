@@ -22,7 +22,6 @@ const weightMap = {
   bold: 600,
 }
 
-
 function font(f) {
   if (!fontMap[f]) {
     console.log(`Font ${f} undefined`)
@@ -40,7 +39,7 @@ function weight(w) {
 }
 
 function rem(s = 18) {
-  return `${s/18}rem`
+  return `${s / 18}rem`
 }
 
 const uppercase = `

@@ -7,14 +7,13 @@ import { uppercase, weight, monospace } from '../../utils/fonts'
 import { Container, Row, Column } from '../Grid'
 import Link from '../Link'
 
-
 const sidebarWidth = `275px`
 
 const Content = styled.div`
   margin-left: ${sidebarWidth};
   max-width: 100%;
   overflow: auto;
-  
+
   .block {
     width: 100%;
     padding-left: 2rem;
@@ -28,16 +27,16 @@ const Content = styled.div`
     }
   }
 
-  ${mediaQuery('md', `
+  ${mediaQuery(
+    'md',
+    `
     .block {
       width: 55%;
       padding-left: 2rem;
       padding-right: 2rem;
     }
-  `)}
-  
-
-  h1, h2, h3, h4, h5, h6 {
+  `
+  )} h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
   }
 
@@ -98,9 +97,9 @@ const Content = styled.div`
 
   .label {
     display: inline;
-    padding: .1em .35em .185em;
+    padding: 0.1em 0.35em 0.185em;
     border: 1px solid transparent;
-    border-bottom-color: rgba(0,0,0,.2);;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
     font-size: 85%;
     font-weight: 700;
     line-height: 1;
@@ -108,7 +107,7 @@ const Content = styled.div`
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: .25em;
+    border-radius: 0.25em;
 
     &.label-primary {
       background: ${color('orange')};

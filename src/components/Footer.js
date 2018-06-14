@@ -16,15 +16,14 @@ const CopyRight = styled.div`
   background: ${grayscale('medium')};
   color: ${grayscale(8)};
   text-align: center;
-  font-size: .777777778rem;
-  padding: .5rem;
+  font-size: 0.777777778rem;
+  padding: 0.5rem;
 `
 
 const ColumnHeader = styled.h5`
-  ${props => (props.uppercase ? uppercase : '')}
-  font-weight: 600;
+  ${props => (props.uppercase ? uppercase : '')} font-weight: 600;
   margin-top: 24px;
-  font-size: .777777778rem;
+  font-size: 0.777777778rem;
 `
 
 const ColumnList = styled.ul`
@@ -33,9 +32,9 @@ const ColumnList = styled.ul`
   padding: 0;
 `
 
-const MenuItem = styled((props) => (
+const MenuItem = styled(props => (
   <li>
-    <Link {...props}></Link>
+    <Link {...props} />
   </li>
 ))`
   line-height: 1.5;
@@ -51,8 +50,8 @@ const SubscribeForm = styled.form`
 
 const EmailInput = styled.input`
   width: 100%;
-  padding: 0 .5rem;
-  font-size: .833333333rem;
+  padding: 0 0.5rem;
+  font-size: 0.833333333rem;
   line-height: 1rem;
   border: none;
 `
@@ -66,7 +65,7 @@ const SocialIcons = styled.ul`
 const SocialIcon = styled(({ to, icon, ...props }) => (
   <li {...props}>
     <Link.Unstyled to={to} target="_blank">
-      <i className={`fa fa-${icon}`}></i>
+      <i className={`fa fa-${icon}`} />
     </Link.Unstyled>
   </li>
 ))`
@@ -88,28 +87,50 @@ export default () => (
           <Column md="2">
             <ColumnHeader uppercase>About</ColumnHeader>
             <ColumnList>
-              <MenuItem to="https://www.sparkpost.com/about-us/">About Us</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/careers/">Careers</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/partners/">Partners</MenuItem>
+              <MenuItem to="https://www.sparkpost.com/about-us/">
+                About Us
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/careers/">
+                Careers
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/partners/">
+                Partners
+              </MenuItem>
               <MenuItem to="https://www.sparkpost.com/blog/">Blog</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/policies/tou/">Policies</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/press-releases/">Press</MenuItem>
+              <MenuItem to="https://www.sparkpost.com/policies/tou/">
+                Policies
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/press-releases/">
+                Press
+              </MenuItem>
             </ColumnList>
           </Column>
           <Column md="2">
             <ColumnHeader uppercase>Support</ColumnHeader>
             <ColumnList>
-              <MenuItem to="https://www.sparkpost.com/docs/">Help &amp; Docs</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/report-abuse/">Report Abuse</MenuItem>
+              <MenuItem to="https://www.sparkpost.com/docs/">
+                Help &amp; Docs
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/report-abuse/">
+                Report Abuse
+              </MenuItem>
             </ColumnList>
           </Column>
           <Column md="2">
             <ColumnHeader uppercase>Solutions</ColumnHeader>
             <ColumnList>
-              <MenuItem to="https://www.sparkpost.com/enterprise-email/">Enterprise</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/e-commerce/">E-Commerce</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/service-providers/">Service Providers</MenuItem>
-              <MenuItem to="https://www.sparkpost.com/digital-publishing/">Digital Publishing</MenuItem>
+              <MenuItem to="https://www.sparkpost.com/enterprise-email/">
+                Enterprise
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/e-commerce/">
+                E-Commerce
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/service-providers/">
+                Service Providers
+              </MenuItem>
+              <MenuItem to="https://www.sparkpost.com/digital-publishing/">
+                Digital Publishing
+              </MenuItem>
             </ColumnList>
           </Column>
           <Column md="5" mdOffset="1">
@@ -121,11 +142,23 @@ export default () => (
               </SubscribeForm>
             </div>
             <SocialIcons>
-              <SocialIcon to="https://www.facebook.com/sparkpost/" icon="facebook-square" />
+              <SocialIcon
+                to="https://www.facebook.com/sparkpost/"
+                icon="facebook-square"
+              />
               <SocialIcon to="https://twitter.com/SparkPost" icon="twitter" />
-              <SocialIcon to="https://www.linkedin.com/company/sparkpost" icon="linkedin-square" />
-              <SocialIcon to="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ" icon="youtube" />
-              <SocialIcon to="http://www.slideshare.net/SparkPost" icon="slideshare" />
+              <SocialIcon
+                to="https://www.linkedin.com/company/sparkpost"
+                icon="linkedin-square"
+              />
+              <SocialIcon
+                to="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"
+                icon="youtube"
+              />
+              <SocialIcon
+                to="http://www.slideshare.net/SparkPost"
+                icon="slideshare"
+              />
               <SocialIcon to="http://slack.sparkpost.com/" icon="slack" />
               <SocialIcon to="https://github.com/SparkPost" icon="github" />
             </SocialIcons>
@@ -133,6 +166,8 @@ export default () => (
         </Row>
       </Container>
     </Footer>
-    <CopyRight>SparkPost © {new Date().getFullYear()} All Rights Reserved</CopyRight>
+    <CopyRight>
+      SparkPost © {new Date().getFullYear()} All Rights Reserved
+    </CopyRight>
   </React.Fragment>
 )

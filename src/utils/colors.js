@@ -70,7 +70,6 @@ function grayscale(i) {
   return grayscaleMap[i]
 }
 
-
 function shadow(level) {
   let boxShadow = shadowMap[1]
 

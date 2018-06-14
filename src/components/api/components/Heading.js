@@ -5,8 +5,8 @@ import Link from 'components/Link'
 import slugify from 'utils/slugify'
 
 const Id = styled.span`
-  display: block; 
-  margin-top: -4rem; 
+  display: block;
+  margin-top: -4rem;
   height: 4rem;
   visibility: hidden;
 `
@@ -20,7 +20,8 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
     <Tag className={`${className} block`} {...props}>
       <Id id={slug} />
       <Link.Unstyled to={`#${slug}`}>{children}</Link.Unstyled>
-    </Tag>)
+    </Tag>
+  )
 }
 
 export default styled(Heading)``

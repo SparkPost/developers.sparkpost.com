@@ -9,19 +9,21 @@ import SecondaryNav from './SecondaryNav'
 
 const Header = styled.header`
   background-color: ${grayscale('light')};
-  transition: .25s;
+  transition: 0.25s;
 
-  ${props => props.isSticky && css`
-    box-shadow: ${shadow(1)};
-    background-color: ${grayscale('white')};
-  `}
+  ${props =>
+    props.isSticky &&
+    css`
+      box-shadow: ${shadow(1)};
+      background-color: ${grayscale('white')};
+    `};
 `
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: .833333333rem;
+  font-size: 0.833333333rem;
   padding: 0 2rem;
 `
 

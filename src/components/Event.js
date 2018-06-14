@@ -12,10 +12,9 @@ const Calendar = styled.div`
 `
 
 const Month = styled.p`
-  ${uppercase}
-  color: ${color('orange')};
+  ${uppercase} color: ${color('orange')};
   text-align: center;
-  margin: .25rem 0 0 0;
+  margin: 0.25rem 0 0 0;
   font-size: 1.25em;
 `
 
@@ -31,7 +30,7 @@ const Title = styled.h3`
   text-align: center;
   color: white;
   font-size: 1.1rem;
-  margin: 1.5rem 0 .5rem 0;
+  margin: 1.5rem 0 0.5rem 0;
 `
 
 const Info = styled.div`
@@ -40,8 +39,19 @@ const Info = styled.div`
   color: white;
 `
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ]
 
 export default ({ start, end, name, location }) => {
@@ -59,7 +69,11 @@ export default ({ start, end, name, location }) => {
         <Day>{startDay}</Day>
       </Calendar>
       <Title>{name}</Title>
-      <Info>{startMonth} {startDay} - { isSameMonth ? '' : monthNames[endDate.getMonth()]} {endDate.getDate()}</Info>
+      <Info>
+        {startMonth} {startDay} -{' '}
+        {isSameMonth ? '' : monthNames[endDate.getMonth()]} {endDate.getDate()}
+      </Info>
       <Info>{location}</Info>
-    </div>)
+    </div>
+  )
 }

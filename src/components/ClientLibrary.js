@@ -20,9 +20,9 @@ const Wrapper = styled(Link.Unstyled)`
   background: ${grayscale('white')};
   display: block;
   line-height: 1.5;
-  padding: .833333333rem 1rem;
-  margin: .333333333rem 0;
-  font-size: .888888889rem;
+  padding: 0.833333333rem 1rem;
+  margin: 0.333333333rem 0;
+  font-size: 0.888888889rem;
   font-weight: ${weight('medium')};
 
   &:hover {
@@ -37,5 +37,10 @@ const Img = styled.img`
 `
 
 export default ({ img, title }) => (
-  <Wrapper>{(img || icons[snakeCase(title)]) &&  <Img src={img || icons[snakeCase(title)]} alt={title} />}{title}</Wrapper>
+  <Wrapper>
+    {(img || icons[snakeCase(title)]) && (
+      <Img src={img || icons[snakeCase(title)]} alt={title} />
+    )}
+    {title}
+  </Wrapper>
 )

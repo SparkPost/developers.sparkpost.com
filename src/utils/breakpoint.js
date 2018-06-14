@@ -5,11 +5,11 @@
  */
 
 const breakpoints = {
-  xs: `450px`, 
-  sm: `720px`, 
-  md: `960px`, 
+  xs: `450px`,
+  sm: `720px`,
+  md: `960px`,
   lg: `1200px`,
-  xl: `1470px` 
+  xl: `1470px`,
 }
 
 function breakpoint(b = 'xs') {

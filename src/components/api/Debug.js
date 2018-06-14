@@ -10,17 +10,17 @@ const DebugTitle = styled.div`
   position: absolute;
   top: 0;
   left: -1px;
-  padding: .25rem;
+  padding: 0.25rem;
 `
 
 const Debug = styled.div`
   border-radius: 0 5px 5px 5px;
   border: 1px solid blue;
   margin: 2rem 1rem 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
 `
 
-export default ({ title, children, enable = false }) => (
+export default ({ title, children, enable = false }) =>
   enable ? (
     <Debug>
       <DebugTitle>{title}</DebugTitle>
@@ -29,4 +29,3 @@ export default ({ title, children, enable = false }) => (
   ) : (
     <React.Fragment>{children}</React.Fragment>
   )
-)

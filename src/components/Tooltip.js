@@ -9,12 +9,12 @@ const arrowMargin = `10px`
 const Tip = styled.div`
   display: block;
   position: absolute;
-  top: -.777777778rem;
+  top: -0.777777778rem;
   left: 1.166666667rem;
-  width: .888888889rem;
-  height: .888888889rem;
+  width: 0.888888889rem;
+  height: 0.888888889rem;
 
-  margin: .333333333rem 0 0;
+  margin: 0.333333333rem 0 0;
 
   background: ${grayscale(10)};
   border-top-left-radius: 4px;
@@ -35,7 +35,7 @@ const Tooltip = styled.div`
 
   background: ${grayscale(10)};
   margin: ${arrowMargin} 0 0;
-  padding: .666666667rem;
+  padding: 0.666666667rem;
   box-shadow: 0px 10px 30px ${rgba(grayscale('dark'), 0.16)};
   border-radius: 4px;
   border: 1px solid ${grayscale(8)};
@@ -55,7 +55,7 @@ const Content = styled.div`
 
   word-break: normal;
   text-align: left;
-  font-size: .777777778rem;
+  font-size: 0.777777778rem;
   font-weight: 400;
   line-height: 1.166666667rem;
 `
@@ -126,4 +126,3 @@ export default ({ content, children }) => {
 //     right: rem(21);
 //   }
 // }
-

@@ -145,15 +145,15 @@ injectGlobal`
       padding: 0;
 
       .hljs-string {
-        color: ${darken(.175, color('green'))};
+        color: ${darken(0.175, color('green'))};
       }
 
       .hljs-attr {
-        color: ${darken(.125, color('mustard'))};
+        color: ${darken(0.125, color('mustard'))};
       }
 
       .hljs-number, .hljs-literal {
-        color: ${darken(.2, color('blue'))};
+        color: ${darken(0.2, color('blue'))};
       }
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { grayscale } from  '../utils/colors'
+import { grayscale } from '../utils/colors'
 import { weight, font, uppercase } from '../utils/fonts'
 
 import Link from './Link'
@@ -19,7 +19,7 @@ const Image = styled.div`
   padding-bottom: 76.1111111%;
   background-color: ${grayscale(8)};
   background-size: cover;
-  margin: 0 0 .75rem 0;
+  margin: 0 0 0.75rem 0;
 `
 
 const Text = styled.div`
@@ -32,9 +32,8 @@ const Title = styled.h3`
 `
 
 const ByLine = styled.p`
-  ${uppercase}
-  margin: 0 0 1.5rem 0;
-  font-size: .8rem;
+  ${uppercase} margin: 0 0 1.5rem 0;
+  font-size: 0.8rem;
 `
 
 const Author = styled(Link)`
@@ -44,10 +43,10 @@ const Author = styled(Link)`
 
 const ReadMore = styled(Link)`
   font-weight: ${weight('light')};
-  font-size: .888888889rem;
+  font-size: 0.888888889rem;
 
   i {
-    padding-left: .5rem;
+    padding-left: 0.5rem;
   }
 `
 
@@ -56,11 +55,14 @@ export default ({ image, date, author, title, description, link }) => (
     <Image style={{ backgroundImage: `url(${image})` }} />
     <Text>
       <ByLine>
-        {date} by <Author to={author && author.link}>{author && author.name}</Author>
+        {date} by{' '}
+        <Author to={author && author.link}>{author && author.name}</Author>
       </ByLine>
       <Title>{title}</Title>
       <div dangerouslySetInnerHTML={{ __html: description }} />
-      <ReadMore to={link}>read more <i className="fa fa-chevron-right"></i></ReadMore>
+      <ReadMore to={link}>
+        read more <i className="fa fa-chevron-right" />
+      </ReadMore>
     </Text>
   </Wrapper>
 )

@@ -1,8 +1,7 @@
 const indexMap = {
   tooltip: 1000,
-  header: 1010
+  header: 1010,
 }
-
 
 function zIndex(z) {
   if (!indexMap[z]) {
@@ -11,6 +10,5 @@ function zIndex(z) {
 
   return indexMap[z]
 }
-
 
 export default zIndex

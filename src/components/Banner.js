@@ -20,14 +20,16 @@ const IconSection = ({ status, icon }) => {
     success: Check,
     info: Info,
     warning: ErrorIcon,
-    danger: ErrorIcon
+    danger: ErrorIcon,
   }
 
   if ((status === 'default' || !icons[status]) && !icon) {
-    return null;
+    return null
   }
 
-  const Icon = styled(icon || icons[status])`${svgStyle}`
+  const Icon = styled(icon || icons[status])`
+    ${svgStyle};
+  `
 
   return (
     <IconWrapper>
@@ -79,61 +81,69 @@ const Wrapper = styled.div`
     border-radius: 2px 0 0 2px;
   }
 
-  ${props => props.status === 'success' && css`
-    &:before {
-      background: ${color('green')};
-    }
+  ${props =>
+    props.status === 'success' &&
+    css`
+      &:before {
+        background: ${color('green')};
+      }
 
-    ${IconBackdrop} {
-      box-shadow: 0 0 0 7px ${rgba(color('green'), 0.25)};
-    }
+      ${IconBackdrop} {
+        box-shadow: 0 0 0 7px ${rgba(color('green'), 0.25)};
+      }
 
-    svg {
-      fill: ${color('green')};
-    }
-  `}
+      svg {
+        fill: ${color('green')};
+      }
+    `}
 
-  ${props => props.status === 'info' && css`
-    &:before {
-      background: ${color('blue')};
-    }
+  ${props =>
+    props.status === 'info' &&
+    css`
+      &:before {
+        background: ${color('blue')};
+      }
 
-    ${IconBackdrop} {
-      box-shadow: 0 0 0 7px ${rgba(color('blue'), 0.25)};
-    }
+      ${IconBackdrop} {
+        box-shadow: 0 0 0 7px ${rgba(color('blue'), 0.25)};
+      }
 
-    svg {
-      fill: ${color('blue')};
-    }
-  `}
+      svg {
+        fill: ${color('blue')};
+      }
+    `}
 
-  ${props => props.status === 'warning' && css`
-    &:before {
-      background: ${color('mustard')};
-    }
+  ${props =>
+    props.status === 'warning' &&
+    css`
+      &:before {
+        background: ${color('mustard')};
+      }
 
-    ${IconBackdrop} {
-      box-shadow: 0 0 0 7px ${rgba(color('mustard'), 0.25)};
-    }
+      ${IconBackdrop} {
+        box-shadow: 0 0 0 7px ${rgba(color('mustard'), 0.25)};
+      }
 
-    svg {
-      fill: ${color('mustard')};
-    }
-  `}
+      svg {
+        fill: ${color('mustard')};
+      }
+    `}
 
-  ${props => props.status === 'danger' && css`
-    &:before {
-      background: ${color('red')};
-    }
+  ${props =>
+    props.status === 'danger' &&
+    css`
+      &:before {
+        background: ${color('red')};
+      }
 
-    ${IconBackdrop} {
-      box-shadow: 0 0 0 7px ${rgba(color('red'), 0.25)};
-    }
+      ${IconBackdrop} {
+        box-shadow: 0 0 0 7px ${rgba(color('red'), 0.25)};
+      }
 
-    svg {
-      fill: ${color('red')};
-    }
-  `}
+      svg {
+        fill: ${color('red')};
+      }
+    `}
   }
 `
 
@@ -145,11 +155,13 @@ const Content = styled.div`
   }
 
   p:not(:first-child) {
-    margin-top: .333333333rem;
+    margin-top: 0.333333333rem;
   }
 `
 
-const Title = styled.h4`margin: 0;`
+const Title = styled.h4`
+  margin: 0;
+`
 
 const Banner = ({ title, children, status, icon, ...props }) => (
   <Wrapper status={status} {...props}>

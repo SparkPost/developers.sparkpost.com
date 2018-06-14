@@ -11,14 +11,14 @@ const Spacer = styled.div`
 
 const Wrapper = styled(Link.Unstyled)`
   display: block;
-  border-top: .333333333rem solid ${props => props.color};
+  border-top: 0.333333333rem solid ${props => props.color};
   background-color: ${grayscale('white')};
   padding: 1rem 1.25rem 1.5rem;
   height: 100%;
   box-shadow: ${shadow(1)};
   font-weight: inherit;
   border-radius: 2px;
-  transition-duration: .2s;
+  transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 
   &:hover {

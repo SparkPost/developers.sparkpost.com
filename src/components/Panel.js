@@ -11,18 +11,22 @@ const PanelWrapper = styled.div`
   border-radius: 2px;
   overflow: hidden;
 
-  ${props => props.accent && `border-top: 3px solid ${color('orange')};`}
+  ${props => props.accent && `border-top: 3px solid ${color('orange')};`};
 `
 
 const Panel = ({ title, sectioned, accent, children, ...props }) => (
-  <PanelWrapper accent={accent} {...props}> 
-    {title && <Panel.Header><Panel.Title>{title}</Panel.Title></Panel.Header>}
+  <PanelWrapper accent={accent} {...props}>
+    {title && (
+      <Panel.Header>
+        <Panel.Title>{title}</Panel.Title>
+      </Panel.Header>
+    )}
     {sectioned ? <Panel.Section>{children}</Panel.Section> : children}
   </PanelWrapper>
 )
 
 const Header = styled.div`
-  padding: .888888889rem;
+  padding: 0.888888889rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,12 +45,12 @@ Panel.Title = styled.h4`
 `
 
 Panel.Section = styled.div`
-    padding: 1rem;
-    border-bottom: 1px solid ${grayscale('light')};
+  padding: 1rem;
+  border-bottom: 1px solid ${grayscale('light')};
 
-    &:last-child {
-      border-bottom: 0;
-    }
+  &:last-child {
+    border-bottom: 0;
+  }
 `
 
 export default Panel

@@ -11,11 +11,10 @@ const Container = styled.div`
   padding-left: 15px;
   padding-right: 15px;
 
-  ${mediaQuery('sm', 'width: 750px;')}
-
-  ${mediaQuery('md', 'width: 970px;')}
-
-  ${mediaQuery('lg', 'width: 1170px;')}
+  ${mediaQuery('sm', 'width: 750px;')} ${mediaQuery(
+      'md',
+      'width: 970px;'
+    )} ${mediaQuery('lg', 'width: 1170px;')};
 `
 
 export { Container, Row, Column }

@@ -6,14 +6,13 @@ import styled from 'styled-components'
 import { color, grayscale } from '../utils/colors'
 import { weight } from '../utils/fonts'
 
-function Link ({ to = null, onClick, ...props }) {
+function Link({ to = null, onClick, ...props }) {
   return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (
     <a href={to} onClick={onClick} {...props} />
   ) : (
     <GatsbyLink to={to} {...props} />
   )
 }
-
 
 Link.Unstyled = styled(Link)`
   color: inherit;
@@ -28,20 +27,20 @@ Link.Unstyled = styled(Link)`
 Link.Action = styled(Link.Unstyled)`
   background: transparent;
   border: 0;
-  font-size: .833333333rem;
-  padding: .3rem .66667rem;
+  font-size: 0.833333333rem;
+  padding: 0.3rem 0.66667rem;
   color: ${color('orange')};
   font-weight: ${weight('medium')};
   cursor: pointer;
   outline: 0;
   display: inline-block;
 
-  &:hover, &:active, &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     color: ${color('orangeDark')};
     background: ${grayscale('light')};
   }
 `
-
-
 
 export default Link

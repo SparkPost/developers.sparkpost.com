@@ -7,7 +7,9 @@ export default styled.div`
   flex-wrap: nowrap;
   flex-direction: column;
 
-  ${mediaQuery('md', `
+  ${mediaQuery(
+    'md',
+    `
     clear: both;
     display: block;
 
@@ -16,5 +18,6 @@ export default styled.div`
       display: block;
       clear: both;
     }
-  `)}
+  `
+  )};
 `
