@@ -78,13 +78,7 @@ function shadow(level) {
     console.log(`Shadow ${level} undefined`)
   }
 
-  if (level > 1) {
-    for (let i = 2; i <= level; i++) {
-      boxShadow += ', ' + shadowMap[i]
-    }
-  }
-
-  return boxShadow
+  return shadowMap[level]
 }
 
 export { color, grayscale, shadow }
