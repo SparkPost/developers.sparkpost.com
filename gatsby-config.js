@@ -1,7 +1,7 @@
 const baseConfig = {
   siteMetadata: {
     title: `Sparkpost Developers`,
-    description: `SparkPost developer resources including guides, API reference, and client libraries.`,
+    description: `SparkPost developer resources including Documentation, API reference, and client libraries.`,
   }
 }
 
