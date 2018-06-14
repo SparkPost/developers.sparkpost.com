@@ -1,7 +1,7 @@
 const baseConfig = {
   siteMetadata: {
-    title: `Sparkpost Developer`,
-    description: `The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?`,
+    title: `Sparkpost Developers`,
+    description: `SparkPost developer resources including Documentation, API reference, and client libraries.`,
   }
 }
 
