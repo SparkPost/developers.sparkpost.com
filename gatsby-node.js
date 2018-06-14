@@ -1,4 +1,6 @@
 const axios = require('axios')
+const fs = require('fs')
+const { flatten } = require('lodash')
 
 exports.onCreateNode = async ({ node, boundActionCreators }) => {
   const { createNodeField } = boundActionCreators
@@ -19,7 +21,25 @@ exports.onCreateNode = async ({ node, boundActionCreators }) => {
   }
 }
 
-// Add Babel plugin
+exports.createPages = ({ graphql, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
+
+  const apiDirectory = `${__dirname}/src/data/api`
+  const apiTemplate = `${__dirname}/src/templates/api.js`
+  const apiPages = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
+
+  apiPages.forEach(({ file, path }) => {
+    if (fs.existsSync(`${apiDirectory}/${file}`)) {
+      createPage({
+        path,
+        component: apiTemplate,
+        context: { file },
+      })
+    }
+  })
+}
+
+// Add Babel for styled components for easier debugging
 let babelPluginExists = false
 try {
   require.resolve(`babel-plugin-styled-components`)
