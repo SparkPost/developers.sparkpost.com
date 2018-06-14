@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from '../Link'
 import styled from 'styled-components'
-import scriptjs from 'scriptjs'
 import { grayscale, color } from '../../utils/colors'
 import { weight } from '../../utils/fonts'
 
@@ -56,7 +55,7 @@ class SecondaryNav extends React.Component {
   }
 
   componentDidMount() {
-    scriptjs('https://cdn.statuspage.io/se-v2.js', () => {
+    require('scriptjs')('https://cdn.statuspage.io/se-v2.js', () => {
       if (!window.StatusPage) return
 
       const sp = new StatusPage.page({ page: '7ky1q6zd3fyp'})
