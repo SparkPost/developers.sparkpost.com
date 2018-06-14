@@ -41,13 +41,15 @@
   "main": "n/a",
   "scripts": {
     "bootstrap": "npm install && cd plugins/gatsby-transformer-api-elements && npm install",
-    "develop": "gatsby develop",
+    "develop": "source .env && gatsby develop",
     "docs": "NODE_ENV=docs && gatsby develop",
     "build": "gatsby build",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\""
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "precommit": "npm run format"
   },
   "devDependencies": {
     "axios": "^0.18.0",
+    "husky": "^0.14.3",
     "prettier": "^1.9.2"
   }
 }
