@@ -27,8 +27,6 @@ description: Manage reusable content templates that are run through the SparkPos
 + from: (enum) - Address `"from" : "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from" : { "name" : "My Company", "email" : "deals@company.com" }` used to compose the email's `From` header| yes | Substitution syntax is supported.
     - (string)
     - (object)
-        - name
-        - email
 + reply_to: test (string, sample) - Email address used to compose the email's `Reply-To` header. Substitution syntax is supported.
 + headers: {"hi":"hi"} (object, sample) - JSON dictionary containing headers other than `Subject`, `From`, `To`, and `Reply-To`
 
@@ -41,10 +39,25 @@ description: Manage reusable content templates that are run through the SparkPos
 + transactional (boolean)
   Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes. To override the default for a specific transmission, specify the `options.transactional` field upon creation of the transmission.
 
+
+## Error
+
++ message (string) - Explains the class of error
+    + Sample: substitution language syntax error in template content
++ code (string) -  Identifies the class of error
+    + Sample: 3000
++ description (string) - Detailed explanation of error
+    + Sample: Error while compiling part text: line 4: syntax error near 'age'
++ part (string) - For substitution errors, identifies the MIME part where the error occurred
+    + Sample: text
++ line (number) - For substitution errors, identifies the line number within the MIME part identified by the `part` JSON field
+    + Sample: 4
+
 # Group Templates
 A template is a named collection of content stored on the server side.  Templates are used in a transmission by providing the id of the template at the time of transmission submission.  Each textual component of the
 template (headers, text, and html) is run through the substitution engine
 to produce recipient specific email messages.  The Templates API provides the means to manage your templates.
+
 
 <data-structure id="template" sample></data-structure>
 
@@ -52,7 +65,11 @@ to produce recipient specific email messages.  The Templates API provides the me
 
 Content for a template is described in a JSON object with the following fields:
 
+above
+
 <data-structure id="content"></data-structure>
+
+below
 
 #### Header Notes
 
@@ -87,13 +104,7 @@ Options for a template are described in a JSON object, as follows, using the tra
 
 On success, the API returns a `results` JSON object along with HTTP 200.  On failure, an `errors` JSON array will be returned along with HTTP 4xx or 5xx.  Each error is described in a JSON object with the following fields:
 
-| Field         | Type     | Description                           |  Example |
-|--------------------|:-:       |---------------------------------------|--------|
-|message |string | Explains the class of error  | `"substitution language syntax error in template content"` |
-|code |string| Identifies the class of error| `"3000"` |
-|description|string| Detailed explanation of error| `"Error while compiling part text: line 4: syntax error near 'age'"` |
-|part|string| For substitution errors, identifies the MIME part where the error occurred | `"text"`, `"html"`, `"Header:Subject"`, `"text/plain"` |
-|line|number| For substitution errors, identifies the line number within the MIME part identified by the `part` JSON field | `4` |
+<data-structure id="error" sample></data-structure>
 
 ## Create templates [/templates]
 
@@ -256,8 +267,6 @@ Fully formed email_rfc822 content may be provided instead of the `text`, `html`,
         Authorization: lookforme
 
 
-
-
 + Request Create RFC822 (application/json)
 
   + Headers
@@ -358,9 +367,12 @@ Each template object in the list will have the following fields:
 Additional, templates owned by the Master subaccount will have the following field:
 - shared_with_subaccounts: Whether the template is shared with sub-accounts.
 
+
 + Parameters
-    + draft (optional, boolean, `true`) ...If true, returns the most recent draft template.  If false, returns the most recent published template.  When not provided, returns the most recent template version regardless of draft or published.
-    + shared_with_subaccounts (optional, boolean, `true`) ...If true, returns only shared templates. If false, returns only non-shared templates.  When not provided, returns both shared and non-shared templates.
+
+    + draft (boolean, optional) - If true, returns the most recent draft template.  If false, returns the most recent published template.  When not provided, returns the most recent template version regardless of draft or published.
+    + shared_with_subaccounts (boolean, optional) - If true, returns only shared templates. If false, returns only non-shared templates.  When not provided, returns both shared and non-shared templates.
+    + asdf (boolean, optional) - If true, returns only shared templates. If false, returns only non-shared templates.  When not provided, returns both shared and non-shared templates.
 
 + Request
 
@@ -469,7 +481,7 @@ Update an existing template by specifying its ID in the URI path and a **templat
 By default, an update operates on an existing draft version.
 An existing published version can be overwritten directly by setting the `update_published` query parameter to `true`.
 
-<note>Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</note>
+<banner status="info">Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</banner>
 
 The `name` field may be modified, but the `id` field is read only.
 
@@ -481,9 +493,6 @@ The example shows an update that will rename the template, enable open tracking,
 and update the content all in one API call. All content fields are included whether they are being
 changed or not.
 
-Publishing a template is a special kind of update.
-It uses the most recent draft version to create a new published version, even if one does not already exist.
-The body of the PUT request should contain the `"published": true` field as shown in the second example below (`Publish`).
 
 + Parameters
     + id (required, string, `11714265276872`) ... ID of the template
@@ -519,6 +528,12 @@ The body of the PUT request should contain the `"published": true` field as show
 
 + Response 200
 
+
+### Publish a Template [PUT]
+
+Publishing a template is a special kind of update.
+It uses the most recent draft version to create a new published version, even if one does not already exist.
+The body of the PUT request should contain the `"published": true` field as shown in the second example below (`Publish`).
 
 + Request Publish (application/json)
 
@@ -598,7 +613,7 @@ See the [Substitutions Reference section](substitutions-reference.html) for more
 Delete a template by specifying its ID in the URI path.
 If the template delete API call succeeds, then ALL versions of the template will be deleted from the system (both published AND draft versions).
 
-<note>If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</note>
+<banner status="info">If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameters
     + id (required, string, `11714265276872`) ... ID of the template
