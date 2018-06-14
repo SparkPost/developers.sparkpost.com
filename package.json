@@ -40,9 +40,10 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
+    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-elements && npm install",
     "develop": "gatsby develop",
     "docs": "NODE_ENV=docs && gatsby develop",
+    "build": "gatsby build",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\""
   },
   "devDependencies": {
