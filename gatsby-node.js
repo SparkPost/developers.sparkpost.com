@@ -24,7 +24,7 @@ exports.onCreateNode = async ({ node, boundActionCreators }) => {
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
 
-  const apiDirectory = `${__dirname}/src/data/api`
+  const apiDirectory = `${__dirname}/content/api`
   const apiTemplate = `${__dirname}/src/templates/api.js`
   const apiPages = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
 
@@ -68,4 +68,16 @@ exports.modifyBabelrc = ({ babelrc, stage }) => {
   }
 
   return babelrc
+}
+
+
+/**
+ * when developing the docs redirect the home page to the api intro page
+ */
+exports.onCreatePage = ({ page, boundActionCreators }) => {
+  if (process.env.NODE_ENV === 'docs') {
+    const { createRedirect } = boundActionCreators
+
+    createRedirect({ fromPath: '/', toPath: '/api', redirectInBrowser: true })
+  }
 }
