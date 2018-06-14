@@ -4,6 +4,10 @@ module.exports = {
     description: `The SparkPost Developer Hub is a collection of resources to help you succeed with SparkPost – the email delivery and analytics service for developers. What will you build?`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: { root: `${__dirname}/src` }
+    },
     `gatsby-plugin-react-next`,
     `gatsby-plugin-netlify-cms`,
     `gatsby-plugin-react-helmet`,
@@ -54,9 +58,8 @@ module.exports = {
         ],
       }
     },
-
     /** Analytics
-     ** Note: Google Analytics and HotJar is added through GTM */
+     ** Note: Google Analytics, HotJar, etc. is added through GTM */
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
