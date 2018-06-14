@@ -39,6 +39,10 @@ function weight(w) {
   return weightMap[w]
 }
 
+function rem(s = 18) {
+  return `${s/18}rem`
+}
+
 const uppercase = `
   font-family: ${font('secondary')};
   font-weight: 400;
@@ -51,4 +55,4 @@ const monospace = `
   font-weight: 400;
 `
 
-export { font, weight, uppercase, monospace }
+export { font, weight, rem, uppercase, monospace }
