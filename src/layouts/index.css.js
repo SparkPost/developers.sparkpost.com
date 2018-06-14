@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components'
-import { color, grayscale } from '../utils/colors'
-import { font, weight, monospace } from '../utils/fonts'
+import { color, grayscale } from 'utils/colors'
+import { darken, desaturate } from 'polished'
+import { font, weight, monospace } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
 injectGlobal`
@@ -109,6 +110,10 @@ injectGlobal`
 
   b, strong {
     font-weight: ${weight('bold')};
+
+    a {
+      font-weight: ${weight('bold')};      
+    }
   }
 
   code {
@@ -137,33 +142,42 @@ injectGlobal`
       overflow: auto;
       border: 0;
       white-space: inherit;
+      padding: 0;
+
+      .hljs-string {
+        color: ${darken(.175, color('green'))};
+      }
+
+      .hljs-attr {
+        color: ${darken(.125, color('mustard'))};
+      }
+
+      .hljs-number, .hljs-literal {
+        color: ${darken(.2, color('blue'))};
+      }
     }
   }
 
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    width: 100%;
     margin-bottom: 2rem;
+    font-variant-numeric: lining-nums tabular-nums;
 
     th, td {
-      border-bottom: 1px solid ${grayscale(8)};
+      border-style: solid;
+      border-color: ${grayscale(8)};
+      border-width: 0 0 1px;
       text-align: left;
-      padding: 0.83333rem;
+      padding: 0.5rem;
       vertical-align: top;
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        padding-right: 0;
-      }
     }
 
     th {
-      border-bottom-width: 2px;
-      padding: 0.5rem;
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      padding: 0.35rem 0.5rem 0.25rem;
+      background: ${grayscale('light')};
     }
   } 
 
