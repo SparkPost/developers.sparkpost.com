@@ -10,7 +10,7 @@ collections:
   - label: Integrations
     name: integrations
     label_singular: Integration
-    folder: "/src/data/integrations"
+    folder: "/content/data/integrations"
     create: true
     extension: md
     fields:
@@ -22,7 +22,7 @@ collections:
   - label: Libraries
     name: libraries
     label_singular: Library
-    folder: "/src/data/libraries"
+    folder: "/content/data/libraries"
     create: true
     extension: json
     fields:
@@ -48,7 +48,7 @@ collections:
     files:
       - label: Changelog
         name: changelog
-        file: "/src/data/changelog/index.json"
+        file: "/content/data/changelog/index.json"
         fields:
           - 
             label: Changes
@@ -71,7 +71,7 @@ collections:
               - { label: Notes, name: notes, widget: markdown, required: false }
       - label: Events
         name: events
-        file: "/src/data/events/index.json"
+        file: "/content/data/events/index.json"
         fields:
           - 
             label: Events
@@ -92,7 +92,7 @@ collections:
                   - { label: Language, name: language, widget: relation, collection: libraries, searchFields: [ "label" ] }
       - label: Projects
         name: projects
-        file: "/src/data/projects/index.json"
+        file: "/content/data/projects/index.json"
         fields:
           - 
             label: Projects
