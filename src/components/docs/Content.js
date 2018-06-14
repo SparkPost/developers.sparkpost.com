@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
+import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale, shadow } from '../../utils/colors'
 import { uppercase, weight, monospace } from '../../utils/fonts'
 import { Container, Row, Column } from '../Grid'
@@ -12,6 +13,27 @@ const sidebarWidth = `275px`
 const Content = styled.div`
   margin-left: ${sidebarWidth};
   max-width: 100%;
+  overflow: auto;
+  
+  .block {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    // reset for when we have a block in a block (i.e. a 'p' in a 'li' inside of a 'ul')
+    .block {
+      width: 100%;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
+  }
+
+  ${mediaQuery('md', `
+    .block {
+      width: 55%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  `)}
   
 
   h1, h2, h3, h4, h5, h6 {
