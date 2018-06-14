@@ -27,30 +27,30 @@ import RawCode from 'components/icons/Code'
 import RawNotes from 'components/icons/Notes'
 import RawPeople from 'components/icons/People'
 
-const Code = styled((props) => <RawCode viewBox="-3 -3 30 30" {...props} />)`
+const Code = styled(props => <RawCode viewBox="-3 -3 30 30" {...props} />)`
   && {
     fill: ${grayscale('white')};
     background: ${color('orange')};
     border-radius: 50%;
-    border: 3px solid ${lighten(.25, color('orange'))};
+    border: 3px solid ${lighten(0.25, color('orange'))};
     box-sizing: content-box;
   }
 `
-const Notes = styled((props) => <RawNotes viewBox="-3 -3 30 30" {...props} />)`
+const Notes = styled(props => <RawNotes viewBox="-3 -3 30 30" {...props} />)`
   && {
     fill: ${grayscale('white')};
     background: ${color('blue')};
     border-radius: 50%;
-    border: 3px solid ${lighten(.25, color('blue'))};
+    border: 3px solid ${lighten(0.25, color('blue'))};
     box-sizing: content-box;
   }
 `
-const People = styled((props) => <RawPeople viewBox="-3 -3 30 30" {...props} />)`
+const People = styled(props => <RawPeople viewBox="-3 -3 30 30" {...props} />)`
   && {
     fill: ${grayscale('white')};
     background: ${color('mustard')};
     border-radius: 50%;
-    border: 3px solid ${lighten(.25, color('mustard'))};
+    border: 3px solid ${lighten(0.25, color('mustard'))};
     box-sizing: content-box;
   }
 `
@@ -58,16 +58,16 @@ const People = styled((props) => <RawPeople viewBox="-3 -3 30 30" {...props} />)
 const SectionLink = styled(Link.Unstyled)`
   &:hover svg {
     transform: scale(1);
-  } 
+  }
 `
 
 const SectionTitle = styled.h4`
-  margin-bottom: .35rem;
+  margin-bottom: 0.35rem;
 
   svg {
-    margin-right: .35rem;
-    transform: scale(.9);
-    transition: .2s;
+    margin-right: 0.35rem;
+    transform: scale(0.9);
+    transition: 0.2s;
   }
 `
 
@@ -83,7 +83,6 @@ const Subtitle = styled.p`
   font-size: 1.166666667rem;
 `
 
-
 const Language = styled(Link.Unstyled)`
   display: block;
   color: ${grayscale(5)};
@@ -95,7 +94,7 @@ const Language = styled(Link.Unstyled)`
   }
 
   img {
-    margin: 0 auto .5rem;
+    margin: 0 auto 0.5rem;
     display: block;
   }
 `
@@ -111,7 +110,8 @@ const TopSection = styled(Section)`
 const Samples = styled.div`
   background: ${grayscale('white')};
   border-radius: 4px;
-  box-shadow: 0 10px 31px -13px ${rgba(grayscale('dark'), .1)}, 0 12px 20px -9px ${rgba('#3D3D49', .1)};
+  box-shadow: 0 10px 31px -13px ${rgba(grayscale('dark'), 0.1)},
+    0 12px 20px -9px ${rgba('#3D3D49', 0.1)};
   margin-left: 1rem;
   min-height: 300px;
 `
@@ -125,7 +125,6 @@ const Sample = styled.pre`
   overflow: auto;
 `
 
-
 const Tabs = styled.div`
   border-bottom: 1px solid ${grayscale('light')};
   padding: 0 1rem;
@@ -136,34 +135,35 @@ const Tab = styled.button`
   border-width: 3px 0;
   border-style: solid;
   border-color: transparent;
-  padding: .65rem 0;
-  margin: 0 .5rem;
+  padding: 0.65rem 0;
+  margin: 0 0.5rem;
   color: ${grayscale(4)};
-  font-size: .777777778rem;
+  font-size: 0.777777778rem;
   font-weight: ${weight('medium')};
   outline: 0;
   bottom: -1px;
   cursor: pointer;
 
-  ${props => props.active ? `
+  ${props =>
+    props.active
+      ? `
     border-bottom-color: ${color('orange')};
-    color: ${color('orange')};` : `
+    color: ${color('orange')};`
+      : `
       
       &:hover {
         color: ${grayscale(3)};
         border-bottom-color: ${grayscale(8)};
       }
-    `}
+    `};
 `
 
-const Resources = styled((props) => <h3 {...props}>Resources</h3>)`
-  ${uppercase}
-  font-size: .833333333rem;
+const Resources = styled(props => <h3 {...props}>Resources</h3>)`
+  ${uppercase} font-size: .833333333rem;
   font-weight: ${weight('bold')};
   color: ${grayscale(3)};
   margin-bottom: 1.75rem;
 `
-
 
 const timelineWidth = 6
 const StartTimeline = styled.div`
@@ -182,18 +182,22 @@ const StartStep = styled.div`
   }
 `
 
-const StartIcon = styled(({ icon, color, ...props }) => <div {...props}><i className={`fa fa-${icon}`}></i></div>)`
+const StartIcon = styled(({ icon, color, ...props }) => (
+  <div {...props}>
+    <i className={`fa fa-${icon}`} />
+  </div>
+))`
   height: 35px;
   width: 35px;
   border-radius: 50%;
   background: ${props => color(props.color)};
   line-height: 35px;
   text-align: center;
-  color: ${rgba(grayscale('white'), .4)};
+  color: ${rgba(grayscale('white'), 0.4)};
   font-size: 1.166666667rem;
   position: absolute;
   top: 0;
-  left: ${timelineWidth/2}px;
+  left: ${timelineWidth / 2}px;
   transform: translate(-50%, -15%);
 `
 
@@ -203,9 +207,11 @@ const SecondaryButton = styled(Button)`
   color: ${grayscale('white')};
 `
 
-const IndexPage = (props) => {
+const IndexPage = props => {
   const now = new Date()
-  const upcomingEvents = get(props, 'data.eventsJson.events', []).filter(({ end_date }) => new Date(end_date) > now)
+  const upcomingEvents = get(props, 'data.eventsJson.events', []).filter(
+    ({ end_date }) => new Date(end_date) > now
+  )
 
   return (
     <div>
@@ -214,7 +220,10 @@ const IndexPage = (props) => {
           <Row>
             <Column>
               <Title>Start Sending Email in Minutes!</Title>
-              <Subtitle>The world’s most powerful email delivery solution is now yours in a developer-friendly, quick to set up cloud service. </Subtitle>
+              <Subtitle>
+                The world’s most powerful email delivery solution is now yours
+                in a developer-friendly, quick to set up cloud service.{' '}
+              </Subtitle>
               <Button secondary>Sign Up</Button>
               <Button outline>Get Started</Button>
             </Column>
@@ -224,7 +233,9 @@ const IndexPage = (props) => {
                   <Tab active>cURL</Tab>
                   <Tab>Node.js</Tab>
                 </Tabs>
-                <Sample><code>{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions 
+                <Sample>
+                  <code
+                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions 
 -H "Authorization: <YOUR API KEY>" \\
 -H "Content-Type: application/json" \\
 -d '{
@@ -237,7 +248,8 @@ const IndexPage = (props) => {
     "recipients": [
       {"address": "developers+curl@sparkpost.com" }
     ]
-  }'`}</code></Sample>
+  }'`}</code>
+                </Sample>
               </Samples>
             </Column>
           </Row>
@@ -248,68 +260,84 @@ const IndexPage = (props) => {
           <Row center="xs">
             <Column xs={11}>
               <Panel sectioned style={{ padding: `1rem 1.5rem .75rem` }}>
-                <Resources/>
+                <Resources />
                 <Row>
                   <Column xs={10} sm={4}>
                     <SectionLink to="/api">
-                      <SectionTitle><Code /> API Reference</SectionTitle>
-                      <p>Comprehensive documentation of our API endpoints &amp; parameters.</p>
+                      <SectionTitle>
+                        <Code /> API Reference
+                      </SectionTitle>
+                      <p>
+                        Comprehensive documentation of our API endpoints &amp;
+                        parameters.
+                      </p>
                     </SectionLink>
                   </Column>
                   <Column xs={10} sm={4}>
                     <SectionLink to="https://sparkpost.com/docs">
-                      <SectionTitle><Notes /> Documentation</SectionTitle>
-                      <p>Understand SparkPost and how to use it most affectively.</p>
+                      <SectionTitle>
+                        <Notes /> Documentation
+                      </SectionTitle>
+                      <p>
+                        Understand SparkPost and how to use it most affectively.
+                      </p>
                     </SectionLink>
                   </Column>
                   <Column xs={10} sm={4}>
                     <SectionLink to="http://slack.sparkpost.com">
-                      <SectionTitle><People /> Community</SectionTitle>
-                      <p>Join a community happy to help with code or other questions you might have!</p>
+                      <SectionTitle>
+                        <People /> Community
+                      </SectionTitle>
+                      <p>
+                        Join a community happy to help with code or other
+                        questions you might have!
+                      </p>
                     </SectionLink>
                   </Column>
                 </Row>
                 <Row>
                   <Column md={12}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-around',
-                      borderTop: `1px solid ${grayscale(8)}`,
-                      marginTop: `1rem`,
-                      paddingTop: `1.75rem`,
-                    }}>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={node_js} title="Node.js" />
-                          Node.js
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={php} title="PHP" />
-                          PHP
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={python} title="Python" />
-                          Python
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={java} title="Java" />
-                          Java
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={elixir} title="Elixir" />
-                          Elixir
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={elixir} title="Rails" />
-                          Rails
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={go} title="Go" />
-                          Go
-                        </Language>
-                        <Language to="https://github.com/SparkPost/node-sparkpost">
-                          <img height={2*18} src={go} title="C#" />
-                          C#
-                        </Language>
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        borderTop: `1px solid ${grayscale(8)}`,
+                        marginTop: `1rem`,
+                        paddingTop: `1.75rem`,
+                      }}
+                    >
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={node_js} title="Node.js" />
+                        Node.js
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={php} title="PHP" />
+                        PHP
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={python} title="Python" />
+                        Python
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={java} title="Java" />
+                        Java
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={elixir} title="Elixir" />
+                        Elixir
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={elixir} title="Rails" />
+                        Rails
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={go} title="Go" />
+                        Go
+                      </Language>
+                      <Language to="https://github.com/SparkPost/node-sparkpost">
+                        <img height={2 * 18} src={go} title="C#" />
+                        C#
+                      </Language>
                     </div>
                   </Column>
                 </Row>
@@ -320,14 +348,30 @@ const IndexPage = (props) => {
         <Container>
           <Row center="xs">
             <Column sm={8}>
-              <h2 style={{ fontSize: `1.5rem`, textAlign: 'center', margin: `10rem 0 2rem` }}>Get Started With SparkPost</h2>
-              <p style={{
-                textAlign: 'center',
-                fontSize: `1.166666667rem`,
-                color: grayscale(4),
-                lineHeight: `1.5em`,
-                marginBottom: `4.5rem`
-              }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque dictum semper. Check out the <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/">full guide</Link>.</p>
+              <h2
+                style={{
+                  fontSize: `1.5rem`,
+                  textAlign: 'center',
+                  margin: `10rem 0 2rem`,
+                }}
+              >
+                Get Started With SparkPost
+              </h2>
+              <p
+                style={{
+                  textAlign: 'center',
+                  fontSize: `1.166666667rem`,
+                  color: grayscale(4),
+                  lineHeight: `1.5em`,
+                  marginBottom: `4.5rem`,
+                }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Maecenas pellentesque dictum semper. Check out the{' '}
+                <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/">
+                  full guide
+                </Link>.
+              </p>
             </Column>
           </Row>
           <Row center="xs">
@@ -337,44 +381,69 @@ const IndexPage = (props) => {
                 <StartStep>
                   <StartIcon icon="user" color="magenta" />
                   <h3>Sign up for a Developer Account</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque dictum semper. Phasellus accumsan dolor risus.</p>
-                  <Link to="https://app.sparkpost.com/join">Sign up <i className="fa fa-chevron-right"></i></Link>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas pellentesque dictum semper. Phasellus accumsan
+                    dolor risus.
+                  </p>
+                  <Link to="https://app.sparkpost.com/join">
+                    Sign up <i className="fa fa-chevron-right" />
+                  </Link>
                 </StartStep>
                 <StartStep>
                   <StartIcon icon="at" color="mustard" />
                   <h3>Setup your domain</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque dictum semper. Phasellus accumsan dolor risus.</p>
-                  <Link to="https://app.sparkpost.com/join">Create a sending domain <i className="fa fa-chevron-right"></i></Link>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas pellentesque dictum semper. Phasellus accumsan
+                    dolor risus.
+                  </p>
+                  <Link to="https://app.sparkpost.com/join">
+                    Create a sending domain{' '}
+                    <i className="fa fa-chevron-right" />
+                  </Link>
                 </StartStep>
                 <StartStep>
                   <StartIcon icon="server" color="teal" />
                   <h3>Start sending!</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pellentesque dictum semper. Phasellus accumsan dolor risus.</p>
-                  <Link to="https://app.sparkpost.com/join">Sending your first email <i className="fa fa-chevron-right"></i></Link>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Maecenas pellentesque dictum semper. Phasellus accumsan
+                    dolor risus.
+                  </p>
+                  <Link to="https://app.sparkpost.com/join">
+                    Sending your first email{' '}
+                    <i className="fa fa-chevron-right" />
+                  </Link>
                 </StartStep>
               </div>
             </Column>
-            </Row>
+          </Row>
         </Container>
       </Section>
       <Section>
         <Container>
-          <h2 className="textCenter" style={{ marginBottom: `4rem` }}>Engineering Blog</h2>
+          <h2 className="textCenter" style={{ marginBottom: `4rem` }}>
+            Engineering Blog
+          </h2>
           <Row>
             <Column md={12}>
-              {<Row>
-                {map(props, 'allWordpressPost', (node) => (
-                  <Column md={4} key={node.title}>
-                    <BlogPost
-                      image={node.fields.media}
-                      date={node.date}
-                      author={node.author}
-                      title={node.title}
-                      description={node.excerpt}
-                      link={node.link} />
-                  </Column>
-                ))}
-              </Row>}
+              {
+                <Row>
+                  {map(props, 'allWordpressPost', node => (
+                    <Column md={4} key={node.title}>
+                      <BlogPost
+                        image={node.fields.media}
+                        date={node.date}
+                        author={node.author}
+                        title={node.title}
+                        description={node.excerpt}
+                        link={node.link}
+                      />
+                    </Column>
+                  ))}
+                </Row>
+              }
             </Column>
           </Row>
         </Container>
@@ -384,7 +453,6 @@ const IndexPage = (props) => {
 }
 
 export default IndexPage
-
 
 export const pageQuery = graphql`
   query indexQuery {
@@ -397,7 +465,11 @@ export const pageQuery = graphql`
         location
       }
     }
-    allWordpressPost(filter: {categories: {name: {eq: "Developer"}}}, sort: {fields: [date], order: DESC}, limit: 3) {
+    allWordpressPost(
+      filter: { categories: { name: { eq: "Developer" } } }
+      sort: { fields: [date], order: DESC }
+      limit: 3
+    ) {
       edges {
         node {
           fields {

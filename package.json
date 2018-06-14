@@ -44,7 +44,7 @@
     "develop": "source .env && gatsby develop",
     "docs": "NODE_ENV=docs && gatsby develop",
     "build": "gatsby build",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\" \"content/**/*.js\"",
     "precommit": "npm run format"
   },
   "devDependencies": {
