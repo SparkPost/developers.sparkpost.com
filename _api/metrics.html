@@ -143,6 +143,10 @@ disposition, and campaign performance.  This reporting data is available in the 
 <td style="text-align:right"><code>total_delivery_time_subsequent</code></td>
 <td style="text-align:left">Total time taken to delivery messages on subsequent attempts (milliseconds)</td>
 </tr>
+<tr>
+<td style="text-align:right"><code>count_unsubscribe</code></td>
+<td style="text-align:left">Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature</td>
+</tr>
 </tbody>
 </table>
 <div class="alert alert-info"><strong>Note</strong>: For a given request, average first attempt delivery latency can be calculated as <tt>total_delivery_time_first / count_delivered</tt>. A similar calculation holds for <tt>total_delivery_time_subsequent</tt>.</div></div><div class="resource searchable"><h3 id="metrics-discoverability-links" class="resource-heading">Discoverability Links <a href="#metrics-discoverability-links" class="permalink">&nbsp;</a></h3><div class="markdown"><p>The Metrics API is designed for discoverability of child links.  Calling the API root displays a
