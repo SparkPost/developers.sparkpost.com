@@ -5,6 +5,7 @@ import { mediaQuery } from 'utils/breakpoint'
 import Row from './Row'
 import Column from './Column'
 
+// prettier-ignore
 const Container = styled.div`
   margin-right: auto;
   margin-left: auto;
