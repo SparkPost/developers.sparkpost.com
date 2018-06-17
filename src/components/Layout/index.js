@@ -47,7 +47,10 @@ const Layout = ({ data, children, location }) => (
           defaultTitle={data.site.siteMetadata.title}
           titleTemplate="%s - SparkPost"
         >
-          <meta name="description" content={data.site.siteMetadata.description} />
+          <meta
+            name="description"
+            content={data.site.siteMetadata.description}
+          />
           {'' /* favicon and app data */}
           <link
             rel="apple-touch-icon"
@@ -72,7 +75,10 @@ const Layout = ({ data, children, location }) => (
             href={withPrefix('/favicons/safari-pinned-tab.svg')}
             color="#5bbad5"
           />
-          <link rel="shortcut icon" href={withPrefix('/favicons/favicon.ico')} />
+          <link
+            rel="shortcut icon"
+            href={withPrefix('/favicons/favicon.ico')}
+          />
           <meta
             name="msapplication-config"
             content={withPrefix('/favicons/browserconfig.xml')}

@@ -37,7 +37,6 @@ import Heading from 'components/api/components/Heading'
 import { mediaQuery } from 'utils/breakpoint'
 import parseResult from 'minim-parse-result'
 
-
 const debug = false
 
 const Block = styled.div``
