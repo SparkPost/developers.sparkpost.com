@@ -3,6 +3,7 @@ import { castArray } from 'lodash'
 import unified from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
 // import rehypeRaw from 'babel-loader?presets=env!hast-util-raw'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeReact from 'rehype-react'
@@ -13,7 +14,7 @@ import Link from 'components/Link'
 const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkRehype, { allowDangerousHTML: true })
-  // .use(rehypeRaw)
+  .use(rehypeRaw)
   .use(rehypeHighlight)
 
 const baseMarkdownProcessor = markdownProcessor().use(rehypeReact, {
