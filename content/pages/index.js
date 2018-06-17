@@ -150,7 +150,7 @@ const Tab = styled.button`
     border-bottom-color: ${color('orange')};
     color: ${color('orange')};`
       : `
-      
+
       &:hover {
         color: ${grayscale(3)};
         border-bottom-color: ${grayscale(8)};
@@ -235,7 +235,7 @@ const IndexPage = props => {
                 </Tabs>
                 <Sample>
                   <code
-                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions 
+                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions
 -H "Authorization: <YOUR API KEY>" \\
 -H "Content-Type: application/json" \\
 -d '{
