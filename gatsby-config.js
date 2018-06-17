@@ -61,7 +61,7 @@ const contentPlugins = [
     resolve: 'gatsby-source-github',
     options: {
       headers: {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`, 
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
       queries: [
         `{
@@ -82,6 +82,20 @@ const contentPlugins = [
         }`,
       ],
     }
+  },
+]
+
+/** Plugins to analyze build - manually add to the plugins list below */
+const analyzePlugins = [
+  /**
+   * Analyze webpack build
+   */
+  {
+    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+    options: {
+        analyzerPort: 3000,
+        production: true,
+    },
   },
 ]
 
