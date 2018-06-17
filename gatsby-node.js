@@ -46,8 +46,10 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 
-/** Resolve files through webpack
- ** `../../utils/colors` becomes `utils/colors` */
+/**
+ * Resolve files through webpack
+ * `../../utils/colors` becomes `utils/colors`
+ */
 exports.onCreateWebpackConfig = ({ actions }, pluginOptions) => {
   actions.setWebpackConfig({
     resolve: { modules: [ `${__dirname}/src`, 'node_modules' ] }

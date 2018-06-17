@@ -877,7 +877,7 @@ const Full = styled.div`
   }
 `
 
-const Template = props => {
+const Render = props => {
   const {
     ast,
     TableOfContents: PageTableOfContents = [],
@@ -931,6 +931,24 @@ const Template = props => {
       </Content>
     </Layout>
   )
+}
+
+class Template extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  /**
+   * only re-render if we change pages
+   */
+  shouldComponentUpdate() {
+    const isSamePage = this.props.location.pathname === window.location.pathname
+    return !isSamePage
+  }
+
+  render() {
+    return Render(this.props)
+  }
 }
 
 export default Template
