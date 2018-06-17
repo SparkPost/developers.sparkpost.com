@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba, lighten } from 'polished'
 import { color, grayscale, shadow } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
+import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
 import Card from 'components/Card'
@@ -214,7 +215,7 @@ const IndexPage = props => {
   )
 
   return (
-    <div>
+    <Layout {...props}>
       <TopSection>
         <Container>
           <Row>
@@ -448,7 +449,7 @@ const IndexPage = props => {
           </Row>
         </Container>
       </Section>
-    </div>
+    </Layout>
   )
 }
 

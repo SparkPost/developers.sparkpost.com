@@ -16,7 +16,7 @@ function breakpoint(b = 'xs') {
   return breakpoints[b]
 }
 
-breakpoint.mediaQuery = function mediaQuery(size, css) {
+function mediaQuery(size, css) {
   if (size === 'xs') {
     return css
   } else {
@@ -25,3 +25,5 @@ breakpoint.mediaQuery = function mediaQuery(size, css) {
 }
 
 export default breakpoint
+
+export { mediaQuery }

@@ -5,20 +5,20 @@ const { flatten } = require('lodash')
 /**
  * Add the image links to wordpress posts
  */
-exports.onCreateNode = async ({ node, boundActionCreators }) => {
-  const { createNodeField } = boundActionCreators
+exports.onCreateNode = async ({ node, actions }) => {
+  const { createNodeField } = actions
 
   if (node.internal.type === `wordpress__POST`) {
     let mediaUrl = ''
-    try {
-      if (node._links.wp_featuredmedia) {
-        const media = await axios.get(`${node._links.wp_featuredmedia[0].href}`)
+//     try {
+//       if (node._links.wp_featuredmedia) {
+//         const media = await axios.get(`${node._links.wp_featuredmedia[0].href}`)
 
-        mediaUrl = media.data.guid.rendered
-      }
-    }
-    catch(e) {
-    }
+//         mediaUrl = media.data.guid.rendered
+//       }
+//     }
+//     catch(e) {
+//     }
 
     createNodeField({ node, name: `media`, value: mediaUrl })
   }
@@ -27,8 +27,8 @@ exports.onCreateNode = async ({ node, boundActionCreators }) => {
 /**
  * create the API reference pages
  */
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   const apiDirectory = `${__dirname}/content/api`
   const apiTemplate = `${__dirname}/src/templates/api.js`
@@ -45,44 +45,22 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 }
 
-// Add Babel for styled components for easier debugging
-let babelPluginExists = false
-try {
-  require.resolve(`babel-plugin-styled-components`)
-  babelPluginExists = true
-} catch (e) {
-  // Ignore
-}
 
-exports.modifyBabelrc = ({ babelrc, stage }) => {
-
-  if (babelPluginExists) {
-    if (stage === 'develop') {
-      return {
-        ...babelrc,
-        plugins: babelrc.plugins.concat([
-          [
-            'babel-plugin-styled-components',
-            {
-              displayName: true,
-              minify: false
-            },
-          ],
-        ]),
-      }
-    }
-  }
-
-  return babelrc
-}
+/** Resolve files through webpack
+ ** `../../utils/colors` becomes `utils/colors` */
+exports.onCreateWebpackConfig = ({ actions }, pluginOptions) => {
+  actions.setWebpackConfig({
+    resolve: { modules: [ `${__dirname}/src`, 'node_modules' ] }
+  })
+};
 
 
 /**
  * when developing the docs redirect the home page to the api intro page
  */
-exports.onCreatePage = ({ page, boundActionCreators }) => {
-  if (process.env.NODE_ENV === 'docs') {
-    const { createRedirect } = boundActionCreators
+exports.onPostBootstrap = ({ page, actions }) => {
+  if (process.env.ACTIVE_ENV === 'docs') {
+    const { createRedirect, deletePage } = actions
 
     createRedirect({ fromPath: '/', toPath: '/api', redirectInBrowser: true })
   }

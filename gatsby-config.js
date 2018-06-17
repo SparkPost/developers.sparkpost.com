@@ -6,17 +6,15 @@ const baseConfig = {
 }
 
 const basePlugins = [
-  `gatsby-plugin-react-next`,
-  `gatsby-plugin-netlify-cms`,
+  // `gatsby-plugin-netlify-cms`,
   `gatsby-plugin-react-helmet`,
-  `gatsby-plugin-styled-components`,
-  `gatsby-plugin-lodash`,
-  /** Resolve files through webpack
-   ** `../../utils/colors` becomes `utils/colors` */
   {
-    resolve: `gatsby-plugin-root-import`,
-    options: { root: `${__dirname}/src` }
+    resolve: `gatsby-plugin-styled-components`,
+    options: {
+      displayName: true
+    }
   },
+  `gatsby-plugin-lodash`,
   /** Analytics
    ** Note: Google Analytics, HotJar, etc. is added through GTM */
   {
@@ -37,7 +35,7 @@ const docsPlugins = [
       path: `${__dirname}/content/`,
     },
   },
-  `gatsby-transformer-api-elements`
+  `gatsby-transformer-api-elements`,
 ]
 
 const contentPlugins = [
@@ -100,7 +98,7 @@ const analyzePlugins = [
   },
 ]
 
-const plugins = process.env.NODE_ENV === 'docs' ? [
+const plugins = process.env.ACTIVE_ENV === 'docs' ? [
   ...basePlugins,
   ...docsPlugins,
 ] : [

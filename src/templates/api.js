@@ -21,6 +21,7 @@ import {
   uniqBy,
   uniq,
 } from 'lodash'
+import Layout from 'components/Layout'
 import TableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Banner from 'components/Banner'
@@ -32,6 +33,10 @@ import Section from 'components/api/components/Section'
 import Right from 'components/api/components/Right'
 import Json from 'components/api/components/Json'
 import Heading from 'components/api/components/Heading'
+
+import { mediaQuery } from 'utils/breakpoint'
+import parseResult from 'minim-parse-result'
+
 
 const debug = false
 
@@ -282,7 +287,7 @@ function Transition({ transition, resource }) {
                 padding: 0,
                 background: 'transparent',
                 border: `1px solid ${grayscale(8)}`,
-                
+
               }}><code><span style={{
                 // color: 'white',
                 // background: color('magenta'),
@@ -622,10 +627,6 @@ function Attributes({ id, children }) {
 }
 
 const AttributesWrapper = styled.div`
-  > h4 {
-    // border-bottom: 1px solid ${grayscale(7)};
-  }
-
   margin-bottom: 1rem;
 `
 
@@ -850,9 +851,6 @@ const ChildrenToggle = styled.button`
   }
 `
 
-import { mediaQuery } from 'utils/breakpoint'
-
-import parseResult from 'minim-parse-result'
 const minim = require('minim').namespace()
 minim.use(parseResult)
 
@@ -880,7 +878,7 @@ const Full = styled.div`
   }
 `
 
-const IndexPage = props => {
+const Template = props => {
   const {
     ast,
     TableOfContents: PageTableOfContents = [],
@@ -908,7 +906,7 @@ const IndexPage = props => {
   })
 
   return (
-    <div>
+    <Layout {...props}>
       <Helmet
         title={meta.title}
         meta={[{ name: 'description', content: meta.description }]}
@@ -932,11 +930,11 @@ const IndexPage = props => {
           </React.Fragment>
         )}
       </Content>
-    </div>
+    </Layout>
   )
 }
 
-export default IndexPage
+export default Template
 
 export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { mediaQuery } from '../../utils/breakpoint'
+import { mediaQuery } from 'utils/breakpoint'
 
 const horizontalAlignment = ({ start, center, end }) => css`
   ${start &&

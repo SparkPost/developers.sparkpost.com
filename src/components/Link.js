@@ -1,5 +1,5 @@
 import React from 'react'
-import GatsbyLink from 'gatsby-link'
+import { Link as GatsbyLink } from 'gatsby'
 import isAbsoluteUrl from 'is-absolute-url'
 import styled from 'styled-components'
 
