@@ -5,8 +5,8 @@ const parse = require('./parse')
 /**
  * Create ApiElement nodes from files with the extention apib
  */
-module.exports = async function ({ node, boundActionCreators, loadNodeContent }) {
-  const { createNode, createParentChildLink } = boundActionCreators
+module.exports = async function ({ node, actions, loadNodeContent }) {
+  const { createNode, createParentChildLink } = actions
 
   if (node.extension !== 'apib') {
     return
@@ -42,4 +42,4 @@ module.exports = async function ({ node, boundActionCreators, loadNodeContent })
 
   createNode(apiElementNode)
   createParentChildLink({ parent: node, child: apiElementNode })
-} 
+}

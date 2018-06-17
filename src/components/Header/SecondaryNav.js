@@ -55,6 +55,7 @@ class SecondaryNav extends React.Component {
     require('scriptjs')('https://cdn.statuspage.io/se-v2.js', () => {
       if (!window.StatusPage) return
 
+      // eslint-disable-next-line no-undef
       const sp = new StatusPage.page({ page: '7ky1q6zd3fyp' })
 
       sp.summary({

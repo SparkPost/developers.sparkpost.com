@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { mediaQuery } from '../../utils/breakpoint'
+import { mediaQuery } from 'utils/breakpoint'
 
 function columnToWidth(columns = 12) {
   if (columns === 'auto') {

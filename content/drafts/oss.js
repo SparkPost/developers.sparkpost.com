@@ -16,7 +16,7 @@ const featuredProjects = fullProjects.filter(({ featured }) => featured)
 const Title = styled.h1`
   text-align: center;
   color: ${color('gray')};
-` 
+`
 
 const Subtitle = styled.p`
   text-align: center;
@@ -29,12 +29,12 @@ const Subtitle = styled.p`
 
 const Table = styled.div`
   width: 100%;
-  font-size: .888888889rem;
+  font-size: 0.888888889rem;
 `
 
 const Project = styled(Link.Unstyled)`
   display: block;
-  padding: .35rem 0;
+  padding: 0.35rem 0;
 
   &:hover > *:first-child {
     text-decoration: underline;
@@ -58,14 +58,14 @@ const Stars = styled.div`
   float: right;
 
   &:after {
-    content: "★";
-    font-size: .8333em;
+    content: '★';
+    font-size: 0.8333em;
     top: -1px;
-    margin-left: .25rem;
+    margin-left: 0.25rem;
   }
 `
 
-export default (props) => (
+export default props => (
   <div>
     <Section light>
       <Container>
@@ -80,17 +80,20 @@ export default (props) => (
           </Column>
         </Row>
         <Row center="xs">
-          {featuredProjects.map(({ name, color }) => (
-            map(props, 'allGithubSearch', ({ name: githubName, description, url }) => (
-              githubName === name && (
-                <Column md="4">
-                  <Card color={color} title={name} to={url}>
-                    {description}
-                  </Card>
-                </Column>
-              )
-            ))
-          ))}
+          {featuredProjects.map(({ name, color }) =>
+            map(
+              props,
+              'allGithubSearch',
+              ({ name: githubName, description, url }) =>
+                githubName === name && (
+                  <Column md="4">
+                    <Card color={color} title={name} to={url}>
+                      {description}
+                    </Card>
+                  </Column>
+                )
+            )
+          )}
         </Row>
       </Container>
     </Section>
@@ -100,14 +103,23 @@ export default (props) => (
           <Column md="10" mdOffset="1">
             <h2>Our Projects</h2>
             <Table>
-              {map(props, 'allGithubSearch', ({ name, url, description, stargazers: { totalCount: stars } }) => (
-                projects.includes(name) && 
-                <Project to={url} target="_blank">
-                  <Name>{name}</Name>
-                  <Description>{description}</Description>
-                  <Stars>{stars}</Stars>
-                </Project>
-              ))}
+              {map(
+                props,
+                'allGithubSearch',
+                ({
+                  name,
+                  url,
+                  description,
+                  stargazers: { totalCount: stars },
+                }) =>
+                  projects.includes(name) && (
+                    <Project to={url} target="_blank">
+                      <Name>{name}</Name>
+                      <Description>{description}</Description>
+                      <Stars>{stars}</Stars>
+                    </Project>
+                  )
+              )}
             </Table>
           </Column>
         </Row>
@@ -119,9 +131,15 @@ export default (props) => (
           <Column xs={10}>
             <h2>We support</h2>
             <Row between="xs">
-              <Column sm={3}><img src="https://placehold.it/200x100" alt=""/></Column>
-              <Column sm={3}><img src="https://placehold.it/200x100" alt=""/></Column>
-              <Column sm={3}><img src="https://placehold.it/200x100" alt=""/></Column>
+              <Column sm={3}>
+                <img src="https://placehold.it/200x100" alt="" />
+              </Column>
+              <Column sm={3}>
+                <img src="https://placehold.it/200x100" alt="" />
+              </Column>
+              <Column sm={3}>
+                <img src="https://placehold.it/200x100" alt="" />
+              </Column>
             </Row>
           </Column>
         </Row>
@@ -145,4 +163,5 @@ export const pageQuery = graphql`
         }
       }
     }
-  }`
+  }
+`

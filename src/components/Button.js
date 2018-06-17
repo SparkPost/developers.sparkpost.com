@@ -3,13 +3,17 @@ import { rgba } from 'polished'
 import { grayscale, color, shadow } from '../utils/colors'
 import { weight, uppercase } from '../utils/fonts'
 
+// prettier-ignore
 const hoverSelector = css`
-  &: hover ${props => (props.hover || props.active) && `, &`};
-`
-const activeSelector = css`
-  &: active ${props => props.active && `, &`};
+  &:hover ${props => (props.hover || props.active) && `, &`}
 `
 
+// prettier-ignore
+const activeSelector = css`
+  &:active ${props => props.active && `, &`}
+`
+
+// prettier-ignore
 const Button = styled.button`
   ${uppercase} border: 1px solid transparent;
   padding: 0.6em 1.8em;
@@ -25,21 +29,23 @@ const Button = styled.button`
   }
 
   // block button
-  ${props =>
-    props.block &&
-    css`
-      display: block;
-      width: 100%;
-    `} ${props =>
-      props.size === 'small' &&
-      css`
-        font-size: 0.666666667rem;
-        padding: 0.6em 1.25em;
-      `} ${props =>
-      props.size === 'large' &&
-      css`
-        padding: 0.8em 2em;
-      `} color: ${grayscale('medium')};
+  ${props => props.block && css`
+    display: block;
+    width: 100%;
+  `}
+
+  // small button
+  ${props => props.size === 'small' && css`
+    font-size: 0.666666667rem;
+    padding: 0.6em 1.15em;
+  `}
+
+  // large button
+  ${props => props.size === 'large' && css`
+    padding: 0.8em 2em;
+  `}
+
+  color: ${grayscale('medium')};
   background: ${grayscale(8)};
 
   ${hoverSelector} {
@@ -52,41 +58,39 @@ const Button = styled.button`
   }
 
   // primary
-  ${props =>
-    props.primary &&
-    css`
-      color: ${grayscale('white')};
-      background: ${color('orange')};
-      border-color: ${color('orangeDark')};
+  ${props => props.primary && css`
+    color: ${grayscale('white')};
+    background: ${color('orange')};
+    border-color: ${color('orangeDark')};
 
-      ${hoverSelector} {
-        background: ${color('orangeDark')};
-        border-color: #c84a13;
-      }
-    `} ${props =>
-      props.secondary &&
-      css`
-        color: ${grayscale('white')};
-        background: ${color('blue')};
-        border-color: ${color('blueDark')};
+    ${hoverSelector} {
+      background: ${color('orangeDark')};
+      border-color: #c84a13;
+    }
+  `}
 
-        ${hoverSelector} {
-          background: ${color('blueDark')};
-          border-color: #1f79a1;
-        }
-      `} ${props =>
-      props.outline &&
-      css`
-        color: ${grayscale('medium')};
-        background: ${grayscale('white')};
-        border-color: ${grayscale(7)};
-        box-shadow: ${shadow(1)};
+  ${props => props.secondary && css`
+    color: ${grayscale('white')};
+    background: ${color('blue')};
+    border-color: ${color('blueDark')};
 
-        ${hoverSelector} {
-          background: #f1f1f2;
-          border-color: ${grayscale(7)};
-        }
-      `};
+    ${hoverSelector} {
+      background: ${color('blueDark')};
+      border-color: #1f79a1;
+    }
+  `}
+
+  ${props => props.outline && css`
+    color: ${grayscale('medium')};
+    background: ${grayscale('white')};
+    border-color: ${grayscale(7)};
+    box-shadow: ${shadow(1)};
+
+    ${hoverSelector} {
+      background: #f1f1f2;
+      border-color: ${grayscale(7)};
+    }
+  `}
 `
 
 export default Button

@@ -19,9 +19,7 @@ minim.use(parseResult)
 
 // import html from 'raw-loader!../data/api/transmissions.html'
 
-const Wrapper = styled.div`
-  
-`
+const Wrapper = styled.div``
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};
@@ -29,8 +27,8 @@ const SearchInput = styled.input`
   box-shadow: ${shadow(1)};
   border-radius: 2px;
   font: inherit;
-  font-size: .888888889rem;
-  padding: .5rem;
+  font-size: 0.888888889rem;
+  padding: 0.5rem;
   width: 100%;
   outline: 0;
 
@@ -41,12 +39,12 @@ const SearchInput = styled.input`
 `
 
 const SearchResults = styled.div`
-  display: ${props => props.visible ? 'block' : 'none'};
+  display: ${props => (props.visible ? 'block' : 'none')};
   position: absolute;
   width: 100%;
   border-radius: 2px;
   background: ${grayscale('white')};
-  margin: .166666667rem 0;
+  margin: 0.166666667rem 0;
   border: 1px solid ${grayscale(8)};
   box-shadow: ${shadow(1)};
   z-index: 9;
@@ -54,8 +52,8 @@ const SearchResults = styled.div`
 
 const SearchResult = styled(Link.Unstyled)`
   display: block;
-  padding: .5rem 1rem;
-  font-size: .833333333rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.833333333rem;
 
   &:hover {
     background: ${grayscale('light')};
@@ -77,7 +75,11 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <SearchInput placeholder="Search something" onFocus={this.toggleResults} onBlur={this.toggleResults} />
+        <SearchInput
+          placeholder="Search something"
+          onFocus={this.toggleResults}
+          onBlur={this.toggleResults}
+        />
         <SearchResults visible={this.state.visible}>
           <SearchResult>Substitution Data </SearchResult>
           <SearchResult>Substitution Syntax Examples</SearchResult>
@@ -88,7 +90,7 @@ class Search extends React.Component {
 }
 
 const navHeight = `63px`
-const sidebarWidth = `300px`;
+const sidebarWidth = `300px`
 
 const SidebarWrapper = styled.aside`
   width: ${sidebarWidth};
@@ -103,7 +105,7 @@ const SidebarWrapper = styled.aside`
 `
 
 const Category = styled.div`
-  margin: 1.5rem .5rem;
+  margin: 1.5rem 0.5rem;
 
   &:not(:last-child) {
     padding-bottom: 1.5rem;
@@ -112,18 +114,17 @@ const Category = styled.div`
 `
 
 const CategoryTitle = styled.div`
-  ${uppercase}
-  font-size: .75rem;
-  margin: .888888889rem 0;
+  ${uppercase} font-size: .75rem;
+  margin: 0.888888889rem 0;
   color: ${grayscale(4)};
   font-weight: ${weight('medium')};
 `
 
 const ApiLink = styled(Link.Unstyled)`
   display: block;
-  font-size: .888888889rem;
+  font-size: 0.888888889rem;
   font-weight: ${weight('medium')};
-  margin: .666666667rem 0;
+  margin: 0.666666667rem 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -410,11 +411,20 @@ const Svg = styled.svg`
   z-index: 1;
 `
 
-const Check = (props) => (
-  <Svg fill={color('green')} preserveAspectRatio="xMidYMid meet" height="30" width="30" viewBox="0 0 40 40" style={{ verticalAlign: 'middle' }}>
-    <g><path d="m16.6 28.4l15-15-2.3-2.5-12.7 12.7-5.9-5.9-2.3 2.3z m3.4-25c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z"/></g>
+const Check = props => (
+  <Svg
+    fill={color('green')}
+    preserveAspectRatio="xMidYMid meet"
+    height="30"
+    width="30"
+    viewBox="0 0 40 40"
+    style={{ verticalAlign: 'middle' }}
+  >
+    <g>
+      <path d="m16.6 28.4l15-15-2.3-2.5-12.7 12.7-5.9-5.9-2.3 2.3z m3.4-25c9.2 0 16.6 7.4 16.6 16.6s-7.4 16.6-16.6 16.6-16.6-7.4-16.6-16.6 7.4-16.6 16.6-16.6z" />
+    </g>
   </Svg>
-);
+)
 
 const Banner = styled.div`
   position: relative;
@@ -442,47 +452,57 @@ const Banner = styled.div`
 
   }
 
-  ${props => props.status === 'success' && css`
-    &:before {
-      background: ${color('green')};
-    }
+  ${props =>
+    props.status === 'success' &&
+    css`
+      &:before {
+        background: ${color('green')};
+      }
 
-    ${IconBackdrop} {
-      box-shadow: 0 0 0 7px ${rgba(color('green'), 0.25)};
-    }
-  `}
+      ${IconBackdrop} {
+        box-shadow: 0 0 0 7px ${rgba(color('green'), 0.25)};
+      }
+    `}
 
-  ${props => props.status === 'info' && css`
-    &:before {
-      background: ${color('blue')};
-    }
-  `}
+  ${props =>
+    props.status === 'info' &&
+    css`
+      &:before {
+        background: ${color('blue')};
+      }
+    `}
 
-  ${props => props.status === 'warning' && css`
-    &:before {
-      background: ${color('mustard')};
-    }
-  `}
+  ${props =>
+    props.status === 'warning' &&
+    css`
+      &:before {
+        background: ${color('mustard')};
+      }
+    `}
 
-  ${props => props.status === 'danger' && css`
-    &:before {
-      background: ${color('red')};
-    }
-  `}
+  ${props =>
+    props.status === 'danger' &&
+    css`
+      &:before {
+        background: ${color('red')};
+      }
+    `}
   }
 `
 
 const BannerContent = styled.div`
   flex: 1 0 0;
   p {
-    margin: .333333333rem 0 0;
+    margin: 0.333333333rem 0 0;
   }
 `
-const BannerTitle = styled.h4`margin: 0;`
+const BannerTitle = styled.h4`
+  margin: 0;
+`
 
 const EditWrapper = styled.div`
   background: ${grayscale('light')};
-  padding: .666666667rem;
+  padding: 0.666666667rem;
   margin: 2rem 0;
   border-radius: 4px;
 
@@ -492,7 +512,7 @@ const EditWrapper = styled.div`
     justify-content: flex-end;
 
     a {
-      font-size: .833333333rem;
+      font-size: 0.833333333rem;
     }
   }
 `
@@ -501,7 +521,11 @@ const Edit = () => (
   <EditWrapper>
     <Row>
       <Column xs={9}>
-        <span dangerouslySetInnerHTML={{ __html: `Was this page helpful?&nbsp;&nbsp;&nbsp;` }}/>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: `Was this page helpful?&nbsp;&nbsp;&nbsp;`,
+          }}
+        />
         <Button outline>Yes</Button>
         <Button outline>No</Button>
       </Column>
@@ -519,7 +543,7 @@ function title(el, defaultValue = '') {
 }
 
 function copy(el) {
-  return el.copy.map((copy) => copy.content).join('')
+  return el.copy.map(copy => copy.content).join('')
 }
 
 // const IndexPage = (props) => {
@@ -587,9 +611,7 @@ function copy(el) {
 //   )
 // }
 
-export default () => (<div>hi</div>)
-
-
+export default () => <div>hi</div>
 
 // export const pageQuery = graphql`
 // query apiQuery {

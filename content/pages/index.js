@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba, lighten } from 'polished'
 import { color, grayscale, shadow } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
+import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
 import Card from 'components/Card'
@@ -150,7 +151,7 @@ const Tab = styled.button`
     border-bottom-color: ${color('orange')};
     color: ${color('orange')};`
       : `
-      
+
       &:hover {
         color: ${grayscale(3)};
         border-bottom-color: ${grayscale(8)};
@@ -214,7 +215,7 @@ const IndexPage = props => {
   )
 
   return (
-    <div>
+    <Layout {...props}>
       <TopSection>
         <Container>
           <Row>
@@ -235,7 +236,7 @@ const IndexPage = props => {
                 </Tabs>
                 <Sample>
                   <code
-                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions 
+                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions
 -H "Authorization: <YOUR API KEY>" \\
 -H "Content-Type: application/json" \\
 -d '{
@@ -448,7 +449,7 @@ const IndexPage = props => {
           </Row>
         </Container>
       </Section>
-    </div>
+    </Layout>
   )
 }
 

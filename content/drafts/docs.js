@@ -12,15 +12,14 @@ import BlogPost from '../components/BlogPost'
 import Link from '../components/Link'
 import map from '../utils/map'
 
-
 const SearchInput = styled.input`
   background: ${grayscale('white')};
   border: 1px solid ${grayscale(8)};
   box-shadow: ${shadow(1)};
   border-radius: 2px;
   font: inherit;
-  font-size: .888888889rem;
-  padding: .5rem;
+  font-size: 0.888888889rem;
+  padding: 0.5rem;
   width: 100%;
   outline: 0;
 
@@ -31,12 +30,12 @@ const SearchInput = styled.input`
 `
 
 const SearchResults = styled.div`
-  display: ${props => props.visible ? 'block' : 'none'};
+  display: ${props => (props.visible ? 'block' : 'none')};
   position: absolute;
   width: 100%;
   border-radius: 2px;
   background: ${grayscale('white')};
-  margin: .166666667rem 0;
+  margin: 0.166666667rem 0;
   border: 1px solid ${grayscale(8)};
   box-shadow: ${shadow(1)};
   z-index: 9;
@@ -44,8 +43,8 @@ const SearchResults = styled.div`
 
 const SearchResult = styled(Link.Unstyled)`
   display: block;
-  padding: .5rem 1rem;
-  font-size: .833333333rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.833333333rem;
 
   &:hover {
     background: ${grayscale('light')};
@@ -67,7 +66,11 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <SearchInput placeholder="Search something" onFocus={this.toggleResults} onBlur={this.toggleResults} />
+        <SearchInput
+          placeholder="Search something"
+          onFocus={this.toggleResults}
+          onBlur={this.toggleResults}
+        />
         <SearchResults visible={this.state.visible}>
           <SearchResult>Substitution Data </SearchResult>
           <SearchResult>Substitution Syntax Examples</SearchResult>
@@ -78,7 +81,7 @@ class Search extends React.Component {
 }
 
 const navHeight = `63px`
-const sidebarWidth = `300px`;
+const sidebarWidth = `300px`
 
 const SidebarWrapper = styled.aside`
   width: ${sidebarWidth};
@@ -89,7 +92,7 @@ const SidebarWrapper = styled.aside`
 `
 
 const Category = styled.div`
-  margin: 1.5rem .5rem;
+  margin: 1.5rem 0.5rem;
 
   &:not(:last-child) {
     padding-bottom: 1.5rem;
@@ -98,18 +101,17 @@ const Category = styled.div`
 `
 
 const CategoryTitle = styled.div`
-  ${uppercase}
-  font-size: .75rem;
-  margin: .888888889rem 0;
+  ${uppercase} font-size: .75rem;
+  margin: 0.888888889rem 0;
   color: ${grayscale(4)};
   font-weight: ${weight('medium')};
 `
 
 const ApiLink = styled(Link.Unstyled)`
   display: block;
-  font-size: .888888889rem;
+  font-size: 0.888888889rem;
   font-weight: ${weight('medium')};
-  margin: .666666667rem 0;
+  margin: 0.666666667rem 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -147,9 +149,7 @@ const Sidebar = () => (
   </SidebarWrapper>
 )
 
-const Reference = styled.div`
- 
-`
+const Reference = styled.div``
 
 const Content = styled.div`
   width: 45rem;
@@ -182,89 +182,119 @@ const Banner = styled.div`
     background: ${grayscale(6)};
     border-radius: 2px 0 0 2px;
 
-    ${props => props.status === 'success' && css`
-      background: ${color('green')};
-    `}
-
-    ${props => props.status === 'info' && css`
-      background: ${color('blue')};
-    `}
-
-    ${props => props.status === 'warning' && css`
-      background: ${color('mustard')};
-    `}
-
-    ${props => props.status === 'danger' && css`
-      background: ${color('red')};
-    `}
+    ${props =>
+      props.status === 'success' &&
+      css`
+        background: ${color('green')};
+      `} ${props =>
+        props.status === 'info' &&
+        css`
+          background: ${color('blue')};
+        `} ${props =>
+        props.status === 'warning' &&
+        css`
+          background: ${color('mustard')};
+        `} ${props =>
+        props.status === 'danger' &&
+        css`
+          background: ${color('red')};
+        `};
   }
 `
 
 const BannerIcon = styled.div``
 const BannerContent = styled.div`
   p {
-    margin: .333333333rem 0 0;
+    margin: 0.333333333rem 0 0;
   }
 `
-const BannerTitle = styled.h4`margin: 0;`
+const BannerTitle = styled.h4`
+  margin: 0;
+`
 
-const IndexPage = (props) => (
+const IndexPage = props => (
   <div>
     {/*<div style={{ height: 1, width: `100%`, background: grayscale(7) }}></div>*/}
     {/*<Section light>
           <h1 className="textCenter">Getting Started</h1>
         </Section>*/}
     <Section>
-    <Container>
-      <Row>
+      <Container>
+        <Row>
           <Sidebar />
           <Reference>
             <Content>
               <h1>Heading 1</h1>
-              <p><strong>Lorem ipsum dolor sit amet</strong>, <i>consectetur adipisicing elit</i>. <u>In temporibus dolorum</u>, <code>sint ex vitae</code>! Ducimus commodi eum, cumque rerum nam corrupti eligendi repellat. Maiores quo rem vitae quos, facere ea!</p>
+              <p>
+                <strong>Lorem ipsum dolor sit amet</strong>,{' '}
+                <i>consectetur adipisicing elit</i>.{' '}
+                <u>In temporibus dolorum</u>, <code>sint ex vitae</code>!
+                Ducimus commodi eum, cumque rerum nam corrupti eligendi
+                repellat. Maiores quo rem vitae quos, facere ea!
+              </p>
               <h2>Heading 2</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium incidunt tempore rerum corrupti eius dolore totam, quidem aut suscipit qui, quisquam ab placeat pariatur eum consequatur reiciendis corporis at, cumque!</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Accusantium incidunt tempore rerum corrupti eius dolore totam,
+                quidem aut suscipit qui, quisquam ab placeat pariatur eum
+                consequatur reiciendis corporis at, cumque!
+              </p>
               <Banner status="warning">
                 <BannerContent>
                   <BannerTitle>Heads up!</BannerTitle>
-                  <p>If you're importing recipients from a previous provider, be sure to also import your suppressions later.</p>
+                  <p>
+                    If you're importing recipients from a previous provider, be
+                    sure to also import your suppressions later.
+                  </p>
                 </BannerContent>
               </Banner>
               <h3>Heading 3</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni cumque repellat reprehenderit perspiciatis sunt dolor numquam tenetur officia amet excepturi, repudiandae assumenda ipsa aut, quas omnis aliquam vero asperiores sequi.</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
+                cumque repellat reprehenderit perspiciatis sunt dolor numquam
+                tenetur officia amet excepturi, repudiandae assumenda ipsa aut,
+                quas omnis aliquam vero asperiores sequi.
+              </p>
               <table>
                 <thead>
-                <tr>
-                <th>Endpoint</th>
-                <th>Use for</th>
-                </tr>
+                  <tr>
+                    <th>Endpoint</th>
+                    <th>Use for</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr>
-                <td><code>https://api.sparkpost.com/api/v1</code></td>
-                <td>SparkPost and SparkPost Premium</td>
-                </tr>
-                <tr>
-                <td><code>https://api.eu.sparkpost.com/api/v1</code></td>
-                <td>SparkPost EU and SparkPost Premium EU</td>
-                </tr>
-                <tr>
-                <td><code>https://api.sparkpost.com/api/labs</code></td>
-                <td>SparkPost Labs</td>
-                </tr>
-                <tr>
-                <td><code>https://yourdomain.api.e.sparkpost.com/api/v1</code></td>
-                <td>SparkPost Enterprise API</td>
-                </tr>
+                  <tr>
+                    <td>
+                      <code>https://api.sparkpost.com/api/v1</code>
+                    </td>
+                    <td>SparkPost and SparkPost Premium</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>https://api.eu.sparkpost.com/api/v1</code>
+                    </td>
+                    <td>SparkPost EU and SparkPost Premium EU</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>https://api.sparkpost.com/api/labs</code>
+                    </td>
+                    <td>SparkPost Labs</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <code>https://yourdomain.api.e.sparkpost.com/api/v1</code>
+                    </td>
+                    <td>SparkPost Enterprise API</td>
+                  </tr>
                 </tbody>
               </table>
             </Content>
           </Reference>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
     </Section>
   </div>
 )
 
 export default IndexPage
-
