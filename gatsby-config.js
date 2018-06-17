@@ -10,6 +10,7 @@ const basePlugins = [
   `gatsby-plugin-netlify-cms`,
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-styled-components`,
+  `gatsby-plugin-lodash`,
   /** Resolve files through webpack
    ** `../../utils/colors` becomes `utils/colors` */
   {
