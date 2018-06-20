@@ -1,3 +1,5 @@
+import { css } from 'styled-components'
+
 /**
  * Taken from the amazing SparkPost Matchbox
  *
@@ -16,11 +18,15 @@ function breakpoint(b = 'xs') {
   return breakpoints[b]
 }
 
-function mediaQuery(size, css) {
+function mediaQuery(size, styles) {
   if (size === 'xs') {
-    return css
+    return styles
   } else {
-    return `@media only screen and (min-width: ${breakpoint(size)}) { ${css} }`
+    return css`
+      @media only screen and (min-width: ${breakpoint(size)}) {
+        ${styles};
+      }
+    `
   }
 }
 
