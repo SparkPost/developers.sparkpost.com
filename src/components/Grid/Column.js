@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
+import { isUndefined } from 'lodash'
 
 function columnToWidth(columns = 12) {
   if (columns === 'auto') {
     return columns
   } else {
-    return `${100 / 12 * (columns > 12 ? 12 : columns < 1 ? 1 : columns)}%`
+    return `${100 / 12 * (columns > 12 ? 12 : columns < 0 ? 0 : columns)}%`
   }
 }
 
@@ -17,6 +18,7 @@ function flexWidth(width) {
   }
 }
 
+// prettier-ignore
 const width = ({
   xs,
   sm,
@@ -29,28 +31,16 @@ const width = ({
   lgOffset,
   xlOffset,
 }) => css`
-  ${xs && mediaQuery('xs', flexWidth(columnToWidth(xs)))} ${sm &&
-      mediaQuery('sm', flexWidth(columnToWidth(sm)))} ${md &&
-      mediaQuery('md', flexWidth(columnToWidth(md)))} ${lg &&
-      mediaQuery('lg', flexWidth(columnToWidth(lg)))} ${xl &&
-      mediaQuery('xl', flexWidth(columnToWidth(xl)))} ${xsOffset &&
-      mediaQuery(
-        'xs',
-        `margin-left: ${columnToWidth(xsOffset)};`
-      )} ${smOffset &&
-      mediaQuery(
-        'sm',
-        `margin-left: ${columnToWidth(smOffset)};`
-      )} ${mdOffset &&
-      mediaQuery(
-        'md',
-        `margin-left: ${columnToWidth(mdOffset)};`
-      )} ${lgOffset &&
-      mediaQuery(
-        'lg',
-        `margin-left: ${columnToWidth(lgOffset)};`
-      )} ${xlOffset &&
-      mediaQuery('xl', `margin-left: ${columnToWidth(xlOffset)};`)};
+  ${!isUndefined(xs) && mediaQuery('xs', flexWidth(columnToWidth(xs)))}
+  ${!isUndefined(sm) && mediaQuery('sm', flexWidth(columnToWidth(sm)))}
+  ${!isUndefined(md) && mediaQuery('md', flexWidth(columnToWidth(md)))}
+  ${!isUndefined(lg) && mediaQuery('lg', flexWidth(columnToWidth(lg)))}
+  ${!isUndefined(xl) && mediaQuery('xl', flexWidth(columnToWidth(xl)))}
+  ${!isUndefined(xsOffset) && mediaQuery('xs', `margin-left: ${columnToWidth(xsOffset)};`)}
+  ${!isUndefined(smOffset) && mediaQuery('sm', `margin-left: ${columnToWidth(smOffset)};`)}
+  ${!isUndefined(mdOffset) && mediaQuery('md', `margin-left: ${columnToWidth(mdOffset)};`)}
+  ${!isUndefined(lgOffset) && mediaQuery('lg', `margin-left: ${columnToWidth(lgOffset)};`)}
+  ${!isUndefined(xlOffset) && mediaQuery('xl', `margin-left: ${columnToWidth(xlOffset)};`)}
 `
 
 export default styled.div`
@@ -58,8 +48,8 @@ export default styled.div`
   flex: 0 0 auto;
   flex-grow: 1;
   flex-basis: 0;
-  padding-left: 1rem;
   text-align: left;
+  padding-left: 1rem;
 
   ${width};
 `
