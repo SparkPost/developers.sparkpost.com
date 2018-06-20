@@ -1,7 +1,9 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
-import { grayscale, color, shadow } from '../utils/colors'
-import { weight, uppercase } from '../utils/fonts'
+import { grayscale, color, shadow } from 'utils/colors'
+import { weight, uppercase } from 'utils/fonts'
+import Link from 'components/Link'
 
 // prettier-ignore
 const hoverSelector = css`
@@ -23,6 +25,7 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 2px;
   margin-right: 0.5rem;
+  display: inline-block;
 
   &[disabled] {
     opacity: 0.5;
@@ -93,4 +96,8 @@ const Button = styled.button`
   `}
 `
 
-export default Button
+const ButtonLink = Button.withComponent(Link.Unstyled)
+
+export default styled(
+  props => (!!props.to ? <ButtonLink {...props} /> : <Button {...props} />)
+)``
