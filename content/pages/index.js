@@ -8,7 +8,7 @@ import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
 import Panel from 'components/Panel'
-import BlogPost from 'components/BlogPost'
+import Card from 'components/Card'
 import Button from 'components/Button'
 import Link from 'components/Link'
 import Anchor from 'components/Anchor'
@@ -16,7 +16,6 @@ import CodeSamples from 'components/CodeSamples'
 import map from 'utils/map'
 
 import flameBackground from 'assets/flame-background.png'
-
 import elixir from 'assets/libraries/elixir.png'
 import go from 'assets/libraries/go.png'
 import java from 'assets/libraries/java.png'
@@ -394,7 +393,7 @@ const IndexPage = props => {
           <Row>
             {map(props, 'allWordpressPost', node => (
               <Column md={4} xs={12} key={node.title}>
-                <BlogPost
+                <Card
                   image={node.fields.media}
                   date={node.date}
                   author={node.author}
