@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
-import { Container, Row, Column } from './Grid'
-import Link from './Link'
-import Button from './Button'
+import { Container, Row, Column } from 'components/Grid'
+import Link from 'components/Link'
+import Button from 'components/Button'
 
 const Footer = styled.footer`
   background: ${grayscale('dark')};

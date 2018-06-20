@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { grayscale } from 'utils/colors'
 import { weight, uppercase } from 'utils/fonts'
-
 import Link from 'components/Link'
 
 const Card = styled.div`

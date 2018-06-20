@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import slugify from 'slugify'
-import Link from './Link'
+import Link from 'components/Link'
 
 function Anchor({ title, children, ...props }) {
   return (
