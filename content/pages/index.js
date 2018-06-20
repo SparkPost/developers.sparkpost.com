@@ -1,28 +1,30 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { rgba, lighten } from 'polished'
-import { color, grayscale, shadow } from 'utils/colors'
+import { color, grayscale } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
+import { mediaQuery } from 'utils/breakpoint'
 import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
-import Card from 'components/Card'
-import ClientLibrary from 'components/ClientLibrary'
 import Panel from 'components/Panel'
-import Event from 'components/Event'
 import BlogPost from 'components/BlogPost'
-import Banner from 'components/Banner'
 import Button from 'components/Button'
 import Link from 'components/Link'
+import Anchor from 'components/Anchor'
+import CodeSamples from 'components/CodeSamples'
 import map from 'utils/map'
-import { get } from 'lodash'
+
+import flameBackground from 'assets/flame-background.png'
 
 import elixir from 'assets/libraries/elixir.png'
 import go from 'assets/libraries/go.png'
 import java from 'assets/libraries/java.png'
-import node_js from 'assets/libraries/node.png'
+import nodeJs from 'assets/libraries/node.png'
 import php from 'assets/libraries/php.png'
 import python from 'assets/libraries/python.png'
+import ruby from 'assets/libraries/ruby.png'
+import cSharp from 'assets/libraries/c-sharp.png'
 
 import RawCode from 'components/icons/Code'
 import RawNotes from 'components/icons/Notes'
@@ -73,22 +75,74 @@ const SectionTitle = styled.h4`
 `
 
 const Title = styled.h1`
-  margin-top: 3.5rem;
   color: ${grayscale('white')};
   font-size: 2em;
+  text-align: center;
+
+  ${mediaQuery(
+    'md',
+    `
+    margin-top: 3.5rem;
+    text-align: left;
+  `
+  )};
 `
 
 const Subtitle = styled.p`
   margin-bottom: 2rem;
   line-height: 28px;
   font-size: 1.166666667rem;
+  text-align: center;
+
+  ${mediaQuery(
+    'md',
+    `
+    text-align: left;
+  `
+  )};
 `
 
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin-bottom: 4rem;
+
+  ${Button} {
+    margin-bottom: 0.5rem;
+  }
+
+  ${mediaQuery(
+    'md',
+    `
+    text-align: left;
+    margin-bottom: 0rem;
+  `
+  )};
+`
+
+const LanguageWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-top: 1px solid ${grayscale(8)};
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+`
+
+// prettier-ignore
 const Language = styled(Link.Unstyled)`
   display: block;
   color: ${grayscale(5)};
   font-weight: ${weight('medium')};
   text-align: center;
+  padding-top: 1.25rem;
+
+  width: ${100/4}%;
+  min-width: 60px;
+
+  ${mediaQuery('sm', `
+    min-width: auto;
+    width: ${100/8}%;
+  `)}
 
   &:hover {
     color: ${color('blue')};
@@ -102,61 +156,10 @@ const Language = styled(Link.Unstyled)`
 
 const TopSection = styled(Section)`
   background-color: ${grayscale('dark')};
-  background-image: url(https://www.sparkpost.com/wp-content/themes/jolteon/images/background-pattern-flame.png);
-  background-size: cover;
+  background-image: url(${flameBackground});
+  background-size: 150%;
   color: ${grayscale('white')};
   padding: 8rem 0 10rem 0;
-`
-
-const Samples = styled.div`
-  background: ${grayscale('white')};
-  border-radius: 4px;
-  box-shadow: 0 10px 31px -13px ${rgba(grayscale('dark'), 0.1)},
-    0 12px 20px -9px ${rgba('#3D3D49', 0.1)};
-  margin-left: 1rem;
-  min-height: 300px;
-`
-
-const Sample = styled.pre`
-  padding: 1rem;
-  margin: 0;
-  background: transparent;
-
-  color: ${grayscale('medium')};
-  overflow: auto;
-`
-
-const Tabs = styled.div`
-  border-bottom: 1px solid ${grayscale('light')};
-  padding: 0 1rem;
-`
-
-const Tab = styled.button`
-  background: transparent;
-  border-width: 3px 0;
-  border-style: solid;
-  border-color: transparent;
-  padding: 0.65rem 0;
-  margin: 0 0.5rem;
-  color: ${grayscale(4)};
-  font-size: 0.777777778rem;
-  font-weight: ${weight('medium')};
-  outline: 0;
-  bottom: -1px;
-  cursor: pointer;
-
-  ${props =>
-    props.active
-      ? `
-    border-bottom-color: ${color('orange')};
-    color: ${color('orange')};`
-      : `
-
-      &:hover {
-        color: ${grayscale(3)};
-        border-bottom-color: ${grayscale(8)};
-      }
-    `};
 `
 
 const Resources = styled(props => <h3 {...props}>Resources</h3>)`
@@ -166,7 +169,7 @@ const Resources = styled(props => <h3 {...props}>Resources</h3>)`
   margin-bottom: 1.75rem;
 `
 
-const timelineWidth = 6
+const timelineWidth = 4
 const StartTimeline = styled.div`
   width: ${timelineWidth}px;
   height: 100%;
@@ -202,56 +205,26 @@ const StartIcon = styled(({ icon, color, ...props }) => (
   transform: translate(-50%, -15%);
 `
 
-const SecondaryButton = styled(Button)`
-  background: ${grayscale('medium')};
-  border-color: ${color('blue')};
-  color: ${grayscale('white')};
-`
-
 const IndexPage = props => {
-  const now = new Date()
-  const upcomingEvents = get(props, 'data.eventsJson.events', []).filter(
-    ({ end_date }) => new Date(end_date) > now
-  )
-
   return (
     <Layout {...props}>
       <TopSection>
         <Container>
-          <Row>
-            <Column>
-              <Title>Start Sending Email in Minutes!</Title>
+          <Row center="xs">
+            <Column md={6} sm={10} xs={11}>
+              <Title>Send email from your app!</Title>
               <Subtitle>
                 The world’s most powerful email delivery solution is now yours
                 in a developer-friendly, quick to set up cloud service.{' '}
               </Subtitle>
-              <Button secondary>Sign Up</Button>
-              <Button outline>Get Started</Button>
+              <ButtonWrapper>
+                <Button to="https://app.sparkpost.com/join" secondary>
+                  Sign Up
+                </Button>
+              </ButtonWrapper>
             </Column>
-            <Column sm={6}>
-              <Samples>
-                <Tabs>
-                  <Tab active>cURL</Tab>
-                  <Tab>Node.js</Tab>
-                </Tabs>
-                <Sample>
-                  <code
-                  >{`curl -XPOST https://api.sparkpost.com/api/v1/transmissions
--H "Authorization: <YOUR API KEY>" \\
--H "Content-Type: application/json" \\
--d '{
-    "options": { "sandbox": true },
-    "content": {
-      "from": "testing@sparkpostbox.com",
-      "subject": "Oh hey",
-      "text":"Testing SparkPost - the most awesomest email service in the world"
-    },
-    "recipients": [
-      {"address": "developers+curl@sparkpost.com" }
-    ]
-  }'`}</code>
-                </Sample>
-              </Samples>
+            <Column md={6} sm={10} xs={12}>
+              <CodeSamples />
             </Column>
           </Row>
         </Container>
@@ -263,28 +236,28 @@ const IndexPage = props => {
               <Panel sectioned style={{ padding: `1rem 1.5rem .75rem` }}>
                 <Resources />
                 <Row>
-                  <Column xs={10} sm={4}>
+                  <Column xs={12} sm={4}>
                     <SectionLink to="/api">
                       <SectionTitle>
                         <Code /> API Reference
                       </SectionTitle>
                       <p>
-                        Comprehensive documentation of our API endpoints &amp;
+                        Comprehensive specification of our API endpoints and
                         parameters.
                       </p>
                     </SectionLink>
                   </Column>
-                  <Column xs={10} sm={4}>
+                  <Column xs={12} sm={4}>
                     <SectionLink to="https://sparkpost.com/docs">
                       <SectionTitle>
                         <Notes /> Documentation
                       </SectionTitle>
                       <p>
-                        Understand SparkPost and how to use it most affectively.
+                        Understand SparkPost and how to use it most effectively.
                       </p>
                     </SectionLink>
                   </Column>
-                  <Column xs={10} sm={4}>
+                  <Column xs={12} sm={4}>
                     <SectionLink to="http://slack.sparkpost.com">
                       <SectionTitle>
                         <People /> Community
@@ -298,48 +271,41 @@ const IndexPage = props => {
                 </Row>
                 <Row>
                   <Column md={12}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-around',
-                        borderTop: `1px solid ${grayscale(8)}`,
-                        marginTop: `1rem`,
-                        paddingTop: `1.75rem`,
-                      }}
-                    >
+                    <Anchor.Target title="client-libraries" />
+                    <LanguageWrapper>
                       <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={node_js} title="Node.js" />
+                        <img height={2 * 18} src={nodeJs} alt="Node.js" />
                         Node.js
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={php} title="PHP" />
+                      <Language to="https://github.com/SparkPost/php-sparkpost">
+                        <img height={2 * 18} src={php} alt="PHP" />
                         PHP
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={python} title="Python" />
+                      <Language to="https://github.com/SparkPost/python-sparkpost">
+                        <img height={2 * 18} src={python} alt="Python" />
                         Python
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={java} title="Java" />
+                      <Language to="https://github.com/SparkPost/java-sparkpost">
+                        <img height={2 * 18} src={java} alt="Java" />
                         Java
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={elixir} title="Elixir" />
+                      <Language to="https://github.com/SparkPost/elixir-sparkpost">
+                        <img height={2 * 18} src={elixir} alt="Elixir" />
                         Elixir
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={elixir} title="Rails" />
-                        Rails
+                      <Language to="https://github.com/search?l=Ruby&q=sparkpost&type=Repositories">
+                        <img height={2 * 18} src={ruby} alt="Ruby" />
+                        Ruby
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={go} title="Go" />
+                      <Language to="https://github.com/SparkPost/gosparkpost">
+                        <img height={2 * 18} src={go} alt="Go" />
                         Go
                       </Language>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={go} title="C#" />
+                      <Language to="https://github.com/darrencauthon/csharp-sparkpost">
+                        <img height={2 * 18} src={cSharp} alt="C#" />
                         C#
                       </Language>
-                    </div>
+                    </LanguageWrapper>
                   </Column>
                 </Row>
               </Panel>
@@ -348,7 +314,7 @@ const IndexPage = props => {
         </Container>
         <Container>
           <Row center="xs">
-            <Column sm={8}>
+            <Column md={8} sm={10} xs={11}>
               <h2
                 style={{
                   fontSize: `1.5rem`,
@@ -356,7 +322,7 @@ const IndexPage = props => {
                   margin: `10rem 0 2rem`,
                 }}
               >
-                Get Started With SparkPost
+                Steps to Start Sending
               </h2>
               <p
                 style={{
@@ -367,25 +333,25 @@ const IndexPage = props => {
                   marginBottom: `4.5rem`,
                 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Maecenas pellentesque dictum semper. Check out the{' '}
+                Start sending with the most powerful email platform. Check out
+                the{' '}
                 <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/">
                   full guide
-                </Link>.
+                </Link>{' '}
+                to get started.
               </p>
             </Column>
           </Row>
           <Row center="xs">
-            <Column sm="5">
+            <Column lg={5} md={6} sm={8} xs={10}>
               <div style={{ padding: `0 0 0 .75rem` }}>
                 <StartTimeline />
                 <StartStep>
                   <StartIcon icon="user" color="magenta" />
-                  <h3>Sign up for a Developer Account</h3>
+                  <h3>Sign up for a developer account</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas pellentesque dictum semper. Phasellus accumsan
-                    dolor risus.
+                    Create a free developer account to start sending up to
+                    15,000 emails every month.
                   </p>
                   <Link to="https://app.sparkpost.com/join">
                     Sign up <i className="fa fa-chevron-right" />
@@ -393,28 +359,26 @@ const IndexPage = props => {
                 </StartStep>
                 <StartStep>
                   <StartIcon icon="at" color="mustard" />
-                  <h3>Setup your domain</h3>
+                  <h3>Set up your domain</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas pellentesque dictum semper. Phasellus accumsan
-                    dolor risus.
+                    Add the domain you want to send from and verify you own it
+                    through DNS settings.
                   </p>
-                  <Link to="https://app.sparkpost.com/join">
-                    Create a sending domain{' '}
-                    <i className="fa fa-chevron-right" />
+                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#preparing-your-from-address">
+                    Add a sending domain <i className="fa fa-chevron-right" />
                   </Link>
                 </StartStep>
                 <StartStep>
                   <StartIcon icon="server" color="teal" />
                   <h3>Start sending!</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Maecenas pellentesque dictum semper. Phasellus accumsan
-                    dolor risus.
+                    Send emails from your domain using the API or SMTP. You can
+                    also send with your favorite programming language using any
+                    of our official or community supported{' '}
+                    <Link to="#client-libraries">client libraries</Link>.
                   </p>
-                  <Link to="https://app.sparkpost.com/join">
-                    Sending your first email{' '}
-                    <i className="fa fa-chevron-right" />
+                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#sending-email">
+                    Send your first email <i className="fa fa-chevron-right" />
                   </Link>
                 </StartStep>
               </div>
@@ -428,24 +392,18 @@ const IndexPage = props => {
             Engineering Blog
           </h2>
           <Row>
-            <Column md={12}>
-              {
-                <Row>
-                  {map(props, 'allWordpressPost', node => (
-                    <Column md={4} key={node.title}>
-                      <BlogPost
-                        image={node.fields.media}
-                        date={node.date}
-                        author={node.author}
-                        title={node.title}
-                        description={node.excerpt}
-                        link={node.link}
-                      />
-                    </Column>
-                  ))}
-                </Row>
-              }
-            </Column>
+            {map(props, 'allWordpressPost', node => (
+              <Column md={4} xs={12} key={node.title}>
+                <BlogPost
+                  image={node.fields.media}
+                  date={node.date}
+                  author={node.author}
+                  title={node.title}
+                  description={node.excerpt}
+                  link={node.link}
+                />
+              </Column>
+            ))}
           </Row>
         </Container>
       </Section>
