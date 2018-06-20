@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components'
+import { darken } from 'polished'
+import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale } from 'utils/colors'
-import { darken, desaturate } from 'polished'
 import { font, weight, monospace } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
@@ -30,17 +31,19 @@ injectGlobal`
   html {
     font-family: ${font('primary')};
     font-weight: ${weight('light')};
-    font-size: 18px;
+    font-size: 17px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: ${grayscale('medium')};
     line-height: 1.15;
+
+    ${mediaQuery('sm', `font-size: 18px;`)};
   }
 
   body {
     font-size: .888888889rem;
   }
-  
+
   h1, h2, h3, h4, h5, h6, p {
     margin: 0 0 1rem 0;
   }
@@ -82,7 +85,7 @@ injectGlobal`
   }
 
   li p {
-    margin-bottom: .333333333rem; 
+    margin-bottom: .333333333rem;
   }
 
   a {
@@ -93,7 +96,7 @@ injectGlobal`
   }
 
   a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
   }
 
   .textLeft {
@@ -106,13 +109,13 @@ injectGlobal`
 
   .textRight {
     text-align: right;
-  }  
+  }
 
   b, strong {
     font-weight: ${weight('bold')};
 
     a {
-      font-weight: ${weight('bold')};      
+      font-weight: ${weight('bold')};
     }
   }
 
@@ -179,11 +182,11 @@ injectGlobal`
       padding: 0.35rem 0.5rem 0.25rem;
       background: ${grayscale('light')};
     }
-  } 
+  }
 
   img {
     max-width: 100%;
-  } 
+  }
 
   hr {
     border: 0;
