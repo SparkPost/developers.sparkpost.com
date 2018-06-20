@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import { grayscale } from '../utils/colors'
-import { weight, font, uppercase } from '../utils/fonts'
+import { grayscale } from 'utils/colors'
+import { weight, uppercase } from 'utils/fonts'
 
-import Link from './Link'
+import Link from 'components/Link'
 
-const Wrapper = styled.div`
+const Card = styled.div`
   background-color: ${grayscale('white')};
   border: 1px solid ${grayscale(7)};
   text-align: center;
-  height: 100%;
   overflow: hidden;
   border-radius: 2px;
+  max-width: 20rem;
+  margin: 0 auto 2rem;
+  height: calc(100% - 2rem); // subtract the margin from the height
 `
 
 const Image = styled.div`
@@ -51,7 +53,7 @@ const ReadMore = styled(Link)`
 `
 
 export default ({ image, date, author, title, description, link }) => (
-  <Wrapper>
+  <Card>
     <Image style={{ backgroundImage: `url(${image})` }} />
     <Text>
       <ByLine>
@@ -64,5 +66,5 @@ export default ({ image, date, author, title, description, link }) => (
         read more <i className="fa fa-chevron-right" />
       </ReadMore>
     </Text>
-  </Wrapper>
+  </Card>
 )
