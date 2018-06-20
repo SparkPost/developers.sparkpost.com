@@ -71,8 +71,6 @@ function grayscale(i) {
 }
 
 function shadow(level) {
-  let boxShadow = shadowMap[1]
-
   if (!shadowMap[level]) {
     console.log(`Shadow ${level} undefined`)
   }

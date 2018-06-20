@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, grayscale, shadow } from '../utils/colors'
-import { weight } from '../utils/fonts'
+import { color, grayscale, shadow } from 'utils/colors'
 
 const PanelWrapper = styled.div`
   margin-bottom: 1rem;

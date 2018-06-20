@@ -1,6 +1,4 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { weight } from 'utils/fonts'
 import Markdown from 'components/Markdown'
 import { toArray } from 'lodash'
 import Heading from './Heading'

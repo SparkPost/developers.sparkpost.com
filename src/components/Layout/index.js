@@ -1,6 +1,5 @@
 import React from 'react'
 import { StaticQuery, withPrefix } from 'gatsby'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StickyContainer, Sticky } from 'react-sticky'
 

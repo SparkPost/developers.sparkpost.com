@@ -1,26 +1,12 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import styled, { css } from 'styled-components'
-import { saturate, darken } from 'polished'
-import { color, grayscale, shadow } from 'utils/colors'
+import styled from 'styled-components'
+import { color, grayscale } from 'utils/colors'
 import { uppercase, weight, monospace } from 'utils/fonts'
-import { Container, Row, Column } from 'components/Grid'
-import Link from 'components/Link'
-import Button from 'components/Button'
 import Markdown from 'components/Markdown'
 import Tooltip from 'components/Tooltip'
-import map from 'utils/map'
-import {
-  isString,
-  isEmpty,
-  first,
-  last,
-  get,
-  keyBy,
-  mapValues,
-  uniqBy,
-  uniq,
-} from 'lodash'
+import Link from 'components/Link'
+import { isString, isEmpty, first, last, get, uniq } from 'lodash'
 import Layout from 'components/Layout'
 import TableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
@@ -33,15 +19,12 @@ import Section from 'components/api/components/Section'
 import Right from 'components/api/components/Right'
 import Json from 'components/api/components/Json'
 import Heading from 'components/api/components/Heading'
+import Debug from 'components/api/Debug'
 
 import { mediaQuery } from 'utils/breakpoint'
 import parseResult from 'minim-parse-result'
 
 const debug = false
-
-const Block = styled.div``
-
-const Debug = ({ children }) => <React.Fragment>{children}</React.Fragment>
 
 const DataStructureContext = React.createContext([])
 
@@ -115,18 +98,8 @@ const BlockMarkdown = props => (
 )
 
 function API({ api }) {
-  // get meta data for rendering in <head>
-  const meta = mapValues(
-    keyBy(api.attributes.get('meta').toValue(), 'key'),
-    'value'
-  )
-
   // we don't seem to use these since we just have a single resource group
-  const { title, description, copy } = values(api, [
-    'title',
-    'description',
-    'copy',
-  ])
+  const { title, copy } = values(api, ['title', 'copy'])
 
   const dataStructures = api.dataStructures.first
     ? api.dataStructures.first.content
@@ -165,7 +138,7 @@ function ResourceGroup({ resourceGroup }) {
             >
               <Heading level={1}>{title}</Heading>
               <Tooltip content="Import the SparkPost API as a Postman collection">
-                <a
+                <Link
                   style={{
                     lineHeight: '1rem',
                   }}
@@ -177,7 +150,7 @@ function ResourceGroup({ resourceGroup }) {
                     alt="Run in Postman"
                     style={{ maxWidth: 'inherit' }}
                   />
-                </a>
+                </Link>
               </Tooltip>
             </div>
           )}
@@ -244,22 +217,8 @@ function mergeDuplicateTransactions(transactions) {
   return minim.toElement(uniqueTransactions)
 }
 
-const methodColors = {
-  GET: color('blue'),
-  PUT: color('magenta'),
-  POST: saturate(0.2, darken(0.2, color('green'))),
-  DELETE: darken(0.02, color('red')),
-}
-
 function Transition({ transition, resource }) {
-  const { title, copy, method } = values(transition, [
-    'title',
-    'copy',
-    'method',
-  ])
-
-  const href = (transition.href || {}).content || resource.href.content
-  const version = href === 'ab-testing' ? 'labs' : 'v1'
+  const { title, copy } = values(transition, ['title', 'copy'])
 
   return (
     <div>
@@ -279,26 +238,6 @@ function Transition({ transition, resource }) {
               )}
           </Right>
           {title && <Heading level={3}>{title}</Heading>}
-          {
-            '' /*
-            <div className="block">
-              <pre style={{
-                padding: 0,
-                background: 'transparent',
-                border: `1px solid ${grayscale(8)}`,
-
-              }}><code><span style={{
-                // color: 'white',
-                // background: color('magenta'),
-                // padding: `.45rem .75rem`,
-                padding: `.5rem 0 .5rem .5rem`,
-                color: methodColors[method],
-                display: 'inline-block',
-                fontWeight: '600'
-              }}>{method}</span> {`/api/${version}${href}`}</code></pre>
-            </div>
-          */
-          }
           {transition.hrefVariables && (
             <Parameters parameters={transition.hrefVariables} />
           )}
@@ -361,6 +300,7 @@ function Request({ request, transition, resource }) {
 
       // add the value if it is a query parameter
       modifiedHref = modifiedHref.replace(
+        // eslint-disable-next-line
         new RegExp(`(.+)({\?(?:.+,)?)${param.name}((?:,.+)?})`, 'i'),
         `$1$2${param.name}=${param.value}&$3`
       )
@@ -530,74 +470,6 @@ function Parameters({ parameters }) {
     </AttributesWrapper>
   )
 }
-
-function Parameter({
-  name,
-  type,
-  description,
-  required,
-  samples,
-  children,
-  value,
-  default: defaultValue,
-  enumerations,
-}) {
-  return (
-    <ParameterRow>
-      <ParameterDetails>
-        <ParameterName>{name}</ParameterName>
-        {required && (
-          <div>
-            <Required style={{ margin: 0 }}>required</Required>
-          </div>
-        )}
-        {type && (
-          <div>
-            <Property>{type}</Property>
-          </div>
-        )}
-        {defaultValue && <Property>Default: {defaultValue}</Property>}
-      </ParameterDetails>
-      <ParameterCell>
-        <Markdown>{description}</Markdown>
-        {value && <Property>Example: {value}</Property>}
-      </ParameterCell>
-    </ParameterRow>
-  )
-}
-
-const ParameterName = styled.div`
-  font-weight: ${weight('medium')};
-  padding-bottom: .25rem;
-}
-`
-
-const ParameterDetails = styled.div`
-  display: table-cell;
-  padding: 0.888888889rem 1.166666667rem 0.888888889rem 0;
-  font-size: 0.833333333rem;
-  border-bottom: 1px solid ${grayscale(8)};
-`
-
-const ParameterCell = styled.div`
-  display: table-cell;
-  padding: 0.888888889rem 0;
-  font-size: 0.833333333rem;
-
-  border-bottom: 1px solid ${grayscale(8)};
-
-  > div > p:last-child {
-    margin: 0;
-  }
-`
-
-const ParameterRow = styled.div`
-  display: table-row;
-
-  ${ParameterDetails}, ${ParameterCell} {
-    border-top: 1px solid ${grayscale(8)};
-  }
-`
 
 function DataStructure({ dataStructure }) {
   const jsonArray = dataStructureToJson(dataStructure)
@@ -889,7 +761,7 @@ const Render = props => {
     return {
       ...category,
       pages: category.pages.map(page => {
-        if (page.file === props.pathContext.file) {
+        if (page.file === props.pageContext.file) {
           return {
             ...page,
             children:
@@ -934,10 +806,6 @@ const Render = props => {
 }
 
 class Template extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   /**
    * only re-render if we change pages
    */

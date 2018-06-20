@@ -6,11 +6,15 @@ import styled from 'styled-components'
 import { color, grayscale } from '../utils/colors'
 import { weight } from '../utils/fonts'
 
-function Link({ to = null, onClick, ...props }) {
+function Link({ to = null, onClick, children, ...props }) {
   return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (
-    <a href={to} onClick={onClick} {...props} />
+    <a href={to} onClick={onClick} {...props}>
+      {children}
+    </a>
   ) : (
-    <GatsbyLink to={to} {...props} />
+    <GatsbyLink to={to} {...props}>
+      {children}
+    </GatsbyLink>
   )
 }
 

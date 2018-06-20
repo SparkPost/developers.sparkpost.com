@@ -1,9 +1,7 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
-import { color, grayscale, shadow } from '../../utils/colors'
-import { uppercase, weight, monospace } from '../../utils/fonts'
-import { Container, Row, Column } from '../Grid'
+import styled from 'styled-components'
+import { color, grayscale } from '../../utils/colors'
+import { uppercase, weight } from '../../utils/fonts'
 import Link from '../Link'
 
 const Category = styled.div`

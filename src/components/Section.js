@@ -1,8 +1,5 @@
-import React from 'react'
 import styled, { css } from 'styled-components'
 import { grayscale } from '../utils/colors'
-
-import hex from '../assets/hex.png'
 
 const paddingMap = {
   none: { top: 0, bottom: 0 },
@@ -24,7 +21,6 @@ const Section = styled.section`
       props.dark &&
       css`
         background-color: ${grayscale('dark')};
-        background-image: url(${hex});
         background-size: cover;
         color: ${grayscale('white')};
       `} ${props =>

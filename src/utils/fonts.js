@@ -1,5 +1,3 @@
-import { rgba } from 'polished'
-
 /*
  * SparkPost Fonts ⌨
  */

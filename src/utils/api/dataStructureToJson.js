@@ -43,15 +43,12 @@ function renderAttribute(attribute, dataStructures) {
      */
     case 'boolean':
       return renderBase(attribute)
-      break
 
     case 'string':
       return renderBase(attribute)
-      break
 
     case 'number':
       return renderBase(attribute)
-      break
 
     /**
      * Structure Types
@@ -63,15 +60,12 @@ function renderAttribute(attribute, dataStructures) {
           renderMember(member, dataStructures)
         ),
       }
-      break
 
     case 'array':
       return renderBase(attribute)
-      break
 
     case 'enum':
       return renderBase(attribute)
-      break
 
     /**
      * Other types - dereference if we can
@@ -94,7 +88,6 @@ function renderAttribute(attribute, dataStructures) {
         }
       }
       return renderBase(attribute)
-      break
   }
 }
 
