@@ -1,14 +1,10 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
-import { InstantSearch } from 'react-instantsearch/dom'
-import {
-  connectSearchBox,
-  connectStateResults,
-} from 'react-instantsearch/connectors'
+import { navigateTo } from 'gatsby'
+import styled from 'styled-components'
+import { InstantSearch, Configure } from 'react-instantsearch/dom'
+import { connectAutoComplete } from 'react-instantsearch/connectors'
+import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
-import { uppercase, weight, monospace } from 'utils/fonts'
-import { Container, Row, Column } from 'components/Grid'
 import Link from 'components/Link'
 
 const SearchInput = styled.input`
@@ -40,8 +36,20 @@ const SearchResults = styled.div`
   z-index: 9;
   max-height: 400px;
   overflow: auto;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
 `
 
+// prettier-ignore
 const SearchResult = styled(Link.Unstyled)`
   display: block;
   padding: 0.5rem 1rem;
@@ -50,12 +58,10 @@ const SearchResult = styled(Link.Unstyled)`
   overflow: hidden;
   text-overflow: ellipsis;
 
-  ${props =>
-    props.active &&
-    `
+  ${props => props.isHighlighted &&`
     background: ${grayscale('light')};
     color: ${grayscale(1)};
-  `};
+  `}
 `
 
 const Section = styled.div`
@@ -88,111 +94,52 @@ function serializeHit(hit) {
   }
 }
 
-const SearchBox = connectSearchBox(
-  ({ currentRefinement, refine, ...props }) => (
-    <SearchInput
-      type="text"
-      placeholder="Search something"
-      value={currentRefinement}
-      onChange={e => refine(e.target.value)}
-      {...props}
+const AutoComplete = connectAutoComplete(
+  ({ hits, currentRefinement, refine }) => (
+    <Autosuggest
+      inputProps={{
+        placeholder: 'Search API reference',
+        value: currentRefinement,
+        onChange: () => {},
+      }}
+      renderInputComponent={props => <SearchInput {...props} />}
+      renderSuggestionsContainer={({ containerProps, children, query }) =>
+        query.length > 0 &&
+        children && (
+          <SearchResults {...containerProps}>{children}</SearchResults>
+        )
+      }
+      suggestions={hits}
+      onSuggestionsFetchRequested={({ value }) => refine(value)}
+      onSuggestionsClearRequested={() => refine('')}
+      getSuggestionValue={hit => hit}
+      renderSuggestion={(hit, { isHighlighted }) => {
+        const { title, section, href } = serializeHit(hit)
+
+        return (
+          <SearchResult to={href} isHighlighted={isHighlighted}>
+            {title}
+            <Section>{section}</Section>
+          </SearchResult>
+        )
+      }}
+      onSuggestionSelected={(e, { suggestion: hit }) => {
+        const { href } = serializeHit(hit)
+        navigateTo(href)
+      }}
     />
   )
 )
 
-const Hits = connectStateResults(
-  ({
-    searchState,
-    searchResults,
-    hitComponent: Hit,
-    active,
-    activeIndex,
-    setActiveIndex,
-  }) =>
-    active &&
-    searchResults &&
-    searchState.query &&
-    searchResults.nbHits !== 0 ? (
-      <SearchResults>
-        {searchResults.hits.map((hit, i) => (
-          <Hit
-            key={i}
-            hit={hit}
-            active={i === activeIndex}
-            setActive={() => {
-              setActiveIndex(i)
-            }}
-          />
-        ))}
-      </SearchResults>
-    ) : (
-      <div />
-    )
+const Search = () => (
+  <InstantSearch
+    appId="SFXAWCYDV8"
+    apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
+    indexName="APIDocsProd"
+  >
+    <Configure hitsPerPage={10} />
+    <AutoComplete />
+  </InstantSearch>
 )
-
-class Search extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { active: false, activeIndex: -1 }
-  }
-
-  toggleActive = () => {
-    this.setState({ active: !this.state.active, activeIndex: -1 })
-  }
-
-  setActiveIndex = activeIndex => {
-    this.setState({ activeIndex })
-  }
-
-  render() {
-    return (
-      <InstantSearch
-        appId="SFXAWCYDV8"
-        apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
-        indexName="APIDocsProd"
-      >
-        <SearchBox
-          onKeyDown={e => {
-            if (e.key === 'ArrowDown') {
-              e.preventDefault()
-              this.setState(state => ({
-                ...state,
-                activeIndex: state.activeIndex + 1,
-              }))
-            } else if (e.key === 'ArrowUp') {
-              e.preventDefault()
-              this.setState(state => ({
-                ...state,
-                activeIndex: state.activeIndex - 1,
-              }))
-            }
-
-            if (e.key == 'Enter') {
-            }
-          }}
-          onFocus={this.toggleActive}
-          onBlur={this.toggleActive}
-        />
-        <Hits
-          active={this.state.active}
-          activeIndex={this.state.activeIndex}
-          setActiveIndex={this.setActiveIndex}
-          hitComponent={({ hit, active, setActive }) => {
-            const { title, section, href } = serializeHit(hit)
-
-            return (
-              <SearchResult to={href} active={active} onMouseEnter={setActive}>
-                {title}
-                <Section>{section}</Section>
-              </SearchResult>
-            )
-          }}
-        />
-        <div />
-      </InstantSearch>
-    )
-  }
-}
 
 export default Search
