@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from '../Link'
 import styled from 'styled-components'
 import { grayscale, color } from 'utils/colors'
 import { weight } from 'utils/fonts'
+import Link from 'components/Link'
 
 const Logo = styled.div`
   height: 1.48rem;

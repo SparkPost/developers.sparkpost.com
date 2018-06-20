@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { grayscale } from '../utils/colors'
+import { grayscale } from 'utils/colors'
 
 const paddingMap = {
   none: { top: 0, bottom: 0 },

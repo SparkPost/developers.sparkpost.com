@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { grayscale } from '../../utils/colors'
+import { grayscale } from 'utils/colors'
 
 const navHeight = `63px`
 const sidebarWidth = `275px`

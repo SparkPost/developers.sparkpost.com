@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, grayscale, shadow } from '../utils/colors'
+import { color, grayscale, shadow } from 'utils/colors'
 
 import Link from './Link'
 

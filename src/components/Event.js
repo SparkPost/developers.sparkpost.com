@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, grayscale } from '../utils/colors'
-import { uppercase } from '../utils/fonts'
+import { color, grayscale } from 'utils/colors'
+import { uppercase } from 'utils/fonts'
 
 const Calendar = styled.div`
   background-color: ${grayscale('white')};

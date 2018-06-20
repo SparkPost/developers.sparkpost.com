@@ -2,9 +2,8 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import isAbsoluteUrl from 'is-absolute-url'
 import styled from 'styled-components'
-
-import { color, grayscale } from '../utils/colors'
-import { weight } from '../utils/fonts'
+import { color, grayscale } from 'utils/colors'
+import { weight } from 'utils/fonts'
 
 function Link({ to = null, onClick, children, ...props }) {
   return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (

@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { grayscale, color } from '../utils/colors'
-import { weight } from '../utils/fonts'
+import { grayscale, color } from 'utils/colors'
+import { weight } from 'utils/fonts'
 import { snakeCase } from 'lodash'
 
-import elixir from '../assets/libraries/elixir.png'
-import go from '../assets/libraries/go.png'
-import java from '../assets/libraries/java.png'
-import node_js from '../assets/libraries/node.png'
-import php from '../assets/libraries/php.png'
-import python from '../assets/libraries/python.png'
+import elixir from 'assets/libraries/elixir.png'
+import go from 'assets/libraries/go.png'
+import java from 'assets/libraries/java.png'
+import node_js from 'assets/libraries/node.png'
+import php from 'assets/libraries/php.png'
+import python from 'assets/libraries/python.png'
 
-import Link from './Link'
+import Link from 'components/Link'
 
 const icons = { elixir, go, java, node_js, php, python }
 

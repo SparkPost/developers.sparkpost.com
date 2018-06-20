@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { grayscale } from '../utils/colors'
-import zIndex from '../utils/zIndex'
+import { grayscale } from 'utils/colors'
+import zIndex from 'utils/zIndex'
 
 const arrowMargin = `10px`
 

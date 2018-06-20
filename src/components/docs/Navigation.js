@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, grayscale } from '../../utils/colors'
-import { uppercase, weight } from '../../utils/fonts'
-import Link from '../Link'
+import { color, grayscale } from 'utils/colors'
+import { uppercase, weight } from 'utils/fonts'
+import Link from 'components/Link'
 
 const Category = styled.div`
   margin: 1.5rem 0.5rem;
