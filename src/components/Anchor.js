@@ -53,6 +53,7 @@ const Id = styled.span`
   margin-top: -4rem;
   height: 4rem;
   visibility: hidden;
+  position: absolute;
 `
 
 export default Anchor

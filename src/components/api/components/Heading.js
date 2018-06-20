@@ -9,6 +9,7 @@ const Id = styled.span`
   margin-top: -4rem;
   height: 4rem;
   visibility: hidden;
+  position: absolute;
 `
 
 const Heading = ({ level = 3, id, className, children, ...props }) => {
