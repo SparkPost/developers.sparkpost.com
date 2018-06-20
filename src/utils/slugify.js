@@ -6,7 +6,7 @@
 module.exports = function slugify(value) {
   return value
     .toLowerCase()
-    .replace(/[ \t\n\\<>"'=:\/]/g, '-')
+    .replace(/[ \t\n\\<>"'=:/]/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-/, '')
 }
