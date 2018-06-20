@@ -46,7 +46,7 @@ export default ({ children, components, ...props }) => {
     processor = markdownProcessor().use(rehypeReact, {
       createElement: React.createElement,
       components: {
-        a: Link,
+        a: ({ href, ...props }) => <Link to={href} {...props} />,
         ...components,
       },
     })
