@@ -55,7 +55,9 @@ const BlockMarkdown = ({ components, ...props }) => {
     table(props) {
       return (
         <div className="block">
-          <TableOverflow><table {...props} /></TableOverflow>
+          <TableOverflow>
+            <table {...props} />
+          </TableOverflow>
         </div>
       )
     },

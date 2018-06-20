@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, shadow } from 'utils/colors'
 
@@ -37,15 +38,17 @@ const NavWrapper = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
-  transform: translateY(100%);
+  transform: translateY(0%);
+  overflow: hidden;
   background: ${grayscale('white')};
   transition: .2s cubic-bezier(.1,1,.4,1);
   z-index: -1;
   padding: .5rem 0;
+  visibility: hidden;
 
-  ${props => !props.isOpen && css`
-    transform: translateY(0%);
-    overflow: hidden;
+  ${props => props.isOpen && css`
+    transform: translateY(100%);
+    visibility: visible;
   `}
 
   ${mediaQuery('md', `
@@ -57,6 +60,30 @@ const NavWrapper = styled.div`
     display: flex;
     height: auto;
     padding: 0;
+    visibility: visible;
+  `)}
+`
+
+// prettier-ignore
+const Overlay = styled.div`
+  background: ${rgba(grayscale('dark'), 0.8)};
+  opacity: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity .3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -2;
+
+  ${props => props.isOpen && css`
+    opacity: 1;
+    pointer-events: auto;
+  `}
+
+  ${mediaQuery('md', `
+    display: none;
   `)}
 `
 
@@ -98,6 +125,7 @@ class Header extends React.Component {
             <NavLink to="https://app.sparkpost.com/join">Sign Up</NavLink>
           </Nav>
         </NavWrapper>
+        <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />
       </Wrapper>
     )
   }
