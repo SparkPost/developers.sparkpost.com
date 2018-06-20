@@ -1,9 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { mediaQuery } from 'utils/breakpoint'
+import { weight } from 'utils/fonts'
 
-import NavLink from './NavLink'
+// prettier-ignore
+export default styled(({ children, secondary, ...props }) => (
+  <nav {...props}>
+    <ul>{children}</ul>
+  </nav>
+))`
+  display: block;
+  width: 100%;
+  font-weight: ${weight('medium')};
 
-const Nav = styled.nav`
   ul {
     margin: 0;
     padding: 0;
@@ -11,31 +20,20 @@ const Nav = styled.nav`
   }
 
   li {
-    margin: 0;
-    display: inline-block;
+    display: block;
   }
-`
 
-export default ({ path }) => (
-  <Nav>
-    <ul>
-      <li>
-        <NavLink to="/api" active={path.startsWith('/api')}>
-          API Reference
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-      </li>
-      {
-        '' /* <li><NavLink to="/integrations" active={path.startsWith('/integrations')}>Integrations</NavLink></li> */
-      }
-      <li>
-        <NavLink to="http://slack.sparkpost.com/">Community</NavLink>
-      </li>
-      {
-        '' /* <li><NavLink to="/oss" active={path === '/oss'}>OSS</NavLink></li> */
-      }
-    </ul>
-  </Nav>
-)
+
+  ${mediaQuery('md', css`
+    li {
+      margin: 0;
+      display: inline-block;
+    }
+
+    ${props => props.secondary && css`
+      text-align: right;
+      flex-grow: 1;
+      font-weight: ${weight('light')};
+    `}
+  `)}
+`

@@ -1,25 +1,37 @@
 import React from 'react'
-import Link from '../Link'
 import styled, { css } from 'styled-components'
-import { grayscale, color } from '../../utils/colors'
+import { mediaQuery } from 'utils/breakpoint'
+import { grayscale, color } from 'utils/colors'
+import Link from 'components/Link'
 
-const NavLink = styled(({ active, ...props }) => <Link.Unstyled {...props} />)`
-  padding: 1.2rem 0.75rem;
-  font-weight: 500;
-  display: inline-block;
+// prettier-ignore
+const NavLink = styled(({ active, ...props }) => (
+  <li><Link.Unstyled {...props} /></li>
+))`
+  padding: .5rem 1rem;
+  font-weight: inherit;
+  display: block;
   color: ${grayscale(4)};
   text-decoration: none;
   border-top: 3px solid transparent;
-  ${props =>
-    props.active &&
-    css`
-      border-top-color: ${color('orange')};
-      color: ${grayscale('medium')};
-    `};
+  transition-property: color, border;
+  ${props => props.active && css`
+    color: ${color('orange')};
+  `}
 
   &:hover {
     color: ${grayscale('medium')};
   }
+
+  ${mediaQuery('md', css`
+    padding: 1.2rem 0.75rem;
+    display: inline-block;
+
+    ${props => props.active && css`
+      border-top-color: ${color('orange')};
+      color: ${grayscale('medium')};
+    `}
+  `)}
 `
 
 export default NavLink

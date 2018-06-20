@@ -1,12 +1,12 @@
 import React from 'react'
 import Link from '../Link'
 import styled from 'styled-components'
-import { grayscale, color } from '../../utils/colors'
-import { font, weight } from '../../utils/fonts'
+import { grayscale, color } from 'utils/colors'
+import { weight } from 'utils/fonts'
 
 const Logo = styled.div`
-  height: 1.78rem;
-  top: -8px;
+  height: 1.48rem;
+  top: -6px;
   margin-right: 2rem;
 
   a:hover {
@@ -57,7 +57,7 @@ const Developers = styled(props => (
     dev
   </Link.Unstyled>
 ))`
-  font-weight: 600;
+  font-weight: ${weight('bold')};
   color: ${color('orange')};
   font-size: 0.888888889rem;
   top: -2px;
