@@ -295,19 +295,20 @@ function Request({ request, transition, resource }) {
     const jsonArray = dataStructureToJson({ content: transition.hrefVariables })
 
     for (let param of jsonArray) {
+      const value = param.value
       // replace it if it is a url parameter
-      modifiedHref = modifiedHref.replace(`{${param.name}}`, param.value)
+      modifiedHref = modifiedHref.replace(`{${param.name}}`, value)
 
       // add the value if it is a query parameter
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
         new RegExp(`(.+)({\?(?:.+,)?)${param.name}((?:,.+)?})`, 'i'),
-        `$1$2${param.name}=${param.value}&$3`
+        `$1$2${param.name}=${value}&$3`
       )
     }
 
     // remove the comma deliminators
-    modifiedHref = modifiedHref.replace('&,', '&')
+    modifiedHref = modifiedHref.replace(/&,/g, '&')
 
     // remove the wrapper notation from the query params
     modifiedHref = modifiedHref.replace(/(.+){\?(.+)}/i, `$1?$2`)
@@ -366,10 +367,7 @@ class Responses extends React.Component {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
-              // marginTop: '4rem',
-              paddingTop: '2rem',
-              // borderTop: `1px solid ${grayscale('medium')}`,
-              // borderTopColor: '#38383b' // dark theme'
+              paddingTop: '2rem'
             }}
           >
             <HttpTitle style={{ margin: 0 }}>Response</HttpTitle>
@@ -384,9 +382,6 @@ class Responses extends React.Component {
               ))}
             </div>
           </div>
-          {
-            /*copy && <BlockMarkdown>{copy}</BlockMarkdown>*/ '' /*is it possible to have copy in requests/responses?*/
-          }
           {this.props.responses.map((response, i) => (
             <React.Fragment key={i}>
               <Json
@@ -740,7 +735,7 @@ const RightBackground = styled(Right)`
   )};
 `
 
-const Full = styled.div`
+const FullWidth = styled.div`
   .block {
     width: 100%;
     max-width: 45rem;
@@ -791,9 +786,9 @@ const Render = props => {
       </Sidebar>
       <Content>
         {meta.full ? (
-          <Full>
+          <FullWidth>
             <API api={api} />
-          </Full>
+          </FullWidth>
         ) : (
           <React.Fragment>
             <RightBackground />
