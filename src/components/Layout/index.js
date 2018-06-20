@@ -50,6 +50,17 @@ const Layout = ({ data, children, location }) => (
             name="description"
             content={data.site.siteMetadata.description}
           />
+          {'' /*open graph and twitter */}
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="SparkPost" />
+          <meta name="twitter:site" content="@SparkPost" />
+          <meta property="fb:admins" content="371333539709717" />
+          <meta name="twitter:creator" content="@SparkPost" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:image"
+            content={withPrefix('/favicons/cover.jpg')}
+          />
           {'' /* favicon and app data */}
           <link
             rel="apple-touch-icon"
