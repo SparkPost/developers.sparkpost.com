@@ -367,7 +367,7 @@ class Responses extends React.Component {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
-              paddingTop: '2rem'
+              paddingTop: '2rem',
             }}
           >
             <HttpTitle style={{ margin: 0 }}>Response</HttpTitle>

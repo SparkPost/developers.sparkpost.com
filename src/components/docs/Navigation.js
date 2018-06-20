@@ -34,7 +34,7 @@ const Children = styled.ul`
   padding-left: 0.75rem;
 
   a {
-    font-size: 15px;
+    font-size: 0.833333333rem;
     color: ${grayscale(4)};
   }
 `

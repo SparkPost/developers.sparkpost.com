@@ -1,7 +1,12 @@
-import React from 'react'
-import Markdown from 'components/Markdown'
+import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import { toArray } from 'lodash'
+import Markdown from 'components/Markdown'
 import Heading from './Heading'
+
+const TableOverflow = styled.div`
+  overflow: scroll;
+`
 
 const BlockMarkdown = ({ components, ...props }) => {
   const componentNames = toArray(components).map(c => c.name)
@@ -49,8 +54,8 @@ const BlockMarkdown = ({ components, ...props }) => {
     },
     table(props) {
       return (
-        <div className="block" style={{ overflow: 'scroll' }}>
-          <table {...props} />
+        <div className="block">
+          <TableOverflow><table {...props} /></TableOverflow>
         </div>
       )
     },
@@ -65,7 +70,7 @@ const BlockMarkdown = ({ components, ...props }) => {
       return !hasComponent(props) ? (
         <p {...props} className="block" />
       ) : (
-        <React.Fragment {...props} />
+        <Fragment {...props} />
       )
     },
     th(props) {

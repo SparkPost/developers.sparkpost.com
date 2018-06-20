@@ -7,7 +7,6 @@ const sidebarWidth = `275px`
 
 // prettier-ignore
 const Content = styled.div`
-  margin-left: ${sidebarWidth};
   max-width: 100%;
   overflow: auto;
 
@@ -23,6 +22,10 @@ const Content = styled.div`
       padding-right: 0rem;
     }
   }
+
+  ${mediaQuery('sm', `
+    margin-left: ${sidebarWidth};
+  `)}
 
   ${mediaQuery('md', `
     .block {
