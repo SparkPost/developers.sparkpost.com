@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 import { color, grayscale } from 'utils/colors'
@@ -247,7 +247,7 @@ sparky.Transmissions.Send(transmission);`,
   },
 ]
 
-class CodeSamples extends React.Component {
+class CodeSamples extends Component {
   constructor(props) {
     super(props)
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 const DebugTitle = styled.div`
@@ -27,5 +27,5 @@ export default ({ title, children, enable = false }) =>
       {children}
     </Debug>
   ) : (
-    <React.Fragment>{children}</React.Fragment>
+    <Fragment>{children}</Fragment>
   )

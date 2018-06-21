@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
@@ -87,7 +87,7 @@ const Overlay = styled.div`
   `)}
 `
 
-class Header extends React.Component {
+class Header extends Component {
   constructor(props) {
     super(props)
 

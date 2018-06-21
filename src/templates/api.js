@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { color, grayscale } from 'utils/colors'
@@ -6,7 +6,7 @@ import { uppercase, weight, monospace } from 'utils/fonts'
 import Markdown from 'components/Markdown'
 import Tooltip from 'components/Tooltip'
 import Link from 'components/Link'
-import { isString, isEmpty, first, last, get, uniq } from 'lodash'
+import { isString, isUndefined, isEmpty, first, last, get, uniq } from 'lodash'
 import Layout from 'components/Layout'
 import TableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
@@ -38,10 +38,17 @@ const components = {
       </div>
     )
   },
+  code(props) {
+    if (props.className !== 'language-attributes') {
+      return <code {...props} />
+    }
+
+    return <div>attributes</div>
+  },
   'data-structure': ({ id, sample }) => (
     <DataStructureContext.Consumer>
       {dataStructures => (
-        <React.Fragment>
+        <Fragment>
           <Section>
             {sample !== undefined && (
               <Right>
@@ -70,7 +77,7 @@ const components = {
               />
             </div>
           </Section>
-        </React.Fragment>
+        </Fragment>
       )}
     </DataStructureContext.Consumer>
   ),
@@ -295,7 +302,7 @@ function Request({ request, transition, resource }) {
     const jsonArray = dataStructureToJson({ content: transition.hrefVariables })
 
     for (let param of jsonArray) {
-      const value = param.value
+      const value = isUndefined(param.value) ? '' : param.value
       // replace it if it is a url parameter
       modifiedHref = modifiedHref.replace(`{${param.name}}`, value)
 
@@ -325,9 +332,9 @@ function Request({ request, transition, resource }) {
         <pre style={{ padding: `.5rem` }}>
           <code>
             {method && (
-              <React.Fragment>
+              <Fragment>
                 {method} {`/api/${version}${modifiedHref}`}
-              </React.Fragment>
+              </Fragment>
             )}
           </code>
         </pre>
@@ -339,7 +346,7 @@ function Request({ request, transition, resource }) {
   )
 }
 
-class Responses extends React.Component {
+class Responses extends Component {
   constructor(props) {
     super(props)
     this.state = { activeIndex: 0 }
@@ -383,7 +390,7 @@ class Responses extends React.Component {
             </div>
           </div>
           {this.props.responses.map((response, i) => (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <Json
                 style={{
                   display: i === this.state.activeIndex ? 'block' : 'none',
@@ -402,7 +409,7 @@ class Responses extends React.Component {
                   {response.copy.toValue()}
                 </Markdown>
               )}
-            </React.Fragment>
+            </Fragment>
           ))}
         </Debug>
       </div>
@@ -591,9 +598,9 @@ function Attribute(props) {
               Possible Values:
             </b>{' '}
             {enumerations.map(({ value }) => (
-              <React.Fragment>
+              <Fragment>
                 <code>{value}</code>,{' '}
-              </React.Fragment>
+              </Fragment>
             ))}
           </p>
         )}
@@ -675,7 +682,7 @@ const ChildrenWrapper = styled.div`
   }
 `
 
-class AttributeChildren extends React.Component {
+class AttributeChildren extends Component {
   constructor(props) {
     super(props)
 
@@ -790,17 +797,17 @@ const Render = props => {
             <API api={api} />
           </FullWidth>
         ) : (
-          <React.Fragment>
+          <Fragment>
             <RightBackground />
             <API api={api} />
-          </React.Fragment>
+          </Fragment>
         )}
       </Content>
     </Layout>
   )
 }
 
-class Template extends React.Component {
+class Template extends Component {
   /**
    * only re-render if we change pages
    */

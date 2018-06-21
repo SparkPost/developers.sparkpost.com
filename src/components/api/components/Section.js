@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
 
+// prettier-ignore
 export default styled.div`
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
 
-  ${mediaQuery(
-    'md',
-    `
+  ${mediaQuery('md', `
     clear: both;
     display: block;
 
@@ -17,6 +16,5 @@ export default styled.div`
       display: block;
       clear: both;
     }
-  `
-  )};
+  `)}
 `

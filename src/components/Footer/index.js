@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale } from 'utils/colors'
@@ -86,7 +86,7 @@ const SocialIcon = styled(({ to, icon, ...props }) => (
 `
 
 export default () => (
-  <React.Fragment>
+  <Fragment>
     <Footer>
       <Container>
         <Row>
@@ -161,5 +161,5 @@ export default () => (
     <CopyRight>
       SparkPost © {new Date().getFullYear()} All Rights Reserved
     </CopyRight>
-  </React.Fragment>
+  </Fragment>
 )

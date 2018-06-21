@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { color, grayscale } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
@@ -72,7 +72,7 @@ const Navigation = ({ navigation, location = { pathname: null } }) => {
   const currentPath = location.pathname.replace(/\/$/, '')
 
   return (
-    <React.Fragment>
+    <Fragment>
       {navigation.map(({ category, pages }) => (
         <Category key={category}>
           <CategoryTitle>{category}</CategoryTitle>
@@ -91,7 +91,7 @@ const Navigation = ({ navigation, location = { pathname: null } }) => {
           </List>
         </Category>
       ))}
-    </React.Fragment>
+    </Fragment>
   )
 }
 

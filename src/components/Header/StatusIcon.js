@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { color, grayscale } from 'utils/colors'
 
@@ -22,7 +22,7 @@ const Icon = styled.div`
   transition: 0.25s;
 `
 
-class StatusIcon extends React.Component {
+class StatusIcon extends Component {
   constructor(props) {
     super(props)
     this.state = { status: 'loading' }
