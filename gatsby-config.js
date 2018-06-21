@@ -84,20 +84,6 @@ const contentPlugins = [
   },
 ]
 
-/** Plugins to analyze build - manually add to the plugins list below */
-const analyzePlugins = [
-  /**
-   * Analyze webpack build
-   */
-  {
-    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    options: {
-        analyzerPort: 3000,
-        production: true,
-    },
-  },
-]
-
 const plugins = process.env.ACTIVE_ENV === 'docs' ? [
   ...basePlugins,
   ...docsPlugins,
