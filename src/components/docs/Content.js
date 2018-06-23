@@ -45,13 +45,12 @@ const Content = styled.div`
   }
 
   .label {
-    display: inline;
-    padding: 0.1em 0.35em 0.185em;
+    display: inline-block;
+    padding: 0 0.35em;
     border: 1px solid transparent;
     border-bottom-color: rgba(0, 0, 0, 0.2);
     font-size: 85%;
     font-weight: ${weight('bold')};
-    line-height: 1;
     color: #fff;
     text-align: center;
     white-space: nowrap;
