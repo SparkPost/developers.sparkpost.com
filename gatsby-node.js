@@ -2,6 +2,11 @@ const axios = require('axios')
 const fs = require('fs')
 const { flatten } = require('lodash')
 
+const apiDirectory = `${__dirname}/content/api`
+const apiTemplate = `${__dirname}/src/templates/api.js`
+// the table of contents as [ { title, file, path }, ... ]
+const tableOfContents = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
+
 /**
  * Add the image links to wordpress posts
  */
@@ -50,20 +55,20 @@ exports.createPages = ({ graphql, actions }) => {
  * Resolve files through webpack
  * `../../utils/colors` becomes `utils/colors`
  */
-exports.onCreateWebpackConfig = ({ actions }, pluginOptions) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: { modules: [ `${__dirname}/src`, 'node_modules' ] }
   })
-};
+}
 
 
 /**
  * when developing the docs redirect the home page to the api intro page
  */
 exports.onPostBootstrap = ({ page, actions }) => {
-  if (process.env.ACTIVE_ENV === 'docs') {
+  if (process.env.GATSBY_ACTIVE_ENV === 'docs') {
     const { createRedirect, deletePage } = actions
 
-    createRedirect({ fromPath: '/', toPath: '/api', redirectInBrowser: true })
+    createRedirect({ fromPath: '/', toPath: '/api/', redirectInBrowser: true })
   }
 }
