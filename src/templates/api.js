@@ -812,6 +812,12 @@ class Template extends Component {
    * only re-render if we change pages
    */
   shouldComponentUpdate() {
+    if (
+      process.env.GATSBY_ACTIVE_ENV === 'docs' ||
+      process.env.GATSBY_ACTIVE_ENV === 'development'
+    )
+      return true
+
     const isSamePage = this.props.location.pathname === window.location.pathname
     return !isSamePage
   }
