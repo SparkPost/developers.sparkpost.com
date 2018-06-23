@@ -45,10 +45,11 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-elements && npm install",
+    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-plugin-algolia && npm install",
     "develop": "source .env && gatsby develop",
-    "docs": "ACTIVE_ENV=docs gatsby develop",
-    "build": "gatsby build",
+    "docs": "GATSBY_ACTIVE_ENV=docs gatsby develop",
+    "build": "NODE_ENV=production gatsby build",
+    "publish": "GATSBY_ACTIVE_ENV=publish npm run build",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\" \"content/**/*.js\"",
     "precommit": "npm run format"
   },

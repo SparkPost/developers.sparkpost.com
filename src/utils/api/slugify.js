@@ -1,3 +1,6 @@
+/**
+ * es5 export so `gatsby-transformer-api-blueprint` plugin can use it
+ */
 const slugify = require('../slugify')
 
 module.exports = {

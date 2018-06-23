@@ -44,7 +44,7 @@ const docsPlugins = [
       path: `${__dirname}/content/`,
     },
   },
-  `gatsby-transformer-api-elements`,
+  `gatsby-transformer-api-blueprint`,
 ]
 
 const contentPlugins = [
