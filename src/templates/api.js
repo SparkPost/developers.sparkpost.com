@@ -282,7 +282,11 @@ function Transaction({ transaction, transition, resource }) {
 }
 
 function format(content) {
-  return JSON.stringify(JSON.parse(content.trim()), null, 2)
+  try {
+    return JSON.stringify(JSON.parse(content.trim()), null, 2)
+  } catch (e) {
+    return content
+  }
 }
 
 const HttpTitle = styled.h4`
