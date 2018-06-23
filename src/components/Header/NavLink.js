@@ -24,7 +24,7 @@ const NavLink = styled(({ active, ...props }) => (
   }
 
   ${mediaQuery('md', css`
-    padding: 1.2rem 0.75rem;
+    padding: 1rem 0.75rem;
     display: inline-block;
 
     ${props => props.active && css`

@@ -6,7 +6,7 @@ import { font, weight, monospace } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
 injectGlobal`
-  // @import 'https://cloud.typography.com/6240112/779488/css/fonts.css';
+  @import 'https://cloud.typography.com/6240112/7284192/css/fonts.css';
 
   ${normalize}
 
@@ -30,7 +30,7 @@ injectGlobal`
 
   html {
     font-family: ${font('primary')};
-    font-weight: ${weight('light')};
+    font-weight: ${weight('normal')};
     font-size: 17px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -76,8 +76,9 @@ injectGlobal`
     font-size: .833333333rem;
   }
 
-  p, td, tr {
+  p, td, tr, li {
     line-height: 1.65;
+    font-weight: ${weight('normal')};
   }
 
   ul {
@@ -171,9 +172,21 @@ injectGlobal`
       border-style: solid;
       border-color: ${grayscale(8)};
       border-width: 0 0 1px;
-      text-align: left;
       padding: 0.5rem;
       vertical-align: top;
+      text-align: left;
+
+      &[align="left"] {
+        text-align: left;
+      }
+
+      &[align="center"] {
+        text-align: center;
+      }
+
+      &[align="right"] {
+        text-align: right;
+      }
     }
 
     th {

@@ -20,7 +20,6 @@ function Link({ to = null, onClick, children, ...props }) {
 Link.Unstyled = styled(Link)`
   color: inherit;
   font-weight: inherit;
-  outline: 0;
 
   &:hover {
     text-decoration: none;

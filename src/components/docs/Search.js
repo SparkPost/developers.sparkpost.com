@@ -13,7 +13,7 @@ const SearchInput = styled.input`
   box-shadow: ${shadow(1)};
   border-radius: 2px;
   font: inherit;
-  font-size: 0.888888889rem;
+  font-size: 0.833333333rem;
   padding: 0.5rem;
   width: 100%;
   outline: 0;
@@ -64,9 +64,9 @@ const SearchResult = styled(Link.Unstyled)`
   `}
 `
 
-const Section = styled.div`
+const Category = styled.div`
   font-size: 0.666666667rem;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 `
 
 function serializeHit(hit) {
@@ -74,22 +74,26 @@ function serializeHit(hit) {
     return {
       href: hit.objectID,
       title: hit.actionName,
-      section:
+      category:
         hit.actionName === hit.resGroupName ? hit.resName : hit.resGroupName,
     }
   } else if (hit.resName) {
-    return { href: hit.objectID, title: hit.resName, section: hit.resGroupName }
+    return {
+      href: hit.objectID,
+      title: hit.resName,
+      category: hit.resGroupName,
+    }
   } else if (hit.resGroupName) {
     return {
       href: hit.objectID,
       title: hit.resGroupName,
-      section: 'SparkPost API',
+      category: 'SparkPost API',
     }
   } else {
     return {
       href: hit.objectID,
       title: hit.sectionName,
-      section: 'SparkPost API',
+      category: 'SparkPost API',
     }
   }
 }
@@ -114,12 +118,12 @@ const AutoComplete = connectAutoComplete(
       onSuggestionsClearRequested={() => refine('')}
       getSuggestionValue={hit => hit}
       renderSuggestion={(hit, { isHighlighted }) => {
-        const { title, section, href } = serializeHit(hit)
+        const { title, category, href } = serializeHit(hit)
 
         return (
           <SearchResult to={href} isHighlighted={isHighlighted}>
             {title}
-            <Section>{section}</Section>
+            <Category>{category}</Category>
           </SearchResult>
         )
       }}

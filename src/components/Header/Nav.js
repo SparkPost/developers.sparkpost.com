@@ -21,6 +21,7 @@ export default styled(({ children, secondary, ...props }) => (
 
   li {
     display: block;
+    font-weight: inherit;
   }
 
 

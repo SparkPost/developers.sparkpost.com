@@ -15,15 +15,20 @@ const Footer = styled.footer`
 
 // prettier-ignore
 const FooterColumn = styled(Column)`
-  ${mediaQuery('xs', `text-align: center;`)}
+  text-align: center;
+
+  ${mediaQuery('sm', `
+    text-align: left;
+  `)}
 `
 
 const CopyRight = styled.div`
   background: ${grayscale('medium')};
-  color: ${grayscale(8)};
+  color: ${grayscale(6)};
   text-align: center;
-  font-size: 0.777777778rem;
+  font-size: 0.722222222rem;
   padding: 0.5rem;
+  font-weight: ${weight('normal')};
 `
 
 const Header = styled.h5`
