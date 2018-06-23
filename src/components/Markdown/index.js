@@ -15,7 +15,7 @@ const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkRehype, { allowDangerousHTML: true })
   .use(rehypeRaw)
-  .use(rehypeHighlight)
+  .use(rehypeHighlight, { plainText: ['data-structure'] })
 
 const baseMarkdownProcessor = markdownProcessor().use(rehypeReact, {
   createElement: React.createElement,

@@ -13,6 +13,8 @@ import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Banner from 'components/Banner'
 import dataStructureToJson from 'utils/api/dataStructureToJson'
 import generateSample from 'utils/api/generateSample'
+import plainSlugify from 'utils/slugify'
+import slugify from 'utils/api/slugify'
 
 import BlockMarkdownBase from 'components/api/components/BlockMarkdown'
 import Section from 'components/api/components/Section'
@@ -116,7 +118,11 @@ function API({ api }) {
     <div>
       <DataStructureContext.Provider value={dataStructures}>
         <Debug title="api" enable={debug}>
-          {title && <Heading level={1}>{title}</Heading>}
+          {title && (
+            <Heading level={1} id={plainSlugify(title)}>
+              {title}
+            </Heading>
+          )}
           {copy && <BlockMarkdown>{copy}</BlockMarkdown>}
           {api.resourceGroups.map((resourceGroup, i) => (
             <ResourceGroup key={i} resourceGroup={resourceGroup} />
@@ -143,7 +149,9 @@ function ResourceGroup({ resourceGroup }) {
                 alignItems: 'baseline',
               }}
             >
-              <Heading level={1}>{title}</Heading>
+              <Heading level={1} id={slugify.resourceGroup({ resourceGroup })}>
+                {title}
+              </Heading>
               <Tooltip content="Import the SparkPost API as a Postman collection">
                 <Link
                   style={{
@@ -164,14 +172,14 @@ function ResourceGroup({ resourceGroup }) {
           {copy && <BlockMarkdown>{copy}</BlockMarkdown>}
         </Section>
         {resourceGroup.resources.map((resource, i) => (
-          <Resource key={i} resource={resource} />
+          <Resource key={i} resource={resource} resourceGroup={resourceGroup} />
         ))}
       </Debug>
     </div>
   )
 }
 
-function Resource({ resource }) {
+function Resource({ resource, resourceGroup }) {
   const { title, copy } = values(resource, ['title', 'copy'])
 
   return (
@@ -180,12 +188,22 @@ function Resource({ resource }) {
         <Section style={{ marginTop: '3rem' }}>
           {title &&
             (resource.transitions.length > 1 || !isEmpty(copy)) && (
-              <Heading level={3}>{title}</Heading>
+              <Heading
+                level={3}
+                id={slugify.resource({ resourceGroup, resource })}
+              >
+                {title}
+              </Heading>
             )}
           {copy && <BlockMarkdown>{copy}</BlockMarkdown>}
         </Section>
         {resource.transitions.map((transition, i) => (
-          <Transition key={i} transition={transition} resource={resource} />
+          <Transition
+            key={i}
+            transition={transition}
+            resource={resource}
+            resourceGroup={resourceGroup}
+          />
         ))}
       </Debug>
     </div>
@@ -224,7 +242,7 @@ function mergeDuplicateTransactions(transactions) {
   return minim.toElement(uniqueTransactions)
 }
 
-function Transition({ transition, resource }) {
+function Transition({ transition, resource, resourceGroup }) {
   const { title, copy } = values(transition, ['title', 'copy'])
 
   return (
@@ -244,7 +262,14 @@ function Transition({ transition, resource }) {
                 )
               )}
           </Right>
-          {title && <Heading level={3}>{title}</Heading>}
+          {title && (
+            <Heading
+              level={3}
+              id={slugify.transition({ resourceGroup, resource, transition })}
+            >
+              {title}
+            </Heading>
+          )}
           {transition.hrefVariables && (
             <Parameters parameters={transition.hrefVariables} />
           )}
@@ -760,7 +785,7 @@ const Render = props => {
     ast,
     TableOfContents: PageTableOfContents = [],
     meta,
-  } = props.data.file.childApiElement
+  } = props.data.file.childApiBlueprint
   const { api } = minim.fromRefract(ast)
 
   const fullTableOfContents = TableOfContents.map(category => {
@@ -813,7 +838,7 @@ const Render = props => {
 
 class Template extends Component {
   /**
-   * only re-render if we change pages
+   * In production: only re-render if we change full pages
    */
   shouldComponentUpdate() {
     if (
@@ -837,7 +862,7 @@ export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {
     file(base: { eq: $file }) {
       base
-      childApiElement {
+      childApiBlueprint {
         ast
         TableOfContents
         meta {

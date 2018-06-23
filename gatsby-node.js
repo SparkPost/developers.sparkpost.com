@@ -15,15 +15,15 @@ exports.onCreateNode = async ({ node, actions }) => {
 
   if (node.internal.type === `wordpress__POST`) {
     let mediaUrl = ''
-    try {
-      if (node._links.wp_featuredmedia) {
-        const media = await axios.get(`${node._links.wp_featuredmedia[0].href}`)
+    // try {
+    //   if (node._links.wp_featuredmedia) {
+    //     const media = await axios.get(`${node._links.wp_featuredmedia[0].href}`)
 
-        mediaUrl = media.data.guid.rendered
-      }
-    }
-    catch(e) {
-    }
+    //     mediaUrl = media.data.guid.rendered
+    //   }
+    // }
+    // catch(e) {
+    // }
 
     createNodeField({ node, name: `media`, value: mediaUrl })
   }
@@ -32,15 +32,15 @@ exports.onCreateNode = async ({ node, actions }) => {
 /**
  * create the API reference pages
  */
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage, createRedirect } = actions
 
-  const apiDirectory = `${__dirname}/content/api`
-  const apiTemplate = `${__dirname}/src/templates/api.js`
-  const apiPages = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
-
-  apiPages.forEach(({ file, path }) => {
+  tableOfContents.forEach(({ file, path }) => {
     if (fs.existsSync(`${apiDirectory}/${file}`)) {
+      // redirect /{api}.html paths to /{api}/
+      const oldPath = path === '/api/' ? `/api/index.html` : `${path.replace(/\/$/, '')}.html`
+      createRedirect({ fromPath: oldPath, toPath: path })
+
       createPage({
         path,
         component: apiTemplate,
