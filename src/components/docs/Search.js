@@ -139,7 +139,7 @@ const Search = () => (
   <InstantSearch
     appId="SFXAWCYDV8"
     apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
-    indexName="APIDocsProd"
+    indexName="api_docs_dev"
   >
     <Configure hitsPerPage={10} />
     <AutoComplete />
