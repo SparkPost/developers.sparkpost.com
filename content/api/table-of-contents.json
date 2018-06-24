@@ -1,0 +1,122 @@
+[
+  {
+    "category": "Introduction",
+    "pages": [
+      {
+        "title": "Overview",
+        "file": "introduction.apib",
+        "path": "/api/"
+      },
+      {
+        "title": "Labs",
+        "file": "labs-introduction.apib",
+        "path": "/api/labs/"
+      }
+    ]
+  },
+  {
+    "category": "Sending",
+    "pages": [
+      {
+        "title": "Transmissions",
+        "file": "transmissions.apib",
+        "path": "/api/transmissions/"
+      },
+      {
+        "title": "SMTP",
+        "file": "smtp-api.apib",
+        "path": "/api/smtp/"
+      },
+      {
+        "title": "Sending Domains",
+        "file": "sending-domains.apib",
+        "path": "/api/sending-domains/"
+      },
+      {
+        "title": "Tracking Domains",
+        "file": "tracking-domains.apib",
+        "path": "/api/tracking-domains/"
+      },
+      {
+        "title": "Templates",
+        "file": "templates.apib",
+        "path": "/api/templates/"
+      },
+      {
+        "title": "Substitutions Reference",
+        "file": "substitutions-reference.apib",
+        "path": "/api/substitutions-reference/"
+      },
+      {
+        "title": "Recipient Lists",
+        "file": "recipient-lists.apib",
+        "path": "/api/recipient-lists/"
+      },
+      {
+        "title": "Suppression List",
+        "file": "suppression-list.apib",
+        "path": "/api/suppression-list/"
+      },
+      {
+        "title": "Sending IPs",
+        "file": "sending-ips.apib",
+        "path": "/api/sending-ips/"
+      },
+      {
+        "title": "IP Pools",
+        "file": "ip-pools.apib",
+        "path": "/api/ip-pools/"
+      }
+    ]
+  },
+  {
+    "category": "Analyics",
+    "pages": [
+      {
+        "title": "Metrics",
+        "file": "metrics.apib",
+        "path": "/api/metrics/"
+      },
+      {
+        "title": "Message Events",
+        "file": "message-events.apib",
+        "path": "/api/message-events/"
+      },
+      {
+        "title": "Webhooks",
+        "file": "webhooks.apib",
+        "path": "/api/webhooks/"
+      }
+    ]
+  },
+  {
+    "category": "Accounts",
+    "pages": [
+      {
+        "title": "Account",
+        "file": "account.apib",
+        "path": "/api/account/"
+      },
+      {
+        "title": "Subaccounts",
+        "file": "subaccounts.apib",
+        "path": "/api/subaccounts/"
+      }
+    ]
+  },
+  {
+    "category": "Receiving",
+    "pages": [
+      {
+        "title": "Inbound Domains",
+        "file": "inbound-domains.apib",
+        "path": "/api/inbound-domains/"
+      },
+      {
+        "title": "Relay Webhooks",
+        "file": "relay-webhooks.apib",
+        "path": "/api/relay-webhooks/"
+      }
+    ]
+  }
+]
