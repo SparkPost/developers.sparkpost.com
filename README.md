@@ -1,8 +1,8 @@
-# SparkPost Developer Hub
+# SparkPost Developer Site
 
 [![Slack Status](http://slack.sparkpost.com/badge.svg)](http://slack.sparkpost.com)
 
-This is the [Developer Hub](https://developers.sparkpost.com/) and API reference for SparkPost.
+This is the [Developer Site](https://developers.sparkpost.com/) and API reference for SparkPost.
 
 
 ### Installation
@@ -27,13 +27,13 @@ To _only_ build the API reference run:
 npm run docs
 ```
 
-You can find the API reference content inside the `content/api` folder. 
+You can find the API reference content inside the `content/api` folder.
 
 The paths and categories are defined in `content/api/table-of-contents.json`
 
 
 
-### Editing the Developer Hub
+### Editing the Developer Site
 
 Run the app:
 
