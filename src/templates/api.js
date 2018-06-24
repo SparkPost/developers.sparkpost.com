@@ -40,13 +40,6 @@ const components = {
       </div>
     )
   },
-  code(props) {
-    if (props.className !== 'language-attributes') {
-      return <code {...props} />
-    }
-
-    return <div>attributes</div>
-  },
   'data-structure': ({ id, sample }) => (
     <DataStructureContext.Consumer>
       {dataStructures => (
