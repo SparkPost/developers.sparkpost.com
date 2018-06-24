@@ -8,7 +8,6 @@ Welcome to the SparkPost API Reference. If you're new to SparkPost, create a fre
 and follow [this guide](https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/) to get started.
 
 ## Endpoints
-<a name="header-endpoints"></a>
 
 All calls to the API need to start with the appropriate base URL:
 
@@ -20,7 +19,6 @@ All calls to the API need to start with the appropriate base URL:
 For Enterprise accounts with their own endpoint, please contact your account manager for more information.
 
 ## Authentication
-<a name="header-authentication"></a>
 
 Authenticate each request by setting the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization" target="_blank">
 Authorization header</a> with a valid API key. Create and manage your API Keys in the [app](https://app.sparkpost.com/account/api-keys) ([EU](https://app.eu.sparkpost.com/account/api-keys)).
@@ -63,7 +61,7 @@ curl -v \
 
 If you use <a href="https://www.getpostman.com/" target="_blank">Postman</a> you can click the following button to import the SparkPost API as a collection:
 
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb)
 
 **Environment Setup**
 
@@ -128,7 +126,6 @@ If your account has been suspended due to concern about a possible violation of 
 If you have not received this email, you can still contact the Compliance team directly [through the app](https://app.sparkpost.com/?supportTicket=true&issueId=account_suspension) [[EU]](https://app.eu.sparkpost.com/?supportTicket=true&issueId=account_suspension).
 
 ## Errors
-<a name="header-errors"></a>
 
 When you make an API call you may receive an error message in response. Either there is something wrong with your request or something went wrong on our end. Errors respond with an error code and JSON that contains a more precise message, description and API code.
 ### Example Error

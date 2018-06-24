@@ -4,18 +4,15 @@ import unified from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
-// import rehypeRaw from 'babel-loader?presets=env!hast-util-raw'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeReact from 'rehype-react'
 import Link from 'components/Link'
-
-// console.log(rehypeRaw.toString())
 
 const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkRehype, { allowDangerousHTML: true })
   .use(rehypeRaw)
-  .use(rehypeHighlight, { plainText: ['data-structure'] })
+  .use(rehypeHighlight)
 
 const baseMarkdownProcessor = markdownProcessor().use(rehypeReact, {
   createElement: React.createElement,

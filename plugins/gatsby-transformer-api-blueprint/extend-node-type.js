@@ -9,7 +9,7 @@ const { gatherDataStructures, replaceDataStructures, insertDataStructures } = re
 
 const parseProcessor = unified().use(remarkParse)
 const parseMarkdown = parseProcessor.parse
-const stringifyProcessor = unified().use(remarkStringify)
+const stringifyProcessor = unified().use(remarkStringify, { fences: true })
 const stringifyMarkdown = stringifyProcessor.stringify
 
 function generateHeading({ title, slug = '', children }) {
