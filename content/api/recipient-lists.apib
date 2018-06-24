@@ -92,7 +92,7 @@ or:
 The `To` header is only constructed for messages built from email part content.  The `To` header is not built for email_rfc822 content.
 
 #### Push Specific Attributes
-<div class="alert alert-info">This is supported only for inline recipient lists</div>
+<banner status="info">This is supported only for inline recipient lists</banner>
 
 | Field         | Type     | Description                           | Notes |
 |------------------------|:-:       |---------------------------------------|-------------|
@@ -625,7 +625,7 @@ Once a recipient list is deleted, it
 cannot be recovered.  Before deleting a list, ensure that it is no longer needed and keep a backup copy.  If a deleted
 list is needed again, the list must be resubmitted with the CREATE API.
 
-<div class="alert alert-warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</div>
+<banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameters
     + id (required, string, `unique_id_4_graduate_students_list`) ... Identifier of the recipient list

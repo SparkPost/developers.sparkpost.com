@@ -49,9 +49,9 @@ List descriptions of the events, event types, and event fields that could be inc
 
 List an example of the event data that will be posted by a Webhook for the specified events.
 
-<div class="alert alert-warning"><strong>Note</strong>: the data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <tt>results</tt> key shown in the example response.</div>
+<banner status="warning"><strong>Note</strong>: the data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <tt>results</tt> key shown in the example response.</banner>
 
-<div class="alert alert-info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a> customers may find the <tt>delv_method</tt> key useful to differentiate between Email, Push, and SMS type events.</div>
+<banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a> customers may find the <tt>delv_method</tt> key useful to differentiate between Email, Push, and SMS type events.</banner>
 
 + Parameters
   + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
@@ -338,8 +338,8 @@ List all currently existing webhooks.
 Update a webhook's properties by specifying its id in the URI path and use a **webhooks object** as
 the PUT request body.
 
-<div class="alert alert-info"><strong>Note</strong>: batches already queued for delivery to this webhook will not be affected.
-For example, if you change the webhook's target URL, batches already queued for delivery will still be POSTed to the previous URL.</div>
+<banner status="info"><strong>Note</strong>: batches already queued for delivery to this webhook will not be affected.
+For example, if you change the webhook's target URL, batches already queued for delivery will still be POSTed to the previous URL.</banner>
 
 As described in "Webhooks Object Properties", a change to the `target` value entails a test POST request to the URL given. If this request does not receive an HTTP 200 response, your request to the Webhooks API will fail with HTTP 400, and the webhook will not be modified.
 
@@ -388,7 +388,7 @@ As described in "Webhooks Object Properties", a change to the `target` value ent
 ### Delete a Webhook [DELETE]
 
 Delete a webhook from the system by specifying its id in the URI path.
-<div class="alert alert-info">The system will stop pushing data to the target URL after the batches currently queued to be delivered are drained.</div>
+<banner status="info">The system will stop pushing data to the target URL after the batches currently queued to be delivered are drained.</banner>
 
 + Parameters
     + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook

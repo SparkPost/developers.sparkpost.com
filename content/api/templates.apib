@@ -435,7 +435,7 @@ Update an existing template by specifying its ID in the URI path and a **templat
 By default, an update operates on an existing draft version.
 An existing published version can be overwritten directly by setting the `update_published` query parameter to `true`.
 
-<div class="alert alert-info"><strong>Note</strong>: Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</div>
+<banner status="info"><strong>Note</strong>: Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</banner>
 
 The `name` field may be modified, but the `id` field is read only.
 
@@ -564,7 +564,7 @@ See the [Substitutions Reference section](substitutions-reference.html) for more
 Delete a template by specifying its ID in the URI path.
 If the template delete API call succeeds, then ALL versions of the template will be deleted from the system (both published AND draft versions).
 
-<div class="alert alert-info">If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</div>
+<banner status="info">If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameters
     + id (required, string, `11714265276872`) ... ID of the template

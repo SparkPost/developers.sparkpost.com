@@ -14,9 +14,9 @@ For details on how to get the best out of SparkPost Transmission, see [this supp
 
 The sandbox domain `sparkpostbox.com` is available to allow each account to send test messages in advance of configuring a real sending domain. Each SparkPost account has a lifetime allowance of 5 sandbox domain messages. To send a test message from the sandbox domain, set `content.from.email` field to `localpart@sparkpostbox.com` and ensure `options.sandbox` is set to `true`.
 
-<div class="alert alert-info"><strong>Note</strong>: you can set the 'local part' (the part before the <tt>@</tt>) to any valid email local part. <a href="#transmissions-create-post"><strong>See below</strong></a> for more details on sending mail.</div>
+<banner status="info"><strong>Note</strong>: you can set the 'local part' (the part before the <tt>@</tt>) to any valid email local part. <a href="#transmissions-create-post"><strong>See below</strong></a> for more details on sending mail.</banner>
 
-<div class="alert alert-info"><strong>Note</strong>: SparkPost accounts only. <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts should consider using the <a href="https://support.sparkpost.com/customer/portal/articles/2560839">SparkPost Sink Server</a>.</div>
+<banner status="info"><strong>Note</strong>: SparkPost accounts only. <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts should consider using the <a href="https://support.sparkpost.com/customer/portal/articles/2560839">SparkPost Sink Server</a>.</banner>
 
 ## Transmission Attributes
 
@@ -55,8 +55,8 @@ The sandbox domain `sparkpostbox.com` is available to allow each account to send
 
 The following attributes are used when specifying inline content in the transmission's `content` JSON object.
 
-<div class="alert alert-warning"><strong>Note</strong>: the following attributes should not be present when using a stored template.</div>
-<div class="alert alert-info"><strong>Note</strong>: one of <tt>html</tt>, <tt>text</tt>, or <tt>push</tt> is required. Email transmissions have additional required fields.</div>
+<banner status="warning"><strong>Note</strong>: the following attributes should not be present when using a stored template.</banner>
+<banner status="info"><strong>Note</strong>: one of <tt>html</tt>, <tt>text</tt>, or <tt>push</tt> is required. Email transmissions have additional required fields.</banner>
 
 | Field         | Type     | Description                           | Required   | Notes   |
 |------------------------|:-:       |---------------------------------------|-------------|--------|
@@ -73,7 +73,7 @@ The following attributes are used when specifying inline content in the transmis
 #### Push Attributes
 The following attributes control the contents of push notifications:
 
-<div class="alert alert-info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts may send push notifications. Contact your TAM for setup assistance.</div>
+<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts may send push notifications. Contact your TAM for setup assistance.</banner>
 
 | Field         | Type     | Description                           | Required   | Notes   |
 |------------------------|:-:       |---------------------------------------|-------------|--------|
@@ -105,7 +105,7 @@ necessary.
 
 ### Attachment Attributes
 
-<div class="alert alert-danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</div>
+<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
 
 Attachments for a transmission are specified in the `content.attachments` JSON array where each JSON object in the array is described by the following fields:
 
@@ -153,7 +153,7 @@ Use the `options.start_time` attribute to delay generation of messages.  The sch
 
 You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
 
-<div class="alert alert-info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</div>
+<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
 
 #### Using Inline Email Part Content
 
@@ -822,7 +822,7 @@ Once message generation has been initiated, all messages in the transmission wil
 
 
 + Request Create Transmission for Mobile Push Using Inline Content (application/json)
-<div class="alert alert-info"><strong>Note</strong>: The following request is valid for <a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise accounts</a> only.</div>
+<banner status="info"><strong>Note</strong>: The following request is valid for <a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise accounts</a> only.</banner>
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
@@ -894,9 +894,9 @@ Retrieve the details about a scheduled transmission by specifying its ID in the 
 
 The response for a transmission using an inline template will include `"template_id":"inline"`.  Inline templates cannot be specifically queried.
 
-<div class="alert alert-info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</div>
+<banner status="info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</banner>
 
-<div class="alert alert-info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</div>
+<banner status="info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</banner>
 
 + Parameters
     + id (required, number, `11714265276872`) ... ID of the transmission
@@ -963,7 +963,7 @@ Delete a transmission by specifying its ID in the URI path.
 
 Only transmissions which are scheduled for future generation may be deleted.
 
-<div class="alert alert-warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</div>
+<banner status="warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</banner>
 
 
 + Parameters
@@ -1036,7 +1036,7 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 ## Delete Transmissions By Campaign [/transmissions?campaign_id={campaign_id}]
 
-<div class="alert alert-info"><strong>Note:</strong> SparkPost Enterprise only, account-specific configuration option.</div>
+<banner status="info"><strong>Note:</strong> SparkPost Enterprise only, account-specific configuration option.</banner>
 
 
 Delete all transmissions of a campaign by specifying Campaign ID in the URI path.
@@ -1067,9 +1067,9 @@ List an array of live transmission summary objects.  A transmission summary obje
 
 By default, the list includes transmissions for all campaigns and templates.  Use the `template_id` parameter to filter by template and `campaign_id` to filter by campaign. The summary for transmissions using an inline template will include `"template_id": "inline"`.  Transmissions using inline templates cannot be filtered with `template_id`.
 
-<div class="alert alert-info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</div>
+<banner status="info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</banner>
 
-<div class="alert alert-info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</div>
+<banner status="info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</banner>
 
 
 + Parameters

@@ -21,11 +21,11 @@ To use SparkPost as an SMTP relay you need to point your SMTP client or local MT
 | User           | `SMTP_Injection`                                                         | |
 | Password       | An API key with "Send via SMTP" permission                               | You can create and manage your API Keys from the [app](https://app.sparkpost.com/account/api-keys) ([EU](https://app.eu.sparkpost.com/account/api-keys)). |
 
-<div class="alert alert-info"><strong>Note</strong>: Enterprise accounts should contact their Technical Account Manager for SMTP details.</div>
+<banner status="info"><strong>Note</strong>: Enterprise accounts should contact their Technical Account Manager for SMTP details.</banner>
 
 ## SMTP Security
 
-<div class="alert alert-danger"><strong>Note</strong>: Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</div>
+<banner status="danger"><strong>Note</strong>: Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</banner>
 SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.
 
 If TLS is not supported by your application, SparkPost recommends using API keys with _only_ the `Send via SMTP` privilege enabled.
@@ -47,7 +47,7 @@ When sending on behalf of a subaccount, a sending domain assigned to the subacco
 ## Using The X-MSYS-API Custom Header
 You can use the `X-MSYS-API` header in your SMTP messages to specify a campaign id, metadata, tags, IP pool, CC, BCC, and archive recipient lists and disable open and/or click tracking.
 
-<div class="alert alert-info"><strong>Note</strong>: To use this option you should be familiar with how to encode options as JSON strings, as the value of the header field is a JSON object that specifies the relevant options</div>
+<banner status="info"><strong>Note</strong>: To use this option you should be familiar with how to encode options as JSON strings, as the value of the header field is a JSON object that specifies the relevant options</banner>
 
 ```
 X-MSYS-API: {
@@ -85,7 +85,7 @@ X-MSYS-API: {
 ```
 
 
-<div class="alert alert-info"><strong>Note</strong>: Key-value <a href="substitutions-reference.html">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</div>
+<banner status="info"><strong>Note</strong>: Key-value <a href="substitutions-reference.html">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</banner>
 
 The fields supported in the X-MSYS-API header are as follows:
 
@@ -114,20 +114,20 @@ The fields supported in the X-MSYS-API header are as follows:
 
 ### Open And Click Tracking
 
-<div class="alert alert-info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise customers</a>:</strong> SMTP click and open tracking are <strong>enabled</strong> by default. Please check with your TAM if you are unsure of the setting in your own environment.</div>
+<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise customers</a>:</strong> SMTP click and open tracking are <strong>enabled</strong> by default. Please check with your TAM if you are unsure of the setting in your own environment.</banner>
 
-<div class="alert alert-info"><strong>SparkPost customers:</strong> SMTP click and open tracking are <strong>disabled</strong> by default.</div>
+<banner status="info"><strong>SparkPost customers:</strong> SMTP click and open tracking are <strong>disabled</strong> by default.</banner>
 
 To enable click and open tracking in SMTP messages, add the X-MSYS-API header as follows:
 ```
 X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true } }
 ```
 
-<div class="alert alert-info"><strong>SparkPost customers:</strong> the <tt>open_tracking</tt> and <tt>click_tracking</tt> variables may also be set account-wide in your <a href="https://app.sparkpost.com/account/smtp">SMTP relay account settings</a> (<a href="https://app.eu.sparkpost.com/account/smtp">EU</a>).</div>
+<banner status="info"><strong>SparkPost customers:</strong> the <tt>open_tracking</tt> and <tt>click_tracking</tt> variables may also be set account-wide in your <a href="https://app.sparkpost.com/account/smtp">SMTP relay account settings</a> (<a href="https://app.eu.sparkpost.com/account/smtp">EU</a>).</banner>
 
 ## The Sandbox Domain
 
-<div class="alert alert-info"><strong>Note</strong>: The Sandbox Domain is available to SparkPost customers only</div>
+<banner status="info"><strong>Note</strong>: The Sandbox Domain is available to SparkPost customers only</banner>
 
 The sandbox domain `sparkpostbox.com` is available to allow each account to send test messages in advance of configuring a real sending domain. Each SparkPost account has a lifetime allowance of 5 sandbox domain messages. That means one may send up to 5 test messages using `From: something@sparkpostbox.com`. Note that you can set the 'local part' (the part before the @) to any valid email local part.
 
@@ -144,7 +144,7 @@ The following are key points about reporting and tracking for cc, bcc, and archi
 * A `rcpt_type` field is available during events through the Webhooks, which designates if the message was a Cc, Bcc, or archive copy.
 * A `transmission_id` field is available during events through the Webhooks, which can be used to correlate the Cc, Bcc, and archive versions of the messages to one another.
 
-<div class="alert alert-info"><strong>Note</strong>: each recipient will only receive a single instance of each message, even if they appear on more than one of the CC, BCC or archive recipient lists.</div>
+<banner status="info"><strong>Note</strong>: each recipient will only receive a single instance of each message, even if they appear on more than one of the CC, BCC or archive recipient lists.</banner>
 
 #### What is an archive recipient?
 
@@ -198,7 +198,7 @@ X-MSYS-API: {"options" : {"open_tracking" : false, "click_tracking" : true},
    "dog"], "campaign_id" : "my_campaign"}
 ```
 
-<div class="alert alert-warning">When the <tt>X-MSYS-API</tt> header is unfolded on the receiving system, as per <a href="http://www.rfcreader.com/#rfc2822_line324">RFC2822</a>, a single space will be added between each line of the header.</div>
+<banner status="warning">When the <tt>X-MSYS-API</tt> header is unfolded on the receiving system, as per <a href="http://www.rfcreader.com/#rfc2822_line324">RFC2822</a>, a single space will be added between each line of the header.</banner>
 
 The following example shows how the JSON object in an `X-MSYS-API` header can be corrupted as a result of folding and unfolding:
 
