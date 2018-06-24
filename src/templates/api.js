@@ -157,7 +157,7 @@ function ResourceGroup({ resourceGroup }) {
                   style={{
                     lineHeight: '1rem',
                   }}
-                  href="https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb"
+                  to="https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb"
                   target="_blank"
                 >
                   <img
