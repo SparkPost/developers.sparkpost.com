@@ -627,7 +627,7 @@ function Attribute(props) {
               Possible Values:
             </b>{' '}
             {enumerations.map(({ value }, i) => (
-              <Fragment>
+              <Fragment key={i}>
                 <code>{value}</code>
                 {i !== enumerations.length - 1 ? ', ' : ''}
               </Fragment>
