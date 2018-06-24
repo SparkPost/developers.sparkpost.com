@@ -37,7 +37,7 @@ function replaceDataStructures(tree) {
 }
 
 /**
- * generate the node for the html tag
+ * generate the node for the data-structure tag
  */
 function generateHtmlReplacement(node) {
   const { id, sample } = parseDataStructure(node)
@@ -59,33 +59,27 @@ function generateHtmlReplacement(node) {
 
 
 /**
- * inserts data structures into api blueprint structure
+ * inserts data structures into api blueprint structure content
  */
 function insertDataStructures(tree, dataStructures) {
-
-  try {
-    const headingMarkdown = {
-      "type": "heading",
-      "depth": 1,
-      "children": [ { "type": "text", "value": "Data Structures" } ],
-    }
-
-    const dataStructureAST = flatten(dataStructures.map(({ id, children }) => {
-        return [
-          {
-            "type": "heading",
-            "depth": 2,
-            "children": [ { "type": "text", "value": id } ],
-          },
-          ...children
-        ]
-      }))
-
-    tree.children = [ ...tree.children, headingMarkdown, ...dataStructureAST ]
+  const headingMarkdown = {
+    "type": "heading",
+    "depth": 1,
+    "children": [ { "type": "text", "value": "Data Structures" } ],
   }
-  catch(e) {
-    console.log(e)
-  }
+
+  const dataStructureAST = flatten(dataStructures.map(({ id, children }) => {
+      return [
+        {
+          "type": "heading",
+          "depth": 2,
+          "children": [ { "type": "text", "value": id } ],
+        },
+        ...children
+      ]
+    }))
+
+  tree.children = [ ...tree.children, headingMarkdown, ...dataStructureAST ]
 
   return tree
 }
