@@ -3,7 +3,6 @@ title: Suppression List
 description: Manage your suppression list - a list of recipient email addresses to which you do NOT want to send email.
 
 # Group Suppression List
-<a name="suppression-list-api"></a>
 
 A suppression list - or exclusion list, as it is sometimes called - stores a recipient's opt-out preferences. It is a list of recipient email addresses to which you do NOT want to send email. The Suppression List API is used to manage your exclusion list entries.  An entry indicates whether the recipient opted out of receiving one of the following:
 
@@ -21,12 +20,6 @@ In addition to your suppression list, SparkPost maintains a global suppression l
 <div class="alert alert-info">SparkPost supports bulk importing or manually adding up to 1,000,000 suppression list entries total.</div>
 
 It is also good practice to maintain your own recipient database by unsubscribing or removing recipients based on the bounce, unsubscribe and spam complaint events provided by SparkPost. These events are available from [webhooks](webhooks), [message events](message-events) and your suppression list. A 24-hour time-windowed suppression list search [as outlined below](#suppression-list-search-get) is useful here.
-
-## Using Postman
-
-If you use [Postman](https://www.getpostman.com/) you can click the following button to import the SparkPost API as a collection:
-
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb)
 
 ## List Entry Attributes
 | Field         | Type     | Description                           | Required   | Notes   |

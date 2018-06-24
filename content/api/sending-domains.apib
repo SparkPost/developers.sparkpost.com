@@ -3,19 +3,12 @@ title: Sending Domains
 description: Manage sending domains, which are used to indicate who an email is from.
 
 # Group Sending Domains
-<a name="sending-domains-api"></a>
 
 A sending domain is a domain that is used to indicate who an email is from via the "From:" header. Using a custom sending domain enables you to control what recipients see as the From value in their email clients. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages. The Sending Domains API provides the means to create, list, retrieve, update, and verify a custom sending domain.
 
 <div class="alert alert-danger"><strong>For maximum deliverability</strong>, we recommend <a href="sending-domains.html#sending-domains-verify-post">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</div>
 
 <div class="alert alert-info"><strong>Note</strong>: When adding a sending domain to your account, the domain must be verified within two weeks or it will be removed from your account.</div>
-
-## Using Postman
-
-If you use [Postman](https://www.getpostman.com/) you can click the following button to import the SparkPost API as a collection:
-
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb)
 
 ## Sending Domain Attributes
 
