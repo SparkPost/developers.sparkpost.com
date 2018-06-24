@@ -1,9 +1,9 @@
 FORMAT: 1A
 title: Substitutions Reference
 description: Documentation for the template language and substitution capabilities of SparkPost.
+full: true
 
 ## Substitutions Reference
-<a name="substitutions-reference"></a>
 
 ## Key Features
 
@@ -27,7 +27,7 @@ and substitute values that exist in each object in the array, for example, an ar
 
 The following is a simple example of JSON substitution data:
 
-```
+```json
 {
   "name" : "Clark",
   "age" : 40,
@@ -74,7 +74,7 @@ Whitespace within the braces is ignored.  All of the following are equivalent:
 However, no spaces are allowed when substitution data is used in a query string.
 In the following example, no whitespace is allowed within the braces:
 
-```
+```html
 <a href="https://company.com/dailydeals?user={{user}}&offercode={{offercode}}">
 Check out the amazing offers for today ONLY!
 </a>
@@ -174,7 +174,7 @@ End of template
 
 Yielding the output:
 
-```
+```no-highlight
 Start of template
 Maryland
 End of template
@@ -210,13 +210,13 @@ plain text portions of content are not HTML escaped.
 
 Using the following substitution data: 
 
-```
+```json
 { "custom_html": "<p>Hello</p>" }
 ```
 
 And this example template HTML part (note the double curlies `{{...}}`):
 
-```
+```html
 <body>
 {{ custom_html }}
 </body>
@@ -224,7 +224,7 @@ And this example template HTML part (note the double curlies `{{...}}`):
 
 This would be the result:
 
-```
+```html
 <body>
 &lt;p&gt;Hello&lt;/p&gt;
 </body>
@@ -234,11 +234,11 @@ This would be the result:
 
 The substitution engine supports triple curly braces to signify that HTML escaping should not occur.
 
-<div class="alert alert-danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</div>
+<banner status="danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</banner>
 
 Using the same substitution data as above, and a slightly modified template HTML part (`{{{...}}}`):
 
-```
+```html
 <body>
 {{{ custom_html }}}
 </body>
@@ -246,7 +246,7 @@ Using the same substitution data as above, and a slightly modified template HTML
 
 Here's what the resulting rendered HTML would look like:
 
-```
+```html
 <body>
 <p>Hello</p>
 </body>
@@ -257,7 +257,7 @@ Here's what the resulting rendered HTML would look like:
 Personalized links are supported.  A personalized link is defined as a target link that has one or more substitutions.
 For example:
 
-```
+```html
 <a href="https://company.com/dailydeals?user={{user}}&offercode={{offercode}}">Go!</a>
 ```
 
@@ -266,7 +266,7 @@ In this case `{{user}}` and `{{offercode}}` are the items taken from the substit
 The substitution engine automatically URL encodes substitution values before they are
 inserted into URLs.  For example, if 'user' and 'offercode' are defined in the substitution_data as
 
-```
+```json
 {
   "user" : "Spark Post",
   "offercode" : "ABC/ZYZ"
@@ -274,29 +274,28 @@ inserted into URLs.  For example, if 'user' and 'offercode' are defined in the s
 ```
 
 Then the above URL will be rendered as
-```
+```html
 <a href="https://company.com/dailydeals?user=Spark%20Post&offercode=ABC%2FZYZ">Go!</a>
 ```
 
-<a name="header-escaping-links"></a>
 ## Disabling URL Encoding
 
-<div class="alert alert-info"><strong>Note</strong>: The protocol ("https://") must be included before any substitution variables.</div>
-<div class="alert alert-warning"><strong>Warning</strong>: Disabling URL encoding of substitution variables requires care to avoid broken links.</div>
-<div class="alert alert-danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</div>
+<banner status="info"><strong>Note</strong>: The protocol ("https://") must be included before any substitution variables.</banner>
+<banner status="warning"><strong>Warning</strong>: Disabling URL encoding of substitution variables requires care to avoid broken links.</banner>
+<banner status="danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</banner>
 
 In order to disable URL encoding, use triple curly braces.
 This is useful when you have multiple pieces of the URL in one variable.
 For example:
 
-```
+```html
 <a href="https://{{{link}}}">click me</a>
 <a href="http://www.company.com/{{{the_entire_suffix}}}">Go</a>
 ```
 
 where the substitution_data looks like:
 
-```
+```json
 {
   "link" : "www.company.com/groups",
   "the_entire_suffix" : "groups/join?user=clark"
@@ -306,26 +305,26 @@ where the substitution_data looks like:
 Since triple curlies are used, the substitution value will *not* be URL encoded
 and the URLs will render like so:
 
-```
+```html
 <a href="https://www.company.com/groups">click me</a>
 <a href="http://www.company.com/groups/join?user=clark">Go</a>
 ```
 
 Triple curlies are also necessary if the entire URL resides in substitution data:
 
-```
+```json
 {
   "the_entire_url" : "http://www.company.com/dailydeals?user=foo&offercode=bar"
 }
 ```
 
-<div class="alert alert-warning"><strong>Warning</strong>: Including the protocol in a substitution variable (as above) will disable click tracking for that link</div>
+<banner status="warning"><strong>Warning</strong>: Including the protocol in a substitution variable (as above) will disable click tracking for that link</banner>
 
 ## Link Names
 
 Name all links using the **data-msys-linkname** custom attribute.  The link name has a maximum length of 63 characters and is truncated if it exceeds that limit. For example:
 
-```
+```html
 <a href="http://www.example.com" data-msys-linkname="banner">Example</a>
 ```
 
@@ -337,7 +336,7 @@ The link name will be incorporated into the click-tracked link and will be track
 
 It is possible to indicate that a link in your content be used to generate an unsubscribe event from SparkPost. This is done with the **data-msys-unsubscribe** custom attribute. For example:
 
-```
+```html
 <a href="http://www.example.com/unsub_handler?id=1234" data-msys-unsubscribe="1">Unsubscribe</a>
 ```
 
@@ -347,7 +346,7 @@ More information can be found [here](https://support.sparkpost.com/customer/port
 
 When click-tracking is enabled for a transmission, individual links can be skipped using the **data-msys-clicktrack** custom attribute. For example:
 
-```
+```html
 <a href="http://www.example.com/" data-msys-clicktrack="0">Click</a>
 ```
 
@@ -356,23 +355,23 @@ When click-tracking is enabled for a transmission, individual links can be skipp
 
 It is possible to add a custom sub-path to a tracked URL using the **data-msys-sublink** custom attribute. For example:
 
-```
+```html
 <a href="http://www.example.com/" data-msys-sublink="custom_path">Click</a>
 ```
 
 The tracked link generated will look like this:
 
-```
+```no-highlight
 http://<hostname>/f/custom_path/<encoded target url>
 ```
 
-<div class="alert alert-info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing" style="text-decoration: underline;">here</a>.</div>
+<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing" style="text-decoration: underline;">here</a>.</banner>
 
 ## Link Attributes in Text Parts
 
 The sections above describing the **data-msys-*** link attributes all show HTML `<a>` tag examples. However it is also possible to specify all of the same custom attributes for links in the `text` part of a message using a double-square-bracket notation. For example:
 
-```
+```no-highlight
 http://www.example.com[[data-msys-clicktrack="0"]]
 ```
 
@@ -380,7 +379,7 @@ http://www.example.com[[data-msys-clicktrack="0"]]
 
 This section contains syntax examples based on the following JSON substitution data:
 
-```
+```json
 {
   "name": "Clark Griswold",
   "address": {
@@ -559,7 +558,7 @@ The indentation will appear in the rendered content, so it is not advisable to i
 
 ## Array Indexing
 
-<div class="alert alert-info"><strong>Note</strong>: array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</div>
+<banner status="info"><strong>Note</strong>: array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</banner>
 
 It is possible to access specific items within an array, using traditional square brackets syntax:
 
@@ -579,8 +578,7 @@ Sometimes it may be convenient to place links and substitution expressions not o
 a template, but within substitution values themselves.  For example, the 'my_html_chunk' substitution value
 below contains a link as well as a substitution expression referencing a username:
 
-```
-
+```json
 {
   "substitution_data" : {
     "my_html_chunk" : "<p><a href = \"http://www.example.com?q={{username}}\">Click here</a></p>",
@@ -596,7 +594,7 @@ By default, this will not work. In general, the rules are as follows:
 
 Using the above `substitution_data` and the following template:
 
-```
+```html
 <body>
 <p>Attempting to insert a chunk of html:</p>
 {{{ my_html_chunk }}}
@@ -605,7 +603,7 @@ Using the above `substitution_data` and the following template:
 
 Will result in the following unexpected rendered content:
 
-```
+```html
 <body>
 <p>Attempting to insert a chunk of html:</p>
 <p><a href = "http://www.example.com?q={{username}}">Click here</a></p>
@@ -624,7 +622,7 @@ as link tracking.
 
 In the above example, the transmission level substitution data would need to be structured as:
 
-```
+```json
 {
   "substitution_data" : {
     "dynamic_html" : {
@@ -637,7 +635,7 @@ In the above example, the transmission level substitution data would need to be 
 2) The `render_dynamic_content()` macro must be used to wrap all uses of dynamic_html variables.
 Continuing with the example above, the template would need to be structured as:
 
-```
+```html
 <body>
 <p>Attempting to insert a chunk of html:</p>
 {{ render_dynamic_content(dynamic_html.my_html_chunk) }}
@@ -651,7 +649,7 @@ regardless of whether double or triple curly braces are used.  There is no need 
 To insert dynamic content into the `text/plain` part of a message, one must place the dynamic content into the transmission
 level substitution variable `dynamic_plain`.  For example:
 
-```
+```json
 {
   "substitution_data" : {
     "dynamic_plain" : {
@@ -671,7 +669,7 @@ Attempting to insert a chunk of plain text:
 
 Finally, as a more realistic example, `render_dynamic_content()` can also be used inside an `each` loop. Full transmission json examples follow.
 
-```
+```json
 {
   "recipients": [
     {
@@ -704,7 +702,7 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
       "offer2": "Corks -- http://t.com/offer/2?name={{name}}",
       "offer3": "Super-effective bug spray -- http://t.com/offer/3?name={{name}}"
     }
-  }
+  },
   "content": {
     "text": "Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n",
     "html": "<p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>\n{{end}}\n</ul>",
@@ -726,7 +724,7 @@ generated HTML table and blocking iteration of the table if it is empty.
 
 Example:
 
-```
+```html
 {{ if not empty(shopping_cart) }}
 <table border = "1">
 <tr>
@@ -770,7 +768,7 @@ Hello {{address.name}}
 Your email is {{address.email}}
 ```
 
-<div class="alert alert-info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise only</strong></a>: The <tt>return_path</tt> substitution variable is available to SparkPost Enterprise users</a></div>
+<banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise only</strong></a>: The <code>return_path</code> substitution variable is available to SparkPost Enterprise users</a></banner>
 
 ```
 Hello {{address.name}}
