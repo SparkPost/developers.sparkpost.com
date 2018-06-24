@@ -89,7 +89,7 @@ Create a template by providing a **template object** as the POST request body.
 
 At a minimum, the `name` and `content` fields are required, where content must contain the `from`, `subject`, and at least one of `html` or `text` fields.
 
-By default, when a template is referenced in a transmission, it is the published version of that template.  To submit a transmission that uses a draft template, set the transmission field `use_draft_template` to true.  For additional details, see the [Transmissions API documentation](transmissions.html) for [Using a Stored Template](transmissions.html#header-using-a-stored-template).
+By default, when a template is referenced in a transmission, it is the published version of that template.  To submit a transmission that uses a draft template, set the transmission field `use_draft_template` to true.  For additional details, see the [Transmissions API documentation](/api/transmissions/) for [Using a Stored Template](/api/transmissions/#header-using-a-stored-template).
 
 
 #### Create Parts
@@ -515,7 +515,7 @@ The template's content will be expanded using the substitution data provided and
 in the response. By default, the most recently updated version is returned.  Use the `draft` query parameter to specify a draft or published
 template.
 
-See the [Substitutions Reference section](substitutions-reference.html) for more information.
+See the [Substitutions Reference section](/api/substitutions-reference/) for more information.
 
 + Parameters
     + id (required, string, `11714265276872`) ... ID of the template

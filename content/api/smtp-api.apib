@@ -85,7 +85,7 @@ X-MSYS-API: {
 ```
 
 
-<banner status="info"><strong>Note</strong>: Key-value <a href="substitutions-reference.html">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</banner>
+<banner status="info"><strong>Note</strong>: Key-value <a href="/api/substitutions-reference/">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</banner>
 
 The fields supported in the X-MSYS-API header are as follows:
 
@@ -231,6 +231,6 @@ If the `X-MSYS-API` header contains invalid JSON, the SMTP message will be rejec
 ## SMTP MAIL FROM
 
 In many cases the SMTP MAIL FROM (or "envelope from") address may be any email address.  The address will be overwritten with a SparkPost specific email address before the email is delivered.
-If you would like SparkPost to deliver the email with a custom MAIL FROM domain then the domain specified in the MAIL FROM address must be set up ahead of time as a [CNAME-verified sending domain](sending-domains.html#sending-domains-verify-post).
+If you would like SparkPost to deliver the email with a custom MAIL FROM domain then the domain specified in the MAIL FROM address must be set up ahead of time as a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-verify-post).
 
 **Note:** Sparkpost will **not** overwrite the MAIL FROM address for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts.
