@@ -10,7 +10,8 @@ const TableOverflow = styled.div`
 
 const BlockMarkdown = ({ components, ...props }) => {
   const componentNames = toArray(components).map(c => c.name)
-  const hasComponent = props => (
+  const hasComponent = props =>
+    (
       React.Children.map(
         props.children,
         component =>
