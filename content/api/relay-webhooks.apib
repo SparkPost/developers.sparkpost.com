@@ -8,12 +8,6 @@ Relay Webhooks are a way to instruct SparkPost to accept inbound email on your b
 
 By configuring a relay webhook for a specified inbound domain, those inbound messages can be forwarded to a specified target over HTTP.  Before you create a relay webhook, be sure to first create an inbound domain that is properly configured. To create an inbound domain for your account, please use our Inbound Domains API. The Relay Webhooks API provides the means to create, list, retrieve, update, and delete a relay webhook.
 
-## Using Postman
-
-If you use [Postman](https://www.getpostman.com/) you can click the following button to import the SparkPost API as a collection:
-
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://app.getpostman.com/run-collection/5d9ae743a661a15d64bb)
-
 ## Relay Webhooks Object Properties
 
 | Property  | Type   | Description                          | Required | Notes
@@ -345,7 +339,7 @@ Create a relay webhook by providing a **relay webhooks object** as the POST requ
 
 ### Create an SMPP Relay Webhook [POST]
 
-<div class="alert alert-info">SMPP relay webhooks are available to <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> customers.</div>
+<banner status="info">SMPP relay webhooks are available to <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> customers.</banner>
 
 + Request (application/json)
 
