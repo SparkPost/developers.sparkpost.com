@@ -39,7 +39,7 @@ const Children = styled.ul`
   }
 `
 
-const ApiLink = styled(Link.Unstyled)`
+const ApiLink = styled(({ active, ...props }) => <Link.Unstyled {...props} />)`
   display: inline-block;
   font-size: 0.888888889rem;
   font-weight: ${weight('medium')};
