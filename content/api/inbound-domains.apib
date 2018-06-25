@@ -45,9 +45,7 @@ if you are unsure of the setting in your own environment.</banner>
 | `inbounddomain.test.com` | MX   | `inbound.<main-bounce-domain>` | 10       |
 
 
-## Create and List [/inbound-domains]
-
-### Create an Inbound Domain [POST]
+### Create an Inbound Domain [POST /inbound-domains]
 
 + Data Structure
     + domain (string, required) - Domain name for which SparkPost will receive inbound emails.
@@ -96,7 +94,7 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
                 ]
             }
 
-### List all Inbound Domains [GET]
+### List all Inbound Domains [GET /inbound-domains]
 
 List all your inbound domains.
 
@@ -123,9 +121,7 @@ List all your inbound domains.
             }
 
 
-## Retrieve and Delete [/inbound-domains/{domain}]
-
-### Retrieve an Inbound Domain [GET]
+### Retrieve an Inbound Domain [GET /inbound-domains/{domain}]
 
 Retrieve an inbound domain by specifying its domain name in the URI path.
 
@@ -163,7 +159,7 @@ Retrieve an inbound domain by specifying its domain name in the URI path.
             }
 
 
-### Delete an Inbound Domain [DELETE]
+### Delete an Inbound Domain [DELETE /inbound-domains/{domain}]
 
 Delete an inbound domain by specifying its domain name in the URI path.
 
