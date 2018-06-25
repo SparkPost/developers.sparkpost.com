@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale } from 'utils/colors'
 
-const Hamburger = styled(props => (
+const Hamburger = styled(({ isOpen, ...props }) => (
   <div {...props}>
     <span />
     <span />
