@@ -17,7 +17,7 @@ const markdownProcessor = unified()
 const baseMarkdownProcessor = markdownProcessor().use(rehypeReact, {
   createElement: React.createElement,
   components: {
-    a: ({ href, ...props }) => (<Link to={href} {...props} />),
+    a: ({ href, ...props }) => <Link to={href} {...props} />,
   },
 })
 
