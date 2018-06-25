@@ -42,9 +42,10 @@ const components = {
   },
   'data-structure': ({ id, sample }) => (
     <DataStructureContext.Consumer>
-      {dataStructures => (
-        <Fragment>
-          <Section>
+      {dataStructures => {
+        const Wrapper = sample !== undefined ? Section : Fragment
+        return (
+          <Wrapper>
             {sample !== undefined && (
               <Right>
                 <HttpTitle>Response</HttpTitle>
@@ -71,9 +72,9 @@ const components = {
                 })}
               />
             </div>
-          </Section>
-        </Fragment>
-      )}
+          </Wrapper>
+        )
+      }}
     </DataStructureContext.Consumer>
   ),
   row: Section,
