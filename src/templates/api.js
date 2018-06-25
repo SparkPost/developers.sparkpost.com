@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import { darken } from 'polished'
 import { color, grayscale } from 'utils/colors'
 import { uppercase, weight, monospace } from 'utils/fonts'
 import Markdown from 'components/Markdown'
@@ -179,17 +180,18 @@ function Resource({ resource, resourceGroup }) {
   return (
     <div>
       <Debug title="resource" enable={debug}>
-        <Section style={{ marginTop: '3rem' }}>
+        <Section style={{ marginTop: '2rem' }}>
           {title &&
             (resource.transitions.length > 1 || !isEmpty(copy)) && (
               <Heading
                 level={3}
                 id={slugify.resource({ resourceGroup, resource })}
+                style={{ fontSize: `1rem` }}
               >
                 {title}
               </Heading>
             )}
-          {copy && <BlockMarkdown>{copy}</BlockMarkdown>}
+          {!isEmpty(copy) && <BlockMarkdown>{copy}</BlockMarkdown>}
         </Section>
         {resource.transitions.map((transition, i) => (
           <Transition
@@ -236,8 +238,22 @@ function mergeDuplicateTransactions(transactions) {
   return minim.toElement(uniqueTransactions)
 }
 
+const methodMap = {
+  POST: darken(0.175, color('green')),
+  GET: color('blue'),
+  PUT: color('magenta'),
+  DELETE: color('red'),
+}
+
 function Transition({ transition, resource, resourceGroup }) {
-  const { title, copy } = values(transition, ['title', 'copy'])
+  const { title, copy, method } = values(transition, [
+    'title',
+    'copy',
+    'method',
+  ])
+
+  const href = (transition.href || {}).content || resource.href.content
+  const version = href === 'ab-testing' ? 'labs' : 'v1'
 
   return (
     <div>
@@ -264,6 +280,34 @@ function Transition({ transition, resource, resourceGroup }) {
               {title}
             </Heading>
           )}
+          <div className="block">
+            <div
+              style={{
+                borderTop: `1px solid ${grayscale(8)}`,
+                borderBottom: `1px solid ${grayscale(8)}`,
+                padding: `.5rem 0`,
+                fontSize: `.833333333rem`,
+                marginBottom: `1rem`,
+                wordWrap: `break-word`,
+              }}
+            >
+              <b
+                style={{
+                  color: methodMap[method],
+                  fontWeight: weight('medium'),
+                  marginRight: `0.666666667rem`,
+                }}
+              >
+                {method}
+              </b>
+              <span
+                style={{
+                  fontWeight: weight('medium'),
+                  color: grayscale(4),
+                }}
+              >{`/api/${version}${href}`}</span>
+            </div>
+          </div>
           {transition.hrefVariables && (
             <Parameters parameters={transition.hrefVariables} />
           )}
@@ -352,7 +396,7 @@ function Request({ request, transition, resource }) {
       <Debug title="request" enable={debug}>
         <HttpTitle>{title ? `Request: ${title}` : `Request`}</HttpTitle>
         {copy && <Markdown>{copy}</Markdown>}
-        <pre style={{ padding: `.5rem` }}>
+        <pre style={{ padding: `.5rem`, whiteSpace: `pre-wrap` }}>
           <code>
             {method && (
               <Fragment>
@@ -507,10 +551,12 @@ function DataStructure({ dataStructure }) {
 }
 
 const AttributesTitle = styled.h4`
-  ${uppercase} font-weight: ${weight('medium')};
-  font-size: 0.75rem;
-  color: ${grayscale(4)};
-  margin-bottom: 0.5rem;
+  && {
+    ${uppercase} font-weight: ${weight('medium')};
+    font-size: 0.75rem;
+    color: ${grayscale(4)};
+    margin: 2rem 0 0.5rem;
+  }
 `
 
 function Attributes({ id, children }) {
