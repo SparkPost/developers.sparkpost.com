@@ -5,12 +5,19 @@ description: Manage inbound domains, which enable you to customize the address t
 # Group Inbound Domains
 
 Specifying an inbound domain enables you to customize the address to which inbound messages are sent.
-Inbound domains are used in conjunction with Relay Webhooks.
+Inbound domains are used in conjunction with [Relay Webhooks](/api/relay-webhooks).
 You can have multiple inbound domains but each domain must be globally unique.
+
+## Inbound Domains Object
+
++ Data Structure (sample)
+    + domain: inbounddomain.test.com (string, sample) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
+
+## Configuring your MX records
 
 Before you can use your inbound domain (e.g. `inbounddomain.test.com`),
 you will need to add MX records to your DNS settings. The DNS settings required
-depend on whether you are a SparkPost, SparkPost EU or SparkPost Enterprise customer.
+depend on whether you are a SparkPost, SparkPost EU, or SparkPost Enterprise customer.
 
 The following DNS settings are for SparkPost:
 
@@ -27,28 +34,23 @@ The following DNS settings are for SparkPost EU:
 | `inbounddomain.test.com` | MX   | rx1.eu.sparkpostmail.com | 10       |
 | `inbounddomain.test.com` | MX   | rx2.eu.sparkpostmail.com | 10       |
 | `inbounddomain.test.com` | MX   | rx3.eu.sparkpostmail.com | 10       |
-
 <banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers</strong>, you will need to use MX records similar to your existing domains.  In many cases
 the MX records for existing domains point at <code>inbound.<main-bounce-domain></code>.
 The following DNS settings assume that your existing domains point
 at <code>inbound.<main-bounce-domain></code>.  Please check with your TAM
 if you are unsure of the setting in your own environment.</banner>
 
-| Name                     | Type | Data                  | Priority |
-|--------------------------|------|-----------------------|----------|
+| Name                     | Type | Data                           | Priority |
+|--------------------------|------|--------------------------------|----------|
 | `inbounddomain.test.com` | MX   | `inbound.<main-bounce-domain>` | 10       |
-
-
-#### Inbound Domains Attributes
-
-| Field   | Type   | Description | Required | Notes |
-|------------|--------|-------------|----------|-------|
-| domain     | string | Domain (or subdomain) name for which SparkPost will receive inbound emails | yes | Your DNS provider's MX record for this domain must point back to SparkPost. (Example: `inbounddomain.test.com`) |
 
 
 ## Create and List [/inbound-domains]
 
 ### Create an Inbound Domain [POST]
+
++ Data Structure
+    + domain (string, required) - Domain name for which SparkPost will receive inbound emails.
 
 Create an inbound domain by providing an **inbound domains object** as the POST request body.
 
@@ -61,7 +63,7 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
     + Body
 
             {
-              "domain": "inbounddomain.example.com"
+              "domain": "inbounddomain.test.com"
             }
 
 + Response 200
@@ -79,19 +81,6 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
                         }
                     ]
                 }
-
-+ Response 401 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
-                    }
-                ]
-            }
 
 + Response 409 (application/json)
 
@@ -133,18 +122,6 @@ List all your inbound domains.
                 ]
             }
 
-+ Response 401 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
-                    }
-                ]
-            }
 
 ## Retrieve and Delete [/inbound-domains/{domain}]
 
@@ -170,19 +147,6 @@ Retrieve an inbound domain by specifying its domain name in the URI path.
                 "results": {
                     "domain": "inbounddomain.test.com"
                 }
-            }
-
-+ Response 401 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
-                    }
-                ]
             }
 
 + Response 404 (application/json)
@@ -213,19 +177,6 @@ Delete an inbound domain by specifying its domain name in the URI path.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Response 200
-
-+ Response 401 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
-                    }
-                ]
-            }
 
 + Response 404 (application/json)
 
