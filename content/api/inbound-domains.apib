@@ -54,11 +54,11 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
 
 + Request (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
               "domain": "inbounddomain.example.com"
@@ -68,93 +68,43 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
-            {
-              "errors" : [
                 {
-                  "message" : "Restricted domain",
-                  "description" : "Please contact SparkPost support to get this domain authorized for your account.",
-                  "code" : "7000"
+                    "errors": [
+                        {
+                            "message" : "Restricted domain",
+                            "description" : "Please contact SparkPost support to get this domain authorized for your account.",
+                            "code" : "7000"
+                        }
+                    ]
                 }
-              ]
-            }
 
 + Response 401 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "Unauthorized Tenant",
-                  "code": "1303"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "Unauthorized Tenant",
+                        "code": "1303"
+                    }
+                ]
             }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "resource conflict",
-                  "description": "An inbound domain with similar attributes already exists",
-                  "code": "1602"
-                }
-              ]
-            }
-
-+ Request Missing Domain (application/json)
-
-  + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-  + Body
-
-            {}
-
-+ Response 422 (application/json)
-
-  + Body
-
-            {
-              "errors": [
-                {
-                  "message": "required field is missing",
-                  "description": "Missing required field: (domain) is required",
-                  "code": "1400"
-                }
-              ]
-            }
-
-+ Request Invalid Domain (application/json)
-
-  + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-  + Body
-
-            {
-                "domain": "inbounddomain"
-            }
-
-+ Response 422 (application/json)
-
-  + Body
-
-            {
-              "errors": [
-                {
-                  "message": "invalid data format\/type",
-                  "description": "Error domain name contains no '.'(s) for domain: {domain}",
-                  "code": "1300"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "resource conflict",
+                        "description": "An inbound domain with similar attributes already exists",
+                        "code": "1602"
+                    }
+                ]
             }
 
 ### List all Inbound Domains [GET]
@@ -163,37 +113,37 @@ List all your inbound domains.
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": [
-                {
-                  "domain": "inbounddomain.test.com"
-                },
-                {
-                  "domain": "inbounddomain2.test.com"
-                }
-              ]
+                "results": [
+                    {
+                        "domain": "inbounddomain.test.com"
+                    },
+                    {
+                        "domain": "inbounddomain2.test.com"
+                    }
+                ]
             }
 
 + Response 401 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "Unauthorized Tenant",
-                  "code": "1303"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "Unauthorized Tenant",
+                        "code": "1303"
+                    }
+                ]
             }
 
 ## Retrieve and Delete [/inbound-domains/{domain}]
@@ -203,49 +153,49 @@ List all your inbound domains.
 Retrieve an inbound domain by specifying its domain name in the URI path.
 
 + Parameters
-  + domain (required, string, `inbounddomain.test.com`) ... Domain name
+    + domain (required, string, `inbounddomain.test.com`) ... Domain name
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": {
-                "domain": "inbounddomain.test.com"
-              }
+                "results": {
+                    "domain": "inbounddomain.test.com"
+                }
             }
 
 + Response 401 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "Unauthorized Tenant",
-                  "code": "1303"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "Unauthorized Tenant",
+                        "code": "1303"
+                    }
+                ]
             }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "resource not found",
-                  "code": "1600"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "resource not found",
+                        "code": "1600"
+                    }
+                ]
             }
 
 
@@ -254,11 +204,11 @@ Retrieve an inbound domain by specifying its domain name in the URI path.
 Delete an inbound domain by specifying its domain name in the URI path.
 
 + Parameters
-  + domain (required, string, `inbounddomain.test.com`) ... Domain name
+    + domain (required, string, `inbounddomain.test.com`) ... Domain name
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
@@ -266,40 +216,40 @@ Delete an inbound domain by specifying its domain name in the URI path.
 
 + Response 401 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "Unauthorized Tenant",
-                  "code": "1303"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "Unauthorized Tenant",
+                        "code": "1303"
+                    }
+                ]
             }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "resource not found",
-                  "code": "1600"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "resource not found",
+                        "code": "1600"
+                    }
+                ]
             }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "message": "resource conflict",
-                  "description": "Domain currently being used in a relay-webhook. Please delete the relay-webhook first.",
-                  "code": "1602"
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "resource conflict",
+                        "description": "Domain currently being used in a relay-webhook. Please delete the relay-webhook first.",
+                        "code": "1602"
+                    }
+                ]
             }
