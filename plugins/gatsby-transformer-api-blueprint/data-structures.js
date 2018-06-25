@@ -1,5 +1,6 @@
+const crypto = require('crypto')
 const visit = require('unist-util-visit')
-const map = require('unist-util-map')
+const modify = require('unist-util-modify-children')
 const removePosition = require('unist-util-remove-position')
 const flatten = require('lodash.flatten')
 const unified = require('unified')
@@ -12,8 +13,7 @@ const parseMarkdown = parseProcessor.parse
  */
 function gatherDataStructures(tree) {
   let dataStructures = []
-
-  visit(tree, 'code', (node) => {
+  visit(tree, 'list', (node) => {
     if (isDataStructure(node)) {
       dataStructures.push(parseDataStructure(node))
     }
@@ -27,41 +27,28 @@ function gatherDataStructures(tree) {
  * replace all data structures with html data-structure tags
  */
 
-function replaceDataStructures(tree) {
-  return map(tree, function(node) {
-    if (isDataStructure(node)) {
-      return generateHtmlReplacement(node)
+function replaceDataStructures(tree, dataStructures) {
+  if (!dataStructures || dataStructures && dataStructures.length === 0)
+    return tree
+
+  modify(function(node, index, parent) {
+    const matchedDataStructure = dataStructures.find(dataStructure => dataStructure.node === node)
+
+    if (matchedDataStructure) {
+      parent.children.splice(index, 1, generateHtmlReplacement(matchedDataStructure))
     }
-    return node
-  })
+  })(tree)
+
+  return tree
 }
-
-/**
- * generate the node for the data-structure tag
- */
-function generateHtmlReplacement(node) {
-  const { id, sample } = parseDataStructure(node)
-
-  return Object.assign({}, node, {
-    type: "paragraph",
-    children: [
-      {
-        type: "html",
-        value: `<data-structure id="${id}" ${sample ? 'sample' : ''}>`,
-      },
-      {
-        type: "html",
-        value: "</data-structure>",
-      }
-    ]
-  })
-}
-
 
 /**
  * inserts data structures into api blueprint structure content
  */
 function insertDataStructures(tree, dataStructures) {
+  if (!dataStructures || dataStructures && dataStructures.length === 0)
+    return tree
+
   const headingMarkdown = {
     "type": "heading",
     "depth": 1,
@@ -85,25 +72,60 @@ function insertDataStructures(tree, dataStructures) {
 }
 
 
-const dataStructurePattern = /\s*data-structure\(([^\s,]+),?(.+)?\)\s*/i
+const dataStructurePattern = /^\s*Data Structure(?::\s?([\w-]+))?(?:\s?\(([\w-]+)\))?\s*$/i
 /** checks if a node is a data structure */
 function isDataStructure(node) {
-  return node.type === 'code' && node.lang && dataStructurePattern.test(node.lang)
+  // we have a list...
+  if(node.type !== 'list')
+    return false
+
+  // with 1 item...
+  if (node.children.length !== 1)
+    return false
+
+  const listItem = node.children[0]
+
+  // that has some text and a list...
+  if (listItem.children.length !== 2)
+    return false
+
+  const paragraph = listItem.children[0]
+  const text = paragraph.children[0]
+
+  // that matches our data structure heading
+  return text.type === 'text' && dataStructurePattern.test(text.value)
 }
 
 /**
  * pull out the data from the data structure block: id, sample, and children
  */
 function parseDataStructure(node) {
-  const [ all, id, showSample ] = node.lang.match(dataStructurePattern)
-  const { children } = parseMarkdown(node.value)
+  const listItem = node.children[0]
+  const paragraph = listItem.children[0]
+  const text = paragraph.children[0]
+  const list = listItem.children[1]
+  const [ all, id, showSample ] = text.value.match(dataStructurePattern)
   const sample = showSample ? showSample.trim().toLowerCase() === 'sample' : false
 
   return {
-    id,
+    id: id || crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
     sample,
-    children
+    children: [ removePosition(list) ],
+    node
   }
+}
+
+/**
+ * generate the node for the data-structure tag
+ */
+function generateHtmlReplacement({ id, sample }) {
+  return Object.assign({}, {
+    type: "paragraph",
+    children: [
+      { type: "html", value: `<data-structure id="${id}"${sample ? ' sample' : ''}>` },
+      { type: "html", value: "</data-structure>" }
+    ]
+  })
 }
 
 module.exports = { gatherDataStructures, replaceDataStructures, insertDataStructures }

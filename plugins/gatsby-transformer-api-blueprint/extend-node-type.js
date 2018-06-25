@@ -92,9 +92,8 @@ module.exports = async ({ type }) => {
       type: GraphQLJSON,
       async resolve(node) {
         let tree = parseMarkdown(node.internal.content)
-
         const dataStructures = gatherDataStructures(tree)
-        tree = replaceDataStructures(tree)
+        tree = replaceDataStructures(tree, dataStructures)
         tree = insertDataStructures(tree, dataStructures)
         const markdown = stringifyMarkdown(tree)
 
