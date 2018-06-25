@@ -15,6 +15,10 @@ export default styled.div`
     float: right;
     width: 45%;
     padding: 0 1.5rem;
+
+    & > *:first-child {
+      margin-top: 0;
+    }
   `
   )} z-index: 1;
   background: ${grayscale('dark')};
