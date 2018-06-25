@@ -22,7 +22,7 @@ The following are key operational details:
 | target            | string | URL of the target to which to POST event batches | yes |  When a webhook is created or updated with a change to this property, a test POST request is sent to the given URL. The target URL must accept the connection and respond with HTTP 200; otherwise, your request to the Webhook API will fail with HTTP 400, and the requested change will not be applied.<br />example: `http://client.example.com/example-webhook` |
 | events            | array  | Array of event types this webhook will receive | yes | Use the Webhooks Events endpoint to list the available event types.<br />example: `["delivery", "injection", "open", "click"]`|
 | active            | boolean | Describes status of the webhook | no | Defaults to true, when false the target will no longer receive batches |
-| custom_headers    | JSON   | Object of custom headers to be used during POST requests to target | no | example: `{"x-api-key" : "abcd"}` |
+| custom_headers    | JSON   | Object of custom headers to be used during POST requests to target | no | example: `{"x-api-key": "abcd"}` |
 | auth_type         | string | Type of authentication to be used during POST requests to target | no | examples: `none`, `basic`, `oauth2` |
 | auth_request_details | JSON | Object containing details needed to request authorization credentials, as necessary | no | example: `{ "url": "https://oauth.myurl.com/tokens", "body": { "client_id": "<oauth client id>", "client_secret": "<oauth client secret>" }}`|
 | auth_credentials         | JSON | Object containing credentials needed to make authorized POST requests to target | no | examples: `{ "access_token": "<oauth token>", expires_in: 3600 }`, `{ "username": "basicauthuser", "password": "mypassword" }` |
@@ -49,16 +49,16 @@ List descriptions of the events, event types, and event fields that could be inc
 
 List an example of the event data that will be posted by a Webhook for the specified events.
 
-<banner status="warning"><strong>Note</strong>: the data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <tt>results</tt> key shown in the example response.</banner>
+<banner status="warning"><strong>Note</strong>: the data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.</banner>
 
-<banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a> customers may find the <tt>delv_method</tt> key useful to differentiate between Email, Push, and SMS type events.</banner>
+<banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a> customers may find the <code>delv_method</code> key useful to differentiate between Email, Push, and SMS type events.</banner>
 
 + Parameters
-  + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
 
 + Request
 
-  + Headers
+    + Headers
 
             Accept: application/json
 
@@ -80,69 +80,63 @@ As described in "Webhooks Object Properties", webhook creation entails a test PO
 
     + Body
 
-        ```js
-        {
-          "name": "Example webhook",
-          "target": "http://client.example.com/example-webhook",
-          "custom_headers": {
-            "x-api-key" : "abcd"
-          },
-          "auth_type": "oauth2",
-          "auth_request_details": {
-            "url": "http://client.example.com/tokens",
-            "body": {
-                "client_id": "CLIENT123",
-                "client_secret": "9sdfj791d2bsbf",
-                "grant_type": "client_credentials"
+            {
+                "name": "Example webhook",
+                "target": "http://client.example.com/example-webhook",
+                "custom_headers": {
+                    "x-api-key": "abcd"
+                },
+                "auth_type": "oauth2",
+                "auth_request_details": {
+                    "url": "http://client.example.com/tokens",
+                    "body": {
+                        "client_id": "CLIENT123",
+                        "client_secret": "9sdfj791d2bsbf",
+                        "grant_type": "client_credentials"
+                    }
+                },
+                "events": [
+                    "delivery",
+                    "injection",
+                    "open",
+                    "click"
+                ]
             }
-          },
-          "events": [
-            "delivery",
-            "injection",
-            "open",
-            "click"
-          ]
-        }
-        ```
 
 + Response 200 (application/json)
 
-    ```js
-    {
-      "results": {
-        "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
-        "links": [
-          {
-            "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2",
-            "rel": "urn.msys.webhooks.webhook",
-            "method": ["GET","PUT"]
-          }
-        ]
-      }
-    }
-    ```
+        {
+            "results": {
+                "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
+                "links": [
+                    {
+                        "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2",
+                        "rel": "urn.msys.webhooks.webhook",
+                        "method": [ "GET", "PUT" ]
+                    }
+                ]
+            }
+        }
 
 + Response 400 (application/json)
 
-    ```js
-    {
-      "errors": [
-          {
-              "code": 400,
-              "message": "POST to webhook tokens URL failed",
-              "response": {
-                  "body": "response body",
-                  "headers": {
-                      "connection": "close",
-                      "content-length": "536",
-                      "content-type": "text/html; charset=iso-8859-1"
-                  },
-                  "status": 502
-              }
-          }
-      ]
-    }
-    ```
+        {
+            "errors": [
+                {
+                    "code": 400,
+                    "message": "POST to webhook tokens URL failed",
+                    "response": {
+                        "body": "response body",
+                        "headers": {
+                            "connection": "close",
+                            "content-length": "536",
+                            "content-type": "text/html; charset=iso-8859-1"
+                        },
+                        "status": 502
+                    }
+                }
+            ]
+        }
 
 ## Retrieve [/webhooks/{id}{?timezone}]
 
@@ -150,61 +144,59 @@ As described in "Webhooks Object Properties", webhook creation entails a test PO
 
     + Body
 
-        ```js
-          {
-            "results": {
-              "name": "Example webhook",
-              "target": "http://client.example.com/example-webhook",
-              "events": [
-                "delivery",
-                "injection",
-                "open",
-                "click"
-              ],
-              "auth_type": "oauth2",
-              "auth_request_details": {
-                "url": "https://oauth.myurl.com/tokens",
-                "body": {
-                  "client_id": "<oauth client id>",
-                  "client_secret": "<oauth client secret>"
+            {
+                "results": {
+                    "name": "Example webhook",
+                    "target": "http://client.example.com/example-webhook",
+                    "events": [
+                        "delivery",
+                        "injection",
+                        "open",
+                        "click"
+                    ],
+                    "auth_type": "oauth2",
+                    "auth_request_details": {
+                        "url": "https://oauth.myurl.com/tokens",
+                        "body": {
+                            "client_id": "<oauth client id>",
+                            "client_secret": "<oauth client secret>"
+                        }
+                    },
+                    "auth_credentials": {
+                        "access_token": "<oauth token>",
+                        "expires_in": 3600
+                    },
+                    "auth_token": "",
+                    "custom_headers": {
+                        "x-api-key": "abcd"
+                    },
+                    "active": true,
+                    "links": [
+                        {
+                            "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/validate",
+                            "rel": "urn.msys.webhooks.validate",
+                            "method": ["POST"]
+                        },
+                        {
+                            "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/batch-status",
+                            "rel": "urn.msys.webhooks.batches",
+                            "method": ["GET"]
+                        }
+                    ]
                 }
-              },
-              "auth_credentials": {
-                "access_token": "<oauth token>",
-                "expires_in": 3600
-              },
-              "auth_token": "",
-              "custom_headers": {
-                "x-api-key" : "abcd"
-              },
-              "active": true,
-              "links": [
-                {
-                  "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/validate",
-                  "rel": "urn.msys.webhooks.validate",
-                  "method": ["POST"]
-                },
-                {
-                  "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/batch-status",
-                  "rel": "urn.msys.webhooks.batches",
-                  "method": ["GET"]
-                }
-              ]
             }
-          }
-        ```
 
 ### Retrieve Webhook Details [GET]
 
 Retrieve details about a webhook by specifying its id in the URI path.
 
 + Parameters
-  + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
-  + timezone =`UTC` (optional, string, `America/New_York`) ... Standard timezone identification string, defaults to `UTC`
+    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
+    + timezone =`UTC` (optional, string, `America/New_York`) ... Standard timezone identification string, defaults to `UTC`
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
@@ -219,109 +211,123 @@ Retrieve details about a webhook by specifying its id in the URI path.
 
     + Body
 
-        ```js
-        {
-          "results": [
             {
-              "id": "a2b83490-10df-11e4-b670-c1ffa86371ff",
-              "name": "Some webhook",
-              "target": "http://client.example.com/some-webhook",
-              "events": [
-                "delivery",
-                "injection",
-                "open",
-                "click"
-              ],
-              "auth_type": "basic",
-              "auth_request_details": {},
-              "auth_credentials": {
-                "username": "basicuser",
-                "password": "somepass"
-              },
-              "auth_token": "",
-              "last_successful": "2014-08-01 16:09:15",
-              "last_failure": "2014-06-01 15:15:45",
-              "custom_headers": {
-                "x-api-key" : "abcd"
-              },
-              "active": true,
-              "links": [
-                {
-                  "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/a2b83490-10df-11e4-b670-c1ffa86371ff",
-                  "rel": "urn.msys.webhooks.webhook",
-                  "method": ["GET","PUT"]
-                }
-              ]
-            },
-            {
-              "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
-              "name": "Example webhook",
-              "target": "http://client.example.com/example-webhook",
-              "events": [
-                "delivery",
-                "injection",
-                "open",
-                "click"
-              ],
-              "auth_type": "oauth2",
-              "auth_request_details": {
-                "url": "https://oauth.myurl.com/tokens",
-                "body": {
-                  "client_id": "<oauth client id>",
-                  "client_secret": "<oauth client secret>"
-                }
-              },
-              "auth_credentials": {
-                "access_token": "<oauth token>",
-                "expires_in": 3600
-              },
-              "auth_token": "",
-              "last_successful": "2014-07-01 16:09:15",
-              "last_failure": "2014-08-01 15:15:45",
-              "active": true,
-              "links": [
-                {
-                  "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2",
-                  "rel": "urn.msys.webhooks.webhook",
-                  "method": ["GET","PUT"]
-                }
-              ]
-            },
-            {
-              "id": "123456-abcd-efgh-7890-123445566778",
-              "name": "Another webhook",
-              "target": "http://client.example.com/another-example",
-              "events": [
-                "generation_rejection",
-                "generation_failure"
-              ],
-              "auth_type": "none",
-              "auth_request_details": {},
-              "auth_credentials": {},
-              "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
-              "active": true,
-              "links": [
-                {
-                  "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/123456-abcd-efgh-7890-123445566778",
-                  "rel": "urn.msys.webhooks.webhook",
-                  "method": ["GET","PUT"]
-                }
-              ]
+                "results": [
+                    {
+                        "id": "a2b83490-10df-11e4-b670-c1ffa86371ff",
+                        "name": "Some webhook",
+                        "target": "http://client.example.com/some-webhook",
+                        "events": [
+                            "delivery",
+                            "injection",
+                            "open",
+                            "click"
+                        ],
+                        "auth_type": "basic",
+                        "auth_request_details": {
+
+                        },
+                        "auth_credentials": {
+                            "username": "basicuser",
+                            "password": "somepass"
+                        },
+                        "auth_token": "",
+                        "last_successful": "2014-08-01 16:09:15",
+                        "last_failure": "2014-06-01 15:15:45",
+                        "custom_headers": {
+                            "x-api-key": "abcd"
+                        },
+                        "active": true,
+                        "links": [
+                            {
+                                "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/a2b83490-10df-11e4-b670-c1ffa86371ff",
+                                "rel": "urn.msys.webhooks.webhook",
+                                "method": [
+                                    "GET",
+                                    "PUT"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
+                        "name": "Example webhook",
+                        "target": "http://client.example.com/example-webhook",
+                        "events": [
+                            "delivery",
+                            "injection",
+                            "open",
+                            "click"
+                        ],
+                        "auth_type": "oauth2",
+                        "auth_request_details": {
+                            "url": "https://oauth.myurl.com/tokens",
+                            "body": {
+                                "client_id": "<oauth client id>",
+                                "client_secret": "<oauth client secret>"
+                            }
+                        },
+                        "auth_credentials": {
+                            "access_token": "<oauth token>",
+                            "expires_in": 3600
+                        },
+                        "auth_token": "",
+                        "last_successful": "2014-07-01 16:09:15",
+                        "last_failure": "2014-08-01 15:15:45",
+                        "active": true,
+                        "links": [
+                            {
+                                "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2",
+                                "rel": "urn.msys.webhooks.webhook",
+                                "method": [
+                                    "GET",
+                                    "PUT"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "123456-abcd-efgh-7890-123445566778",
+                        "name": "Another webhook",
+                        "target": "http://client.example.com/another-example",
+                        "events": [
+                            "generation_rejection",
+                            "generation_failure"
+                        ],
+                        "auth_type": "none",
+                        "auth_request_details": {
+
+                        },
+                        "auth_credentials": {
+
+                        },
+                        "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                        "active": true,
+                        "links": [
+                            {
+                                "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/123456-abcd-efgh-7890-123445566778",
+                                "rel": "urn.msys.webhooks.webhook",
+                                "method": [
+                                    "GET",
+                                    "PUT"
+                                ]
+                            }
+                        ]
+                    }
+                ]
             }
-          ]
-        }
-        ```
+
 
 ### List all Webhooks [GET]
 
 List all currently existing webhooks.
 
 + Parameters
-  + timezone =`UTC` (optional, string, `America/New_York`) ... Standard timezone identification string, defaults to `UTC`
+    + timezone =`UTC` (optional, string, `America/New_York`) ... Standard timezone identification string, defaults to `UTC`
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
@@ -344,46 +350,42 @@ For example, if you change the webhook's target URL, batches already queued for 
 As described in "Webhooks Object Properties", a change to the `target` value entails a test POST request to the URL given. If this request does not receive an HTTP 200 response, your request to the Webhooks API will fail with HTTP 400, and the webhook will not be modified.
 
 + Parameters
-  + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
+    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
 
 + Request (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```js
-        {
-          "name": "Renamed webhook",
-          "events": [
-            "rejection",
-            "delay"
-          ],
-          "auth_type": "none",
-          "custom_headers": {
-            "x-api-key" : "abcd"
-          }
-        }
-        ```
+            {
+                "name": "Renamed webhook",
+                "events": [
+                    "rejection",
+                    "delay"
+                ],
+                "auth_type": "none",
+                "custom_headers": {
+                    "x-api-key": "abcd"
+                }
+            }
 
 + Response 200 (application/json)
 
-    ```js
-    {
-      "results": {
-        "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
-        "links": [
-          {
-            "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/validate",
-            "rel": "urn.msys.webhooks.validate",
-            "method": ["POST"]
-          }
-        ]
-      }
-    }
-    ```
+        {
+            "results": {
+                "id": "12affc24-f183-11e3-9234-3c15c2c818c2",
+                "links": [
+                    {
+                        "href": "http://www.messagesystems-api-url.com/api/v1/webhooks/12affc24-f183-11e3-9234-3c15c2c818c2/validate",
+                        "rel": "urn.msys.webhooks.validate",
+                        "method": ["POST"]
+                    }
+                ]
+            }
+        }
 
 ### Delete a Webhook [DELETE]
 
@@ -395,7 +397,7 @@ Delete a webhook from the system by specifying its id in the URI path.
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
@@ -416,23 +418,21 @@ and returns detailed information on the response received from the target.
 | message    | object | Example batch to send | yes | example: `[ { "msys": {} } ]`  |
 
 + Parameters
-  + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
+    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
 
 + Request (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```js
         [
             {
                 "msys": {}
             }
         ]
-        ```
 
 + Response 200 (application/json)
 
@@ -473,24 +473,23 @@ are currently in a failed state.
 
 + Response 200 (application/json)
 
-    ```js
-    {
-      "results": [
+    
         {
-          "batch_id": "032d330540298f54f0e8bcc1373f3cfd",
-          "ts": "2014-07-30T21:38:08.000Z",
-          "attempts": 7,
-          "response_code": "200",
-          "latency": 160
-        },
-        {
-          "batch_id": "13c6764994a8f6b4e29906d5712ca7d",
-          "ts": "2014-07-30T20:38:08.000Z",
-          "attempts": 2,
-          "failure_code": "400",
-          "response_code": "400",
-          "latency": 210
+            "results": [
+                {
+                    "batch_id": "032d330540298f54f0e8bcc1373f3cfd",
+                    "ts": "2014-07-30T21:38:08.000Z",
+                    "attempts": 7,
+                    "response_code": "200",
+                    "latency": 160
+                },
+                {
+                    "batch_id": "13c6764994a8f6b4e29906d5712ca7d",
+                    "ts": "2014-07-30T20:38:08.000Z",
+                    "attempts": 2,
+                    "failure_code": "400",
+                    "response_code": "400",
+                    "latency": 210
+                }
+            ]
         }
-      ]
-    }
-    ```

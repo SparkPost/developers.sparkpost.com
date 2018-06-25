@@ -32,21 +32,27 @@ Lists all IP Pools.
 
 + Response 200 (application/json)
 
+    + Body
             {
-                "results": [{
-                    "id": "marketing_ip_pool",
-                    "name": "Marketing IP Pool",
-                    "ips": [],
-                    "signing_domain": "example.com"
-                    "fbl_signing_domain": "sparkpostmail.com"
-                }, {
-                    "id": "default",
-                    "name": "Default",
-                    "ips": [{
-                        "external_ip": "54.244.54.135",
-                        "hostname": "mta472a.sparkpostmail.com"
-                    }]
-                }]
+                "results": [
+                    {
+                        "id": "marketing_ip_pool",
+                        "name": "Marketing IP Pool",
+                        "ips": [],
+                        "signing_domain": "example.com",
+                        "fbl_signing_domain": "sparkpostmail.com"
+                    },
+                    {
+                        "id": "default",
+                        "name": "Default",
+                        "ips": [
+                            {
+                                "external_ip": "54.244.54.135",
+                                "hostname": "mta472a.sparkpostmail.com"
+                            }
+                        ]
+                    }
+                ]
             }
 
 ## Create an IP Pool [POST]
@@ -72,11 +78,13 @@ Creates an IP Pool and returns a unique ID based on the name. This ID is used fo
     + Body
 
             {
-              "name" : "Marketing IP Pool",
-              "fbl_signing_domain" : "sparkpostmail.com"
+                "name" : "Marketing IP Pool",
+                "fbl_signing_domain" : "sparkpostmail.com"
             }
 
 + Response 200 (application/json)
+    
+    + Body
 
             {
                 "results": {
@@ -99,35 +107,42 @@ Retrieves a specific IP Pool.
 
 + Parameters
 
-  + id (required, string, `marketing`) ... The IP Pool's ID
+    + id (required, string, `marketing`) ... The IP Pool's ID
 
 
 + Response 200 (application/json)
+
+    + Body
 
             {
                 "results": {
                     "id": "marketing_ip_pool",
                     "name": "Marketing IP Pool",
                     "fbl_signing_domain": "sparkpostmail.com",
-                    "ips": [{
-                        "external_ip": "54.244.54.135",
-                        "hostname": "mta472a.sparkpostmail.com"
-                    }, {
-                        "external_ip": "54.244.54.137",
-                        "hostname": "mta474a.sparkpostmail.com"
-                    }],
+                    "ips": [
+                        {
+                            "external_ip": "54.244.54.135",
+                            "hostname": "mta472a.sparkpostmail.com"
+                        },
+                        {
+                            "external_ip": "54.244.54.137",
+                            "hostname": "mta474a.sparkpostmail.com"
+                        }
+                    ],
                     "signing_domain": "example.com"
                 }
             }
 
 + Response 404 (application/json)
 
+    + Body
+
             {
-              "errors": [
-                {
-                  "message": "IP pool not found."
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "IP pool not found."
+                    }
+                ]
             }
 
 
@@ -167,31 +182,39 @@ To remove a signing domain, the value passed in should be the empty string.
 
 + Response 200 (application/json)
 
-    ```json
-    {
-        "results": {
-          "name": "Updated Marketing Pool",
-          "fbl_signing_domain": "sparkpostmail.com",
-          "id": "marketing"
-        }
-    }
-    ```
+    + Body
+
+            {
+                "results": {
+                    "name": "Updated Marketing Pool",
+                    "fbl_signing_domain": "sparkpostmail.com",
+                    "id": "marketing"
+                }
+            }
 
 + Response 400 (application/json)
 
-    ```json
-    {
-        "errors": [{"message": "IP Pool default is reserved and cannot be updated."}]
-    }
-    ```
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "IP Pool default is reserved and cannot be updated."
+                    }
+                ]
+            }
 
 + Response 404 (application/json)
 
-    ```json
-    {
-        "errors": [{"message": "IP Pool not_a_real_pool does not exist."}]
-    }
-    ```
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "IP Pool not_a_real_pool does not exist."
+                    }
+                ]
+            }
 
 
 ## Delete an IP Pool [DELETE]
@@ -210,7 +233,7 @@ Deletes an IP Pool and moves all sending IPs in that pool to the default pool.
 
 + Parameters
 
-  + id (required, string, `marketing`) ... The IP Pool's ID
+    + id (required, string, `marketing`) ... The IP Pool's ID
 
 
 + Response 204
@@ -218,20 +241,24 @@ Deletes an IP Pool and moves all sending IPs in that pool to the default pool.
 
 + Response 400 (application/json)
 
+    + Body
+    
             {
-              "errors": [
-                {
-                  "message": "IP Pool default is reserved."
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "IP Pool default is reserved."
+                    }
+                ]
             }
 
 + Response 404 (application/json)
 
+    + Body
+
             {
-              "errors": [
-                {
-                  "message": "IP Pool marketing does not exist."
-                }
-              ]
+                "errors": [
+                    {
+                        "message": "IP Pool marketing does not exist."
+                    }
+                ]
             }

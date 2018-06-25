@@ -29,19 +29,20 @@ Gets all IP addresses.
 
 + Response 200 (application/json)
 
-    ```json
-    {
-        "results": [{
-          "external_ip": "123.45.67.89",
-          "hostname": "mta472a.sparkpostmail.com",
-          "ip_pool": "marketing"
-        }, {
-          "external_ip": "123.45.67.80",
-          "hostname": "mta474a.sparkpostmail.com",
-          "ip_pool": "default"
-        }]
-    }
-    ```
+        {
+            "results": [
+                {
+                    "external_ip": "123.45.67.89",
+                    "hostname": "mta472a.sparkpostmail.com",
+                    "ip_pool": "marketing"
+                },
+                {
+                    "external_ip": "123.45.67.80",
+                    "hostname": "mta474a.sparkpostmail.com",
+                    "ip_pool": "default"
+                }
+            ]
+        }
 
 ## Sending IP Resource [/sending-ips/{external_ip}]
 
@@ -53,42 +54,44 @@ Retrieves a specific sending IP.
 
     + Headers
 
-            AUTHORIZATION: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
+            Authorization: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
             Accept: application/json
 
 + Parameters
-
-  + external_ip (required, string, `123.45.67.89`) ... The external IP of the sending IP
+    + external_ip (required, string, `123.45.67.89`) ... The external IP of the sending IP
 
 
 + Response 200 (application/json)
 
-    ```json
-    {
-        "results": {
-          "external_ip": "123.45.67.89",
-          "hostname": "mta472a.sparkpostmail.com",
-          "ip_pool": "cool_kids"
+        {
+            "results": {
+                "external_ip": "123.45.67.89",
+                "hostname": "mta472a.sparkpostmail.com",
+                "ip_pool": "cool_kids"
+            }
         }
-    }
 
-    ```
 
 + Response 400 (application/json)
 
-    ```json
-    {
-        "errors": [{"message": "external ip must be a valid IPv4 address"}]
-    }
-    ```
+        {
+            "errors": [
+                {
+                    "message": "external ip must be a valid IPv4 address"
+                }
+            ]
+        }
 
 + Response 404 (application/json)
 
-    ```json
-    {
-        "errors": [{"message": "Sending IP does not exist"}]
-    }
-    ```
+        {
+            "errors": [
+                {
+                    "message": "Sending IP does not exist"
+                }
+            ]
+        }
+
 
 ## Update a Sending IP [PUT]
 
@@ -105,7 +108,7 @@ Updates the IP Pool of a sending IP.
 
     + Headers
 
-            AUTHORIZATION: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
+            Authorization: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
             Accept: application/json
 
     + Body
@@ -115,32 +118,33 @@ Updates the IP Pool of a sending IP.
             }
 
 + Parameters
-
-  + external_ip (required, string, `123.45.67.89`) ... The external IP of the sending IP to update
+    + external_ip (required, string, `123.45.67.89`) ... The external IP of the sending IP to update
 
 
 + Response 200 (application/json)
 
-    ```json
-    {
-        "results": {
-          "message": "Updated IP Pool."
+        {
+            "results": {
+                "message": "Updated IP Pool."
+            }
         }
-    }
-    ```
 
 + Response 400 (application/json)
 
-    ```json
     {
-        "errors": [{"message": "IP Pool glibglob does not exist."}]
+        "errors": [
+            {
+                "message": "IP Pool glibglob does not exist."
+            }
+        ]
     }
-    ```
 
 + Response 404 (application/json)
 
-    ```json
     {
-        "errors": [{"message": "Sending IP does not exist"}]
+        "errors": [
+            { 
+                "message": "Sending IP does not exist"
+            }
+        ]
     }
-    ```

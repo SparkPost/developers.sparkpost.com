@@ -22,7 +22,7 @@ The following APIs have subaccount support:
 * [Tracking Domains](/api/tracking-domains/)
 * [Webhooks](/api/webhooks/)
 
-<banner status="info"><strong>Note</strong>: all subaccount-level transmissions must use <tt>inline</tt> recipients. Stored recipient lists are not supported for subaccounts.</banner>
+<banner status="info"><strong>Note</strong>: all subaccount-level transmissions must use <code>inline</code> recipients. Stored recipient lists are not supported for subaccounts.</banner>
 
 ### Terminology
 
@@ -59,27 +59,27 @@ Endpoint for retrieving a list of your subaccounts. This endpoint only returns i
 + Response 200 (application/json)
 
         {
-          "results": [
-            {
-              "id": 123,
-              "name": "Joe's Garage",
-              "status": "active",
-              "ip_pool": "my_ip_pool",
-              "compliance_status": "active"
-            },
-            {
-              "id": 456,
-              "name": "SharkPost",
-              "status": "active",
-              "compliance_status": "active"
-            },
-            {
-              "id": 789,
-              "name": "Dev Avocado",
-              "status": "suspended",
-              "compliance_status": "active"
-            }
-          ]
+            "results": [
+                {
+                    "id": 123,
+                    "name": "Joe's Garage",
+                    "status": "active",
+                    "ip_pool": "my_ip_pool",
+                    "compliance_status": "active"
+                },
+                {
+                    "id": 456,
+                    "name": "SharkPost",
+                    "status": "active",
+                    "compliance_status": "active"
+                },
+                {
+                    "id": 789,
+                    "name": "Dev Avocado",
+                    "status": "suspended",
+                    "compliance_status": "active"
+                }
+            ]
         }
 
 ### Create a new subaccount [POST /subaccounts]
@@ -124,70 +124,70 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
 
     + Body
 
-            {
-              "name": "Sparkle Ponies",
-              "key_label": "API Key for Sparkle Ponies Subaccount",
-              "key_grants": ["smtp/inject", "sending_domains/manage", "message_events/view", "suppression_lists/manage", "tracking_domains/view", "tracking_domains/manage", "webhooks/modify", "webhooks/view"],
-              "key_valid_ips": [],
-              "ip_pool": ""
-            }
+        {
+            "name": "Sparkle Ponies",
+            "key_label": "API Key for Sparkle Ponies Subaccount",
+            "key_grants": ["smtp/inject", "sending_domains/manage", "message_events/view", "suppression_lists/manage", "tracking_domains/view", "tracking_domains/manage", "webhooks/modify", "webhooks/view"],
+            "key_valid_ips": [],
+            "ip_pool": ""
+        }
 
 + Response 200 (application/json)
 
         {
-          "results": {
-            "subaccount_id": 888,
-            "key": "cf806c8c472562ab98ad5acac1d1b06cbd1fb438",
-            "label": "API Key for Sparkle Ponies Subaccount",
-            "short_key": "cf80"
-          }
+            "results": {
+                "subaccount_id": 888,
+                "key": "cf806c8c472562ab98ad5acac1d1b06cbd1fb438",
+                "label": "API Key for Sparkle Ponies Subaccount",
+                "short_key": "cf80"
+            }
         }
 
 + Response 400 (application/json)
 
         {
-          "errors": [
-            {
-              "message": "`name` is a required field",
-              "param": "name",
-              "value": null
-            },
-            {
-              "message": "`key_label` is a required field",
-              "param": "key_label",
-              "value": null
-            },
-            {
-              "message": "`key_grants` is a required field",
-              "param": "key_grants",
-              "value": null
-            },
-            {
-              "message": "Invalid `key_grants value`. Supported values are: 'smtp/inject', 'sending_domains/manage', 'message_events/view', 'suppression_lists/manage'",
-              "param": "key_grants",
-              "value": null
-            },
-            {
-              "message": "`key_valid_ips` must be an Array",
-              "param": "key_valid_ips",
-              "value": null
-            },
-            {
-              "message": "`key_valid_ips` must have valid netmask values",
-              "param": "key_valid_ips",
-              "value": null
-            },
-            {
-              "message": "ip_pool must be 20 characters or less",
-              "param": "ip_pool",
-              "value": "an_ip_pool_name_that_is_too_long"
-            },
-            {
-              "message": "ip_pool must be alphanumeric and underscore",
-              "param": "ip_pool",
-              "value": "$invalid chars"
-            }
-          ]
+            "errors": [
+                {
+                    "message": "`name` is a required field",
+                    "param": "name",
+                    "value": null
+                },
+                {
+                    "message": "`key_label` is a required field",
+                    "param": "key_label",
+                    "value": null
+                },
+                {
+                    "message": "`key_grants` is a required field",
+                    "param": "key_grants",
+                    "value": null
+                },
+                {
+                    "message": "Invalid `key_grants value`. Supported values are: 'smtp/inject', 'sending_domains/manage', 'message_events/view', 'suppression_lists/manage'",
+                    "param": "key_grants",
+                    "value": null
+                },
+                {
+                    "message": "`key_valid_ips` must be an Array",
+                    "param": "key_valid_ips",
+                    "value": null
+                },
+                {
+                    "message": "`key_valid_ips` must have valid netmask values",
+                    "param": "key_valid_ips",
+                    "value": null
+                },
+                {
+                    "message": "ip_pool must be 20 characters or less",
+                    "param": "ip_pool",
+                    "value": "an_ip_pool_name_that_is_too_long"
+                },
+                {
+                    "message": "ip_pool must be alphanumeric and underscore",
+                    "param": "ip_pool",
+                    "value": "$invalid chars"
+                }
+            ]
         }
 
 ### Retrieve Subaccounts Summary [GET /subaccounts/summary]
@@ -204,9 +204,9 @@ Retrieve the total number of subaccounts for an account.
 + Response 200 (application/json)
 
         {
-          "results": {
-            "total": 46
-          }
+            "results": {
+                "total": 46
+            }
         }
 
 ### List specific subaccount [GET /subaccounts/{subaccount_id}]
@@ -221,26 +221,24 @@ Endpoint for retrieving information about a specific subaccount.
             Accept: application/json
 
 + Parameters
-
     + subaccount_id (required, integer, `123`) ... Identifier of subaccount
 
 + Response 200 (application/json)
 
-            {
-              "results": {
+        {
+            "results": {
                 "id": 123,
                 "name": "Joes Garage",
                 "status": "active",
                 "compliance_status": "active",
                 "ip_pool": "assigned_ip_pool"
-              }
             }
+        }
 
 ### Edit a subaccount [PUT /subaccounts/{subaccount_id}]
 Update an existing subaccount's information. You can update the listed fields associated with a subaccount.
 
 + Parameters
-
     + subaccount_id (required, integer, `123`) ... Identifier of subaccount
 
 + Attributes 
@@ -262,27 +260,27 @@ Update an existing subaccount's information. You can update the listed fields as
     + Body
 
             {
-              "name": "Hey Joe! Garage and Parts",
-              "status": "suspended",
-              "ip_pool": ""
+                "name": "Hey Joe! Garage and Parts",
+                "status": "suspended",
+                "ip_pool": ""
             }
 
 + Response 200 (application/json)
 
-            {
-              "results": {
+        {
+            "results": {
                 "message": "Successfully updated subaccount information"
-              }
             }
+        }
 
 + Response 400 (application/json)
 
         {
-          "errors": [
-            {
-              "message": "ip_pool must be 20 characters or less",
-              "param": "ip_pool",
-              "value": "an_ip_pool_name_that_is_too_long"
-            }
-          ]
+            "errors": [
+                {
+                    "message": "ip_pool must be 20 characters or less",
+                    "param": "ip_pool",
+                    "value": "an_ip_pool_name_that_is_too_long"
+                }
+            ]
         }

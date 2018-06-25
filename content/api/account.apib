@@ -85,13 +85,13 @@ This endpoint lets you retreive information regarding your SparkPost account and
 
 + Parameters
 
-  + include (optional, string, `usage`) ... Additional parts of account details to include. The only valid value is currently `usage`.
+    + include (optional, string, `usage`) ... Additional parts of account details to include. The only valid value is currently `usage`.
 
 
 + Response 200 (application/json)
 
         {
-            "results" : {
+            "results": {
                 "company_name": "Example Inc",
                 "country_code": "US",
                 "anniversary_date": "2017-01-11T08:00:00.000Z",
@@ -173,7 +173,7 @@ Update your SparkPost account information and account-level options.
             {
                 "company_name": "SparkPost",
                 "options": {
-                  "smtp_tracking_default": true
+                    "smtp_tracking_default": true
                 }
             }
 
@@ -200,9 +200,9 @@ Update your SparkPost account information and account-level options.
 + Response 500 (application/json)
 
         {
-            "errors" : [
+            "errors": [
                 {
-                    "message" : "Cannot update Account"
+                    "message": "Cannot update Account"
                 }
             ]
         }

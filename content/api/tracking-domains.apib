@@ -83,156 +83,156 @@ The detailed status of a tracking domain is described in a JSON object with the 
 
 + Request (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
-              "domain": "example.domain.com"
+                "domain": "example.domain.com"
             }
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": {
-                "domain": "example.domain.com"
-              }
+                "results": {
+                    "domain": "example.domain.com"
+                }
             }
 
 + Request (application/json)
 
-  + Body
+    + Body
 
             {
-              "domain": "example.domain.com",
-              "secure": true
+                "domain": "example.domain.com",
+                "secure": true
             }
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": {
-                "domain": "example.domain.com"
-              }
+                "results": {
+                    "domain": "example.domain.com"
+                }
             }
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors" : [
-                {
-                  "code" : "7000",
-                  "message" : "restricted domain",
-                  "description" : "Please contact SparkPost support to get this domain authorized for your account."
-                }
-              ]
+                "errors" : [
+                    {
+                        "code" : "7000",
+                        "message" : "restricted domain",
+                        "description" : "Please contact SparkPost support to get this domain authorized for your account."
+                    }
+                ]
             }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors" : [
-                {
-                  "code" : "1602",
-                  "message" : "resource conflict",
-                  "description" : "The tracking domain already exists."
-                }
-              ]
+                "errors" : [
+                    {
+                        "code" : "1602",
+                        "message" : "resource conflict",
+                        "description" : "The tracking domain already exists."
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Tracking domain 'example.domain.com' unverified."
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Tracking domain 'example.domain.com' unverified."
+                    }
+                ]
             }
 
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Error validating domain name syntax for domain: 'example..domain.com'"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Error validating domain name syntax for domain: 'example..domain.com'"
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Error domain name length too short for domain: 'ex'"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Error domain name length too short for domain: 'ex'"
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Error domain name contains no '.'(s) for domain: 'exampledomaincom'"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Error domain name contains no '.'(s) for domain: 'exampledomaincom'"
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Error domain name contains invalid characters or spaces for domain: 'example*&#.domain.com'"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Error domain name contains invalid characters or spaces for domain: 'example*&#.domain.com'"
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1400",
-                  "message": "required field is missing",
-                  "description": "field 'domain' is required"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1400",
+                        "message": "required field is missing",
+                        "description": "field 'domain' is required"
+                    }
+                ]
             }
 
 ### List All Tracking Domains [GET]
@@ -241,41 +241,41 @@ Returns an array with all tracking domains. Each item in the array is a full tra
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": [
-                {
-                  "port": 443,
-                  "domain": "example.domain.com",
-                  "secure": true,
-                  "default": true,
-                  "status": {
-                    "verified": false,
-                    "cname_status": "pending",
-                    "compliance_status": "pending"
-                  }
-                },
-                {
-                  "port": 80,
-                  "domain": "example2.domain.com",
-                  "secure": false,
-                  "default": false,
-                  "status": {
-                    "verified": true,
-                    "cname_status": "valid",
-                    "compliance_status": "valid"
-                  },
-                  "subaccount_id": 215
-                }
-              ]
+                "results": [
+                    {
+                        "port": 443,
+                        "domain": "example.domain.com",
+                        "secure": true,
+                        "default": true,
+                        "status": {
+                            "verified": false,
+                            "cname_status": "pending",
+                            "compliance_status": "pending"
+                        }
+                    },
+                    {
+                        "port": 80,
+                        "domain": "example2.domain.com",
+                        "secure": false,
+                        "default": false,
+                        "status": {
+                            "verified": true,
+                            "cname_status": "valid",
+                            "compliance_status": "valid"
+                        },
+                        "subaccount_id": 215
+                    }
+                ]
             }
 
 
@@ -286,45 +286,45 @@ Returns an array with all tracking domains. Each item in the array is a full tra
 Retrieve an existing tracking domain.
 
 + Parameters
-  + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`) ... domain name
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
             {
-              "results": {
-                "port": 443,
-                "domain": "example.domain.com",
-                "secure": true,
-                "default": true,
-                "status": {
-                  "verified": false,
-                  "cname_status": "pending",
-                  "compliance_status": "pending"
+                "results": {
+                    "port": 443,
+                    "domain": "example.domain.com",
+                    "secure": true,
+                    "default": true,
+                    "status": {
+                        "verified": false,
+                        "cname_status": "pending",
+                        "compliance_status": "pending"
+                    }
                 }
-              }
             }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1600",
-                  "message": "resource not found",
-                  "description": "Resource not found: example.domain.com"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Resource not found: example.domain.com"
+                    }
+                ]
             }
 
 
@@ -342,61 +342,57 @@ Setting a new default automatically unsets the current relevant default, if it e
 
 
 + Parameters
-  + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`) ... domain name
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```
-        {
-            "secure"  : true,
-            "default" : true
-        }
-        ```
+            {
+                "secure": true,
+                "default": true
+            }
 
 + Response 200
 
-  + Body
+    + Body
 
-        ```
-        {
-            "results": {
-              "domain": "example.domain.com"
+            {
+                "results": {
+                    "domain": "example.domain.com"
+                }
             }
-        }
-        ```
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1600",
-                  "message": "resource not found",
-                  "description": "Resource not found: example.domain.com"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Resource not found: example.domain.com"
+                    }
+                ]
             }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1300",
-                  "message": "invalid data format/type",
-                  "description": "Tracking domain 'example.domain.com' unverified."
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1300",
+                        "message": "invalid data format/type",
+                        "description": "Tracking domain 'example.domain.com' unverified."
+                    }
+                ]
             }
 
 
@@ -405,11 +401,11 @@ Setting a new default automatically unsets the current relevant default, if it e
 Delete an existing tracking domain.
 
 + Parameters
-  + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`) ... domain name
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
@@ -417,16 +413,16 @@ Delete an existing tracking domain.
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1600",
-                  "message": "resource not found",
-                  "description": "Resource not found: example.domain.com"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Resource not found: example.domain.com"
+                    }
+                ]
             }
 
 
@@ -436,7 +432,7 @@ Delete an existing tracking domain.
 Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
 
 + Parameters
-  + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`) ... domain name
 
 
 + Request
@@ -450,36 +446,36 @@ Initiate a check against the configured redirect for the specified tracking doma
 
         {
             "results": {
-              "verified": true,
-              "cname_status": "",
-              "compliance_status": "valid"
+                "verified": true,
+                "cname_status": "",
+                "compliance_status": "valid"
             }
         }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1600",
-                  "message": "resource not found",
-                  "description": "Resource not found: example.domain.com"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Resource not found: example.domain.com"
+                    }
+                ]
             }
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1404",
-                  "message": "request to remote endpoint failed",
-                  "description": "Unable to reach http://test.messagesystems.com:80. Please verify that your redirect is functioning."
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1404",
+                        "message": "request to remote endpoint failed",
+                        "description": "Unable to reach http://test.messagesystems.com:80. Please verify that your redirect is functioning."
+                    }
+                ]
             }

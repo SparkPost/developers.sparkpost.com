@@ -23,7 +23,7 @@ List descriptions of the event fields that could be included in a response from 
 
 + Request
 
-  + Headers
+    + Headers
 
             Accept: application/json
 
@@ -37,7 +37,7 @@ List descriptions of the event fields that could be included in a response from 
 List an example of the event data that will be included in a response from the Message Events search endpoint.
 
 + Parameters
-  + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
 
 + Request
 
@@ -53,7 +53,7 @@ List an example of the event data that will be included in a response from the M
 
 Perform a filtered search for message event data. The response is sorted by descending timestamp.
 
-<banner status="info"><strong>Hint!</strong> Use the <tt>delv_method</tt> key to differentiate between Email, Push, and SMS type events.</banner>
+<banner status="info"><strong>Hint!</strong> Use the <code>delv_method</code> key to differentiate between Email, Push, and SMS type events.</banner>
 
 + Parameters
     + bounce_classes (optional, number, `1`) ... delimited list of bounce classification codes to search. (See [Bounce Classification Codes.](https://support.sparkpost.com/customer/portal/articles/1929896))

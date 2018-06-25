@@ -32,7 +32,7 @@ Content for a template is described in a JSON object with the following fields:
 |html    |string  |HTML content for the email's `text/html` MIME part|At a minimum, html or text is required.  |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported. |
 |text    |string  |Text content for the email's `text/plain` MIME part|At a minimum, html or text is required. |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported.|
 |subject |string  |Email subject line   | yes |Expected in the UTF-8 charset without RFC2047 encoding.  Substitution syntax is supported. |
-|from |string or JSON  | Address `"from" : "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from" : { "name" : "My Company", "email" : "deals@company.com" }` used to compose the email's `From` header| yes | Substitution syntax is supported. |
+|from |string or JSON  | Address `"from": "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from": { "name": "My Company", "email": "deals@company.com" }` used to compose the email's `From` header| yes | Substitution syntax is supported. |
 |reply_to |string  |Email address used to compose the email's `Reply-To` header | no | Substitution syntax is supported. |
 |headers| JSON | JSON dictionary containing headers other than `Subject`, `From`, `To`, and `Reply-To`  | no | See the [Header Notes](#header-header-notes). |
 
@@ -120,143 +120,132 @@ Fully formed email_rfc822 content may be provided instead of the `text`, `html`,
 
     + Body
 
-        ```
-        {
-            "name" : "Summer Sale!",
-            "shared_with_subaccounts": false,
-
-            "content": {
-                "from": "marketing@bounces.company.example",
-                "subject": "Summer deals",
-                "html": "<b>Check out these deals!</b>"
+            {
+                "name": "Summer Sale!",
+                "shared_with_subaccounts": false,
+                "content": {
+                    "from": "marketing@bounces.company.example",
+                    "subject": "Summer deals",
+                    "html": "<b>Check out these deals!</b>"
+                }
             }
-        }
-        ```
 
 + Response 200 (application/json)
 
         {
-          "results": {
-            "id": "11806290401558530"
-          }
+            "results": {
+                "id": "11806290401558530"
+            }
         }
 
 + Response 400 (application/json)
 
         {
-          "errors" : [
-            {
-              "description" : "Unconfigured or unverified sending domain.",
-              "code" : "7001",
-              "message" : "Invalid domain"
-            }
-          ]
+            "errors": [
+                {
+                    "description": "Unconfigured or unverified sending domain.",
+                    "code": "7001",
+                    "message": "Invalid domain"
+                }
+            ]
         }
 
 + Response 400 (application/json)
 
         {
-          "errors" : [
-            {
-              "description" : "Subaccounts cannot set the shared_with_subaccounts flag",
-              "code" : "1200",
-              "message" : "invalid params"
-            }
-          ]
+            "errors": [
+                {
+                    "description": "Subaccounts cannot set the shared_with_subaccounts flag",
+                    "code": "1200",
+                    "message": "invalid params"
+                }
+            ]
         }
 
 + Response 422 (application/json)
 
         {
-          "errors" : [
-            {
-              "part" : "text",
-              "description" : "Error while compiling part text: line 4: syntax error near 'age'",
-              "line" : 4,
-              "code" : "3000",
-              "message" : "substitution language syntax error in template content"
-            }
-          ]
+            "errors": [
+                {
+                    "part": "text",
+                    "description": "Error while compiling part text: line 4: syntax error near 'age'",
+                    "line": 4,
+                    "code": "3000",
+                    "message": "substitution language syntax error in template content"
+                }
+            ]
         }
 
 + Request Create Parts (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```js
-        {
-          "id" : "summer_sale",
-          "name" : "Summer Sale!",
-          "published" : true,
-          "description": "Template for a Summer Sale!",
-          "shared_with_subaccounts": false,
-          "options": {
-            "open_tracking" : false,
-            "click_tracking" : true
-          },
-          "content": {
-            "from": {
-              "email": "marketing@bounces.company.example",
-              "name": "Example Company Marketing"
-            },
 
-            "subject": "Summer deals for {{name}}",
-            "reply_to": "Summer deals <summer_deals@company.example>",
-
-            "text": "Check out these deals {{name}}!",
-            "html": "<b>Check out these deals {{name}}!</b>",
-
-            "headers": {
-              "X-Customer-Campaign-ID": "Summer2014"
+            {
+                "id": "summer_sale",
+                "name": "Summer Sale!",
+                "published": true,
+                "description": "Template for a Summer Sale!",
+                "shared_with_subaccounts": false,
+                "options": {
+                    "open_tracking": false,
+                    "click_tracking": true
+                },
+                "content": {
+                    "from": {
+                      "email": "marketing@bounces.company.example",
+                      "name": "Example Company Marketing"
+                    },
+                    "subject": "Summer deals for {{name}}",
+                    "reply_to": "Summer deals <summer_deals@company.example>",
+                    "text": "Check out these deals {{name}}!",
+                    "html": "<b>Check out these deals {{name}}!</b>",
+                    "headers": {
+                      "X-Customer-Campaign-ID": "Summer2014"
+                    }
+                }
             }
-          }
-        }
-        ```
 
 + Response 200 (application/json)
 
         {
-          "results": {
-            "id": "summer_sale"
-          }
+            "results": {
+                "id": "summer_sale"
+            }
         }
 
 
 + Request Create RFC822 (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```js
-        {
-          "id" : "another_summer_sale",
-          "name" : "Summer Sale!",
-          "published" : true,
-
-          "options": {
-            "open_tracking" : false,
-            "click_tracking" : true
-          },
-
-          "content": {
-            "email_rfc822" : "Content-Type: text/plain\nFrom: Example Company Marketing <marketing@bounces.company.example>\nReply-To:Summer deals <summer_deals@company.example>\nX-Customer-Campaign-ID: Summer2014\nSubject: Summer deals for {{name}}\n\nCheck out these deals {{name}}!"
-          }
-        }
-        ```
+            {
+                "id": "another_summer_sale",
+                "name": "Summer Sale!",
+                "published": true,
+                "options": {
+                    "open_tracking": false,
+                    "click_tracking": true
+                },
+                "content": {
+                    "email_rfc822": "Content-Type: text/plain\nFrom: Example Company Marketing <marketing@bounces.company.example>\nReply-To:Summer deals <summer_deals@company.example>\nX-Customer-Campaign-ID: Summer2014\nSubject: Summer deals for {{name}}\n\nCheck out these deals {{name}}!"
+                }
+            }
 
 + Response 200 (application/json)
 
         {
-          "results": {
-            "id": "another_summer_sale"
-          }
+            "results": {
+                "id": "another_summer_sale"
+            }
         }
 
 ### List all Templates [GET /templates]
@@ -285,29 +274,28 @@ Additional, templates owned by the Master subaccount will have the following fie
 + Response 200 (application/json)
 
         {
-          "results" : [
-            {
-              "id" : "summer_sale",
-              "name" : "Summer Sale!",
-              "published" : true,
-              "description" : "",
-              "has_draft": true,
-              "has_published": true,
-              "last_update_time": "2017-08-11T12:12:12+00:00",
-              "shared_with_subaccount" : true
-            },
-            {
-              "id" : "daily",
-              "name" : "daily",
-              "published" : false,
-              "description" : "",
-              "has_draft": true,
-              "has_published": true,
-              "last_update_time": "2017-08-10T14:15:16+00:00",
-              "shared_with_subaccount" : false
-
-            }
-          ]
+            "results": [
+                {
+                    "id": "summer_sale",
+                    "name": "Summer Sale!",
+                    "published": true,
+                    "description": "",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_update_time": "2017-08-11T12:12:12+00:00",
+                    "shared_with_subaccount": true
+                },
+                {
+                    "id": "daily",
+                    "name": "daily",
+                    "published": false,
+                    "description": "",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_update_time": "2017-08-10T14:15:16+00:00",
+                    "shared_with_subaccount": false
+                }
+            ]
         }
 
 ### List Templates selectively [GET /templates{?draft,shared_with_subaccounts}]
@@ -338,28 +326,28 @@ Additional, templates owned by the Master subaccount will have the following fie
 + Response 200 (application/json)
 
         {
-          "results" : [
-            {
-              "id" : "fall_sale",
-              "name" : "Fall Sale!",
-              "published" : false,
-              "description" : "",
-              "has_draft": true,
-              "has_published": true,
-              "last_update_time": "2017-08-10T14:15:16+00:00",
-              "shared_with_subaccount" : true
-            },
-            {
-              "id" : "weekly",
-              "name" : "weekly",
-              "published" : false,
-              "description" : "",
-              "has_draft": true,
-              "has_published": true,
-              "last_update_time": "2017-08-08T16:15:26+00:00",
-              "shared_with_subaccount" : true
-            }
-          ]
+            "results": [
+                {
+                    "id": "fall_sale",
+                    "name": "Fall Sale!",
+                    "published": false,
+                    "description": "",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_update_time": "2017-08-10T14:15:16+00:00",
+                    "shared_with_subaccount": true
+                },
+                {
+                    "id": "weekly",
+                    "name": "weekly",
+                    "published": false,
+                    "description": "",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_update_time": "2017-08-08T16:15:26+00:00",
+                    "shared_with_subaccount": true
+                }
+            ]
         }
 
 ## Retrieve [/templates/{id}{?draft}]
@@ -391,40 +379,35 @@ For a master account owned template **only**, the results will include the `shar
 + Response 200 (application/json)
 
         {
-          "results" : {
-            "id" : "summer_sale",
-            "name" : "Summer Sale!",
-            "description" : "",
-            "has_draft": true,
-            "has_published": true,
-            "published" : false,
-            "shared_with_subaccounts" : false,
-            "last_update_time": "2014-05-22T15:12:59+00:00",
-            "last_use": "2014-06-02T08:15:30+00:00",
-
-            "options": {
-              "open_tracking" : false,
-              "click_tracking" : true,
-              "transactional" : false
-            },
-
-            "content": {
-              "from": {
-                "email": "marketing@bounces.company.example",
-                "name": "Example Company Marketing"
-              },
-
-              "subject": "Summer deals for {{name}}",
-              "reply_to": "Summer deals <summer_deals@company.example>",
-
-              "text": "Check out these deals {{name}}!",
-              "html": "<b>Check out these deals {{name}}!</b>",
-
-              "headers": {
-                "X-Customer-Campaign-ID": "Summer2014"
-              }
+            "results": {
+                "id": "summer_sale",
+                "name": "Summer Sale!",
+                "description": "",
+                "has_draft": true,
+                "has_published": true,
+                "published": false,
+                "shared_with_subaccounts": false,
+                "last_update_time": "2014-05-22T15:12:59+00:00",
+                "last_use": "2014-06-02T08:15:30+00:00",
+                "options": {
+                    "open_tracking": false,
+                    "click_tracking": true,
+                    "transactional": false
+                },
+                "content": {
+                    "from": {
+                        "email": "marketing@bounces.company.example",
+                        "name": "Example Company Marketing"
+                    },
+                    "subject": "Summer deals for {{name}}",
+                    "reply_to": "Summer deals <summer_deals@company.example>",
+                    "text": "Check out these deals {{name}}!",
+                    "html": "<b>Check out these deals {{name}}!</b>",
+                    "headers": {
+                        "X-Customer-Campaign-ID": "Summer2014"
+                    }
+                }
             }
-          }
         }
 
 ## Update [/templates/{id}{?update_published}]
@@ -463,25 +446,23 @@ The body of the PUT request should contain the `"published": true` field as show
 
     + Body
 
-        ```
-        {
-          "options" : {
-            "open_tracking": true
-          },
-          "name" : "A new name!",
-          "shared_with_subaccounts": true,
-          "content": {
-            "from": {
-              "email": "marketing@bounces.company.example",
-              "name": "Example Company Marketing"
-            },
-            "subject": "Updated Summer deals for {{name}}",
-            "reply_to": "Summer deals <summer_deals@company.example>",
-            "text": "Updated: Check out these deals {{name}}!",
-            "html": "<b>Updated: Check out these deals {{name}}!</b>"
-          }
-        }
-        ```
+            {
+                "options": {
+                    "open_tracking": true
+                },
+                "name": "A new name!",
+                "shared_with_subaccounts": true,
+                "content": {
+                    "from": {
+                        "email": "marketing@bounces.company.example",
+                        "name": "Example Company Marketing"
+                    },
+                    "subject": "Updated Summer deals for {{name}}",
+                    "reply_to": "Summer deals <summer_deals@company.example>",
+                    "text": "Updated: Check out these deals {{name}}!",
+                    "html": "<b>Updated: Check out these deals {{name}}!</b>"
+                }
+            }
 
 + Response 200
 
@@ -490,17 +471,15 @@ The body of the PUT request should contain the `"published": true` field as show
 
   When publishing a draft template, `update_published` should be omitted, or specified as `false`.
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```js
         {
-          "published": true
+            "published": true
         }
-        ```
 
 + Response 200
 
@@ -529,20 +508,18 @@ See the [Substitutions Reference section](/api/substitutions-reference/) for mor
 
     + Body
 
-        ```
-        {
-          "substitution_data" : {
-            "name" : "Natalie",
-            "age" : 35,
-            "member" : true
-          }
-        }
-        ```
+            {
+                "substitution_data": {
+                    "name": "Natalie",
+                    "age": 35,
+                    "member": true
+                }
+            }
 
 + Response 200 (application/json)
 
         {
-            "results" : {
+            "results": {
                 "from": {
                     "email": "marketing@bounces.company.example",
                     "name": "Example Company Marketing"
@@ -577,37 +554,28 @@ If the template delete API call succeeds, then ALL versions of the template will
 
 + Response 200 (application/json)
 
-        {
-        }
+        {}
 
 + Response 404 (application/json)
 
-    + Body
-
-        ```
         {
-        "errors": [
-          {
-            "message": "resource not found",
-            "code": "1600",
-            "description": "Template does not exist"
-          }
-        ]
+            "errors": [
+                {
+                    "message": "resource not found",
+                    "code": "1600",
+                    "description": "Template does not exist"
+                }
+            ]
         }
-        ```
 
 + Response 409 (application/json)
 
-    + Body
-
-        ```
         {
-        "errors": [
-          {
-            "message": "resource conflict",
-            "code": "1602",
-            "description": "Template is in use by msg generation"
-          }
-        ]
+            "errors": [
+                {
+                    "message": "resource conflict",
+                    "code": "1602",
+                    "description": "Template is in use by msg generation"
+                }
+            ]
         }
-        ```

@@ -111,7 +111,7 @@ in the results body.  Use the **num_rcpt_errors** parameter to limit the number 
 returned.
 
 + Parameters
-  + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
+    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
 
 + Request (application/json)
 
@@ -120,167 +120,7 @@ returned.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
-        {
-          "id": "unique_id_4_graduate_students_list",
-          "name": "graduate_students",
-          "description": "An email list of graduate students at UMBC",
-          "attributes": {
-              "internal_id": 112,
-              "list_group_id": 12321
-          },
-          "recipients": [
-              {
-                  "address": {
-                      "email": "wilmaflin@yahoo.com",
-                      "name": "Wilma"
-                  },
-                  "tags": [
-                      "greeting",
-                      "prehistoric",
-                      "fred",
-                      "flintstone"
-                  ],
-                  "metadata": {
-                      "age": "24",
-                      "place": "Bedrock"
-                  },
-                  "substitution_data": {
-                      "favorite_color": "SparkPost Orange",
-                      "job": "Software Engineer"
-                  }
-              },
-              {
-                  "address": {
-                      "email": "abc@flintstone.com",
-                      "name": "ABC"
-                  },
-                  "tags": [
-                      "driver",
-                      "flintstone"
-                  ],
-                  "metadata": {
-                      "age": "52",
-                      "place": "MD"
-                  },
-                  "substitution_data": {
-                      "favorite_color": "Sky Blue",
-                      "job": "Driver"
-                  }
-              },
-              {
-                  "address": {
-                      "email": "fred.jones@flintstone.com",
-                      "name": "Grad Student Office",
-                      "header_to": "grad-student-office@flintstone.com"
-                  },
-                  "tags": [
-                      "driver",
-                      "fred",
-                      "flintstone"
-                  ],
-                  "metadata": {
-                      "age": "33",
-                      "place": "NY"
-                  },
-                  "substitution_data": {
-                      "favorite_color": "Bright Green",
-                      "job": "Firefighter"
-                  }
-              }
-          ]
-        }
-        ```
-
-+ Response 200 (application/json)
-
-  + Body
-
-        ```
-        {
-        "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 3,
-            "id": "unique_id_4_graduate_students_list",
-            "name": "graduate_students"
-        }
-        }
-        ```
-
-+ Response 400 (application/json)
-
-  + Body
-
-        ```
-        {
-          "errors": [
             {
-              "message": "At least one valid recipient is required",
-              "code": "5002"
-            }
-          ]
-        }
-        ```
-
-+ Response 400 (application/json)
-
-  + Body
-
-        ```
-        {
-          "errors": [
-            {
-              "message": "List already exists",
-              "code": "5001",
-              "description": "List 'unique_id_4_graduate_students_list' already exists"
-            }
-          ]
-        }
-        ```
-
-+ Response 422 (application/json)
-
-  + Body
-
-        ```
-        {
-          "errors": [
-            {
-              "message": "invalid data format/type",
-              "code": "1300",
-              "description": "List id 'rcptlist_id_students_list' cannot start with 'rcptlist_'"
-            }
-          ]
-        }
-        ```
-
-
-## Retrieve [/recipient-lists/{id}{?show_recipients}]
-
-### Retrieve a Recipient List [GET]
-
-Retrieve details about a specified recipient list by specifying its id in the URI path.  To
-retrieve the recipients contained in a list, the list must be specified and the `show_recipients` parameter must be set to true.
-
-+ Parameters
-    + id (required, string, `unique_id_4_graduate_students`) ... Identifier of the recipient list
-    + show_recipients (optional, boolean, `true`) ... If set to true, return attributes for all recipients.
-                                              If not specified, return only recipient list attributes.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    + Body
-
-        ```
-        {
-            "results": {
                 "id": "unique_id_4_graduate_students_list",
                 "name": "graduate_students",
                 "description": "An email list of graduate students at UMBC",
@@ -288,7 +128,6 @@ retrieve the recipients contained in a list, the list must be specified and the 
                     "internal_id": 112,
                     "list_group_id": 12321
                 },
-                "total_accepted_recipients": 3,
                 "recipients": [
                     {
                         "address": {
@@ -350,24 +189,171 @@ retrieve the recipients contained in a list, the list must be specified and the 
                     }
                 ]
             }
-        }
-        ```
 
-+ Response 404 (application/json)
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "total_rejected_recipients": 0,
+                    "total_accepted_recipients": 3,
+                    "id": "unique_id_4_graduate_students_list",
+                    "name": "graduate_students"
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "At least one valid recipient is required",
+                        "code": "5002"
+                    }
+                ]
+            }
+
++ Response 400 (application/json)
 
   + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "resource not found",
-                "code": "1600",
-                "description": "List 'unique_id_4_graduate_students_list' does not exist"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "List already exists",
+                        "code": "5001",
+                        "description": "List 'unique_id_4_graduate_students_list' already exists"
+                    }
+                ]
+            }
+
++ Response 422 (application/json)
+
+  + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "invalid data format/type",
+                        "code": "1300",
+                        "description": "List id 'rcptlist_id_students_list' cannot start with 'rcptlist_'"
+                    }
+                ]
+            }
+
+
+## Retrieve [/recipient-lists/{id}{?show_recipients}]
+
+### Retrieve a Recipient List [GET]
+
+Retrieve details about a specified recipient list by specifying its id in the URI path.  To
+retrieve the recipients contained in a list, the list must be specified and the `show_recipients` parameter must be set to true.
+
++ Parameters
+    + id (required, string, `unique_id_4_graduate_students`) ... Identifier of the recipient list
+    + show_recipients (optional, boolean, `true`) ... If set to true, return attributes for all recipients.
+                                              If not specified, return only recipient list attributes.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "id": "unique_id_4_graduate_students_list",
+                    "name": "graduate_students",
+                    "description": "An email list of graduate students at UMBC",
+                    "attributes": {
+                        "internal_id": 112,
+                        "list_group_id": 12321
+                    },
+                    "total_accepted_recipients": 3,
+                    "recipients": [
+                        {
+                            "address": {
+                                "email": "wilmaflin@yahoo.com",
+                                "name": "Wilma"
+                            },
+                            "tags": [
+                                "greeting",
+                                "prehistoric",
+                                "fred",
+                                "flintstone"
+                            ],
+                            "metadata": {
+                                "age": "24",
+                                "place": "Bedrock"
+                            },
+                            "substitution_data": {
+                                "favorite_color": "SparkPost Orange",
+                                "job": "Software Engineer"
+                            }
+                        },
+                        {
+                            "address": {
+                                "email": "abc@flintstone.com",
+                                "name": "ABC"
+                            },
+                            "tags": [
+                                "driver",
+                                "flintstone"
+                            ],
+                            "metadata": {
+                                "age": "52",
+                                "place": "MD"
+                            },
+                            "substitution_data": {
+                                "favorite_color": "Sky Blue",
+                                "job": "Driver"
+                            }
+                        },
+                        {
+                            "address": {
+                                "email": "fred.jones@flintstone.com",
+                                "name": "Grad Student Office",
+                                "header_to": "grad-student-office@flintstone.com"
+                            },
+                            "tags": [
+                                "driver",
+                                "fred",
+                                "flintstone"
+                            ],
+                            "metadata": {
+                                "age": "33",
+                                "place": "NY"
+                            },
+                            "substitution_data": {
+                                "favorite_color": "Bright Green",
+                                "job": "Firefighter"
+                            }
+                        }
+                    ]
+                }
+            }
+
++ Response 404 (application/json)
+
+    + Body
+        
+            {
+                "errors": [
+                    {
+                        "message": "resource not found",
+                        "code": "1600",
+                        "description": "List 'unique_id_4_graduate_students_list' does not exist"
+                    }
+                ]
+            }
 
 ## List [/recipient-lists]
 
@@ -387,32 +373,30 @@ results.  To retrieve recipient details, use the [Retrieve a Recipient List](/ap
 
     + Body
 
-        ```
-        {
-        "results": [
             {
-                "id": "unique_id_4_graduate_students_list",
-                "name": "graduate_students",
-                "description": "An email list of graduate students at UMBC",
-                "attributes": {
-                    "internal_id": 112,
-                    "list_group_id": 12321
-                },
-                "total_accepted_recipients": 3
-            },
-            {
-                "id": "unique_id_4_undergraduates",
-                "name": "undergraduate_students",
-                "description": "An email list of undergraduate students at UMBC",
-                "attributes": {
-                    "internal_id": 111,
-                    "list_group_id": 11321
-                },
-                "total_accepted_recipients": 8
+                "results": [
+                    {
+                        "id": "unique_id_4_graduate_students_list",
+                        "name": "graduate_students",
+                        "description": "An email list of graduate students at UMBC",
+                        "attributes": {
+                            "internal_id": 112,
+                            "list_group_id": 12321
+                        },
+                        "total_accepted_recipients": 3
+                    },
+                    {
+                        "id": "unique_id_4_undergraduates",
+                        "name": "undergraduate_students",
+                        "description": "An email list of undergraduate students at UMBC",
+                        "attributes": {
+                            "internal_id": 111,
+                            "list_group_id": 11321
+                        },
+                        "total_accepted_recipients": 8
+                    }
+                ]
             }
-        ]
-        }
-        ```
 
 ## Update [/recipient-lists/{id}{?num_rcpt_errors}]
 
@@ -442,177 +426,162 @@ number of rejected recipients will only be returned if a `recipients` array is p
 `attributes` object for the recipient list.
 
 + Parameters
-  + id (required, string, `unique_id_4_graduate_students_list`) ... Identifier of the recipient list
-  + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
+    + id (required, string, `unique_id_4_graduate_students_list`) ... Identifier of the recipient list
+    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
 
 + Request (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
-        ```
-          {
-              "name": "updated_graduate_students",
-              "description": "An email list of graduate students at UMBC",
-              "attributes": {
-                  "internal_id": 112,
-                  "list_group_id": 12321
-              },
-              "recipients": [
-                  {
-                      "address": {
-                          "email": "wilmaflin@yahoo.com",
-                          "name": "Wilma"
-                      },
-                      "tags": [
-                          "greeting",
-                          "prehistoric",
-                          "fred",
-                          "flintstone"
-                      ],
-                      "metadata": {
-                          "age": "24",
-                          "place": "Bedrock"
-                      },
-                      "substitution_data": {
-                          "favorite_color": "SparkPost Orange",
-                          "job": "Software Engineer"
-                      }
-                  },
-                  {
-                      "address": {
-                          "email": "abc@flintstone.com",
-                          "name": "ABC"
-                      },
-                      "tags": [
-                          "driver",
-                          "flintstone"
-                      ],
-                      "metadata": {
-                          "age": "52",
-                          "place": "MD"
-                      },
-                      "substitution_data": {
-                          "favorite_color": "Sky Blue",
-                          "job": "Driver"
-                      }
-                  }
-              ]
-          }
-        ```
+            {
+                "name": "updated_graduate_students",
+                "description": "An email list of graduate students at UMBC",
+                "attributes": {
+                    "internal_id": 112,
+                    "list_group_id": 12321
+                },
+                  "recipients": [
+                    {
+                        "address": {
+                            "email": "wilmaflin@yahoo.com",
+                            "name": "Wilma"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "favorite_color": "SparkPost Orange",
+                            "job": "Software Engineer"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "abc@flintstone.com",
+                            "name": "ABC"
+                        },
+                        "tags": [
+                            "driver",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "52",
+                            "place": "MD"
+                        },
+                        "substitution_data": {
+                            "favorite_color": "Sky Blue",
+                            "job": "Driver"
+                        }
+                    }
+                ]
+            }
 
 + Response 200 (application/json)
 
-  + Body
+    + Body
 
-        ```
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 2,
-                "id": "unique_id_4_graduate_students_list",
-                "name": "updated_graduate_students"
+            {
+                "results": {
+                    "total_rejected_recipients": 0,
+                    "total_accepted_recipients": 2,
+                    "id": "unique_id_4_graduate_students_list",
+                    "name": "updated_graduate_students"
+                }
             }
-        }
-        ```
+
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "invalid uri",
-                "code": "1101",
-                "description": "PUT requires a recipient list id in the URI"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "invalid uri",
+                        "code": "1101",
+                        "description": "PUT requires a recipient list id in the URI"
+                    }
+                ]
+            }
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "At least one valid recipient is required",
-                "code": "5002"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "At least one valid recipient is required",
+                        "code": "5002"
+                    }
+                ]
+            }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "resource not found",
-                "code": "1600",
-                "description": "List 'unique_id_4_graduate_students_list' does not exist"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "resource not found",
+                        "code": "1600",
+                        "description": "List 'unique_id_4_graduate_students_list' does not exist"
+                    }
+                ]
+            }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "resource conflict",
-                "code": "1602",
-                "description": "List 'unique_id_4_graduate_students_list' is in use by msg generation"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "resource conflict",
+                        "code": "1602",
+                        "description": "List 'unique_id_4_graduate_students_list' is in use by msg generation"
+                    }
+                ]
+            }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "resource conflict",
-                "code": "1602",
-                "description": "List 'unique_id_4_graduate_students_list' is in use by another request"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "resource conflict",
+                        "code": "1602",
+                        "description": "List 'unique_id_4_graduate_students_list' is in use by another request"
+                    }
+                ]
+            }
 
 + Response 422 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "invalid data format/type",
-                "code": "1300",
-                "description": "List id 'unique_id_4_graduate_students_list' does not match the list being updated"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "invalid data format/type",
+                        "code": "1300",
+                        "description": "List id 'unique_id_4_graduate_students_list' does not match the list being updated"
+                    }
+                ]
+            }
 
 
 ## Delete [/recipient-lists/{id}]
@@ -632,59 +601,52 @@ list is needed again, the list must be resubmitted with the CREATE API.
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Response 200 (application/json)
 
-            {
-            }
+        {}
 
 + Response 400 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "invalid uri",
-                "code": "1101",
-                "description": "DELETE requires a recipient list id in the URI"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "invalid uri",
+                        "code": "1101",
+                        "description": "DELETE requires a recipient list id in the URI"
+                    }
+                ]
+            }
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
-            "errors": [
-              {
-                "message": "resource not found",
-                "code": "1600",
-                "description": "List 'unique_id_4_graduate_students_list' does not exist"
-              }
-            ]
-          }
-        ```
+            {
+                "errors": [
+                    {
+                        "message": "resource not found",
+                        "code": "1600",
+                        "description": "List 'unique_id_4_graduate_students_list' does not exist"
+                    }
+                ]
+            }
 
 + Response 409 (application/json)
 
-  + Body
+    + Body
 
-        ```
-          {
+        {
             "errors": [
-              {
-                "message": "resource conflict",
-                "code": "1602",
-                "description": "List 'unique_id_4_graduate_students_list' is in use by msg generation"
-              }
+                {
+                    "message": "resource conflict",
+                    "code": "1602",
+                    "description": "List 'unique_id_4_graduate_students_list' is in use by msg generation"
+                }
             ]
-          }
-        ```
+        }

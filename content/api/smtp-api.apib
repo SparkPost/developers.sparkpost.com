@@ -1,8 +1,9 @@
 FORMAT: 1A
 title: SMTP API
 description: Use the X-MSYS-API header to customize options for messages sent via SMTP.
+full: true
 
-# Group SMTP API
+# SMTP API
 
 The SparkPost SMTP API offers an SMTP relay service with extended features available through the `X-MSYS-API` custom header.
 
@@ -26,13 +27,14 @@ To use SparkPost as an SMTP relay you need to point your SMTP client or local MT
 ## SMTP Security
 
 <banner status="danger"><strong>Note</strong>: Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</banner>
+
 SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.
 
 If TLS is not supported by your application, SparkPost recommends using API keys with _only_ the `Send via SMTP` privilege enabled.
 It is also good practice to regularly cycle your API keys to limit exposure of keys sent in the clear.
 API keys should be treated like passwords. As stated in our <a href="https://www.sparkpost.com/policies/tou/">Terms of Use</a>,
 you "are solely responsible for all use of [your account]."
-That includes use of your account with API key compromised on an unsecured connection.</div>
+That includes use of your account with API key compromised on an unsecured connection.
 
 ## Subaccounts
 
@@ -123,7 +125,7 @@ To enable click and open tracking in SMTP messages, add the X-MSYS-API header as
 X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true } }
 ```
 
-<banner status="info"><strong>SparkPost customers:</strong> the <tt>open_tracking</tt> and <tt>click_tracking</tt> variables may also be set account-wide in your <a href="https://app.sparkpost.com/account/smtp">SMTP relay account settings</a> (<a href="https://app.eu.sparkpost.com/account/smtp">EU</a>).</banner>
+<banner status="info"><strong>SparkPost customers:</strong> the <code>open_tracking</code> and <code>click_tracking</code> variables may also be set account-wide in your <a href="https://app.sparkpost.com/account/smtp">SMTP relay account settings</a> (<a href="https://app.eu.sparkpost.com/account/smtp">EU</a>).</banner>
 
 ## The Sandbox Domain
 
@@ -198,7 +200,7 @@ X-MSYS-API: {"options" : {"open_tracking" : false, "click_tracking" : true},
    "dog"], "campaign_id" : "my_campaign"}
 ```
 
-<banner status="warning">When the <tt>X-MSYS-API</tt> header is unfolded on the receiving system, as per <a href="http://www.rfcreader.com/#rfc2822_line324">RFC2822</a>, a single space will be added between each line of the header.</banner>
+<banner status="warning">When the <code>X-MSYS-API</code> header is unfolded on the receiving system, as per <a href="http://www.rfcreader.com/#rfc2822_line324">RFC2822</a>, a single space will be added between each line of the header.</banner>
 
 The following example shows how the JSON object in an `X-MSYS-API` header can be corrupted as a result of folding and unfolding:
 

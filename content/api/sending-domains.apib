@@ -92,10 +92,9 @@ Create a sending domain by providing a **sending domain object** as the POST req
 
 We allow any given domain (including its subdomains) to only be used by a single customer account.  Please see our [support article](https://support.sparkpost.com/customer/en/portal/articles/1933318-creating-sending-domains) for additional reasons a domain might not be approved for sending.
 
-To use a DKIM Signing Domain Identifier different to the Sending Domain, set the <tt>dkim.signing_domain</tt> field.
+To use a DKIM Signing Domain Identifier different to the Sending Domain, set the <code>dkim.signing_domain</code> field.
 
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts: In some configurations, Sending Domains will be verified automatically when they are created, and can be used to send messages immediately. In that case, there is no need separately verify Sending Domains. To find out if this applies to your SparkPost Enterprise service, please ask your TAM or contact Support through the banner.
-</div>
+<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts: In some configurations, Sending Domains will be verified automatically when they are created, and can be used to send messages immediately. In that case, there is no need separately verify Sending Domains. To find out if this applies to your SparkPost Enterprise service, please ask your TAM or contact Support through the app.</banner>
 
 + Request Create New Sending Domain with Auto-Generated DKIM Keypair (application/json)
 
@@ -110,7 +109,6 @@ To use a DKIM Signing Domain Identifier different to the Sending Domain, set the
                "tracking_domain": "click.example1.com",
                "generate_dkim": true,
                "shared_with_subaccounts": false
-
            }
 
 + Response 200 (application/json)
@@ -120,10 +118,10 @@ To use a DKIM Signing Domain Identifier different to the Sending Domain, set the
             "message": "Successfully Created domain.",
             "domain": "example1.com",
             "dkim": {
-              "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-              "selector": "scph0316",
-              "signing_domain": "example1.com",
-              "headers": "from:to:subject:date"
+                "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+                "selector": "scph0316",
+                "signing_domain": "example1.com",
+                "headers": "from:to:subject:date"
             }
           }
         }
@@ -144,10 +142,10 @@ To use a DKIM Signing Domain Identifier different to the Sending Domain, set the
 + Response 200 (application/json)
 
         {
-          "results": {
-            "message": "Successfully Created domain.",
-            "domain": "example1.com"
-          }
+            "results": {
+                "message": "Successfully Created domain.",
+                "domain": "example1.com"
+            }
         }
 
 + Request Provide Pre-Generated DKIM Keypair (application/json)
@@ -158,54 +156,55 @@ To use a DKIM Signing Domain Identifier different to the Sending Domain, set the
 
     + Body
 
-          {
-              "domain": "example1.com",
-              "tracking_domain": "click.example1.com",
-              "dkim": {  "private": "MIICXgIBAAKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQABAoGBAITb3BCRPBi5lGhHdn+1RgC7cjUQEbSb4eFHm+ULRwQ0UIPWHwiVWtptZ09usHq989fKp1g/PfcNzm8c78uTS6gCxfECweFCRK6EdO6cCCr1cfWvmBdSjzYhODUdQeyWZi2ozqd0FhGWoV4VHseh4iLj36DzleTLtOZj3FhAo1WJAkEA68T+KkGeDyWwvttYtuSiQCCTrXYAWTQnkIUxduCp7Ap6tVeIDn3TaXTj74UbEgaNgLhjG4bX//fdeDW6PaK9YwJBAM6xJmwHLPMgwNVjiz3u/6fhY3kaZTWcxtMkXCjh1QE82KzDwqyrCg7EFjTtFysSHCAZxXZMcivGl4TZLHnydJUCQQCx16+M+mAatuiCnvxlQUMuMiSTNK6Amzm45u9v53nlZeY3weYMYFdHdfe1pebMiwrT7MI9clKebz6svYJVmdtXAkApDAc8VuR3WB7TgdRKNWdyGJGfoD1PO1ZE4iinOcoKV+IT1UCY99Kkgg6C7j62n/8T5OpRBvd5eBPpHxP1F9BNAkEA5Nf2VO9lcTetksHdIeKK+F7sio6UZn0Rv7iUo3ALrN1D1cGfWIh2dj3ko1iSreyNVSwGW0ePP27qDmU+u6/Y1g==",
-                  "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-                  "selector": "scph0316",
-                  "headers": "from:to:subject:date"
-              }
-          }
+            {
+                "domain": "example1.com",
+                "tracking_domain": "click.example1.com",
+                "dkim": { 
+                    "private": "MIICXgIBAAKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQABAoGBAITb3BCRPBi5lGhHdn+1RgC7cjUQEbSb4eFHm+ULRwQ0UIPWHwiVWtptZ09usHq989fKp1g/PfcNzm8c78uTS6gCxfECweFCRK6EdO6cCCr1cfWvmBdSjzYhODUdQeyWZi2ozqd0FhGWoV4VHseh4iLj36DzleTLtOZj3FhAo1WJAkEA68T+KkGeDyWwvttYtuSiQCCTrXYAWTQnkIUxduCp7Ap6tVeIDn3TaXTj74UbEgaNgLhjG4bX//fdeDW6PaK9YwJBAM6xJmwHLPMgwNVjiz3u/6fhY3kaZTWcxtMkXCjh1QE82KzDwqyrCg7EFjTtFysSHCAZxXZMcivGl4TZLHnydJUCQQCx16+M+mAatuiCnvxlQUMuMiSTNK6Amzm45u9v53nlZeY3weYMYFdHdfe1pebMiwrT7MI9clKebz6svYJVmdtXAkApDAc8VuR3WB7TgdRKNWdyGJGfoD1PO1ZE4iinOcoKV+IT1UCY99Kkgg6C7j62n/8T5OpRBvd5eBPpHxP1F9BNAkEA5Nf2VO9lcTetksHdIeKK+F7sio6UZn0Rv7iUo3ALrN1D1cGfWIh2dj3ko1iSreyNVSwGW0ePP27qDmU+u6/Y1g==",
+                    "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+                    "selector": "scph0316",
+                    "headers": "from:to:subject:date"
+                }
+            }
 
 + Response 200 (application/json)
 
         {
-          "results": {
-            "message": "Successfully Created domain.",
-            "domain": "example1.com",
-            "dkim": {
-              "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
-              "selector": "scph0316",
-              "signing_domain": "example1.com",
-              "headers": "from:to:subject:date"
+            "results": {
+                "message": "Successfully Created domain.",
+                "domain": "example1.com",
+                "dkim": {
+                    "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
+                    "selector": "scph0316",
+                    "signing_domain": "example1.com",
+                    "headers": "from:to:subject:date"
+                }
             }
-          }
         }
 
 + Response 400 (application/json)
 
-           {
-             "errors": [
-               {
-                 "message": "invalid params",
-                 "description": "Tracking domain 'click.example1.com' is not a registered tracking domain",
-                 "code": "1200"
-               }
-             ]
-           }
+        {
+            "errors": [
+                {
+                    "message": "invalid params",
+                    "description": "Tracking domain 'click.example1.com' is not a registered tracking domain",
+                    "code": "1200"
+                }
+            ]
+        }
 
 + Response 422 (application/json)
 
-           {
-             "errors": [
-               {
-                 "message": "invalid data format/type",
-                 "description": "Error validating domain name syntax for domain: '(domain)'",
-                 "code": "1300"
-               }
-             ]
-           }
+        {
+            "errors": [
+                {
+                    "message": "invalid data format/type",
+                    "description": "Error validating domain name syntax for domain: '(domain)'",
+                    "code": "1300"
+                }
+            ]
+        }
 
 ## List [/sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}]
 
@@ -250,7 +249,7 @@ List an overview of all sending domains in the system.  By default, all domains 
                         "verification_mailbox": "susan.calvin"
                     },
                     "shared_with_subaccounts": false,
-                    "is_default_bounce_domain" : false
+                    "is_default_bounce_domain": false
                 },
                 {
                     "domain": "example2.com",
@@ -266,7 +265,7 @@ List an overview of all sending domains in the system.  By default, all domains 
                         "verification_mailbox_status": "unverified"
                     },
                     "shared_with_subaccounts": false,
-                    "is_default_bounce_domain" : false
+                    "is_default_bounce_domain": false
                 }
             ]
         }
@@ -278,7 +277,7 @@ List an overview of all sending domains in the system.  By default, all domains 
 Retrieve a sending domain by specifying its domain name in the URI path.  The response includes details about its DKIM key configuration.
 
 + Parameters
-  + domain (required, string, `example1.com`) ... Name of the domain
+    + domain (required, string, `example1.com`) ... Name of the domain
 
 + Request
 
@@ -309,7 +308,7 @@ Retrieve a sending domain by specifying its domain name in the URI path.  The re
                     "selector": "hello_selector"
                 },
                 "shared_with_subaccounts": false,
-                "is_default_bounce_domain" : false
+                "is_default_bounce_domain": false
             }
         }
 
@@ -321,7 +320,7 @@ If a tracking domain is specified, it will replace any currently specified track
 
 If a DKIM object is provided in the update request, it must contain all relevant fields whether they are being changed or not.  The new DKIM object will completely overwrite the existing one.
 
-To remove the DKIM Signing Domain Identifier for a Sending Domain, use an empty string for the value of the <tt>dkim.signing_domain</tt> field.
+To remove the DKIM Signing Domain Identifier for a Sending Domain, use an empty string for the value of the <code>dkim.signing_domain</code> field.
 
 
 + Parameters
@@ -335,7 +334,7 @@ To remove the DKIM Signing Domain Identifier for a Sending Domain, use an empty 
 
     + Body
 
-           {
+            {
                "tracking_domain": "click.example1.com",
                "dkim": {
                    "private": "MIICXgIBAAKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQABAoGBAITb3BCRPBi5lGhHdn+1RgC7cjUQEbSb4eFHm+ULRwQ0UIPWHwiVWtptZ09usHq989fKp1g/PfcNzm8c78uTS6gCxfECweFCRK6EdO6cCCr1cfWvmBdSjzYhODUdQeyWZi2ozqd0FhGWoV4VHseh4iLj36DzleTLtOZj3FhAo1WJAkEA68T+KkGeDyWwvttYtuSiQCCTrXYAWTQnkIUxduCp7Ap6tVeIDn3TaXTj74UbEgaNgLhjG4bX//fdeDW6PaK9YwJBAM6xJmwHLPMgwNVjiz3u/6fhY3kaZTWcxtMkXCjh1QE82KzDwqyrCg7EFjTtFysSHCAZxXZMcivGl4TZLHnydJUCQQCx16+M+mAatuiCnvxlQUMuMiSTNK6Amzm45u9v53nlZeY3weYMYFdHdfe1pebMiwrT7MI9clKebz6svYJVmdtXAkApDAc8VuR3WB7TgdRKNWdyGJGfoD1PO1ZE4iinOcoKV+IT1UCY99Kkgg6C7j62n/8T5OpRBvd5eBPpHxP1F9BNAkEA5Nf2VO9lcTetksHdIeKK+F7sio6UZn0Rv7iUo3ALrN1D1cGfWIh/Y1g==",
@@ -344,7 +343,7 @@ To remove the DKIM Signing Domain Identifier for a Sending Domain, use an empty 
                    "headers": "from:to:subject:date"
                },
                "is_default_bounce_domain": true
-           }
+            }
 
 + Response 200 (application/json)
 
@@ -357,27 +356,27 @@ To remove the DKIM Signing Domain Identifier for a Sending Domain, use an empty 
 
 + Response 400 (application/json)
 
-           {
-             "errors": [
-               {
-                 "message": "invalid params",
-                 "description": "Tracking domain '(domain)' is not a registered tracking domain",
-                 "code": "1200"
-               }
-             ]
-           }
+        {
+            "errors": [
+                {
+                    "message": "invalid params",
+                    "description": "Tracking domain '(domain)' is not a registered tracking domain",
+                    "code": "1200"
+                }
+            ]
+        }
 
 + Response 422 (application/json)
 
-           {
-             "errors": [
-               {
-                 "message": "invalid data format/type",
-                 "description": "Error validating domain name syntax for domain: '(domain)'",
-                 "code": "1300"
-               }
-             ]
-           }
+        {
+            "errors": [
+                {
+                    "message": "invalid data format/type",
+                    "description": "Error validating domain name syntax for domain: '(domain)'",
+                    "code": "1300"
+                }
+            ]
+        }
 
 ### Delete a Sending Domain [DELETE]
 
@@ -386,11 +385,11 @@ Delete an existing sending domain.
 <banner status="danger"><strong>Warning</strong>: Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</banner>
 
 + Parameters
-  + domain (required, string, `example1.com`) ... Name of the domain
+    + domain (required, string, `example1.com`) ... Name of the domain
 
 + Request
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
@@ -398,16 +397,16 @@ Delete an existing sending domain.
 
 + Response 404 (application/json)
 
-  + Body
+    + Body
 
             {
-              "errors": [
-                {
-                  "code": "1600",
-                  "message": "resource not found",
-                  "description": "Domain 'wrong.domain' does not exist"
-                }
-              ]
+                "errors": [
+                    {
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Domain 'wrong.domain' does not exist"
+                    }
+                ]
             }
 
 
@@ -451,11 +450,11 @@ An example CNAME record for a <strong>SparkPost Enterprise</strong> customer wit
 |------------------------|:-:       |---------------------------------------|
 |mail<span></span>.example.com | CNAME | foo.mail.e.sparkpost<span></span>.com |
 
-**MX** verification is available to <strong>Enterprise</strong> customers only. There is no way to initiate MX verification through the /verify endpoint. Please contact your TAM if you want to verify your domain with MX.</div>
+**MX** verification is available to <strong>Enterprise</strong> customers only. There is no way to initiate MX verification through the /verify endpoint. Please contact your TAM if you want to verify your domain with MX.
 
 #### Using a Sending Domain as a Bounce Domain
 A Sending Domain is eligible to be used as a Bounce Domain if one of the following conditions is met:
-* A CNAME record in place and verified via ``"cname_verify":true`
+* A CNAME record in place and verified via `"cname_verify":true`
 * An MX verified domain (<span class="label label-warning"><strong>Enterprise</strong></span> only)
 
  Eligible domains may be used as a bounce domain by including it as part of the transmission return_path or SMTP MAIL FROM email address. Bounce domains are used to report bounces, which are emails that were rejected from the recipient server. By adding a bounce domain to your account, you can customize the address that is used for the `Return-Path` header, which is the destination for out of band (OOB) bounces.  For additional details on CNAME-verification, please see this [support article](https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/).
@@ -463,7 +462,7 @@ A Sending Domain is eligible to be used as a Bounce Domain if one of the followi
 The domain's `status` object is returned on success.
 
 + Parameters
-  + domain (required, string, `example1.com`) ... Name of the domain
+    + domain (required, string, `example1.com`) ... Name of the domain
 
 + Request Verify DKIM (application/json)
 
@@ -503,9 +502,9 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-           {
+            {
                "cname_verify": true
-           }
+            }
 
 
 + Response 200 (application/json)
@@ -561,9 +560,9 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-           {
+            {
                "postmaster_at_token": "rcayptmrczdnrnqfsxyrzljmtsxvjzxb"
-           }
+            }
 
 + Response 200 (application/json)
 
@@ -588,12 +587,10 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
-        {
-            "verification_mailbox_verify": true,
-            "verification_mailbox": "susan.calvin"
-        }
-        ```
+            {
+                "verification_mailbox_verify": true,
+                "verification_mailbox": "susan.calvin"
+            }
 
 + Response 200 (application/json; charset=utf-8)
 
@@ -617,11 +614,9 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
         {
             "verification_mailbox_token": "bxzjvxstmjlzryxsfqnrndzcrmtpyacr"
         }
-        ```
 
 + Response 200 (application/json; charset=utf-8)
 
@@ -645,22 +640,20 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
         {
             "verification_mailbox_verify": true
         }
-        ```
 
 + Response 422 (application/json; charset=utf-8)
 
         {
-           "errors": [
-              {
-                 "message": "required field is missing",
-                 "description": "verification_mailbox field required to verify mailbox",
-                 "code": "1400"
-              }
-           ]
+            "errors": [
+                {
+                    "message": "required field is missing",
+                    "description": "verification_mailbox field required to verify mailbox",
+                    "code": "1400"
+                }
+            ]
         }
 
 + Request Initiate anyone@ email with verification_mailbox set to postmaster (application/json)
@@ -670,23 +663,21 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
         {
             "verification_mailbox_verify": true,
             "verification_mailbox": "postmaster"
         }
-        ```
 
 + Response 422 (application/json; charset=utf-8)
 
         {
-           "errors": [
-              {
-                 "message": "invalid data format/type",
-                 "description": "verification_mailbox field cannot be 'postmaster' or 'abuse'",
-                 "code": "1300"
-              }
-           ]
+            "errors": [
+                {
+                    "message": "invalid data format/type",
+                    "description": "verification_mailbox field cannot be 'postmaster' or 'abuse'",
+                    "code": "1300"
+                }
+            ]
         }
 
 + Request Initiate anyone@ email for sending domain with a DMARC policy (application/json)
@@ -696,23 +687,21 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-        ```
-        {
-            "verification_mailbox_verify": true,
-            "verification_mailbox": "denis.ritchie"
-        }
-        ```
+            {
+                "verification_mailbox_verify": true,
+                "verification_mailbox": "denis.ritchie"
+            }
 
 + Response 400 (application/json; charset=utf-8)
 
         {
-           "errors": [
-              {
-                 "message": "Domain not allowed",
-                 "description": "Verification by address is not available for Sending Domains with a DMARC policy",
-                 "code": "7003"
-              }
-           ]
+            "errors": [
+                {
+                    "message": "Domain not allowed",
+                    "description": "Verification by address is not available for Sending Domains with a DMARC policy",
+                    "code": "7003"
+                }
+            ]
         }
 
 + Request Verify abuse@ incorrect token (application/json)
@@ -722,9 +711,9 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-           {
-               "abuse_at_token": "AN_INCORRECT_OR_EXPIRED_TOKEN"
-           }
+            {
+                "abuse_at_token": "AN_INCORRECT_OR_EXPIRED_TOKEN"
+            }
 
 + Response 200 (application/json)
 
@@ -749,18 +738,18 @@ The domain's `status` object is returned on success.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
     + Body
 
-           {
-               "abuse_at_verify": true
-           }
+            {
+                "abuse_at_verify": true
+            }
 
 + Response 400 (application/json)
 
         {
-           "errors": [
-              {
-                 "message": "Failed to generate message",
-                 "description": "Failed to generate verification email",
-                 "code": "1901"
-              }
-           ]
+            "errors": [
+                {
+                    "message": "Failed to generate message",
+                    "description": "Failed to generate verification email",
+                    "code": "1901"
+                }
+            ]
         }
