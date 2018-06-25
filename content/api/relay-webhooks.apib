@@ -78,8 +78,6 @@ The following fields will be included in the JSON object posted to the SMTP rela
     + protocol: smtp (string) - Protocol of the originating inbound message. For smtp payloads, this string will be "smtp".
 
 
-<banner status="info">SMPP is available to <a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers.</banner>
-
 **SMPP**
 
 The following fields will be included in the JSON object posted to the SMPP relay webhooks target:
@@ -92,6 +90,8 @@ The following fields will be included in the JSON object posted to the SMPP rela
     + webhook_id (string) - ID of the relay webhook which triggered this relay message
     + protocol: smpp (string) - Protocol of the originating inbound message. For smpp payloads, this string will be "smpp".
     + customer_id (string) - Customer ID of the customer that created the relay webhook.
+
+<banner status="info">SMPP is available to <a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers.</banner>
 
 ## Example Payloads
 
