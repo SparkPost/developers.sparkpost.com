@@ -2,8 +2,8 @@
  * SparkPost Fonts ⌨
  */
 const fontMap = {
-  primary: `'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Helvetica', sans-serif`,
-  secondary: `'Gotham SSm A', 'Gotham SSm B', 'Helvetica', sans-serif`,
+  primary: `'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Gotham Narrow', 'Helvetica', sans-serif`,
+  secondary: `'Gotham SSm A', 'Gotham SSm B', 'Gotham', 'Helvetica', sans-serif`,
   monospace: 'Source Code Pro, monospace',
 }
 
