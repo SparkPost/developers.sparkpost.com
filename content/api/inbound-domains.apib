@@ -10,8 +10,15 @@ You can have multiple inbound domains but each domain must be globally unique.
 
 ## Inbound Domains Object
 
-+ Data Structure (sample)
-    + domain: inbounddomain.test.com (string, sample) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
++ Data Structure
+    + domain (string) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
++ Sample
+    
+    ```
+    {
+        "domain": "inbounddomain.test.com"
+    }
+    ```
 
 ## Configuring your MX records
 
@@ -50,7 +57,6 @@ if you are unsure of the setting in your own environment.</banner>
 + Data Structure
     + domain (string, required) - Domain name for which SparkPost will receive inbound emails.
 
-Create an inbound domain by providing an **inbound domains object** as the POST request body.
 
 + Request (application/json)
 
@@ -94,39 +100,10 @@ Create an inbound domain by providing an **inbound domains object** as the POST 
                 ]
             }
 
-### List all Inbound Domains [GET /inbound-domains]
-
-List all your inbound domains.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "results": [
-                    {
-                        "domain": "inbounddomain.test.com"
-                    },
-                    {
-                        "domain": "inbounddomain2.test.com"
-                    }
-                ]
-            }
-
-
 ### Retrieve an Inbound Domain [GET /inbound-domains/{domain}]
 
-Retrieve an inbound domain by specifying its domain name in the URI path.
-
 + Parameters
-    + domain (required, string, `inbounddomain.test.com`) ... Domain name
+    + domain (required, string, `inbounddomain.test.com`)
 
 + Request
 
@@ -161,10 +138,8 @@ Retrieve an inbound domain by specifying its domain name in the URI path.
 
 ### Delete an Inbound Domain [DELETE /inbound-domains/{domain}]
 
-Delete an inbound domain by specifying its domain name in the URI path.
-
 + Parameters
-    + domain (required, string, `inbounddomain.test.com`) ... Domain name
+    + domain (required, string, `inbounddomain.test.com`)
 
 + Request
 
@@ -197,6 +172,33 @@ Delete an inbound domain by specifying its domain name in the URI path.
                         "message": "resource conflict",
                         "description": "Domain currently being used in a relay-webhook. Please delete the relay-webhook first.",
                         "code": "1602"
+                    }
+                ]
+            }
+
+
+### List all Inbound Domains [GET /inbound-domains]
+
+Returns a list of all your inbound domains.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "domain": "inbounddomain.test.com"
+                    },
+                    {
+                        "domain": "inbounddomain2.test.com"
                     }
                 ]
             }
