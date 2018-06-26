@@ -5,12 +5,14 @@ const removePosition = require('unist-util-remove-position')
 const flatten = require('lodash.flatten')
 const unified = require('unified')
 const remarkParse = require('remark-parse')
-const remarkStringify = require('remark-stringify')
 
 const parseProcessor = unified().use(remarkParse)
 const parseMarkdown = parseProcessor.parse
-const stringifyProcessor = unified().use(remarkStringify, { fences: true })
-const stringifyMarkdown = stringifyProcessor.stringify
+function stringify(node) {
+  if (node.value) return node.value
+
+  return node.children.map(stringify).join('\n')
+}
 
 /**
  * get all data structures from code blocks with the language "attributes"
@@ -109,13 +111,13 @@ function parseDataStructure(node) {
   const text = paragraph.children[0]
   const list = listItem.children[1]
   const [ all, id ] = text.value.match(dataStructurePattern)
-  const secondListItemText = node.children.length > 1 && stringifyMarkdown({
+  const secondListItemText = node.children.length > 1 && stringify({
     type: 'root',
     children: node.children[1].children
   })
 
-  const hasSample = !!secondListItemText && secondListItemText.startsWith('Sample\n')
-  const sample = hasSample && escape(secondListItemText.replace(/^Sample/, '').trim())
+  const hasSample = !!secondListItemText && /^Sample\s+/i.test(secondListItemText)
+  const sample = hasSample && escape(secondListItemText.replace(/^Sample\s+/i, '').trim())
 
   return {
     id: id || crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
