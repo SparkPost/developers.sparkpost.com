@@ -49,18 +49,8 @@ const components = {
           <Wrapper>
             {sample !== undefined && (
               <Right>
-                <HttpTitle>Response</HttpTitle>
-                <Json>
-                  {generateSample(
-                    dataStructures.find(dataStructure => {
-                      return (
-                        id.toLowerCase() ===
-                        dataStructure.content.id.toValue().toLowerCase()
-                      )
-                    }),
-                    dataStructures
-                  )}
-                </Json>
+                <HttpTitle>Example</HttpTitle>
+                <Json>{format(unescape(sample))}</Json>
               </Right>
             )}
             <div className="block">
@@ -642,7 +632,7 @@ function Attribute(props) {
             </Property>
           )}
         {actualType !== 'object' &&
-          defaultValue && (
+          !isUndefined(defaultValue) && (
             <Property>
               , default is{' '}
               <code>

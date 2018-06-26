@@ -68,6 +68,10 @@ const Content = styled.div`
     &.label-info {
       background: ${color('blue')};
     }
+
+    &.label-danger {
+      background: ${color('red')};
+    }
   }
 `
 
