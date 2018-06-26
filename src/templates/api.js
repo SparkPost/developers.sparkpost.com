@@ -632,7 +632,7 @@ function Attribute(props) {
             </Property>
           )}
         {actualType !== 'object' &&
-          defaultValue && (
+          !isUndefined(defaultValue) && (
             <Property>
               , default is{' '}
               <code>
