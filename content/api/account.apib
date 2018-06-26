@@ -4,34 +4,37 @@ description: Get your SparkPost account information, including subscription stat
 
 # Group Account
 
-Retreive information regarding your SparkPost account and set account options.
+Retrieve information regarding your SparkPost account and set account options.
 
 ## Account Attributes
 
-+ Data Structure (sample)
-    + company_name: SparkPost (string, sample) - Account holder company name
-    + country_code: US (string, sample) - Account holder 2-letter country code
-    + anniversary_date: `2019-01-11T08:00:00.000Z` (string, sample) - ISO date of billing anniversary
-    + created: `2015-01-11T08:00:00.000Z`(string, sample) - ISO date account was created
-    + updated: `2018-04-11T08:00:00.000Z`(string, sample) - ISO date account details were last updated
-    + status: active (string, sample) - Account status.
-    + status_updated: (string) - ISO date status was last updated
++ Data Structure
+    + company_name (string) - Account holder company name
+    + country_code (string) - Account holder 2-letter country code
+    + anniversary_date (string) - ISO date of billing anniversary
+    + created (string) - ISO date account was created
+    + updated (string) - ISO date account details were last updated
+    + status  (string) - Account status.
+        + Default: active
+    + status_updated (string) - ISO date status was last updated
     + status_reason_category (string) - Category for some account statuses, e.g. 'NONPAYMENT'. Empty string by default
     + service_level (string) - Account service level.
-    + subscription (object, sample) - Current subscription details.
-        + name: 15k (string, sample) - The account's plan name
-        + code: free (string, sample) - The account's plan code
-        + plan_volume: 15000 (number, sample) - The plan's sending volume
+        + Default: standard
+    + subscription (object) - Current subscription details.
+        + name (string) - The account's plan name
+        + code (string) - The account's plan code
+        + plan_volume (number) - The plan's sending volume
         + effective_date (string) - ISO date of when this subscription has been or will be effective
-    	+ self_serve (boolean) - `false` if the account is manually billed
-    	+ type (string) - Type of subscription. Values include `aws` and `manual`.
+        + self_serve (boolean) - `false` if the account is manually billed
+        + type (string) - Type of subscription.
+            + Default: default
     + pending_subscription (object) - Details regarding a pending subscription upgrade or downgrade.
-    + options (object, sample) - Account-level tracking settings.
-    	+ smtp_tracking_default: true (boolean, sample) - Account-level default for SMTP engagement tracking
-    	+ rest_tracking_default (boolean) - Account-level default for REST API engagement tracking
-    	+ transactional_unsub (boolean) - Set to `true` to include `List-Unsubscribe` header for all transactional messages by default
-    	+ transactional_default (boolean) - Set to `true` to send messages as transactional by default
-    	+ initial_open_pixel_tracking (boolean) - Account-level default for Initial Open tracking
+    + options (object) - Account-level tracking settings.
+        + smtp_tracking_default (boolean) - Account-level default for SMTP engagement tracking
+        + rest_tracking_default (boolean) - Account-level default for REST API engagement tracking
+        + transactional_unsub (boolean) - Set to `true` to include `List-Unsubscribe` header for all transactional messages by default
+        + transactional_default (boolean) - Set to `true` to send messages as transactional by default
+        + initial_open_pixel_tracking (boolean) - Account-level default for Initial Open tracking
         + click_tracking (boolean) - Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
     + usage (object) - Account quota usage details. Specify 'include=usage' in query string to include usage info.
         + timestamp (string) - ISO date usage data was retrieved
@@ -41,14 +44,58 @@ Retreive information regarding your SparkPost account and set account options.
             + start (string) - ISO date when this period started
             + end (string) - ISO date when this period ends
         + month (object) - Monthly usage report.
-            + used: 9000 (number, sample) - Total messages sent in this period
-            + limit: 15000 (number, sample) - Total allowance for this period
+            + used (number) - Total messages sent in this period
+            + limit (number) - Total allowance for this period
             + start (string) - ISO date when this period started
             + end (string) - ISO date when this period ends
     + support (object) - Support entitlement details.
-    	+ phone (boolean) - Whether account is entitled to phone support
-    	+ online (boolean) - Whether account is entitled to online support
+        + phone (boolean) - Whether account is entitled to phone support
+        + online (boolean) - Whether account is entitled to online support
++ Sample
 
+    ```json
+    {
+        "company_name": "Example, Inc.",
+        "country_code": "US",
+        "anniversary_date": "2019-01-11T08:00:00.000Z",
+        "created": "2015-01-11T08:00:00.000Z",
+        "updated": "2018-04-11T08:00:00.000Z",
+        "status": "active",
+        "status_updated": "2018-04-11T08:00:00.000Z",
+        "status_reason_category": "",
+        "service_level": "standard",
+        "subscription": {
+            "name": "15k",
+            "code": "free",
+            "plan_volume": 15000,
+            "effective_date": "2018-04-11T08:00:00.000Z",
+            "self_serve": true,
+            "type": "default"
+        },
+        "options": {
+            "smtp_tracking_default": true
+        },
+        "usage": {
+            "timestamp": "2018-06-26T14:48:00.000Z",
+            "day": {
+                "limit": 1000,
+                "used": 83,
+                "start": "2018-06-25T15:00:00.000Z",
+                "end": "2018-06-26T15:00:00.000Z"
+              },
+              "month": {
+                "limit": 15000,
+                "used": 4032,
+                "start": "2018-06-03T08:00:00.000Z",
+                "end": "2018-07-03T08:00:00.000Z"
+            }
+        },
+        "support": {
+            "phone": false,
+            "online": false
+        }
+    }
+    ```
 
 ## Get Account [/account{?include}]
 
