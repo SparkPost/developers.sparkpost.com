@@ -87,7 +87,7 @@ Lists all IP Pools.
             }
 
 
-## Get IP Pool [GET /ip-pools/{id}]
+## Get an IP Pool [GET /ip-pools/{id}]
 
 Retrieves a specific IP Pool.
 
@@ -145,7 +145,7 @@ Retrieves a specific IP Pool.
     + name (string, required) - Name of the IP Pool
     + signing_domain (string) - Domain to use as the DKIM verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. To unassign a custom FBL signing domain, provide an empty string for this field's value.
-
+ 
 
 Updates an IP pool's name. To update sending IP pool assignments see [Sending IPs](/api/sending-ips/).
 
