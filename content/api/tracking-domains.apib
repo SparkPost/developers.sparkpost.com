@@ -48,62 +48,57 @@ Tracking domains can only be assigned to subaccounts on creation. They cannot be
 If assigned and verified, a tracking domain can also be set as the default for that subaccount.
 In order to be associated to a subaccount's sending domain, a tracking domain has to be assigned to the same subaccount.
 
-## Tracking Domains Attributes
+## Tracking Domain Object
 
-| Field         | Type    | Default | Description |
-|---------------|---------|---------|-------------|
-| domain        | string  |         | Name of the tracking domain. Example: `example.domain.com` |
-| port          | integer |         | The port used when constructing the tracking URL. `80` if secure is `false`, `443` if secure is `true` |
-| secure        | boolean | `false` | Whether the tracking URL should use HTTPS. HTTP will be used if `false`. |
-| default       | boolean | `false` | Whether the tracking domain should be used when not explicitly associated with a sending domain. Only one default domain per account and subaccount can be set. A domain has to be verified to be set as the default. |
-| status        | object  |         | Contains status details like verification and DNS. For a full description, see the [Status Attributes](#header-status-attributes). |
-| subaccount_id | integer |         | ID of the subaccount the tracking domain is assigned to. Not returned unless set and can only be set on creation. |
++ Data Structure
+    + domain (string) - Name of the tracking domain.
+    + port (number) - The port used when constructing the tracking URL. `80` if secure is `false`, `443` if secure is `true`.
+    + secure (boolean) - Whether the tracking URL should use HTTPS. HTTP will be used if `false`.
+        + Default: false
+    + default (boolean) - Whether the tracking domain should be used when not explicitly associated with a sending domain. Only one default domain per account and subaccount can be set. The domain has to be verified to be set as the default.
+        + Default: false
+    + status (object) - Contains status details like verification and DNS.
+        + verified (boolean) - Whether the domain's ownership has been verified. `true` if cname_status is `valid`.
+        + cname_status (enum) - Verification status of CNAME record configuration.
+            + unverified
+            + pending
+            + invalid
+            + valid
+        + compliance_status (enum) - Status of the domain's compliance review.
+            + pending
+            + valid
+            + blocked
+    + subaccount_id (number) - ID of the subaccount the tracking domain is assigned to. Not returned unless set and can only be set on creation.
++ Sample
+    
+    ```
+    {
+        "domain": "example.domain.com",
+        "port": 443,
+        "secure": true,
+        "default": false,
+        "status": {
+            "verified": false,
+            "cname_status": "pending",
+            "compliance_status": "pending"
+        }
+    }
+    ```
 
-### Status Attributes
+### Create a Tracking Domain [POST /tracking-domains]
 
-The detailed status of a tracking domain is described in a JSON object with the following *read only* fields:
++ Data Structure
+    + domain (string, required) - Name of the tracking domain.
+    + secure (boolean) - Whether the tracking URL should use HTTPS. HTTP will be used if `false`.
+        + Default: false
+    + subaccount_id (number) - ID of the subaccount the tracking domain should be assigned to.
 
-| Field             | Type    | Default      | Description |
-|-------------------|---------|--------------|-------------|
-| verified          | boolean | `false`      | Whether the domain's ownership has been verified. `true` if cname_status is `valid`. |
-| cname_status      | string  | `unverified` | Verification status of CNAME record configuration. Possible values: `unverified`, `pending`, `invalid` or `valid`. |
-| compliance_status | string  | `pending`    | Status of the domain's compliance review. Possible values: `pending`, `valid`, or `blocked`. |
-
-## Create and List [/tracking-domains]
-
-### Create a Tracking Domain [POST]
-
-#### Request Body Attributes
-
-| Field         | Type    | Required | Default | Description |
-|---------------|---------|----------|---------|-------------|
-| domain        | string  | yes      |         | Name of the tracking domain. Example: `example.domain.com` |
-| secure        | boolean | no       | `false` | Whether the tracking URL should use HTTPS. HTTP will be used if `false`. |
-| subaccount_id | integer | no       |         | ID of the subaccount the tracking domain should be assigned to. |
 
 + Request (application/json)
 
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "domain": "example.domain.com"
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "results": {
-                    "domain": "example.domain.com"
-                }
-            }
-
-+ Request (application/json)
 
     + Body
 
@@ -150,62 +145,6 @@ The detailed status of a tracking domain is described in a JSON object with the 
                 ]
             }
 
-+ Response 422 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Tracking domain 'example.domain.com' unverified."
-                    }
-                ]
-            }
-
-
-+ Response 422 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Error validating domain name syntax for domain: 'example..domain.com'"
-                    }
-                ]
-            }
-
-+ Response 422 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Error domain name length too short for domain: 'ex'"
-                    }
-                ]
-            }
-
-+ Response 422 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Error domain name contains no '.'(s) for domain: 'exampledomaincom'"
-                    }
-                ]
-            }
 
 + Response 422 (application/json)
 
@@ -221,72 +160,64 @@ The detailed status of a tracking domain is described in a JSON object with the 
                 ]
             }
 
-+ Response 422 (application/json)
+### Verify a Tracking Domain [POST /tracking-domains/{domain}/verify]
+Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
 
-    + Body
++ Parameters
+    + domain (required, string, `example.domain.com`)
 
-            {
-                "errors": [
-                    {
-                        "code": "1400",
-                        "message": "required field is missing",
-                        "description": "field 'domain' is required"
-                    }
-                ]
-            }
-
-### List All Tracking Domains [GET]
-
-Returns an array with all tracking domains. Each item in the array is a full tracking domain object.
 
 + Request
 
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
+
 
 + Response 200 (application/json)
+
+        {
+            "results": {
+                "verified": true,
+                "cname_status": "",
+                "compliance_status": "valid"
+            }
+        }
+
++ Response 404 (application/json)
 
     + Body
 
             {
-                "results": [
+                "errors": [
                     {
-                        "port": 443,
-                        "domain": "example.domain.com",
-                        "secure": true,
-                        "default": true,
-                        "status": {
-                            "verified": false,
-                            "cname_status": "pending",
-                            "compliance_status": "pending"
-                        }
-                    },
-                    {
-                        "port": 80,
-                        "domain": "example2.domain.com",
-                        "secure": false,
-                        "default": false,
-                        "status": {
-                            "verified": true,
-                            "cname_status": "valid",
-                            "compliance_status": "valid"
-                        },
-                        "subaccount_id": 215
+                        "code": "1600",
+                        "message": "resource not found",
+                        "description": "Resource not found: example.domain.com"
                     }
                 ]
             }
 
++ Response 400 (application/json)
 
-## Retrieve, Update, and Delete [/tracking-domains/{domain}]
+    + Body
 
-### Retrieve a Tracking Domain [GET]
+            {
+                "errors": [
+                    {
+                        "code": "1404",
+                        "message": "request to remote endpoint failed",
+                        "description":  "Unable to reach https://example.domain.com:443. Please verify that your redirect is functioning and that your SSL certificate is valid."
+                    }
+                ]
+            }
+
+### Retrieve a Tracking Domain [GET /tracking-domains/{domain}]
 
 Retrieve an existing tracking domain.
 
 + Parameters
-    + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`)
 
 + Request
 
@@ -328,21 +259,18 @@ Retrieve an existing tracking domain.
             }
 
 
-### Update a Tracking Domain [PUT]
+### Update a Tracking Domain [PUT /tracking-domains/{domain}]
 
 Update the attributes of an existing tracking domain. The master account and each subaccount can only have one default tracking domain.
 Setting a new default automatically unsets the current relevant default, if it exists.
 
-#### Request Body Attributes
-
-| Field   | Type    | Required | Description |
-|---------|---------|----------|-------------|
-| secure  | boolean | no       | Whether the tracking URL should use HTTPS. HTTP will be used if `false`. |
-| default | boolean | no       | Whether the tracking domain should be used when not explicitly associated with a sending domain. A domain has to be verified to be set as the default. |
++ Data Structure
+    + secure (boolean) - Whether the tracking URL should use HTTPS. HTTP will be used if `false`.
+    + default (boolean) - Whether the tracking domain should be used when not explicitly associated with a sending domain. The domain has to be verified to be set as the default.
 
 
 + Parameters
-    + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`)
 
 + Request
 
@@ -396,12 +324,12 @@ Setting a new default automatically unsets the current relevant default, if it e
             }
 
 
-### Delete a Tracking Domain [DELETE]
+### Delete a Tracking Domain [DELETE /tracking-domains/{domain}]
 
 Delete an existing tracking domain.
 
 + Parameters
-    + domain (required, string, `example.domain.com`) ... domain name
+    + domain (required, string, `example.domain.com`)
 
 + Request
 
@@ -426,56 +354,46 @@ Delete an existing tracking domain.
             }
 
 
-## Verify [/tracking-domains/{domain}/verify]
 
-### Verify a Tracking Domain [POST]
-Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
+### List All Tracking Domains [GET /tracking-domains]
 
-+ Parameters
-    + domain (required, string, `example.domain.com`) ... domain name
-
+Returns an array with all tracking domains. Each item in the array is a full tracking domain object.
 
 + Request
 
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
+            Accept: application/json
 
 + Response 200 (application/json)
 
-        {
-            "results": {
-                "verified": true,
-                "cname_status": "",
-                "compliance_status": "valid"
-            }
-        }
-
-+ Response 404 (application/json)
-
     + Body
 
             {
-                "errors": [
+                "results": [
                     {
-                        "code": "1600",
-                        "message": "resource not found",
-                        "description": "Resource not found: example.domain.com"
-                    }
-                ]
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                "errors": [
+                        "port": 443,
+                        "domain": "example.domain.com",
+                        "secure": true,
+                        "default": true,
+                        "status": {
+                            "verified": false,
+                            "cname_status": "pending",
+                            "compliance_status": "pending"
+                        }
+                    },
                     {
-                        "code": "1404",
-                        "message": "request to remote endpoint failed",
-                        "description": "Unable to reach http://test.messagesystems.com:80. Please verify that your redirect is functioning."
+                        "port": 80,
+                        "domain": "example2.domain.com",
+                        "secure": false,
+                        "default": false,
+                        "status": {
+                            "verified": true,
+                            "cname_status": "valid",
+                            "compliance_status": "valid"
+                        },
+                        "subaccount_id": 215
                     }
                 ]
             }
