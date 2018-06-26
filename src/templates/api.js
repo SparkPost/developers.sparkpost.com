@@ -50,9 +50,7 @@ const components = {
             {sample !== undefined && (
               <Right>
                 <HttpTitle>Example</HttpTitle>
-                <Json>
-                  {format(unescape(sample))}
-                </Json>
+                <Json>{format(unescape(sample))}</Json>
               </Right>
             )}
             <div className="block">
