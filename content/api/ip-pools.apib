@@ -141,17 +141,15 @@ Retrieves a specific IP Pool.
 
 ## Update an IP Pool [PUT /ip-pools/{id}]
 
-Updates an IP pool's name. To update sending IP pool assignments see [Sending IPs](/api/sending-ips/).
-
-To remove a signing domain, the value passed in should be the empty string.
-
-#### Request Body Attributes
-
 + Data Structure
     + name (string, required) - Name of the IP Pool
     + signing_domain (string) - Domain to use as the DKIM verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. To unassign a custom FBL signing domain, provide an empty string for this field's value.
 
+
+Updates an IP pool's name. To update sending IP pool assignments see [Sending IPs](/api/sending-ips/).
+
+To remove a signing domain, the value passed in should be the empty string.
 
 + Request
 
@@ -209,11 +207,11 @@ To remove a signing domain, the value passed in should be the empty string.
             }
 
 
-## Delete an IP Pool [DELETE]
+## Delete an IP Pool [DELETE /ip-pools/{id}]
 
 Deletes an IP Pool and moves all sending IPs in that pool to the default pool.
 
-<banner status=info">The default pool cannot be deleted.</banner>
+<banner status="info">The default pool cannot be deleted.</banner>
 
 
 + Request
