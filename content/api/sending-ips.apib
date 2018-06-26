@@ -6,47 +6,23 @@ description: Manage the sending IPs for your account and assign them to IP pools
 
 <banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> customers: IPs are managed through your TAM, please contact them directly for assistance.</banner>
 
-#### Sending IP Properties
+## Sending IP Object
 
-| Property   | Type    | Description | Notes |
-|------------|---------|-------------|-------|
-| external_ip | string | Public-facing IP address of this sending IP | |
-| hostname | string | Reverse DNS hostname associated with this IP | |
-| ip_pool | string | IP pool this sending IP is held in | |
++ Data Structure
+    + external_ip (string) - Public-facing IP address of this sending IP
+    + hostname (string) - Reverse DNS hostname associated with this IP
+    + ip_pool (string) - IP pool this sending IP is held in
++ Sample
+    
+    ```
+    {
+        "external_ip": "123.45.67.80",
+        "hostname": "mta474a.sparkpostmail.com",
+        "ip_pool": "default"
+    }
+    ```
 
-## Sending IPs [/sending-ips]
-
-## Get all sending IPs [GET]
-
-Gets all IP addresses.
-
-+ Request
-
-    + Headers
-
-            Authorization: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "external_ip": "123.45.67.89",
-                    "hostname": "mta472a.sparkpostmail.com",
-                    "ip_pool": "marketing"
-                },
-                {
-                    "external_ip": "123.45.67.80",
-                    "hostname": "mta474a.sparkpostmail.com",
-                    "ip_pool": "default"
-                }
-            ]
-        }
-
-## Sending IP Resource [/sending-ips/{external_ip}]
-
-## Get a Sending IP [GET]
+## Retrieve a Sending IP [GET /sending-ips/{external_ip}]
 
 Retrieves a specific sending IP.
 
@@ -93,16 +69,12 @@ Retrieves a specific sending IP.
         }
 
 
-## Update a Sending IP [PUT]
+## Update a Sending IP [PUT /sending-ips/{external_ip}]
 
-Updates the IP Pool of a sending IP.
++ Data Structure
+    + ip_pool (string, required) - The IP pool to add this sending IP to.
 
-#### Request Body Attributes
-
-| Field          | Type           | Description                                | Required      |
-|----------------|----------------|--------------------------------------------|---------------|
-| ip_pool        | string         | The IP pool to add this sending IP to.     | yes           |
-
+Updates which IP Pool holds the sending IP.
 
 + Request
 
@@ -134,7 +106,7 @@ Updates the IP Pool of a sending IP.
     {
         "errors": [
             {
-                "message": "IP Pool glibglob does not exist."
+                "message": "IP Pool too_cool_for_pool does not exist."
             }
         ]
     }
@@ -148,3 +120,32 @@ Updates the IP Pool of a sending IP.
             }
         ]
     }
+
+
+## List all sending IPs [GET /sending-ips]
+
+Returns a list of all sending IPs.
+
++ Request
+
+    + Headers
+
+            Authorization: aHR0cDovL2kuaW1ndXIuY29tL293UndTR3AucG5n
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "external_ip": "123.45.67.89",
+                    "hostname": "mta472a.sparkpostmail.com",
+                    "ip_pool": "marketing"
+                },
+                {
+                    "external_ip": "123.45.67.80",
+                    "hostname": "mta474a.sparkpostmail.com",
+                    "ip_pool": "default"
+                }
+            ]
+        }
