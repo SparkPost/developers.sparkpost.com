@@ -49,18 +49,8 @@ const components = {
           <Wrapper>
             {sample !== undefined && (
               <Right>
-                <HttpTitle>Response</HttpTitle>
-                <Json>
-                  {generateSample(
-                    dataStructures.find(dataStructure => {
-                      return (
-                        id.toLowerCase() ===
-                        dataStructure.content.id.toValue().toLowerCase()
-                      )
-                    }),
-                    dataStructures
-                  )}
-                </Json>
+                <HttpTitle>Example</HttpTitle>
+                <Json>{format(unescape(sample))}</Json>
               </Right>
             )}
             <div className="block">
@@ -621,24 +611,28 @@ function Attribute(props) {
             ? types.join(' or ')
             : actualType /*generate link to dereferenced type */}
           {actualType === 'array' &&
-            sampleTypes &&
-            uniq(sampleTypes).length === 1 &&
-            ` of ${first(
-              sampleTypes
-            )}s` /* if its an array, array of what??? */}
+            ((sampleTypes &&
+              uniq(sampleTypes).length === 1 &&
+              ` of ${first(sampleTypes)}s`) ||
+              (value &&
+                value.length === 1 &&
+                isEmpty(value[0]) &&
+                ` of ${toType(
+                  value[0] || ''
+                )}s`)) /* if its an array, array of what??? */}
         </Property>
         {'' /* required, value, and default are all mutually exlusive */}
         {required && <Required>required</Required>}
         {!isParameter &&
           actualType !== 'object' &&
-          !isEmpty(value) && (
+          !isEmpty(actualType === 'array' ? value[0] : value) && (
             <Property>
               , value is{' '}
               <code>{isString(value) ? value : JSON.stringify(value)}</code>
             </Property>
           )}
         {actualType !== 'object' &&
-          defaultValue && (
+          !isUndefined(defaultValue) && (
             <Property>
               , default is{' '}
               <code>
