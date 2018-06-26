@@ -101,18 +101,10 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
         + Default: true
     + key_label (string)
         User friendly identifier for the initial subaccount api key. Required if `setup_api_key` is true.
-    + key_grants (array[enum])
-        + smtp/inject
-        + sending_domains/manage
-        + tracking_domains/view
-        + tracking_domains/manage
-        + message_events/view
-        + suppression_lists/manage
-        + transmissions/view
-        + transmissions/modify
-        + webhooks/view
-        + webhooks/modify
+    + key_grants (array[string])
         List of grants to give to the initial subaccount api key. Required if `setup_api_key` is true.
+
+        Valid values are: `smtp/inject`, `sending_domains/manage`, `tracking_domains/view`, `tracking_domains/manage`, `message_events/view`, `suppression_lists/manage`, `transmissions/view`, `transmissions/modify`, `webhooks/view`, `webhooks/modify`
     + key_valid_ips (array)
         List of IP's that the initial subaccount api key can be used from. If the supplied `key_valid_ips` is an empty array, the api key is usable by any IP address.
 
