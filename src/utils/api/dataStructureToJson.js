@@ -101,9 +101,6 @@ function renderMember(member, dataStructures) {
 }
 
 function dataStructureToJson(dataStructure, dataStructures) {
-  console.log(dataStructure, dataStructure.content.map((value, key, member) =>
-    renderMember(member, dataStructures)
-  ))
   return dataStructure.content.map((value, key, member) =>
     renderMember(member, dataStructures)
   )
