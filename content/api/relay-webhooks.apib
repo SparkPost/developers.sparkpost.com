@@ -9,12 +9,12 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
 ## Relay Webhook Object
 
 + Data Structure
-    + id (string) - Randomly generated ID
+    + id (string) - Unique ID
     + name (string) - Relay webhook name
     + target (string) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target. Use this token in your target application to confirm that data is coming from SparkPost.
     + match (object) - Restrict which inbound messages will be relayed to the target.
-        + protocol (string) - Inbound messaging protocol associated with this webhook.
+        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
         + domain (string) - Inbound domain associated with this webhook.
         + esme_address (string)
             ESME address binding associated with this webhook.
@@ -22,6 +22,7 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
 + Sample
 
+    ```
     {
         "id": "12013026328707075",
         "name": "Inbound Customer Replies",
@@ -32,6 +33,7 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
             "domain": "example.com"
         }
     }
+    ```
         
 ### Custom HTTP Headers Properties
 
@@ -85,7 +87,8 @@ The following fields will be included in the JSON object posted to the SMTP rela
     + rcpt_to (string) 
         [SMTP envelope](http://www.rfcreader.com/#rfc5321_line817) "RCPT TO"
     + webhook_id (string) - ID of the relay webhook which triggered this relay message.
-    + protocol: smtp (string) - Protocol of the originating inbound message. For smtp payloads, this string will be "smtp".
+    + protocol: smtp (string) - Protocol of the originating inbound message.
+    + customer_id (string) - Customer ID of the customer that created the relay webhook.
 + Sample
 
     ```
@@ -142,7 +145,7 @@ The following fields will be included in the JSON object posted to the SMTP rela
 
 ### SMPP Payload
 
-<banner status="info">SMPP is only available to <a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a> accounts.</banner>
+<banner status="info">SMPP is only available for <a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a> accounts.</banner>
 
 The following fields will be included in the JSON object posted to the SMPP relay webhooks target:
 
@@ -152,7 +155,7 @@ The following fields will be included in the JSON object posted to the SMPP rela
     + from (string) - SMPP message sender
     + date (string) - Date that Sparkpost recieved the SMPP message
     + webhook_id (string) - ID of the relay webhook which triggered this relay message
-    + protocol: smpp (string) - Protocol of the originating inbound message. For smpp payloads, this string will be "smpp".
+    + protocol: smpp (string) - Protocol of the originating inbound message.
     + customer_id (string) - Customer ID of the customer that created the relay webhook.
 + Sample
     
@@ -175,10 +178,7 @@ The following fields will be included in the JSON object posted to the SMPP rela
     ```
 
 
-
-## Create and List [/relay-webhooks]
-
-### Create a Relay Webhook [POST]
+### Create a Relay Webhook [POST /relay-webhooks]
 
 Create a relay webhook by providing a relay webhooks object as the POST request body.
 
@@ -187,7 +187,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
     + target: (string, required) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object, required) - Restrict which inbound messages will be relayed to the target.
-        + protocol (string, required) - Inbound messaging protocol associated with this webhook.
+        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
             + Default: SMTP
         + domain (string) - Inbound domain associated with this webhook. This is required when `protocol` is "SMTP".
         + esme_address (string) - ESME address binding associated with this webhook. This is required when `protocol` is "SMPP".
@@ -279,53 +279,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
                 ]
             }
 
-
-### List all Relay Webhooks [GET]
-
-List all your relay webhooks.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "results": [
-                    {
-                        "id": "12013026328707075",
-                        "name": "Replies Webhook",
-                        "target": "https://webhooks.customer.example/replies",
-                        "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
-                        "match": {
-                            "protocol": "SMTP",
-                            "domain": "email.example.com"
-                        }
-                    }
-                ]
-            }
-
-+ Response 401 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
-                    }
-                ]
-            }
-
-## Retrieve, Update, and Delete [/relay-webhooks/{webhook_id}]
-
-### Retrieve a Relay Webhook [GET]
+### Retrieve a Relay Webhook [GET /relay-webhooks/{webhook_id}]
 
 Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
 
@@ -381,7 +335,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
             ]
         }
 
-### Update a Relay Webhook [PUT]
+### Update a Relay Webhook [PUT /relay-webhooks/{webhook_id}]
 
 Update a relay webhook by specifying the webhook ID in the URI path.
 
@@ -390,7 +344,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
     + target (string) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object) - Restrict which inbound messages will be relayed to the target.
-        + protocol (string) - Inbound messaging protocol associated with this webhook.
+        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
         + domain (string) - Inbound domain associated with this webhook. This is required when `protocol` is "SMTP".
         + esme_address (string) - ESME address binding associated with this webhook. This is required when `protocol` is "SMPP".
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
@@ -482,7 +436,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
                 ]
             }
 
-### Delete a Relay Webhook [DELETE]
+### Delete a Relay Webhook [DELETE /relay-webhooks/{webhook_id}]
 
 Delete a relay webhook by specifying the webhook ID in the URI path.
 
@@ -506,6 +460,50 @@ Delete a relay webhook by specifying the webhook ID in the URI path.
                     {
                         "message": "resource not found",
                         "code": "1600"
+                    }
+                ]
+            }
+
+
+### List all Relay Webhooks [GET /relay-webhooks]
+
+List all your relay webhooks.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "id": "12013026328707075",
+                        "name": "Replies Webhook",
+                        "target": "https://webhooks.customer.example/replies",
+                        "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                        "match": {
+                            "protocol": "SMTP",
+                            "domain": "email.example.com"
+                        }
+                    }
+                ]
+            }
+
++ Response 401 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Unauthorized Tenant",
+                        "code": "1303"
                     }
                 ]
             }
