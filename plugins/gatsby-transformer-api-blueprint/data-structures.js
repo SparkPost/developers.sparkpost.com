@@ -5,7 +5,6 @@ const removePosition = require('unist-util-remove-position')
 const flatten = require('lodash.flatten')
 const unified = require('unified')
 const remarkParse = require('remark-parse')
-const slugify = require('../../src/utils/slugify')
 
 const parseProcessor = unified().use(remarkParse)
 const parseMarkdown = parseProcessor.parse
@@ -124,7 +123,7 @@ function parseDataStructure(node) {
   const sample = hasSample && escape(secondListItemText.replace(/^Sample\s+/i, '').trim())
 
   return {
-    id: title ? slugify(title) : crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
+    id: crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
     title,
     sample,
     children: [ removePosition(list) ],
