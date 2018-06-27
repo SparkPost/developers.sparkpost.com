@@ -553,7 +553,7 @@ const AttributesTitle = styled.h4`
 function Attributes({ title, id, children }) {
   return (
     <AttributesWrapper className="block">
-      <AttributesTitle>{title || 'Attributes'}</AttributesTitle>
+      <AttributesTitle>{title || 'Request Body'}</AttributesTitle>
       {children}
     </AttributesWrapper>
   )
@@ -784,7 +784,8 @@ const ChildrenToggle = styled.button`
   cursor: pointer;
   text-align: left;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     text-decoration: underline;
   }
 `
