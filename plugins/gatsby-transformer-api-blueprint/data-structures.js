@@ -5,10 +5,14 @@ const removePosition = require('unist-util-remove-position')
 const flatten = require('lodash.flatten')
 const unified = require('unified')
 const remarkParse = require('remark-parse')
+const slugify = require('../../src/utils/slugify')
 
 const parseProcessor = unified().use(remarkParse)
 const parseMarkdown = parseProcessor.parse
 function stringify(node) {
+  // is html comment
+  if (node.type === 'html' && /\s*<!--.*-->\s*/i.test(node.value)) return ''
+
   if (node.value) return node.value
 
   return node.children.map(stringify).join('\n')
@@ -78,7 +82,7 @@ function insertDataStructures(tree, dataStructures) {
 }
 
 
-const dataStructurePattern = /^\s*Data Structure(?::\s?([\w-]+))?\s*$/i
+const dataStructurePattern = /^\s*Data Structure(?::\s?([\w- ]+\w))?\s*$/i
 /** checks if a node is a data structure */
 function isDataStructure(node) {
   // we have a list...
@@ -110,7 +114,7 @@ function parseDataStructure(node) {
   const paragraph = listItem.children[0]
   const text = paragraph.children[0]
   const list = listItem.children[1]
-  const [ all, id ] = text.value.match(dataStructurePattern)
+  const [ all, title ] = text.value.match(dataStructurePattern)
   const secondListItemText = node.children.length > 1 && stringify({
     type: 'root',
     children: node.children[1].children
@@ -120,7 +124,8 @@ function parseDataStructure(node) {
   const sample = hasSample && escape(secondListItemText.replace(/^Sample\s+/i, '').trim())
 
   return {
-    id: id || crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
+    id: title ? slugify(title) : crypto.createHash(`md5`).update(JSON.stringify(node)).digest(`hex`),
+    title,
     sample,
     children: [ removePosition(list) ],
     node
@@ -130,11 +135,11 @@ function parseDataStructure(node) {
 /**
  * generate the node for the data-structure tag
  */
-function generateHtmlReplacement({ id, sample }) {
+function generateHtmlReplacement({ id, title, sample }) {
   return Object.assign({}, {
     type: "paragraph",
     children: [
-      { type: "html", value: `<data-structure id="${id}"${sample ? ` sample="${sample}"` : ''}>` },
+      { type: "html", value: `<data-structure id="${id}" ${title ? ` title="${title}"` : ''} ${sample ? ` sample="${sample}"` : ''}>` },
       { type: "html", value: "</data-structure>" }
     ]
   })

@@ -41,7 +41,7 @@ const components = {
       </div>
     )
   },
-  'data-structure': ({ id, sample }) => (
+  'data-structure': ({ id, title, sample }) => (
     <DataStructureContext.Consumer>
       {dataStructures => {
         const Wrapper = sample !== undefined ? Section : Fragment
@@ -55,6 +55,7 @@ const components = {
             )}
             <div className="block">
               <DataStructure
+                title={title}
                 dataStructure={dataStructures.find(dataStructure => {
                   return (
                     id.toLowerCase() ===
@@ -530,11 +531,11 @@ function Parameters({ parameters }) {
   )
 }
 
-function DataStructure({ dataStructure }) {
+function DataStructure({ title, dataStructure }) {
   const jsonArray = dataStructureToJson(dataStructure)
 
   return (
-    <Attributes id={dataStructure.content.id.toValue()}>
+    <Attributes title={title} id={dataStructure.content.id.toValue()}>
       {jsonArray.map((props, i) => <Attribute key={i} {...props} />)}
     </Attributes>
   )
@@ -549,10 +550,10 @@ const AttributesTitle = styled.h4`
   }
 `
 
-function Attributes({ id, children }) {
+function Attributes({ title, id, children }) {
   return (
     <AttributesWrapper className="block">
-      <AttributesTitle>Attributes</AttributesTitle>
+      <AttributesTitle>{title || 'Attributes'}</AttributesTitle>
       {children}
     </AttributesWrapper>
   )
@@ -783,7 +784,7 @@ const ChildrenToggle = styled.button`
   cursor: pointer;
   text-align: left;
 
-  &:hover {
+  &:hover, &:focus {
     text-decoration: underline;
   }
 `
