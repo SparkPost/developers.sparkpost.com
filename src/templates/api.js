@@ -605,7 +605,7 @@ function Attribute(props) {
 
   return (
     <AttributeWrapper>
-      <AttributeProperties>
+      <div>
         <Name>{name}</Name>
         <Property>
           {isMultipleTypes
@@ -643,8 +643,8 @@ function Attribute(props) {
               </code>
             </Property>
           )}
-      </AttributeProperties>
-      <Markdown>{description}</Markdown>
+      </div>
+      {description && <AttributeMarkdown>{description}</AttributeMarkdown>}
       {'' /* samples should be shown through example JSON blobs */}
       {
         '' /* type !== 'object' && sample && <div>Example: <code>{isString(sample) ? sample : JSON.stringify(sample)}</code></div> */
@@ -697,10 +697,6 @@ const AttributeWrapper = styled.div`
   }
 `
 
-const AttributeProperties = styled.div`
-  padding-bottom: 0.25rem;
-`
-
 const Property = styled.span`
   display: inline-block;
   font-size: 0.777777778rem;
@@ -726,6 +722,10 @@ const Required = styled(Property)`
   && {
     color: ${color('mustard')};
   }
+`
+
+const AttributeMarkdown = styled(Markdown)`
+  padding-top: 0.25rem;
 `
 
 const ChildrenWrapper = styled.div`
