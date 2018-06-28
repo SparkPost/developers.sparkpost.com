@@ -49,7 +49,7 @@ const components = {
           <Wrapper>
             {sample !== undefined && (
               <Right>
-                <HttpTitle>Example</HttpTitle>
+                <HttpTitle style={{ marginTop: 0 }}>Example</HttpTitle>
                 <Json>{format(unescape(sample))}</Json>
               </Right>
             )}
@@ -167,17 +167,16 @@ function ResourceGroup({ resourceGroup }) {
 
 function Resource({ resource, resourceGroup }) {
   const { title, copy } = values(resource, ['title', 'copy'])
+  const sameAsChildTitle = resource.transitions.length === 1 && resource.transitions.first.title.toValue() === title
 
   return (
-    <div>
+    <div style={{ padding: `3rem 0 0 0` }}>
       <Debug title="resource" enable={debug}>
         <Section style={{ marginTop: '2rem' }}>
-          {title &&
-            (resource.transitions.length > 1 || !isEmpty(copy)) && (
+          {title && !sameAsChildTitle && (
               <Heading
-                level={3}
+                level={2}
                 id={slugify.resource({ resourceGroup, resource })}
-                style={{ fontSize: `1rem` }}
               >
                 {title}
               </Heading>
@@ -385,7 +384,7 @@ function Request({ request, transition, resource }) {
   return (
     <div>
       <Debug title="request" enable={debug}>
-        <HttpTitle>{title ? `Request: ${title}` : `Request`}</HttpTitle>
+        <HttpTitle style={{ marginTop: 0 }}>{title ? `Request: ${title}` : `Request`}</HttpTitle>
         {copy && <Markdown>{copy}</Markdown>}
         <pre style={{ padding: `.5rem`, whiteSpace: `pre-wrap` }}>
           <code>
