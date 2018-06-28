@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components'
 import { darken } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale } from 'utils/colors'
-import { font, weight, monospace } from 'utils/fonts'
+import { font, weight, monospace, uppercase } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
 injectGlobal`
@@ -194,6 +194,13 @@ injectGlobal`
       border-bottom-width: 1px;
       padding: 0.35rem 0.5rem 0.25rem;
       background: ${grayscale('light')};
+
+      padding: 0.5rem;
+      ${uppercase}
+      font-weight: ${weight('bold')};
+      font-size: 0.722222222rem;
+      text-transform: uppercase;
+      color: ${grayscale(3)};
     }
   }
 
