@@ -167,13 +167,16 @@ function ResourceGroup({ resourceGroup }) {
 
 function Resource({ resource, resourceGroup }) {
   const { title, copy } = values(resource, ['title', 'copy'])
-  const sameAsChildTitle = resource.transitions.length === 1 && resource.transitions.first.title.toValue() === title
+  const sameAsChildTitle =
+    resource.transitions.length === 1 &&
+    resource.transitions.first.title.toValue() === title
 
   return (
     <div style={{ padding: `3rem 0 0 0` }}>
       <Debug title="resource" enable={debug}>
         <Section style={{ marginTop: '2rem' }}>
-          {title && !sameAsChildTitle && (
+          {title &&
+            !sameAsChildTitle && (
               <Heading
                 level={2}
                 id={slugify.resource({ resourceGroup, resource })}
@@ -384,7 +387,9 @@ function Request({ request, transition, resource }) {
   return (
     <div>
       <Debug title="request" enable={debug}>
-        <HttpTitle style={{ marginTop: 0 }}>{title ? `Request: ${title}` : `Request`}</HttpTitle>
+        <HttpTitle style={{ marginTop: 0 }}>
+          {title ? `Request: ${title}` : `Request`}
+        </HttpTitle>
         {copy && <Markdown>{copy}</Markdown>}
         <pre style={{ padding: `.5rem`, whiteSpace: `pre-wrap` }}>
           <code>
