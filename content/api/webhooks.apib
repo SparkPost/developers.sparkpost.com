@@ -6,13 +6,13 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 
 [Webhooks](https://en.wikipedia.org/wiki/Webhook) allow us to push raw events the we collect about your emails over to your servers. <a href="https://support.sparkpost.com/customer/portal/articles/1929974">This support article</a> describes how to set up a webhook in the SparkPost app. The Webhooks API provides the means to manage webhooks programmatically.
 
-## Batch Information
+### Batch Information
 
 * Any webhook batch that does not receive an HTTP 200 response will be retried for a total of 8 hours before the data is discarded.
 * Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for auditing and prevention of processing duplicate batches.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
 
-## Authentication
+### Authentication
 
 You can use authentication to protect your webhook consumer and verify that only SparkPost is sending you data. We support both OAuth 2 and Basic authentication. When using OAuth 2, you need to set `auth_request_details`. The `auth_credentials` will be set by automatically from this. If you use Basic authentication, you need to set `auth_credentials` with a valid username and password.
 
