@@ -82,7 +82,7 @@ function values(element, props = []) {
   const obj = {}
 
   for (let prop of props) {
-    obj[prop] = element[prop].toValue()
+    obj[prop] = element[prop] ? element[prop].toValue() : ''
   }
 
   return obj
