@@ -37,6 +37,12 @@ description: "Manage the sending IPs for your account and assign them to IP pool
 <td>IP pool this sending IP is held in</td>
 <td></td>
 </tr>
+<tr>
+<td>customer_provided</td>
+<td>boolean</td>
+<td><code>true</code> if this sending IP was provided by the customer</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </div><div class="resource searchable"><h3 id="sending-ips-sending-ips" class="resource-heading">Sending IPs <a href="#sending-ips-sending-ips" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-ips-sending-ips-get" class="action-heading"><div class="name">Get all sending IPs</div></h4><div class="method">GET<code class="uri">/api/v1/sending-ips</code></div><div class="markdown"><p>Gets all IP addresses.</p>
@@ -45,12 +51,14 @@ description: "Manage the sending IPs for your account and assign them to IP pool
     {
       "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"123.45.67.89"</span></span>,
       "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta472a.sparkpostmail.com"</span></span>,
-      "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"marketing"</span>
+      "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"marketing"</span></span>,
+      "<span class="hljs-attribute">customer_provided</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>},
     {
       "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"123.45.67.80"</span></span>,
       "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta474a.sparkpostmail.com"</span></span>,
-      "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+      "<span class="hljs-attribute">customer_provided</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
     </span>}
   ]
 </span>}</pre></div></div><hr></div></div></div><div class="resource searchable"><h3 id="sending-ips-sending-ip-resource" class="resource-heading">Sending IP Resource <a href="#sending-ips-sending-ip-resource" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="sending-ips-sending-ip-resource-get" class="action-heading"><div class="name">Get a Sending IP</div></h4><div class="method">GET<code class="uri">/api/v1/sending-ips/{external_ip}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">external_ip</td><td class="markdown"><strong class="param-annotation">(required) &nbsp;</strong><p>The external IP of the sending IP</p>
@@ -59,7 +67,8 @@ description: "Manage the sending IPs for your account and assign them to IP pool
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">external_ip</span>": <span class="hljs-value"><span class="hljs-string">"123.45.67.89"</span></span>,
     "<span class="hljs-attribute">hostname</span>": <span class="hljs-value"><span class="hljs-string">"mta472a.sparkpostmail.com"</span></span>,
-    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"cool_kids"</span>
+    "<span class="hljs-attribute">ip_pool</span>": <span class="hljs-value"><span class="hljs-string">"cool_kids"</span></span>,
+    "<span class="hljs-attribute">customer_provided</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
   </span>}
 </span>}</pre></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 400)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">errors</span>": <span class="hljs-value">[
