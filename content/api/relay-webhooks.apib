@@ -13,12 +13,9 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
     + name (string) - Relay webhook name
     + target (string) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target. Use this token in your target application to confirm that data is coming from SparkPost.
-    + match (object) - Restrict which inbound messages will be relayed to the target.
-        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
+    + match: SMTP (object) - Restrict which inbound messages will be relayed to the target.
+        + protocol: SMTP (string) - Inbound messaging protocol associated with this webhook.
         + domain (string) - Inbound domain associated with this webhook.
-        + esme_address (string)
-            ESME address binding associated with this webhook.
-            <br /><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> Please speak with your TAM to create an ESME address.
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
 + Sample
 
@@ -62,11 +59,9 @@ When updating (PUT) a Relay Webhook:
 }
 ```
 
-## Relay Webhook Payloads
+## Relay Webhook Payload
 
-### SMTP Payload
-
-The following fields will be included in the JSON object posted to the SMTP relay webhooks target:
+The following fields will be included in the JSON object posted to the relay webhook's target:
 
 + Data Structure
     + content (object) - The content parsed from the incoming message.
@@ -143,40 +138,6 @@ The following fields will be included in the JSON object posted to the SMTP rela
     ]
     ```
 
-### SMPP Payload
-
-<banner status="info">SMPP is only available for <a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a> accounts.</banner>
-
-The following fields will be included in the JSON object posted to the SMPP relay webhooks target:
-
-+ Data Structure
-    + text (string) - Contents of the first text/plain part of the message
-    + to (string) - SMPP message recipient
-    + from (string) - SMPP message sender
-    + date (string) - Date that Sparkpost recieved the SMPP message
-    + webhook_id (string) - ID of the relay webhook which triggered this relay message
-    + protocol: smpp (string) - Protocol of the originating inbound message.
-    + customer_id (string) - Customer ID of the customer that created the relay webhook.
-+ Sample
-    
-    ```   
-    [
-        {
-            "msys": {
-                "relay_message": {
-                    "protocol": "smpp",
-                    "to": "12345",
-                    "date": "Wed, 14 Sep 2016 15:41:13 -0400",
-                    "from": "54321",
-                    "text": "Hi, I'm a text message",
-                    "customer_id": "1337",
-                    "webhook_id": "12363818881515528"
-                }
-            }
-        }
-    ]
-    ```
-
 
 ### Create a Relay Webhook [POST /relay-webhooks]
 
@@ -187,10 +148,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
     + target: (string, required) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object, required) - Restrict which inbound messages will be relayed to the target.
-        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
-            + Default: SMTP
-        + domain (string) - Inbound domain associated with this webhook. This is required when `protocol` is "SMTP".
-        + esme_address (string) - ESME address binding associated with this webhook. This is required when `protocol` is "SMPP".
+        + domain (string, required) - Inbound domain associated with this webhook.
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
 
 
@@ -203,13 +161,11 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
     + Body
 
             {
-              "name": "Replies Webhook",
-              "target": "https://webhooks.customer.example/replies",
-              "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
-              "match":
-                {
-                  "protocol": "SMTP",
-                  "domain": "email.example.com"
+                "name": "Replies Webhook",
+                "target": "https://webhooks.customer.example/replies",
+                "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                "match": {
+                    "domain": "email.example.com"
                 }
             }
 
@@ -344,9 +300,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
     + target (string) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object) - Restrict which inbound messages will be relayed to the target.
-        + protocol: SMTP, SMPP (enum) - Inbound messaging protocol associated with this webhook.
-        + domain (string) - Inbound domain associated with this webhook. This is required when `protocol` is "SMTP".
-        + esme_address (string) - ESME address binding associated with this webhook. This is required when `protocol` is "SMPP".
+        + domain (string) - Inbound domain associated with this webhook.
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
 
 
