@@ -4,7 +4,7 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 
 # Group Webhooks
 
-[Webhooks](https://en.wikipedia.org/wiki/Webhook) allow us to push raw events the we collect about your emails over to your servers. <a href="https://support.sparkpost.com/customer/portal/articles/1929974">This support article</a> describes how to set up a webhook in the SparkPost app. The Webhooks API provides the means to manage webhooks programmatically.
+[Webhooks](https://en.wikipedia.org/wiki/Webhook) allow us to push raw events the we collect about your emails over to your servers. You can use this endpoint to create and manage webhooks, or you can create one from the [app](https://app.sparkpost.com/webhooks/create) ([EU](https://app.eu.sparkpost.com/webhooks/create)).
 
 ### Batch Information
 
@@ -12,24 +12,24 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 * Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for auditing and prevention of processing duplicate batches.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
 
-### Authentication
-
-You can use authentication to protect your webhook consumer and verify that only SparkPost is sending you data. We support both OAuth 2 and Basic authentication. When using OAuth 2, you need to set `auth_request_details`. The `auth_credentials` will be set by automatically from this. If you use Basic authentication, you need to set `auth_credentials` with a valid username and password.
-
 ## Webhooks Object
 
 + Data Structure: Attributes
-    + name (string) - User-friendly name for webhook
+    + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will receive. Use the [Events Documentation](#webhooks-get-events-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
-    + auth_type (enum) - Type of authentication to be used during POST requests to target.
+    + auth_type (enum) - Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
         + none
         + basic
         + oauth2
-    + auth_request_details (object) - Object containing details needed to request authorization credentials for OAuth 2.
-    + auth_credentials (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication.
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+        + username (string, required) - The username for Basic Authentication.
+        + password (string) - The password for Basic Authentication.
     + auth_token (string)
         <span class="label label-danger"><strong>Deprecated</strong></span> in favor of the `auth_type` field. <br /> Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
 + Sample
@@ -51,24 +51,32 @@ You can use authentication to protect your webhook consumer and verify that only
     }
     ```
 
-__**The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)**__
+
+<br/>
+___
+
+__The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
 ### Create a Webhook [POST /webhooks]
 
 When a webhook is created, a test POST request is sent to the `target` URL. If this request does not receive an HTTP 200 response, your request to the Webhook API will fail with HTTP 400 and the webhook will not be created. If created successfully, the webhook will begin to receive event data after 1 minute.
 
 + Data Structure
-    + name (string, required) - User-friendly name for webhook
+    + name (string, required) - Name for webhook
     + target (string, required) - URL of the target to which to POST event batches. 
-    + events (array, required)  - Array of event types this webhook will receive. Use the [Events Documentation](#webhooks-get-events-documentation-get) endpoint to list the available event types.
+    + events (array, required)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
         + Default: true
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + auth_type: none, basic, oauth2 (enum)
-        Type of authentication to be used during POST requests to target.
+        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
         + Default: none
-    + auth_request_details (object) - Object containing details needed to request authorization credentials, as necessary.
-    + auth_credentials (object) - Object containing credentials needed to make authorized POST requests to target.
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+        + username (string, required) - The username for Basic Authentication.
+        + password (string) - The password for Basic Authentication.
 
 
 + Request (application/json)
@@ -139,15 +147,21 @@ When a webhook is created, a test POST request is sent to the `target` URL. If t
 
 ### Validate a Webhook [POST /webhooks/{id}/validate]
 
-The validation sends an example message event batch from the Webhooks API to the
-target URL, validates that the target responds with HTTP 200,
-and returns detailed information on the response received from the target.
+The validation request sends an example message event batch the target URL, validates that the target responds with HTTP 200,
+and returns information on the response received from the target.
 
-#### Message Properties
 
-| Property   | Type   | Description | Required | Notes |
-|------------|--------|-------------|----------|-------|
-| message    | object | Example batch to send | yes | example: `[ { "msys": {} } ]`  |
+#### Sample Batch
+
+```
+[
+  {
+    "msys": {}
+  }
+]
+```
+
+
 
 + Parameters
     + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
@@ -281,17 +295,19 @@ Returns the status information for the batches that have been generated. Status 
 ### Update a Webhook [PUT /webhooks/{id}]
 
 + Data Structure
-    + name (string) - User-friendly name for webhook
+    + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will receive. Use the [Events Documentation](#webhooks-get-events-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
-    + auth_type (enum) - Type of authentication to be used during POST requests to target.
-        + none
-        + basic
-        + oauth2
-    + auth_request_details (object) - Object containing details needed to request authorization credentials, as necessary.
-    + auth_credentials (object) - Object containing credentials needed to make authorized POST requests to target.
+    + auth_type: none, basic, oauth2 (enum)
+        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+        + username (string, required) - The username for Basic Authentication.
+        + password (string) - The password for Basic Authentication.
 
 If you change to the `target` URL, a test POST request will be sent. If this request does not receive an HTTP 200 response, your request to the Webhooks API will fail with HTTP 400, and the webhook will not be updated.
 
@@ -510,7 +526,7 @@ Returns an example of the event data that will be posted by a webhook for the sp
 The data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.
 
 + Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types, defaults to all event types.
 
 + Request
 
