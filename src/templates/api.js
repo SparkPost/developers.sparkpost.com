@@ -167,13 +167,16 @@ function ResourceGroup({ resourceGroup }) {
 
 function Resource({ resource, resourceGroup }) {
   const { title, copy } = values(resource, ['title', 'copy'])
-  const sameAsChildTitle = resource.transitions.length === 1 && resource.transitions.first.title.toValue() === title
+  const sameAsChildTitle =
+    resource.transitions.length === 1 &&
+    resource.transitions.first.title.toValue() === title
 
   return (
     <div style={{ padding: `3rem 0 0 0` }}>
       <Debug title="resource" enable={debug}>
         <Section style={{ marginTop: '2rem' }}>
-          {title && !sameAsChildTitle && (
+          {title &&
+            !sameAsChildTitle && (
               <Heading
                 level={2}
                 id={slugify.resource({ resourceGroup, resource })}
@@ -361,18 +364,26 @@ function Request({ request, transition, resource }) {
     for (let param of jsonArray) {
       const value = isUndefined(param.value) ? '' : param.value
       // replace it if it is a url parameter
-      modifiedHref = modifiedHref.replace(`{${param.name}}`, value)
+      modifiedHref = modifiedHref.replace(
+        `{${param.name}}`,
+        `<span class="hljs-string">${value}</span>`
+      )
 
-      // add the value if it is a query parameter
+      // add the value if it is a query parameter or remove it if the value is empty
+      const replacementString = isUndefined(param.value)
+        ? '$1$2$3'
+        : `$1$2<span class="hljs-literal">${
+            param.name
+          }</span>=<span class="hljs-string">${value}</span>&$3`
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
         new RegExp(`(.+)({\?(?:.+,)?)${param.name}((?:,.+)?})`, 'i'),
-        `$1$2${param.name}=${value}&$3`
+        replacementString
       )
     }
 
     // remove the comma deliminators
-    modifiedHref = modifiedHref.replace(/&,/g, '&')
+    modifiedHref = modifiedHref.replace(/&,+/g, '&')
 
     // remove the wrapper notation from the query params
     modifiedHref = modifiedHref.replace(/(.+){\?(.+)}/i, `$1?$2`)
@@ -384,13 +395,20 @@ function Request({ request, transition, resource }) {
   return (
     <div>
       <Debug title="request" enable={debug}>
-        <HttpTitle style={{ marginTop: 0 }}>{title ? `Request: ${title}` : `Request`}</HttpTitle>
+        <HttpTitle style={{ marginTop: 0 }}>
+          {title ? `Request: ${title}` : `Request`}
+        </HttpTitle>
         {copy && <Markdown>{copy}</Markdown>}
         <pre style={{ padding: `.5rem`, whiteSpace: `pre-wrap` }}>
           <code>
             {method && (
               <Fragment>
-                {method} {`/api/${version}${modifiedHref}`}
+                {method}{' '}
+                <span
+                  dangerouslySetInnerHTML={{
+                    __html: `/api/${version}${modifiedHref}`,
+                  }}
+                />
               </Fragment>
             )}
           </code>
