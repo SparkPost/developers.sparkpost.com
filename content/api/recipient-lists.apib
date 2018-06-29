@@ -14,9 +14,9 @@ The Recipient List API operates on lists as a whole and does not currently suppo
 ### Recipient List Object
 
 + Data Structure: Attributes
-    + id (string) - Short, unique, identifier. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
-    + name (string) - Recipient list display name. If a name is not specified, it defaults to the same value as id. <br />  Maximum length: 64 bytes
-    + description (string) - Detailed description of the recipient list. <br /> Maximum length: 1024 bytes
+    + id (string) - Unique alphanumeric ID. <br /> Maximum length: 64 bytes
+    + name (string) - Recipient list display name. <br />  Maximum length: 64 bytes
+    + description (string) - Description of the recipient list. <br /> Maximum length: 1024 bytes
     + attributes (object) - An object of arbitrary metadata related to this list. This data is not used by the API. It is only for the user.
     + recipients (array[object]) - Array of recipient objects. See the [Recipient Object](#header-recipient-object).
 + Sample
@@ -41,14 +41,14 @@ The Recipient List API operates on lists as a whole and does not currently suppo
 
 ### Recipient Object
 
-Recipients are described in a JSON array with the following fields:
+Recipients are described in an array of objects with the following attributes:
 
 + Data Structure: Attributes
     + address (enum, required) - Address information for a recipient. See the [Address Object](#header-address-object).
         + (object)
         + (string)
     + return_path (string) 
-        Email address to use for envelope FROM. Overrides transmission level return_path. <br /> <br /> For <span class="label label-primary"><strong>SparkPost</strong></span> accounts, the domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-verify-post).  The local part of the return_path address will be overwritten by SparkPost servers.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost servers.
+        Email address to use for envelope FROM. Overrides transmission level return_path. The domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-verify-post). The local part of the return_path address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost.
     + tags (array) - Array of text labels associated with a recipient. Tags are available in Webhook events.  Maximum number of tags - 10 per recipient, 100 system wide.  Any tags over the limits are ignored.
     + metadata (object) - Key/value pairs associated with a recipient. Metadata is available during events through the Webhooks and is provided to the substitution engine.  A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is available with recipient metadata taking precedence over transmission metadata when there are conflicts.
     + substitution_data (object) - Key/value pairs associated with a recipient that are provided to the substitution engine. Recipient substitution data takes precedence over transmission substitution data. Unlike metadata, substitution data is not included in Webhook events.
@@ -78,12 +78,12 @@ Recipients are described in a JSON array with the following fields:
     
 
 ### Address Object
-If the `address` field is a string type, it is interpreted as the email address. If it is a JSON
-object, it is described with the following fields:  
 
-+ Data Structure
+If the `address` attribute is a string, it is interpreted as the email address. If it is an object, it is described with the following attributes:
+
++ Data Structure: Attributes
     + email (string, required) - Valid email address
-    + name (string) - User-friendly name for the email address
+    + name (string) - Name attached to the email address
     + header_to (string)
         Email address to display in the `To` header instead of _address.email_ ([for CC and BCC](https://support.sparkpost.com/customer/en/portal/articles/2432290-using-cc-and-bcc-with-the-rest-api)) 
 
@@ -91,7 +91,7 @@ object, it is described with the following fields:
 
 The _address.email_ attribute is used as the envelope RCPT TO value.
 
-If the address attribute is specified as a JSON string instead of a JSON address object, the address JSON string is used as the envelope RCPT TO value.
+If the address attribute is specified as a string instead of an address object, the address string is used as the envelope RCPT TO value.
 
 The _address.name_ attribute, in conjuction with the _address.email_ attribute, is used to construct the
 content `To` header.
@@ -102,7 +102,7 @@ If the _address.name_ attribute is not specified, the `To` header uses the _addr
 
 `To: address.email`
 
-If the address is specified as a JSON string instead of a JSON address object, the `To` header is constructed using the address JSON string.
+If the address is specified as a string instead of an address object, the `To` header is constructed using the address string.
 
 `To: address`
 
@@ -123,9 +123,9 @@ The `To` header is only constructed for messages built from email part content. 
 ### Create a Recipient List [POST /recipient-lists{?num_rcpt_errors}]
 
 + Data Structure
-    + id (string) - Short, unique, identifier. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
+    + id (string) - Unique alphanumeric ID. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
     + name (string) - Recipient list display name. If a name is not specified, it defaults to the same value as id. <br />  Maximum length: 64 bytes
-    + description (string) - Detailed description of the recipient list. <br /> Maximum length: 1024 bytes
+    + description (string) - Description of the recipient list. <br /> Maximum length: 1024 bytes
     + attributes (object) - An object of arbitrary metadata related to this list.
     + recipients (array[object], required) - Array of recipient objects. See the [Recipient Object](#header-recipient-object).
 
@@ -375,18 +375,18 @@ retrieve the recipients contained in a list, the list must be specified and the 
 
 ### Update a Recipient List [PUT /recipient-lists/{id}{?num_rcpt_errors}]
 
+If a `recipients` array is provided in the update request, it will replace the current recipients. This means that if you're adding, updating, or removing a single recipient, the `recipients` array must contain all current recipients, regardless they are being changed or not.
+
 + Data Structure
     + name (string) - Recipient list display name. <br />  Maximum length: 64 bytes
-    + description (string) - Detailed description of the recipient list. <br /> Maximum length: 1024 bytes
+    + description (string) - Description of the recipient list. <br /> Maximum length: 1024 bytes
     + attributes (object) - An object of arbitrary metadata related to this list. Specifying this will completely replace the current value.
     + recipients (array[object]) - Array of recipient objects. The new recipients will completely replace the existing recipients. See the [Recipient Object](#header-recipient-object).
 
 
-If a `recipients` array is provided in the update request, it will replace the current recipients. This means that if you're adding, updating, or removing a single recipient, the `recipients` array must contain all current recipients, regardless they are being changed or not.
-
 #### Limitations
 
-If a transmission using the recipient list has a `state` of "submitted" or "generating", the list cannot be updated. Also, if the transmission is scheduled and within 10 minutes of the scheduled time, the list won't be updatable.
+If a transmission using the recipient list has a `state` of "submitted" or "generating", the list cannot be updated. Also, if the transmission is scheduled and is within 10 minutes of the scheduled time, the list won't be updatable.
 
 #### Returns
 
@@ -552,17 +552,10 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
 
 ### Delete a Recipient List [DELETE /recipient-lists/{id}]
 
-
-
-Permanently delete the specified recipient list.
+<banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameter
     + id (required, string, `unique_id_4_graduate_students_list`)
-
-Once a recipient list is deleted, it
-cannot be recovered.  Before deleting a list, ensure that it is no longer needed and keep a backup copy.
-
-<banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Request
 
@@ -588,19 +581,6 @@ cannot be recovered.  Before deleting a list, ensure that it is no longer needed
                 ]
             }
 
-+ Response 404 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "resource not found",
-                        "code": "1600",
-                        "description": "List 'unique_id_4_graduate_students_list' does not exist"
-                    }
-                ]
-            }
 
 + Response 409 (application/json)
 
@@ -619,8 +599,7 @@ cannot be recovered.  Before deleting a list, ensure that it is no longer needed
 
 ### List all Recipient Lists [GET /recipient-lists]
 
-List a summary of all recipient lists. The recipients for each list are not included in the
-results. Retrieve a single list, to get a list the recipients.
+Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-retrieve-a-recipient-list-get) to get a list the recipients.
 
 + Request
 
