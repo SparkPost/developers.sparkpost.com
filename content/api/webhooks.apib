@@ -53,56 +53,6 @@ You can use authentication to protect your webhook consumer and verify that only
 
 __**The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)**__
 
-### Get Events Documentation [GET /webhooks/events/documentation]
-
-Returns a list of descriptions of the events, event types, and event fields that could be included in a webhooks batches to your target URL.
-
-+ Request
-
-    + Headers
-
-            Accept: application/json
-
-+ Response
-    
-    {
-      "results": {
-        "message_event": { ... },
-        "track_event": { ... },
-        ...
-      }
-    }
-
-
-### Get Event Samples [GET /webhooks/events/samples{?events}]
-
-Returns an example of the event data that will be posted by a webhook for the specified events.
-
-The data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.
-
-+ Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
-
-+ Request
-
-    + Headers
-
-            Accept: application/json
-
-
-+ Response
-    
-    {
-      "results": [
-        {
-          "msys": {
-            "message_event": { ... }
-          }
-        }
-      ]
-    }
-
-
 ### Create a Webhook [POST /webhooks]
 
 When a webhook is created, a test POST request is sent to the `target` URL. If this request does not receive an HTTP 200 response, your request to the Webhook API will fail with HTTP 400 and the webhook will not be created. If created successfully, the webhook will begin to receive event data after 1 minute.
@@ -526,3 +476,57 @@ Returns a list of all your webhooks.
                     }
                 ]
             }
+
+
+
+
+## Documentation [/webhooks/events/documentation] 
+
+### Get Events Documentation [GET]
+
+Returns a list of descriptions of the events, event types, and event fields that could be included in a webhooks batches to your target URL.
+
++ Request
+
+    + Headers
+
+            Accept: application/json
+
++ Response
+    
+    {
+      "results": {
+        "message_event": { ... },
+        "track_event": { ... },
+        ...
+      }
+    }
+
+
+### Get Event Samples [GET /webhooks/events/samples{?events}]
+
+Returns an example of the event data that will be posted by a webhook for the specified events.
+
+The data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.
+
++ Parameters
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the Webhooks Events endpoint to list the available event types, defaults to all event types.
+
++ Request
+
+    + Headers
+
+            Accept: application/json
+
+
++ Response
+    
+    {
+      "results": [
+        {
+          "msys": {
+            "message_event": { ... }
+          }
+        }
+      ]
+    }
