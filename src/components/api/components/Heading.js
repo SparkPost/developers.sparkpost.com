@@ -30,9 +30,11 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
 }
 
 function stringifyChildren(children) {
-  return children.map((child) => {
-    return isString(child) ? child : stringifyChildren(child.props.children)
-  }).join('')
+  return children
+    .map(child => {
+      return isString(child) ? child : stringifyChildren(child.props.children)
+    })
+    .join('')
 }
 
 export default styled(Heading)``
