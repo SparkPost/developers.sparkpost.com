@@ -18,7 +18,7 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
   const slug =
     id ||
     slugify.markdown({
-      heading: isString(children) ? children : children.join(''),
+      heading: stringifyChildren(children),
     })
 
   return (
@@ -27,6 +27,12 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
       <Link.Unstyled to={`#${slug}`}>{children}</Link.Unstyled>
     </Tag>
   )
+}
+
+function stringifyChildren(children) {
+  return children.map((child) => {
+    return isString(child) ? child : stringifyChildren(child.props.children)
+  }).join('')
 }
 
 export default styled(Heading)``
