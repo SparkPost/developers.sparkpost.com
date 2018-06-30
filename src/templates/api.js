@@ -240,7 +240,6 @@ const methodMap = {
   DELETE: color('red'),
 }
 
-
 function Transition({ transition, resource, resourceGroup, index }) {
   const { title, copy, method } = values(transition, [
     'title',
@@ -380,7 +379,10 @@ function Request({ request, transition, resource }) {
           }</span>=<span class="hljs-string">${value}</span>&$3`
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
-        new RegExp(`(.+)({\\?(?:.+,)?)${escapeRegExp(param.name)}((?:,.+)?})`, 'i'),
+        new RegExp(
+          `(.+)({\\?(?:.+,)?)${escapeRegExp(param.name)}((?:,.+)?})`,
+          'i'
+        ),
         replacementString
       )
     }
