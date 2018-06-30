@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { darken } from 'polished'
+import escapeRegExp from 'escape-string-regexp'
 import { color, grayscale } from 'utils/colors'
 import { uppercase, weight, monospace } from 'utils/fonts'
 import Markdown from 'components/Markdown'
@@ -172,7 +173,7 @@ function Resource({ resource, resourceGroup }) {
     resource.transitions.first.title.toValue() === title
 
   return (
-    <div style={{ padding: `3rem 0 0 0` }}>
+    <div style={{ padding: `3rem 0 0` }}>
       <Debug title="resource" enable={debug}>
         <Section style={{ marginTop: '2rem' }}>
           {title &&
@@ -189,6 +190,7 @@ function Resource({ resource, resourceGroup }) {
         {resource.transitions.map((transition, i) => (
           <Transition
             key={i}
+            index={i}
             transition={transition}
             resource={resource}
             resourceGroup={resourceGroup}
@@ -238,7 +240,8 @@ const methodMap = {
   DELETE: color('red'),
 }
 
-function Transition({ transition, resource, resourceGroup }) {
+
+function Transition({ transition, resource, resourceGroup, index }) {
   const { title, copy, method } = values(transition, [
     'title',
     'copy',
@@ -249,7 +252,7 @@ function Transition({ transition, resource, resourceGroup }) {
   const version = href === 'ab-testing' ? 'labs' : 'v1'
 
   return (
-    <div>
+    <div style={{ padding: `${index > 0 ? `3rem` : '0'} 0 0 0` }}>
       <Debug title="transition" enable={debug}>
         <Section>
           <Right>
@@ -377,7 +380,7 @@ function Request({ request, transition, resource }) {
           }</span>=<span class="hljs-string">${value}</span>&$3`
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
-        new RegExp(`(.+)({\?(?:.+,)?)${param.name}((?:,.+)?})`, 'i'),
+        new RegExp(`(.+)({\\?(?:.+,)?)${escapeRegExp(param.name)}((?:,.+)?})`, 'i'),
         replacementString
       )
     }
