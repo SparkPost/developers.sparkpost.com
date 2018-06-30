@@ -4,7 +4,7 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 
 # Group Webhooks
 
-[Webhooks](https://en.wikipedia.org/wiki/Webhook) allow us to push raw events the we collect about your emails over to your servers. You can use this endpoint to create and manage webhooks, or you can create one from the [app](https://app.sparkpost.com/webhooks/create) ([EU](https://app.eu.sparkpost.com/webhooks/create)).
+[Webhooks](https://en.wikipedia.org/wiki/Webhook) allow us to push raw events we collect about your emails over to your servers. Batches of events are delivered through a POST request to the defined target URL. You can use this endpoint to create and manage webhooks, or you can create one from the [app](https://app.sparkpost.com/webhooks/create) ([EU](https://app.eu.sparkpost.com/webhooks/create)).
 
 ### Batch Information
 
@@ -27,7 +27,7 @@ description: Manage webhooks, which enable you to receive push updates of the ra
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
-    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
     + auth_token (string)
@@ -74,7 +74,7 @@ When a webhook is created, a test POST request is sent to the `target` URL. If t
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
-    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
 
@@ -305,7 +305,7 @@ Returns the status information for the batches that have been generated. Status 
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type. 
-    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic.
+    + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
 
