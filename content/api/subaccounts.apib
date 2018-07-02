@@ -4,7 +4,7 @@ description: Manage subaccounts, a way for service providers to provision and ma
 
 # Group Subaccounts
 
-Subaccounts are a way for you to provision and manage senders separately from each other and to provide assets and reporting data for each of them. This is useful for service providers who send on behalf of others or for a business that wants to separate their different streams of traffic. Learn more in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/).
+Subaccounts are a way for you to provision and manage senders separately from each other, and to provide assets and reporting data for each of them. This is useful for service providers who send on behalf of others or for a business that wants to separate their different streams of traffic. Learn more in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/).
 
 The following APIs have subaccount support:
 
@@ -87,7 +87,7 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
 
         Valid values are: `smtp/inject`, `sending_domains/manage`, `tracking_domains/view`, `tracking_domains/manage`, `message_events/view`, `suppression_lists/manage`, `transmissions/view`, `transmissions/modify`, `webhooks/view`, `webhooks/modify`
     + key_valid_ips (array)
-        List of IP's that the initial subaccount api key can be used from. If the supplied `key_valid_ips` is empty, the api key is usable by any IP address.
+        List of IP's that the initial subaccount API key can be used from. If not supplied, the API key will be usable from any IP address.
 
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
@@ -167,12 +167,12 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
             ]
         }
 
-### Retrieve a Subaccount [GET /subaccounts/{subaccount_id}]
+### Retrieve a Subaccount [GET /subaccounts/{id}]
 
 This endpoint only returns information about the subaccount, not the resources associated with it.
 
 + Parameters
-    + subaccount_id (required, integer, `123`)
+    + id (required, integer, `123`)
 
 + Request
 
@@ -193,7 +193,7 @@ This endpoint only returns information about the subaccount, not the resources a
             }
         }
 
-### Update a subaccount [PUT /subaccounts/{subaccount_id}]
+### Update a subaccount [PUT /subaccounts/{id}]
 
 + Data Structure
     + name (string) - Subaccount display name. <br />Max length: 64 characters
@@ -207,7 +207,7 @@ This endpoint only returns information about the subaccount, not the resources a
 
 
 + Parameters
-    + subaccount_id (required, integer, `123`)
+    + id (required, integer, `123`)
 
 + Request (application/json)
 
