@@ -5,15 +5,15 @@ description: Manage reusable content templates that are run through the SparkPos
 # Group Templates
 
 Templates are a way to store and edit email content.
-Instead of passing inline content to a [Transmission](/api/transmissions) request, a template can be set to provide the conent.
+Instead of passing inline content to a [Transmission](/api/transmissions) request, a template can be set to provide the content.
 Most content fields in a template (from, headers, text, and html) support [substitution syntax](/api/substitutions-reference) to enable personalized emails.
 
 ## Drafts & Published versions
 
 Templates can have both a draft and a published version. Transmissions send the published version by default.
 This allows you to work on an upcoming version of the content while continuing to send the last published version.
-Once ready, [pubish the draft](#templates-publish-a-draft-put) to the start sending the new version without needing to change the transmission request.
-If needed, it's also possible to update the published version of a template directly, without affecting the draft verison.
+Once ready, [publish the draft](#templates-publish-a-draft-put) to the start sending the new version without needing to change the transmission request.
+If needed, it's also possible to update the published version of a template directly, without affecting the draft version.
 
 ## Template Object
 
@@ -41,7 +41,7 @@ If needed, it's also possible to update the published version of a template dire
     + last_update_time (string) - The last date any version of this template (draft of published) was updated.
     + last_use (string) - The last date any version of this template (draft or published) was used for generating an email. Only present if template has been used.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
-    + subaccount_id (number) - Subaccount the tamplate belongs to. Only present on templates that belong to a subaccount.
+    + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
 
 
 #### Header Notes
@@ -49,7 +49,7 @@ If needed, it's also possible to update the published version of a template dire
 * Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto generated upon construction of the email.
 * The `To` header should not be specified, since it is generated from each recipient's `address.name` and `address.email`.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Set the `X-Customer-Campaign-ID` header to assossiate the template with a Campaign.
+* Set the `X-Customer-Campaign-ID` header to associate the template with a Campaign.
 * Substitution syntax is supported in headers.
 
 
@@ -78,7 +78,7 @@ When created, templates have only a draft version.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
-    + subaccount_id (number) - Subaccount the tamplate belongs to. Only present on templates that belong to a subaccount.
+    + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
 
 
 + Request Create (application/json)
@@ -215,7 +215,7 @@ The new content will completely overwrite the existing content.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
-    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the temlate.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the template.
 
 
 
@@ -304,7 +304,7 @@ The new content will completely overwrite the existing content.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
-    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the temlate.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the template.
 
 
 
@@ -493,7 +493,7 @@ Each error is described in a object with the following fields:
 
 #### Email RFC 822
 
-Instead of the standard attributes, the content object may contain a single `email_rfc822` attribute. `email_rfc822` is mutually exclusive with all other conent attributes.
+Instead of the standard attributes, the content object may contain a single `email_rfc822` attribute. `email_rfc822` is mutually exclusive with all other content attributes.
 
 + Data Structure: RFC 822 Content
     + email_rfc822 (string) - Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1).
