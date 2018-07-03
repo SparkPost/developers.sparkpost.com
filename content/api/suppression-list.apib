@@ -15,37 +15,51 @@ In addition to your suppression list, SparkPost maintains a global suppression l
 
 ## Recipient Database Maintenance
 
-<banner status="danger">When initially configuring your SparkPost account, we <strong>strongly recommend</strong> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</banner>
+<banner status="info">When setting up your SparkPost account, we <strong>strongly recommend</strong> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</banner>
 
-<banner status="info">SparkPost supports bulk importing or manually adding up to 1,000,000 suppression list entries total.</banner>
+It is also good practice to maintain your own recipient database by unsubscribing or removing recipients based on the bounce, unsubscribe and spam complaint events provided by SparkPost.
+These events are available from [webhooks](webhooks), [message events](message-events) and your suppression list. A 24-hour time-windowed suppression list search [as outlined below](#suppression-list-search-get) is useful here.
 
-It is also good practice to maintain your own recipient database by unsubscribing or removing recipients based on the bounce, unsubscribe and spam complaint events provided by SparkPost. These events are available from [webhooks](webhooks), [message events](message-events) and your suppression list. A 24-hour time-windowed suppression list search [as outlined below](#suppression-list-search-get) is useful here.
+SparkPost supports bulk importing or manually adding up to 1,000,000 suppression list entries total.
 
-## List Entry Attributes
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-| recipient | string | Email address to be suppressed | yes | |
-| type | string | Type of suppression record: `transactional` or `non_transactional` |  |
-|transactional | boolean | Whether the recipient requested to not receive any transactional messages | Not required if a valid `type` is passed | Available, but deprecated in favor of `type`|
-|non_transactional | boolean | Whether the recipient requested to not receive any non-transactional messages | Not required if a valid `type` is passed | Available, but deprecated in favor of `type` |
-|source | string | Source responsible for inserting the list entry. Valid values include: `Spam Complaint`, `List Unsubscribe`, `Bounce Rule`, `Unsubscribe Link`, `Manually Added`, `Compliance`| no - entries created by the user are marked as `Manually Added` | Field is read-only  |
-| description | string | Short explanation of the suppression | no | |
+## Suppression Object
+
++ Data Structure: Attributes
+    + recipient (string) - Email address to be suppressed
+    + type (enum) - Type of suppression record
+        + transactional
+        + non_transactional
+    + source (enum) - Source responsible for inserting the list entry.
+        + Spam Complaint
+        + List Unsubscribe
+        + Bounce Rule
+        + Unsubscribe Link
+        + Manually Added
+        + Compliance
+    + description (string) - Explanation for the suppression
+    + transactional (boolean) - Whether the recipient requested to not receive any transactional messages. Deprecated in favor of `type`
+    + non_transactional (boolean) - Whether the recipient requested to not receive any non-transactional messages. Deprecated in favor of `type`
 
 
-## Bulk Insert/Update [/suppression-list/]
+## Insert & Update [PUT /suppression-list/]
 
-### Insert or Update List Entries [PUT]
+Bulk insert or update entries in the suppression list by providing an object, with a `recipients` attribute containing an array of recipients to insert or update, as the PUT request body.
 
-Bulk insert or update entries in the suppression list by providing a JSON object, with a `recipients` key containing an array of recipients to insert or update, as the PUT request body. Maximum size of the JSON object is 50mb. Maximum recipients at a time is 10,000. At a minimum, each recipient must have a valid email address and a suppression type: `transactional` or `non_transactional`. The optional `description` key can be used to include an explanation of what type of message should be suppressed.
+If a recipient was added to the list by compliance, it cannot be updated.
 
-If the recipient was added to the list by Compliance, it cannot be updated.
++ Data Structure: PUT Request Body
+    + recipients: (array, required) - Array of recipient objects to add to or updates in the suppression list. Max size: 50mb. Max length: 10,000.
 
-Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, that some of your suppression entries may have been successfully inserted or updated. If this occurs, please re-submit your original request again for processing.
 
-<banner status="warning"><strong>Deprecation Notice</strong>: The <tt>email</tt> attribute is deprecated. Use <tt>recipient</tt> instead.</banner>
++ Data Structure: Recipient Object
+    + recipient (array, required) - Email address to be suppressed
+    + type (enum, required) - Type of suppression record
+        + transactional
+        + non_transactional
+    + description (string) - Explanation for the suppression
 
-<banner status="warning"><strong>Deprecation Notice</strong>: The attributes <tt>transactional</tt> and <tt>non_transactional</tt> are deprecated. Use <tt>type</tt> instead.</banner>
-
+Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, only some of your suppression entries may have been successfully inserted or updated.
+If this occurs, please re-submit your original request again for processing.
 
 + Request (application/json)
 
@@ -110,25 +124,20 @@ Please note that in the unlikely scenario where your receive a HTTP 5xx level er
                 }
         }
 
-## Search [/suppression-list{?to,from,domain,cursor,limit,per_page,page,sources,types,description}]
-
-### Search for List Entries [GET]
+### Search for List Entries [GET /suppression-list{?to,from,domain,cursor,limit,per_page,page,sources,types,description}]
 
 Perform a filtered search for entries in your suppression list.
-
-<banner status="warning"><strong>Deprecation Notice</strong>: <tt>limit</tt> parameter is supported up to 10000, but deprecated. Please use <tt>per_page</tt> instead.</banner>
 
 + Parameters
     + to = `now` (optional, datetime, `2014-07-21T09:00:00-0400`) ... Datetime the entries were last updated, in the format of YYYY-MM-DDTHH:mm:ssZ
     + from (optional, datetime, `2014-07-20T09:00:00-0400`) ... Datetime the entries were last updated, in the format YYYY-MM-DDTHH:mm:ssZ
-    + domain (optional, string, `yahoo.com`) ... Domain of entries to include in the search.
-    + cursor (optional, string, `initial`) ... The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
-    + limit (optional, int, `5`) ... Maximum number of results to return per page.  Must be between 1 and 10,000.
-    + per_page (optional, int, `5`) ... Maximum number of results to return per page.  Must be between 1 and 10,000. Default value is 1000.
-    + page (optional, int, `5`) ... The results page number to return. Used with per_page for paging through results. The page parameter works up to 10,000 results. You must use the cursor parameter and start with cursor=initial to page result sets larger than 10,000
+    + domain (optional, string, `yahoo.com`) ... Domains to include in the search.
     + sources (optional, list, `Bounce%20Rule,Manually%20Added`) ... Sources of the entries to include in the search, i.e. entries that were added by this source
     + types (optional, list, `transactional`) ... Types of entries to include in the search, i.e. entries that are `transactional` or `non_transactional`
-    + description (optional, string, `Invalid%20Recipient`) ... Description of the entries to include in the search, i.e descriptions that include the text submitted.
+    + description (optional, string, `Invalid%20Recipient`) ... String to match in suppression descriptions.
+    + cursor (optional, string, `initial`) ... The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
+    + per_page (optional, int, `5`) ... Maximum number of results to return per page. Must be between 1 and 10,000. Default value is 1000.
+    + page (optional, int, `5`) ... The results page number to return. Used with per_page for paging through results. The page parameter works up to 10,000 results. You must use the cursor parameter and start with cursor=initial to page result sets larger than 10,000
 
 + Request
 
@@ -136,26 +145,6 @@ Perform a filtered search for entries in your suppression list.
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
-
-+ Response 500 (application/json; charset=utf-8)
-
-        {
-            "errors": [
-                {
-                    "message": "Unable to perform search"
-                }
-            ]
-        }
-
-+ Response 400 (application/json; charset=utf-8)
-
-        {
-            "errors": [
-                {
-                    "message": "from must be a valid date"
-                }
-            ]
-        }
 
 + Response 200 (application/json; charset=utf-8)
 
@@ -358,9 +347,15 @@ If the recipient is not in the suppression list, an HTTP status of 404 is return
 
 + Response 204 (application/json; charset=utf-8)
 
-### Insert or Update a List Entry [PUT]
+### Insert or Update a List Entry [PUT /suppression-list/{recipient_email}]
 
-Insert or update a single entry in the suppression list by providing a JSON object. At a minimum, the JSON object should include a suppression type: `transactional` or `non_transactional`. The optional `description` key can be used to include an explanation of what type of message should be suppressed.
+Insert or update a single entry in the suppression list by setting the `recipient_email` . At a minimum, the JSON object should include a suppression type: `transactional` or `non_transactional`. The optional `description` key can be used to include an explanation of what type of message should be suppressed.
+
++ Data Structure: Recipient Object
+    + type (enum, required) - Type of suppression record
+        + transactional
+        + non_transactional
+    + description (string) - Explanation for the suppression
 
 If the recipient entry was added to the list by Compliance, it cannot be updated.
 
@@ -407,8 +402,7 @@ If the recipient entry was added to the list by Compliance, it cannot be updated
             ]
         }
 
-## List Summary [/suppression-list/summary]
-### Retrieve Suppression List Summary [GET]
+### Retrieve Suppression List Summary [GET /suppression-list/summary]
 
 Retrieve the total number of suppressions for an account as well as a break down of entries by source.
 
