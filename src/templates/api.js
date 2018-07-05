@@ -255,7 +255,7 @@ function Transition({ transition, resource, resourceGroup, index }) {
       <Debug title="transition" enable={debug}>
         <Section>
           <Right>
-            {transition.transactions.length &&
+            {transition.transactions.length > 0 &&
               mergeDuplicateTransactions(transition.transactions).map(
                 (transaction, i) => (
                   <Transaction
