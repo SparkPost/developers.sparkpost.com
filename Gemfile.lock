@@ -285,11 +285,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  github-pages (= 186)
+  github-pages
   guard
   guard-livereload
   html-proofer
   rake
 
 BUNDLED WITH
-   1.14.4
+   1.16.2
