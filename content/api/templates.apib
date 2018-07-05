@@ -6,7 +6,7 @@ description: Manage reusable content templates that are run through the SparkPos
 
 Templates are a way to store and edit email content.
 Instead of passing inline content to a [Transmission](/api/transmissions) request, a template can be set to provide the content.
-Most content fields in a template (from, headers, text, and html) support [substitution syntax](/api/substitutions-reference) to enable personalized emails.
+All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference) for personalized emails.
 
 ## Drafts & Published versions
 
@@ -18,17 +18,17 @@ If needed, it's also possible to update the published version of a template dire
 ## Template Object
 
 + Data Structure: Attributes
-    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, id or name is required upon creation. It is auto generated if not provided. After a template has been created, this property cannot be changed. Maximum length - 64 bytes
+    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, id or name is required upon creation. It is auto-generated if not provided. After a template has been created, this property cannot be changed. Maximum length - 64 bytes
     + name (string) - Editable display name. At a minimum, id or name is required upon creation. The name does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
-        + subject (string) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
-        + from (enum) - Address (`"deals@company.com"`) used to compose the email's `From` header. The domain must be a verified sending domain.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
             + (string)
-        + from (object) - Object composed of the `name` and `email` fields (`{ "name": "My Company", "email": "deals@company.com" }`) used to compose the email's `From` header. The domain must be a verified sending domain.
+        + from (object) -  used to compose the email's `From` header.
         + reply_to (string) - Email address used to compose the email's `Reply-To` header.
         + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
     + published (boolean) - Whether the template is published or is a draft version. A template cannot be changed from published to draft.
@@ -42,37 +42,88 @@ If needed, it's also possible to update the published version of a template dire
     + last_use (string) - The last date any version of this template (draft or published) was used for generating an email. Only present if template has been used.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
     + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
-
-
++ Sample
+    ```
+    {
+        "id": "onboarding-email"
+        "name": "Onboarding email",
+        "description": "First email sent on sign-up",
+        "content": {
+            "html": "<p>Please confirm your email by clicking <a href="{{ link }}">this link</a></p>",
+            "text": "Please confirm your email by clicking this link: {{ link }}",
+            "from": "{{ friendly_from }}, <team@ourdomain.com>",
+            "subject": "Welcome!"
+        },
+        "published": true,
+        "has_draft": true,
+        "has_published": true,
+        "last_update_time": "2018-07-03T23:41:07+00:00",
+        "last_use": "2018-07-02T18:48:18+00:00",
+        "shared_with_subaccounts": false,
+        "options": {
+            "transactional": true
+        }
+    }
+    ```
 #### Header Notes
 
-* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto generated upon construction of the email.
-* The `To` header should not be specified, since it is generated from each recipient's `address.name` and `address.email`.
+* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto-generated upon construction of the email.
+* The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
 * Set the `X-Customer-Campaign-ID` header to associate the template with a Campaign.
 * Substitution syntax is supported in headers.
 
+### Error Object
+
+On request failure, an `errors` array will be returned along with HTTP 4xx or 5xx.
+To help debug content issues, templates errors are more detailed than usual.
+Each error is described in a object with the following attributes:
+
++ Data Structure: Attributes
+    + message: (string) - Explains the type of error
+    + code: (string) - Identifies the type of error
+    + description: (string) - Explanation of error
+    + part (enum) - Identifies the content section where the error occurred
+        + text
+        + html
+        + Header:Subject
+        + text/plain
+    + line (number) - Identifies the line number within the MIME part identified by the part attribute
++ Sample
+
+    ```json
+    {
+        errors: [
+            {
+                "message": "substitution language syntax error in template content",
+                "code": "3000",
+                "description": "Error while compiling part text: line 4: syntax error near 'age'",
+                "part": "html",
+                "line": 4,
+            }
+        ]
+    }
+    ```
 
 ### Create a Template [POST /template]
 
 At minimum, either `id` or `name` are required to create a template.
 When created, templates have only a draft version.
-[Publish the draft](#templates-publish-a-draft-put) to send when a Transmission.
+[Publish the draft](#templates-publish-a-draft-put) to send with a Transmission.
 
-+ Data Structure: Attributes
-    + id (string, required) - Unique alphanumeric ID used to reference the template. At a minimum, id or name is required upon creation. Auto generated if not provided. After a template has been created, this property cannot be changed. Maximum length - 64 bytes
-    + name (string, required) - Editable display name. At a minimum, id or name is required upon creation. The name does not have to be unique. Maximum length - 1024 bytes
++ Data Structure
+    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, id or name is required upon creation. It is auto-generated if not provided. After a template has been created, this property cannot be changed. Maximum length - 64 bytes
+    + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. The name does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+    + content (object, required) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
-        + subject (string) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
-        + from (string) - Address (`"deals@company.com"`) used to compose the email's `From` header. The domain must be a verified sending domain.
-        + from (object) - Object composed of the `name` and `email` fields (`{ "name": "My Company", "email": "deals@company.com" }`) used to compose the email's `From` header. The domain must be a verified sending domain.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
         + reply_to (string) - Email address used to compose the email's `Reply-To` header.
         + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
-    + published (boolean) - Whether the template is published or is a draft version. A template cannot be changed from published to draft.
-        + Default: false
     + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
@@ -140,12 +191,11 @@ When created, templates have only a draft version.
 
 ### Retrieve a Template [GET /templates/{id}{?draft}]
 
-By default, the most recently updated version is returned. Use the `draft` query parameter to specify the draft or published
-version of the template.
+Use the `draft` query parameter to specify the draft or published version of the template.
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-    + draft (optional, boolean, `true`) ...If true, returns the most recent draft template.  If false, returns the most recent published template.  If not provided, returns the most recent template version regardless of draft or published.
+    + id (required, string, `11714265276872`)
+    + draft (optional, boolean, `true`) ... If true, returns the draft template. If false, returns the published template.
 
 + Request
 
@@ -195,20 +245,16 @@ Updates the draft version of a template.
 If a content object is provided in the request body, it must contain all relevant content fields whether they are being changed or not.
 The new content will completely overwrite the existing content.
 
-
-+ Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-
-
-+ Data Structure:
++ Data Structure
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
-        + subject (string) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
-        + from (string) - Address (`"deals@company.com"`) used to compose the email's `From` header. The domain must be a verified sending domain.
-        + from (object) - Object composed of the `name` and `email` fields (`{ "name": "My Company", "email": "deals@company.com" }`) used to compose the email's `From` header. The domain must be a verified sending domain.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
         + reply_to (string) - Email address used to compose the email's `Reply-To` header.
         + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
     + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
@@ -217,6 +263,9 @@ The new content will completely overwrite the existing content.
         + click_tracking (boolean) - Enable or disable click tracking.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the template.
 
+
++ Parameters
+    + id (required, string, `11714265276872`)
 
 
 + Request Update (application/json)
@@ -251,14 +300,12 @@ The new content will completely overwrite the existing content.
 
 Uses the most recent draft version to create a new published version.
 
++ Data Structure
+    + published (boolean, required) - Set to `true` to publish the draft version.
+
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-
-
-+ Data Structure:
-    + published: true (boolean, required) - Set to `true` to publish the latest draf version.
-
+    + id (required, string, `11714265276872`)
 
 + Request Publish (application/json)
 
@@ -286,18 +333,19 @@ The new content will completely overwrite the existing content.
 
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
+    + id (required, string, `11714265276872`)
     + update_published = (optional, boolean) ... Set to `true` to overwrite the existing published template.
 
-+ Data Structure: Attributes
++ Data Structure:
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
-        + subject (string) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
-        + from (string) - Address (`"deals@company.com"`) used to compose the email's `From` header. The domain must be a verified sending domain.
-        + from (object) - Object composed of the `name` and `email` fields (`{ "name": "My Company", "email": "deals@company.com" }`) used to compose the email's `From` header. The domain must be a verified sending domain.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
         + reply_to (string) - Email address used to compose the email's `Reply-To` header.
         + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
     + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
@@ -338,16 +386,16 @@ The new content will completely overwrite the existing content.
 
 ### Preview a Template [POST /templates/{id}/preview{?draft}]
 
-Preview the most recent version of an existing template.
+Preview the most recently edited version of an existing template.
 The template's content will be expanded using the substitution data provided and returned in the response.
 By default, the most recently updated version is returned.
-Use the `draft` query parameter to specify a draft or published template.
+Use the `draft` query parameter to specify a draft or published version.
 
 See the [Substitutions Reference section](/api/substitutions-reference/) for more information.
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-    + draft (optional, boolean, `true`) ... If true, previews the most recent draft template. If false, previews the most recent published template. If not provided, previews the most recent template version.
+    + id (required, string, `11714265276872`)
+    + draft (optional, boolean, `true`) ... If true, previews the draft template. If false, previews the most recent published template.
 
 + Request (application/json)
 
@@ -390,7 +438,7 @@ Deletes all versions, both published and draft versions, of a template.
 <banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
+    + id (required, string, `11714265276872`)
 
 + Request
 
@@ -417,14 +465,11 @@ Deletes all versions, both published and draft versions, of a template.
 ### List all Templates [GET /templates{?draft,shared_with_subaccounts}]
 
 + Parameters
-    + draft (optional, boolean, `true`) ...If true, returns the most recent draft template.  If false, returns the most recent published template. When not provided, returns the most recent template version regardless of draft or published.
+    + draft (optional, boolean, `true`) ...If true, returns the draft template.  If false, returns the published template. When not provided, returns the most recently edited template version (draft or published).
     + shared_with_subaccounts (optional, boolean, `true`) ...If true, returns only shared templates. If false, returns only non-shared templates. When not provided, returns both shared and non-shared templates.
 
 
-Returns an array of most recent version of each template in your account.
-Each object returned is an abbreviated version of the full template object with
-the following attributes:
-
+Returns an array of each template in your account.
 
 + Request
 
@@ -461,37 +506,7 @@ the following attributes:
             ]
         }
 
-
-
-### Error Object
-
-On success, the API returns a `results` object along with HTTP 200.
-On failure, an `errors` array will be returned along with HTTP 4xx or 5xx.
-Each error is described in a object with the following fields:
-
-+ Data Structure: Attributes
-    + message: (string) - Explains the class of error
-    + code: (string) - Identifies the class of error
-    + description: (string) - Explanation of error
-    + part (enum) - Identifies the MIME part where the error occurred
-        + text
-        + html
-        + Header:Subject
-        + text/plain
-    + line (number) - Identifies the line number within the MIME part identified by the part attribute
-+ Sample
-
-    ```json
-    {
-        "message": "substitution language syntax error in template content",
-        "code": "3000",
-        "description": "Error while compiling part text: line 4: syntax error near 'age'",
-        "part": "html",
-        "line": 4,
-    }
-    ```
-
-#### Email RFC 822
+### Create an RFC 822 Template [POST /template]
 
 Instead of the standard attributes, the content object may contain a single `email_rfc822` attribute. `email_rfc822` is mutually exclusive with all other content attributes.
 
@@ -502,10 +517,6 @@ Instead of the standard attributes, the content object may contain a single `ema
 * Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
 * It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
 * It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.
-
-### Create an RFC 822 Template [POST /template]
-
-Fully formed email_rfc822 content may be provided instead of the `text`, `html`, `from`, and `subject` parts.
 
 + Request Create RFC822 (application/json)
 
