@@ -5,13 +5,15 @@
 'use strict'
 
 const fs = require('fs')
+const { resolve } = require('path')
 const { flatten } = require('lodash')
-const apiDirectory = `${__dirname}/../content/api`
+const apiDirectory = resolve(__dirname, `../content/api`)
+const apiTemplate = resolve(__dirname, `../src/templates/api.js`)
 const tableOfContents = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
 
 const buildOldPath = path => path === '/api/' ? `/api/index.html` : `${path.replace(/\/$/, '')}.html`
 
-module.exports = async ({ actions }) => {
+module.exports = async ({  graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
   tableOfContents.forEach(({ file, path }) => {
@@ -22,10 +24,9 @@ module.exports = async ({ actions }) => {
 
       createPage({
         path,
-        component: `${__dirname}/../src/templates/api.js`,
+        component: apiTemplate,
         context: { file },
       })
     }
   })
 }
-
