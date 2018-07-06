@@ -628,7 +628,7 @@ function Attribute(props) {
   return (
     <AttributeWrapper>
       <div>
-        <Name>{name}</Name>
+        <Name>{name}</Name>{' '}
         <Property>
           {isMultipleTypes
             ? types.join(' or ')
@@ -645,7 +645,7 @@ function Attribute(props) {
                 )}s`)) /* if its an array, array of what??? */}
         </Property>
         {'' /* required, value, and default are all mutually exlusive */}
-        {required && <Required>required</Required>}
+        {required && <Fragment>{' '}<Required>required</Required></Fragment>}
         {!isParameter &&
           actualType !== 'object' &&
           !isEmpty(actualType === 'array' ? value[0] : value) && (
@@ -733,13 +733,13 @@ const Property = styled.span`
 const Name = styled.span`
   display: inline-block;
   font-size: 0.888888889rem;
-  margin-right: 0.666666667rem;
+  margin-right: 0.333333333rem;
   font-weight: ${weight('medium')};
   color: ${grayscale('medium')};
 `
 
 const Required = styled(Property)`
-  margin-left: 0.666666667rem;
+  margin-left: 0.333333333rem;
 
   && {
     color: ${color('mustard')};
