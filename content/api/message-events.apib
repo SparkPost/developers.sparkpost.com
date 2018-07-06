@@ -15,7 +15,7 @@ ___
 __The SparkPost Message Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
 
-### Search for Message Events [GET /message-events{?recipients,friendly_froms,events,bounce_classes,reason,subaccounts,transmission_ids,campaign_ids,template_ids,message_ids,timezone,to,from,page,per_page,delimiter}]
+### Search for Message Events [GET /message-events{?recipients,friendly_froms,events,bounce_classes,reason,subaccounts,transmission_ids,campaign_ids,template_ids,ab_test_ids,message_ids,timezone,to,from,page,per_page,delimiter}]
 
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
@@ -29,6 +29,7 @@ Returns a list of message events that matched the filtered search. The response 
     + transmission_ids (optional, list) ... Delimited list of transmission IDs to search.
     + campaign_ids (optional, string) ... Delimited list of campaign IDs to search.
     + template_ids (optional, list, `templ-1234`) ... Delimited list of template IDs to search.
+    + ab_test_ids (optional, list, `ab-12341`) ... Delimited list of A/B test ID's to search.
     + message_ids (optional, list) ... Delimited list of message IDs to search.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + to (datetime, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
