@@ -645,7 +645,12 @@ function Attribute(props) {
                 )}s`)) /* if its an array, array of what??? */}
         </Property>
         {'' /* required, value, and default are all mutually exlusive */}
-        {required && <Fragment>{' '}<Required>required</Required></Fragment>}
+        {required && (
+          <Fragment>
+            {' '}
+            <Required>required</Required>
+          </Fragment>
+        )}
         {!isParameter &&
           actualType !== 'object' &&
           !isEmpty(actualType === 'array' ? value[0] : value) && (
