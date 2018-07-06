@@ -13,7 +13,7 @@ import TableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Banner from 'components/Banner'
 import dataStructureToJson from 'utils/api/dataStructureToJson'
-// import generateSample from 'utils/api/generateSample'
+import generateSample from 'utils/api/generateSample'
 import plainSlugify from 'utils/slugify'
 import slugify from 'utils/api/slugify'
 
