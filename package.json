@@ -12,6 +12,7 @@
     "gatsby-plugin-google-tagmanager": "^2.0.0-beta.1",
     "gatsby-plugin-lodash": "^3.0.1-beta.1",
     "gatsby-plugin-netlify-cms": "^2.0.0-beta.1",
+    "gatsby-plugin-nprogress": "^1.0.14",
     "gatsby-plugin-page-creator": "^2.0.0-beta.1",
     "gatsby-plugin-react-helmet": "^3.0.0-beta.1",
     "gatsby-plugin-styled-components": "^3.0.0-beta.1",

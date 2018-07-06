@@ -33,6 +33,15 @@ const basePlugins = [
       includeInDevelopment: false,
     }
   },
+  {
+    resolve: `gatsby-plugin-nprogress`,
+    options: {
+      // Setting a color is optional.
+      color: `#fa6423`,
+      // Disable the loading spinner.
+      showSpinner: false,
+    }
+  },
 ]
 
 const docsPlugins = [
