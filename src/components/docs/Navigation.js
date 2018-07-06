@@ -55,7 +55,7 @@ const ApiLink = styled(({ active, ...props }) => <Link.Unstyled {...props} />)`
   }
 `
 
-const Labs = styled(props => <span {...props}>Labs</span>)`
+const Label = styled(props => <span {...props} />)`
   border: 1px solid;
   border-radius: 2px;
   text-transform: uppercase;
@@ -77,13 +77,13 @@ const Navigation = ({ navigation, location = { pathname: null } }) => {
         <Category key={category}>
           <CategoryTitle>{category}</CategoryTitle>
           <List>
-            {pages.map(({ title, path, labs, children }) => (
+            {pages.map(({ title, path, label, children }) => (
               <li key={title}>
                 <ApiLink
                   to={path}
                   active={path.replace(/\/$/, '') === currentPath}
                 >
-                  {title} {labs && <Labs />}
+                  {title} {label && <Label>{label}</Label>}
                 </ApiLink>
                 {renderChildren(children)}
               </li>
