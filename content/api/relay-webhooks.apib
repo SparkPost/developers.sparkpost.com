@@ -235,12 +235,12 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
                 ]
             }
 
-### Retrieve a Relay Webhook [GET /relay-webhooks/{webhook_id}]
+### Retrieve a Relay Webhook [GET /relay-webhooks/{id}]
 
 Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
 
 + Parameters
-    + webhook_id (required, string, `12013026328707075`)
+    + id (required, string, `12013026328707075`)
 
 + Request
 
@@ -291,7 +291,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
             ]
         }
 
-### Update a Relay Webhook [PUT /relay-webhooks/{webhook_id}]
+### Update a Relay Webhook [PUT /relay-webhooks/{id}]
 
 Update a relay webhook by specifying the webhook ID in the URI path.
 
@@ -305,7 +305,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
 
 
 + Parameters
-    + webhook_id (required, string, `12013026328707075`)
+    + id (required, string, `12013026328707075`)
 
 + Request (application/json)
 
@@ -390,12 +390,12 @@ Update a relay webhook by specifying the webhook ID in the URI path.
                 ]
             }
 
-### Delete a Relay Webhook [DELETE /relay-webhooks/{webhook_id}]
+### Delete a Relay Webhook [DELETE /relay-webhooks/{id}]
 
 Delete a relay webhook by specifying the webhook ID in the URI path.
 
 + Parameters
-    + webhook_id (required, string, `12013026328707075`)
+    + id (required, string, `12013026328707075`)
 
 + Request
 
