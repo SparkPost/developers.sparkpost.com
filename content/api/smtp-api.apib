@@ -91,36 +91,33 @@ X-MSYS-API: {
 
 The fields supported in the X-MSYS-API header are as follows:
 
-| Field | Type | Description | Required | Notes |
-|-------|------|-------------|----------|-------|
-| campaign_id | string | Name of the campaign to associate with the SMTP message | no | Maximum length - 64 bytes (same restriction as the REST API) |
-| metadata | JSON object | JSON key value pairs associated with the SMTP message | no | A maximum of 1000 bytes of metadata is available in click/open events. |
-| cc | JSON array | Array of recipient addresses that will be included in the "Cc" header | no | A unique message with a unique tracking URL will be generated for each recipient in this list. |
-| bcc | JSON array | Array of recipient addresses that will be hidden from all other recipients | no | A unique message with a unique tracking URL will be generated for each recipient in this list. |
-| archive | JSON array | Array of recipient addresses that will be hidden from all other recipients | no | A unique message will be generated for each recipient in this list. The archive copy of the message contains tracking URLs identical to the recipient. For a full description, see [What is an archive recipient?](#header-what-is-an-archive-recipient?) section.|
-| tags | JSON array | Array of text labels associated with the SMTP message | no | Tags are available in click/open events. Maximum number of tags is 10 per recipient, 100 system wide. |
-| options | JSON object | JSON object in which SMTP API options are defined | no | For a full description, see the [Options Attributes](#header-options-attributes). |
++ Data Structure: X-MSYS-API Attributes
+    + campaign_id (string) - Name of the campaign to associate with the SMTP message <br /> Maximum length: 64 bytes
+    + metadata (object) - JSON key value pairs associated with the SMTP message <br /> A maximum of 1000 bytes of metadata is available in click/open events.
+    + cc (array) - Array of recipient addresses that will be included in the "Cc" header. A unique message with a unique tracking URL will be generated for each recipient in this list.
+    + bcc (array) - Array of recipient addresses that will be hidden from all other recipients. A unique message with a unique tracking URL will be generated for each recipient in this list.
+    + archive (array) - Array of recipient addresses that will be hidden from all other recipients. A unique message will be generated for each recipient in this list. The archive copy of the message contains tracking URLs identical to the recipient. For a full description, see [What is an archive recipient?](#header-what-is-an-archive-recipient?) section.
+    + tags (array) - Array of text labels associated with the SMTP message. Tags are available in click/open events. Maximum number of tags is 10 per recipient, 100 system wide.
+    + options (object) - Object in which SMTP API options are defined.
+        + open_tracking (boolean) - Whether open tracking is enabled for this SMTP message [See notes](#header-open-and-click-tracking) for defaults.
+        + click_tracking (boolean) - Whether click tracking is enabled for this SMTP message. [See notes](#header-open-and-click-tracking) for defaults.
+        + transactional (boolean) - Whether message is [transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/), for unsubscribe and suppression purposes<br/><span class="label label-info"><strong>Note</strong></span> no List-Unsubscribe header is included in transactional messages.
+            + Default: false
+        + sandbox (boolean) - Whether to use the sandbox sending domain. <br /> Not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts.
+            + Default: false
+        + skip_suppression (boolean) - Whether to ignore customer suppression rules, for this SMTP message only. <br /> <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> Defaults to false.
+        + smart_send (boolean) - Whether to enable Smart Send, which will suppress unengaged recipients. Limited to this transmission. <br /><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+            + Default: false.
+        + ip_pool (string) - The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br /><span class="label label-primary"><strong>SparkPost</strong></span> For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br /><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+        + inline_css (boolean) - Whether to perform CSS inlining in HTML content.<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined.
+            + Default: false.
 
-## Options Attributes
-
-| Field | Type | Description | Required | Notes |
-|-------|------|-------------|----------|-------|
-| open_tracking | boolean | Whether open tracking is enabled for this SMTP message | no | [See notes](#header-open-and-click-tracking) for defaults. |
-| click_tracking | boolean | Whether click tracking is enabled for this SMTP message | no | [See notes](#header-open-and-click-tracking) for defaults. |
-| transactional | boolean | Whether message is [transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/), for unsubscribe and suppression purposes<br/><span class="label label-info"><strong>Note</strong></span> no List-Unsubscribe header is included in transactional messages | no | Defaults to false. |
-| sandbox| boolean| Whether to use the sandbox sending domain | no | <span class="label label-primary"><strong>SparkPost</strong></span> The sandbox domain is available for SparkPost customers. Defaults to false. |
-| skip_suppression| boolean| Whether to ignore customer suppression rules, for this SMTP message only. | no | <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> Defaults to false. |
-|smart_send|boolean| Whether to enanble Smart Send, which will suppress unengaged recipients. Limited to this transmission. <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details. | no | Defaults to false. |
-| ip_pool | string | The ID of a dedicated IP pool associated with your account.  If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). | no | <span class="label label-primary"><strong>SparkPost</strong></span> For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br><br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
-| inline_css| boolean| Whether to perform CSS inlining in HTML content<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined | no | Defaults to false. |
 
 ### Open And Click Tracking
 
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise customers</a>:</strong> SMTP click and open tracking are <strong>enabled</strong> by default. Please check with your TAM if you are unsure of the setting in your own environment.</banner>
+<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise accounts</a>:</strong> SMTP click and open tracking are <strong>enabled</strong> by default. Please check with your TAM if you are unsure of the setting in your own environment.</banner>
 
-<banner status="info"><strong>SparkPost customers:</strong> SMTP click and open tracking are <strong>disabled</strong> by default.</banner>
-
-To enable click and open tracking in SMTP messages, add the X-MSYS-API header as follows:
+SMTP click and open tracking are <strong>disabled</strong> by default. To enable click and open tracking in SMTP messages, add the X-MSYS-API header as follows:
 ```
 X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true } }
 ```
