@@ -98,5 +98,6 @@ module.exports = {
     },
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify`
   ])
 }
