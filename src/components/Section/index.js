@@ -16,22 +16,21 @@ const Section = styled.section`
 
     return `padding: ${top}rem 0 ${bottom}rem;`
   }} ${props =>
-      !props.borderless &&
-      `border-bottom: 1px solid ${grayscale(7)};`} ${props =>
-      props.dark &&
-      css`
-        background-color: ${grayscale('dark')};
-        background-size: cover;
-        color: ${grayscale('white')};
-      `} ${props =>
-      props.light &&
-      css`
-        background-color: ${grayscale('light')};
-      `} ${props =>
-      props.small &&
-      css`
-        padding: 1rem 0 2rem 0;
-      `};
+  !props.borderless && `border-bottom: 1px solid ${grayscale(7)};`} ${props =>
+  props.dark &&
+  css`
+    background-color: ${grayscale('dark')};
+    background-size: cover;
+    color: ${grayscale('white')};
+  `} ${props =>
+  props.light &&
+  css`
+    background-color: ${grayscale('light')};
+  `} ${props =>
+  props.small &&
+  css`
+    padding: 1rem 0 2rem 0;
+  `};
 `
 
 export default Section

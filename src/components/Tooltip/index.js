@@ -71,9 +71,9 @@ const Activator = styled.span`
   }
 `
 
-export default ({ content, children }) => {
+export default ({ content, children, ...props }) => {
   return (
-    <Activator>
+    <Activator {...props}>
       {children}
       <Tooltip>
         <Tip />

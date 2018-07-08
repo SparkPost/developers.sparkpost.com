@@ -8,22 +8,19 @@ const horizontalAlignment = ({ start, center, end }) => css`
       start,
       `justify-content: flex-start; text-align: start;`
     )} ${center &&
-      mediaQuery(
-        center,
-        `justify-content: center; text-align: center;`
-      )} ${end &&
-      mediaQuery(end, `justify-content: flex-end; text-align: end;`)};
+  mediaQuery(center, `justify-content: center; text-align: center;`)} ${end &&
+  mediaQuery(end, `justify-content: flex-end; text-align: end;`)};
 `
 
 const vericalAlignment = ({ top, middle, bottom }) => css`
   ${top && mediaQuery(top, `align-items: flex-start;`)} ${middle &&
-      mediaQuery(middle, `align-items: center;`)} ${bottom &&
-      mediaQuery(bottom, `align-items: flex-end;`)};
+  mediaQuery(middle, `align-items: center;`)} ${bottom &&
+  mediaQuery(bottom, `align-items: flex-end;`)};
 `
 
 const distribution = ({ around, between }) => css`
   ${around && mediaQuery(around, `justify-content: space-around;`)} ${between &&
-      mediaQuery(between, `justify-content: space-between;`)};
+    mediaQuery(between, `justify-content: space-between;`)};
 `
 
 const Row = styled.div`

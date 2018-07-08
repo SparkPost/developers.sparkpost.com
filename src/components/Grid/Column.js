@@ -6,7 +6,7 @@ function columnToWidth(columns = 12) {
   if (columns === 'auto') {
     return columns
   } else {
-    return `${100 / 12 * (columns > 12 ? 12 : columns < 0 ? 0 : columns)}%`
+    return `${(100 / 12) * (columns > 12 ? 12 : columns < 0 ? 0 : columns)}%`
   }
 }
 

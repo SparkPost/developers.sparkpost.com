@@ -20,8 +20,8 @@ const Debug = styled.div`
   padding: 0.5rem;
 `
 
-export default ({ title, children, enable = false }) =>
-  enable ? (
+export default ({ title, children }) =>
+  false ? (
     <Debug>
       <DebugTitle>{title}</DebugTitle>
       {children}
