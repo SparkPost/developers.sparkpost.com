@@ -4,16 +4,13 @@ description: Query real-time data about message processing, message disposition,
 
 # Group Metrics
 
-SparkPost logs copious amounts of statistical, real-time data about message processing, message
-disposition, and campaign performance.  This reporting data is available in the UI or through the Metrics API.  The Metrics API provides a variety of endpoints enabling you to retrieve a summary of the data, data grouped by a specific qualifier, or data by event type.  Within each endpoint, you can also apply various filters to drill down to the data for your specific reporting needs.
-
-<banner status="warning"><strong>Deprecation Notice</strong>: The <code>bindings</code> and <code>binding_groups</code> query parmeters have been deprecated. Please use the <code>sending_ips</code> and <code>ip_pools</code> query parameters instead.</banner>
+SparkPost logs copious amounts of statistical, real-time data about message processing, message disposition, and campaign performance. This reporting data is available in the [app](https://app.sparkpost.com/reports/summary) ([EU](https://app.eu.sparkpost.com/reports/summary)) or through the Metrics API. The Metrics API provides a variety of endpoints enabling you to retrieve a summary of the data, data grouped by a specific qualifier, or data by event type. Within each endpoint, you can also apply various filters to drill down to the data for your specific reporting needs.
 
 ## Data retention
 
 Metrics API data is retained for 6 months.
 
-## Terminology
+## Terminology 
 
 Definitions for terms found in Metrics API
 
@@ -204,7 +201,7 @@ aggregate data, which can be used as "group by" qualifiers.
 
 
 
-### Metrics by Domain [GET /metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,order_by,limit}]
+### Metrics by Recipient Domain [GET /metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,order_by,limit}]
 
 Provides aggregate metrics grouped by domain over the time window specified.
 
