@@ -65,7 +65,7 @@ The following attributes are used when specifying inline content in the transmis
 |html    |string  |HTML content for the email's text/html MIME part| yes, for email |Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported. |
 |text    |string  |Text content for the email's text/plain MIME part| yes, for email |Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported.|
 |subject |string  |Email subject line   | yes, for email |Expected in the UTF-8 charset without RFC2047 encoding.  Substitution syntax is supported. |
-|from |string or JSON  | Address `"from" : "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from" : { "name" : "My Company", "email" : "deals@company.com" }` used to compose the email's `From` header| yes, for email | Substitution syntax is supported. |
+|from |string or JSON  | Address `"from": "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from": { "name": "My Company", "email": "deals@company.com" }` used to compose the email's `From` header| yes, for email | Substitution syntax is supported. |
 |reply_to |string  |Email address used to compose the email's "Reply-To" header | no | Substitution syntax is supported. |
 |headers| JSON | JSON dictionary containing headers other than `Subject`, `From`, `To`, and `Reply-To`  | no |See the [Header Notes](#header-header-notes). |
 |attachments| JSON | JSON array of attachments. | no | For a full description, see [Attachment Attributes](#header-attachment-attributes). |
@@ -189,7 +189,7 @@ Once message generation has been initiated, all messages in the transmission wil
 Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
 
 + Parameters
-  + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
+    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
 
 + Request Create Transmission using Inline Email Part Content (application/json)
 
@@ -199,65 +199,84 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "options": {
-            "open_tracking": true,
-            "click_tracking": true,
-            "transactional": false,
-            "sandbox": false,
-            "ip_pool": "my_ip_pool",
-            "inline_css": false
-          },
-          "description": "Christmas Campaign Email",
-          "campaign_id": "christmas_campaign",
-
-          "metadata": {
-            "user_type": "students",
-            "education_level": "college"
-          },
-
-          "substitution_data": {
-            "sender": "Big Store Team",
-            "holiday_name": "Christmas"
-          },
-
-          "recipients": [
             {
-              "address": {
-                "email": "wilma@flintstone.com",
-                "name": "Wilma Flintstone"
-              },
-              "tags": [
-                "greeting",
-                "prehistoric",
-                "fred",
-                "flintstone"
-              ],
-              "metadata": {
-                "age": "24",
-                "place": "Bedrock"
-              },
-              "substitution_data": {
-                "customer_type": "Platinum",
-                "year": "Freshman"
-              }
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true,
+                    "transactional": false,
+                    "sandbox": false,
+                    "ip_pool": "my_ip_pool",
+                    "inline_css": false
+                },
+                "description": "Christmas Campaign Email",
+                "campaign_id": "christmas_campaign",
+                "metadata": {
+                    "user_type": "students",
+                    "education_level": "college"
+                },
+                "substitution_data": {
+                    "sender": "Big Store Team",
+                    "holiday_name": "Christmas"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "customer_type": "Platinum",
+                            "year": "Freshman"
+                        }
+                    }
+                ],
+                "content": {
+                    "from": {
+                        "name": "Fred Flintstone",
+                        "email": "fred@flintstone.com"
+                    },
+                    "subject": "Big Christmas savings!",
+                    "reply_to": "Christmas Sales <sales@flintstone.com>",
+                    "headers": {
+                        "X-Customer-Campaign-ID": "christmas_campaign"
+                    },
+                    "html": "<p>Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+                }
             }
-          ],
-          "content": {
-            "from": {
-              "name": "Fred Flintstone",
-              "email": "fred@flintstone.com"
-            },
-            "subject": "Big Christmas savings!",
-            "reply_to": "Christmas Sales <sales@flintstone.com>",
-            "headers": {
-              "X-Customer-Campaign-ID": "christmas_campaign"
-            },
-            "html": "<p>Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
-          }
-        }
 
 + Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950529"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Unconfigured or unverified sending domain.",
+                    "code": "7001",
+                    "message": "Invalid domain"
+                }
+            ]
+        }
+
++ Request Create Transmission with Inline RFC822 Content (application/json)
 
     + Headers
 
@@ -265,127 +284,94 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 1,
-            "id": "11668787484950529"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "errors" : [
             {
-              "description" : "Unconfigured or unverified sending domain.",
-              "code" : "7001",
-              "message" : "Invalid domain"
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true,
+                    "transactional": false,
+                    "sandbox": false,
+                    "ip_pool": "",
+                    "inline_css": false
+                },
+                "description": "Christmas Campaign Email",
+                "campaign_id": "christmas_campaign",
+                "metadata": {
+                    "user_type": "students",
+                    "education_level": "college"
+                },
+                "substitution_data": {
+                    "sender": "Big Store Team",
+                    "holiday_name": "Christmas"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "customer_type": "Platinum",
+                            "year": "Freshman"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "abc@flintstone.com",
+                            "name": "Fred Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "33",
+                            "place": "NY"
+                        },
+                        "substitution_data": {
+                            "first_name": "Fred",
+                            "customer_type": "Sliver",
+                            "year": "Senior"
+                        }
+                    }
+                ],
+                "content": {
+                    "email_rfc822": "Content-Type: text\/plain\r\nTo: \"{{address.name}}\" <{{address.email}}>\r\n\r\n Hi {{first_name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{customer_type}}\n {{sender}}\r\n"
+                }
             }
-          ]
-        }
-
-+ Request Create Transmission with Inline RFC822 Content (application/json)
-
-  + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-  + Body
-
-        {
-          "options": {
-            "open_tracking": true,
-            "click_tracking": true,
-            "transactional": false,
-            "sandbox": false,
-            "ip_pool": "",
-            "inline_css": false
-          },
-          "description": "Christmas Campaign Email",
-          "campaign_id": "christmas_campaign",
-
-          "metadata": {
-            "user_type": "students",
-            "education_level": "college"
-          },
-
-          "substitution_data": {
-            "sender": "Big Store Team",
-            "holiday_name": "Christmas"
-          },
-
-          "recipients": [
-            {
-              "address": {
-                "email": "wilma@flintstone.com",
-                "name": "Wilma Flintstone"
-              },
-              "tags": [
-                "greeting",
-                "prehistoric",
-                "fred",
-                "flintstone"
-              ],
-              "metadata": {
-                "age": "24",
-                "place": "Bedrock"
-              },
-              "substitution_data": {
-                "first_name": "Wilma",
-                "customer_type": "Platinum",
-                "year": "Freshman"
-              }
-            },
-            {
-              "address": {
-                "email": "abc@flintstone.com",
-                "name": "Fred Flintstone"
-              },
-              "tags": [
-                "greeting",
-                "prehistoric",
-                "fred",
-                "flintstone"
-              ],
-              "metadata": {
-                "age": "33",
-                "place": "NY"
-              },
-              "substitution_data": {
-                "first_name": "Fred",
-                "customer_type": "Sliver",
-                "year": "Senior"
-              }
-            }
-          ],
-          "content": {
-            "email_rfc822": "Content-Type: text\/plain\r\nTo: \"{{address.name}}\" <{{address.email}}>\r\n\r\n Hi {{first_name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{customer_type}}\n {{sender}}\r\n"
-          }
-        }
 
 + Response 200 (application/json)
 
-  + Body
-
-            {
-              "results": {
+        {
+            "results": {
                 "total_rejected_recipients": 0,
                 "total_accepted_recipients": 2,
                 "id": "11668787484950529"
-              }
             }
+        }
 
 + Response 400 (application/json)
 
         {
-          "errors" : [
-            {
-              "description" : "Unconfigured or unverified sending domain.",
-              "code" : "7001",
-              "message" : "Invalid domain"
-            }
-          ]
+            "errors": [
+                {
+                    "description": "Unconfigured or unverified sending domain.",
+                    "code": "7001",
+                    "message": "Invalid domain"
+                }
+            ]
         }
 
 + Request Create Transmission Using CC Header (application/json)
@@ -396,45 +382,67 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "options": {
-            "open_tracking": true,
-            "click_tracking": true,
-            "transactional": false,
-            "sandbox": false,
-            "ip_pool": "my_ip_pool",
-            "inline_css": false
-          },
-          "description": "Christmas Campaign Email",
-          "campaign_id": "christmas_campaign",
-          "recipients": [
             {
-              "address": {
-                "email": "wilma@flintstone.com"
-              }
-            },
-            {
-              "address": {
-                "email": "pebbles@flintstone.com",
-                "header_to": "wilma@flintstone.com"
-              }
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true,
+                    "transactional": false,
+                    "sandbox": false,
+                    "ip_pool": "my_ip_pool",
+                    "inline_css": false
+                },
+                "description": "Christmas Campaign Email",
+                "campaign_id": "christmas_campaign",
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "pebbles@flintstone.com",
+                            "header_to": "wilma@flintstone.com"
+                        }
+                    }
+                ],
+                "content": {
+                    "from": {
+                        "name": "Fred Flintstone",
+                        "email": "fred@flintstone.com"
+                    },
+                    "subject": "Big Christmas savings!",
+                    "reply_to": "Christmas Sales <sales@flintstone.com>",
+                    "headers": {
+                        "CC": "pebbles@flintstone.com"
+                    },
+                    "text": "Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"
+                }
             }
-          ],
-          "content": {
-            "from": {
-              "name": "Fred Flintstone",
-              "email": "fred@flintstone.com"
-            },
-            "subject": "Big Christmas savings!",
-            "reply_to": "Christmas Sales <sales@flintstone.com>",
-            "headers": {
-              "CC": "pebbles@flintstone.com"
-            },
-            "text": "Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"
-          }
-        }
 
 + Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 2,
+                "id": "11668787484950529"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Unconfigured or unverified sending domain.",
+                    "code": "7001",
+                    "message": "Invalid domain"
+                }
+            ]
+        }
+
++ Request Create Transmission with Stored Recipient List (application/json)
 
     + Headers
 
@@ -442,294 +450,234 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 2,
-            "id": "11668787484950529"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "errors" : [
-            {
-              "description" : "Unconfigured or unverified sending domain.",
-              "code" : "7001",
-              "message" : "Invalid domain"
-            }
-          ]
-        }
-
-
-+ Request Create Transmission with Stored Recipient List (application/json)
-
-  + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-  + Body
-
             {
                 "campaign_id": "christmas_campaign",
-
                 "recipients": {
-                  "list_id": "christmas_sales_2013"
+                    "list_id": "christmas_sales_2013"
                 },
-
                 "content": {
-                  "from": {
-                    "name": "Fred Flintstone",
-                    "email": "fred@flintstone.com"
-                  },
-
-                  "subject": "Big Christmas savings!",
-
-                  "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
-                  "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+                    "from": {
+                        "name": "Fred Flintstone",
+                        "email": "fred@flintstone.com"
+                    },
+                    "subject": "Big Christmas savings!",
+                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
+                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
                 }
             }
 
 + Response 200 (application/json)
 
-  + Body
-
-            {
-              "results": {
+        {
+            "results": {
                 "total_rejected_recipients": 0,
                 "total_accepted_recipients": 10,
                 "id": "11668787484950529"
-              }
             }
+        }
 
 + Response 404 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "resource not found",
-                  "description": "List 'christmas_sales_2013' does not exist",
-                  "code": "1600"
+                    "message": "resource not found",
+                    "description": "List 'christmas_sales_2013' does not exist",
+                    "code": "1600"
                 }
-              ]
-            }
+            ]
+        }
 
 + Request Create Transmission with Stored Template (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
-              "options": {
-                "open_tracking": true,
-                "click_tracking": true
-              },
-
-              "campaign_id": "thanksgiving_campaign",
-
-              "content": {
-                "template_id": "christmas_offer",
-                "use_draft_template": false
-              },
-
-              "metadata": {
-                "user_type": "students",
-                "age_group": "18-35"
-              },
-              "substitution_data": {
-                "status": "shopping",
-                "holiday": "Thanksgiving"
-              },
-
-              "recipients": [
-                {
-                  "address": {
-                    "email": "wilma@flintstone.com",
-                    "name": "Wilma Flintstone"
-                  },
-                  "tags": [
-                    "greeting",
-                    "prehistoric",
-                    "fred",
-                    "flintstone"
-                  ],
-                  "metadata": {
-                    "age": "24",
-                    "place": "Bedrock"
-                  },
-                  "substitution_data": {
-                    "first_name": "Wilma",
-                    "last_name": "Flintstone"
-                  }
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true
                 },
-                {
-                  "address": {
-                    "email": "abc@flintstone.com"
-                  },
-                  "tags": [
-                    "greeting",
-                    "prehistoric",
-                    "fred",
-                    "flintstone"
-                  ],
-                  "metadata": {
-                    "age": "33",
-                    "place": "MD"
-                  }
-                }
-              ]
+                "campaign_id": "thanksgiving_campaign",
+                "content": {
+                    "template_id": "christmas_offer",
+                    "use_draft_template": false
+                },
+                "metadata": {
+                    "user_type": "students",
+                    "age_group": "18-35"
+                },
+                "substitution_data": {
+                    "status": "shopping",
+                    "holiday": "Thanksgiving"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "last_name": "Flintstone"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "abc@flintstone.com"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "33",
+                            "place": "MD"
+                        }
+                    }
+                ]
             }
 
 + Response 200 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "transmission created, but with validation errors",
-                  "code": "2000"
+                    "message": "transmission created, but with validation errors",
+                    "code": "2000"
                 }
-              ],
-              "results": {
+            ],
+            "results": {
                 "rcpt_to_errors": [
-                  {
-                    "message": "required field is missing",
-                    "description": "address.email is required for each recipient",
-                    "code": "1400"
-                  }
+                    {
+                        "message": "required field is missing",
+                        "description": "address.email is required for each recipient",
+                        "code": "1400"
+                    }
                 ],
                 "total_rejected_recipients": 1,
                 "total_accepted_recipients": 1,
                 "id": "11668787484950530"
-              }
             }
+        }
 
 + Response 404 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "resource not found",
-                  "description": "template 'christmas_offer' does not exist",
-                  "code": "1600"
+                    "message": "resource not found",
+                    "description": "template 'christmas_offer' does not exist",
+                    "code": "1600"
                 }
-              ]
-            }
+            ]
+        }
 
 + Request Number of Messages Exceeds Sending Limit (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
                 "campaign_id": "christmas_campaign",
-
                 "recipients": {
-                  "list_id": "list_exceeds_sending_limit"
+                    "list_id": "list_exceeds_sending_limit"
                 },
-
                 "content": {
-                  "from": {
-                    "name": "Fred Flintstone",
-                    "email": "fred@flintstone.com"
-                  },
-
-                  "subject": "Big Christmas savings!",
-
-                  "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
-                  "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+                    "from": {
+                        "name": "Fred Flintstone",
+                        "email": "fred@flintstone.com"
+                    },
+                    "subject": "Big Christmas savings!",
+                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
+                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
                 }
             }
 
 + Response 420 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "Exceed Sending Limit (hourly)",
-                  "code": "2101"
+                    "message": "Exceed Sending Limit (hourly)",
+                    "code": "2101"
                 }
-              ]
-            }
+            ]
+        }
 
 + Response 420 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "Exceed Sending Limit (daily)",
-                  "code": "2102"
+                    "message": "Exceed Sending Limit (daily)",
+                    "code": "2102"
                 }
-              ]
-            }
+            ]
+        }
 
 + Response 420 (application/json)
 
-  + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "Exceed Sending Limit (sandbox)",
-                  "code": "2103"
+                    "message": "Exceed Sending Limit (sandbox)",
+                    "code": "2103"
                 }
-              ]
-            }
+            ]
+        }
 
 + Request Create Scheduled Transmission (application/json)
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
-                "name" : "Fall Sale",
+                "name": "Fall Sale",
                 "campaign_id": "fall",
-
                 "options": {
-                  "start_time" : "2017-02-11T08:00:00-04:00",
-                  "open_tracking": true,
-                  "click_tracking": true
+                    "start_time": "2017-02-11T08:00:00-04:00",
+                    "open_tracking": true,
+                    "click_tracking": true
                 },
-
                 "recipients": {
-                  "list_id": "all_subscribers"
+                    "list_id": "all_subscribers"
                 },
-
                 "content": {
-                  "template_id" : "fall_deals"
+                    "template_id": "fall_deals"
                 }
             }
 
 + Response 200 (application/json)
 
-  + Body
-
-            {
-              "results": {
+        {
+            "results": {
                 "total_rejected_recipients": 1000,
                 "total_accepted_recipients": 0,
                 "id": "11668787484950529"
-              }
             }
+        }
 
 + Request Create Transmission with attachments (application/json)
 
@@ -739,46 +687,43 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "campaign_id" : "attachment_example",
-          "recipients": [
             {
-              "address": "wilma@flintstone.com"
+                "campaign_id":"attachment_example",
+                "recipients":[
+                    {
+                        "address":"wilma@flintstone.com"
+                    }
+                ],
+                "content":{
+                    "from":{
+                        "email":"billing@company.example",
+                        "name":"Example Company"
+                    },
+                    "subject":"Billing statement",
+                    "html":"<b>Please see your attached billing statement</b>",
+                    "attachments":[
+                        {
+                            "type":"application/pdf",
+                            "name":"billing.pdf",
+                            "data":"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
+                        },
+                        {
+                            "type":"text/plain; charset=UTF-8",
+                            "name":"explanation.txt",
+                            "data":"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
+                        }
+                    ]
+                }
             }
-          ],
-          "content": {
-            "from": {
-              "email": "billing@company.example",
-              "name": "Example Company"
-            },
-
-            "subject": "Billing statement",
-            "html": "<b>Please see your attached billing statement</b>",
-            "attachments" : [
-              {
-                "type" : "application/pdf",
-                "name" : "billing.pdf",
-                "data" : "Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
-              },
-              {
-                "type" : "text/plain; charset=UTF-8",
-                "name" : "explanation.txt",
-                "data" : "TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
-              }
-            ]
-          }
-        }
 
 + Response 200 (application/json)
 
-    + Body
-
         {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 1,
-            "id": "11668787484950529"
-          }
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950529"
+            }
         }
 
 + Request Create Transmission with inline images (application/json)
@@ -789,96 +734,88 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
     + Body
 
-        {
-          "campaign_id" : "inline_image_example",
-          "recipients": [
             {
-              "address": "wilma@flintstone.com"
+                "campaign_id": "inline_image_example",
+                "recipients": [
+                    {
+                        "address": "wilma@flintstone.com"
+                    }
+                ],
+                "content": {
+                    "from": {
+                        "email": "marketing@company.example",
+                        "name": "Example Company"
+                    },
+                    "subject": "Inline image example",
+                    "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
+                    "inline_images": [
+                        {
+                            "type": "image/jpeg",
+                            "name": "my_image.jpeg",
+                            "data": "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
+                        }
+                    ]
+                }
             }
-          ],
-          "content": {
-            "from": {
-              "email": "marketing@company.example",
-              "name": "Example Company"
-            },
 
-            "subject": "Inline image example",
-            "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
-            "inline_images" : [
-              {
-                "type" : "image/jpeg",
-                "name" : "my_image.jpeg",
-                "data" : "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
-              }
-            ]
-          }
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950529"
+            }
         }
 
 + Response 200 (application/json)
 
-    + Body
-
         {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 1,
-            "id": "11668787484950529"
-          }
-        }
-
-
-+ Response 200 (application/json)
-
-    + Body
-
-        {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 2,
-            "id": "11668787493850529"
-          }
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 2,
+                "id": "11668787493850529"
+            }
         }
 
 + Request Create Transmission with A/B Test
 
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-  + Body
+    + Body
 
             {
-              "options": {
-                "open_tracking": true,
-                "click_tracking": true
-              },
-              "content": {
-                "ab_test_id": "password_reset",
-              },
-              "recipients": [
-                {
-                  "address": {
-                    "email": "wilma@flintstone.com",
-                    "name": "Wilma Flintstone"
-                  },
-                  "substitution_data": {
-                    "first_name": "Wilma",
-                    "last_name": "Flintstone"
-                  }
-                }
-              ]
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true
+                },
+                "content": {
+                    "ab_test_id": "password_reset"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "last_name": "Flintstone"
+                        }
+                    }
+                ]
             }
 
 + Response 200 (application/json)
 
-    + Body
-
         {
-          "results": {
-            "total_rejected_recipients": 0,
-            "total_accepted_recipients": 1,
-            "id": "11668787493850529"
-          }
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787493850529"
+            }
         }
 
 ## Retrieve and Delete [/transmissions/{id}]
@@ -906,51 +843,47 @@ The response for a transmission using an inline template will include `"template
 
 + Response 200 (application/json)
 
-    + Body
-
         {
-          "results": {
-            "transmission": {
-              "id": "11750520427380741",
-              "description": "",
-              "state": "Success",
-              "campaign_id": "white_christmas",
-              "content": {
-                "template_id": "Bob's template",
-                "use_draft_template": false
-              },
-              "rcpt_list_chunk_size": 100,
-              "rcpt_list_total_chunks": 1,
-              "num_rcpts": 10,
-              "num_generated": 10,
-              "num_failed_gen": 0,
-              "generation_start_time": "2014-05-22T15:12:59+00:00",
-              "generation_end_time": "2014-05-22T15:13:00+00:00",
-              "substitution_data": "",
-              "metadata": {
-                "is_snowing": "yes"
-              },
-              "options": {
-                "open_tracking": "",
-                "click_tracking": ""
-              }
+            "results": {
+                "transmission": {
+                    "id": "11750520427380741",
+                    "description": "",
+                    "state": "Success",
+                    "campaign_id": "white_christmas",
+                    "content": {
+                        "template_id": "Bob's template",
+                        "use_draft_template": false
+                    },
+                    "rcpt_list_chunk_size": 100,
+                    "rcpt_list_total_chunks": 1,
+                    "num_rcpts": 10,
+                    "num_generated": 10,
+                    "num_failed_gen": 0,
+                    "generation_start_time": "2014-05-22T15:12:59+00:00",
+                    "generation_end_time": "2014-05-22T15:13:00+00:00",
+                    "substitution_data": "",
+                    "metadata": {
+                        "is_snowing": "yes"
+                    },
+                    "options": {
+                        "open_tracking": "",
+                        "click_tracking": ""
+                    }
+                }
             }
-          }
         }
 
 + Response 404 (application/json)
 
-    + Body
-
-            {
-              "errors": [
+        {
+            "errors": [
                 {
-                  "message": "resource not found",
-                  "description": "Resource not found:transmission id 123",
-                  "code": "1600"
+                    "message": "resource not found",
+                    "description": "Resource not found:transmission id 123",
+                    "code": "1600"
                 }
-              ]
-            }
+            ]
+        }
 
 ### Delete a Transmission [DELETE]
 **Not available in SparkPost EU.**
@@ -976,59 +909,51 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 + Response 404 (application/json)
 
-  + Body
-
-          {
+        {
             "errors": [
-              {
-                "message": "resource not found",
-                "code": "1600",
-                "description": "Resource not found:transmission id 999999999"
-              }
+                {
+                    "message": "resource not found",
+                    "code": "1600",
+                    "description": "Resource not found:transmission id 999999999"
+                }
             ]
-          }
+        }
 
 + Response 409 (application/json)
 
-  + Body
-
-          {
+        {
             "errors": [
-              {
-                "message": "too close to generation time to delete transmission",
-                "code": "2003",
-                "description": "Deletion time window (660 seconds) doesn't permit transmission deletion"
-              }
+                {
+                    "message": "too close to generation time to delete transmission",
+                    "code": "2003",
+                    "description": "Deletion time window (660 seconds) doesn't permit transmission deletion"
+                }
             ]
-          }
+        }
 
 + Response 409 (application/json)
 
-  + Body
-
-          {
+        {
             "errors": [
-              {
-                "message": "transmission database record is in an invalid state for deletion",
-                "code": "2006",
-                "description": "Unable to delete a transmission that is in progress (state=Generating)"
-              }
+                {
+                    "message": "transmission database record is in an invalid state for deletion",
+                    "code": "2006",
+                    "description": "Unable to delete a transmission that is in progress (state=Generating)"
+                }
             ]
-          }
+        }
 
 + Response 409 (application/json)
 
-  + Body
-
-          {
+        {
             "errors": [
-              {
-                "message": "transmission database record is in an invalid state for deletion",
-                "code": "2006",
-                "description": "Unable to delete a transmission that has completed (state=Success)"
-              }
+                {
+                    "message": "transmission database record is in an invalid state for deletion",
+                    "code": "2006",
+                    "description": "Unable to delete a transmission that has completed (state=Success)"
+                }
             ]
-          }
+        }
 
 ## Delete Transmissions By Campaign [/transmissions?campaign_id={campaign_id}]
 
@@ -1037,24 +962,21 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 Delete all transmissions of a campaign by specifying Campaign ID in the URI path.
 
-  + Parameters
-
-    + campaign_id (required, string, `white-christmas`)
-
 ### Delete By Campaign ID [DELETE]
 
++ Parameters
+    + campaign_id (required, string, `white-christmas`)
 
 + Request Delete all transmissions for a campaign
 
-
-  + Headers
+    + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
 
 + Response 204
 
-## List [/transmissions{?campaign_id,template_id}]
+## List All Scheduled Transmissions [/transmissions{?campaign_id,template_id}]
 
 ### List All Scheduled Transmissions [GET]
 **Not available in SparkPost EU.**
@@ -1067,10 +989,9 @@ By default, the list includes transmissions for all campaigns and templates.  Us
 
 <banner status="info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</banner>
 
-
 + Parameters
-  + campaign_id (optional, string,`thanksgiving`) ... ID of the campaign used by the transmissions
-  + template_id (optional, string, `thanksgiving-template`) ... ID of the template used by the transmissions
+    + campaign_id (optional, string,`thanksgiving`) ... ID of the campaign used by the transmissions
+    + template_id (optional, string, `thanksgiving-template`) ... ID of the template used by the transmissions
 
 + Request
 
@@ -1081,36 +1002,34 @@ By default, the list includes transmissions for all campaigns and templates.  Us
 
 + Response 200 (application/json)
 
-    + Body
-
         {
-          "results": [
-            {
-              "content" : {
-                "template_id": "winter_sale"
-              },
-              "id": "11713562166689858",
-              "campaign_id": "thanksgiving",
-              "description": "",
-              "state": "submitted"
-            },
-            {
-              "content" : {
-                "template_id": "inline"
-              },
-              "id": "11713562166689979",
-              "campaign_id": "thanksgiving",
-              "description": "",
-              "state": "submitted"
-            },
-            {
-              "content" : {
-                "template_id": "thanksgiving-template"
-              },
-              "id": "11713048079237202",
-              "campaign_id": "thanksgiving",
-              "description": "",
-              "state": "submitted"
-            }
-          ]
+            "results": [
+                {
+                    "content": {
+                        "template_id": "winter_sale"
+                    },
+                    "id": "11713562166689858",
+                    "campaign_id": "thanksgiving",
+                    "description": "",
+                    "state": "submitted"
+                    },
+                {
+                    "content": {
+                        "template_id": "inline"
+                    },
+                    "id": "11713562166689979",
+                    "campaign_id": "thanksgiving",
+                    "description": "",
+                    "state": "submitted"
+                },
+                {
+                    "content": {
+                        "template_id": "thanksgiving-template"
+                    },
+                    "id": "11713048079237202",
+                    "campaign_id": "thanksgiving",
+                    "description": "",
+                    "state": "submitted"
+                }
+            ]
         }
