@@ -20,7 +20,73 @@ The sandbox domain `sparkpostbox.com` is available to allow each account to send
 
 <banner status="info"><strong>Note</strong>: SparkPost accounts only. <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts should consider using the <a href="https://support.sparkpost.com/customer/portal/articles/2560839">SparkPost Sink Server</a>.</banner>
 
+## Sending Limits
+
+```
++ Request Number of Messages Exceeds Sending Limit (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "campaign_id": "christmas_campaign",
+                "recipients": {
+                    "list_id": "list_exceeds_sending_limit"
+                },
+                "content": {
+                    "from": {
+                        "name": "Fred Flintstone",
+                        "email": "fred@flintstone.com"
+                    },
+                    "subject": "Big Christmas savings!",
+                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
+                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+                }
+            }
+
++ Response 420 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Exceed Sending Limit (hourly)",
+                    "code": "2101"
+                }
+            ]
+        }
+
++ Response 420 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Exceed Sending Limit (daily)",
+                    "code": "2102"
+                }
+            ]
+        }
+
++ Response 420 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Exceed Sending Limit (sandbox)",
+                    "code": "2103"
+                }
+            ]
+        }
+```
+
+
 ## Create a Transmission [/transmissions/{?num_rcpt_errors}]
+
+You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
+
+<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
 
 ## Transmission Attributes
 
@@ -72,15 +138,7 @@ The following recipients attribute is used when specifying a stored recipient li
 
 Create a transmission using a stored recipients list by specifying the `list_id` in the `recipients` attribute.
 
-### Create a Transmission [POST]
-
-You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
-
-<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
-
-+ Request 
-
-### Using Inline Email Part Content [POST]
+### Using Inline Content [POST]
 
 
 The following attributes are used when specifying inline content in the transmission's `content` JSON object.
@@ -99,88 +157,7 @@ The following attributes are used when specifying inline content in the transmis
 |attachments| JSON | JSON array of attachments. | no | For a full description, see [Attachment Attributes](#header-attachment-attributes). |
 |inline_images| JSON | JSON array of inline images. | no | For a full description, see [Inline Image Attributes](#header-inline-image-attributes). |
 
-+ Request 
-
-### Using Inline RFC822 Content [POST]
-
-Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
-
-| Field         | Type     | Description                           | Required   |
-|--------------------|:-:       |---------------------------------------|-----------------------|
-|email_rfc822    |string  |Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1) |no   |
-
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
-first non-attachment `text/html` MIME parts only.
-* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
-necessary.
-* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
-* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
-* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
-
-Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
-
-+ Request
-
-### Using a Stored Template [POST]
-
-The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|template_id|string| ID of the stored template to use | yes |Specify this field when using a stored template.  Maximum length -- 64 bytes|
-|use_draft_template|boolean |Whether to use a draft template|no - defaults to false| If this field is set to `true` and no draft template exists, the transmission will fail.|
-
-Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
-
-+ Request
-
-### Using an A/B Test [POST]
-
-### Using an A/B Test
-
-The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|ab_test_id|string| ID of the A/B test to use | yes |Specify this field when using an A/B test|
-
-<banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
-
-<banner status="info"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
-
-Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
-
-+ Request
-
-### Sending Attachments and Inline Images [POST]
-
-
-### Attachment Attributes
-
-<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
-
-Attachments for a transmission are specified in the `content.attachments` JSON array where each JSON object in the array is described by the following fields:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-------------|------------------|
-|type |string |The MIME type of the attachment; e.g., `text/plain`, `image/jpeg`, `audio/mp3`, `video/mp4`, `application/msword`, `application/pdf`, etc., including the `charset` parameter (ex: `text/html; charset="UTF-8"`) if needed. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. | yes |  |
-|name |string |The filename of the attachment (for example, `document.pdf`). This is inserted into the filename parameter of the `Content-Disposition` header. | yes | Maximum length - 255 bytes |
-|data |string |The content of the attachment as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
-
-### Inline Image Attributes
-
-Inline images for a transmission are specified in the `content.inline_images` JSON array where each JSON object in the array is described by the following fields:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-------------|------------------|
-|type |string |The MIME type of the image; e.g., `image/jpeg`.  The value will apply as-is to the `Content-Type` header of the generated MIME part for the image. | yes |  |
-|name |string |The name of the inline image, which will be inserted into the `Content-ID` header. The image should be referenced in your HTML content using `<img src="cid:THIS_NAME" />`. The name must be unique within the `content.inline_images` array. | yes | Maximum length - 255 bytes |
-|data |string | The content of the image as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
-
-+ Parameters
-    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
-
-+ Request Create Transmission using Inline Email Part Content (application/json)
++ Request (application/json)
 
     + Headers
 
@@ -265,7 +242,26 @@ Inline images for a transmission are specified in the `content.inline_images` JS
             ]
         }
 
-+ Request Create Transmission with Inline RFC822 Content (application/json)
+
+### Using Inline RFC822 Content [POST]
+
+Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
+
+| Field         | Type     | Description                           | Required   |
+|--------------------|:-:       |---------------------------------------|-----------------------|
+|email_rfc822    |string  |Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1) |no   |
+
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
+first non-attachment `text/html` MIME parts only.
+* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
+necessary.
+* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
+* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
+* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
+
+Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
+
++ Request (application/json)
 
     + Headers
 
@@ -361,6 +357,291 @@ Inline images for a transmission are specified in the `content.inline_images` JS
                     "message": "Invalid domain"
                 }
             ]
+        }
+
+
+### Send a Template [POST]
+
+The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|template_id|string| ID of the stored template to use | yes |Specify this field when using a stored template.  Maximum length -- 64 bytes|
+|use_draft_template|boolean |Whether to use a draft template|no - defaults to false| If this field is set to `true` and no draft template exists, the transmission will fail.|
+
+Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true
+                },
+                "campaign_id": "thanksgiving_campaign",
+                "content": {
+                    "template_id": "christmas_offer",
+                    "use_draft_template": false
+                },
+                "metadata": {
+                    "user_type": "students",
+                    "age_group": "18-35"
+                },
+                "substitution_data": {
+                    "status": "shopping",
+                    "holiday": "Thanksgiving"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "last_name": "Flintstone"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "abc@flintstone.com"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "33",
+                            "place": "MD"
+                        }
+                    }
+                ]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "transmission created, but with validation errors",
+                    "code": "2000"
+                }
+            ],
+            "results": {
+                "rcpt_to_errors": [
+                    {
+                        "message": "required field is missing",
+                        "description": "address.email is required for each recipient",
+                        "code": "1400"
+                    }
+                ],
+                "total_rejected_recipients": 1,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950530"
+            }
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "resource not found",
+                    "description": "template 'christmas_offer' does not exist",
+                    "code": "1600"
+                }
+            ]
+        }
+
+
+### Send an A/B Test [POST]
+
+The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|ab_test_id|string| ID of the A/B test to use | yes |Specify this field when using an A/B test|
+
+<banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
+
+<banner status="info"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
+
+Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true
+                },
+                "content": {
+                    "ab_test_id": "password_reset"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "last_name": "Flintstone"
+                        }
+                    }
+                ]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787493850529"
+            }
+        }
+
+
+### Sending Attachments and Inline Images [POST]
+
+
+**Attachment Attributes**
+
+<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
+
+Attachments for a transmission are specified in the `content.attachments` JSON array where each JSON object in the array is described by the following fields:
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|--------------------|:-:       |---------------------------------------|-------------|------------------|
+|type |string |The MIME type of the attachment; e.g., `text/plain`, `image/jpeg`, `audio/mp3`, `video/mp4`, `application/msword`, `application/pdf`, etc., including the `charset` parameter (ex: `text/html; charset="UTF-8"`) if needed. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. | yes |  |
+|name |string |The filename of the attachment (for example, `document.pdf`). This is inserted into the filename parameter of the `Content-Disposition` header. | yes | Maximum length - 255 bytes |
+|data |string |The content of the attachment as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
+
+**Inline Image Attributes**
+
+Inline images for a transmission are specified in the `content.inline_images` JSON array where each JSON object in the array is described by the following fields:
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|--------------------|:-:       |---------------------------------------|-------------|------------------|
+|type |string |The MIME type of the image; e.g., `image/jpeg`.  The value will apply as-is to the `Content-Type` header of the generated MIME part for the image. | yes |  |
+|name |string |The name of the inline image, which will be inserted into the `Content-ID` header. The image should be referenced in your HTML content using `<img src="cid:THIS_NAME" />`. The name must be unique within the `content.inline_images` array. | yes | Maximum length - 255 bytes |
+|data |string | The content of the image as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
+
++ Parameters
+    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
+
++ Request Create Transmission with attachments (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "campaign_id":"attachment_example",
+                "recipients":[
+                    {
+                        "address":"wilma@flintstone.com"
+                    }
+                ],
+                "content":{
+                    "from":{
+                        "email":"billing@company.example",
+                        "name":"Example Company"
+                    },
+                    "subject":"Billing statement",
+                    "html":"<b>Please see your attached billing statement</b>",
+                    "attachments":[
+                        {
+                            "type":"application/pdf",
+                            "name":"billing.pdf",
+                            "data":"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
+                        },
+                        {
+                            "type":"text/plain; charset=UTF-8",
+                            "name":"explanation.txt",
+                            "data":"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
+                        }
+                    ]
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950529"
+            }
+        }
+
++ Request Create Transmission with inline images (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "campaign_id": "inline_image_example",
+                "recipients": [
+                    {
+                        "address": "wilma@flintstone.com"
+                    }
+                ],
+                "content": {
+                    "from": {
+                        "email": "marketing@company.example",
+                        "name": "Example Company"
+                    },
+                    "subject": "Inline image example",
+                    "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
+                    "inline_images": [
+                        {
+                            "type": "image/jpeg",
+                            "name": "my_image.jpeg",
+                            "data": "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
+                        }
+                    ]
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 1,
+                "id": "11668787484950529"
+            }
         }
 
 + Request Create Transmission Using CC Header (application/json)
@@ -477,302 +758,6 @@ Inline images for a transmission are specified in the `content.inline_images` JS
             ]
         }
 
-+ Request Create Transmission with Stored Template (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true
-                },
-                "campaign_id": "thanksgiving_campaign",
-                "content": {
-                    "template_id": "christmas_offer",
-                    "use_draft_template": false
-                },
-                "metadata": {
-                    "user_type": "students",
-                    "age_group": "18-35"
-                },
-                "substitution_data": {
-                    "status": "shopping",
-                    "holiday": "Thanksgiving"
-                },
-                "recipients": [
-                    {
-                        "address": {
-                            "email": "wilma@flintstone.com",
-                            "name": "Wilma Flintstone"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "24",
-                            "place": "Bedrock"
-                        },
-                        "substitution_data": {
-                            "first_name": "Wilma",
-                            "last_name": "Flintstone"
-                        }
-                    },
-                    {
-                        "address": {
-                            "email": "abc@flintstone.com"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "33",
-                            "place": "MD"
-                        }
-                    }
-                ]
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "transmission created, but with validation errors",
-                    "code": "2000"
-                }
-            ],
-            "results": {
-                "rcpt_to_errors": [
-                    {
-                        "message": "required field is missing",
-                        "description": "address.email is required for each recipient",
-                        "code": "1400"
-                    }
-                ],
-                "total_rejected_recipients": 1,
-                "total_accepted_recipients": 1,
-                "id": "11668787484950530"
-            }
-        }
-
-+ Response 404 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "resource not found",
-                    "description": "template 'christmas_offer' does not exist",
-                    "code": "1600"
-                }
-            ]
-        }
-
-+ Request Number of Messages Exceeds Sending Limit (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "campaign_id": "christmas_campaign",
-                "recipients": {
-                    "list_id": "list_exceeds_sending_limit"
-                },
-                "content": {
-                    "from": {
-                        "name": "Fred Flintstone",
-                        "email": "fred@flintstone.com"
-                    },
-                    "subject": "Big Christmas savings!",
-                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
-                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
-                }
-            }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (hourly)",
-                    "code": "2101"
-                }
-            ]
-        }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (daily)",
-                    "code": "2102"
-                }
-            ]
-        }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (sandbox)",
-                    "code": "2103"
-                }
-            ]
-        }
-
-+ Request Create Transmission with attachments (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "campaign_id":"attachment_example",
-                "recipients":[
-                    {
-                        "address":"wilma@flintstone.com"
-                    }
-                ],
-                "content":{
-                    "from":{
-                        "email":"billing@company.example",
-                        "name":"Example Company"
-                    },
-                    "subject":"Billing statement",
-                    "html":"<b>Please see your attached billing statement</b>",
-                    "attachments":[
-                        {
-                            "type":"application/pdf",
-                            "name":"billing.pdf",
-                            "data":"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
-                        },
-                        {
-                            "type":"text/plain; charset=UTF-8",
-                            "name":"explanation.txt",
-                            "data":"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
-                        }
-                    ]
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 1,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Request Create Transmission with inline images (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "campaign_id": "inline_image_example",
-                "recipients": [
-                    {
-                        "address": "wilma@flintstone.com"
-                    }
-                ],
-                "content": {
-                    "from": {
-                        "email": "marketing@company.example",
-                        "name": "Example Company"
-                    },
-                    "subject": "Inline image example",
-                    "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
-                    "inline_images": [
-                        {
-                            "type": "image/jpeg",
-                            "name": "my_image.jpeg",
-                            "data": "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
-                        }
-                    ]
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 1,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 2,
-                "id": "11668787493850529"
-            }
-        }
-
-+ Request Create Transmission with A/B Test
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true
-                },
-                "content": {
-                    "ab_test_id": "password_reset"
-                },
-                "recipients": [
-                    {
-                        "address": {
-                            "email": "wilma@flintstone.com",
-                            "name": "Wilma Flintstone"
-                        },
-                        "substitution_data": {
-                            "first_name": "Wilma",
-                            "last_name": "Flintstone"
-                        }
-                    }
-                ]
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 1,
-                "id": "11668787493850529"
-            }
-        }
-
 
 ## Scheduled Transmissions [/transmissions/]
 
@@ -786,7 +771,7 @@ Scheduling a transmission that specifies a stored template will use the LATEST v
 
 Once message generation has been initiated, all messages in the transmission will use the template selected at the start of the generation. If a template update is made during the generation of a transmission that uses that template, the template update will succeed but the transmission will continue to use the version that was selected at the start of the generation.
 
-+ Request Create Scheduled Transmission (application/json)
++ Request (application/json)
 
     + Headers
 
