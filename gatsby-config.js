@@ -8,8 +8,8 @@ process.env.GATSBY_ACTIVE_ENV = process.env.GATSBY_ACTIVE_ENV || process.env.NOD
 
 module.exports = {
   siteMetadata: {
-    title: `Sparkpost Developers`,
-    description: `SparkPost developer resources including Documentation, API reference, and client libraries.`,
+    title: `SparkPost Developers`,
+    description: `SparkPost developer resources including documentation, API reference, and client libraries.`,
   },
   plugins: flatten([
     process.env.GATSBY_ACTIVE_ENV !== 'docs' ? [
