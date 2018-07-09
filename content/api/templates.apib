@@ -24,7 +24,7 @@ If needed, it's also possible to update the published version of a template dire
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes.
         + html (string) - HTML content for the email's `text/html` MIME part.
         + text (string) - Text content for the email's `text/plain` MIME part.
-        + subject (string, required) - Email subject line.
+        + subject (string) - Email subject line.
         + from (enum) - Email address used to compose the email's `From` header. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
             + (string)
@@ -37,7 +37,7 @@ If needed, it's also possible to update the published version of a template dire
         + click_tracking (boolean) - Enable or disable click tracking.
     + has_draft (boolean) -  Whether the template has a draft version.
     + has_published (boolean) -  Whether the template has a published version.
-    + last_update_time (string) - The last date any version of this template (draft of published) was updated.
+    + last_update_time (string) - The last date this template was updated.
     + last_use (string) - The last date any version of this template (draft or published) was used for generating an email. Only present if template has been used.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
     + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
@@ -108,8 +108,8 @@ Each error is described in a object with the following attributes:
 Templates are created as drafts.
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, id or name is required upon creation. It is auto-generated if not provided. After a template has been created, this property cannot be changed. Maximum length - 64 bytes
-    + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. The name does not have to be unique. Maximum length - 1024 bytes
+    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
+    + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
     + content (object, required) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
@@ -124,11 +124,11 @@ Templates are created as drafts.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
-    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
-    + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account.
+    + subaccount_id (number) - Subaccount to assign the template to.
 
 
-+ Request Create (application/json)
++ Request (application/json)
 
     + Headers
 
@@ -257,7 +257,7 @@ The new content will completely overwrite the existing content.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
-    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the template.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account. Updating this will update both the published and draft versions.
 
 
 + Parameters
@@ -342,7 +342,7 @@ The new content will completely overwrite the existing content.
         + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
-    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account. Updating this will update it for all versions of the template.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account. Updating this will update both the published and draft versions.
 
 
 + Parameters
@@ -386,7 +386,7 @@ See [Substitutions Reference](/api/substitutions-reference/) for more informatio
 
 
 + Data Structure
-    + substitution_data (object) - Data used to expand substitution syntax
+    + substitution_data (object) - Data used to expand substitution syntax.
 
 
 + Parameters
@@ -429,7 +429,7 @@ See [Substitutions Reference](/api/substitutions-reference/) for more informatio
 
 ### Delete a Template [DELETE /templates/{id}]
 
-Deletes all versions, both published and draft versions, of a template.
+Deletes both published and draft versions of a template.
 
 <banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</banner>
 
