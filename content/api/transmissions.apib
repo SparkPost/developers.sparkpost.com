@@ -58,7 +58,7 @@ The sandbox domain `sparkpostbox.com` is available to allow each account to send
 The following attributes are used when specifying inline content in the transmission's `content` JSON object.
 
 <banner status="warning"><strong>Note</strong>: the following attributes should not be present when using a stored template.</banner>
-<banner status="info"><strong>Note</strong>: one of <code>html</code>, <code>text</code>, or <code>push</code> is required. Email transmissions have additional required fields.</banner>
+<banner status="info"><strong>Note</strong>: one of <code>html</code> or <code>text</code> is required. Email transmissions have additional required fields.</banner>
 
 | Field         | Type     | Description                           | Required   | Notes   |
 |------------------------|:-:       |---------------------------------------|-------------|--------|
@@ -827,58 +827,6 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
         }
 
 
-+ Request Create Transmission for Mobile Push Using Inline Content (application/json)
-<banner status="info"><strong>Note</strong>: The following request is valid for <a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise accounts</a> only.</banner>
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-        {
-          "recipients": [
-            {
-              "multichannel_addresses": [
-                {
-                  "channel": "apns",
-                  "token": "02c7830aae68d008a0616aed81a6bec40b5acf53fbca1ae46c734527ee0e885f",
-                  "app_id": "flintstone.apns.domain"
-                }
-              ]
-            },
-            {
-              "multichannel_addresses" : [
-                {
-                  "channel": "gcm",
-                  "token": "kNd8dnekej:KDSNDdnedik3n3kFDJfjwJDKndkd39MNiKnd9-Dk4NbkwnyMisosowb_GixnesleE38c1nglc9dTIXL56Djdhsn90nZjkDleEixlndiHk_Sntks54g1sZdnssY2s15f_SnektTkjwse",
-                  "app_id": "flintstone.gcm.domain"
-                }
-              ]
-            }
-          ],
-          "content": {
-            "push": {
-              "apns" : {
-                "aps" : {
-                  "alert" : {
-                    "title" : "Badge adjust alert message",
-                    "body" : "Hello John. I am resetting your badge to zero"
-                  },
-                  "badge" : 0
-                }
-              },
-              "gcm" : {
-                "notification" : {
-                  "title" : "You have Android deals",
-                  "body" : "Open your Android app to check out these awesome new deals",
-                  "color" : "#fa6423",
-                  "icon" : "myicon"
-                }
-              }
-            }
-          }
-        }
-
 + Response 200 (application/json)
 
     + Body
@@ -904,11 +852,9 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
                 "open_tracking": true,
                 "click_tracking": true
               },
-
               "content": {
                 "ab_test_id": "password_reset",
               },
-
               "recipients": [
                 {
                   "address": {
