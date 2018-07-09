@@ -19,6 +19,11 @@ description: "Get your SparkPost account information, including subscription sta
 </thead>
 <tbody>
 <tr>
+<td>customer_id</td>
+<td>number</td>
+<td>Account ID number</td>
+</tr>
+<tr>
 <td>company_name</td>
 <td>string</td>
 <td>Account holder company name</td>
@@ -253,6 +258,7 @@ description: "Get your SparkPost account information, including subscription sta
 </div><div class="resource searchable"><h3 id="account-get-account" class="resource-heading">Get Account <a href="#account-get-account" class="permalink">&nbsp;</a></h3><div class="searchable"><div class="action get"><h4 id="account-get-account-get" class="action-heading"><div class="name">Retrieve account information</div></h4><div class="method">GET<code class="uri">/api/v1/account{?include}</code></div><div class="title"><strong>URI Parameters</strong></div><div class="table-responsive"><table><tr><td class="markdown">include</td><td class="markdown"><p>Additional parts of account details to include. The only valid value is currently <code>usage</code>.</p>
 <em>Example: usage</em></td></tr></table></div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"><code>GET&nbsp;/api/v1/account?<span class="hljs-attribute">include=</span><span class="hljs-literal">usage</span></code></p><!-- Weed out the noisy obvious headers--></div></div><div class="panel response panel-default"><div class="panel-heading"><h4 class="panel-title">Response (HTTP status code: 200)</h4></div><div class="panel-body"><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">results</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">customer_id</span>": <span class="hljs-value"><span class="hljs-number">102938</span></span>,
     "<span class="hljs-attribute">company_name</span>": <span class="hljs-value"><span class="hljs-string">"Example Inc"</span></span>,
     "<span class="hljs-attribute">country_code</span>": <span class="hljs-value"><span class="hljs-string">"US"</span></span>,
     "<span class="hljs-attribute">anniversary_date</span>": <span class="hljs-value"><span class="hljs-string">"2017-01-11T08:00:00.000Z"</span></span>,
