@@ -4,179 +4,131 @@ description: Manage reusable content templates that are run through the SparkPos
 
 # Group Templates
 
-A template is a named collection of content stored on the server side.  Templates are used in a transmission by providing the id of the template at the time of transmission submission.  Each textual component of the
-template (headers, text, and html) is run through the substitution engine
-to produce recipient specific email messages.  The Templates API provides the means to manage your templates.
+Templates are a way to store and edit email content.
+Instead of passing inline content to a [Transmission](/api/transmissions) request, a template can be set to provide the content.
+All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference) for personalized emails.
 
-## Template Attributes
+## Drafts & Published versions
 
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|id    |string  |Short, unique, alphanumeric ID used to reference the template   | At a minimum, id or name is required upon creation.  It is auto generated if not provided. |After a template has been created, this property cannot be changed.  Maximum length - 64 bytes   |
-|content              |JSON  |Content that will be used to construct a message  |  yes  |  For a full description, see the [Content Attributes](#header-content-attributes). Maximum length - 20 MBs  |
-|published |boolean |Whether the template is published or is a draft version|no - defaults to false|A template cannot be changed from published to draft.|
-|name |string  |Editable display name  | At a minimum, id or name is required upon creation.   |The name does not have to be unique.  Maximum length - 1024 bytes   |
-|description |string  |Detailed description of the template  |no    | Maximum length - 1024 bytes |
-|options |JSON |JSON object in which template options are defined|no| For a full description, see the [Options Attributes](#header-options-attributes).|
-|shared_with_subaccounts | boolean | Whether this template can be used by subaccounts | no | Defaults to `false`.  Only available to templates  belonging to a master account.|
-|has_draft | boolean | Whether the template has a draft version | read-only | |
-|has_published | boolean | Whether the template has a published version | read-only | |
+Templates can have both a draft and a published version. Transmissions send the published version by default.
+This allows you to work on an upcoming version of the content while continuing to send the last published version.
+Once ready, [publish the draft](#templates-publish-a-draft-put) to the start sending the new version without needing to change the transmission request.
+If needed, it's also possible to update the published version of a template directly, without affecting the draft version.
 
+## Template Object
 
-### Content Attributes
-
-Content for a template is described in a JSON object with the following fields:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|html    |string  |HTML content for the email's `text/html` MIME part|At a minimum, html or text is required.  |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported. |
-|text    |string  |Text content for the email's `text/plain` MIME part|At a minimum, html or text is required. |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported.|
-|subject |string  |Email subject line   | yes |Expected in the UTF-8 charset without RFC2047 encoding.  Substitution syntax is supported. |
-|from |string or JSON  | Address `"from": "deals@company.com"` or JSON object composed of the `name` and `email` fields `"from": { "name": "My Company", "email": "deals@company.com" }` used to compose the email's `From` header| yes | Substitution syntax is supported. |
-|reply_to |string  |Email address used to compose the email's `Reply-To` header | no | Substitution syntax is supported. |
-|headers| JSON | JSON dictionary containing headers other than `Subject`, `From`, `To`, and `Reply-To`  | no | See the [Header Notes](#header-header-notes). |
-
++ Data Structure: Attributes
+    + id (string) - Unique alphanumeric ID.
+    + name (string) - Display name.
+    + description (string) - Description of the template.
+    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes.
+        + html (string) - HTML content for the email's `text/html` MIME part.
+        + text (string) - Text content for the email's `text/plain` MIME part.
+        + subject (string) - Email subject line.
+        + from (enum) - Email address used to compose the email's `From` header. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
+        + reply_to (string) - Email address used to compose the email's `Reply-To` header.
+        + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
+    + published (boolean) - Whether the template is published or is a draft version. A template cannot be changed from published to draft.
+    + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
+        + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
+        + open_tracking (boolean) - Enable or disable open tracking.
+        + click_tracking (boolean) - Enable or disable click tracking.
+    + has_draft (boolean) -  Whether the template has a draft version.
+    + has_published (boolean) -  Whether the template has a published version.
+    + last_update_time (string) - The last date this template was updated.
+    + last_use (string) - The last date any version of this template (draft or published) was used for generating an email. Only present if template has been used.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Only present on templates that belong to a master account.
+    + subaccount_id (number) - Subaccount the template belongs to. Only present on templates that belong to a subaccount.
++ Sample
+    ```
+    {
+        "id": "onboarding-email"
+        "name": "Onboarding email",
+        "description": "First email sent on sign-up",
+        "content": {
+            "html": "<p>Please confirm your email by clicking <a href="{{ link }}">this link</a></p>",
+            "text": "Please confirm your email by clicking this link: {{ link }}",
+            "from": "{{ friendly_from }} <team@ourdomain.com>",
+            "subject": "Welcome!"
+        },
+        "published": true,
+        "has_draft": true,
+        "has_published": true,
+        "last_update_time": "2018-07-03T23:41:07+00:00",
+        "last_use": "2018-07-02T18:48:18+00:00",
+        "shared_with_subaccounts": false,
+        "options": {
+            "transactional": true
+        }
+    }
+    ```
 #### Header Notes
 
-* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed here as they are auto generated upon construction of the email.
-* The `To` header should not be specified here, since it is generated from each recipient's `address.name` and `address.email`.
+* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto-generated upon construction of the email.
+* The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Substitution syntax is supported.
+* Substitution syntax is supported in headers.
 
-Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
+### Error Object
 
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-----------------------|--------|
-|email_rfc822    |string  |Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1) |no   |  See the [email_rfc822 Notes](#header-email_rfc822-notes). |
+On request failure, an `errors` array will be returned along with HTTP 4xx or 5xx.
+To help debug content issues, templates errors are more detailed than usual.
+Each error is described in a object with the following attributes:
 
-#### email_rfc822 Notes
++ Data Structure: Attributes
+    + message: (string) - Explains the type of error
+    + code: (string) - Identifies the type of error
+    + description: (string) - Explanation of error
+    + part (enum) - Identifies the content section where the error occurred
+        + text
+        + html
+        + Header:Subject
+        + text/plain
+    + line (number) - Identifies the line number within the MIME part identified by the part attribute
++ Sample
 
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
-first non-attachment `text/html` MIME parts only.
-* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
-necessary.
-* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
-* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
-* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
-
-### Options Attributes
-
-Options for a template are described in a JSON object, as follows, using the transmission-level option if not specified:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-------------|------------------|
-|open_tracking |boolean |Enable or disable open tracking | no | To override the default for a specific transmission, specify the `options.open_tracking` field upon creation of the transmission. |
-|click_tracking |boolean |Enable or disable click tracking | no | To override the default for a specific transmission, specify the `options.click_tracking` field upon creation of the transmission. |
-|transactional |boolean |Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes | no | To override the default for a specific transmission, specify the `options.transactional` field upon creation of the transmission. |
-
-## Error Attributes
-
-On success, the API returns a `results` JSON object along with HTTP 200.  On failure, an `errors` JSON array will be returned along with HTTP 4xx or 5xx.  Each error is described in a JSON object with the following fields:
-
-| Field         | Type     | Description                           |  Example |
-|--------------------|:-:       |---------------------------------------|--------|
-|message |string | Explains the class of error  | `"substitution language syntax error in template content"` |
-|code |string| Identifies the class of error| `"3000"` |
-|description|string| Detailed explanation of error| `"Error while compiling part text: line 4: syntax error near 'age'"` |
-|part|string| For substitution errors, identifies the MIME part where the error occurred | `"text"`, `"html"`, `"Header:Subject"`, `"text/plain"` |
-|line|number| For substitution errors, identifies the line number within the MIME part identified by the `part` JSON field | `4` |
-
-## Create and List [/templates]
-
-### Create a Template [POST]
-
-Create a template by providing a **template object** as the POST request body.
-
-At a minimum, the `name` and `content` fields are required, where content must contain the `from`, `subject`, and at least one of `html` or `text` fields.
-
-By default, when a template is referenced in a transmission, it is the published version of that template.  To submit a transmission that uses a draft template, set the transmission field `use_draft_template` to true.  For additional details, see the [Transmissions API documentation](/api/transmissions/) for [Using a Stored Template](/api/transmissions/#header-using-a-stored-template).
-
-
-#### Create Parts
-
-The following are key points about creating parts in your templates, as shown in the example:
-
-* The `id` field may be supplied, and it must be unique.
-* By default, templates are created as drafts.  If you would like to directly publish a template upon creation, set the `published` field to true.
-* Open and click tracking may be enable/disabled at the template level using the `open_tracking` and
-`click_tracking` fields.
-* The `from` field may be a JSON object composed of `email` and `name`.
-* A `Reply-To` header may be specified using the `reply_to` field.
-* Both `text` and `html` may be provided.
-* Additional headers may be specified in the `headers` JSON dictionary.
-
-
-#### Create RFC822
-
-Fully formed email_rfc822 content may be provided instead of the `text`, `html`, `from`, and `subject` parts, as shown in the example.
-
-
-
-+ Request Create Basic Template (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
+    ```json
+    {
+        "errors": [
             {
-                "name": "Summer Sale!",
-                "shared_with_subaccounts": false,
-                "content": {
-                    "from": "marketing@bounces.company.example",
-                    "subject": "Summer deals",
-                    "html": "<b>Check out these deals!</b>"
-                }
+                "message": "substitution language syntax error in template content",
+                "code": "3000",
+                "description": "Error while compiling part text: line 4: syntax error near 'age'",
+                "part": "html",
+                "line": 4,
             }
+        ]
+    }
+    ```
 
-+ Response 200 (application/json)
+### Create a Template [POST /template]
 
-        {
-            "results": {
-                "id": "11806290401558530"
-            }
-        }
+Templates are created as drafts.
 
-+ Response 400 (application/json)
++ Data Structure
+    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
+    + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. Does not have to be unique. Maximum length - 1024 bytes
+    + description (string) - Description of the template. Maximum length - 1024 bytes
+    + content (object, required) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+        + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
+        + reply_to (string) - Email address used to compose the email's `Reply-To` header.
+        + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
+    + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
+        + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
+        + open_tracking (boolean) - Enable or disable open tracking.
+        + click_tracking (boolean) - Enable or disable click tracking.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account.
+    + subaccount_id (number) - Subaccount to assign the template to.
 
-        {
-            "errors": [
-                {
-                    "description": "Unconfigured or unverified sending domain.",
-                    "code": "7001",
-                    "message": "Invalid domain"
-                }
-            ]
-        }
 
-+ Response 400 (application/json)
-
-        {
-            "errors": [
-                {
-                    "description": "Subaccounts cannot set the shared_with_subaccounts flag",
-                    "code": "1200",
-                    "message": "invalid params"
-                }
-            ]
-        }
-
-+ Response 422 (application/json)
-
-        {
-            "errors": [
-                {
-                    "part": "text",
-                    "description": "Error while compiling part text: line 4: syntax error near 'age'",
-                    "line": 4,
-                    "code": "3000",
-                    "message": "substitution language syntax error in template content"
-                }
-            ]
-        }
-
-+ Request Create Parts (application/json)
++ Request (application/json)
 
     + Headers
 
@@ -205,7 +157,7 @@ Fully formed email_rfc822 content may be provided instead of the `text`, `html`,
                     "text": "Check out these deals {{name}}!",
                     "html": "<b>Check out these deals {{name}}!</b>",
                     "headers": {
-                      "X-Customer-Campaign-ID": "Summer2014"
+                      "X-Example-Header": "Summer2014"
                     }
                 }
             }
@@ -218,156 +170,28 @@ Fully formed email_rfc822 content may be provided instead of the `text`, `html`,
             }
         }
 
-
-+ Request Create RFC822 (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "id": "another_summer_sale",
-                "name": "Summer Sale!",
-                "published": true,
-                "options": {
-                    "open_tracking": false,
-                    "click_tracking": true
-                },
-                "content": {
-                    "email_rfc822": "Content-Type: text/plain\nFrom: Example Company Marketing <marketing@bounces.company.example>\nReply-To:Summer deals <summer_deals@company.example>\nX-Customer-Campaign-ID: Summer2014\nSubject: Summer deals for {{name}}\n\nCheck out these deals {{name}}!"
-                }
-            }
-
-+ Response 200 (application/json)
++ Response 422 (application/json)
 
         {
-            "results": {
-                "id": "another_summer_sale"
-            }
-        }
-
-### List all Templates [GET /templates]
-
-Lists the most recent version of each template in your account.
-
-Each template object in the list will have the following fields:
-- id: Unique template ID.
-- name: Template name.
-- published: Published state of the template (true = published, false = draft).
-- description: Template description.
-- last_update_time: The time the template was last updated.
-- has_draft: flag indicating whether the template has a draft version.
-- has_published: flag indicating whether the template has a published version.
-
-Additional, templates owned by the Master subaccount will have the following field:
-- shared_with_subaccounts: Whether the template is shared with subaccounts.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
+            "errors": [
                 {
-                    "id": "summer_sale",
-                    "name": "Summer Sale!",
-                    "published": true,
-                    "description": "",
-                    "has_draft": true,
-                    "has_published": true,
-                    "last_update_time": "2017-08-11T12:12:12+00:00",
-                    "shared_with_subaccount": true
-                },
-                {
-                    "id": "daily",
-                    "name": "daily",
-                    "published": false,
-                    "description": "",
-                    "has_draft": true,
-                    "has_published": true,
-                    "last_update_time": "2017-08-10T14:15:16+00:00",
-                    "shared_with_subaccount": false
+                    "part": "text",
+                    "description": "Error while compiling part text: line 4: syntax error near 'age'",
+                    "line": 4,
+                    "code": "3000",
+                    "message": "substitution language syntax error in template content"
                 }
             ]
         }
 
-### List Templates selectively [GET /templates{?draft,shared_with_subaccounts}]
 
-Lists the most recent version of each shared draft template to which you have access.
+### Retrieve a Template [GET /templates/{id}{?draft}]
 
-Each template object in the list will have the following fields:
-- id: Unique template ID.
-- name: Template name.
-- published: Published state of the template (true = published, false = draft).
-- description: Template description.
-- last_update_time: The time the template was last updated.
-
-Additional, templates owned by the Master subaccount will have the following field:
-- shared_with_subaccounts: Whether the template is shared with sub-accounts.
+Use the `draft` query parameter to specify the draft or published version of the template.
 
 + Parameters
-    + draft (optional, boolean, `true`) ...If true, returns the most recent draft template.  If false, returns the most recent published template.  When not provided, returns the most recent template version regardless of draft or published.
-    + shared_with_subaccounts (optional, boolean, `true`) ...If true, returns only shared templates. If false, returns only non-shared templates.  When not provided, returns both shared and non-shared templates.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "id": "fall_sale",
-                    "name": "Fall Sale!",
-                    "published": false,
-                    "description": "",
-                    "has_draft": true,
-                    "has_published": true,
-                    "last_update_time": "2017-08-10T14:15:16+00:00",
-                    "shared_with_subaccount": true
-                },
-                {
-                    "id": "weekly",
-                    "name": "weekly",
-                    "published": false,
-                    "description": "",
-                    "has_draft": true,
-                    "has_published": true,
-                    "last_update_time": "2017-08-08T16:15:26+00:00",
-                    "shared_with_subaccount": true
-                }
-            ]
-        }
-
-## Retrieve [/templates/{id}{?draft}]
-
-### Retrieve a Template [GET]
-
-Retrieve a single template by specifying its ID in the URI path. By default, the most recently
-updated version is returned. Use the **draft** query parameter to specify a draft or published
-template.
-
-
-The result will include a `last_update_time` field. The `last_update_time` is the time the template was last updated, for both draft and published versions.
-
-If the template was used for message generation, the result will also include a `last_use` field. The `last_use` time represents the last time any version of this template was used (draft or published).
-
-For a master account owned template **only**, the results will include the `shared_with_subaccounts` field reflecting the template's shared status.
-
-+ Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-    + draft (optional, boolean, `true`) ...If true, returns the most recent draft template.  If false, returns the most recent published template.  If not provided, returns the most recent template version regardless of draft or published.
+    + id (required, string, `11714265276872`)
+    + draft (optional, boolean, `true`) ... If true, returns the draft template. If false, returns the published template.
 
 + Request
 
@@ -404,39 +228,41 @@ For a master account owned template **only**, the results will include the `shar
                     "text": "Check out these deals {{name}}!",
                     "html": "<b>Check out these deals {{name}}!</b>",
                     "headers": {
-                        "X-Customer-Campaign-ID": "Summer2014"
+                        "X-Example-Header": "Summer2014"
                     }
                 }
             }
         }
 
-## Update [/templates/{id}{?update_published}]
+### Update a Draft [PUT /templates/{id}]
 
-### Update a Template [PUT]
+Updates the draft version of a template.
 
-Update an existing template by specifying its ID in the URI path and a **template object** as the PUT request body.
-By default, an update operates on an existing draft version.
-An existing published version can be overwritten directly by setting the `update_published` query parameter to `true`.
-
-<banner status="info"><strong>Note</strong>: Attempting to update the published version of a template when only a draft version exists (and vice versa) will result in an error.</banner>
-
-The `name` field may be modified, but the `id` field is read only.
-
-If a content object is provided in the update request, it must
-contain all relevant content fields whether they are being changed or not.
+If a content object is provided in the request body, it must contain all relevant content fields whether they are being changed or not.
 The new content will completely overwrite the existing content.
 
-The example shows an update that will rename the template, enable open tracking,
-and update the content all in one API call. All content fields are included whether they are being
-changed or not.
++ Data Structure
+    + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
+    + description (string) - Description of the template. Maximum length - 1024 bytes
+    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+        + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
+        + reply_to (string) - Email address used to compose the email's `Reply-To` header.
+        + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
+    + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
+        + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
+        + open_tracking (boolean) - Enable or disable open tracking.
+        + click_tracking (boolean) - Enable or disable click tracking.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account. Updating this will update both the published and draft versions.
 
-Publishing a template is a special kind of update.
-It uses the most recent draft version to create a new published version, even if one does not already exist.
-The body of the PUT request should contain the `"published": true` field as shown in the second example below (`Publish`).
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-    + update_published = `false` (optional, boolean, `false`) ...If true, directly overwrite the existing published template.  If false, update the existing draft.
+    + id (required, string, `11714265276872`)
+
 
 + Request Update (application/json)
 
@@ -466,10 +292,18 @@ The body of the PUT request should contain the `"published": true` field as show
 
 + Response 200
 
+### Publish a Draft [PUT /templates/{id}]
 
-+ Request Publish (application/json)
+Uses the draft version to create a new published version.
 
-  When publishing a draft template, `update_published` should be omitted, or specified as `false`.
++ Data Structure
+    + published (boolean, required) - Set to `true` to publish the draft version.
+
+
++ Parameters
+    + id (required, string, `11714265276872`)
+
++ Request (application/json)
 
     + Headers
 
@@ -483,22 +317,81 @@ The body of the PUT request should contain the `"published": true` field as show
 
 + Response 200
 
+### Update a Published Template [PUT /templates/{id}{?update_published}]
 
-## Preview [/templates/{id}/preview{?draft}]
+An existing published version can be overwritten directly by setting the `update_published` query parameter to `true`.
+If the query param is not passed or set to `false`, it will result in an update to the draft version.
 
-### Preview a Template [POST]
+If a content object is provided in the update request, it must contain all relevant content fields whether they are being changed or not.
+The new content will completely overwrite the existing content.
 
-Preview the most recent version of an existing template by specifying `{id}/preview` in the URI path
-and providing `substitution_data` as part of the POST request body.
-The template's content will be expanded using the substitution data provided and returned
-in the response. By default, the most recently updated version is returned.  Use the `draft` query parameter to specify a draft or published
-template.
 
-See the [Substitutions Reference section](/api/substitutions-reference/) for more information.
++ Data Structure
+    + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
+    + description (string) - Description of the template. Maximum length - 1024 bytes
+    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+        + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
+        + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
+            + (object)
+            + (string)
+        + reply_to (string) - Email address used to compose the email's `Reply-To` header.
+        + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To`. See the [Header Notes](#header-header-notes).
+    + options (object) - Object containing template options. All template options can be overwritten in a transmission's options.
+        + transactional (boolean) - Distinguish between transactional and non-transactional messages for unsubscribe and suppression purposes.
+        + open_tracking (boolean) - Enable or disable open tracking.
+        + click_tracking (boolean) - Enable or disable click tracking.
+    + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account. Updating this will update both the published and draft versions.
+
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
-    + draft (optional, boolean, `true`) ...If true, previews the most recent draft template.  If false, previews the most recent published template.  If not provided, previews the most recent template version regardless of draft or published.
+    + id (required, string, `11714265276872`)
+    + update_published = (optional, boolean) ... Set to `true` to overwrite the existing published template.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "options": {
+                    "open_tracking": true
+                },
+                "name": "A new name!",
+                "shared_with_subaccounts": true,
+                "content": {
+                    "from": {
+                        "email": "marketing@bounces.company.example",
+                        "name": "Example Company Marketing"
+                    },
+                    "subject": "Updated Summer deals for {{name}}",
+                    "reply_to": "Summer deals <summer_deals@company.example>",
+                    "text": "Updated: Check out these deals {{name}}!",
+                    "html": "<b>Updated: Check out these deals {{name}}!</b>"
+                }
+            }
+
++ Response 200
+
+### Preview a Template [POST /templates/{id}/preview{?draft}]
+
+The template's content will be expanded using the substitution data provided and returned in the response.
+Use the `draft` query parameter to specify a draft or published version.
+
+See [Substitutions Reference](/api/substitutions-reference/) for more information.
+
+
++ Data Structure
+    + substitution_data (object) - Data used to expand substitution syntax.
+
+
++ Parameters
+    + id (required, string, `11714265276872`)
+    + draft (optional, boolean, `true`) ... If true, previews the draft template. If false, previews the published template.
 
 + Request (application/json)
 
@@ -529,22 +422,19 @@ See the [Substitutions Reference section](/api/substitutions-reference/) for mor
                 "text": "Check out these deals Natalie!",
                 "html": "<b>Check out these deals Natalie!</b>",
                 "headers": {
-                    "X-Customer-Campaign-ID": "Summer2014"
+                    "X-Example-Header": "Summer2018"
                 }
             }
         }
 
-## Delete [/templates/{id}]
+### Delete a Template [DELETE /templates/{id}]
 
-### Delete a Template [DELETE]
+Deletes both published and draft versions of a template.
 
-Delete a template by specifying its ID in the URI path.
-If the template delete API call succeeds, then ALL versions of the template will be deleted from the system (both published AND draft versions).
-
-<banner status="info">If a transmission uses a stored template, the template cannot be deleted if the transmission is submitted or generating.</banner>
+<banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</banner>
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the template
+    + id (required, string, `11714265276872`)
 
 + Request
 
@@ -556,18 +446,6 @@ If the template delete API call succeeds, then ALL versions of the template will
 
         {}
 
-+ Response 404 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "resource not found",
-                    "code": "1600",
-                    "description": "Template does not exist"
-                }
-            ]
-        }
-
 + Response 409 (application/json)
 
         {
@@ -578,4 +456,88 @@ If the template delete API call succeeds, then ALL versions of the template will
                     "description": "Template is in use by msg generation"
                 }
             ]
+        }
+
+### List all Templates [GET /templates{?draft,shared_with_subaccounts}]
+
+Returns an array with each template in your account.
+
++ Parameters
+    + draft (optional, boolean, `true`) ... If true, returns the draft templates. If false, returns the published templates. When not provided, returns the most recently edited templates (draft or published).
+    + shared_with_subaccounts (optional, boolean, `true`) ... If true, returns only shared templates. If false, returns only non-shared templates.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": "summer_sale",
+                    "name": "Summer Sale!",
+                    "published": true,
+                    "description": "",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_update_time": "2017-08-11T12:12:12+00:00",
+                    "shared_with_subaccount": true
+                },
+                {
+                    "id": "daily",
+                    "name": "daily",
+                    "published": false,
+                    "description": "Daily roundup email.",
+                    "has_draft": true,
+                    "has_published": true,
+                    "last_use": "2018-05-08T14:49:03+00:00"
+                    "last_update_time": "2018-02-10T14:15:16+00:00",
+                    "shared_with_subaccount": false
+                }
+            ]
+        }
+
+### Create an RFC 822 Template [POST /template]
+
+Instead of the standard attributes, the content object may contain a single `email_rfc822` attribute. `email_rfc822` is mutually exclusive with all other content attributes.
+
++ Data Structure: RFC 822 Content
+    + email_rfc822 (string) - Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1).
+
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and first non-attachment `text/html` MIME parts only.
+* Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
+* It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
+* It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.
+
++ Request Create RFC822 (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "id": "another_summer_sale",
+                "name": "Summer Sale!",
+                "published": true,
+                "options": {
+                    "open_tracking": false,
+                    "click_tracking": true
+                },
+                "content": {
+                    "email_rfc822": "Content-Type: text/plain\nFrom: Example Company Marketing <marketing@bounces.company.example>\nReply-To:Summer deals <summer_deals@company.example>\nX-Example-Header: Summer2014\nSubject: Summer deals for {{name}}\n\nCheck out these deals {{name}}!"
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "another_summer_sale"
+            }
         }
