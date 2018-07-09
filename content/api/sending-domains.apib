@@ -4,9 +4,9 @@ description: Manage sending domains, which are used to indicate who an email is 
 
 # Group Sending Domains
 
-A sending domain is a domain that is used to indicate who an email is from via the "From:" header. Using a custom sending domain enables you to control what recipients see as the From value in their email clients. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages. The Sending Domains API provides the means to create, list, retrieve, update, and verify a custom sending domain.
+A sending domain is a domain that is used to indicate who an email is from via the "From:" header. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages.
 
-<banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="sending-domains.html#sending-domains-verify-post">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</banner>
+<banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="/api/sending-domains#sending-domains-verify-a-sending-domain-post">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</banner>
 
 ### DNS notes
 
@@ -20,8 +20,8 @@ A sending domain is a domain that is used to indicate who an email is from via t
 * Public key verification requires the following:
     * A valid DKIM record must be in the DNS for the sending domain being verified.
     * The record must use the sending domain's public key in the `p=` tag.
-    * If a k= tag is defined, it must be set to `rsa`.
-    * If an h= tag is defined, it must be set to `sha256`.
+    * If a `k=` tag is defined, it must be set to `rsa`.
+    * If an `h=` tag is defined, it must be set to `sha256`.
 
 
 **CNAME** 
@@ -51,23 +51,25 @@ For Enterprise accounts:
 
 **MX**
 
-MX verification is only available to <strong>Enterprise</strong> accounts. There is no way to initiate MX verification. Please contact your TAM if you want to verify your domain with MX.
+MX verification is only available to <strong>Enterprise</strong> accounts. Please contact your TAM if you want to verify your domain with MX.
 
 
 ### Using a sending domain as a bounce domain
+
+Bounce domains are used to report bounces – emails that were rejected from the recipient server. By setting the bounce domain, you're customizing the address that is used for the `Return-Path` header, which is the destination for out of band (OOB) bounces.
 
 A sending domain can be used as a bounce domain if it is verified via the following the methods:
 * CNAME record
 * MX records (<span class="label label-warning"><strong>Enterprise</strong></span> only).
 
-Once it is verified through one of those two methods, you can use it as a bound domain by including it as a transmission's `return_path` field or SMTP's `MAIL FROM` email address. Bounce domains are used to report bounces, which are emails that were rejected from the recipient server. By setting the bounce domain, you're customizing the address that is used for the `Return-Path` header, which is the destination for out of band (OOB) bounces.  For additional details on CNAME-verification, please see this [support article](https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/).
+Once it is verified through one of those two methods, you can use it as a bound domain by including it as a transmission's `return_path` field or SMTP's `MAIL FROM` email address. For additional details on custom bounce domains, please see this [support article](https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/).
 
 
 ## Sending Domain Object
 
 + Data Structure: Attributes
-    + domain (string) - The domain you are sending from. It will be used in the "From:" header address in the email.
-    + tracking_domain (string) - Associated tracking domain. <br/><span class="label label-info"><strong>Note</strong></span> tracking domain and sending domain must belong to the same subaccount.
+    + domain (string) - The domain you are sending from. It will be used in the "From:" header address in emails.
+    + tracking_domain (string) - Associated tracking domain.
     + status (object) - Object containing status details, including whether this domain's ownership has been verified.
         + ownership_verified (boolean)
             Whether domain ownership has been verified. This field will return `true` if any of the following status fields are valid.
@@ -96,8 +98,9 @@ Once it is verified through one of those two methods, you can use it as a bound 
             Value used as the Signing Domain Identifier (SDID). This will be used in the `d=` field of the DKIM Signature. <br /> Only writable by <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
         + public (string) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string) - Value used as the DomainKey selector which indicates the DKIM public key location.
-        + headers (string) - Header fields to be included in the DKIM signature **This field is currently ignored.** 
+        + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
     + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
+    + subaccount_id (number) - The subaccount ID that the sending domain belongs to. Only available to domains belonging to a subaccount.
     + is_default_bounce_domain (boolean)
         Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with cname_status of "valid" or mx_status of "valid".  The master account as well as each subaccount may set a unique default bounce domain. <br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
     + creation_time (string) - Datetime the domain was created. <br />Format: YYYY-MM-DDTHH:MM:SS+-HH:MM
@@ -134,13 +137,13 @@ Creates a new sending domain. Each domain and it's subdomains can only be added 
 
 + Data Structure
     + domain (string, required) - The domain you are sending from.
-    + tracking_domain (string) - Associated tracking domain. <br/><span class="label label-info"><strong>Note</strong></span> tracking domain and sending domain must belong to the same subaccount.
+    + tracking_domain (string) - Associated tracking domain. The tracking domain and sending domain must belong to the same subaccount.
     + dkim (object) - Object in which DKIM key configuration is defined. Will be generated if `generate_dkim` is true.
         + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). <br /><span class="label label-warning"><strong>Enterprise</strong></span> accounts only.
         + private (string, required) - Valued used as the private key which will be used to create the DKIM Signature.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string, required) - Value used as the DomainKey selector which indicates the DKIM public key location.
-        + headers (string) - Header fields to be included in the DKIM signature **This field is currently ignored.** 
+        + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
     + generate_dkim (boolean) - Whether to generate a DKIM keypair on creation.
         + Default: true
     + dkim_key_length (number) - Size, in bits, of the DKIM private key to be generated. This option only applies if `generate_dkim` is true. <br /><span class="label label-info"><strong>Note</strong></span> public keys for private keys longer than 1024 bits will be longer that 255 characters. Because of this, the public key <code>TXT</code> record in DNS will need to contain multiple strings, see <a href="https://tools.ietf.org/html/rfc7208#section-3.3">RFC 7208, section 3.3</a> for an example of how the SPF spec addresses this.
@@ -162,7 +165,6 @@ Returns the domain and a success message. If `generate_dkim` was true, the dkim 
             {
                 "domain": "example1.com",
                 "tracking_domain": "click.example1.com",
-                "generate_dkim": true,
                 "shared_with_subaccounts": false
             }
 
@@ -225,7 +227,7 @@ The request will return an extra attribute, `dns`, which contains the DNS values
 
 #### Verify via mailbox
 
-If you can't update your DNS records for a sending domain, you can verify your domain through a mailbox you control. SparkPost will fire off an email with a verification link to the specified mailbox. Once the link is clicked, you will be able to send email from this domain, but SparkPost will not be able to DKIM-sign the mail it sends on your behalf, which could cause deliverability issues. **For this reason, we highly recommend using DNS verification whenever possible.**
+If you can't update your DNS records for a sending domain, you can verify your domain through a mailbox you control. SparkPost will send an email with a verification link to the specified mailbox. Once the link is clicked, you will be able to send email from this domain, but SparkPost will not be able to DKIM-sign the mail it sends on your behalf, which could cause deliverability issues. **For this reason, we highly recommend using DNS verification whenever possible.**
 
 ##### Trigger a verification email
 
@@ -350,13 +352,13 @@ Returns the full sending domain object, except the `domain` field.
 ### Update a Sending Domain [PUT /sending-domains/{domain}]
 
 + Data Structure
-    + tracking_domain (string) - Associated tracking domain. To remove the current value, set it to an empty string. <br/><span class="label label-info"><strong>Note</strong></span> tracking domain and sending domain must belong to the same subaccount.
+    + tracking_domain (string) - Associated tracking domain. To remove the current value, set it to an empty string. The tracking domain and sending domain must belong to the same subaccount.
     + dkim (object) - Object in which DKIM key configuration is defined. Will override the current object.
         + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). To remove the current value, set it to an empty string. <br /><span class="label label-warning"><strong>Enterprise</strong></span> accounts only.
         + private (string, required) - Valued used as the private key which will be used to create the DKIM Signature.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string, required) - Value used as the DomainKey selector which indicates the DKIM public key location.
-        + headers (string) - Header fields to be included in the DKIM signature **This field is currently ignored.** 
+        + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
     + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
     + `is_default_bounce_domain` (boolean) - Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with `cname_status` or `mx_status` equal to valid. The master account and each subaccount may set it's own unique default bounce domain.<br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
 
@@ -438,17 +440,47 @@ Returns the full sending domain object, except the `domain` field.
 
 ### List all Sending Domains [GET /sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}]
 
-List an overview of all sending domains. By default, all domains are returned. Use the query parameters to filter on the various status options. 
+Returns an array with all the sending domains in your account. Use the query parameters to filter on the various status options.
 
 + Parameters
-    + ownership_verified (optional, boolean, `true`) ... Ownership verified flag. Valid values are `true` or `false`.
-    + dkim_status (optional, enum) ... DKIM status filter. <br />Possible Values:  `valid`, `invalid`, `unverified`, `pending`.
-    + cname_status (optional, string) ... CNAME status filter. <br />Possible Values: `valid`, `invalid`, `unverified`, `pending`.
-    + mx_status (optional, string) ... MX status filter. <br />Possible Values: `valid`, `invalid`, `unverified`, `pending`.
-    + abuse_at_status (optional, string) ... abuse@ status filter. <br />Possible Values: `valid`, `invalid`, `unverified`, `pending`.
-    + postmaster_at_status (optional, string) ... postmaster@ status filter. <br />Possible Values: `valid`, `invalid`, `unverified`, `pending`.
-    + compliance_status (optional, string) ... compliance status filter. <br />Possible Values: `valid`, `invalid`, `unverified`, `pending`.
-    + is_default_bounce_domain (optional, boolean) ... Is default bounce domain flag. Valid values are `true` or `false`.
+    + ownership_verified (optional, boolean, `true`) ... Ownership verified filter. Valid values are `true` or `false`.
+    + dkim_status (optional, enum) ... DKIM status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + cname_status (optional, enum) ... CNAME status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + mx_status (optional, enum) ... MX status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + abuse_at_status (optional, enum) ... abuse@ status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + postmaster_at_status (optional, enum) ... postmaster@ status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + compliance_status (optional, enum) ... Compliance status filter.
+        + Values
+            + `valid`
+            + `invalid`
+            + `unverified`
+            + `pending`
+    + is_default_bounce_domain (optional, boolean) ... Is default bounce domain filter. Valid values are `true` or `false`.
 
 + Request
 
