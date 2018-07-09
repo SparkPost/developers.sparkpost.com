@@ -133,11 +133,6 @@ The following recipients attribute is used when specifying a stored recipient li
 |------------------------|:-:       |---------------------------------------|-------------|--------|
 |list_id | string  | Identifier of the stored recipient list to use | yes | Specify this field when using a stored recipient list. |
 
-### Scheduled Transmissions
-**Not available in SparkPost EU.**
-
-Use the `options.start_time` attribute to delay generation of messages.  The scheduled time cannot be greater than 31 days from the time of submission.  If the scheduled time does not pass validation, the transmission is not accepted.  Transmissions with a scheduled time in the past _are_ accepted and undergo immediate generation.
-
 ### Using an A/B Test
 
 The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
@@ -174,15 +169,6 @@ Create a transmission using a stored recipients list by specifying the `list_id`
 #### Using a Stored Template
 
 Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
-
-#### Scheduling Transmissions
-**Not available in SparkPost EU.**
-
-Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
-
-Scheduling a transmission that specifies a stored template will use the LATEST version of the template available at the time of scheduled generation.  The use of published versus draft versions follows the same logic in all transmission requests, whether scheduled or immediate generation. When `use_draft_template` is not specified (or set to false), the latest published version of the specified stored template is used. If `use_draft_template` is set to `true`, the latest draft version is used in the transmission instead.
-
-Once message generation has been initiated, all messages in the transmission will use the template selected at the start of the generation. If a template update is made during the generation of a transmission that uses that template, the template update will succeed but the transmission will continue to use the version that was selected at the start of the generation.
 
 #### Using an A/B Test
 
@@ -645,40 +631,6 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
             ]
         }
 
-+ Request Create Scheduled Transmission (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "name": "Fall Sale",
-                "campaign_id": "fall",
-                "options": {
-                    "start_time": "2017-02-11T08:00:00-04:00",
-                    "open_tracking": true,
-                    "click_tracking": true
-                },
-                "recipients": {
-                    "list_id": "all_subscribers"
-                },
-                "content": {
-                    "template_id": "fall_deals"
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 1000,
-                "total_accepted_recipients": 0,
-                "id": "11668787484950529"
-            }
-        }
-
 + Request Create Transmission with attachments (application/json)
 
     + Headers
@@ -818,9 +770,55 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
             }
         }
 
-## Retrieve and Delete [/transmissions/{id}]
 
-### Retrieve a Scheduled Transmission [GET]
+## Scheduled Transmissions [/transmissions/]
+
+### Schedule a Transmission [POST /transmissions/]
+
+**Not available in SparkPost EU.**
+
+Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
+
+Scheduling a transmission that specifies a stored template will use the LATEST version of the template available at the time of scheduled generation.  The use of published versus draft versions follows the same logic in all transmission requests, whether scheduled or immediate generation. When `use_draft_template` is not specified (or set to false), the latest published version of the specified stored template is used. If `use_draft_template` is set to `true`, the latest draft version is used in the transmission instead.
+
+Once message generation has been initiated, all messages in the transmission will use the template selected at the start of the generation. If a template update is made during the generation of a transmission that uses that template, the template update will succeed but the transmission will continue to use the version that was selected at the start of the generation.
+
++ Request Create Scheduled Transmission (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "name": "Fall Sale",
+                "campaign_id": "fall",
+                "options": {
+                    "start_time": "2017-02-11T08:00:00-04:00",
+                    "open_tracking": true,
+                    "click_tracking": true
+                },
+                "recipients": {
+                    "list_id": "all_subscribers"
+                },
+                "content": {
+                    "template_id": "fall_deals"
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 1000,
+                "total_accepted_recipients": 0,
+                "id": "11668787484950529"
+            }
+        }
+
+
+### Retrieve a Scheduled Transmission [GET /transmissions/{id}]
 **Not available in SparkPost EU.**
 
 Retrieve the details about a scheduled transmission by specifying its ID in the URI path.
@@ -885,7 +883,7 @@ The response for a transmission using an inline template will include `"template
             ]
         }
 
-### Delete a Transmission [DELETE]
+### Delete a Scheduled Transmission [DELETE /transmissions/{id}]
 **Not available in SparkPost EU.**
 
 Delete a transmission by specifying its ID in the URI path.
@@ -955,14 +953,12 @@ Only transmissions which are scheduled for future generation may be deleted.
             ]
         }
 
-## Delete Transmissions By Campaign [/transmissions?campaign_id={campaign_id}]
+## Delete Transmissions By Campaign ID [DELETE /transmissions?campaign_id={campaign_id}]
 
 <banner status="info"><strong>Note:</strong> SparkPost Enterprise only, account-specific configuration option.</banner>
 
 
 Delete all transmissions of a campaign by specifying Campaign ID in the URI path.
-
-### Delete By Campaign ID [DELETE]
 
 + Parameters
     + campaign_id (required, string, `white-christmas`)
@@ -976,9 +972,7 @@ Delete all transmissions of a campaign by specifying Campaign ID in the URI path
 
 + Response 204
 
-## List All Scheduled Transmissions [/transmissions{?campaign_id,template_id}]
-
-### List All Scheduled Transmissions [GET]
+### List All Scheduled Transmissions [GET /transmissions{?campaign_id,template_id}]
 **Not available in SparkPost EU.**
 
 List an array of live transmission summary objects.  A transmission summary object contains `id`, `state`, `template_id`, `campaign_id` and `description` fields.
