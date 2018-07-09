@@ -8,7 +8,8 @@ Retrieve information regarding your SparkPost account and set account options.
 
 ## Account Object
 
-+ Data Structure
++ Data Structure: Attributes
+    + customer_id (number) - Account ID
     + company_name (string) - Account holder company name
     + country_code (string) - Account holder 2-letter country code
     + anniversary_date (string) - ISO date of billing anniversary
@@ -56,6 +57,7 @@ Retrieve information regarding your SparkPost account and set account options.
 
     ```json
     {
+        "customer_id": 102938,
         "company_name": "Example, Inc.",
         "country_code": "US",
         "anniversary_date": "2019-01-11T08:00:00.000Z",
@@ -116,6 +118,7 @@ Retrieve information regarding your SparkPost account and set account options.
 
         {
             "results": {
+                "customer_id": 102938,
                 "company_name": "Example Inc",
                 "country_code": "US",
                 "anniversary_date": "2019-01-11T08:00:00.000Z",
