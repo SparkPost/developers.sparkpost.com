@@ -20,10 +20,12 @@ The sandbox domain `sparkpostbox.com` is available to allow each account to send
 
 <banner status="info"><strong>Note</strong>: SparkPost accounts only. <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts should consider using the <a href="https://support.sparkpost.com/customer/portal/articles/2560839">SparkPost Sink Server</a>.</banner>
 
+## Create a Transmission [/transmissions/{?num_rcpt_errors}]
+
 ## Transmission Attributes
 
 | Field         | Type     | Description                           | Required         | Notes   |
-|--------------------|----------------      |---------------------------------------|--------------------------|--------|
+|--------------------|---------------- |---------------------------------------|--------------------------|--------|
 |id |string |ID of the transmission |no |Read only.  A unique ID is generated for each transmission on submission. |
 |state |string  |State of the transmission  | no | Read only.  Valid responses are `submitted`, `Generating`, `Success`, or `Canceled`. |
 |options | JSON object | JSON object in which transmission options are defined | no | For a full description, see [Options Attributes](#header-options-attributes).
@@ -53,7 +55,33 @@ The sandbox domain `sparkpostbox.com` is available to allow each account to send
 | ip_pool | string | The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). | no | <span class="label label-primary"><strong>SparkPost</strong></span> accounts may use IP pools. For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br><br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
 |inline_css|boolean|Whether to perform CSS inlining in HTML content<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined | no - Defaults to false |  |
 
-### Inline Content Attributes
+#### Header Notes
+
+* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed here as they are auto generated upon construction of the email.
+* The `To` header should not be specified here, since it is generated from each recipient's `address.name` and `address.email`.
+* Each header value is expected in the UTF-8 charset without RFC2047 encoding.
+* Substitution syntax is supported.
+
+### Using a Stored Recipient List
+
+The following recipients attribute is used when specifying a stored recipient list in the transmission. Note that this attribute should not be present when specifying recipients inline.
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|list_id | string  | Identifier of the stored recipient list to use | yes | Specify this field when using a stored recipient list. |
+
+Create a transmission using a stored recipients list by specifying the `list_id` in the `recipients` attribute.
+
+### Create a Transmission [POST]
+
+You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
+
+<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
+
++ Request 
+
+### Using Inline Email Part Content [POST]
+
 
 The following attributes are used when specifying inline content in the transmission's `content` JSON object.
 
@@ -71,14 +99,9 @@ The following attributes are used when specifying inline content in the transmis
 |attachments| JSON | JSON array of attachments. | no | For a full description, see [Attachment Attributes](#header-attachment-attributes). |
 |inline_images| JSON | JSON array of inline images. | no | For a full description, see [Inline Image Attributes](#header-inline-image-attributes). |
 
-#### Header Notes
++ Request 
 
-* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed here as they are auto generated upon construction of the email.
-* The `To` header should not be specified here, since it is generated from each recipient's `address.name` and `address.email`.
-* Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Substitution syntax is supported.
-
-#### email_rfc822 Notes
+### Using Inline RFC822 Content [POST]
 
 Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
 
@@ -93,6 +116,44 @@ necessary.
 * The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
 * The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
 * The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
+
+Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
+
++ Request
+
+### Using a Stored Template [POST]
+
+The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|template_id|string| ID of the stored template to use | yes |Specify this field when using a stored template.  Maximum length -- 64 bytes|
+|use_draft_template|boolean |Whether to use a draft template|no - defaults to false| If this field is set to `true` and no draft template exists, the transmission will fail.|
+
+Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
+
++ Request
+
+### Using an A/B Test [POST]
+
+### Using an A/B Test
+
+The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|ab_test_id|string| ID of the A/B test to use | yes |Specify this field when using an A/B test|
+
+<banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
+
+<banner status="info"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
+
+Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
+
++ Request
+
+### Sending Attachments and Inline Images [POST]
+
 
 ### Attachment Attributes
 
@@ -115,64 +176,6 @@ Inline images for a transmission are specified in the `content.inline_images` JS
 |type |string |The MIME type of the image; e.g., `image/jpeg`.  The value will apply as-is to the `Content-Type` header of the generated MIME part for the image. | yes |  |
 |name |string |The name of the inline image, which will be inserted into the `Content-ID` header. The image should be referenced in your HTML content using `<img src="cid:THIS_NAME" />`. The name must be unique within the `content.inline_images` array. | yes | Maximum length - 255 bytes |
 |data |string | The content of the image as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
-
-### Using a Stored Template
-
-The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|template_id|string| ID of the stored template to use | yes |Specify this field when using a stored template.  Maximum length -- 64 bytes|
-|use_draft_template|boolean |Whether to use a draft template|no - defaults to false| If this field is set to `true` and no draft template exists, the transmission will fail.|
-
-### Using a Stored Recipient List
-
-The following recipients attribute is used when specifying a stored recipient list in the transmission. Note that this attribute should not be present when specifying recipients inline.
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|list_id | string  | Identifier of the stored recipient list to use | yes | Specify this field when using a stored recipient list. |
-
-### Using an A/B Test
-
-The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|ab_test_id|string| ID of the A/B test to use | yes |Specify this field when using an A/B test|
-
-<banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
-
-<banner status="info"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
-
-
-## Create [/transmissions{?num_rcpt_errors}]
-
-### Create a Transmission [POST]
-
-You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
-
-<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
-
-#### Using Inline Email Part Content
-
-Create a transmission using inline email part content.
-
-#### Using Inline RFC822 Content
-
-Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
-
-#### Using a Stored Recipients List
-
-Create a transmission using a stored recipients list by specifying the `list_id` in the `recipients` attribute.
-
-#### Using a Stored Template
-
-Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
-
-#### Using an A/B Test
-
-Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
 
 + Parameters
     + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
