@@ -293,9 +293,12 @@ If you don't have subaccounts, you do not need to provide the X-MSYS-SUBACCOUNT 
 
 ### Delete a List Entry [DELETE /suppression-list/{recipient_email}]
 
-Delete a recipient from the list by specifying the recipient's email address in the URI path.
+If a `type` isn't provided, the suppression will be deleted for both transactional and non-transactional.
 
-If the recipient is not in the suppression list, an HTTP status of 404 is returned. If the recipient is in the list, an HTTP status of 204 is returned indicating a successful deletion. Suppression `type` can be specified in the request body. If a type isn't provided, the suppression will be deleted for both transactional and non-transactional.
++ Data Structure
+    + type (enum) - The type of suppression to delete.
+        + value: transactional
+        + value: non_transactional
 
 + Parameters
     + recipient_email (required, string, `rcpt@example.com`) ... Recipient email address
@@ -306,6 +309,8 @@ If the recipient is not in the suppression list, an HTTP status of 404 is return
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
+
++ Response 204 (application/json; charset=utf-8)
 
 + Response 404 (application/json; charset=utf-8)
 
@@ -327,13 +332,11 @@ If the recipient is not in the suppression list, an HTTP status of 404 is return
             ]
         }
 
-+ Response 204 (application/json; charset=utf-8)
-
 ### Insert or Update a Suppression [PUT /suppression-list/{recipient_email}]
 
-If the recipient entry was added to the list by Compliance, it cannot be updated.
+If the entry was added to the list by compliance, it cannot be updated.
 
-+ Data Structure: Recipient Object
++ Data Structure
     + type (enum, required) - Type of suppression record
         + transactional
         + non_transactional
@@ -384,7 +387,7 @@ If the recipient entry was added to the list by Compliance, it cannot be updated
 
 ### Retrieve Suppression List Summary [GET /suppression-list/summary]
 
-Retrieve the total number of suppressions for an account as well as a break down of entries by source.
+Retrieve the total number of suppressions for your account, as well as a break down of suppressions by source.
 
 + Request (application/json)
 
