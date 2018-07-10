@@ -173,16 +173,11 @@ Create a transmission using a stored recipients list by specifying the `list_id`
 
 ### Send Inline Content [POST]
 
+The following attributes are used when specifying inline content in the transmission's `content` object:
 
-The following attributes are used when specifying inline content in the transmission's `content` JSON object.
-
-<banner status="warning"><strong>Note</strong>: the following attributes should not be present when using a stored template.</banner>
-<banner status="info"><strong>Note</strong>: one of <code>html</code> or <code>text</code> is required. Email transmissions have additional required fields.</banner>
-
-
-+ Data Structure: Content
-    + html (string) - HTML content for the email's text/html MIME part. Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported.
-    + text (string) - Text content for the email's text/plain MIME part. Expected in the UTF-8 charset with no Content-Transfer-Encoding applied.  Substitution syntax is supported.
++ Data Structure: Content Attributes
+    + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+    + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
     + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.  Substitution syntax is supported.
     + from (enum, required) - Address `"from": "deals@company.com"` or object composed of the `name` and `email` fields `"from": { "name": "My Company", "email": "deals@company.com" }` used to compose the email's `From` header| yes, for email. Substitution syntax is supported.
         + (string)
@@ -285,7 +280,7 @@ The following attributes are used when specifying inline content in the transmis
 Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
 
 
-+ Data Structure: Content
++ Data Structure: Content Attributes
     + email_rfc822 (string, required) - Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1)
 
 * Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
@@ -401,7 +396,7 @@ Create a transmission using inline RFC822 content. Content headers are not gener
 
 The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
 
-+ Data Structure: Content
++ Data Structure: Content Attributes
     + template_id (string, required) - ID of the stored template to use. Specify this field when using a stored template. Maximum length – 64 bytes
     + use_draft_template (boolean) - Whether to use a draft template. If this field is set to `true` and no draft template exists, the transmission will fail.
         + Default: false
@@ -513,7 +508,7 @@ Create a transmission using a stored template by specifying the `template_id` in
 
 The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
 
-+ Data Structure: Content
++ Data Structure: Content Attributes
     + ab_test_id (string, required) - ID of the A/B test to use. Specify this field when using an A/B test.
 
 <banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
@@ -844,16 +839,10 @@ Once message generation has been initiated, all messages in the transmission wil
 
 ### Retrieve a Scheduled Transmission [GET /transmissions/{id}]
 
-Retrieve the details about a scheduled transmission by specifying its ID in the URI path.
-
-The response for a transmission using an inline template will include `"template_id":"inline"`.  Inline templates cannot be specifically queried.
-
-<banner status="info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</banner>
-
-<banner status="info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</banner>
+Retrieve the details about a scheduled transmission. The response for a transmission using an inline template will include `"template_id":"inline"`.  Inline templates cannot be specifically queried.
 
 + Parameters
-    + id (required, number, `11714265276872`) ... ID of the transmission
+    + id (required, number, `11714265276872`)
 
 + Request
 
@@ -908,15 +897,13 @@ The response for a transmission using an inline template will include `"template
 
 ### Delete a Scheduled Transmission [DELETE /transmissions/{id}]
 
-Delete a transmission by specifying its ID in the URI path.
-
 Only transmissions which are scheduled for future generation may be deleted.
 
 <banner status="warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</banner>
 
 
 + Parameters
-    + id (required, string, `11714265276872`) ... ID of the transmission
+    + id (required, string, `11714265276872`)
 
 + Request
 
@@ -996,17 +983,13 @@ Delete all transmissions of a campaign by specifying Campaign ID in the URI path
 
 ### List All Scheduled Transmissions [GET /transmissions{?campaign_id,template_id}]
 
-List an array of live transmission summary objects.  A transmission summary object contains `id`, `state`, `template_id`, `campaign_id` and `description` fields.
+Returns an array of transmissions, each containing transmission's `id`, `state`, `template_id`, `campaign_id` and `description` fields.
 
-By default, the list includes transmissions for all campaigns and templates.  Use the `template_id` parameter to filter by template and `campaign_id` to filter by campaign. The summary for transmissions using an inline template will include `"template_id": "inline"`.  Transmissions using inline templates cannot be filtered with `template_id`.
-
-<banner status="info"><strong>Note</strong>: Only multi-recipient transmissions that have been submitted or completed within the last 24 hours are returned.</banner>
-
-<banner status="info"><strong>Note</strong>: Only scheduled transmissions are returned by this endpoint. Immediate transmissions cannot be retrieved.</banner>
+Use the `template_id` parameter to filter by template and `campaign_id` to filter by campaign. The summary for transmissions using an inline template will include `"template_id": "inline"`.  Transmissions using inline templates cannot be filtered with `template_id`.
 
 + Parameters
-    + campaign_id (optional, string,`thanksgiving`) ... ID of the campaign used by the transmissions
-    + template_id (optional, string) ... ID of the template used by the transmissions
+    + campaign_id (optional, string,`thanksgiving`)
+    + template_id (optional, string)
 
 + Request
 
