@@ -253,7 +253,11 @@ const ChildrenToggle = styled.button`
   }
 `
 
-export default function DataStructure({ title, dataStructure, isParameter }) {
+export default function DataStructure({
+  title = 'Request Body',
+  dataStructure,
+  isParameter,
+}) {
   const jsonArray = dataStructureToJson(dataStructure)
 
   return (
