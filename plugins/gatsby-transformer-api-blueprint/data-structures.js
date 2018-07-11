@@ -18,7 +18,7 @@ function stringify(node) {
 }
 
 /**
- * get all data structures from code blocks with the language "attributes"
+ * get all data structures from lists that start with  "Data Structure"
  */
 function gatherDataStructures(tree) {
   let dataStructures = []

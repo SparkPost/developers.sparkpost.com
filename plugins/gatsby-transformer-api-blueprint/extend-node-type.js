@@ -6,6 +6,7 @@ const remarkParse = require('remark-parse')
 const remarkStringify = require('remark-stringify')
 const slugify = require('../../src/utils/api/slugify')
 const { gatherDataStructures, replaceDataStructures, insertDataStructures } = require('./data-structures')
+const { insertParametersTag, moveParametersList } = require('./parameters')
 
 const parseProcessor = unified().use(remarkParse)
 const parseMarkdown = parseProcessor.parse
@@ -91,15 +92,22 @@ module.exports = async ({ type }) => {
     ast: {
       type: GraphQLJSON,
       async resolve(node) {
+        try {
         let tree = parseMarkdown(node.internal.content)
         const dataStructures = gatherDataStructures(tree)
         tree = replaceDataStructures(tree, dataStructures)
         tree = insertDataStructures(tree, dataStructures)
+        tree = insertParametersTag(tree)
+        tree = moveParametersList(tree)
         const markdown = stringifyMarkdown(tree)
 
         const ast = await parseApiBlueprint(markdown)
 
         return minim.toRefract(ast)
+        }
+        catch (e) {
+          console.log(e)
+        }
       }
     },
     TableOfContents: {
