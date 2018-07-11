@@ -21,63 +21,21 @@ For more extensive testing with your own sending doman, use the SparkPost [Sink 
 
 <banner status="info"><strong>Note</strong>: Not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
 
-```
-+ Request Number of Messages Exceeds Sending Limit (application/json)
+### Sending Limits
 
-    + Headers
+Your account has a sandbox, hourly, daily, and monthly sending limit based on your current plan level. You can view your current limits on the [dashboard](https://app.sparkpost.com/dashboard) ([EU](https://app.eu.sparkpost.com/dashboard)). If a transmission will push your over the sandbox, hourly, or daily sending limit, an error with the status code `420` is returned, along with a message detailing which limit you will exceed. If this happens, no messages are sent, regardless of the number of messages that to exceeded your limit.
 
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-monthly-quota-limits/) and [what counts towards usage](https://www.sparkpost.com/docs/getting-started/what-counts-daily-monthly-usage/).
 
-    + Body
-
-            {
-                "campaign_id": "christmas_campaign",
-                "recipients": {
-                    "list_id": "list_exceeds_sending_limit"
-                },
-                "content": {
-                    "from": {
-                        "name": "Fred Flintstone",
-                        "email": "fred@flintstone.com"
-                    },
-                    "subject": "Big Christmas savings!",
-                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
-                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
-                }
-            }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (hourly)",
-                    "code": "2101"
-                }
-            ]
-        }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (daily)",
-                    "code": "2102"
-                }
-            ]
-        }
-
-+ Response 420 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "Exceed Sending Limit (sandbox)",
-                    "code": "2103"
-                }
-            ]
-        }
+```json
+{
+  "errors": [
+    {
+      "message": "Exceed Sending Limit (hourly)",
+      "code": "2101"
+    }
+  ]
+}
 ```
 
 ## Transmission Attributes
@@ -117,8 +75,6 @@ For more extensive testing with your own sending doman, use the SparkPost [Sink 
 ## Create a Transmission [/transmissions/{?num_rcpt_errors}]
 
 You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
-
-<banner status="info"><strong>Note</strong>: Sending limits apply to SparkPost accounts only. When a transmission is created, the number of messages in the transmission is compared to the sending limit of your account. If the transmission will cause you to exceed your sending limit, the entire transmission results in an error and no messages are sent.  Note that no messages will be sent for the given transmission, regardless of the number of messages that caused you to exceed your sending limit. In this case, the Transmission API will return an HTTP 420 error code with an error detailing whether you would exceed your hourly, daily, or sandbox sending limit.</banner>
 
 ## Request Body
 
