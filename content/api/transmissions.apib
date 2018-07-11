@@ -4,11 +4,11 @@ description: Use the transmissions API to send a batch of messages through Spark
 
 # Group Transmissions
 
-A transmission is a collection of messages belonging to the same campaign. It is also known as a mailing. The Transmissions API provides the means to create and manage transmissions - to send messages.
+The Transmissions endpoint lets you send email. SparkPost generates and sends the messages from your transmissions using a list of recipients and the content defined in the `content` attribute.
 
-SparkPost generates and sends the messages from your transmissions using a list of recipients and a message template. You can [store a recipient list](recipient-lists.html), or you can include recipients "inline" with your transmission request. Similarly, you can [store your message template](templates.html) or include it "inline" with your transmission request. SparkPost then sends a unique message to each recipient using the specified template. You may also choose to personalise your messages by including substitution variables in your transmissions. You can [learn about templates and substitution here](substitutions-reference.html).  Finally, you can enable engagement tracking in your transmissions to track message opens and clicks.
+You can [store a recipient list](/api/recipient-lists/), or you can include recipients "inline" with your transmission request. Similarly, you can [store your message template](/api/templates/) or include it "inline" with your transmission request. SparkPost then sends a unique message to each recipient using the specified template. You may also choose to personalise your messages by including substitution variables in your transmissions. You can [learn about templates and substitution here](/api/substitutions-reference/).  Finally, you can enable engagement tracking in your transmissions to track message opens and clicks.
 
-The Transmissions API also supports A/B testing, which allows you to compare different variants of a template, and ultimately send the winning one (based on engagement data) when the test has completed.  See [A/B Testing](ab-testing.html) for more details.
+The Transmissions API also supports A/B testing, which allows you to compare different variants of a template, and ultimately send the winning one (based on engagement data) when the test has completed.  See [A/B Testing](/api/ab-testing/) for more details.
 
 For details on how to get the best out of SparkPost Transmission, see [this support article](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/).
 
@@ -19,7 +19,7 @@ The sandbox domain allows you to send your first email without setting up a send
 For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
 
 
-<banner status="info"><strong>Note</strong>: Not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
+<banner status="info"><strong>Note</strong>: The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
 
 ### Sending Limits
 
