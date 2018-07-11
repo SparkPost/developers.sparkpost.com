@@ -92,7 +92,6 @@ module.exports = async ({ type }) => {
     ast: {
       type: GraphQLJSON,
       async resolve(node) {
-        try {
         let tree = parseMarkdown(node.internal.content)
         const dataStructures = gatherDataStructures(tree)
         tree = replaceDataStructures(tree, dataStructures)
@@ -104,10 +103,6 @@ module.exports = async ({ type }) => {
         const ast = await parseApiBlueprint(markdown)
 
         return minim.toRefract(ast)
-        }
-        catch (e) {
-          console.log(e)
-        }
       }
     },
     TableOfContents: {
