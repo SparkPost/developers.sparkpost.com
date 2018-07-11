@@ -38,6 +38,8 @@ injectGlobal`
     line-height: 1.15;
 
     ${mediaQuery('sm', `font-size: 18px;`)};
+
+    ${mediaQuery('xl', `font-size: 19px;`)};
   }
 
   body {
