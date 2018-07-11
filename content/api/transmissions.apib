@@ -12,15 +12,14 @@ The Transmissions API also supports A/B testing, which allows you to compare dif
 
 For details on how to get the best out of SparkPost Transmission, see [this support article](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/).
 
-## The Sandbox Domain
+### The Sandbox Domain
 
-The sandbox domain `sparkpostbox.com` is available to allow each account to send test messages in advance of configuring a real sending domain. Each SparkPost account has a lifetime allowance of 5 sandbox domain messages. To send a test message from the sandbox domain, set `content.from.email` field to `localpart@sparkpostbox.com` and ensure `options.sandbox` is set to `true`.
+The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
 
-<banner status="info"><strong>Note</strong>: you can set the 'local part' (the part before the <code>@</code>) to any valid email local part. <a href="#transmissions-create-post"><strong>See below</strong></a> for more details on sending mail.</banner>
+For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
 
-<banner status="info"><strong>Note</strong>: SparkPost accounts only. <strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a></strong> accounts should consider using the <a href="https://support.sparkpost.com/customer/portal/articles/2560839">SparkPost Sink Server</a>.</banner>
 
-## Sending Limits
+<banner status="info"><strong>Note</strong>: Not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
 
 ```
 + Request Number of Messages Exceeds Sending Limit (application/json)
