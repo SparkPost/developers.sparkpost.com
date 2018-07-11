@@ -4,13 +4,15 @@ description: Use the transmissions API to send a batch of messages through Spark
 
 # Group Transmissions
 
-The Transmissions endpoint lets you send email. SparkPost generates and sends the messages from your transmissions using a list of recipients and the content defined in the `content` attribute.
+The Transmissions endpoint lets you send email. SparkPost generates and sends messages using the options you've defined, a list of recipients, and the content given in transmissions call.
 
-You can [store a recipient list](/api/recipient-lists/), or you can include recipients "inline" with your transmission request. Similarly, you can [store your message template](/api/templates/) or include it "inline" with your transmission request. SparkPost then sends a unique message to each recipient using the specified template. You may also choose to personalise your messages by including substitution variables in your transmissions. You can [learn about templates and substitution here](/api/substitutions-reference/).  Finally, you can enable engagement tracking in your transmissions to track message opens and clicks.
+When creating a transmission, the [options](#header-request-body) allow you to configure engagement tracking, sending optimization, global substitution data, and more to control how your emails are sent.
 
-The Transmissions API also supports A/B testing, which allows you to compare different variants of a template, and ultimately send the winning one (based on engagement data) when the test has completed.  See [A/B Testing](/api/ab-testing/) for more details.
+To set the recipients you can include the all recipients in the request or use a [stored recipient list](/api/recipient-lists/). In each recipient, you can pass in metadata and substitution data to [personalize](/api/substitutions-reference/) each email.
 
-For details on how to get the best out of SparkPost Transmission, see [this support article](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/).
+The content of the messages can be passed in 4 different ways: [inline content](), a [stored template](), an [A/B test](), or raw [RFC822 content](). Each method has different use-cases they are best suited for. All of these types of content can use the substitution data and metadata to create a unique message for each recipient.
+
+Learn more about [how to have the best sending experience](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/) with SparkPost.
 
 ### The Sandbox Domain
 
