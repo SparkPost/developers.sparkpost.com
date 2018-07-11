@@ -44,11 +44,11 @@ If needed, it's also possible to update the published version of a template dire
 + Sample
     ```
     {
-        "id": "onboarding-email"
+        "id": "onboarding-email",
         "name": "Onboarding email",
         "description": "First email sent on sign-up",
         "content": {
-            "html": "<p>Please confirm your email by clicking <a href="{{ link }}">this link</a></p>",
+            "html": "<p>Please confirm your email by clicking <a href=\"{{ link }}\">this link</a></p>",
             "text": "Please confirm your email by clicking this link: {{ link }}",
             "from": "{{ friendly_from }} <team@ourdomain.com>",
             "subject": "Welcome!"
