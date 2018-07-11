@@ -14,15 +14,6 @@ The content of the messages can be passed in 4 different ways: [inline content](
 
 Learn more about [how to have the best sending experience](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/) with SparkPost.
 
-### The Sandbox Domain
-
-The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
-
-For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
-
-
-<banner status="info"><strong>Note</strong>: The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
-
 ### Sending Limits
 
 Your account has a sandbox, hourly, daily, and monthly sending limit based on your current plan level. You can view your current limits on the [dashboard](https://app.sparkpost.com/dashboard) ([EU](https://app.eu.sparkpost.com/dashboard)). If a transmission will push your over the sandbox, hourly, or daily sending limit, an error with the status code `420` is returned, along with a message detailing which limit you will exceed. If this happens, no messages are sent, regardless of the number of messages that to exceeded your limit.
@@ -40,64 +31,31 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 }
 ```
 
-## Transmission Attributes
-
-| Field         | Type     | Description                           | Required         | Notes   |
-|--------------------|----------------      |---------------------------------------|--------------------------|--------|
-|id |string |ID of the transmission |no |Read only.  A unique ID is generated for each transmission on submission. |
-|state |string  |State of the transmission  | no | Read only.  Valid responses are `submitted`, `Generating`, `Success`, or `Canceled`. |
-|options | JSON object | JSON object in which transmission options are defined | no | For a full description, see [Options Attributes](#header-options-attributes).
-|recipients | JSON array or JSON object | Inline recipient objects or object containing stored recipient list ID |yes | Specify a stored recipient list or specify recipients inline.  When using a stored recipient list, specify the `list_id` as described in Using a Stored Recipient List.  Otherwise, provide the recipients inline using the fields described in the Recipient List API documentation for Recipient Attributes. |
-|campaign_id | string |Name of the campaign|no|Maximum length - 64 bytes|
-|description | string |Description of the transmission|no | Maximum length - 1024 bytes|
-|metadata|JSON object|Transmission level metadata containing key/value pairs |no| Metadata is available during events through the Webhooks and is provided to the substitution engine.  A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is available with recipient metadata taking precedence over transmission metadata when there are conflicts.  |
-|substitution_data|JSON object|Key/value pairs that are provided to the substitution engine| no | Recipient substitution data takes precedence over transmission substitution data. Unlike metadata, substitution data is not included in Webhook events. |
-|return_path | string | Email address to use for envelope FROM | no | For <span class="label label-primary"><strong>SparkPost</strong></span> accounts, the domain part of the return_path address must be a [CNAME-verified sending domain](sending-domains.html#sending-domains-verify-post).  The local part of the return_path address will be overwritten by SparkPost servers.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost servers.  To support Variable Envelope Return Path (VERP), this field can also optionally be specified inside each recipient object in order to give the recipients unique envelope MAIL FROM addresses. |
-|content| JSON object | Content that will be used to construct a message | yes | Specify a stored template or specify inline template content. When using a stored template, specify the `template_id` as described in Using a Stored Template.  Otherwise, provide the inline content using the fields described in Inline Content Attributes.  Maximum size - 20MBs|
-|total_recipients | number | Computed total recipients | no | Read only|
-|num_generated | number | Computed total number of messages generated | no |Read only|
-|num_failed_generation| number| Computed total number of failed messages | no | Read only|
-|num_invalid_recipients | number | Number of recipients that failed input validation |no |Read only|
-
-
-### Options Attributes
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|start_time | string | Delay generation of messages until this datetime.  For additional information, see [Scheduled Transmissions](#header-scheduled-transmissions).  **Not available in SparkPost EU.** |no - defaults to immediate generation | Format YYYY-MM-DDTHH:MM:SS+-HH:MM. Example: `2017-02-11T08:00:00-04:00`.|
-|open_tracking|boolean| Whether open tracking is enabled for this transmission| no |If not specified, the setting at template level is used, or defaults to true. |
-|click_tracking|boolean| Whether click tracking is enabled for this transmission| no |If not specified, the setting at template level is used, or defaults to true. |
-|transactional|boolean|Whether message is [transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/) for unsubscribe and suppression purposes<br/><span class="label label-info"><strong>Note</strong></span> no `List-Unsubscribe` header is included in transactional messages. | no | If not specified, the setting at template level is used, or defaults to false. |
-|sandbox|boolean|Whether to use the sandbox sending domain | no |Defaults to false. <span class="label label-primary"><strong>SparkPost</strong></span> accounts may use the sandbox |
-|skip_suppression|boolean| Whether to ignore customer suppression rules, for this transmission only. | no | <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> Defaults to false. |
-|smart_send|boolean| Whether to enable Smart Send, which will suppress unengaged recipients. Limited to this transmission.  <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details. | no | Defaults to false. |
-| ip_pool | string | The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). | no | <span class="label label-primary"><strong>SparkPost</strong></span> accounts may use IP pools. For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br><br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
-|inline_css|boolean|Whether to perform CSS inlining in HTML content<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined | no - Defaults to false |  |
-
-
 ## Create a Transmission [/transmissions/{?num_rcpt_errors}]
 
 You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
 
-## Request Body
+
+### Request Body
 
 + Data Structure
-    + options (object) - Object in which transmission options are defined.
-        + start_time (string) - Delay generation of messages until this datetime.  For additional information, see [Scheduled Transmissions](#header-scheduled-transmissions). **Not available in SparkPost EU.** <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
+    + options (object) - Object containing transmission options. If an option is not set, the [template-level option](#header-template-object) is used.
+        + start_time (string) - Delay generation of messages until this datetime.  For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). **Not available in SparkPost EU.** <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
             + Default: now
-        + open_tracking (boolean) - Whether open tracking is enabled for this transmission. If not specified, the setting at template level is used.
+        + open_tracking (boolean) - Enable or disable open tracking.
             + Default: true
-        + click_tracking (boolean) - Whether click tracking is enabled for this transmission. If not specified, the setting at template level is used.
-            + Deafult: true
-        + transactional (boolean) - Whether message is [transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/) for unsubscribe and suppression purposes<br/><span class="label label-info"><strong>Note</strong></span> no `List-Unsubscribe` header is included in transactional messages. If not specified, the setting at template level is used
+        + click_tracking (boolean) - Enable or disable click tracking.
+            + Default: true
+        + transactional (boolean) - Distinguish between [transactional and non-transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/) messages for unsubscribe and suppression purposes.
             + Default: false
-        + sandbox (boolean) - Whether to use the sandbox sending domain <span class="label label-primary"><strong>SparkPost</strong></span> accounts may use the sandbox.
+        + sandbox (boolean) - Whether to use the [sandbox sending domain](#header-the-sandbox-domain).
             + Default: false
-        + skip_suppression (boolean) - Whether to ignore customer suppression rules, for this transmission only <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a>
+        + skip_suppression (boolean) - Whether to ignore customer suppression rules. <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> only.
             + Default: false.
-        + smart_send (boolean) - Whether to enable Smart Send, which will suppress unengaged recipients. Limited to this transmission. <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+        + smart_send (boolean) - <a href="/labs/"><span class="label label-info"><strong>LABS</strong></span></a> Whether to enable [Smart Send](https://www.sparkpost.com/blog/smart-send/), which will suppress unengaged recipients. <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
             + Default: false
-        +  ip_pool (string) - The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <span class="label label-primary"><strong>SparkPost</strong></span> accounts may use IP pools. For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br><br><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
-        + inline_css (boolean) - Whether to perform CSS inlining in HTML content<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined
+        +  ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+        + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.
             + Defaults: false.
     + recipients (enum, required) - Array of inline recipient objects or object containing stored recipient list ID. Specify a stored recipient list or specify recipients inline.  When using a stored recipient list, specify the `list_id` as described in Using a Stored Recipient List.  Otherwise, provide the recipients inline using the fields described in the Recipient List API documentation for Recipient Attributes.
         + (array)
@@ -109,14 +67,61 @@ You can create a transmission in a number of ways. In all cases, you can use the
     + return_path (string)
         Email address to use for envelope FROM. For <span class="label label-primary"><strong>SparkPost</strong></span> accounts, the domain part of the return_path address must be a [CNAME-verified sending domain](sending-domains.html#sending-domains-verify-post).  The local part of the return_path address will be overwritten by SparkPost servers.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost servers.  To support Variable Envelope Return Path (VERP), this field can also optionally be specified inside each recipient object in order to give the recipients unique envelope MAIL FROM addresses.
     + content (object, required) - Content that will be used to construct a message.  Specify a stored template or specify inline template content. When using a stored template, specify the `template_id` as described in Using a Stored Template.  Otherwise, provide the inline content using the fields described in Inline Content Attributes.  Maximum size - 20MBs
++ Sample
+    
+    ```
+    {
+      "options": {
+        "open_tracking": true,
+        "click_tracking": true,
+        "transactional": false,
+        "sandbox": false,
+        "ip_pool": "my_ip_pool",
+        "inline_css": false
+      },
+      "description": "Christmas Campaign Email",
+      "campaign_id": "christmas_campaign",
+      "metadata": {
+        "user_type": "students",
+        "education_level": "college"
+      },
+      "substitution_data": {
+        "sender": "Big Store Team",
+        "holiday_name": "Christmas"
+      },
+      "recipients": [
+        {
+          "address": {
+            "email": "wilma@flintstone.com",
+            "name": "Wilma Flintstone"
+          },
+          "tags": [
+            "greeting",
+            "prehistoric",
+            "fred",
+            "flintstone"
+          ],
+          "metadata": {
+            "age": "24",
+            "place": "Bedrock"
+          },
+          "substitution_data": {
+            "customer_type": "Platinum",
+            "year": "Freshman"
+          }
+        }
+      ],
+      "content": { ... }
+    }
+    ```
 
+### The Sandbox Domain
 
-#### Header Notes
+The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
 
-* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed here as they are auto generated upon construction of the email.
-* The `To` header should not be specified here, since it is generated from each recipient's `address.name` and `address.email`.
-* Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Substitution syntax is supported.
+For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
+
+<banner status="info"><strong>Note</strong>: The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
 
 ### Using a Stored Recipient List
 
@@ -144,6 +149,12 @@ The following attributes are used when specifying inline content in the transmis
     + attachments (array) - Array of attachments. For a full description, see [Attachment Attributes](#header-attachment-attributes).
     + inline_images (array) - Array of inline images For a full description, see [Inline Image Attributes](#header-inline-image-attributes).
 
+#### Header Notes
+
+* Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto-generated upon construction of the email.
+* The `To` header should not be specified, since it is generated from each recipient's `address` field.
+* Each header value is expected in the UTF-8 charset without RFC2047 encoding.
+* Substitution syntax is supported in headers.
 
 
 + Request (application/json)
@@ -215,123 +226,6 @@ The following attributes are used when specifying inline content in the transmis
             "results": {
                 "total_rejected_recipients": 0,
                 "total_accepted_recipients": 1,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Response 400 (application/json)
-
-        {
-            "errors": [
-                {
-                    "description": "Unconfigured or unverified sending domain.",
-                    "code": "7001",
-                    "message": "Invalid domain"
-                }
-            ]
-        }
-
-
-### Send RFC822 Content [POST]
-
-Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
-
-
-+ Data Structure: Content Attributes
-    + email_rfc822 (string, required) - Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1)
-
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
-first non-attachment `text/html` MIME parts only.
-* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
-necessary.
-* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
-* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
-* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
-
-Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
-
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true,
-                    "transactional": false,
-                    "sandbox": false,
-                    "ip_pool": "",
-                    "inline_css": false
-                },
-                "description": "Christmas Campaign Email",
-                "campaign_id": "christmas_campaign",
-                "metadata": {
-                    "user_type": "students",
-                    "education_level": "college"
-                },
-                "substitution_data": {
-                    "sender": "Big Store Team",
-                    "holiday_name": "Christmas"
-                },
-                "recipients": [
-                    {
-                        "address": {
-                            "email": "wilma@flintstone.com",
-                            "name": "Wilma Flintstone"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "24",
-                            "place": "Bedrock"
-                        },
-                        "substitution_data": {
-                            "first_name": "Wilma",
-                            "customer_type": "Platinum",
-                            "year": "Freshman"
-                        }
-                    },
-                    {
-                        "address": {
-                            "email": "abc@flintstone.com",
-                            "name": "Fred Flintstone"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "33",
-                            "place": "NY"
-                        },
-                        "substitution_data": {
-                            "first_name": "Fred",
-                            "customer_type": "Sliver",
-                            "year": "Senior"
-                        }
-                    }
-                ],
-                "content": {
-                    "email_rfc822": "Content-Type: text\/plain\r\nTo: \"{{address.name}}\" <{{address.email}}>\r\n\r\n Hi {{first_name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{customer_type}}\n {{sender}}\r\n"
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 2,
                 "id": "11668787484950529"
             }
         }
@@ -514,6 +408,122 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
             }
         }
 
+
+### Send RFC822 Content [POST]
+
+Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
+
+
++ Data Structure: Content Attributes
+    + email_rfc822 (string, required) - Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1)
+
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
+first non-attachment `text/html` MIME parts only.
+* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
+necessary.
+* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
+* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
+* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
+
+Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "options": {
+                    "open_tracking": true,
+                    "click_tracking": true,
+                    "transactional": false,
+                    "sandbox": false,
+                    "ip_pool": "",
+                    "inline_css": false
+                },
+                "description": "Christmas Campaign Email",
+                "campaign_id": "christmas_campaign",
+                "metadata": {
+                    "user_type": "students",
+                    "education_level": "college"
+                },
+                "substitution_data": {
+                    "sender": "Big Store Team",
+                    "holiday_name": "Christmas"
+                },
+                "recipients": [
+                    {
+                        "address": {
+                            "email": "wilma@flintstone.com",
+                            "name": "Wilma Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "24",
+                            "place": "Bedrock"
+                        },
+                        "substitution_data": {
+                            "first_name": "Wilma",
+                            "customer_type": "Platinum",
+                            "year": "Freshman"
+                        }
+                    },
+                    {
+                        "address": {
+                            "email": "abc@flintstone.com",
+                            "name": "Fred Flintstone"
+                        },
+                        "tags": [
+                            "greeting",
+                            "prehistoric",
+                            "fred",
+                            "flintstone"
+                        ],
+                        "metadata": {
+                            "age": "33",
+                            "place": "NY"
+                        },
+                        "substitution_data": {
+                            "first_name": "Fred",
+                            "customer_type": "Sliver",
+                            "year": "Senior"
+                        }
+                    }
+                ],
+                "content": {
+                    "email_rfc822": "Content-Type: text\/plain\r\nTo: \"{{address.name}}\" <{{address.email}}>\r\n\r\n Hi {{first_name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{customer_type}}\n {{sender}}\r\n"
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 2,
+                "id": "11668787484950529"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "description": "Unconfigured or unverified sending domain.",
+                    "code": "7001",
+                    "message": "Invalid domain"
+                }
+            ]
+        }
 
 ### Sending Attachments and Inline Images [POST]
 
