@@ -1,11 +1,32 @@
-import React from 'react'
-import { navigateTo } from 'gatsby'
+import React, { Component, Fragment } from 'react'
+import { push } from 'gatsby'
 import styled from 'styled-components'
 import { InstantSearch, Configure } from 'react-instantsearch/dom'
 import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
+import { weight } from 'utils/fonts'
 import Link from 'components/Link'
+import EventListener from 'react-event-listener'
+
+const SlashIcon = styled.div.attrs({ children: '/' })`
+  color: ${grayscale(6)};
+  border: 1px solid ${grayscale(7)};
+  border-radius: 2px;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  line-height: 0.9rem;
+  text-align: center;
+  font-size: 0.555555556rem;
+  font-weight: ${weight('bold')};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0.5rem;
+  margin: auto;
+  transition: opacity 0.05s;
+`
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};
@@ -21,8 +42,49 @@ const SearchInput = styled.input`
   &:focus {
     border-color: ${color('blue')};
     box-shadow: 0 0 0 1px ${color('blue')}, ${shadow(1)};
+
+    + ${SlashIcon} {
+      opacity: 0;
+    }
   }
 `
+
+class FocusableInput extends Component {
+  constructor(props) {
+    super(props)
+    this.inputRef = React.createRef()
+
+    this.state = {
+      isFocused: false,
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <EventListener
+          target="window"
+          onKeydown={e => {
+            if (e.key === '/' && e.target.tagName === 'BODY') {
+              e.preventDefault()
+              this.inputRef.current.focus()
+            }
+
+            if (
+              e.key === 'Escape' &&
+              e.target === this.inputRef.current &&
+              this.inputRef.current.value.length === 0
+            ) {
+              this.inputRef.current.blur()
+            }
+          }}
+        />
+        <SearchInput {...this.props} innerRef={this.inputRef} />
+        <SlashIcon />
+      </div>
+    )
+  }
+}
 
 const SearchResults = styled.div`
   display: block;
@@ -99,40 +161,71 @@ function serializeHit(hit) {
 }
 
 const AutoComplete = connectAutoComplete(
-  ({ hits, currentRefinement, refine }) => (
-    <Autosuggest
-      inputProps={{
-        placeholder: 'Search API reference',
-        value: currentRefinement,
-        onChange: () => {},
-      }}
-      renderInputComponent={props => <SearchInput {...props} />}
-      renderSuggestionsContainer={({ containerProps, children, query }) =>
-        query.length > 0 &&
-        children && (
-          <SearchResults {...containerProps}>{children}</SearchResults>
-        )
-      }
-      suggestions={hits}
-      onSuggestionsFetchRequested={({ value }) => refine(value)}
-      onSuggestionsClearRequested={() => refine('')}
-      getSuggestionValue={hit => hit}
-      renderSuggestion={(hit, { isHighlighted }) => {
-        const { title, category, href } = serializeHit(hit)
+  ({ hits, currentRefinement, refine }) => {
+    return (
+      <Autosuggest
+        inputProps={{
+          placeholder: 'Search API reference',
+          value: currentRefinement,
+          onChange: () => {},
+        }}
+        renderInputComponent={props => <FocusableInput {...props} />}
+        renderSuggestionsContainer={({ containerProps, children, query }) =>
+          query.length > 0 &&
+          children && (
+            <SearchResults {...containerProps}>{children}</SearchResults>
+          )
+        }
+        suggestions={hits}
+        onSuggestionsFetchRequested={({ value }) => refine(value)}
+        onSuggestionsClearRequested={() => refine('')}
+        getSuggestionValue={hit => hit}
+        renderSuggestion={(hit, { isHighlighted }) => {
+          const { title, category, href } = serializeHit(hit)
 
-        return (
-          <SearchResult to={href} isHighlighted={isHighlighted}>
-            {title}
-            <Category>{category}</Category>
-          </SearchResult>
-        )
-      }}
-      onSuggestionSelected={(e, { suggestion: hit }) => {
-        const { href } = serializeHit(hit)
-        navigateTo(href)
-      }}
-    />
-  )
+          return (
+            <SearchResult to={href} isHighlighted={isHighlighted}>
+              {title}
+              <Category>{category}</Category>
+            </SearchResult>
+          )
+        }}
+        onSuggestionSelected={(e, { suggestion: hit }) => {
+          const { href } = serializeHit(hit)
+
+          // get the pathname with the hash
+          let pathname = href
+          if (pathname.split(`#`).length > 1) {
+            pathname = pathname
+              .split(`#`)
+              .slice(0, -1)
+              .join(``)
+          }
+          // check if we are on the same page as the select result
+          if (pathname === window.location.pathname) {
+            const hashFragment = href
+              .split(`#`)
+              .slice(1)
+              .join(`#`)
+            const element = hashFragment
+              ? document.getElementById(hashFragment)
+              : null
+
+            // scroll to the correct element
+            if (element !== null) {
+              element.scrollIntoView()
+              return true
+            } else {
+              window.scrollTo(0, 0)
+              return true
+            }
+          }
+
+          push(href)
+        }}
+      />
+    )
+  }
 )
 
 const Search = () => (
@@ -145,5 +238,4 @@ const Search = () => (
     <AutoComplete />
   </InstantSearch>
 )
-
 export default Search
