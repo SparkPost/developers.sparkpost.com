@@ -114,6 +114,7 @@ const components = {
       }}
     </Context.Consumer>
   ),
+  parameters() {},
 }
 
 const componentNames = toArray(components).map(c => c.name)
@@ -122,13 +123,28 @@ const hasComponent = props =>
     React.Children.map(
       props.children,
       component =>
-        component.type &&
-        componentNames.includes(
-          component.type.displayName || component.type.name
-        )
+        component.type && componentNames.includes(component.type.displayName)
     ) || []
   ).includes(true)
 
-const BlockMarkdown = props => <Markdown components={components} {...props} />
+const BlockMarkdown = ({ parameters, ...props }) => {
+  return (
+    <Markdown
+      components={{
+        ...components,
+        parameters() {
+          return (
+            <DataStructure
+              title="Parameters"
+              isParameter={true}
+              dataStructure={{ content: parameters }}
+            />
+          )
+        },
+      }}
+      {...props}
+    />
+  )
+}
 
 export default BlockMarkdown

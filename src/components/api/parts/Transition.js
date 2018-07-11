@@ -47,16 +47,6 @@ const Href = styled.span`
   color: ${grayscale(4)};
 `
 
-function Parameters({ parameters }) {
-  return (
-    <DataStructure
-      title="Parameters"
-      isParameter={true}
-      dataStructure={{ content: parameters }}
-    />
-  )
-}
-
 function Attributes({ attributes }) {
   return <DataStructure title="Request Body" dataStructure={attributes} />
 }
@@ -106,9 +96,8 @@ export default function Transition({
             <Href>{`/api/${version}${href}`}</Href>
           </HrefWrapper>
         </div>
-        {parameters && <Parameters parameters={parameters} />}
         {attributes && <Attributes attributes={attributes} />}
-        {copy && <BlockMarkdown>{copy}</BlockMarkdown>}
+        {copy && <BlockMarkdown parameters={parameters}>{copy}</BlockMarkdown>}
       </Wrapper>
     </Debug>
   )
