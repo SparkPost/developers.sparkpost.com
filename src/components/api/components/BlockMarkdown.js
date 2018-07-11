@@ -122,7 +122,10 @@ const hasComponent = props =>
     React.Children.map(
       props.children,
       component =>
-        component.type && componentNames.includes(component.type.displayName)
+        component.type &&
+        componentNames.includes(
+          component.type.displayName || component.type.name
+        )
     ) || []
   ).includes(true)
 
