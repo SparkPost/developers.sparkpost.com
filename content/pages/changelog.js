@@ -26,7 +26,13 @@ const Button = Link.Action.withComponent(Anchor.Link).extend`
     transition: .15s;
   }
 
-  ${props => props.expanded && css` i { transform: rotate(90deg); }`}
+  ${props =>
+    props.expanded &&
+    css`
+      i {
+        transform: rotate(90deg);
+      }
+    `}
 `
 
 class Change extends React.Component {
@@ -35,7 +41,7 @@ class Change extends React.Component {
     this.state = { expanded: !!props.expanded }
   }
 
-  toggleNotes = (e) => {
+  toggleNotes = e => {
     // don't jump down when closing the notes area
     if (this.state.expanded) e.preventDefault()
 
@@ -43,54 +49,66 @@ class Change extends React.Component {
   }
 
   renderToggle() {
-    return this.props.notes && (
-      <Button
-        title={`${this.props.date} Notes`}
-        expanded={this.state.expanded}
-        onClick={this.toggleNotes}>
-          notes <i className="fa fa-chevron-right"></i>
-      </Button>
+    return (
+      this.props.notes && (
+        <Button
+          title={`${this.props.date} Notes`}
+          expanded={this.state.expanded}
+          onClick={this.toggleNotes}
+        >
+          notes <i className="fa fa-chevron-right" />
+        </Button>
+      )
     )
   }
 
   renderContent() {
-    return this.props.sections && this.props.sections.map(({ title, items }) => (
-      <div>
-        <h4>{title}</h4>
-        <ul>
-          {items && items.map(({ text }) => <li>{text}</li>)}
-        </ul>
-      </div>
-    ))
-  }
-
-  renderNotes() {
-    return this.props.notes && this.state.expanded && (
-      <Anchor.Target title={`${this.props.date} Notes`}>
-        <Panel.Section><Markdown components={{
-          h1(props) {
-            return <h4 {...props} />
-          },
-          h2(props) {
-            return <h4 {...props} />
-          },
-          h3(props) {
-            return <h4 {...props} />
-          },
-          h4(props) {
-            return <h3 {...props} />
-          },
-          h5(props) {
-            return <h3 {...props} />
-          },
-          h6(props) {
-            return <h3 {...props} />
-          },
-        }}>{this.props.notes}</Markdown></Panel.Section>
-      </Anchor.Target>
+    return (
+      this.props.sections &&
+      this.props.sections.map(({ title, items }) => (
+        <div>
+          <h4>{title}</h4>
+          <ul>{items && items.map(({ text }) => <li>{text}</li>)}</ul>
+        </div>
+      ))
     )
   }
 
+  renderNotes() {
+    return (
+      this.props.notes &&
+      this.state.expanded && (
+        <Anchor.Target title={`${this.props.date} Notes`}>
+          <Panel.Section>
+            <Markdown
+              components={{
+                h1(props) {
+                  return <h4 {...props} />
+                },
+                h2(props) {
+                  return <h4 {...props} />
+                },
+                h3(props) {
+                  return <h4 {...props} />
+                },
+                h4(props) {
+                  return <h3 {...props} />
+                },
+                h5(props) {
+                  return <h3 {...props} />
+                },
+                h6(props) {
+                  return <h3 {...props} />
+                },
+              }}
+            >
+              {this.props.notes}
+            </Markdown>
+          </Panel.Section>
+        </Anchor.Target>
+      )
+    )
+  }
 
   render() {
     return (
@@ -100,15 +118,14 @@ class Change extends React.Component {
             <Panel.Title>{this.props.date}</Panel.Title>
           </Anchor>
         </Panel.Header>
-        <Panel.Section>
-          {this.renderContent()}
-        </Panel.Section>
+        <Panel.Section>{this.renderContent()}</Panel.Section>
         {this.renderNotes()}
-      </Panel>)
+      </Panel>
+    )
   }
 }
 
-const ChangelogPage = (props) => (
+const ChangelogPage = props => (
   <Layout {...props}>
     <Section light>
       <Container>
@@ -122,10 +139,14 @@ const ChangelogPage = (props) => (
         </Row>
         <Row>
           <Column md={8} mdOffset={2}>
-            {props.data.changelogJson.changes.map((change) => (
+            {props.data.changelogJson.changes.map(change => (
               <Change
                 {...change}
-                expanded={props.location.hash === `#${Anchor.slugify(`${change.date} Notes`)}`} />
+                expanded={
+                  props.location.hash ===
+                  `#${Anchor.slugify(`${change.date} Notes`)}`
+                }
+              />
             ))}
           </Column>
         </Row>
@@ -137,18 +158,18 @@ const ChangelogPage = (props) => (
 export default ChangelogPage
 
 export const pageQuery = graphql`
-query changelogQuery {
-  changelogJson {
-    changes {
-      date(formatString: "MMMM D, YYYY")
-      notes
-      sections {
-        title
-        items {
-          text
+  query changelogQuery {
+    changelogJson {
+      changes {
+        date(formatString: "MMMM D, YYYY")
+        notes
+        sections {
+          title
+          items {
+            text
+          }
         }
       }
     }
   }
-}
 `
