@@ -12,7 +12,6 @@ import Hamburger from './Hamburger'
 
 // prettier-ignore
 const Wrapper = styled.header`
-  background: ${grayscale('light')};
   transition: background 0.25s, box-shadow 0.25s;
   display: flex;
   align-items: center;
@@ -21,13 +20,20 @@ const Wrapper = styled.header`
   font-size: 0.833333333rem;
   padding: 1rem 1rem;
 
-  ${props => props.isSticky && css`
-    box-shadow: ${shadow(1)};
-    background-color: ${grayscale('white')};
-  `}
+  box-shadow: ${shadow(1)};
+  background-color: ${grayscale('white')};
 
-  ${mediaQuery('md', `
+
+
+  ${mediaQuery('md', css`
     padding: 0 1rem;
+    background: ${grayscale('light')};
+    box-shadow: none;
+
+    ${props => props.isSticky && css`
+      box-shadow: ${shadow(1)};
+      background-color: ${grayscale('white')};
+    `}
   `)}
 `
 
@@ -53,6 +59,7 @@ const NavWrapper = styled.div`
 
   ${mediaQuery('md', `
     position: relative;
+    background: transparent;
     z-index: 0;
     width: auto;
     transform: translateY(0%);

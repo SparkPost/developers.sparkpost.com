@@ -33,10 +33,9 @@ const Layout = ({ data, children, location }) => (
               <Header
                 path={location.pathname}
                 isSticky={
-                  true ||
                   (isSticky && distanceFromTop !== 0) ||
                   onApiPage(location) ||
-                  location.pathname === '/integraion'
+                  location.pathname === '/'
                 }
               />
             </div>
