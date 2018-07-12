@@ -1,0 +1,4 @@
+[build]
+  publish = "./public"
+  command = "npm run bootstrap && netlify-lambda build lambda/ && npm run publish"
+  functions = "./functions"
