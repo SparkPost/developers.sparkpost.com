@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, shadow } from 'utils/colors'
-
+import Button from 'components/Button'
 import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
@@ -29,6 +29,11 @@ const Wrapper = styled.header`
   ${mediaQuery('md', `
     padding: 0 1rem;
   `)}
+`
+
+const NavButton = styled(Button)`
+  top: -2px;
+  margin: 0 0 0 0.5rem;
 `
 
 // prettier-ignore
@@ -122,7 +127,13 @@ class Header extends Component {
             <NavLink to="https://www.sparkpost.com/blog/category/developer">
               Blog
             </NavLink>
-            <NavLink to="https://app.sparkpost.com/join">Sign Up</NavLink>
+            <NavButton
+              to="https://app.sparkpost.com/join"
+              secondary
+              size="small"
+            >
+              Sign Up
+            </NavButton>
           </Nav>
         </NavWrapper>
         <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />
