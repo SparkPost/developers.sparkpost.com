@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale } from 'utils/colors'
 
-const Hamburger = styled(({ isOpen, ...props }) => (
+const HamburgerIcon = styled(({ isOpen, ...props }) => (
   <div {...props}>
     <span />
     <span />
@@ -60,4 +60,4 @@ const Hamburger = styled(({ isOpen, ...props }) => (
     `};
 `
 
-export default Hamburger
+export default HamburgerIcon

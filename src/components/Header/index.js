@@ -8,7 +8,8 @@ import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
 import StatusIcon from './StatusIcon'
-import Hamburger from './Hamburger'
+import HamburgerIcon from './HamburgerIcon'
+import CommunityBadge from './CommunityBadge'
 
 // prettier-ignore
 const Wrapper = styled.header`
@@ -104,14 +105,16 @@ class Header extends Component {
     return (
       <Wrapper isSticky={isSticky}>
         <Logo />
-        <Hamburger isOpen={this.state.isOpen} onClick={this.toggleOpen} />
+        <HamburgerIcon isOpen={this.state.isOpen} onClick={this.toggleOpen} />
         <NavWrapper isOpen={this.state.isOpen}>
           <Nav>
             <NavLink to="/api/" active={path.startsWith('/api')}>
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-            <NavLink to="http://slack.sparkpost.com">Community</NavLink>
+            <NavLink to="http://slack.sparkpost.com">
+              Community <CommunityBadge />
+            </NavLink>
           </Nav>
           <Nav secondary>
             <NavLink to="https://status.sparkpost.com" target="_blank">
