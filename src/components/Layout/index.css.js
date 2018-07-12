@@ -26,6 +26,12 @@ injectGlobal`
     position: relative;
   }
 
+  ::selection {
+    color: #111;
+    background: #D6EDFF;
+    text-shadow: none;
+  }
+
   /** Typography */
 
   html {
