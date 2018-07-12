@@ -19,7 +19,7 @@ module.exports = {
     const method = transition.method ? transition.method.toValue() : 'get'
 
     return slugify(
-      `${resourceGroup.title.toValue()}-${resource.title.toValue()}-${method}`
+      `${resourceGroup.title.toValue()}-${method}-${transition.title.toValue()}`
     )
   },
 }

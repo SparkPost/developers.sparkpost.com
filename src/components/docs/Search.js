@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { push } from 'gatsby'
 import styled from 'styled-components'
 import { InstantSearch, Configure } from 'react-instantsearch/dom'
