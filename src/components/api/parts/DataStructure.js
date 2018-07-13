@@ -74,9 +74,7 @@ function Attribute(props) {
       <div>
         <Name>{name}</Name>{' '}
         <Property>
-          {isMultipleTypes
-            ? types.join(' or ')
-            : actualType /*generate link to dereferenced type */}
+          {isMultipleTypes ? types.join(' or ') : type}
           {actualType === 'array' &&
             ((sampleTypes &&
               uniq(sampleTypes).length === 1 &&
