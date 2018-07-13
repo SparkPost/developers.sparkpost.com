@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { push } from 'gatsby'
 import styled from 'styled-components'
+import { isEqual } from 'lodash'
 import { InstantSearch, Configure } from 'react-instantsearch/dom'
 import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Autosuggest from 'react-autosuggest'
@@ -112,7 +113,9 @@ const SearchResults = styled.div`
 `
 
 // prettier-ignore
-const SearchResult = styled(Link.Unstyled)`
+const SearchResult = styled(
+  ({ isHighlighted, ...props }) => <Link.Unstyled {...props} />
+)`
   display: block;
   padding: 0.5rem 1rem;
   font-size: 0.833333333rem;
@@ -160,15 +163,58 @@ function serializeHit(hit) {
   }
 }
 
-const AutoComplete = connectAutoComplete(
-  ({ hits, currentRefinement, refine }) => {
+function renderSuggestion(hit, { isHighlighted }) {
+  const { title, category, href } = serializeHit(hit)
+
+  return (
+    <SearchResult to={href} isHighlighted={isHighlighted}>
+      {title}
+      <Category>{category}</Category>
+    </SearchResult>
+  )
+}
+
+class AutoComplete extends Component {
+  state = { value: '', hits: [] }
+
+  onChange = (event, { newValue, method }) => {
+    if (method === 'type' || method === 'escape') {
+      this.setState({ value: newValue })
+    }
+  }
+
+  onSuggestionsFetchRequested = ({ reason, value }) => {
+    return this.props.refine(value)
+  }
+
+  onSuggestionsClearRequested = () => {
+    this.setState({ hits: [] })
+  }
+
+  componentDidUpdate() {
+    // if the new hits we have don't match our stored hits, update our hits
+    if (!isEqual(this.props.hits, this.state.hits)) {
+      this.setState({ hits: this.props.hits })
+    }
+  }
+
+  render() {
+    const { value, hits } = this.state
+
+    const inputProps = {
+      placeholder: 'Search API reference',
+      value,
+      onChange: this.onChange,
+    }
+
     return (
       <Autosuggest
-        inputProps={{
-          placeholder: 'Search API reference',
-          value: currentRefinement,
-          onChange: () => {},
-        }}
+        inputProps={inputProps}
+        suggestions={hits}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        getSuggestionValue={hit => serializeHit(hit).title}
+        renderSuggestion={renderSuggestion}
         renderInputComponent={props => <FocusableInput {...props} />}
         renderSuggestionsContainer={({ containerProps, children, query }) =>
           query.length > 0 &&
@@ -176,20 +222,6 @@ const AutoComplete = connectAutoComplete(
             <SearchResults {...containerProps}>{children}</SearchResults>
           )
         }
-        suggestions={hits}
-        onSuggestionsFetchRequested={({ value }) => refine(value)}
-        onSuggestionsClearRequested={() => refine('')}
-        getSuggestionValue={hit => hit}
-        renderSuggestion={(hit, { isHighlighted }) => {
-          const { title, category, href } = serializeHit(hit)
-
-          return (
-            <SearchResult to={href} isHighlighted={isHighlighted}>
-              {title}
-              <Category>{category}</Category>
-            </SearchResult>
-          )
-        }}
         onSuggestionSelected={(e, { suggestion: hit }) => {
           const { href } = serializeHit(hit)
 
@@ -226,7 +258,9 @@ const AutoComplete = connectAutoComplete(
       />
     )
   }
-)
+}
+
+const ConnectedAutoComplete = connectAutoComplete(AutoComplete)
 
 const Search = () => (
   <InstantSearch
@@ -235,7 +269,8 @@ const Search = () => (
     indexName="api_docs_dev"
   >
     <Configure hitsPerPage={10} />
-    <AutoComplete />
+    <ConnectedAutoComplete />
   </InstantSearch>
 )
+
 export default Search
