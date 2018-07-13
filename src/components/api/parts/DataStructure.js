@@ -32,8 +32,8 @@ const Enums = styled.p`
 
 const EnumTitle = styled.b`
   color: ${grayscale(4)};
-  fontsize: 0.833333333rem;
-  fontweight: ${weight('medium')};
+  font-size: 0.833333333rem;
+  font-weight: ${weight('medium')};
 `
 
 const nativeTypes = ['boolean', 'string', 'number', 'object', 'array', 'enum']
