@@ -52,7 +52,7 @@
   "scripts": {
     "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-plugin-algolia && npm install",
     "develop": "source .env && gatsby develop",
-    "lambda": "netlify-lambda serve lambda",
+    "lambda": "source .env && netlify-lambda serve lambda",
     "docs": "GATSBY_ACTIVE_ENV=docs gatsby develop",
     "build": "NODE_ENV=production gatsby build",
     "publish": "GATSBY_ACTIVE_ENV=publish npm run build",
