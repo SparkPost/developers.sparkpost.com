@@ -7,6 +7,7 @@ import { grayscale, shadow } from 'utils/colors'
 import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
+import Search from './Search'
 import StatusIcon from './StatusIcon'
 import Hamburger from './Hamburger'
 
@@ -113,6 +114,7 @@ class Header extends Component {
             <NavLink to="http://slack.sparkpost.com">Community</NavLink>
           </Nav>
           <Nav secondary>
+            <Search />
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status
