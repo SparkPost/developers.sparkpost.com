@@ -39,7 +39,6 @@ const NavWrapper = styled.div`
   bottom: 0;
   left: 0;
   transform: translateY(0%);
-  overflow: hidden;
   background: ${grayscale('white')};
   transition: .2s cubic-bezier(.1,1,.4,1);
   z-index: -1;
