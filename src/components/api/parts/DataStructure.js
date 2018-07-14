@@ -58,7 +58,7 @@ function Attribute(props) {
   const actualType = nativeTypes.includes(type) ? type : 'object'
 
   let isMultipleTypes, types
-  if (actualType === 'enum') {
+  if (!!enumerations && actualType === 'enum') {
     // where we have no values for an enum, it is simply the definition that a single field can be of multiple types
     isMultipleTypes = !enumerations.find(
       enumeration => !isEmpty(enumeration.value)
