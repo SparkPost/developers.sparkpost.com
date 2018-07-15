@@ -150,6 +150,7 @@ class AutoComplete extends Component {
 
     return (
       <Autosuggest
+        id="reference"
         inputProps={inputProps}
         suggestions={hits}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}

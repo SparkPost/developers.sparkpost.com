@@ -44,6 +44,7 @@ const SearchInput = styled.input`
   outline: 0;
   transition: 0.2s;
   width: 10rem;
+  margin-top: 1px;
 
   &:focus {
     max-width: 100%;
@@ -243,6 +244,7 @@ class AutoComplete extends Component {
 
     return (
       <Autosuggest
+        id="universal"
         inputProps={inputProps}
         multiSection={true}
         renderSectionTitle={section =>
