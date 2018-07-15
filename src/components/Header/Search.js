@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { push } from 'gatsby'
 import styled from 'styled-components'
 import { isEqual } from 'lodash'
+import isAbsoluteUrl from 'is-absolute-url'
 import {
   InstantSearch,
   Index,
@@ -130,12 +131,13 @@ const SectionTitle = styled.h5`
 
 // prettier-ignore
 const SearchResult = styled(
-  ({ isHighlighted, ...props }) => <Link.Unstyled {...props} />
+  ({ isHighlighted, ...props }) => <div {...props} />
 )`
   display: block;
   padding: 0.5rem 1rem;
   font-size: .833333333rem;
   font-weight: ${weight('medium')};
+  cursor: pointer;
 
   ${props => props.isHighlighted &&`
     background: ${grayscale('light')};
@@ -198,12 +200,14 @@ function renderSuggestion(hit, { isHighlighted }) {
   }
 
   return (
-    <SearchResult to={'#'} isHighlighted={isHighlighted}>
+    <SearchResult isHighlighted={isHighlighted}>
       {title}
       {category && <Category>{category}</Category>}
-      <Category>
-        {<Snippet attribute="content" hit={hit} tagName="strong" />}
-      </Category>
+      {content && (
+        <Category>
+          {<Snippet attribute="content" hit={hit} tagName="strong" />}
+        </Category>
+      )}
     </SearchResult>
   )
 }
@@ -271,9 +275,20 @@ class AutoComplete extends Component {
           )
         }
         onSuggestionSelected={(e, { suggestion: hit }) => {
-          const { href } = serializeHit(hit)
+          let href
+          if (hit.post_type) {
+            href = hit.permalink
+          } else {
+            const { href: hitHref } = serializeHit(hit)
+            href = hitHref
+          }
 
-          // get the pathname with the hash
+          // catch external links and send them out
+          if (isAbsoluteUrl(href)) {
+            return window.location.href = href
+          }
+
+          // get the pathname without the hash
           let pathname = href
           if (pathname.split(`#`).length > 1) {
             pathname = pathname
@@ -281,6 +296,7 @@ class AutoComplete extends Component {
               .slice(0, -1)
               .join(``)
           }
+
           // check if we are on the same page as the select result
           if (pathname === window.location.pathname) {
             const hashFragment = href
@@ -291,7 +307,7 @@ class AutoComplete extends Component {
               ? document.getElementById(hashFragment)
               : null
 
-            // scroll to the correct element
+            // if we are, scroll to the correct element
             if (element !== null) {
               element.scrollIntoView()
               return true
@@ -301,6 +317,7 @@ class AutoComplete extends Component {
             }
           }
 
+          // otherwise just navigate to the relative path
           push(href)
         }}
       />

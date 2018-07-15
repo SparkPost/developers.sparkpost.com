@@ -8,7 +8,6 @@ import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
 import Link from 'components/Link'
-import EventListener from 'react-event-listener'
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};
