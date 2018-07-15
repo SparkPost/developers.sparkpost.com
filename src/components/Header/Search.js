@@ -285,7 +285,7 @@ class AutoComplete extends Component {
 
           // catch external links and send them out
           if (isAbsoluteUrl(href)) {
-            return window.location.href = href
+            return (window.location.href = href)
           }
 
           // get the pathname without the hash
