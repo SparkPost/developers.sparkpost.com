@@ -32,8 +32,8 @@ const Enums = styled.p`
 
 const EnumTitle = styled.b`
   color: ${grayscale(4)};
-  fontsize: 0.833333333rem;
-  fontweight: ${weight('medium')};
+  font-size: 0.833333333rem;
+  font-weight: ${weight('medium')};
 `
 
 const nativeTypes = ['boolean', 'string', 'number', 'object', 'array', 'enum']
@@ -58,7 +58,7 @@ function Attribute(props) {
   const actualType = nativeTypes.includes(type) ? type : 'object'
 
   let isMultipleTypes, types
-  if (actualType === 'enum') {
+  if (!!enumerations && actualType === 'enum') {
     // where we have no values for an enum, it is simply the definition that a single field can be of multiple types
     isMultipleTypes = !enumerations.find(
       enumeration => !isEmpty(enumeration.value)
@@ -74,9 +74,7 @@ function Attribute(props) {
       <div>
         <Name>{name}</Name>{' '}
         <Property>
-          {isMultipleTypes
-            ? types.join(' or ')
-            : actualType /*generate link to dereferenced type */}
+          {isMultipleTypes ? types.join(' or ') : type}
           {actualType === 'array' &&
             ((sampleTypes &&
               uniq(sampleTypes).length === 1 &&

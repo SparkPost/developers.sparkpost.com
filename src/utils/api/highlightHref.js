@@ -40,6 +40,9 @@ export default function highlightHref(href, hrefVariables) {
 
     // remove the extra ampersand
     modifiedHref = modifiedHref.replace(/&$/, '')
+
+    // if there was no variables inserted we end up with "{?}" on the end - we should remove it
+    modifiedHref = modifiedHref.replace(/{\?}$/, '')
   }
 
   return modifiedHref
