@@ -232,7 +232,6 @@ class AutoComplete extends Component {
   componentDidUpdate() {
     // if the new hits we have don't match our stored hits, update our hits
     if (!isEqual(this.props.hits, this.state.hits)) {
-      console.log(this.props.hits)
       this.setState({ hits: this.props.hits })
     }
   }
@@ -285,7 +284,7 @@ class AutoComplete extends Component {
 
           // catch external links and send them out
           if (isAbsoluteUrl(href)) {
-            return window.location.href = href
+            return (window.location.href = href)
           }
 
           // get the pathname without the hash
