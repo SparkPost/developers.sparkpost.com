@@ -24,7 +24,7 @@ SparkPost supports bulk importing or manually adding up to 1,000,000 suppression
 ## Subaccount Suppressions
 
 Each subaccount has it's own independent suppression list.
-Set the `X-MSYS-SUBACOOUNT` header to a subaccount ID to search and operate on that subaccount's suppression list.
+Set the `X-MSYS-SUBACCOUNT` header to a subaccount ID to search and operate on that subaccount's suppression list.
 By default, the search endpoint will search across the master account's and all subaccounts' lists.
 
 ## Suppression Object
@@ -34,7 +34,7 @@ By default, the search endpoint will search across the master account's and all 
     + type (enum) - Type of suppression record.
         + transactional
         + non_transactional
-    + source (enum) - Source responsible for createing the list entry.
+    + source (enum) - Source responsible for creating the list entry.
         + Spam Complaint
         + List Unsubscribe
         + Bounce Rule
@@ -55,14 +55,14 @@ By default, the search endpoint will search across the master account's and all 
         "type": "non_transactional",
         "source": "List Unsubscribe",
         "description": "Unsubscribed using list unsubscribe header",
-        "created" : "2017-10-01T12:00:00+00:00",
-        "updated" : "2017-10-01T12:00:00+00:00",
+        "created": "2017-10-01T12:00:00+00:00",
+        "updated": "2017-10-01T12:00:00+00:00",
         "transactional": false,
         "non_transactional": true
     }
     ```
 
-## Bulk Create and Update Suppressions [PUT /suppression-list/]
+## Bulk Create or Update Suppressions [PUT /suppression-list/]
 
 Bulk create or update entries in the suppression list.
 
@@ -79,14 +79,13 @@ If a recipient was added by our compliance system, it cannot be updated.
         + non_transactional
     + description (string) - Explanation for the suppression.
 
-Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, only some of your suppression entries may have been successfully createed or updated.
+Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, only some of your suppression entries may have been successfully created or updated.
 If this occurs, please re-submit your original request again for processing.
 
 + Request
 
     + Body
 
-        ```
         {
             "recipients": [
                 {
@@ -101,17 +100,16 @@ If this occurs, please re-submit your original request again for processing.
                 }
             ]
         }
-        ```
-+ Response 200 (application/json; charset=utf-8)
+
++ Response 200 (application/json)
 
         {
-            "results" :
-                {
-                    "message": "Suppression List successfully updated"
-                }
+            "results": {
+                "message": "Suppression List successfully updated"
+            }
         }
 
-+ Response 400 (application/json; charset=utf-8)
++ Response 400 (application/json)
 
         {
             "errors": [
@@ -139,21 +137,20 @@ If the recipient was added by our compliance system, it cannot be updated.
 
     + Body
 
-        ```
-        {
-          "type": "transactional",
-          "description" : "Unsubscribe from newsletter"
-        }
-        ```
+            {
+                "type": "transactional",
+                "description": "Unsubscribe from newsletter"
+            }
 
-+ Response 200 (application/json; charset=utf-8)
++ Response 200 (application/json)
 
         {
-              "results": {
+            "results": {
                 "message": "Suppression list successfully updated"
-              }
+            }
         }
-+ Response 400 (application/json; charset=utf-8)
+
++ Response 400 (application/json)
 
         {
             "errors": [
@@ -162,7 +159,8 @@ If the recipient was added by our compliance system, it cannot be updated.
                 }
             ]
         }
-+ Response 400 (application/json; charset=utf-8)
+
++ Response 400 (application/json)
 
         {
             "errors": [
@@ -199,56 +197,29 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
 + Request
 
 
-+ Response 200 (application/json; charset=utf-8)
++ Response 200 (application/json)
 
         {
-            "results" : [
-              {
-                "recipient" : "rcpt_1@example.com",
-                "non_transactional" : true,
-                "type": "non_transactional",
-                "source" : "Manually Added",
-                "description" : "User requested to not receive any non-transactional emails.",
-                "created" : "2015-01-01T12:00:00+00:00",
-                "updated" : "2015-01-01T12:00:00+00:00"
-              },
-              {
-                "recipient" : "rcpt_1@example.com",
-                "transactional" : true,
-                "type": "transactional",
-                "source" : "Manually Added",
-                "description" : "User requested to not receive any further emails.",
-                "created" : "2015-01-01T12:00:00+00:00",
-                "updated" : "2015-01-01T12:00:00+00:00"
-              }
-            ],
-            "links": [],
-            "total_count": 2
-        }
-
-+ Response 200 (application/json; charset=utf-8)
-
-        {
-            "results" : [
-              {
-                "recipient" : "shared_recip@example.com",
-                "non_transactional" : true,
-                "type": "non_transactional",
-                "source" : "Manually Added",
-                "description" : "User requested to not receive any non-transactional emails.",
-                "created" : "2015-01-01T12:00:00+00:00",
-                "updated" : "2015-01-01T12:00:00+00:00"
-              },
-              {
-                "recipient" : "shared_recip@example.com",
-                "non_transactional" : true,
-                "type": "non_transactional",
-                "source" : "Bounce Rule",
-                "description" : "550: 550 - Domain has been disabled. #7",
-                "created" : "2016-10-01T12:00:00+00:00",
-                "updated" : "2016-10-01T12:00:00+00:00",
-                "subaccount_id": "146"
-              },
+            "results": [
+                {
+                    "recipient": "shared_recip@example.com",
+                    "non_transactional": true,
+                    "type": "non_transactional",
+                    "source": "Manually Added",
+                    "description": "User requested to not receive any non-transactional emails.",
+                    "created": "2015-01-01T12:00:00+00:00",
+                    "updated": "2015-01-01T12:00:00+00:00"
+                },
+                {
+                    "recipient": "shared_recip@example.com",
+                    "non_transactional": true,
+                    "type": "non_transactional",
+                    "source": "Bounce Rule",
+                    "description": "550: 550 - Domain has been disabled. #7",
+                    "created": "2016-10-01T12:00:00+00:00",
+                    "updated": "2016-10-01T12:00:00+00:00",
+                    "subaccount_id": "146"
+                }
             ],
             "links": [],
             "total_count": 2
@@ -268,9 +239,16 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
 
 + Request
 
-+ Response 204 (application/json; charset=utf-8)
+    + Body
 
-+ Response 403 (application/json; charset=utf-8)
+        {
+            "type": "transactional"
+        }
+
+
++ Response 204 (application/json)
+
++ Response 403 (application/json)
 
         {
             "errors": [
@@ -280,7 +258,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
             ]
         }
 
-+ Response 404 (application/json; charset=utf-8)
++ Response 404 (application/json)
 
         {
             "errors": [
@@ -299,7 +277,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
     + to (string, optional) - Date the suppressions were last updated, in the format of `YYYY-MM-DDTHH:mm:ssZ`.
         + Default: now
     + from: `2017-01-01T09:00:00-0400` (string, optional) - Date the suppressions were last updated, in the format `YYYY-MM-DDTHH:mm:ssZ`.
-    + domain: `example.com` (string, optional, ) - Domains to match in the search.
+    + domain: `example.com` (string, optional) - Domains to match in the search.
     + sources: `Bounce%20Rule,Manually%20Added` (list, optional) - Sources to match in the search, i.e. entries that were added by this source.
     + types: transactional (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
     + description (string, optional) - String to match in suppression descriptions.
@@ -310,7 +288,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
 
 + Request
 
-+ Response 200 (application/json; charset=utf-8)
++ Response 200 (application/json)
 
         {
             "results": [
@@ -354,7 +332,7 @@ Returns the total number of suppressions for your account, as well as a break do
 
 + Request
 
-+ Response 200 (application/json; charset=utf-8)
++ Response 200 (application/json)
 
         {
             "results": {
