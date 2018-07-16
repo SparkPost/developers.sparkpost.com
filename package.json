@@ -3,6 +3,13 @@
   "description": "SparkPost Developer Site",
   "version": "1.0.0",
   "author": "SparkPost <dev-relations@sparkpost.com>",
+  "bugs": {
+    "url": "https://github.com/SparkPost/developers.sparkpost.com/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "escape-string-regexp": "^1.0.5",
