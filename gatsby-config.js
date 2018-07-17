@@ -28,33 +28,7 @@ module.exports = {
           useACF: false,
           excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
         }
-      },
-      {
-        resolve: 'gatsby-source-github',
-        options: {
-          headers: {
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-          },
-          queries: [
-            `{
-              search(type: REPOSITORY, query: "is:public user:SparkPost", first: 100) {
-                edges {
-                  node {
-                    ... on Repository {
-                      name
-                      url
-                      description
-                      stargazers {
-                        totalCount
-                      }
-                    }
-                  }
-                }
-              }
-            }`,
-          ],
-        }
-      },
+      }
     ] : [],
     process.env.GATSBY_ACTIVE_ENV === 'publish' ? [
       {
