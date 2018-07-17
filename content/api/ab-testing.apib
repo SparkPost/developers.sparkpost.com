@@ -4,7 +4,7 @@ description: A/B Testing of templates.
 
 # Group A/B Testing
 
-An A/B test is a method of comparing templates to see which preforms best. Each A/B test has a default template and up to 20 template variants to compare. You can configure whether we compare the templates based on the number of unique opens or unique clicks.
+An A/B test is a method of comparing templates to see which performs best. Each A/B test has a default template and up to 20 template variants to compare. You can configure whether we compare the templates based on the number of unique opens or unique clicks.
 
 You can also choose how many messages use each variant in one of two ways:
 * A percentage of messages
@@ -12,8 +12,10 @@ You can also choose how many messages use each variant in one of two ways:
 
 The test will then run until one of the following criteria is met:
 * The `end_time` passes
-* The number of messages sent equals `total_sample_size`
+* The number of messages accepted equals or exceeds the `total_sample_size`
 * The `confidence_level` has been reached (Bayesian Mode only)
+
+To use the A/B test, send it as the transmission content. Learn more about [sending an A/B test](/api/transmissions/#transmissions-post-send-an-a-b-test).
 
 Once the test ends, we wait the number of hours set in `engagement_timeout` before marking the test completed. This gives time for the metrics to come in from the emails that were last sent.
 
@@ -631,7 +633,7 @@ Returns the A/B test ID.
             ]
         }
 
-### Schedule an A/B Test [POST /ab-test/draft/{id}/schedule]
+### Schedule an A/B Test draft [POST /ab-test/draft/{id}/schedule]
 
 + Data Structure
     + start_time (string, required) - ISO Date specifying when the test should begin.
