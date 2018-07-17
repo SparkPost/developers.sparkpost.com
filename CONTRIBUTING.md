@@ -85,6 +85,8 @@ Avoid using them, unless you are creating a sub category.
 
 Actions are the meat and potatoes of the documentation. They describe each action you can take.
 
+**Example**
+
 ```
 ### Create a Sending Domain [POST /sending-domains]
 ```
