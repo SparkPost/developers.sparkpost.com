@@ -14,6 +14,15 @@ The content of the messages can be passed in 4 different ways: [inline content](
 
 Learn more about [how to optimize your sending](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/) with SparkPost.
 
+### The Sandbox Domain
+
+The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
+
+For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
+
+<banner status="info"><strong>Note</strong>: The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
+
+
 ### Sending Limits
 
 Your account has a sandbox, hourly, daily, and monthly sending limit based on your current plan level. You can view your current limits on the [dashboard](https://app.sparkpost.com/dashboard) ([EU](https://app.eu.sparkpost.com/dashboard)). If a transmission will push your over the sandbox, hourly, or daily sending limit, an error with the status code `420` is returned, along with a message detailing which limit you will exceed. If this happens, no messages are sent, regardless of the number of messages that to exceeded your limit.
@@ -33,10 +42,13 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 
 ## Create a Transmission [/transmissions/{?num_rcpt_errors}]
 
-You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
-
+You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned. The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs.
 
 ### Request Body
+
++ Data Structure: Parameters
+    + num_rcpt_errors (number, `3`) - Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
+
 
 + Data Structure
     + options (object) - Object containing transmission options. If an option is not set, the [template-level option](#header-template-object) is used.
@@ -115,23 +127,37 @@ You can create a transmission in a number of ways. In all cases, you can use the
     }
     ```
 
-### The Sandbox Domain
-
-The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
-
-For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
-
-<banner status="info"><strong>Note</strong>: The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
-
-### Using a Stored Recipient List
+### Stored Recipient List
 
 The following recipients attribute is used when specifying a stored recipient list in the transmission. Note that this attribute should not be present when specifying recipients inline.
 
-| Field         | Type     | Description                           | Required   | Notes   |
-|------------------------|:-:       |---------------------------------------|-------------|--------|
-|list_id | string  | Identifier of the stored recipient list to use | yes | Specify this field when using a stored recipient list. |
++ Data Structure: Recipients Content
+    + list_id (string, required) 
+        Identifier of the stored recipient list to use.
+        <hr style="margin-top: 0;" />
 
-Create a transmission using a stored recipients list by specifying the `list_id` in the `recipients` attribute.
+        Create a transmission using a stored recipients list by specifying the `list_id` in the `recipients` attribute.
++ Sample
+    ```
+    {
+        "campaign_id": "christmas_campaign",
+        "recipients": {
+            "list_id": "christmas_sales_2013"
+        },
+        "content": {
+            "from": {
+                "name": "Fred Flintstone",
+                "email": "fred@flintstone.com"
+            },
+            "subject": "Big Christmas savings!",
+            "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
+            "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+        }
+    }
+    ```
+
+<br />
+<br />
 
 ### Send Inline Content [POST]
 
@@ -144,10 +170,86 @@ The following attributes are used when specifying inline content in the transmis
     + from (enum, required) - Address `"from": "deals@company.com"` or object composed of the `name` and `email` fields `"from": { "name": "My Company", "email": "deals@company.com" }` used to compose the email's `From` header| yes, for email. Substitution syntax is supported.
         + (string)
         + (object)
+            + param (array) - cool
     + reply_to (string) - Email address used to compose the email's "Reply-To" header. Substitution syntax is supported.
     + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To` . See the [Header Notes](#header-header-notes).
     + attachments (array) - Array of attachments. For a full description, see [Attachment Attributes](#header-attachment-attributes).
     + inline_images (array) - Array of inline images For a full description, see [Inline Image Attributes](#header-inline-image-attributes).
+
+
+#### Attachment Attributes
+
+<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
+
+Attachments for a transmission are specified in the `content.attachments` JSON array where each JSON object in the array is described by the following fields:
+
+| Field         | Type     | Description                           | Required   | Notes   |
+|--------------------|:-:       |---------------------------------------|-------------|------------------|
+|type |string |The MIME type of the attachment; e.g., `text/plain`, `image/jpeg`, `audio/mp3`, `video/mp4`, `application/msword`, `application/pdf`, etc., including the `charset` parameter (ex: `text/html; charset="UTF-8"`) if needed. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. | yes |  |
+|name |string |The filename of the attachment (for example, `document.pdf`). This is inserted into the filename parameter of the `Content-Disposition` header. | yes | Maximum length - 255 bytes |
+|data |string |The content of the attachment as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
+
+#### Inline Image Attributes
+
+Inline images for a transmission are specified in the `content.inline_images` JSON array where each JSON object in the array is described by the following fields:
+
++ type (string) - The MIME type of the image; e.g., `image/jpeg`.  The value will apply as-is to the `Content-Type` header of the generated MIME part for the image. | yes |  |
++ name (string) - The name of the inline image, which will be inserted into the `Content-ID` header. The image should be referenced in your HTML content using `<img src="cid:THIS_NAME" />`. The name must be unique within the `content.inline_images` array. | yes | Maximum length - 255 bytes |
++ data (string) - The content of the image as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes |  |
+
+{
+    "campaign_id":"attachment_example",
+    "recipients":[
+        {
+            "address":"wilma@flintstone.com"
+        }
+    ],
+    "content":{
+        "from":{
+            "email":"billing@company.example",
+            "name":"Example Company"
+        },
+        "subject":"Billing statement",
+        "html":"<b>Please see your attached billing statement</b>",
+        "attachments":[
+            {
+                "type":"application/pdf",
+                "name":"billing.pdf",
+                "data":"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
+            },
+            {
+                "type":"text/plain; charset=UTF-8",
+                "name":"explanation.txt",
+                "data":"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
+            }
+        ]
+    }
+}
+
+{
+    "campaign_id": "inline_image_example",
+    "recipients": [
+        {
+            "address": "wilma@flintstone.com"
+        }
+    ],
+    "content": {
+        "from": {
+            "email": "marketing@company.example",
+            "name": "Example Company"
+        },
+        "subject": "Inline image example",
+        "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
+        "inline_images": [
+            {
+                "type": "image/jpeg",
+                "name": "my_image.jpeg",
+                "data": "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
+            }
+        ]
+    }
+}
+
 
 #### Header Notes
 
@@ -155,7 +257,6 @@ The following attributes are used when specifying inline content in the transmis
 * The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
 * Substitution syntax is supported in headers.
-
 
 + Request (application/json)
 
@@ -245,14 +346,13 @@ The following attributes are used when specifying inline content in the transmis
 
 ### Send a Template [POST]
 
-The following attributes are used when specifying a stored template in the transmission's `content` JSON object. Note that these attributes should not be present when using inline content.
+The following attributes should be set in the `content` object when using a template as the transmission's content:
 
 + Data Structure: Content Attributes
-    + template_id (string, required) - ID of the stored template to use. Specify this field when using a stored template. Maximum length – 64 bytes
-    + use_draft_template (boolean) - Whether to use a draft template. If this field is set to `true` and no draft template exists, the transmission will fail.
+    + template_id (string, required) - ID of the template to use.
+    + use_draft_template (boolean) - Whether to use the draft version. If this is set to `true` and no draft exists, the transmission will fail.
         + Default: false
 
-Create a transmission using a stored template by specifying the `template_id` in the `content` attribute.  The `use_draft_template` field is optional and indicates whether to use a draft version or the published version of the template when generating messages.
 
 + Request (application/json)
 
@@ -270,7 +370,7 @@ Create a transmission using a stored template by specifying the `template_id` in
                 "campaign_id": "thanksgiving_campaign",
                 "content": {
                     "template_id": "christmas_offer",
-                    "use_draft_template": false
+                    "use_draft_template": true
                 },
                 "metadata": {
                     "user_type": "students",
@@ -357,16 +457,14 @@ Create a transmission using a stored template by specifying the `template_id` in
 
 ### Send an A/B Test [POST]
 
-The following attributes are used when specifying an A/B test in the transmission's `content` JSON object.
+The following attribute should be set in the `content` object when sending an A/B test as the transmission's content:
 
 + Data Structure: Content Attributes
     + ab_test_id (string, required) - ID of the A/B test to use. Specify this field when using an A/B test.
 
-<banner status="info"><strong>Note</strong>: When using substitution data with A/B tests, data for all possible templates must be provided.  It is recommended best practice that all templates that make up an A/B test use the same substitution data fields</banner>
+When using substitution data with A/B tests, data for all possible templates must be provided.  We recommend that all templates that make up an A/B test should use the same substitution data fields.
 
-<banner status="info"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
-
-Create a transmission using an A/B test by specifying the `ab_test_id` in the `content` attribute.
+<banner status="warning"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
 
 + Request
 
@@ -411,21 +509,18 @@ Create a transmission using an A/B test by specifying the `ab_test_id` in the `c
 
 ### Send RFC822 Content [POST]
 
-Alternately, the content JSON object may contain a single `email_rfc822` field. `email_rfc822` is mutually exclusive with all of the above fields.
+The following attribute should be set in the `content` object when sending RFC822 content as the transmission's content:
 
++ Data Structure: RFC 822 Content
+    + email_rfc822 (string) - Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1).
 
-+ Data Structure: Content Attributes
-    + email_rfc822 (string, required) - Pre-built message as specified by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1)
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and first non-attachment `text/html` MIME parts only.
+* Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
+* It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
+* It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.
+The provided email_rfc822 in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
 
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and
-first non-attachment `text/html` MIME parts only.
-* Lone `LF`s and lone `CR`s are allowed. The system will convert line endings to `CRLF` where
-necessary.
-* The provided `email_rfc822` should NOT be dot stuffed.  The system dot stuffs before sending the outgoing message.
-* The provided `email_rfc822` should NOT contain the SMTP terminator `\r\n.\r\n`.  The system always adds this terminator.
-* The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
-
-Create a transmission using inline RFC822 content. Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
+Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
 
 + Request (application/json)
 
@@ -525,234 +620,11 @@ Create a transmission using inline RFC822 content. Content headers are not gener
             ]
         }
 
-### Sending Attachments and Inline Images [POST]
+## Scheduled Transmissions [/transmissions]
 
-
-**Attachment Attributes**
-
-<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
-
-Attachments for a transmission are specified in the `content.attachments` JSON array where each JSON object in the array is described by the following fields:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-------------|------------------|
-|type |string |The MIME type of the attachment; e.g., `text/plain`, `image/jpeg`, `audio/mp3`, `video/mp4`, `application/msword`, `application/pdf`, etc., including the `charset` parameter (ex: `text/html; charset="UTF-8"`) if needed. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. | yes |  |
-|name |string |The filename of the attachment (for example, `document.pdf`). This is inserted into the filename parameter of the `Content-Disposition` header. | yes | Maximum length - 255 bytes |
-|data |string |The content of the attachment as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
-
-**Inline Image Attributes**
-
-Inline images for a transmission are specified in the `content.inline_images` JSON array where each JSON object in the array is described by the following fields:
-
-| Field         | Type     | Description                           | Required   | Notes   |
-|--------------------|:-:       |---------------------------------------|-------------|------------------|
-|type |string |The MIME type of the image; e.g., `image/jpeg`.  The value will apply as-is to the `Content-Type` header of the generated MIME part for the image. | yes |  |
-|name |string |The name of the inline image, which will be inserted into the `Content-ID` header. The image should be referenced in your HTML content using `<img src="cid:THIS_NAME" />`. The name must be unique within the `content.inline_images` array. | yes | Maximum length - 255 bytes |
-|data |string | The content of the image as a Base64 encoded string.  The string should not contain `\r\n` line breaks.  The SparkPost systems will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each. | yes | The entirety of transmission content (text + html + attachments + inline images) is limited to 20 MBs |
-
-+ Parameters
-    + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
-
-+ Request Create Transmission with attachments (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "campaign_id":"attachment_example",
-                "recipients":[
-                    {
-                        "address":"wilma@flintstone.com"
-                    }
-                ],
-                "content":{
-                    "from":{
-                        "email":"billing@company.example",
-                        "name":"Example Company"
-                    },
-                    "subject":"Billing statement",
-                    "html":"<b>Please see your attached billing statement</b>",
-                    "attachments":[
-                        {
-                            "type":"application/pdf",
-                            "name":"billing.pdf",
-                            "data":"Q29uZ3JhdHVsYXRpb25zLCB5b3UgY2FuIGJhc2U2NCBkZWNvZGUh"
-                        },
-                        {
-                            "type":"text/plain; charset=UTF-8",
-                            "name":"explanation.txt",
-                            "data":"TW92ZSBhbG9uZy4gIE5vdGhpbmcgdG8gc2VlIGhlcmUu"
-                        }
-                    ]
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 1,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Request Create Transmission with inline images (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-    + Body
-
-            {
-                "campaign_id": "inline_image_example",
-                "recipients": [
-                    {
-                        "address": "wilma@flintstone.com"
-                    }
-                ],
-                "content": {
-                    "from": {
-                        "email": "marketing@company.example",
-                        "name": "Example Company"
-                    },
-                    "subject": "Inline image example",
-                    "html": "<html><body>Here is your inline image!<br> <img src=\"cid:my_image.jpeg\"></body></html>",
-                    "inline_images": [
-                        {
-                            "type": "image/jpeg",
-                            "name": "my_image.jpeg",
-                            "data": "VGhpcyBkb2Vzbid0IGxvb2sgbGlrZSBhIGpwZWcgdG8gbWUh"
-                        }
-                    ]
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 1,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Request Create Transmission Using CC Header (application/json)
-
-    + Body
-
-            {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true,
-                    "transactional": false,
-                    "sandbox": false,
-                    "ip_pool": "my_ip_pool",
-                    "inline_css": false
-                },
-                "description": "Christmas Campaign Email",
-                "campaign_id": "christmas_campaign",
-                "recipients": [
-                    {
-                        "address": {
-                            "email": "wilma@flintstone.com"
-                        }
-                    },
-                    {
-                        "address": {
-                            "email": "pebbles@flintstone.com",
-                            "header_to": "wilma@flintstone.com"
-                        }
-                    }
-                ],
-                "content": {
-                    "from": {
-                        "name": "Fred Flintstone",
-                        "email": "fred@flintstone.com"
-                    },
-                    "subject": "Big Christmas savings!",
-                    "reply_to": "Christmas Sales <sales@flintstone.com>",
-                    "headers": {
-                        "CC": "pebbles@flintstone.com"
-                    },
-                    "text": "Hi, \nSave big this Christmas in your area! \nClick http://www.mysite.com and get huge discount!"
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 2,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Response 400 (application/json)
-
-        {
-            "errors": [
-                {
-                    "description": "Unconfigured or unverified sending domain.",
-                    "code": "7001",
-                    "message": "Invalid domain"
-                }
-            ]
-        }
-
-+ Request Create Transmission with Stored Recipient List (application/json)
-
-    + Body
-
-            {
-                "campaign_id": "christmas_campaign",
-                "recipients": {
-                    "list_id": "christmas_sales_2013"
-                },
-                "content": {
-                    "from": {
-                        "name": "Fred Flintstone",
-                        "email": "fred@flintstone.com"
-                    },
-                    "subject": "Big Christmas savings!",
-                    "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
-                    "html": "<p>Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
-                }
-            }
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "total_rejected_recipients": 0,
-                "total_accepted_recipients": 10,
-                "id": "11668787484950529"
-            }
-        }
-
-+ Response 404 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "resource not found",
-                    "description": "List 'christmas_sales_2013' does not exist",
-                    "code": "1600"
-                }
-            ]
-        }
-
-## Scheduled Transmissions [/transmission]
+<banner status="info"><strong>Note</strong>: Not available in SparkPost EU.</banner>
 
 ### Schedule a Transmission [POST /transmissions/]
-
-**Not available in SparkPost EU.**
 
 Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
 
@@ -912,6 +784,9 @@ Delete all transmissions in a campaign.
 + Response 204
 
 ### List All Scheduled Transmissions [GET /transmissions{?campaign_id,template_id}]
+
+
+#### Returns
 
 Returns an array of transmission objects.
 
