@@ -28,10 +28,16 @@ function renderTypeAttributes(member) {
   if (valueAttributes.get('enumerations')) {
     properties.enumerations = valueAttributes
       .get('enumerations')
-      .map(enumeration => ({
-        type: enumeration.element,
-        value: enumeration.toValue(),
-      }))
+      .map(enumeration => {
+        if (enumeration.element === 'object') {
+          return renderAttribute(enumeration)
+        } else {
+          return {
+            type: enumeration.element,
+            value: enumeration.toValue(),
+          }
+        }
+      })
   }
 
   return properties
