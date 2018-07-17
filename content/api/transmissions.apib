@@ -748,6 +748,8 @@ Inline images for a transmission are specified in the `content.inline_images` JS
             ]
         }
 
+## Scheduled Transmissions [/transmission]
+
 ### Schedule a Transmission [POST /transmissions/]
 
 **Not available in SparkPost EU.**
@@ -896,18 +898,6 @@ Only transmissions which are scheduled for future generation may be deleted.
             ]
         }
 
-+ Response 409 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "transmission database record is in an invalid state for deletion",
-                    "code": "2006",
-                    "description": "Unable to delete a transmission that has completed (state=Success)"
-                }
-            ]
-        }
-
 ### Delete Scheduled Transmissions By Campaign ID [DELETE /transmissions{?campaign_id}]
 
 <banner status="info"><strong>Note:</strong> Enterprise only, account-specific configuration option.</banner>
@@ -926,11 +916,16 @@ Delete all transmissions in a campaign.
 Returns an array of transmission objects.
 
 + Data Structure: Transmission Object
-    + id (number)
-    + state (string)
+    + id (number) - Transmission ID
+    + state (enum)
+        + submitted
+        + Generating
+        + Success
+        + Canceled
     + template_id (string) - Transmissions with inline content will have this field as "inline".
     + campaign_id (string)
     + description
+
 
 + Parameters
     + campaign_id: thanksgiving (string, optional) - Campaign to filter by.
