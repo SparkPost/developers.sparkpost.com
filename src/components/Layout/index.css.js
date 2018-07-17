@@ -40,6 +40,7 @@ injectGlobal`
     font-size: 17px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: ${grayscale('medium')};
     line-height: 1.15;
 
