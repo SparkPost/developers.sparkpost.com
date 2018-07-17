@@ -12,6 +12,7 @@ module.exports = {
     description: `SparkPost developer resources including documentation, API reference, and client libraries.`,
   },
   plugins: flatten([
+    `gatsby-plugin-netlify-cms`,
     process.env.GATSBY_ACTIVE_ENV !== 'docs' ? [
       {
         resolve: `gatsby-plugin-page-creator`,
