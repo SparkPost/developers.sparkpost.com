@@ -56,6 +56,8 @@ As a general rule, API reference files should start with an introduction and des
     1. **Introduction**
     1. **Create**
     1. **etc...**
+    
+### API Blueprint parts
 
 #### [Resource Group](https://apiblueprint.org/documentation/tutorial.html#resource-groups)
 
