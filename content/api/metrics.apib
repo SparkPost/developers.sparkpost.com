@@ -24,7 +24,9 @@ Definitions for terms found in Metrics API
 | `count_delivered_first`          | Messages delivered on the first attempt                                                             |
 | `count_delivered_subsequent`     | Messages delivered that required more than one delivery attempt                                     |
 | `count_rendered`                 | Total renderings of a message                                                                       |
+| `count_initial_rendered`         | Total initial renderings of a message                                                               |
 | `count_unique_rendered`          | Total number of messages that were rendered at least once                                           |
+| `count_unique_initial_rendered`  | Total number of messages that were initally rendered at least once                                  |
 | `count_unique_confirmed_opened`  | Total number of messages that were rendered or had at least one link selected                       |
 | `count_clicked`                  | Total number of times that links were selected across all messages                                  |
 | `count_unique_clicked`           | Total number of messages which had at least one link selected one or more times                     |
@@ -1058,6 +1060,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1120,6 +1123,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1185,6 +1189,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + limit (optional, int, `5`) ... Maximum number of results to return.
 
