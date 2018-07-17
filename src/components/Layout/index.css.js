@@ -26,6 +26,12 @@ injectGlobal`
     position: relative;
   }
 
+  ::selection {
+    color: #111;
+    background: #D6EDFF;
+    text-shadow: none;
+  }
+
   /** Typography */
 
   html {
@@ -38,6 +44,8 @@ injectGlobal`
     line-height: 1.15;
 
     ${mediaQuery('sm', `font-size: 18px;`)};
+
+    ${mediaQuery('xl', `font-size: 19px;`)};
   }
 
   body {

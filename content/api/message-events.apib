@@ -10,6 +10,8 @@ The Message Events API allows searching for recent events, and supports various 
 
 Message event data is retained for 10 days and is generally available within 1 minute. Aggregate reporting data is available through [metrics](/api/metrics) or the app for up to 6 months.
 
+*Note:* The maximum URI length is 4096 characters so please keep your message events queries below that size.
+
 ___
 
 __The SparkPost Message Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
@@ -33,7 +35,7 @@ Returns a list of message events that matched the filtered search. The response 
     + message_ids (optional, list) ... Delimited list of message IDs to search.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + to (datetime, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `now`
+        + Default: `1 minute ago`
     + from (datetime, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
         + Default: `24 hours ago`
     + page = `1` (optional, number) ... The results page number to return. Used with per_page for paging through results.

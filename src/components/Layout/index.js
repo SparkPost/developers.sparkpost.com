@@ -28,8 +28,8 @@ const Layout = ({ data, children, location }) => (
     render={data => (
       <StickyContainer>
         <Sticky>
-          {({ style, isSticky, distanceFromTop }) => (
-            <div style={{ ...style, zIndex: zIndex('header') }}>
+          {({ style: { width, ...style }, isSticky, distanceFromTop }) => (
+            <div style={{ ...style, width: `100%`, zIndex: zIndex('header') }}>
               <Header
                 path={location.pathname}
                 isSticky={

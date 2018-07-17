@@ -1,0 +1,7 @@
+[build]
+  publish = "./public"
+  command = "npm run bootstrap && npm run build"
+
+# Run `npm run publish` to re-index in algolia
+[context.production]
+  command = "npm run bootstrap && npm run publish"

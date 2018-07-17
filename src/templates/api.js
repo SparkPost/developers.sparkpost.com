@@ -5,6 +5,7 @@ import Layout from 'components/Layout'
 import tableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
+import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import API from 'components/api'
 
 import { mediaQuery } from 'utils/breakpoint'
@@ -99,6 +100,7 @@ class Template extends Component {
           title={meta.title}
           meta={[{ name: 'description', content: meta.description }]}
         />
+        <ApiaryRedirects />
         <Sidebar>
           <Search />
           <Navigation

@@ -35,9 +35,18 @@ module.exports = [
         return gatherSearchableCunks({ path, ast: childApiBlueprint.ast, pageIndex })
       }))
 
-      console.log(`push ${searchableChunks.length} chunks to algolia`)
+      /**
+       * Remove all resources that don't have any description since they are
+       * almost definitely the same title as their transition child and only
+       * create noise in the search.
+       */
+      const filteredSearchableChunks = searchableChunks.filter(({ element, description }) => {
+        return !(element === 'resource' && description.length === 0)
+      })
 
-      return searchableChunks
+      console.log(`push ${filteredSearchableChunks.length} chunks to algolia`)
+
+      return filteredSearchableChunks
     },
     indexName: `api_docs_dev`
   }

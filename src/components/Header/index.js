@@ -107,7 +107,7 @@ class Header extends Component {
         <Hamburger isOpen={this.state.isOpen} onClick={this.toggleOpen} />
         <NavWrapper isOpen={this.state.isOpen}>
           <Nav>
-            <NavLink to="/api" active={path.startsWith('/api')}>
+            <NavLink to="/api/" active={path.startsWith('/api')}>
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
