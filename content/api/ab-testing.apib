@@ -4,31 +4,50 @@ description: A/B Testing of templates.
 
 # Group A/B Testing
 
-An A/B test is a method of comparing templates against a default template to see how their performance compares.  Users specify a default template and up to twenty template variants to compare, the comparison is based on the user selected metric.  Currently there are two supported modes of audience selection (which recipients receive the variant templates): a fixed number of recipients per variant can be specified, alternatively a percentage of recipients per variant can be specified.  There are two supported modes of behavior selection once the A/B test completes.  In Learning Mode once the test has completed subsequent transmissions will revert to using the default template.  In Bayesian mode the best performing template (the "winner") as determined by a Bayesian algorithm will be used in subsequent transmissions.
+An A/B test is a method of comparing templates to see which preforms best. Each A/B test has a default template and up to 20 template variants to compare. You can configure whether we compare the templates based on the number of unique opens or unique clicks.
+
+You can also choose how many messages use each variant in one of two ways:
+* A percentage of messages
+* A fixed number of messages
+
+The test will then run until one of the following criteria is met:
+* The `end_time` passes
+* The number of messages sent equals `total_sample_size`
+* The `confidence_level` has been reached (Bayesian Mode only)
+
+Once the test ends, we wait the number of hours set in `engagement_timeout` before marking the test completed. This gives time for the metrics to come in from the emails that were last sent.
+
+The `test_mode` defines what happens once the A/B test completes. In `learning` mode, once the test completes all future transmissions use the default template. In `bayesian` mode, we use a Bayesian algorithm to determined the best performing template. and use that winning template for future transmissions.
+
+In Bayesian mode, when a template reaches the set `confidence_level` it becomes the winner. If a test ends by hitting one of the other conditions and the `confidence_level` has not been reached, the default template will be considered the winner.
+
+<banner status="info">Bayesian test mode is coming soon!</banner>
+
+### Versions
+
+A/B test versions allow you to run multiple tests within the same A/B test. This lets you iterate without changing your transmissions call. The version increments each time the A/B test is updated after its first completed or cancelled run.
 
 ### A/B Test Object
 
-<banner status="info"><strong>Note</strong>: Bayesian test mode is coming soon!</banner>
-
 + Data Structure
-    + id (string) - The identifier for this A/B test.
-    + name (string) - A human readable name for this A/B test.
+    + id (string) - Unique alphanumeric ID.
+    + name (string) - Display name.
     + status (enum) - The current state of the test.
         + draft
         + scheduled
         + running
         + completed
         + cancelled
-    + winning_template_id (string) - The "winner" of the A/B test. Only present if the state is `completed`.
-    + version (number) - The current version number of the test. The version increments each time the A/B test is modified.
+    + winning_template_id (string) - The winner of the A/B test. Only present when the state is `completed`.
+    + version (number) - The current version of the test. 
     + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
-    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
-    + metric (enum) 
+    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object). 
+    + metric (enum) - Which metric to use when comparing the templates.
         + count_unique_clicked
         + count_unique_confirmed_opened
-    + `audience_selection` (enum) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages determined by the template's `sample_size`.
-        + percent
+    + `audience_selection` (enum) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages.
         + sample_size
+        + percent
     + test_mode (enum)
         + bayesian
         + learning
@@ -37,7 +56,7 @@ An A/B test is a method of comparing templates against a default template to see
         ISO Date specifying when the test should end. Defaults to 30 days from `start_time` - `engagement_timeout`.
     + total_sample_size (number) - Total number of messages to send as part of the test.
     + confidence_level (number) - Specify a confidence level at which point the test should end.
-    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the end_time to make a decision on winner and/or mark test as completed.
+    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the `end_time` to determine the winner.
     + created_at (string) - ISO Date of A/B Test creation.
     + updated_at (string) - ISO Date of the last time the A/B test was updated.
 + Sample
@@ -76,35 +95,36 @@ An A/B test is a method of comparing templates against a default template to see
 ### Template Object
 
 + Data Structure: Attributes
-    + template_id (required, string) - The template id.
-    + `sample_size` (number) - The number of injections to send using this template. Required if A/B test has `total_sample_size` defined.
-    + percent (number) - The percent of injections to send using this template. Required if A/B test does not have `total_sample_size` defined.
+    + template_id (string, required) - The template id.
+    + `sample_size` (number) - The number of injections to send using this template. Required when `audience_selection` is `sample_size`.
+    + percent (number) - The percent of injections to send using this template. Required when `audience_selection` is `percent`.
 
-<banner status="info"><strong>Note</strong>: Tests will run until one of the following criteria are met: The end_time has passed, messages equal to the total_sample_size have been sent, or the confidence_level (Bayesian mode only) has been reached. In Bayesian mode, reaching the specified confidence_level for a template will cause it to become the "winner". If a test ends and the confidence_level has not been reached, the default template will be considered the "winner". </banner>
+<banner status="warning"><strong>Note</strong>: The templates must have tracking enabled for the A/B test to properly run.</banner>
+
 
 ### Create an A/B Test [POST /ab-test]
 
 + Data Structure
-    + id (required, string) - The identifier for this A/B test.
-    + name (required, string) - A human readable name for this A/B test.
-    + default_template (required, object) - Details for the default template. See [Template Object](#header-template-object).
-    + variants (required, array[object]) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
-    + metric (required, enum) 
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + name (string, required) - Display name.
+    + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
+    + variants (array[object], required) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
+    + metric (enum, required) - Which metric to use when comparing the templates.
         + count_unique_clicked
         + count_unique_confirmed_opened
-    + `audience_selection` (required, enum) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages determined by the template's `sample_size`.
+    + `audience_selection` (enum, required) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages.
         + percent
         + sample_size
-    + test_mode (required, enum)
+    + test_mode (enum, required)
         + bayesian
         + learning
-    + start_time (required, string) - ISO Date specifying when the test should begin.
+    + start_time (string, required) - ISO Date specifying when the test should begin.
     + end_time (string)
         ISO Date specifying when the test should end. Defaults to 30 days from `start_time` - `engagement_timeout`.
     + total_sample_size (number) - Total number of messages to send as part of the test.
     + confidence_level (number) - Specify a confidence level at which point the test should end.
         + Default: 0.95
-    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the end_time to make a decision on winner and/or mark test as completed.
+    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the `end_time` to determine the winner.
         + Default: 24
 
 Returns the A/B test ID, when successful.
@@ -216,7 +236,7 @@ Returns the A/B test ID, when successful.
 
 + Parameters
     + id (required, string, `password-reset`)
-    + version (optional, number) ... If passed return information about the specific version of the A/B test. If not specified, return information about the latest version.
+    + version (optional, number) ... If passed, returns information about the specific version of the A/B test. If not specified, returns information about the latest version.
 
 + Request
 
@@ -261,21 +281,45 @@ Returns the A/B test ID, when successful.
 
 + Response 404 (application/json)
 
-    ```json
     {
-      "errors": [{"message": "A/B test password-reset does not exist"}]
+        "errors": [
+            {
+                "message": "A/B test password-reset does not exist"
+            }
+        ]
     }
-    ```
 
 ### Update an A/B Test [PUT /ab-test/{id}]
 
 <banner status="warning"><strong>Note</strong>: You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</banner>
 
-If the A/B test's latest version is cancelled or completed, updating it creates a new version. This effectively causes the test to restart. The `winning_template_id` will be reset for the new version. If `winning_template_id` existed in the previous version, the `template_id` of the new version will default to that value, unless overridden by the update.
+If the A/B test's latest version is cancelled or completed, updating it creates a new version, effectively restarting the test. The `winning_template_id` will be reset for the new version. If `winning_template_id` existed in the previous version, the `default_tempate.template_id` of the new version will default to that value, unless overridden by the update.
+
++ Data Structure
+    + name (string) - Display name.
+    + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
+    + variants (array[object]) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
+    + metric (enum) - Which metric to use when comparing the templates.
+        + count_unique_clicked
+        + count_unique_confirmed_opened
+    + `audience_selection` (enum) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages.
+        + percent
+        + sample_size
+    + test_mode (enum)
+        + bayesian
+        + learning
+    + start_time (string) - ISO Date specifying when the test should begin.
+    + end_time (string)
+        ISO Date specifying when the test should end. Defaults to 30 days from `start_time` - `engagement_timeout`.
+    + total_sample_size (number) - Total number of messages to send as part of the test.
+    + confidence_level (number) - Specify a confidence level at which point the test should end.
+        + Default: 0.95
+    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the `end_time` to determine the winner.
+        + Default: 24
 
 #### Returns
 
-Returns the `version`.
+Returns the new `version`.
 
 + Parameters
 
@@ -327,6 +371,8 @@ Returns the `version`.
     }
 
 ### Cancel an A/B Test [POST /ab-test/{id}/cancel]
+
+Any transmissions using this A/B test will send the `default_template`.
 
 Returns the `status`.
 
@@ -435,15 +481,14 @@ Returns an array of latest versions of your A/B tests.
 
 ## A/B Test Drafts [/ab-test/draft]
 
-A/B Test drafts allow a user to set a name and default template on create, and configure tests over several updates before setting a start time.
-
+A/B Test drafts allow you to build a A/B test in a series of steps instead of all at once.
 
 ### Create an A/B Test draft [POST]
 
 + Data Structure
-    + id (required, string) - The identifier for this A/B test.
-    + name (required, string) - A human readable name for this A/B test.
-    + default_template (required, object) - Details for the default template. See [Template Object](#header-template-object).
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + name (string, required) - Display name.
+    + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
 
 
 + Request
@@ -513,6 +558,32 @@ A/B Test drafts allow a user to set a name and default template on create, and c
 
 ### Update an A/B Test draft [PUT /ab-test/draft/{id}]
 
++ Data Structure
+    + name (string) - Display name.
+    + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
+    + variants (array[object]) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
+    + metric (enum) - Which metric to use when comparing the templates.
+        + count_unique_clicked
+        + count_unique_confirmed_opened
+    + `audience_selection` (enum) - Determines how to distribute messages for templates. Each template will receive either a percent of the total of all messages or a set number of messages.
+        + percent
+        + sample_size
+    + test_mode (enum)
+        + bayesian
+        + learning
+    + start_time (string) - ISO Date specifying when the test should begin.
+    + end_time (string)
+        ISO Date specifying when the test should end. Defaults to 30 days from `start_time` - `engagement_timeout`.
+    + total_sample_size (number) - Total number of messages to send as part of the test.
+    + confidence_level (number) - Specify a confidence level at which point the test should end.
+        + Default: 0.95
+    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the `end_time` to determine the winner.
+        + Default: 24
+
+
+Returns the A/B test ID.
+
+
 + Parameters
     + id (required, string, `payment-confirmation`)
 
@@ -561,6 +632,14 @@ A/B Test drafts allow a user to set a name and default template on create, and c
         }
 
 ### Schedule an A/B Test [POST /ab-test/draft/{id}/schedule]
+
++ Data Structure
+    + start_time (string, required) - ISO Date specifying when the test should begin.
+    + end_time (string)
+        ISO Date specifying when the test should end. Defaults to 30 days from `start_time` - `engagement_timeout`.
+    + `engagement_timeout` (number) - The amount of time, in hours, a test waits to collect results after the `end_time` to determine the winner.
+        + Default: 24
+
 
 + Parameters
     + id (required, string, `payment-confirmation`)
