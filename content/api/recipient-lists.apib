@@ -48,7 +48,7 @@ Recipients are described in an array of objects with the following attributes:
         + (object)
         + (string)
     + return_path (string) 
-        Email address to use for envelope FROM. Overrides transmission level return_path. The domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-verify-post). The local part of the return_path address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost.
+        Email address to use for envelope FROM. Overrides transmission level return_path. The domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-post-verify-a-sending-domain). The local part of the return_path address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost.
     + tags (array) - Array of text labels associated with a recipient. Tags are available in Webhook events.  Maximum number of tags - 10 per recipient, 100 system wide.  Any tags over the limits are ignored.
     + metadata (object) - Key/value pairs associated with a recipient. Metadata is available during events through the Webhooks and is provided to the substitution engine.  A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is available with recipient metadata taking precedence over transmission metadata when there are conflicts.
     + substitution_data (object) - Key/value pairs associated with a recipient that are provided to the substitution engine. Recipient substitution data takes precedence over transmission substitution data. Unlike metadata, substitution data is not included in Webhook events.
@@ -599,7 +599,7 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
 
 ### List all Recipient Lists [GET /recipient-lists]
 
-Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-retrieve-a-recipient-list-get) to get a list the recipients.
+Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-get-retrieve-a-recipient-list) to get a list the recipients.
 
 + Request
 

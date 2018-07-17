@@ -17,7 +17,7 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 + Data Structure: Attributes
     + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + auth_type (enum) - Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
@@ -64,7 +64,7 @@ When a webhook is created, a test POST request is sent to the `target` URL. If t
 + Data Structure
     + name (string, required) - Name for webhook
     + target (string, required) - URL of the target to which to POST event batches. 
-    + events (array, required)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array, required)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
         + Default: true
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
@@ -297,7 +297,7 @@ Returns the status information for the batches that have been generated. Status 
 + Data Structure
     + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + auth_type: none, basic, oauth2 (enum)
@@ -526,7 +526,7 @@ Returns an example of the event data that will be posted by a webhook for the sp
 The data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.
 
 + Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types, defaults to all event types.
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types, defaults to all event types.
 
 + Request
 

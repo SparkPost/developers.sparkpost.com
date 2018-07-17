@@ -49,7 +49,8 @@ function insertPageTableOfContents({
           return {
             ...page,
             children:
-              pageTableOfContents.length === 1
+              pageTableOfContents.length === 1 &&
+              pageTableOfContents[0].children
                 ? pageTableOfContents[0].children
                 : pageTableOfContents, // if we only have one item at the top, skip it
           }

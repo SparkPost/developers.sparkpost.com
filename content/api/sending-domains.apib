@@ -6,7 +6,7 @@ description: Manage sending domains, which are used to indicate who an email is 
 
 A sending domain is a domain that is used to indicate who an email is from via the "From:" header. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages.
 
-<banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="/api/sending-domains#sending-domains-verify-a-sending-domain-post">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</banner>
+<banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="#sending-domains-post-verify-a-sending-domain">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</banner>
 
 ### DNS notes
 
@@ -88,7 +88,7 @@ Once it is verified through one of those two methods, you can use it as a bound 
             + Default: unverified
         + verification_mailbox_status: unverified, pending, invalid, valid (enum) - Verification status of nominated anyone@ mailbox.
             + Default: unverified
-        + `verification_mailbox` (string) - Nominated anyone@ verification mailbox email address local part. This field will only be returned if it was set in the `verification_mailbox` attribute in a [verification request](#sending-domains-verify-a-sending-domain-post).
+        + `verification_mailbox` (string) - Nominated anyone@ verification mailbox email address local part. This field will only be returned if it was set in the `verification_mailbox` attribute in a [verification request](#sending-domains-post-verify-a-sending-domain).
         + compliance_status (enum) - Compliance status
             + pending
             + valid
