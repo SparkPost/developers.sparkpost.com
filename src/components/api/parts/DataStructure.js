@@ -39,7 +39,7 @@ const EnumTitle = styled.b`
 const nativeTypes = ['boolean', 'string', 'number', 'object', 'array', 'enum']
 
 function Attribute(props) {
-  const {
+  let {
     name,
     type,
     description,
@@ -59,14 +59,16 @@ function Attribute(props) {
 
   let isMultipleTypes, types
   if (!!enumerations && actualType === 'enum') {
-    // where we have no values for an enum, it is simply the definition that a single field can be of multiple types
-    isMultipleTypes = !enumerations.find(
-      enumeration => !isEmpty(enumeration.value)
-    )
+    types = uniq(enumerations.map(({ type }) => type))
+    isMultipleTypes = types.length > 1
+  }
 
-    if (isMultipleTypes) {
-      types = uniq(enumerations.map(({ type }) => type))
-    }
+  if (
+    !!enumerations &&
+    !children &&
+    enumerations.find(({ type }) => type === 'object')
+  ) {
+    children = enumerations.find(({ type }) => type === 'object').children
   }
 
   return (
