@@ -4,9 +4,9 @@ Thank you for your interest in contributing to the SparkPost Developer Site!
 
 ## API reference
 
-The API reference broadly follows [API Blueprint](https://apiblueprint.org/), an an open source extension of markdown designed for writing API specs, with a [couple of additions](#api-blueprint-extensions).
+The API reference broadly follows [API Blueprint](https://apiblueprint.org/), an an open source extension of markdown designed for writing API specs, with an [open source extension](#api-blueprint-extensions).
 
-Each top-level section in the API reference has a corresponding file under `content/api/`. Each file represents either an API endpoint such as /api/v1/transmissions or a high-level concept like "template substitution".
+Each top-level section in the API reference has a corresponding file under `content/api/`. Each file represents either an API endpoint such as /api/v1/transmissions or a high-level concept like "template substitution". When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it doesn't get generated.
 
 Here are some resources for learning API Blueprint and Markdown:
 
@@ -41,8 +41,6 @@ Each API Blueprint file starts with metadata. At minimum, it needs the `FORMAT` 
 
 ### Content
 
-Describing how to write API files that talk about content.
-
 #### Organizing your API file
 
 As a general rule, API reference files should start with an introduction and description of the resource object followed by the endpoints and methods, ordered by their CRUD operations.
@@ -63,7 +61,9 @@ As a general rule, API reference files should start with an introduction and des
 
 Each file should only have a single Resource Group equal to the resource you're describing.
 
-```md
+**Example**
+
+```
 # Group Sending Domains
 ```
 
@@ -75,7 +75,9 @@ Resources tend to add noise and lead to poor organization (i.e. grouping create 
 
 Avoid using them, unless you are creating a sub category.
 
-```md
+**Example**
+
+```
 ## Documentation [/documentation]
 ```
 
