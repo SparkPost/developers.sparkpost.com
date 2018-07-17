@@ -85,7 +85,8 @@ const Navigation = ({ navigation, location = { pathname: null } }) => {
                 >
                   {title} {label && <Label>{label}</Label>}
                 </ApiLink>
-                {renderChildren(children)}
+                {'' /* render page specific nav*/}
+                {children && renderChildren({ children })}
               </li>
             ))}
           </List>
@@ -95,14 +96,14 @@ const Navigation = ({ navigation, location = { pathname: null } }) => {
   )
 }
 
-function renderChildren(children) {
-  if (!children) return null
+function renderChildren({ children, level = 0 }) {
+  if (level === 2 || !children) return false
 
   return (
     <Children>
       {children.map(({ title, anchor, children }) => {
-        // just render the child link if there is only one
-        if (children && children.length === 1) {
+        // just render the child link if there is only one and is the same as the parent
+        if (children && children.length === 1 && title === children[0].title) {
           return (
             <li key={children[0].title}>
               <ApiLink to={children[0].anchor}>{children[0].title}</ApiLink>
@@ -112,7 +113,7 @@ function renderChildren(children) {
           return (
             <li key={title}>
               <ApiLink to={anchor}>{title}</ApiLink>
-              {renderChildren(children)}
+              {renderChildren({ children, level: level + 1 })}
             </li>
           )
         }
