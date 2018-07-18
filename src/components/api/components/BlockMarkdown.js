@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { toArray, map } from 'lodash'
-import { monospace } from 'utils/fonts'
+import { monospace, font, weight } from 'utils/fonts'
 import { grayscale } from 'utils/colors'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
@@ -16,18 +16,42 @@ import Json from './Json'
 const documentation = require('../../../../documentation.json').results
 const samples = require('../../../../samples.json').results
 
+const EventsWrapper = styled.div`
+  padding: 0 0.75rem 0 0;
+`
+
+const EventsHover = styled.div`
+  &:hover {
+    color: ${grayscale(4)};
+  }
+`
+
 // prettier-ignore
 const Event = styled(({ active, ...props }) => <button {...props} />)`
-  ${monospace}
   display: block;
-  padding: 0.5rem 0.5rem 0.5rem 0;
   width: 100%;
+  padding: 0.4rem 0.333333333rem;
+  border-radius: 2px;
+  font-size: .833333333rem;
+  font-weight: ${weight('medium')};
+  color: inherit;
   text-align: left;
-  outline: 0;
-
   background: none;
+  margin: 0 0 0.333333333rem 0;
   border: 0;
-  ${props => props.active && `background: ${grayscale('light')};`}
+  outline: 0;
+  transition: .15s;
+  cursor: pointer;
+
+  ${props => props.active ? `
+    background: ${grayscale('light')};
+    color: ${grayscale('medium')};
+  ` : `
+    &:hover, &:focus {
+      background: ${grayscale('light')};
+      color: ${grayscale('medium')};
+    }
+  `}
 `
 
 const EmptyHeader = styled.th`
@@ -152,6 +176,8 @@ const components = {
       return (
         <Row>
           <Right>
+            <br />
+            <HttpHeading>&nbsp;</HttpHeading>
             <Json>{JSON.stringify(this.state.activeSample)}</Json>
           </Right>
           <div
@@ -160,22 +186,44 @@ const components = {
               display: 'flex',
             }}
           >
-            <div id="navigation">
-              {documentation.map((event, i) => {
-                return (
-                  <Event
-                    active={i === this.state.activeIndex}
-                    onClick={() => this.setActive(i)}
-                    key={i}
-                  >
-                    {event.type.sampleValue}
-                  </Event>
-                )
-              })}
-            </div>
+            <EventsWrapper>
+              <div
+                style={{
+                  fontFamily: font('secondary'),
+                  textTransform: 'uppercase',
+                  fontWeight: weight('medium'),
+                  fontSize: `0.75rem`,
+                  color: grayscale(4),
+                  margin: `2rem 0 0.5rem`,
+                  paddingBottom: `.5rem`,
+                  borderBottom: `1px solid ${grayscale(8)}`,
+                }}
+              >
+                Events
+              </div>
+              <EventsHover>
+                {documentation
+                  .map((event, i) => {
+                    return (
+                      !event.type.sampleValue.includes('sms') && (
+                        <Event
+                          active={i === this.state.activeIndex}
+                          onClick={() => this.setActive(i)}
+                          key={i}
+                        >
+                          {event.type.sampleValue}
+                        </Event>
+                      )
+                    )
+                  })
+                  .filter(Boolean)}
+              </EventsHover>
+            </EventsWrapper>
             <div id="attributes" style={{ flexGrow: 1 }}>
               <DataStructure
-                title={''}
+                title={`${
+                  Object.values(this.state.activeDocumentation)[0].sampleValue
+                } Object`}
                 jsonArray={map(
                   this.state.activeDocumentation,
                   ({ description }, name) =>
