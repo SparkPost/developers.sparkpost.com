@@ -18,9 +18,10 @@ const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   font-size: 0.833333333rem;
   padding: 1rem 1rem;
+  white-space: nowrap;
 
   ${props => props.isSticky && css`
     box-shadow: ${shadow(1)};
@@ -113,8 +114,8 @@ class Header extends Component {
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
             <NavLink to="http://slack.sparkpost.com">Community</NavLink>
           </Nav>
+          <Search />
           <Nav secondary>
-            <Search />
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { push } from 'gatsby'
 import styled from 'styled-components'
 import { isEqual } from 'lodash'
@@ -13,8 +13,29 @@ import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
+import { mediaQuery } from 'utils/breakpoint'
 import Link from 'components/Link'
 import EventListener from 'react-event-listener'
+
+const SearchWrapper = styled.div`
+  display: none;
+  text-align: right;
+
+  & > div {
+    max-width: 20rem;
+  }
+
+  & > div, & > div > div {
+    width: 100%;
+  }
+
+  ${mediaQuery('md', `
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  `)}
+`
 
 const SlashIcon = styled.div.attrs({ children: '/' })`
   color: ${grayscale(6)};
@@ -41,15 +62,14 @@ const SearchInput = styled.input`
   border-radius: 2px;
   font: inherit;
   font-size: 0.833333333rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.45rem 0.5rem;
   outline: 0;
   transition: 0.2s;
-  width: 10rem;
+  width: 9rem;
   margin-top: 1px;
 
   &:focus {
-    max-width: 100%;
-    width: 20rem;
+    width: 100%;
     border-color: ${color('blue')};
     box-shadow: 0 0 0 1px ${color('blue')}, ${shadow(1)};
 
@@ -67,7 +87,7 @@ class FocusableInput extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <EventListener
           target="window"
           onKeydown={e => {
@@ -87,7 +107,7 @@ class FocusableInput extends Component {
         />
         <SearchInput {...this.props} innerRef={this.inputRef} />
         <SlashIcon />
-      </div>
+      </Fragment>
     )
   }
 }
@@ -327,13 +347,7 @@ class AutoComplete extends Component {
 const ConnectedAutoComplete = connectAutoComplete(AutoComplete)
 
 const Search = () => (
-  <li
-    style={{
-      display: `inline-block`,
-      flexGrow: 1,
-      textAlign: `right`,
-    }}
-  >
+  <SearchWrapper>
     <InstantSearch
       appId="SFXAWCYDV8"
       apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
@@ -344,7 +358,7 @@ const Search = () => (
       <Configure hitsPerPage={3} />
       <ConnectedAutoComplete />
     </InstantSearch>
-  </li>
+  </SearchWrapper>
 )
 
 export default Search

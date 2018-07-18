@@ -19,15 +19,10 @@ export default styled(({ children, secondary, ...props }) => (
   }
 
   ${mediaQuery('md', css`
-    ${props => props.secondary && css`flex-grow: 1;`}
-
     > ul {
       display: flex;
       align-items: center;
-      ${props => props.secondary && css`
-        justify-content: flex-end;
-        font-weight: ${weight('light')};
-      `}
+      ${props => props.secondary && css` font-weight: ${weight('light')};`}
     }
   `)}
 `
