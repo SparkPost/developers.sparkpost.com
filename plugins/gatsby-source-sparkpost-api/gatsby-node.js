@@ -6,7 +6,7 @@ const crypto = require('crypto')
 const axios = require('axios')
 const { GraphQLJSON } = require('gatsby/graphql')
 const map = require('lodash.map')
-const keyBy = require('lodash.keyBy')
+const keyBy = require('lodash.keyby')
 
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
