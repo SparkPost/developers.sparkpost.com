@@ -68,7 +68,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
             + Default: false.
         + smart_send (boolean) - <a href="/labs/"><span class="label label-info"><strong>LABS</strong></span></a> Whether to enable [Smart Send](https://www.sparkpost.com/blog/smart-send/), which will suppress unengaged recipients. <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
             + Default: false
-        +  ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+        + ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.
             + Defaults: false
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
@@ -86,12 +86,9 @@ You can create a transmission in a number of ways. In all cases, you can use the
     ```
     {
       "options": {
-        "open_tracking": true,
-        "click_tracking": true,
-        "transactional": false,
-        "sandbox": false,
+        "click_tracking": false,
+        "transactional": true,
         "ip_pool": "my_ip_pool",
-        "smart_send": true,
         "inline_css": true
       },
       "description": "Christmas Campaign Email",
@@ -111,10 +108,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
             "name": "Wilma Flintstone"
           },
           "tags": [
-            "greeting",
-            "prehistoric",
-            "fred",
-            "flintstone"
+            "prehistoric"
           ],
           "metadata": {
             "age": "24",
@@ -139,7 +133,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
 The following `recipients` attributes should be set in the `recipients` object when using a stored recipient list:
 
 + Data Structure: Recipients Attributes
-    + list_id (string, required) 
+    + list_id (string, required)
         ID of the stored recipient list to use.
         <hr style="margin-top: 0;" />
 
@@ -152,8 +146,8 @@ The following `recipients` attributes should be set in the `recipients` object w
       },
       "content": {
         "from": {
-          "name": "Fred Flintstone",
-          "email": "fred@flintstone.com"
+          "name": "Our Store",
+          "email": "deals@example.com"
         },
         "subject": "Big Christmas savings!",
         "text": "Hi {{name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n Hurry, this offer is only to {{user_type}}\n {{sender}}",
@@ -198,7 +192,7 @@ Attachments for a transmission are specified in the `content.attachments` array 
 
 + Data Structure: Attributes
     + name (string, required) - The filename of the attachment. This is inserted into the filename parameter of the `Content-Disposition` header. Maximum length - 255 bytes
-    + type (string, required) - The MIME type of the attachment. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. <br /> Include the `charset` parameter, if needed (e.g. `text/html; charset="UTF-8"`) 
+    + type (string, required) - The MIME type of the attachment. The value will apply as-is to the `Content-Type` header of the generated MIME part for the attachment. <br /> Include the `charset` parameter, if needed (e.g. `text/html; charset="UTF-8"`)
     + data (string, required) - The content of the attachment as a Base64 encoded string. The string should not contain `\r\n` line breaks. SparkPost will add line breaks as necessary to ensure the Base64 encoded lines contain no more than 76 characters each.
 + Sample
     ```
@@ -249,8 +243,7 @@ Inline images for a transmission are specified in the `content.inline_images` ar
                     "education_level": "college"
                 },
                 "substitution_data": {
-                    "sender": "Big Store Team",
-                    "holiday_name": "Christmas"
+                    "discount": "25"
                 },
                 "recipients": [
                     {
@@ -260,7 +253,6 @@ Inline images for a transmission are specified in the `content.inline_images` ar
                         },
                         "substitution_data": {
                             "customer_type": "Platinum",
-                            "year": "Freshman"
                         }
                     }
                 ],
@@ -274,7 +266,7 @@ Inline images for a transmission are specified in the `content.inline_images` ar
                     "headers": {
                         "X-Customer-Campaign-ID": "christmas_campaign"
                     },
-                    "html": "<p>Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get huge discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p><p>{{sender}}</p>"
+                    "html": "<p>Hi {{address.name}} \nSave big this Christmas in your area {{place}}! \nClick http://www.mysite.com and get a {{discount}}% discount\n</p><p>Hurry, this offer is only to {{user_type}}\n</p>"
                 }
             }
 
@@ -313,29 +305,15 @@ The following attributes should be set in the `content` object when using a temp
 
 + Request (application/json)
 
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
     + Body
 
             {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true
-                },
-                "campaign_id": "thanksgiving_campaign",
                 "content": {
-                    "template_id": "christmas_offer",
+                    "template_id": "black_friday",
                     "use_draft_template": true
                 },
-                "metadata": {
-                    "user_type": "students",
-                    "age_group": "18-35"
-                },
                 "substitution_data": {
-                    "status": "shopping",
-                    "holiday": "Thanksgiving"
+                    "discount": "25%"
                 },
                 "recipients": [
                     {
@@ -343,34 +321,9 @@ The following attributes should be set in the `content` object when using a temp
                             "email": "wilma@flintstone.com",
                             "name": "Wilma Flintstone"
                         },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "24",
-                            "place": "Bedrock"
-                        },
                         "substitution_data": {
                             "first_name": "Wilma",
                             "last_name": "Flintstone"
-                        }
-                    },
-                    {
-                        "address": {
-                            "email": "abc@flintstone.com"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "33",
-                            "place": "MD"
                         }
                     }
                 ]
@@ -421,21 +374,13 @@ The following attribute should be set in the `content` object when sending an A/
 
 When using substitution data with A/B tests, data for all possible templates must be provided.  We recommend that all templates that make up an A/B test should use the same substitution data fields.
 
-<banner status="warning"><strong>Note</strong>: A/B Tests only support inline single recipient transmissions currently</banner>
+<banner status="warning">A/B Tests only support inline single recipient transmissions currently</banner>
 
 + Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
     + Body
 
             {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true
-                },
                 "content": {
                     "ab_test_id": "password_reset"
                 },
@@ -475,78 +420,26 @@ The following attribute should be set in the `content` object when sending RFC82
 * Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
 * It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
 * It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.
-The provided email_rfc822 in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
+The provided `email_rfc822` in MIME format will be rejected if SparkPost cannot parse the contents into a MIME tree.
 
 Content headers are not generated for transmissions providing RFC822 content. They are expected to be provided as headers contained in the RFC822 content.
 
-+ Request (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
++ Request
 
     + Body
 
             {
-                "options": {
-                    "open_tracking": true,
-                    "click_tracking": true,
-                    "transactional": false,
-                    "sandbox": false,
-                    "ip_pool": "",
-                    "inline_css": false
-                },
                 "description": "Christmas Campaign Email",
-                "campaign_id": "christmas_campaign",
-                "metadata": {
-                    "user_type": "students",
-                    "education_level": "college"
-                },
-                "substitution_data": {
-                    "sender": "Big Store Team",
-                    "holiday_name": "Christmas"
-                },
                 "recipients": [
                     {
                         "address": {
                             "email": "wilma@flintstone.com",
                             "name": "Wilma Flintstone"
                         },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "24",
-                            "place": "Bedrock"
-                        },
                         "substitution_data": {
                             "first_name": "Wilma",
                             "customer_type": "Platinum",
                             "year": "Freshman"
-                        }
-                    },
-                    {
-                        "address": {
-                            "email": "abc@flintstone.com",
-                            "name": "Fred Flintstone"
-                        },
-                        "tags": [
-                            "greeting",
-                            "prehistoric",
-                            "fred",
-                            "flintstone"
-                        ],
-                        "metadata": {
-                            "age": "33",
-                            "place": "NY"
-                        },
-                        "substitution_data": {
-                            "first_name": "Fred",
-                            "customer_type": "Sliver",
-                            "year": "Senior"
                         }
                     }
                 ],
@@ -600,9 +493,7 @@ the template update will succeed, but the transmission will continue to use the 
                 "name": "Fall Sale",
                 "campaign_id": "fall",
                 "options": {
-                    "start_time": "2017-02-11T08:00:00-04:00",
-                    "open_tracking": true,
-                    "click_tracking": true
+                    "start_time": "2018-09-11T08:00:00-04:00"
                 },
                 "recipients": {
                     "list_id": "all_subscribers"
