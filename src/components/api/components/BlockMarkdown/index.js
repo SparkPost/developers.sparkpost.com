@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { toArray } from 'lodash'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
 import Heading from '../Heading'
 import DataStructure from './DataStructure'
-import EventsTable from './EventsTable'
+import MessageEvents from './MessageEvents'
+import WebhookEvents from './WebhookEvents'
 
 const EmptyHeader = styled.th`
   padding: 0;
@@ -89,28 +89,8 @@ const components = {
     )
   },
   'data-structure': DataStructure,
-  'message-events': () => (
-    <StaticQuery
-      query={graphql`
-        query MessageEventsQuery {
-          allMessageEvent {
-            edges {
-              node {
-                name
-                attributes
-                sample
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        const events = data.allMessageEvent.edges.map(({ node }) => node)
-
-        return <EventsTable events={events} />
-      }}
-    />
-  ),
+  'message-events': MessageEvents,
+  'webhook-events': WebhookEvents,
 }
 
 const componentNames = toArray(components).map(c => c.name)

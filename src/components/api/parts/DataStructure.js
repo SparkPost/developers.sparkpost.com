@@ -148,7 +148,6 @@ const AttributeWrapper = styled.div`
 
   div &:first-of-type {
     border-top: 1px solid ${grayscale(8)};
-    // padding-top: 0;
   }
 
   p {

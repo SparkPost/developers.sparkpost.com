@@ -12,6 +12,12 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 * Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for auditing and prevention of processing duplicate batches.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
 
+### Webhook Event Types
+
+You can receive any of the following types of events in webhook payloads.
+
+<webhook-events></webhook-events>
+
 ## Webhooks Object
 
 + Data Structure: Attributes
