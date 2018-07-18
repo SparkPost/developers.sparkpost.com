@@ -17,9 +17,11 @@ import { mediaQuery } from 'utils/breakpoint'
 import Link from 'components/Link'
 import EventListener from 'react-event-listener'
 
+// prettier-ignore
 const SearchWrapper = styled.div`
   display: none;
   text-align: right;
+  white-space: normal;
 
   & > div {
     max-width: 20rem;
