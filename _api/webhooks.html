@@ -319,7 +319,7 @@ For example, if you change the webhook's target URL, batches already queued for 
 </div><h3>Examples</h3><div class="panel request panel-default"><div class="panel-heading"><h4 class="panel-title">Request</h4></div><div class="panel-body"><p class="uri"><code>PUT&nbsp;/api/v1/webhooks/<span class="hljs-attribute" title="id">12affc24-f183-11e3-9234-3c15c2c818c2</span></code></p><!-- Weed out the noisy obvious headers--><pre>{
   "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Renamed webhook"</span></span>,
   "<span class="hljs-attribute">events</span>": <span class="hljs-value">[
-    <span class="hljs-string">"rejection"</span>,
+    <span class="hljs-string">"generation_rejection"</span>,
     <span class="hljs-string">"delay"</span>
   ]</span>,
   "<span class="hljs-attribute">auth_type</span>": <span class="hljs-value"><span class="hljs-string">"none"</span></span>,
