@@ -42,6 +42,7 @@ module.exports = {
     ] : [],
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
+    `gatsby-source-sparkpost-api`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
