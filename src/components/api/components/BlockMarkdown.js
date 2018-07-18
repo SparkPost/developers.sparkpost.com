@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { toArray } from 'lodash'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
-import Context from 'components/api/Context'
+import DataStructureContext from 'components/api/DataStructureContext'
 import DataStructure from 'components/api/parts/DataStructure'
 import Heading from './Heading'
 import HttpHeading from './HttpHeading'
@@ -92,7 +92,7 @@ const components = {
     )
   },
   'data-structure': ({ id, title, sample }) => (
-    <Context.Consumer>
+    <DataStructureContext.Consumer>
       {dataStructures => {
         const Wrapper = sample !== undefined ? Row : Fragment
         return (
@@ -112,7 +112,7 @@ const components = {
           </Wrapper>
         )
       }}
-    </Context.Consumer>
+    </DataStructureContext.Consumer>
   ),
 }
 
