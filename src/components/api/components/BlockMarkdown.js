@@ -16,10 +16,11 @@ import Json from './Json'
 const documentation = require('../../../../documentation.json').results
 const samples = require('../../../../samples.json').results
 
+// prettier-ignore
 const Event = styled(({ active, ...props }) => <button {...props} />)`
   ${monospace}
   display: block;
-  padding: .5rem .5rem .5rem 0;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   width: 100%;
   text-align: left;
   outline: 0;
@@ -136,14 +137,14 @@ const components = {
     state = {
       activeIndex: 0,
       activeDocumentation: documentation[0],
-      activeSample: samples[0]
+      activeSample: samples[0],
     }
 
-    setActive = (activeIndex) => {
+    setActive = activeIndex => {
       this.setState({
         activeIndex,
         activeDocumentation: documentation[activeIndex],
-        activeSample: samples[activeIndex]
+        activeSample: samples[activeIndex],
       })
     }
 
@@ -153,37 +154,45 @@ const components = {
           <Right>
             <Json>{JSON.stringify(this.state.activeSample)}</Json>
           </Right>
-          <div className="block" style={{
-            display: 'flex'
-          }}>
-            <div id="navigation">{
-              documentation.map((event, i) => {
+          <div
+            className="block"
+            style={{
+              display: 'flex',
+            }}
+          >
+            <div id="navigation">
+              {documentation.map((event, i) => {
                 return (
                   <Event
-                    active={i ===  this.state.activeIndex}
+                    active={i === this.state.activeIndex}
                     onClick={() => this.setActive(i)}
-                    key={i}>{event.type.sampleValue}</Event>
+                    key={i}
+                  >
+                    {event.type.sampleValue}
+                  </Event>
                 )
-              })
-            }</div>
+              })}
+            </div>
             <div id="attributes" style={{ flexGrow: 1 }}>
               <DataStructure
                 title={''}
-                jsonArray={map(this.state.activeDocumentation, ({ description }, name) => (
-                  !name.includes('sms') && {
-                    name,
-                    description: description.endsWith('.') ?
-                      description :
-                      `${description}.`
-                  }
-                )).filter(Boolean)}
+                jsonArray={map(
+                  this.state.activeDocumentation,
+                  ({ description }, name) =>
+                    !name.includes('sms') && {
+                      name,
+                      description: description.endsWith('.')
+                        ? description
+                        : `${description}.`,
+                    }
+                ).filter(Boolean)}
               />
             </div>
           </div>
         </Row>
       )
     }
-  }
+  },
 }
 
 const componentNames = toArray(components).map(c => c.name)
