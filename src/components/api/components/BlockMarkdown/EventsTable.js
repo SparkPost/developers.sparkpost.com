@@ -1,16 +1,49 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { map } from 'lodash'
+import styled from 'styled-components'
 import { font, weight } from 'utils/fonts'
-import { grayscale } from 'utils/colors'
+import { color, grayscale, shadow } from 'utils/colors'
+import { mediaQuery } from 'utils/breakpoint'
 import DataStructure from 'components/api/parts/DataStructure'
 import HttpHeading from '../HttpHeading'
 import Row from '../Row'
 import Right from '../Right'
 import Json from '../Json'
 
+const SelectWrapper = styled.div`
+  ${mediaQuery('lg', `display: none;`)};
+`
+
+const Select = styled.select`
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0.277777778rem 1.5rem 0.277777778rem 0.666666667rem;
+  outline: none;
+  border: 1px solid ${grayscale(7)};
+  border-radius: 2px;
+  background: ${grayscale('white')};
+  color: ${grayscale(1)};
+  font-weight: 400;
+  font-size: 0.833333333rem;
+  line-height: 1.333333333rem;
+  box-shadow: ${shadow(1)};
+  transition: border 0.15s;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    border: 1px solid ${color('blue')};
+    box-shadow: 0 0 0 1px ${color('blue')};
+  }
+`
+
 const EventsWrapper = styled.div`
   padding: 0 0.75rem 0 0;
+  display: none;
+  ${mediaQuery('lg', `display: block;`)};
 `
 
 const EventsHover = styled.div`
@@ -65,6 +98,30 @@ class EventsTable extends Component {
           <HttpHeading>&nbsp;</HttpHeading>
           <Json>{JSON.stringify(activeEvent.sample)}</Json>
         </Right>
+        <div className="block">
+          <SelectWrapper>
+            <Select
+              value={this.state.activeIndex}
+              onChange={event => this.setActive(event.target.value)}
+            >
+              {events.map((event, i) => (
+                <option value={i} key={i}>
+                  {event.name}
+                </option>
+              ))}
+            </Select>
+            <i
+              className="fa fa-caret-down"
+              style={{
+                position: `absolute`,
+                right: `.5rem`,
+                top: `.65rem`,
+                color: grayscale(4),
+                fontSize: `12px`,
+              }}
+            />
+          </SelectWrapper>
+        </div>
         <div
           className="block"
           style={{
@@ -87,21 +144,15 @@ class EventsTable extends Component {
               Events
             </div>
             <EventsHover>
-              {events
-                .map((event, i) => {
-                  return (
-                    !event.name.includes('sms') && (
-                      <Event
-                        active={i === this.state.activeIndex}
-                        onClick={() => this.setActive(i)}
-                        key={i}
-                      >
-                        {event.name}
-                      </Event>
-                    )
-                  )
-                })
-                .filter(Boolean)}
+              {events.map((event, i) => (
+                <Event
+                  active={i === this.state.activeIndex}
+                  onClick={() => this.setActive(i)}
+                  key={i}
+                >
+                  {event.name}
+                </Event>
+              ))}
             </EventsHover>
           </EventsWrapper>
           <div id="attributes" style={{ flexGrow: 1 }}>
