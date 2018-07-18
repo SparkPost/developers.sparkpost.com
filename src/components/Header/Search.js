@@ -356,7 +356,9 @@ const Search = () => (
       indexName="api_docs_dev"
     >
       <Index indexName="production_site_posts_support_article" />
-      <Index indexName="production_site_posts_post" />
+      <Index indexName="production_site_posts_post">
+        <Configure facetFilters="[[&quot;taxonomies_hierarchical.category.lvl0:Developer&quot;]]" />
+      </Index>
       <Configure hitsPerPage={3} />
       <ConnectedAutoComplete />
     </InstantSearch>
