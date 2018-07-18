@@ -256,13 +256,15 @@ const ChildrenToggle = styled.button`
 export default function DataStructure({
   title = 'Request Body',
   dataStructure,
+  jsonArray,
   isParameter,
+  ...props
 }) {
-  const jsonArray = dataStructureToJson(dataStructure)
+  jsonArray = jsonArray || dataStructureToJson(dataStructure)
 
   return (
-    <AttributesWrapper className="block">
-      <AttributesTitle>{title}</AttributesTitle>
+    <AttributesWrapper className="block" {...props}>
+      {title && <AttributesTitle>{title}</AttributesTitle>}
       {jsonArray.map((props, i) => (
         <Attribute key={i} isParameter={isParameter} {...props} />
       ))}

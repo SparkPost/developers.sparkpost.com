@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import { toArray } from 'lodash'
+import { toArray, map } from 'lodash'
+import { monospace } from 'utils/fonts'
+import { grayscale } from 'utils/colors'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
 import DataStructureContext from 'components/api/DataStructureContext'
@@ -10,6 +12,22 @@ import HttpHeading from './HttpHeading'
 import Row from './Row'
 import Right from './Right'
 import Json from './Json'
+
+const documentation = require('../../../../documentation.json').results
+const samples = require('../../../../samples.json').results
+
+const Event = styled(({ active, ...props }) => <button {...props} />)`
+  ${monospace}
+  display: block;
+  padding: .5rem .5rem .5rem 0;
+  width: 100%;
+  text-align: left;
+  outline: 0;
+
+  background: none;
+  border: 0;
+  ${props => props.active && `background: ${grayscale('light')};`}
+`
 
 const EmptyHeader = styled.th`
   padding: 0;
@@ -114,6 +132,58 @@ const components = {
       }}
     </DataStructureContext.Consumer>
   ),
+  'message-events': class extends Component {
+    state = {
+      activeIndex: 0,
+      activeDocumentation: documentation[0],
+      activeSample: samples[0]
+    }
+
+    setActive = (activeIndex) => {
+      this.setState({
+        activeIndex,
+        activeDocumentation: documentation[activeIndex],
+        activeSample: samples[activeIndex]
+      })
+    }
+
+    render() {
+      return (
+        <Row>
+          <Right>
+            <Json>{JSON.stringify(this.state.activeSample)}</Json>
+          </Right>
+          <div className="block" style={{
+            display: 'flex'
+          }}>
+            <div id="navigation">{
+              documentation.map((event, i) => {
+                return (
+                  <Event
+                    active={i ===  this.state.activeIndex}
+                    onClick={() => this.setActive(i)}
+                    key={i}>{event.type.sampleValue}</Event>
+                )
+              })
+            }</div>
+            <div id="attributes" style={{ flexGrow: 1 }}>
+              <DataStructure
+                title={''}
+                jsonArray={map(this.state.activeDocumentation, ({ description }, name) => (
+                  !name.includes('sms') && {
+                    name,
+                    description: description.endsWith('.') ?
+                      description :
+                      `${description}.`
+                  }
+                )).filter(Boolean)}
+              />
+            </div>
+          </div>
+        </Row>
+      )
+    }
+  }
 }
 
 const componentNames = toArray(components).map(c => c.name)
