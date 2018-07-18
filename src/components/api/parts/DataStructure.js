@@ -148,7 +148,6 @@ const AttributeWrapper = styled.div`
 
   div &:first-of-type {
     border-top: 1px solid ${grayscale(8)};
-    // padding-top: 0;
   }
 
   p {
@@ -200,12 +199,15 @@ const ChildrenWrapper = styled.div`
     width: 0.5rem;
   }
 
-  ${AttributeWrapper} {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  /* extra specificity to fix some weird server-side vs client-side rendering */
+  && {
+    ${AttributeWrapper} {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
 
-    &:last-child {
-      border-bottom: 0;
+      &:last-child {
+        border-bottom: 0;
+      }
     }
   }
 `
@@ -256,13 +258,15 @@ const ChildrenToggle = styled.button`
 export default function DataStructure({
   title = 'Request Body',
   dataStructure,
+  jsonArray,
   isParameter,
+  ...props
 }) {
-  const jsonArray = dataStructureToJson(dataStructure)
+  jsonArray = jsonArray || dataStructureToJson(dataStructure)
 
   return (
-    <AttributesWrapper className="block">
-      <AttributesTitle>{title}</AttributesTitle>
+    <AttributesWrapper className="block" {...props}>
+      {title && <AttributesTitle>{title}</AttributesTitle>}
       {jsonArray.map((props, i) => (
         <Attribute key={i} isParameter={isParameter} {...props} />
       ))}
