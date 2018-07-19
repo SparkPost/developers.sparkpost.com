@@ -28,7 +28,9 @@ class WebhookEvents extends Component {
           }
         `}
         render={data => {
-          const events = data.allWebhookEvent.edges.map(({ node }) => node)
+          const events = data.allWebhookEvent.edges
+            .map(({ node }) => node)
+            .filter(({ name }) => !name.includes('sms'))
 
           return <EventsTable events={events} />
         }}

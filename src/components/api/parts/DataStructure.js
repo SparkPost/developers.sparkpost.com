@@ -263,7 +263,11 @@ export default function DataStructure({
 
   return (
     <AttributesWrapper className="block" {...props}>
-      {title && <AttributesTitle>{title.trim().length > 0 ? title : <span>&nbsp;</span>}</AttributesTitle>}
+      {title && (
+        <AttributesTitle>
+          {title.trim().length > 0 ? title : <span>&nbsp;</span>}
+        </AttributesTitle>
+      )}
       {jsonArray.map((props, i) => (
         <Attribute key={i} isParameter={isParameter} {...props} />
       ))}
