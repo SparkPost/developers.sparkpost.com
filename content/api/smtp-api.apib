@@ -22,11 +22,11 @@ To use SparkPost as an SMTP relay you need to point your SMTP client or local MT
 | User           | `SMTP_Injection`                                                         | |
 | Password       | An API key with "Send via SMTP" permission                               | You can create and manage your API Keys from the [app](https://app.sparkpost.com/account/api-keys) ([EU](https://app.eu.sparkpost.com/account/api-keys)). |
 
-<banner status="info"><strong>Note</strong>: Enterprise accounts should contact their Technical Account Manager for SMTP details.</banner>
+<banner status="info">Enterprise accounts should contact their Technical Account Manager for SMTP details.</banner>
 
 ## SMTP Security
 
-<banner status="danger"><strong>Note</strong>: Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</banner>
+<banner status="danger">Disabling TLS will cause all data sent through SparkPost to be sent over the public internet unencrypted.</banner>
 
 SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.
 
@@ -49,7 +49,7 @@ When sending on behalf of a subaccount, a sending domain assigned to the subacco
 ## Using The X-MSYS-API Custom Header
 You can use the `X-MSYS-API` header in your SMTP messages to specify a campaign id, metadata, tags, IP pool, CC, BCC, and archive recipient lists and disable open and/or click tracking.
 
-<banner status="info"><strong>Note</strong>: To use this option you should be familiar with how to encode options as JSON strings, as the value of the header field is a JSON object that specifies the relevant options</banner>
+<banner status="info">To use this option you should be familiar with how to encode options as JSON strings, as the value of the header field is a JSON object that specifies the relevant options</banner>
 
 ```
 X-MSYS-API: {
@@ -87,7 +87,7 @@ X-MSYS-API: {
 ```
 
 
-<banner status="info"><strong>Note</strong>: Key-value <a href="/api/substitutions-reference/">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</banner>
+<banner status="info">Key-value <a href="/api/substitutions-reference/">substitutions</a> are not supported in SMTP API. Any substitution_data field provided in the X-MSYS-API header will be ignored.</banner>
 
 The fields supported in the X-MSYS-API header are as follows:
 
@@ -126,7 +126,7 @@ X-MSYS-API: { "options" : { "open_tracking" : true, "click_tracking" : true } }
 
 ## The Sandbox Domain
 
-<banner status="info"><strong>Note</strong>: The Sandbox Domain is available to SparkPost customers only</banner>
+<banner status="info">The Sandbox Domain is available to SparkPost customers only</banner>
 
 The sandbox domain `sparkpostbox.com` is available to allow each account to send test messages in advance of configuring a real sending domain. Each SparkPost account has a lifetime allowance of 5 sandbox domain messages. That means one may send up to 5 test messages using `From: something@sparkpostbox.com`. Note that you can set the 'local part' (the part before the @) to any valid email local part.
 
@@ -143,7 +143,7 @@ The following are key points about reporting and tracking for cc, bcc, and archi
 * A `rcpt_type` field is available during events through the Webhooks, which designates if the message was a Cc, Bcc, or archive copy.
 * A `transmission_id` field is available during events through the Webhooks, which can be used to correlate the Cc, Bcc, and archive versions of the messages to one another.
 
-<banner status="info"><strong>Note</strong>: each recipient will only receive a single instance of each message, even if they appear on more than one of the CC, BCC or archive recipient lists.</banner>
+<banner status="info">Each recipient will only receive a single instance of each message, even if they appear on more than one of the CC, BCC or archive recipient lists.</banner>
 
 #### What is an archive recipient?
 
