@@ -25,11 +25,10 @@ import python from 'assets/libraries/python.png'
 import ruby from 'assets/libraries/ruby.png'
 import cSharp from 'assets/libraries/c-sharp.png'
 
-
 const IndexPage = props => {
   return (
     <Layout {...props}>
-      <form netlify>
+      <form name="feedback" netlify>
         <div>
           <input type="radio" id="😢" value="😢" name="happiness" checked />
           <label for="😢">😢</label>
