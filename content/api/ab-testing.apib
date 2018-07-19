@@ -100,6 +100,10 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
     + template_id (string, required) - The template id.
     + `sample_size` (number) - The number of injections to send using this template. Required when `audience_selection` is `sample_size`.
     + percent (number) - The percent of injections to send using this template. Required when `audience_selection` is `percent`.
+    + count_unique_clicked (number) - **Read only.** The number of unique clicks. Only present when the A/B test's `metric` type is `count_unique_clicked`.
+    + `count_unique_confirmed_opened` (number) - **Read only.** The number of confirmed opens. Only present when the A/B test's `metric` type is `count_unique_confirmed_opened`.
+    + count_accepted (number) - **Read only.** Messages an ISP or other remote domain accepted (less Out-of-Band Bounces).
+    + `engagement_rate` (number) - **Read only.** A number between 0 and 1 calculated by (`count_unique_clicked` or `count_unique_confirmed_opened`) / `count_accepted`.
 
 <banner status="warning"><strong>Note</strong>: The templates must have tracking enabled for the A/B test to properly run.</banner>
 
@@ -264,16 +268,25 @@ Returns the A/B test ID, when successful.
                 "engagement_timeout": 24,
                 "default_template": {
                     "template_id": "default_password_reset_template",
-                    "sample_size": 20000
+                    "sample_size": 20000,
+                    "count_unique_confirmed_opened": 1398,
+                    "count_accepted": 20321,
+                    "engagement_rate": 0.068795
                 },
                 "variants": [
                     {
                         "template_id": "password_reset_variant1",
-                        "sample_size": 20000
+                        "sample_size": 20000,
+                        "count_unique_confirmed_opened": 343,
+                        "count_accepted": 18908,
+                        "engagement_rate": 0.018140
                     },
                     {
                         "template_id": "password_reset_variant2",
-                        "sample_size": 20000
+                        "sample_size": 20000,
+                        "count_unique_confirmed_opened": 890,
+                        "count_accepted": 22987,
+                        "engagement_rate": 0.038717
                     }
                 ],
                 "created_at": "2018-04-02T22:08:33+00:00",
@@ -434,16 +447,25 @@ Returns an array of latest versions of your A/B tests.
                     "engagement_timeout": 24,
                     "default_template": {
                         "template_id": "default_payment_confirmation_template",
-                        "percent": 60
+                        "percent": 60,
+                        "count_unique_confirmed_opened": 1000,
+                        "count_accepted": 100000,
+                        "engagement_rate": 0.01
                     },
                     "variants": [
                         {
                             "template_id": "payment_confirmation_variant1",
-                            "percent": 10
+                            "percent": 10,
+                            "count_unique_confirmed_opened": 489,
+                            "count_accepted": 9000,
+                            "engagement_rate": 0.054333
                         },
                         {
                             "template_id": "payment_confirmation_variant2",
-                            "percent": 30
+                            "percent": 30,
+                            "count_unique_confirmed_opened": 320,
+                            "count_accepted": 68933,
+                            "engagement_rate": 0.004642
                         }
                     ],
                     "created_at": "2018-04-02T22:08:33+00:00",
@@ -463,16 +485,25 @@ Returns an array of latest versions of your A/B tests.
                     "engagement_timeout": 24,
                     "default_template": {
                         "template_id": "default_password_reset_template",
-                        "percent": 70
+                        "percent": 70,
+                        "count_unique_clicked": 8909,
+                        "count_accepted": 3423230,
+                        "engagement_rate": 0.002602
                     },
                     "variants": [
                         {
                             "template_id": "password_reset_variant1",
-                            "percent": 15
+                            "percent": 15,
+                            "count_unique_clicked": 398,
+                            "count_accepted": 90302,
+                            "engagement_rate": 0.004407
                         },
                         {
                             "template_id": "password_reset_variant2",
-                            "percent": 15
+                            "percent": 15,
+                            "count_unique_clicked": 231,
+                            "count_accepted": 73039,
+                            "engagement_rate": 0.003162
                         }
                     ],
                     "created_at": "2018-04-02T22:08:33+00:00",
