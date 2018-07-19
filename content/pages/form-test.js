@@ -28,7 +28,7 @@ import cSharp from 'assets/libraries/c-sharp.png'
 const IndexPage = props => {
   return (
     <Layout {...props}>
-      <form name="feedback" netlify>
+      <form name="feedback" data-netlify>
         <div>
           <input type="radio" id="😢" value="😢" name="happiness" checked />
           <label for="😢">😢</label>
