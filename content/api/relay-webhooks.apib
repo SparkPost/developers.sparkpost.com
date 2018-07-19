@@ -8,7 +8,7 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
 
 ## Relay Webhook Object
 
-+ Data Structure
++ Data Structure: Attributes
     + id (string) - Unique ID
     + name (string) - Relay webhook name
     + target (string) - URL of the target to which to POST relay batches
@@ -61,9 +61,9 @@ When updating (PUT) a Relay Webhook:
 
 ## Relay Webhook Payload
 
-The following fields will be included in the JSON object posted to the relay webhook's target:
+The following fields will be included in each object posted to the relay webhook's target:
 
-+ Data Structure
++ Data Structure: relay_message
     + content (object) - The content parsed from the incoming message.
         + html (string) - Contents of the first text/html part of the message.
         + text (string) - Contents of the first text/plain part of the message.
@@ -320,7 +320,6 @@ Update a relay webhook by specifying the webhook ID in the URI path.
                 "target": "https://webhook.customer.example/replies",
                 "auth_token": "A different auth token",
                 "match": {
-                    "protocol": "SMTP",
                     "domain": "email.a-different-domain.com"
                 }
             }
