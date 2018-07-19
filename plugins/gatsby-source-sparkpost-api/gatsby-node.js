@@ -11,40 +11,11 @@ const keyBy = require('lodash.keyby')
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
 
-  // Create message event nodes
-  const { data: { results: messageEventsDocumentation } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/documentation')
-  const { data: { results: messageEventsSamples } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/samples')
-
-  messageEventsDocumentation.forEach((attributes, i) => {
-    const name = attributes.type.sampleValue
-    const sample = messageEventsSamples[i]
-    const nodeId = createNodeId(`sparkpost-message-event-${name}`)
-    const nodeObject = { name, attributes, sample }
-    const nodeContent = JSON.stringify(nodeObject)
-    const nodeContentDigest = crypto
-      .createHash('md5')
-      .update(nodeContent)
-      .digest('hex')
-
-    const nodeData = {
-      id: nodeId,
-      parent: null,
-      children: [],
-      name: nodeObject.name,
-      internal: {
-        type: `MessageEvent`,
-        content: nodeContent,
-        contentDigest: nodeContentDigest
-      }
-    }
-
-    createNode(nodeData)
-  })
-
-  // Create webhook event nodes
   const { data: { results: webhookDocumentation } } = await axios.get('https://api.sparkpost.com/api/v1/webhooks/events/documentation')
   const { data: { results: webhookSamples } } = await axios.get('https://api.sparkpost.com/api/v1/webhooks/events/samples')
+  let eventDescriptions = {}
 
+  // Create webhook event nodes
   const webhookSamplesMap = keyBy(webhookSamples, (sample) => {
     const category = Object.keys(sample.msys)[0]
 
@@ -114,9 +85,44 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
       eventNode.parent = categoryNode.id
       eventNode.category = categoryNode.name
 
+
+      // collect the descriptions for message events
+      eventDescriptions[eventNode.name] = eventNode.description
+
       createNode(eventNode)
       createParentChildLink({ parent: categoryNode, child: eventNode })
     })
+  })
+
+  // Create message event nodes
+  const { data: { results: messageEventsDocumentation } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/documentation')
+  const { data: { results: messageEventsSamples } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/samples')
+
+  messageEventsDocumentation.forEach((attributes, i) => {
+    const name = attributes.type.sampleValue
+    const sample = messageEventsSamples[i]
+    const nodeId = createNodeId(`sparkpost-message-event-${name}`)
+    const nodeObject = { name, attributes, sample }
+    const nodeContent = JSON.stringify(nodeObject)
+    const nodeContentDigest = crypto
+      .createHash('md5')
+      .update(nodeContent)
+      .digest('hex')
+
+    const nodeData = {
+      id: nodeId,
+      parent: null,
+      children: [],
+      name: nodeObject.name,
+      description: eventDescriptions[nodeObject.name],
+      internal: {
+        type: `MessageEvent`,
+        content: nodeContent,
+        contentDigest: nodeContentDigest
+      }
+    }
+
+    createNode(nodeData)
   })
 }
 

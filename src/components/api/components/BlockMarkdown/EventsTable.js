@@ -95,7 +95,20 @@ class EventsTable extends Component {
       <Row>
         <Right>
           <br />
-          <HttpHeading>&nbsp;</HttpHeading>
+          <HttpHeading style={{
+            fontFamily: font('secondary'),
+            textTransform: 'uppercase',
+            fontWeight: weight('medium'),
+            fontSize: `0.75rem`,
+            color: grayscale(7),
+            borderBottom: `1px solid ${grayscale(1)}`,
+            margin: `1rem 0 0.5rem`,
+            paddingBottom: `.5rem`,
+          }}>{activeEvent.name} Event</HttpHeading>
+          <p style={{
+            fontSize: `15px`,
+            margin: `1rem 0 .5rem`
+          }}>{activeEvent.description}</p>
           <Json>{JSON.stringify(activeEvent.sample)}</Json>
         </Right>
         <div className="block">
@@ -157,7 +170,7 @@ class EventsTable extends Component {
           </EventsWrapper>
           <div id="attributes" style={{ flexGrow: 1 }}>
             <DataStructure
-              title={`${activeEvent.name} Object`}
+              title={' '}
               jsonArray={map(
                 activeEvent.attributes,
                 ({ description }, name) =>

@@ -10,6 +10,7 @@ export default () => (
           edges {
             node {
               name
+              description
               attributes
               sample
             }
