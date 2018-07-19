@@ -20,7 +20,7 @@ export default () => (
     render={data => {
       const events = data.allMessageEvent.edges
         .map(({ node }) => node)
-        .filter(({ name }) => name.includes('sms'))
+        .filter(({ name }) => !name.includes('sms'))
 
       return <EventsTable events={events} />
     }}
