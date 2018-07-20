@@ -1,2 +1,3 @@
 /api/labs-introduction.html  /api/labs
 /api/smtp-api.html           /api/smtp/
+https://developers.sparkpost.com/* http://developers.sparkpost.com/:splat 302!
