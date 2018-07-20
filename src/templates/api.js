@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Layout from 'components/Layout'
