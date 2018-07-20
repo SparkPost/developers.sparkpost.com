@@ -8,6 +8,8 @@ const { GraphQLJSON } = require('gatsby/graphql')
 const map = require('lodash.map')
 const keyBy = require('lodash.keyby')
 
+const addPeriod = (str) => str.endsWith('.') ? str : `${str}.`
+
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
 
@@ -23,6 +25,7 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
   })
 
   const processWebhookCategory = (category) => {
+    category.description = addPeriod(category.description)
     const nodeId = createNodeId(`sparkpost-webhook-category-${category.name}`)
     const nodeContent = JSON.stringify(category)
     const nodeContentDigest = crypto
@@ -48,7 +51,11 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
     const sample = webhookSamplesMap[name]
     const nodeId = createNodeId(`sparkpost-webhook-event-${name}`)
     const nodeObject = {
-      name, attributes, sample, description: event.description, display_name: event.display_name
+      name,
+      attributes,
+      sample,
+      description: addPeriod(event.description),
+      display_name: event.display_name
     }
     const nodeContent = JSON.stringify(nodeObject)
     const nodeContentDigest = crypto

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { map } from 'lodash'
 import styled from 'styled-components'
-import { font, weight } from 'utils/fonts'
+import { uppercase, weight } from 'utils/fonts'
 import { color, grayscale, shadow } from 'utils/colors'
 import { mediaQuery } from 'utils/breakpoint'
 import DataStructure from 'components/api/parts/DataStructure'
@@ -40,10 +40,34 @@ const Select = styled.select`
   }
 `
 
+const SelectCarot = styled.span.attrs({ className: 'fa fa-caret-down' })`
+  position: absolute;
+  right: 0.5rem;
+  top: 0.65rem;
+  color: ${grayscale(4)};
+  fontSize: 0.666666667rem;
+`
+
+const TableWrapper = styled.div.attrs({ className: 'block' })`
+  display: flex;
+`
+
 const EventsWrapper = styled.div`
   padding: 0 0.75rem 0 0;
   display: none;
   ${mediaQuery('lg', `display: block;`)};
+`
+
+const EventsHeading = styled.h4.attrs({ children: 'Events' })`
+  && {
+    ${uppercase}
+    font-weight: ${weight('medium')};
+    font-size: 0.75rem;
+    color: ${grayscale(4)};
+    margin: 2rem 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid ${grayscale(8)};
+  }
 `
 
 const EventsHover = styled.div`
@@ -80,118 +104,108 @@ const Event = styled(({ active, ...props }) => <button {...props} />)`
   `}
 `
 
+const TableDataStructure = styled(DataStructure)`
+  flex-grow: 1;
+`
+
+const DescriptionHeading = styled(HttpHeading)`
+  &&& {
+    ${uppercase}
+    font-weight: ${weight('medium')};
+    font-size: 0.75rem;
+    color: ${grayscale(7)};
+    border-bottom: 1px solid ${grayscale(1)};
+    margin: 1rem 0 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+`
+
+const Description = styled.p`
+  font-size: 15px;
+  margin: 1rem 0 .5rem;
+`
+
 class EventsTable extends Component {
-  state = { activeIndex: 0 }
+  state = { activeIndex: 0, activeEvent: this.props.events[0] }
 
   setActive = activeIndex => {
-    this.setState({ activeIndex })
+    this.setState({
+      activeIndex,
+      activeEvent: this.props.events[activeIndex]
+    })
+  }
+
+  renderSample() {
+    const { activeEvent } = this.state
+
+    return (
+      <Fragment>
+        <br />
+        <DescriptionHeading>{activeEvent.name} Event</DescriptionHeading>
+        <Description>{activeEvent.description}</Description>
+        <Json>{JSON.stringify(activeEvent.sample)}</Json>
+      </Fragment>
+    )
+  }
+
+  renderMobileSelector() {
+    const { events } = this.props
+    const { activeIndex } = this.state
+
+    return (
+      <div className="block">
+        <SelectWrapper>
+          <Select value={activeIndex} onChange={e => this.setActive(e.target.value)}>
+            {events.map((event, i) => (
+              <option value={i} key={i}>{event.name}</option>
+            ))}
+          </Select>
+          <SelectCarot />
+        </SelectWrapper>
+      </div>
+    )
+  }
+
+  renderDesktopSelector() {
+    const { events } = this.props
+    const { activeIndex } = this.state
+
+    return (
+      <EventsWrapper>
+        <EventsHeading />
+        <EventsHover>
+          {events.map((event, i) => (
+            <Event
+              active={i === activeIndex}
+              onClick={() => this.setActive(i)}
+              key={i}
+            >
+              {event.name}
+            </Event>
+          ))}
+        </EventsHover>
+      </EventsWrapper>
+    )
+  }
+
+  renderAttributes() {
+    const { activeEvent } = this.state
+    const jsonArray = map(activeEvent.attributes, ({ description }, name) => ({ name, description }))
+
+    return (
+      <TableDataStructure title={' '} jsonArray={jsonArray} />
+    )
   }
 
   render() {
-    const { events } = this.props
-    const activeEvent = events[this.state.activeIndex]
-
     return (
       <Row>
-        <Right>
-          <br />
-          <HttpHeading
-            style={{
-              fontFamily: font('secondary'),
-              textTransform: 'uppercase',
-              fontWeight: weight('medium'),
-              fontSize: `0.75rem`,
-              color: grayscale(7),
-              borderBottom: `1px solid ${grayscale(1)}`,
-              margin: `1rem 0 0.5rem`,
-              paddingBottom: `.5rem`,
-            }}
-          >
-            {activeEvent.name} Event
-          </HttpHeading>
-          <p
-            style={{
-              fontSize: `15px`,
-              margin: `1rem 0 .5rem`,
-            }}
-          >
-            {activeEvent.description}
-          </p>
-          <Json>{JSON.stringify(activeEvent.sample)}</Json>
-        </Right>
-        <div className="block">
-          <SelectWrapper>
-            <Select
-              value={this.state.activeIndex}
-              onChange={event => this.setActive(event.target.value)}
-            >
-              {events.map((event, i) => (
-                <option value={i} key={i}>
-                  {event.name}
-                </option>
-              ))}
-            </Select>
-            <i
-              className="fa fa-caret-down"
-              style={{
-                position: `absolute`,
-                right: `.5rem`,
-                top: `.65rem`,
-                color: grayscale(4),
-                fontSize: `12px`,
-              }}
-            />
-          </SelectWrapper>
-        </div>
-        <div
-          className="block"
-          style={{
-            display: 'flex',
-          }}
-        >
-          <EventsWrapper>
-            <div
-              style={{
-                fontFamily: font('secondary'),
-                textTransform: 'uppercase',
-                fontWeight: weight('medium'),
-                fontSize: `0.75rem`,
-                color: grayscale(4),
-                margin: `2rem 0 0.5rem`,
-                paddingBottom: `.5rem`,
-                borderBottom: `1px solid ${grayscale(8)}`,
-              }}
-            >
-              Events
-            </div>
-            <EventsHover>
-              {events.map((event, i) => (
-                <Event
-                  active={i === this.state.activeIndex}
-                  onClick={() => this.setActive(i)}
-                  key={i}
-                >
-                  {event.name}
-                </Event>
-              ))}
-            </EventsHover>
-          </EventsWrapper>
-          <div id="attributes" style={{ flexGrow: 1 }}>
-            <DataStructure
-              title={' '}
-              jsonArray={map(
-                activeEvent.attributes,
-                ({ description }, name) =>
-                  !name.includes('sms') && {
-                    name,
-                    description: description.endsWith('.')
-                      ? description
-                      : `${description}.`,
-                  }
-              ).filter(Boolean)}
-            />
-          </div>
-        </div>
+        <Right>{this.renderSample()}</Right>
+        {this.renderMobileSelector()}
+        <TableWrapper>
+          {this.renderDesktopSelector()}
+          {this.renderAttributes()}
+        </TableWrapper>
       </Row>
     )
   }
