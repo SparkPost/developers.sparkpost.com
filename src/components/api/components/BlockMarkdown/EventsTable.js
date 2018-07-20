@@ -45,7 +45,7 @@ const SelectCarot = styled.span.attrs({ className: 'fa fa-caret-down' })`
   right: 0.5rem;
   top: 0.65rem;
   color: ${grayscale(4)};
-  fontSize: 0.666666667rem;
+  fontsize: 0.666666667rem;
 `
 
 const TableWrapper = styled.div.attrs({ className: 'block' })`
@@ -122,7 +122,7 @@ const DescriptionHeading = styled(HttpHeading)`
 
 const Description = styled.p`
   font-size: 15px;
-  margin: 1rem 0 .5rem;
+  margin: 1rem 0 0.5rem;
 `
 
 class EventsTable extends Component {
@@ -131,7 +131,7 @@ class EventsTable extends Component {
   setActive = activeIndex => {
     this.setState({
       activeIndex,
-      activeEvent: this.props.events[activeIndex]
+      activeEvent: this.props.events[activeIndex],
     })
   }
 
@@ -155,9 +155,14 @@ class EventsTable extends Component {
     return (
       <div className="block">
         <SelectWrapper>
-          <Select value={activeIndex} onChange={e => this.setActive(e.target.value)}>
+          <Select
+            value={activeIndex}
+            onChange={e => this.setActive(e.target.value)}
+          >
             {events.map((event, i) => (
-              <option value={i} key={i}>{event.name}</option>
+              <option value={i} key={i}>
+                {event.name}
+              </option>
             ))}
           </Select>
           <SelectCarot />
@@ -190,11 +195,12 @@ class EventsTable extends Component {
 
   renderAttributes() {
     const { activeEvent } = this.state
-    const jsonArray = map(activeEvent.attributes, ({ description }, name) => ({ name, description }))
+    const jsonArray = map(activeEvent.attributes, ({ description }, name) => ({
+      name,
+      description,
+    }))
 
-    return (
-      <TableDataStructure title={' '} jsonArray={jsonArray} />
-    )
+    return <TableDataStructure title={' '} jsonArray={jsonArray} />
   }
 
   render() {
