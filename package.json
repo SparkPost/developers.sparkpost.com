@@ -62,9 +62,11 @@
     "build": "NODE_ENV=production gatsby build",
     "publish": "GATSBY_ACTIVE_ENV=publish npm run build",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\" \"content/**/*.js\"",
-    "precommit": "npm run format"
+    "precommit": "npm run format",
+    "prepush": "auditmated"
   },
   "devDependencies": {
+    "auditmated": "^0.1.2",
     "axios": "^0.18.0",
     "husky": "^0.14.3",
     "prettier": "^1.9.2"
