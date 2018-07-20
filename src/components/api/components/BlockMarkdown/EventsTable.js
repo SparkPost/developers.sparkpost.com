@@ -45,7 +45,7 @@ const SelectCarot = styled.span.attrs({ className: 'fa fa-caret-down' })`
   right: 0.5rem;
   top: 0.65rem;
   color: ${grayscale(4)};
-  fontsize: 0.666666667rem;
+  font-size: 0.666666667rem;
 `
 
 const TableWrapper = styled.div.attrs({ className: 'block' })`
@@ -54,6 +54,8 @@ const TableWrapper = styled.div.attrs({ className: 'block' })`
 
 const EventsWrapper = styled.div`
   padding: 0 0.75rem 0 0;
+  border-bottom: 1px solid ${grayscale(8)};
+  margin-bottom: 1rem;
   display: none;
   ${mediaQuery('lg', `display: block;`)};
 `
