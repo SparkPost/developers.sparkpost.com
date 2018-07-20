@@ -6,8 +6,6 @@ import { font, weight, monospace, uppercase } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
 injectGlobal`
-  @import 'https://cloud.typography.com/6240112/7284192/css/fonts.css';
-
   ${normalize}
 
   html {
