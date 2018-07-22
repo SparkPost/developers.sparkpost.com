@@ -1,0 +1,8 @@
+{
+  "name": "gatsby-plugin-textlint",
+  "description": "Gatsby plugin for textlint",
+  "license": "MIT",
+  "dependencies": {
+    "textlint": "^10.2.1"
+  }
+}

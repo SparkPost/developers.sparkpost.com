@@ -11,6 +11,7 @@
     "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
   },
   "dependencies": {
+    "@textlint/textlint-plugin-markdown": "^4.0.10",
     "babel-plugin-styled-components": "^1.5.1",
     "escape-string-regexp": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -51,6 +52,7 @@
     "slugify": "^1.2.9",
     "styled-components": "^2.4.0",
     "styled-normalize": "^4.0.0",
+    "textlint-rule-no-todo": "^2.0.0",
     "unified": "^7.0.0"
   },
   "license": "MIT",

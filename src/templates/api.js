@@ -8,6 +8,7 @@ import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
 import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import API from 'components/api'
+import Lint from 'components/api/Lint'
 
 import { mediaQuery } from 'utils/breakpoint'
 import parseResult from 'minim-parse-result'
@@ -71,8 +72,9 @@ class Template extends Component {
     if (
       process.env.GATSBY_ACTIVE_ENV === 'docs' ||
       process.env.GATSBY_ACTIVE_ENV === 'development'
-    )
+    ) {
       return true
+    }
 
     const isSamePage = this.props.location.pathname === window.location.pathname
     return !isSamePage
@@ -86,7 +88,7 @@ class Template extends Component {
       TableOfContents: pageTableOfContents = [],
       meta,
     } = props.data.file.childApiBlueprint
-    const { api } = minim.fromRefract(ast)
+    const { api, annotations } = minim.fromRefract(ast)
 
     const fullTableOfContents = insertPageTableOfContents({
       file: props.pageContext.file,
@@ -103,6 +105,7 @@ class Template extends Component {
           meta={[{ name: 'description', content: meta.description }]}
         />
         <ApiaryRedirects />
+        <Lint messages={props.data.file.childTextLint.messages} annotations={annotations} />
         <Sidebar>
           <Search />
           <Navigation
@@ -127,6 +130,9 @@ export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {
     file(base: { eq: $file }) {
       base
+      childTextLint {
+        messages
+      }
       childApiBlueprint {
         ast
         TableOfContents
@@ -136,6 +142,7 @@ export const pageQuery = graphql`
           full
         }
       }
+
     }
   }
 `

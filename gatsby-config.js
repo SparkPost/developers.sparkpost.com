@@ -43,6 +43,9 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
     {
+      resolve: `gatsby-plugin-textlint`
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,

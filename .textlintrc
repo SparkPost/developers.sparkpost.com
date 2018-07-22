@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "no-todo": true
+  },
+  "plugins": {
+    "@textlint/markdown": {
+      "extensions": [".apib"]
+    }
+  }
+}
