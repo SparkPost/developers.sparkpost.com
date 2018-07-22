@@ -6,7 +6,7 @@ const Button = styled.button`
   bottom: 40px;
   right: 40px;
   z-index: 9;
-  font-size: .9rem;
+  font-size: 0.9rem;
   line-height: 44px;
   height: 50px;
   width: 50px;
@@ -15,19 +15,24 @@ const Button = styled.button`
   box-shadow: 0px 5px 13px 1px rgba(0, 0, 0, 0.14);
   outline: 0;
   cursor: pointer;
-  ${props => props.status === 'ok' ? `
+  ${props =>
+    props.status === 'ok'
+      ? `
     background: rgba(16, 138, 16, 0.13);
     border-color: rgba(16, 138, 16, 0.6);
     color: rgba(16, 138, 16, 0.9);
-  `: props.status === 'warning' ? `
+  `
+      : props.status === 'warning'
+        ? `
     background: yellow;
-  ` : `
+  `
+        : `
       background: rgba(255, 34, 34, 0.05);
       border-color: rgba(255, 34, 34, .6);
       color: rgba(255, 34, 34, .9);
-  ` }
-
-  ${props => props.isOpen && `
+  `} ${props =>
+    props.isOpen &&
+    `
     &:before {
       content: "";
       width: 100%;
@@ -42,7 +47,7 @@ const Button = styled.button`
       border-right: 1px solid #d6d6d6;
       box-sizing: content-box;
     }
-  `}
+  `};
 `
 
 const Times = styled.span`
@@ -51,7 +56,7 @@ const Times = styled.span`
 `
 
 const Messages = styled.div`
-  display: ${props => props.isOpen ? 'block': 'none'};
+  display: ${props => (props.isOpen ? 'block' : 'none')};
   z-index: 9999;
   height: 100%;
   position: fixed;
@@ -59,7 +64,7 @@ const Messages = styled.div`
   right: 0px;
   max-width: 500px;
   width: 50%;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background: white;
   border-left: 1px solid #d6d6d6;
   box-shadow: -5px 0px 20px rgba(0, 0, 0, 0.1);
@@ -82,9 +87,13 @@ class Lint extends Component {
     const { messages, annotations } = this.props
     console.log(annotations)
 
-    annotations.map((annotation) => {
+    annotations.map(annotation => {
       // console.log(annotation.content, annotation.meta.toValue(), annotation.attributes.toValue())
-      console.log(annotation.content, annotation.code.toValue(), annotation.classes.toValue())
+      console.log(
+        annotation.content,
+        annotation.code.toValue(),
+        annotation.classes.toValue()
+      )
     })
 
     const status = messages.length > 0 ? `danger` : `ok`
@@ -96,15 +105,20 @@ class Lint extends Component {
     return (
       <Fragment>
         <Button onClick={this.toggleOpen} status={status}>
-          {messages.length ? `${messages.length}` : <span style={{fontSize: `1.15em`}}>✓</span>}
+          {messages.length ? (
+            `${messages.length}`
+          ) : (
+            <span style={{ fontSize: `1.15em` }}>✓</span>
+          )}
         </Button>
         <Messages isOpen={this.state.isOpen}>
-          {messages.map((message, i) => <Message key={i}>{JSON.stringify(message, null, 2)}</Message>)}
+          {messages.map((message, i) => (
+            <Message key={i}>{JSON.stringify(message, null, 2)}</Message>
+          ))}
         </Messages>
       </Fragment>
     )
   }
 }
-
 
 export default Lint

@@ -105,7 +105,10 @@ class Template extends Component {
           meta={[{ name: 'description', content: meta.description }]}
         />
         <ApiaryRedirects />
-        <Lint messages={props.data.file.childTextLint.messages} annotations={annotations} />
+        <Lint
+          messages={props.data.file.childTextLint.messages}
+          annotations={annotations}
+        />
         <Sidebar>
           <Search />
           <Navigation
@@ -142,7 +145,6 @@ export const pageQuery = graphql`
           full
         }
       }
-
     }
   }
 `
