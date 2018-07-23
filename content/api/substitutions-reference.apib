@@ -712,6 +712,97 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
 }
 ```
 
+## Snippets
+ 
+Snippets are pieces of reusable content that are managed using the /api/v1/snippets endpoint.
+Once a snippet is created, it can be imported into any html or text email content using the
+`render_snippet` macro call.
+ 
+Snippets are similar to the dynamic_html and dynamic_plain described in the previous topic,
+with the key difference being snippets are created and stored ahead of time rather than
+passed inline within a transmissions request.
+ 
+For example, the /api/v1/snippets endpoint can be used to create a snippet called *ourfooter*:
+ 
+```
+{
+  "id" : "ourfooter",
+  "content" : {
+    "html" : "<footer><p>Our standard html footer content</p></footer>",
+    "text" : "Our standard plain text footer content"
+  }
+}
+```
+ 
+The *ourfooter* snippet can be imported into either plain text or html email content
+using the `render_snippet` macro call.  The macro call will automatically use the appropriate
+content.html or content.text snippet value based on the type of content that the snippet
+is being inserted into.
+For example, if a transmission was injected with content.html of the form:
+```
+<html>
+<p>Our body content</p>
+{{ render_snippet( "ourfooter" ) }}
+</html>
+```
+ 
+The resulting rendered HTML email content would look like:
+```
+<html>
+<p>Our body content</p>
+<footer><p>Our standard html footer content</p></footer>
+</html>
+```
+ 
+The `render_snippet` macro takes a snippet id as its only argument.  This snippet id
+may in fact may come from substitution_data.  The following example
+illustrates how one of two plain text snippets can be utilized, based on the recipient's substitution_data.
+ 
+Two snippets are created:
+```
+{
+  "id" : "banner_snippet_A",
+  "content" : {
+    "text" : "Banner A"
+  }
+}
+```
+ 
+```
+{
+  "id" : "banner_snippet_B",
+  "content" : {
+    "text" : "Banner B"
+  }
+}
+```
+ 
+transmission injected with content.text:
+```
+The following banner depends on the "banner_id" substitution_data value
+{{ render_snippet( banner_id ) }}
+```
+ 
+Where Recipient 1 has substitution_data:
+```
+{
+  "banner_id" : "banner_snippet_A"
+}
+```
+ 
+And Recipient 2 has substitution_data:
+```
+{
+  "banner_id" : "banner_snippet_B"
+}
+```
+ 
+Other notes on snippet usage:
+* snippets themselves may contain substitution syntax, just like a regular template.  Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
+* snippets may contain links (which will be click tracked if click_tracking is enabled).
+* If a `render_snippet` call references a snippet which does not exist, the transmission will be discarded with a generation failure event.
+* Each of the HTML and plain text email parts may utilize `render_snippet` at most 30 times.  If this limit is exceeded, the transmission will be discarded with a generation failure event.
+
 ## Macros
 
 Macros are function calls that may or may not take arguments.  The currently available macros are:

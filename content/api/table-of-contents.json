@@ -43,6 +43,11 @@
         "path": "/api/templates/"
       },
       {
+        "title": "Snippets",
+        "file": "snippets.apib",
+        "path": "/api/snippets"
+      },
+      {
         "title": "A/B Testing",
         "file": "ab-testing.apib",
         "path": "/api/ab-testing/",
