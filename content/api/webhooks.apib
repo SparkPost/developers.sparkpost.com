@@ -253,44 +253,6 @@ and returns information on the response received from the target.
         }
 
 
-### Retrieve Batch Status Information [GET /webhooks/{id}/batch-status{?limit}]
-
-Returns the status information for the batches that have been generated. Status information includes the successes of batches that previously failed to reach the webhook's target URL and batches that are currently in a failed state.
-
-+ Parameters
-    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
-    + limit = 1000 (optional, int, `1000`) ... Maximum number of results to return.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    
-        {
-            "results": [
-                {
-                    "batch_id": "032d330540298f54f0e8bcc1373f3cfd",
-                    "ts": "2014-07-30T21:38:08.000Z",
-                    "attempts": 7,
-                    "response_code": "200",
-                    "latency": 160
-                },
-                {
-                    "batch_id": "13c6764994a8f6b4e29906d5712ca7d",
-                    "ts": "2014-07-30T20:38:08.000Z",
-                    "attempts": 2,
-                    "failure_code": "400",
-                    "response_code": "400",
-                    "latency": 210
-                }
-            ]
-        }
-
 
 ### Update a Webhook [PUT /webhooks/{id}]
 
@@ -494,6 +456,124 @@ Returns a list of all your webhooks.
             }
 
 
+## Batch Status [/webhooks/{id}/batch-status{?limit}]
+
+### Retrieve Batch Status Information [GET]
+
+Returns the status information for the batches that have been generated. Status information includes the successes of batches that previously failed to reach the webhook's target URL and batches that are currently in a failed state.
+
++ Parameters
+    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
+    + limit = 1000 (optional, int, `1000`) ... Maximum number of results to return.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    
+        {
+            "results": [
+                {
+                    "batch_id": "032d330540298f54f0e8bcc1373f3cfd",
+                    "ts": "2014-07-30T21:38:08.000Z",
+                    "attempts": 7,
+                    "response_code": "200",
+                    "latency": 160
+                },
+                {
+                    "batch_id": "13c6764994a8f6b4e29906d5712ca7d",
+                    "ts": "2014-07-30T20:38:08.000Z",
+                    "attempts": 2,
+                    "failure_code": "400",
+                    "response_code": "400",
+                    "latency": 210
+                }
+            ]
+        }
+ 
+### Retrieve Status Information (Querying and Paging) [GET /webhooks/{id}/batches{?page,per_page,status_code,to,from,batch_ids,attempts,attempts_comparator,latency,latency_comparator}]
+ 
+Retrieve status information regarding batches that have been attempted for the given webhook by specifying its id in the URI path and any filterable parameters.
+ 
++ Parameters
+    + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`) ... UUID identifying a webhook
+    + status_code (optional, string `fail`) ... The status code response of the post request. Valid values are `success` for all success, `fail` for all failures, or the string of the status code such as `400`, `500`, or `ESOCKETTIMEDOUT`.
+        + Values
+            + `success`
+            + `fail`
+            + `400`
+    + to = `now` (optional, datetime, `2014-07-20T09:00:00-0400`) ... Datetime in format of YYYY-MM-DDTHH:mm:ssZ
+    + from (optional, datetime, `2014-07-11T09:00:00-0400`) ... Datetime in format of YYYY-MM-DDTHH:mm:ssZ
+    + batch_ids (optional, list, `db4f4a72-c392-40ef-ae25-fa471a316f5c,db4f4a72-c392-40ef-ae25-fa471a316f5e`)
+    + page = `1` (optional, number, `1`) ... The results page number to return. Used with per_page for paging through results.
+    + per_page = `1000` (optional, number, `1000`) ... Number of results to return per page. Must be between 1 and 1,000 (inclusive).
+    + attempts (optional, number, `6`) ... The delivery attempt number. Use this in conjunction with `attempts_comparator` to get all batches with attempts greater than (>) `gt`, greater than or equal to (>=) `gte`, less than (<) `lt`, or less than or equal to (<=) `lte`.
+    + attempts_comparator (optional, string, `gt`)
+        + Values
+            + `gt`
+            + `gte`
+            + `lt`
+            + `lte`
+    + latency (optional, number, `500`) ... Duration (ms) of the entire batch posting HTTP round-trip. Use this in conjunction with `latency_comparator` to get all batches with latency greater than (>) `gt`, greater than or equal to (>=) `gte`, less than (<) `lt`, or less than or equal to (<=) `lte`.
+    + latency_comparator (optional, string, `gte`)
+        + Values
+            + `gt`
+            + `gte`
+            + `lt`
+            + `lte`
+ 
++ Request
+ 
+    + Headers
+ 
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+ 
++ Response 200 (application/json)
+ 
+        {
+            "results": [
+                {
+                    "batch_id": "db4f4a72-c392-40ef-ae25-fa471a316f5e",
+                    "ts": "2014-07-16T22:44:08.000Z",
+                    "attempts": 7,
+                    "response_code": "ENOTFOUND",
+                    "latency": 505,
+                    "batch_size": 95
+                },
+                {
+                    "batch_id": "db4f4a72-c392-40ef-ae25-fa471a316f5c",
+                    "ts": "2014-07-16T21:38:08.000Z",
+                    "attempts": 7,
+                    "response_code": "400",
+                    "latency": 860,
+                    "batch_size": 88
+                },
+                {
+                    "batch_id": "db4f4a72-c392-40ef-ae25-fa471a316f5c",
+                    "ts": "2014-07-17T20:38:08.000Z",
+                    "attempts": 8,
+                    "response_code": "400",
+                    "latency": 500,
+                    "batch_size": 88
+                },
+                {
+                    "batch_id": "db4f4a72-c392-40ef-ae25-fa471a316f5c",
+                    "ts": "2014-07-18T20:38:08.000Z",
+                    "attempts": 9,
+                    "response_code": "ESOCKETTIMEDOUT",
+                    "latency": 1200,
+                    "batch_size": 88
+                }
+            ],
+            "links": [],
+            "total_count": 4
+        }
 
 
 ## Documentation [/webhooks/events/documentation] 
