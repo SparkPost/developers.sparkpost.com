@@ -23,7 +23,7 @@ The `test_mode` defines what happens once the A/B test completes. In `learning` 
 
 In Bayesian mode, when a template reaches the set `confidence_level` it becomes the winner. If a test ends by hitting one of the other conditions and the `confidence_level` has not been reached, the default template will be considered the winner.
 
-<banner status="info">Bayesian test mode is coming soon!</banner>
+<Banner status="info">Bayesian test mode is coming soon!</Banner>
 
 ### Versions
 
@@ -101,7 +101,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
     + `sample_size` (number) - The number of injections to send using this template. Required when `audience_selection` is `sample_size`.
     + percent (number) - The percent of injections to send using this template. Required when `audience_selection` is `percent`.
 
-<banner status="warning">The templates must have tracking enabled for the A/B test to properly run.</banner>
+<Banner status="warning">The templates must have tracking enabled for the A/B test to properly run.</Banner>
 
 
 ### Create an A/B Test [POST /ab-test]
@@ -293,7 +293,7 @@ Returns the A/B test ID, when successful.
 
 ### Update an A/B Test [PUT /ab-test/{id}]
 
-<banner status="warning">You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</banner>
+<Banner status="warning">You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</Banner>
 
 If the A/B test's latest version is cancelled or completed, updating it creates a new version, effectively restarting the test. The `winning_template_id` will be reset for the new version. If `winning_template_id` existed in the previous version, the `default_tempate.template_id` of the new version will default to that value, unless overridden by the update.
 

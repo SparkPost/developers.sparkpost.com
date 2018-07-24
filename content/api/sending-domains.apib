@@ -6,13 +6,13 @@ description: Manage sending domains, which are used to indicate who an email is 
 
 A sending domain is a domain that is used to indicate who an email is from via the "From:" header. DNS records can be configured for a sending domain, which allows recipient mail servers to authenticate your messages.
 
-<banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="#sending-domains-post-verify-a-sending-domain">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</banner>
+<Banner status="success"><strong>For maximum deliverability</strong>, we recommend <a href="#sending-domains-post-verify-a-sending-domain">configuring</a> DKIM for your sending domains <em>and</em> <a href="https://www.sparkpost.com/docs/tech-resources/custom-bounce-domain/">configuring a bounce domain</a> on corresponding subdomains. This is an easy way to help mailbox providers authenticate and differentiate your email from other senders using SparkPost.</Banner>
 
 ### DNS notes
 
 **DKIM**
 
-<banner status="info">These requirements are only important to note if you are generating your own DKIM values.</banner>
+<Banner status="info">These requirements are only important to note if you are generating your own DKIM values.</Banner>
 
 * Both PKCS #1 and PKCS #8 formats are supported.
 * We do not support password-protected keys.
@@ -133,7 +133,7 @@ Once it is verified through one of those two methods, you can use it as a bound 
 
 Creates a new sending domain. Each domain and it's subdomains can only be added to a single account. Please see our [support article](https://support.sparkpost.com/customer/en/portal/articles/1933318-creating-sending-domains) for additional reasons a domain might not be approved for sending.
 
-<banner status="warning"><strong>Note</strong>: When adding a sending domain to your account, the domain must be verified within two weeks or it will be removed from your account.</banner>
+<Banner status="warning"><strong>Note</strong>: When adding a sending domain to your account, the domain must be verified within two weeks or it will be removed from your account.</Banner>
 
 + Data Structure
     + domain (string, required) - The domain you are sending from.
@@ -208,8 +208,8 @@ Returns the domain and a success message. If `generate_dkim` was true, the dkim 
     + postmaster_at_token (string) - A token retrieved from the verification link contained in the postmaster@ verification email.
     + abuse_at_token (string) - A token retrieved from the verification link contained in the abuse@ verification email.
 
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts: Depending on your setup, sending domains might be verified automatically when they are created, and can be used to send immediately. In that case, there is no need separately verify sending domains. To find out if this applies to you, ask your TAM.
-</banner>
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts: Depending on your setup, sending domains might be verified automatically when they are created, and can be used to send immediately. In that case, there is no need separately verify sending domains. To find out if this applies to you, ask your TAM.
+</Banner>
 
 #### Verify via DNS
 
@@ -410,7 +410,7 @@ Returns the full sending domain object, except the `domain` field.
 ### Delete a Sending Domain [DELETE /sending-domains/{domain}]
 
 
-<banner status="danger"><strong>Warning</strong>: Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</banner>
+<Banner status="danger"><strong>Warning</strong>: Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</Banner>
 
 + Parameters
     + domain (required, string, `example1.com`)
