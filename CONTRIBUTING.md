@@ -171,7 +171,7 @@ Data Structures can also receive a sample, which they will display on the right 
 
 #### Banner
 
-The `<banner>` component allows you to define an alert. Only use a banner when calling out something that will change how the user uses the action or resource. If you are simply describing the endpoint, put it as the description.
+The `<Banner>` component allows you to define an alert. Only use a banner when calling out something that will change how the user uses the action or resource. If you are simply describing the endpoint, put it as the description.
 
 **Status Values**:
 
@@ -184,5 +184,5 @@ The `<banner>` component allows you to define an alert. Only use a banner when c
 **Example**
 
 ```
-<banner status="info"><strong>Note</strong>: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, cumque.</banner>
+<Banner status="info"><strong>Note</strong>: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, cumque.</Banner>
 ```
