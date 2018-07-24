@@ -582,6 +582,18 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 + Response 204
 
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "invalid params",
+                    "code": "1200",
+                    "description": "Cannot cancel by transmission_id, only cancel by campaign_id is supported"
+                }
+            ]
+        }
+
 + Response 404 (application/json)
 
         {
@@ -630,6 +642,18 @@ Delete all transmissions in a campaign.
 + Request
 
 + Response 204
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "invalid params",
+                    "code": "1200",
+                    "description": "Cannot cancel by campaign_id, only cancel by transmission_id is supported"
+                }
+            ]
+        }
 
 ### List All Scheduled Transmissions [GET /transmissions{?campaign_id,template_id}]
 
