@@ -20,7 +20,7 @@ The sandbox domain allows you to send your first email without setting up a send
 
 For more extensive testing with your own sending doman, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
 
-<banner status="info">The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</banner>
+<Banner status="info">The sandbox domain is not available for <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> accounts.</Banner>
 
 
 ### Sending Limits
@@ -45,7 +45,7 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 
 You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
 
-<banner status="warning">The transmission content (text + html + attachments + inline images) is limited to 20 MBs.</banner>
+<Banner status="warning">The transmission content (text + html + attachments + inline images) is limited to 20 MBs.</Banner>
 
 + Data Structure: Parameters
     + num_rcpt_errors (number, `3`) - Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
@@ -203,7 +203,7 @@ Attachments for a transmission are specified in the `content.attachments` array 
     }
     ```
 
-<banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</banner>
+<Banner status="danger">Sending attachments with malicious content is <strong>strictly prohibited</strong> by SparkPost. This includes (and is not limited to) files with `bat` and `exe` extensions.</Banner>
 
 #### Inline Image Object
 
@@ -374,7 +374,7 @@ The following attribute should be set in the `content` object when sending an A/
 
 When using substitution data with A/B tests, data for all possible templates must be provided.  We recommend that all templates that make up an A/B test should use the same substitution data fields.
 
-<banner status="warning">A/B Tests only support inline single recipient transmissions currently</banner>
+<Banner status="warning">A/B Tests only support inline single recipient transmissions currently</Banner>
 
 + Request
 
@@ -472,7 +472,7 @@ Content headers are not generated for transmissions providing RFC822 content. Th
 
 ## Scheduled Transmissions [/transmissions]
 
-<banner status="info"><strong>Note</strong>: Not available in SparkPost EU.</banner>
+<Banner status="info">Not available in SparkPost EU.</Banner>
 
 ### Schedule a Transmission [POST /transmissions/]
 
@@ -573,7 +573,7 @@ Inline content cannot be specifically queried.
 
 Only transmissions which are scheduled for future generation may be deleted.
 
-<banner status="warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</banner>
+<Banner status="warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</Banner>
 
 + Parameters
     + id: 11714265276872 (number, required)
@@ -620,7 +620,7 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 ### Delete Scheduled Transmissions By Campaign ID [DELETE /transmissions{?campaign_id}]
 
-<banner status="info"><strong>Note:</strong> Enterprise only, account-specific configuration option.</banner>
+<Banner status="info">Enterprise only, account-specific configuration option.</Banner>
 
 Delete all transmissions in a campaign.
 
