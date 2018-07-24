@@ -5,6 +5,10 @@ import { color, grayscale } from 'utils/colors'
 import { font, weight, monospace, uppercase } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
+// import font families
+import 'typeface-source-code-pro'
+import './fonts.css'
+
 injectGlobal`
   ${normalize}
 
