@@ -15,10 +15,10 @@
     "escape-string-regexp": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.0-beta.1",
+    "gatsby": "^2.0.0-beta.55",
     "gatsby-plugin-google-tagmanager": "^2.0.0-beta.1",
     "gatsby-plugin-lodash": "^3.0.1-beta.1",
-    "gatsby-plugin-netlify": "^2.0.0-beta.2",
+    "gatsby-plugin-netlify": "^2.0.0-beta.3",
     "gatsby-plugin-netlify-cms": "^2.0.0-beta.1",
     "gatsby-plugin-nprogress": "^1.0.14",
     "gatsby-plugin-page-creator": "^2.0.0-beta.1",
@@ -62,9 +62,11 @@
     "build": "NODE_ENV=production gatsby build",
     "publish": "GATSBY_ACTIVE_ENV=publish npm run build",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\" \"content/**/*.js\"",
-    "precommit": "npm run format"
+    "precommit": "npm run format",
+    "prepush": "auditmated"
   },
   "devDependencies": {
+    "auditmated": "^0.1.2",
     "axios": "^0.18.0",
     "husky": "^0.14.3",
     "prettier": "^1.9.2"
