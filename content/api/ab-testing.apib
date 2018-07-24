@@ -40,7 +40,6 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
         + running
         + completed
         + cancelled
-        + override
     + winning_template_id (string) - The winner of the A/B test. Only present when the state is `completed`.
     + version (number) - The current version of the test. 
     + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
@@ -98,7 +97,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
 ### Template Object
 
 + Data Structure: Attributes
-    + template_id (string, required) - The template ID.
+    + template_id (string, required) - The template id.
     + `sample_size` (number) - The number of injections to send using this template. Required when `audience_selection` is `sample_size`.
     + percent (number) - The percent of injections to send using this template. Required when `audience_selection` is `percent`.
     + count_unique_clicked (number) - **Read only.** The number of unique clicks. Only present when the A/B test's `metric` type is `count_unique_clicked`.
@@ -385,39 +384,6 @@ Returns the new `version`.
             }
         ]
     }
-
-### Override the Winner [PUT /ab-test/{id}]
-
-Bayesian A/B tests automatically pick the winning template at the end of the test. Once the test's `status` is either `completed` or `cancelled`, you can override the winner. This will not increment the version, but will change the `status` to `override`.
-
-+ Data Structure
-    + winning_template_override (string) - Template ID that should replace the `winning_template_id`.
-
-
-+ Parameters
-    + id (required, string, `password-reset`)
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-    
-    + Body
-
-        {
-            "winning_template_override": "default_password_reset_template"
-        }
-
-
-+ Response 200 (application/json)
-
-        {
-            "results": {
-                "version": 1
-            }
-        }
 
 ### Cancel an A/B Test [POST /ab-test/{id}/cancel]
 
