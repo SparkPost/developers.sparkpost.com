@@ -38,7 +38,7 @@ You can also use the header to filter out subaccount data. By default, when you 
 
 When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header, only master account is affected by default, so setting the header to `0` makes no difference. The exception here is webhooks. They act like GET requests, where if you omit the header, they will be sent both the master account and subaccount data, but if you set the `X-MSYS-SUBACCOUNT` header to `0`, they will only receive the master account data. 
 
-<banner status="info"><strong>Note:</strong> `X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</banner>
+<banner status="info">`X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</banner>
 
 ### Subaccount object
 
@@ -91,7 +91,7 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
 
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
-<banner status="info"><strong>Note</strong>: Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</banner>
+<banner status="info">Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</banner>
 
 + Request (application/json)
 

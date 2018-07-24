@@ -105,7 +105,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
     + count_accepted (number) - **Read only.** Messages an ISP or other remote domain accepted (less Out-of-Band Bounces).
     + `engagement_rate` (number) - **Read only.** A number between 0 and 1 calculated by (`count_unique_clicked` or `count_unique_confirmed_opened`) / `count_accepted`.
 
-<banner status="warning"><strong>Note</strong>: The templates must have tracking enabled for the A/B test to properly run.</banner>
+<banner status="warning">The templates must have tracking enabled for the A/B test to properly run.</banner>
 
 
 ### Create an A/B Test [POST /ab-test]
@@ -306,7 +306,7 @@ Returns the A/B test ID, when successful.
 
 ### Update an A/B Test [PUT /ab-test/{id}]
 
-<banner status="warning"><strong>Note</strong>: You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</banner>
+<banner status="warning">You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</banner>
 
 If the A/B test's latest version is cancelled or completed, updating it creates a new version, effectively restarting the test. The `winning_template_id` will be reset for the new version. If `winning_template_id` existed in the previous version, the `default_tempate.template_id` of the new version will default to that value, unless overridden by the update.
 
