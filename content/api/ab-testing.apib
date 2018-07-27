@@ -417,6 +417,41 @@ Returns the `status`.
             ]
         }
 
+### Delete an A/B Test [DELETE /ab-test/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test password-reset does not exist"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Can not delete a running test. You must cancel it first."
+            }
+        ]
+    }
+
 ### List All A/B Tests [GET /ab-test]
 
 Returns an array of latest versions of your A/B tests.
