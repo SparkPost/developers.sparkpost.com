@@ -15,7 +15,7 @@
     "escape-string-regexp": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.0-beta.59",
+    "gatsby": "^2.0.0-beta.60",
     "gatsby-plugin-google-tagmanager": "^2.0.0-beta.1",
     "gatsby-plugin-lodash": "^3.0.1-beta.1",
     "gatsby-plugin-netlify": "^2.0.0-beta.3",
