@@ -8,35 +8,39 @@ Alert users in a relatively realtime manner of the issues that they care about. 
 ## Alerts Object
 
 + Data Structure: Attributes
-    + alerts (object) - Object containing alert objects.
-        + alertId (object) - Object containing details about individual alerts.
+    + Alerts (object) - Object containing alert objects.
+        + uuid (object) - Object containing details about individual alerts. Has the id of the alert as the key
             + name (string) - name of the alert
             + description (string) - A description of the alert.
             + id (string)
             + email_addresses (array) - The emails to send alerts to.
             + alert_metric (string) - The metric in which the service checks.
-            + enabled (boolean) - The status of the alert.
             + threshold (object) - Threshold at which alert will trigger.
+            + enabled (boolean) - The status of the alert.
             
 + Sample
         
     ```
     {
-        "name": "example alert",
-        "email_addresses": [
-            "email@email.com",
-            "sparky@sparkpost.com",
-        ],
-        "description": "lorem ipsum",
-        "alert_metric": "monthly_sending_limit",
-        "threshold": {
-            "error": {
-                "target": 10,
-                "comparator": "gt"
+        Alerts: {
+            "b1c56520-8f66-11e8-8d19-3dc420a8d3b1":{
+                "name": "example alert",
+                "description": "lorem ipsum",
+                "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+                "email_addresses": [
+                    "email@email.com",
+                    "sparky@sparkpost.com",
+                ],
+                "alert_metric": "monthly_sending_limit",
+                "threshold": {
+                    "error": {
+                        "target": 10,
+                        "comparator": "gt"
+                    }
+                },
+                "enabled": true,
             }
-        },
-        "enabled": true,
-        "id": "cbe0faf0-9051-11e8-ad04-490e82764b23"
+        }
     }
     ```
 
@@ -74,35 +78,35 @@ Creates a new alert
            "sparky@sparkpost.com",
            ],
         "description": "lorem ipsum",
-        "threshold": {"error": {
+        "threshold": {
+             "error": {
                "target": 8
-              }
-           }
+               }
+            }
        }
 
 + Response 200 (application/json)
 
     
-    {
-        "results": 
-        {
-            "name": "example alert",
-            "email_addresses": [
-                "email@email.com",
-                "sparky@sparkpost.com",
-            ],
-            "description": "lorem ipsum",
-            "threshold": {
-                "error": {
-                    "target": 8,
-                    "comparator": "gt"
-                }
-            },
-            "alert_metric": "monthly_sending_limit",
-            "enabled": true,
-            "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8"
-        }
+   {
+    "results": {
+        "name": "example alert",
+        "email_addresses": [
+            "email@email.com",
+            "sparky@sparkpost.com",
+        ],
+        "description": "lorem ipsum",
+        "threshold": {
+            "error": {
+                "target": 8,
+                "comparator": "gt"
+            }
+        },
+        "alert_metric": "monthly_sending_limit",
+        "enabled": true,
+        "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8"
     }
+   }
 ### List all Alerts [GET /alert]
 
 Returns a list of all your alerts.
@@ -115,28 +119,28 @@ Returns a list of all your alerts.
 
 + Response 200 (application/json)
 
-    {
-        "results": [
-            {
-                "id": "44625aa0-8f67-11e8-b33f-75403775f504",
-                "name": "example alert 1",
-                "enabled": true,
-                "alert_metric": "sending_limit"
-            },
-            {
-                "id": "b1c56520-8f66-11e8-8d19-3dc420a8d3b1",
-                "name": "example alert 2",
-                "enabled": true,
-                "alert_metric": "sending_limit"
-            },
-            {
-                "id": "1b2a36d0-8c6f-11e8-8525-e10c53413df3",
-                "name": example alert 3",
-                "enabled": false,
-                "alert_metric": "sending_limit"
-            }
-        ]
-    }
+   {
+    "results": [
+        {
+            "id": "44625aa0-8f67-11e8-b33f-75403775f504",
+            "name": "example alert 1",
+            "enabled": true,
+            "alert_metric": "sending_limit"
+        },
+        {
+            "id": "b1c56520-8f66-11e8-8d19-3dc420a8d3b1",
+            "name": "example alert 2",
+            "enabled": true,
+            "alert_metric": "sending_limit"
+        },
+        {
+            "id": "1b2a36d0-8c6f-11e8-8525-e10c53413df3",
+            "name": "example alert 3",
+            "enabled": false,
+            "alert_metric": "sending_limit"
+        }
+    ]
+   }
 
 ### Retrieve an Alert [GET /alert/{id}]
 
@@ -152,23 +156,23 @@ Returns a list of all your alerts.
 
 + Response 200 (application/json)
 
-    {
-        "results": {
-           "email_addresses": [
-              "email@email.com",
-              "sparky@sparkpost.com",
-           ],
-           "name": "example alert",
-           "description": "lorem ipsum",
-           "threshold": {
-               "error": {
-                   "target": 8,
-                   "comparator": "gt"
-               }
-           },
-           "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8",
-           "resolution": "last_month",
-           "enabled": true,
-           "alert_metric": "sending_limit"
-        }
+   {
+    "results": {
+       "email_addresses": [
+          "email@email.com",
+          "sparky@sparkpost.com",
+       ],
+       "name": "example alert",
+       "description": "lorem ipsum",
+       "threshold": {
+           "error": {
+               "target": 8,
+               "comparator": "gt"
+           }
+       },
+       "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8",
+       "resolution": "last_month",
+       "enabled": true,
+       "alert_metric": "sending_limit"
     }
+   }
