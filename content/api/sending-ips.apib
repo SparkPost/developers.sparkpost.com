@@ -23,7 +23,7 @@ description: Manage the sending IPs for your account and assign them to IP pools
     }
     ```
 
-## Retrieve a Sending IP [GET /sending-ips/{external_ip}]
+## Retrieve a Sending IP [GET /v1/sending-ips/{external_ip}]
 
 Retrieves a specific sending IP.
 
@@ -71,7 +71,7 @@ Retrieves a specific sending IP.
         }
 
 
-## Update a Sending IP [PUT /sending-ips/{external_ip}]
+## Update a Sending IP [PUT /v1/sending-ips/{external_ip}]
 
 + Data Structure
     + ip_pool (string, required) - The IP pool to add this sending IP to.
@@ -124,7 +124,7 @@ Updates which IP Pool holds the sending IP.
     }
 
 
-## List all sending IPs [GET /sending-ips]
+## List all sending IPs [GET /v1/sending-ips]
 
 Returns a list of all sending IPs.
 

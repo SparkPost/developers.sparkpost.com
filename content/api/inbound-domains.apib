@@ -38,7 +38,6 @@ if you are unsure of the setting in your own environment.</Banner>
 |--------------------------|------|--------------------------------|----------|
 | `inbounddomain.test.com` | MX   | `inbound.<main-bounce-domain>` | 10       |
 
-
 ## Inbound Domains Object
 
 + Data Structure
@@ -51,7 +50,7 @@ if you are unsure of the setting in your own environment.</Banner>
     }
     ```
 
-### Create an Inbound Domain [POST /inbound-domains]
+### Create an Inbound Domain [POST /v1/inbound-domains]
 
 + Data Structure
     + domain (string, required) - Domain name for which SparkPost will receive inbound emails.
@@ -99,7 +98,7 @@ if you are unsure of the setting in your own environment.</Banner>
                 ]
             }
 
-### Retrieve an Inbound Domain [GET /inbound-domains/{domain}]
+### Retrieve an Inbound Domain [GET /v1/inbound-domains/{domain}]
 
 + Parameters
     + domain (required, string, `inbounddomain.test.com`)
@@ -135,7 +134,7 @@ if you are unsure of the setting in your own environment.</Banner>
             }
 
 
-### Delete an Inbound Domain [DELETE /inbound-domains/{domain}]
+### Delete an Inbound Domain [DELETE /v1/inbound-domains/{domain}]
 
 + Parameters
     + domain (required, string, `inbounddomain.test.com`)
@@ -176,7 +175,7 @@ if you are unsure of the setting in your own environment.</Banner>
             }
 
 
-### List all Inbound Domains [GET /inbound-domains]
+### List all Inbound Domains [GET /v1/inbound-domains]
 
 Returns a list of all your inbound domains.
 

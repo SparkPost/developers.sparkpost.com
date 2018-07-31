@@ -67,7 +67,7 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
     }
     ```
 
-### Create a Subaccount [POST /subaccounts]
+### Create a Subaccount [POST /v1/subaccounts]
 
 Creates a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants.
 
@@ -167,7 +167,7 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
             ]
         }
 
-### Retrieve a Subaccount [GET /subaccounts/{id}]
+### Retrieve a Subaccount [GET /v1/subaccounts/{id}]
 
 This endpoint only returns information about the subaccount, not the resources associated with it.
 
@@ -193,7 +193,7 @@ This endpoint only returns information about the subaccount, not the resources a
             }
         }
 
-### Update a subaccount [PUT /subaccounts/{id}]
+### Update a subaccount [PUT /v1/subaccounts/{id}]
 
 + Data Structure
     + name (string) - Subaccount display name. <br />Max length: 64 characters
@@ -244,7 +244,7 @@ This endpoint only returns information about the subaccount, not the resources a
         }
 
 
-### List all Subaccounts [GET /subaccounts]
+### List all Subaccounts [GET /v1/subaccounts]
 
 Returns a list of your subaccounts. 
 
@@ -281,7 +281,7 @@ Returns a list of your subaccounts.
             ]
         }
 
-### Retrieve Subaccounts Summary [GET /subaccounts/summary]
+### Retrieve Subaccounts Summary [GET /v1/subaccounts/summary]
 
 Returns the total number of subaccounts.
 

@@ -106,7 +106,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
 <Banner status="warning">The templates must have tracking enabled for the A/B test to properly run.</Banner>
 
 
-### Create an A/B Test [POST /ab-test]
+### Create an A/B Test [POST /v1/ab-test]
 
 + Data Structure
     + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
@@ -236,7 +236,7 @@ Returns the A/B test ID, when successful.
             ]
         }
 
-### Retrieve an A/B Test [GET /ab-test/{id}{?version}]
+### Retrieve an A/B Test [GET /v1/ab-test/{id}{?version}]
 
 + Parameters
     + id (required, string, `password-reset`)
@@ -302,7 +302,7 @@ Returns the A/B test ID, when successful.
         ]
     }
 
-### Update an A/B Test [PUT /ab-test/{id}]
+### Update an A/B Test [PUT /v1/ab-test/{id}]
 
 <Banner status="warning">You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</Banner>
 
@@ -383,7 +383,7 @@ Returns the new `version`.
         ]
     }
 
-### Cancel an A/B Test [POST /ab-test/{id}/cancel]
+### Cancel an A/B Test [POST /v1/ab-test/{id}/cancel]
 
 Any transmissions using this A/B test will send the `default_template`.
 
@@ -417,7 +417,7 @@ Returns the `status`.
             ]
         }
 
-### List All A/B Tests [GET /ab-test]
+### List All A/B Tests [GET /v1/ab-test]
 
 Returns an array of latest versions of your A/B tests.
 
@@ -510,7 +510,7 @@ Returns an array of latest versions of your A/B tests.
             ]
         }
 
-## A/B Test Drafts [/ab-test/draft]
+## A/B Test Drafts [/v1/ab-test/draft]
 
 A/B Test drafts allow you to build a A/B test in a series of steps instead of all at once.
 
@@ -558,7 +558,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             ]
         }
 
-### Retrieve an A/B Test draft [GET /ab-test/draft/{id}]
+### Retrieve an A/B Test draft [GET /v1/ab-test/draft/{id}]
 
 + Parameters
     + id (required, string, `my-draft-test`)
@@ -587,7 +587,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             }
         }
 
-### Update an A/B Test draft [PUT /ab-test/draft/{id}]
+### Update an A/B Test draft [PUT /v1/ab-test/draft/{id}]
 
 + Data Structure
     + name (string) - Display name.
@@ -662,7 +662,7 @@ Returns the A/B test ID.
             ]
         }
 
-### Schedule an A/B Test draft [POST /ab-test/draft/{id}/schedule]
+### Schedule an A/B Test draft [POST /v1/ab-test/draft/{id}/schedule]
 
 + Data Structure
     + start_time (string, required) - ISO Date specifying when the test should begin.
