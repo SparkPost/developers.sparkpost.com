@@ -41,7 +41,7 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 ```
 
 
-## Create a Transmission [/transmissions/{?num_rcpt_errors}]
+## Create a Transmission [/v1/transmissions/{?num_rcpt_errors}]
 
 You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
 
@@ -468,11 +468,11 @@ Content headers are not generated for transmissions providing RFC822 content. Th
             ]
         }
 
-## Scheduled Transmissions [/transmissions]
+## Scheduled Transmissions [/v1/transmissions]
 
 <Banner status="info">Not available in SparkPost EU.</Banner>
 
-### Schedule a Transmission [POST /transmissions/]
+### Schedule a Transmission [POST /v1/transmissions/]
 
 Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
 
@@ -512,7 +512,7 @@ the template update will succeed, but the transmission will continue to use the 
         }
 
 
-### Retrieve a Scheduled Transmission [GET /transmissions/{id}]
+### Retrieve a Scheduled Transmission [GET /v1/transmissions/{id}]
 
 Returns details about a scheduled transmission.
 The response for a transmission using an inline content will include `"template_id":"inline"`.
@@ -567,7 +567,7 @@ Inline content cannot be specifically queried.
             ]
         }
 
-### Delete a Scheduled Transmission [DELETE /transmissions/{id}]
+### Delete a Scheduled Transmission [DELETE /v1/transmissions/{id}]
 
 Only transmissions which are scheduled for future generation may be deleted.
 
@@ -616,7 +616,7 @@ Only transmissions which are scheduled for future generation may be deleted.
             ]
         }
 
-### Delete Scheduled Transmissions By Campaign ID [DELETE /transmissions{?campaign_id}]
+### Delete Scheduled Transmissions By Campaign ID [DELETE /v1/transmissions{?campaign_id}]
 
 <Banner status="info">Enterprise only, account-specific configuration option.</Banner>
 
@@ -629,7 +629,7 @@ Delete all transmissions in a campaign.
 
 + Response 204
 
-### List All Scheduled Transmissions [GET /transmissions{?campaign_id,template_id}]
+### List All Scheduled Transmissions [GET /v1/transmissions{?campaign_id,template_id}]
 
 
 #### Returns
