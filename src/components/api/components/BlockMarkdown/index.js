@@ -87,9 +87,9 @@ const components = mapValues(
         </div>
       )
     },
-    'data-structure': DataStructure,
-    'message-events': MessageEvents,
-    'webhook-events': WebhookEvents,
+    ...DataStructure,
+    ...MessageEvents,
+    ...WebhookEvents,
   },
   (component, name) => {
     component.displayName = name
@@ -99,8 +99,9 @@ const components = mapValues(
 )
 
 const componentNames = keys(components)
-const hasComponent = props =>
-  (
+const hasComponent = props => {
+  console.log(props.children)
+  return (
     React.Children.map(
       props.children,
       component =>
@@ -110,6 +111,7 @@ const hasComponent = props =>
         )
     ) || []
   ).includes(true)
+}
 
 const BlockMarkdown = props => <Markdown components={components} {...props} />
 

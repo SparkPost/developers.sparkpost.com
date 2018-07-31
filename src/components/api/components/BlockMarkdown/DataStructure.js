@@ -6,7 +6,16 @@ import Right from '../Right'
 import Json from '../Json'
 import Row from '../Row'
 
-export default ({ id, title, sample }) => (
+/**
+ * DON'T HOW THIS GETS EXPORTED AND NAMED
+ *
+ * Name the components to valid remark custom component names.
+ * The name gets used as the component (`<data-structure></data-structure>`) and
+ * is also used correctly rendering paragraphs vs custom components in the hasComponent
+ * function.
+ */
+const component = {}
+component['data-structure'] = ({ id, title, sample }) => (
   <DataStructureContext.Consumer>
     {dataStructures => {
       const Wrapper = sample !== undefined ? Row : Fragment
@@ -29,3 +38,5 @@ export default ({ id, title, sample }) => (
     }}
   </DataStructureContext.Consumer>
 )
+
+export default component

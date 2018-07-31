@@ -2,7 +2,16 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import EventsTable from './EventsTable'
 
-export default () => (
+/**
+ * DON'T HOW THIS GETS EXPORTED AND NAMED
+ *
+ * Name the components to valid remark custom component names.
+ * The name gets used as the component (`<message-events></message-events>`) and
+ * is also used correctly rendering paragraphs vs custom components in the hasComponent
+ * function.
+ */
+const component = {}
+component['message-events'] = ({ id, title, sample }) => (
   <StaticQuery
     query={graphql`
       query MessageEventsQuery {
@@ -27,3 +36,5 @@ export default () => (
     }}
   />
 )
+
+export default component
