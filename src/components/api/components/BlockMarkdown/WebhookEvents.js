@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import EventsTable from './EventsTable'
 
 /**
- * DON'T HOW THIS GETS EXPORTED AND NAMED
+ * DON'T CHANGE HOW THIS GETS EXPORTED AND NAMED
  *
  * Name the components to valid remark custom component names.
  * The name gets used as the component (`<webhooks-events></webhooks-events>`) and
