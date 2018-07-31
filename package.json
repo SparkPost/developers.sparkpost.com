@@ -51,6 +51,7 @@
     "slugify": "^1.2.9",
     "styled-components": "^2.4.0",
     "styled-normalize": "^4.0.0",
+    "typeface-source-code-pro": "0.0.54",
     "unified": "^7.0.0"
   },
   "license": "MIT",
