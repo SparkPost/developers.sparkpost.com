@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { rgba, lighten } from 'polished'
 import { color, grayscale } from 'utils/colors'

@@ -8,6 +8,8 @@ The API reference broadly follows [API Blueprint](https://apiblueprint.org/), an
 
 Each top-level section in the API reference has a corresponding file under `content/api/`. Each file represents either an API endpoint such as /api/v1/transmissions or a high-level concept like "template substitution". When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it doesn't get generated.
 
+If you are looking for commit history before July 2018, visit the archived [sparkpost-api-documentation](https://github.com/SparkPost/sparkpost-api-documentation) repository.
+
 Here are some resources for learning API Blueprint and Markdown:
 
 * https://help.apiary.io/api_101/api_blueprint_tutorial/
@@ -56,7 +58,7 @@ As a general rule, API reference files should start with an introduction and des
     1. **Introduction**
     1. **Create**
     1. **etc...**
-    
+
 ### API Blueprint parts
 
 #### [Resource Group](https://apiblueprint.org/documentation/tutorial.html#resource-groups)
@@ -169,7 +171,7 @@ Data Structures can also receive a sample, which they will display on the right 
 
 #### Banner
 
-The `<banner>` component allows you to define an alert. Only use a banner when calling out something that will change how the user uses the action or resource. If you are simply describing the endpoint, put it as the description.
+The `<Banner>` component allows you to define an alert. Only use a banner when calling out something that will change how the user uses the action or resource. If you are simply describing the endpoint, put it as the description.
 
 **Status Values**:
 
@@ -182,5 +184,5 @@ The `<banner>` component allows you to define an alert. Only use a banner when c
 **Example**
 
 ```
-<banner status="info"><strong>Note</strong>: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, cumque.</banner>
+<Banner status="info"><strong>Note</strong>: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, cumque.</Banner>
 ```

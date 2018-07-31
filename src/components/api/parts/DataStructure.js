@@ -199,12 +199,15 @@ const ChildrenWrapper = styled.div`
     width: 0.5rem;
   }
 
-  ${AttributeWrapper} {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  /* extra specificity to fix some weird server-side vs client-side rendering */
+  && {
+    ${AttributeWrapper} {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
 
-    &:last-child {
-      border-bottom: 0;
+      &:last-child {
+        border-bottom: 0;
+      }
     }
   }
 `
