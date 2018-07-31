@@ -120,7 +120,7 @@ or:
 
 The `To` header is only constructed for messages built from email part content.  The `To` header is not built for email_rfc822 content.
 
-### Create a Recipient List [POST /recipient-lists{?num_rcpt_errors}]
+### Create a Recipient List [POST /v1/recipient-lists{?num_rcpt_errors}]
 
 + Data Structure
     + id (string) - Unique alphanumeric ID. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
@@ -266,7 +266,7 @@ returned.
                 ]
             }
 
-### Retrieve a Recipient List [GET /recipient-lists/{id}{?show_recipients}]
+### Retrieve a Recipient List [GET /v1/recipient-lists/{id}{?show_recipients}]
 
 Retrieve details about a specified recipient list by specifying its id in the URI path.  To
 retrieve the recipients contained in a list, the list must be specified and the `show_recipients` parameter must be set to true.
@@ -373,7 +373,7 @@ retrieve the recipients contained in a list, the list must be specified and the 
                 ]
             }
 
-### Update a Recipient List [PUT /recipient-lists/{id}{?num_rcpt_errors}]
+### Update a Recipient List [PUT /v1/recipient-lists/{id}{?num_rcpt_errors}]
 
 If a `recipients` array is provided in the update request, it will replace the current recipients. This means that if you're adding, updating, or removing a single recipient, the `recipients` array must contain all current recipients, regardless they are being changed or not.
 
@@ -550,7 +550,7 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
             }
 
 
-### Delete a Recipient List [DELETE /recipient-lists/{id}]
+### Delete a Recipient List [DELETE /v1/recipient-lists/{id}]
 
 <Banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</Banner>
 
@@ -597,7 +597,7 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
         }
 
 
-### List all Recipient Lists [GET /recipient-lists]
+### List all Recipient Lists [GET /v1/recipient-lists]
 
 Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-get-retrieve-a-recipient-list) to get a list the recipients.
 

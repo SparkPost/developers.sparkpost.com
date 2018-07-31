@@ -3,7 +3,6 @@ import { graphql, StaticQuery, withPrefix } from 'gatsby'
 import Helmet from 'react-helmet'
 import { StickyContainer, Sticky } from 'react-sticky'
 
-import './fonts.css'
 import './index.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Header from 'components/Header'

@@ -3,13 +3,10 @@ import styled from 'styled-components'
 import { mapValues, keys } from 'lodash'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
-import DataStructureContext from 'components/api/DataStructureContext'
-import DataStructure from 'components/api/parts/DataStructure'
-import Heading from './Heading'
-import HttpHeading from './HttpHeading'
-import Row from './Row'
-import Right from './Right'
-import Json from './Json'
+import Heading from '../Heading'
+import DataStructure from './DataStructure'
+import MessageEvents from './MessageEvents'
+import WebhookEvents from './WebhookEvents'
 
 const EmptyHeader = styled.th`
   padding: 0;
@@ -22,9 +19,6 @@ const TableOverflow = styled.div`
 // we add in the displayName for all these components since it gets dropped somewhere in the client-side render in firefox
 const components = mapValues(
   {
-    h1(props) {
-      return <Heading level={1} {...props} />
-    },
     h2(props) {
       return <Heading level={2} {...props} />
     },
@@ -93,29 +87,9 @@ const components = mapValues(
         </div>
       )
     },
-    'data-structure': ({ id, title, sample }) => (
-      <DataStructureContext.Consumer>
-        {dataStructures => {
-          const Wrapper = sample !== undefined ? Row : Fragment
-          return (
-            <Wrapper>
-              {sample !== undefined && (
-                <Right>
-                  <HttpHeading top>Example</HttpHeading>
-                  <Json>{unescape(sample)}</Json>
-                </Right>
-              )}
-              <div className="block">
-                <DataStructure
-                  title={title}
-                  dataStructure={dataStructures[id.toLowerCase()]}
-                />
-              </div>
-            </Wrapper>
-          )
-        }}
-      </DataStructureContext.Consumer>
-    ),
+    ...DataStructure,
+    ...MessageEvents,
+    ...WebhookEvents,
   },
   (component, name) => {
     component.displayName = name
