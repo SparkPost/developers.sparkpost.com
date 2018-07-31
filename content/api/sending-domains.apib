@@ -129,7 +129,7 @@ Once it is verified through one of those two methods, you can use it as a bound 
     ```
 
 
-### Create a Sending Domain [POST /sending-domains]
+### Create a Sending Domain [POST /v1/sending-domains]
 
 Creates a new sending domain. Each domain and it's subdomains can only be added to a single account. Please see our [support article](https://support.sparkpost.com/customer/en/portal/articles/1933318-creating-sending-domains) for additional reasons a domain might not be approved for sending.
 
@@ -195,7 +195,7 @@ Returns the domain and a success message. If `generate_dkim` was true, the dkim 
             ]
         }
 
-### Verify a Sending Domain [POST /sending-domains/{domain}/verify]
+### Verify a Sending Domain [POST /v1/sending-domains/{domain}/verify]
 
 + Data Structure
     + dkim_verify (boolean) - Request verification of DKIM record.
@@ -308,7 +308,7 @@ Returns the `status` object along with the [`dns`](#header-dns-object) property,
         }
 
 
-### Retrieve a Sending Domain [GET /sending-domains/{domain}]
+### Retrieve a Sending Domain [GET /v1/sending-domains/{domain}]
 
 Returns the full sending domain object, except the `domain` field.
 
@@ -349,7 +349,7 @@ Returns the full sending domain object, except the `domain` field.
             }
         }
 
-### Update a Sending Domain [PUT /sending-domains/{domain}]
+### Update a Sending Domain [PUT /v1/sending-domains/{domain}]
 
 + Data Structure
     + tracking_domain (string) - Associated tracking domain. To remove the current value, set it to an empty string. The tracking domain and sending domain must belong to the same subaccount.
@@ -407,7 +407,7 @@ Returns the full sending domain object, except the `domain` field.
         }
 
 
-### Delete a Sending Domain [DELETE /sending-domains/{domain}]
+### Delete a Sending Domain [DELETE /v1/sending-domains/{domain}]
 
 
 <Banner status="danger"><strong>Warning</strong>: Before deleting a sending domain please ensure you are no longer using it. After deleting a sending domain, any new transmissions that use it will result in a rejection. This includes any transmissions that are in progress, scheduled for the future, or use a stored template referencing the sending domain.</Banner>
@@ -438,7 +438,7 @@ Returns the full sending domain object, except the `domain` field.
             }
 
 
-### List all Sending Domains [GET /sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}]
+### List all Sending Domains [GET /v1/sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}]
 
 Returns an array with all the sending domains in your account. Use the query parameters to filter on the various status options.
 

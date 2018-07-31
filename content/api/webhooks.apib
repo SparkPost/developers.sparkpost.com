@@ -63,7 +63,7 @@ ___
 
 __The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
-### Create a Webhook [POST /webhooks]
+### Create a Webhook [POST /v1/webhooks]
 
 When a webhook is created, a test POST request is sent to the `target` URL. If this request does not receive an HTTP 200 response, your request to the Webhook API will fail with HTTP 400 and the webhook will not be created. If created successfully, the webhook will begin to receive event data after 1 minute.
 
@@ -151,7 +151,7 @@ When a webhook is created, a test POST request is sent to the `target` URL. If t
             ]
         }
 
-### Validate a Webhook [POST /webhooks/{id}/validate]
+### Validate a Webhook [POST /v1/webhooks/{id}/validate]
 
 The validation request sends an example message event batch the target URL, validates that the target responds with HTTP 200,
 and returns information on the response received from the target.
@@ -201,7 +201,7 @@ and returns information on the response received from the target.
             }
         }
 
-### Retrieve a Webhook [GET /webhooks/{id}{?timezone}]
+### Retrieve a Webhook [GET /v1/webhooks/{id}{?timezone}]
 
 + Parameters
     + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
@@ -259,7 +259,7 @@ and returns information on the response received from the target.
         }
 
 
-### Retrieve Batch Status Information [GET /webhooks/{id}/batch-status{?limit}]
+### Retrieve Batch Status Information [GET /v1/webhooks/{id}/batch-status{?limit}]
 
 Returns the status information for the batches that have been generated. Status information includes the successes of batches that previously failed to reach the webhook's target URL and batches that are currently in a failed state.
 
@@ -298,7 +298,7 @@ Returns the status information for the batches that have been generated. Status 
         }
 
 
-### Update a Webhook [PUT /webhooks/{id}]
+### Update a Webhook [PUT /v1/webhooks/{id}]
 
 + Data Structure
     + name (string) - Name for webhook
@@ -359,7 +359,7 @@ Any batches already queued for delivery to this webhook will not be affected. Fo
 
 
 
-### Delete a Webhook [DELETE /webhooks/{id}]
+### Delete a Webhook [DELETE /v1/webhooks/{id}]
 
 This will not affect any webhook batches that are already queued for delivery.
 
@@ -375,7 +375,7 @@ This will not affect any webhook batches that are already queued for delivery.
 + Response 204
 
 
-### List all Webhooks [GET /webhooks{?timezone}]
+### List all Webhooks [GET /v1/webhooks{?timezone}]
 
 Returns a list of all your webhooks.
 
@@ -502,7 +502,7 @@ Returns a list of all your webhooks.
 
 
 
-## Documentation [/webhooks/events/documentation] 
+## Documentation [/v1/webhooks/events/documentation] 
 
 ### Events Documentation [GET]
 
@@ -525,7 +525,7 @@ Returns a list of descriptions of the events, event types, and event fields that
     }
 
 
-### Event Samples [GET /webhooks/events/samples{?events}]
+### Event Samples [GET /v1/webhooks/events/samples{?events}]
 
 Returns an example of the event data that will be posted by a webhook for the specified events.
 
