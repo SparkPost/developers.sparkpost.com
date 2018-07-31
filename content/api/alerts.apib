@@ -1,0 +1,178 @@
+FORMAT: 1A
+title: Alerts
+description: Configure alerts for sending limit.
+
+# Group Alerts
+Alert users in a relatively realtime manner of the issues that they care about.  Alerts based off of metrics, like bounce_rate, that are also based on a rolling timeframe, are calculated on the fly to provide near realtime alerts.  Users may have the option to filter triggers by domain, campaign, or ip.
+
+## Alerts Object
+
++ Data Structure: Attributes
+    + Alerts (object) - Object containing alert objects.
+        + uuid (object) - Object containing details about individual alerts. Has the id of the alert as the key
+            + name (string) - name of the alert
+            + description (string) - A description of the alert.
+            + id (string)
+            + email_addresses (array) - The emails to send alerts to.
+            + alert_metric (string) - The metric in which the service checks.
+            + threshold (object) - Threshold at which alert will trigger.
+            + enabled (boolean) - The status of the alert.
+            
++ Sample
+        
+    ```
+    {
+        Alerts: {
+            "b1c56520-8f66-11e8-8d19-3dc420a8d3b1":{
+                "name": "example alert",
+                "description": "lorem ipsum",
+                "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+                "email_addresses": [
+                    "email@email.com",
+                    "sparky@sparkpost.com",
+                ],
+                "alert_metric": "monthly_sending_limit",
+                "threshold": {
+                    "error": {
+                        "target": 10,
+                        "comparator": "gt"
+                    }
+                },
+                "enabled": true,
+            }
+        }
+    }
+    ```
+
+
+<br/>
+
+### Create an Alert [POST /alert/]
+
+Creates a new alert
+
++ Data Structure
+
+    + name (string) - name of the alert
+    + description (string) - A description of the alert.
+    + email_addresses (array) - The emails to send alerts to.
+    + alert_metric (string) - The metric in which the service checks.
+        + Default: "monthly_sending_limit"
+    + enabled (boolean) - The status of the alert.
+        + Default: true
+    + threshold (object) - Threshold at which alert will trigger.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+   
+       {
+        "name": "example alert",
+        "email_addresses": [
+           "email@email.com",
+           "sparky@sparkpost.com",
+           ],
+        "description": "lorem ipsum",
+        "threshold": {
+             "error": {
+               "target": 8
+               }
+            }
+       }
+
++ Response 200 (application/json)
+
+    
+   {
+    "results": {
+        "name": "example alert",
+        "email_addresses": [
+            "email@email.com",
+            "sparky@sparkpost.com",
+        ],
+        "description": "lorem ipsum",
+        "threshold": {
+            "error": {
+                "target": 8,
+                "comparator": "gt"
+            }
+        },
+        "alert_metric": "monthly_sending_limit",
+        "enabled": true,
+        "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8"
+    }
+   }
+### List all Alerts [GET /alert]
+
+Returns a list of all your alerts.
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+   {
+    "results": [
+        {
+            "id": "44625aa0-8f67-11e8-b33f-75403775f504",
+            "name": "example alert 1",
+            "enabled": true,
+            "alert_metric": "sending_limit"
+        },
+        {
+            "id": "b1c56520-8f66-11e8-8d19-3dc420a8d3b1",
+            "name": "example alert 2",
+            "enabled": true,
+            "alert_metric": "sending_limit"
+        },
+        {
+            "id": "1b2a36d0-8c6f-11e8-8525-e10c53413df3",
+            "name": "example alert 3",
+            "enabled": false,
+            "alert_metric": "sending_limit"
+        }
+    ]
+   }
+
+### Retrieve an Alert [GET /alert/{id}]
+
++ Parameters
+    + id (required, uuid, `1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+   {
+    "results": {
+       "email_addresses": [
+          "email@email.com",
+          "sparky@sparkpost.com",
+       ],
+       "name": "example alert",
+       "description": "lorem ipsum",
+       "threshold": {
+           "error": {
+               "target": 8,
+               "comparator": "gt"
+           }
+       },
+       "id": "1d41b7e0-911f-11e8-ace5-4bbbd25cdfe8",
+       "resolution": "last_month",
+       "enabled": true,
+       "alert_metric": "sending_limit"
+    }
+   }

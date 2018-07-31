@@ -92,6 +92,12 @@
         "title": "Webhooks",
         "file": "webhooks.apib",
         "path": "/api/webhooks/"
+      },
+      {
+        "title": "Alerts",
+        "file": "alerts.apib",
+        "path": "/api/alerts/",
+        "label": "Labs"
       }
     ]
   },
