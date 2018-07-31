@@ -6,9 +6,12 @@ const crypto = require('crypto')
 const axios = require('axios')
 const { GraphQLJSON } = require('gatsby/graphql')
 const map = require('lodash.map')
+const mapValues = require('lodash.mapvalues')
 const keyBy = require('lodash.keyby')
 
-const addPeriod = (str) => str.endsWith('.') ? str : `${str}.`
+const addPeriod = (str) => {
+  return str.endsWith('.') ? str : `${str}.`
+}
 
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
@@ -144,7 +147,11 @@ exports.setFieldsOnGraphQLNodeType = async ({ type }) => {
       resolve(node) {
         const object = JSON.parse(node.internal.content)
 
-        return object.attributes
+        return mapValues(object.attributes, (attribute) => {
+          attribute.description = addPeriod(attribute.description)
+
+          return attribute
+        })
       }
     },
     sample: {

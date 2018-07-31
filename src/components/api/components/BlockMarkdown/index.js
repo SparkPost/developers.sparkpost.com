@@ -99,9 +99,8 @@ const components = mapValues(
 )
 
 const componentNames = keys(components)
-const hasComponent = props => {
-  console.log(props.children)
-  return (
+const hasComponent = props =>
+  (
     React.Children.map(
       props.children,
       component =>
@@ -111,7 +110,6 @@ const hasComponent = props => {
         )
     ) || []
   ).includes(true)
-}
 
 const BlockMarkdown = props => <Markdown components={components} {...props} />
 
