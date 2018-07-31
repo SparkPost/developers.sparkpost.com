@@ -19,7 +19,6 @@ export default function Request({ request, transition, resource }) {
   const copy = request.copy.toValue()
   const method = request.method.toValue()
   const href = (transition.href || {}).content || resource.href.content
-  const version = href === 'ab-testing' ? 'labs' : 'v1'
   const highlightedHref = highlightHref(href, transition.hrefVariables)
 
   return (
@@ -30,7 +29,7 @@ export default function Request({ request, transition, resource }) {
         {method}{' '}
         <span
           dangerouslySetInnerHTML={{
-            __html: `/api/${version}${highlightedHref}`,
+            __html: `/api${highlightedHref}`,
           }}
         />
       </HrefWrapper>

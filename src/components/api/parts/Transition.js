@@ -77,7 +77,6 @@ export default function Transition({
       ? mergeDuplicateTransactions(transition.transactions)
       : []
   const href = (transition.href || {}).content || resource.href.content
-  const version = href === 'ab-testing' ? 'labs' : 'v1'
 
   return (
     <Debug title="Transition">
@@ -103,7 +102,7 @@ export default function Transition({
         <div className="block">
           <HrefWrapper>
             <Method>{method}</Method>
-            <Href>{`/api/${version}${href}`}</Href>
+            <Href>{`/api${href}`}</Href>
           </HrefWrapper>
         </div>
         {parameters && <Parameters parameters={parameters} />}

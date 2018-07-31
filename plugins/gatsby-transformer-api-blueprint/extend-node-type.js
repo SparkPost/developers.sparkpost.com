@@ -1,4 +1,4 @@
-const GraphQLJSON = require('graphql-type-json')
+const { GraphQLJSON } = require('gatsby/graphql')
 const parseApiBlueprint = require('./parse-api-blueprint')
 const minim = require('minim').namespace()
 const unified = require('unified')

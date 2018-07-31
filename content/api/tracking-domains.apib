@@ -85,7 +85,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
     }
     ```
 
-### Create a Tracking Domain [POST /tracking-domains]
+### Create a Tracking Domain [POST /v1/tracking-domains]
 
 + Data Structure
     + domain (string, required) - Name of the tracking domain.
@@ -159,7 +159,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
                 ]
             }
 
-### Verify a Tracking Domain [POST /tracking-domains/{domain}/verify]
+### Verify a Tracking Domain [POST /v1/tracking-domains/{domain}/verify]
 Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
 
 + Parameters
@@ -211,7 +211,7 @@ Initiate a check against the configured redirect for the specified tracking doma
                 ]
             }
 
-### Retrieve a Tracking Domain [GET /tracking-domains/{domain}]
+### Retrieve a Tracking Domain [GET /v1/tracking-domains/{domain}]
 
 Retrieve an existing tracking domain.
 
@@ -258,7 +258,7 @@ Retrieve an existing tracking domain.
             }
 
 
-### Update a Tracking Domain [PUT /tracking-domains/{domain}]
+### Update a Tracking Domain [PUT /v1/tracking-domains/{domain}]
 
 Update the attributes of an existing tracking domain. The master account and each subaccount can only have one default tracking domain.
 Setting a new default automatically unsets the current relevant default, if it exists.
@@ -323,7 +323,7 @@ Setting a new default automatically unsets the current relevant default, if it e
             }
 
 
-### Delete a Tracking Domain [DELETE /tracking-domains/{domain}]
+### Delete a Tracking Domain [DELETE /v1/tracking-domains/{domain}]
 
 Delete an existing tracking domain.
 
@@ -354,7 +354,7 @@ Delete an existing tracking domain.
 
 
 
-### List All Tracking Domains [GET /tracking-domains]
+### List All Tracking Domains [GET /v1/tracking-domains]
 
 Returns an array with all tracking domains. Each item in the array is a full tracking domain object.
 
