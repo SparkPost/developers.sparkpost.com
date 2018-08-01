@@ -417,6 +417,41 @@ Returns the `status`.
             ]
         }
 
+### Delete an A/B Test [DELETE /ab-test/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'cancelled' or 'completed' to use this endpoint"
+            }
+        ]
+    }
+
 ### List All A/B Tests [GET /v1/ab-test]
 
 Returns an array of latest versions of your A/B tests.
@@ -661,6 +696,41 @@ Returns the A/B test ID.
                 }
             ]
         }
+
+### Delete an A/B Test Draft [DELETE /ab-test/draft/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'draft' to use this endpoint"
+            }
+        ]
+    }
 
 ### Schedule an A/B Test draft [POST /v1/ab-test/draft/{id}/schedule]
 
