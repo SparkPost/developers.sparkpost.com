@@ -16,11 +16,12 @@ Alerts can be configured to send notifications via email to up to 10 email addre
     + id (string) - Unique alphanumeric id
     + email_addresses (array) - List of email addresses to send alert notifications
     + alert_metric (enum) - Metric that the alert is configured to track
-        + "monthly_sending_limit"
+        + `"monthly_sending_limit"`
     + threshold (object) - Configuration for level and threshold at which an alert is generated
         + error (object) - Error level alert configuration
             + target (number) - Percentage value at which an alert will be generated
-            + comparator (string) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+                + `"gt"`
     + enabled (boolean) - Whether or not the alert is active
 
 + Sample
@@ -52,11 +53,12 @@ Creates a new alert
     + description (string) - Description of alert
     + email_addresses (array) - List of email addresses to send alert notifications
     + alert_metric (enum) - Metric that the alert is configured to track
-        + "monthly_sending_limit"
+        + `"monthly_sending_limit"`
     + threshold (object) - Configuration for level and threshold at which an alert is generated
         + error (object) - Error level alert configuration
             + target (number) - Percentage value at which an alert will be generated
-            + comparator (string) - Default: `'gt'`: Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+                + Default: `"gt"`
     + enabled (boolean) - Whether or not the alert is active
         + Default: true
 
