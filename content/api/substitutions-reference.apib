@@ -7,7 +7,7 @@ full: true
 
 ## Key Features
 
-* Substitutions applied in top-level headers, text/plain, and text/html parts of REST API injected messages (SMTP message substitutions currently not supported)
+* Substitutions applied in top-level headers, text/plain, text/html, and text/x-amp-html parts of REST API injected messages (SMTP message substitutions currently not supported)
 * Key/value substitutions using substitution data provided in an arbitrary JSON object format
 * Conditional statements such as if, then, else, elseif
 * Looping over JSON arrays using each
@@ -797,7 +797,7 @@ Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
 
 ## Encoding Rules
 
-* If after substitution, a text/plain or text/html part contains 8-bit data,
+* If after substitution, a text/plain, text/html, or text/x-amp-html part contains 8-bit data,
 then that part will be quoted-printable encoded before being placed back into the
 MIME structure.  The Content-Type will be updated appropriately.
 * If after substitution, a header value contains 8-bit data, then the header

@@ -231,3 +231,7 @@ In many cases the SMTP MAIL FROM (or "envelope from") address may be any email a
 If you would like SparkPost to deliver the email with a custom MAIL FROM domain then the domain specified in the MAIL FROM address must be set up ahead of time as a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-post-verify-a-sending-domain).
 
 **Note:** Sparkpost will **not** overwrite the MAIL FROM address for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts.
+
+## AMPHTML Email
+
+AMPHTML Email content may be provided in a `text/x-amp-html` MIME part.  `text/x-amp-html` must be a descendant of multipart/alternative, alongside at least one other `text/html` or `text/plain` MIME part.

@@ -6,7 +6,7 @@ description: Manage reusable content templates that are run through the SparkPos
 
 Templates are a way to store and edit email content.
 Instead of passing inline content to a [Transmission](/api/transmissions/) request, a template can be set to provide the content.
-All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference/) for personalized emails.
+All email content in a template (from, headers, text, html, and amp_html) supports [substitution syntax](/api/substitutions-reference/) for personalized emails.
 
 ## Drafts & Published versions
 
@@ -24,6 +24,7 @@ If needed, it's also possible to update the published version of a template dire
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes.
         + html (string) - HTML content for the email's `text/html` MIME part.
         + text (string) - Text content for the email's `text/plain` MIME part.
+        + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided.
         + subject (string) - Email subject line.
         + from (enum) - Email address used to compose the email's `From` header. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
@@ -84,8 +85,8 @@ Each error is described in a object with the following attributes:
     + part (enum) - Identifies the content section where the error occurred
         + text
         + html
+        + amp_html
         + Header:Subject
-        + text/plain
     + line (number) - Identifies the line number within the MIME part identified by the part attribute
 + Sample
 
@@ -114,6 +115,7 @@ Templates are created as drafts.
     + content (object, required) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
         + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
@@ -246,6 +248,7 @@ The new content will completely overwrite the existing content.
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
         + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
@@ -331,6 +334,7 @@ The new content will completely overwrite the existing content.
     + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+        + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
         + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be an object with `name` & `email` attributes: `{ "name": "My Company", "email": "deals@company.com" }`.
             + (object)
@@ -507,7 +511,8 @@ Instead of the standard attributes, the content object may contain a single `ema
 + Data Structure: RFC 822 Content
     + email_rfc822 (string) - Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1).
 
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and first non-attachment `text/html` MIME parts only.
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain`, `text/html`, and `text/x-amp-html` MIME parts only.
+* If `text/x-amp-html` is used, it must be a descendant of multipart/alternative, alongside at least one other `text/html` or `text/plain` MIME part.
 * Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
 * It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
 * It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.

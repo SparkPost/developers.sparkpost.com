@@ -8,7 +8,7 @@ The Transmissions endpoint lets you send email. Each transmission can send an em
 
 When creating a transmission, the [options](#header-request-body) allow you to configure engagement tracking, sending optimization, global substitution data, and more to control how your emails are sent.
 
-To set the recipients you can include the all recipients in the request or use a [stored recipient list](/api/recipient-lists/). In each recipient, you can pass in metadata and substitution data to [personalize](/api/substitutions-reference/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
+To set the recipients you can include all recipients in the request or use a [stored recipient list](/api/recipient-lists/). For each recipient, you can specify metadata and substitution data to [personalize](/api/substitutions-reference/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
 
 The content of the messages can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), a [stored template](#transmissions-post-send-a-template), an [A/B test](#transmissions-post-send-an-a-b-test), or raw [RFC822 content](#transmissions-post-send-rfc822-content). Each method has different use cases they are best suited for. All of these types of content can use the substitution data and metadata to create a unique message for each recipient.
 
@@ -67,7 +67,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
         + skip_suppression (boolean) - Whether to ignore customer suppression rules. <span class="label label-warning"><strong>Enterprise</strong></span> only.
             + Default: false.
         + ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
-        + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.
+        + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  CSS inlining will *not* be performed on AMPHTML Email content.
             + Defaults: false
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
         + (array)
@@ -161,7 +161,7 @@ The following `recipients` attributes should be set in the `recipients` object w
 
 ### Send Inline Content [POST]
 
-Substitution syntax is supported in `from`, `subject`, `text`, `html`, `reply_to`, and `headers`. The following attributes are used when specifying inline content in the transmission's `content` object:
+Substitution syntax is supported in `from`, `subject`, `text`, `html`, `amp_html`, `reply_to`, and `headers`. The following attributes are used when specifying inline content in the transmission's `content` object:
 
 + Data Structure: Content Attributes
     + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
@@ -172,6 +172,7 @@ Substitution syntax is supported in `from`, `subject`, `text`, `html`, `reply_to
     + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
     + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
     + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
+    + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
     + reply_to (string) - Email address used to compose the email's "Reply-To" header.
     + headers (object) - Object containing headers other than `Subject`, `From`, `To`, and `Reply-To` . See the [Header Notes](#header-header-notes).
     + attachments (array[object]) - Array of attachments. For a full description, see [Attachment Object](#header-attachment-object).
@@ -414,7 +415,8 @@ The following attribute should be set in the `content` object when sending RFC82
 + Data Structure: RFC 822 Content
     + email_rfc822 (string) - Pre-built message with the format as described by the [message/rfc822 Content-Type](http://tools.ietf.org/html/rfc2046#section-5.2.1).
 
-* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain` and first non-attachment `text/html` MIME parts only.
+* Substitutions will be applied in the top-level headers and the first non-attachment `text/plain`, `text/html`, and `text/x-amp-html` MIME parts only.
+* If `text/x-amp-html` is used, it must be a descendant of multipart/alternative, alongside at least one other `text/html` or `text/plain` MIME part.
 * Lone `LF`s and lone `CR`s are allowed. SparkPost converts line endings to `CRLF` where necessary.
 * It should NOT be dot stuffed. SparkPost dot stuffs before sending the email.
 * It should NOT contain the SMTP terminator `\r\n.\r\n`. SparkPost adds this terminator.
