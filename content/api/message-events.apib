@@ -12,12 +12,22 @@ Message event data is retained for 10 days and is generally available within 1 m
 
 *Note:* The maximum URI length is 4096 characters so please keep your message events queries below that size.
 
+
+### Event Types
+
+You can query the following types of events from the Message Events API.
+
+<message-events></message-events>
+
+
 ___
 
 __The SparkPost Message Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
+___
 
-### Search for Message Events [GET /message-events{?recipients,friendly_froms,events,bounce_classes,reason,subaccounts,transmission_ids,campaign_ids,template_ids,ab_test_ids,message_ids,timezone,to,from,page,per_page,delimiter}]
+
+### Search for Message Events [GET /v1/message-events{?recipients,friendly_froms,events,bounce_classes,reason,subaccounts,transmission_ids,campaign_ids,template_ids,ab_test_ids,message_ids,timezone,to,from,page,per_page,delimiter}]
 
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
@@ -100,7 +110,9 @@ Returns a list of message events that matched the filtered search. The response 
             ]
         }
 
-## Documentation [/message-events/events/documentation]
+## Documentation [/v1/message-events/events/documentation]
+
+These endpoints are used to generate the samples and descriptions for the [Event Types](#header-event-types) section.
 
 ### Events Documentation [GET]
 
@@ -135,7 +147,7 @@ Returns a list of descriptions of the event fields that could be included in a r
 
 
 
-### Events Samples [GET /message-events/events/samples{?events}]
+### Events Samples [GET /v1/message-events/events/samples{?events}]
 
 Returns an example message event for each event type listed in the `events` parameter.
 
