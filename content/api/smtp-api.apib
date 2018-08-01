@@ -107,7 +107,7 @@ The fields supported in the X-MSYS-API header are as follows:
             + Default: false
         + skip_suppression (boolean) - Whether to ignore customer suppression rules, for this SMTP message only. <br /> <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> Defaults to false.
         + ip_pool (string) - The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br /><span class="label label-primary"><strong>SparkPost</strong></span> For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br /><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
-        + inline_css (boolean) - Whether to perform CSS inlining in HTML content.<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined.
+        + inline_css (boolean) - Whether to perform CSS inlining in HTML content.<br/><span class="label label-info"><strong>Note</strong></span> only rules in `head > style` elements will be inlined.  CSS inlining will *not* be performed on AMPHTML Email content.
             + Default: false.
 
 
