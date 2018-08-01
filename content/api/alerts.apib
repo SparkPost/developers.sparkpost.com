@@ -21,8 +21,6 @@ Alerts can be configured to send notifications via email to up to 10 email addre
         + error (object) - Error level alert configuration
             + target (number) - Percentage value at which an alert will be generated
             + comparator (string) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
-    + resolution (enum) - Timeframe of data the Alerts service uses for determining whether or not to generate an alert
-        + "last_month"
     + enabled (boolean) - Whether or not the alert is active
 
 + Sample
@@ -42,7 +40,6 @@ Alerts can be configured to send notifications via email to up to 10 email addre
                 "comparator": "gt"
             }
         },
-        "resolution": "last_month",
         "enabled": true
     }
     ```
@@ -55,13 +52,11 @@ Creates a new alert
     + description (string) - Description of alert
     + email_addresses (array) - List of email addresses to send alert notifications
     + alert_metric (enum) - Metric that the alert is configured to track
-        + Default: "monthly_sending_limit"
+        + "monthly_sending_limit"
     + threshold (object) - Configuration for level and threshold at which an alert is generated
         + error (object) - Error level alert configuration
             + target (number) - Percentage value at which an alert will be generated
-            + comparator (string) - Default: `'gt'` Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
-    + resolution (enum) - Timeframe of data the Alerts service uses for determining whether or not to generate an alert
-        + Default: "last_month"
+            + comparator (string) - Default: `'gt'`: Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
     + enabled (boolean) - Whether or not the alert is active
         + Default: true
 
@@ -80,6 +75,7 @@ Creates a new alert
             "email_addresses": [
                 "sparky@sparkpost.com"
             ],
+            "alert_metric": "monthly_sending_limit",
             "threshold": {
                 "error": {
                     "target": 90,
@@ -150,6 +146,5 @@ Retrieve full information about a single alert.
                 "comparator": "gt"
             }
         },
-        "resolution": "last_month",
         "enabled": true
     }
