@@ -46,8 +46,8 @@ You'll find the all the content, pages, and data inside the `content` folder. If
 
 Create a branch for your work in the repo:
 
-1. `git checkout next` to checkout the main branch
-1. `git pull origin next` to get the lastest code
+1. `git checkout master` to checkout the main branch
+1. `git pull origin master` to get the lastest code
 1. `git checkout -b your-branch-name` to create a branch
 
 ### Make your changes
@@ -61,4 +61,4 @@ Create a branch for your work in the repo:
 
 1. Stage and commit your changes (`git add -A && git commit -m "Describe what you did"`)
 1. Push your changes (`git push origin your-branch-name`)
-1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `next` branch.
+1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `master` branch.
