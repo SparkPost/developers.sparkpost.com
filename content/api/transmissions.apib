@@ -405,6 +405,17 @@ When using substitution data with A/B tests, data for all possible templates mus
                 "id": "11668787493850529"
             }
         }
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "resource not found",
+                    "description": "ab_test_id 'password_reset' does not exist",
+                    "code": "1603"
+                }
+            ]
+        }
 
 
 ### Send RFC822 Content [POST]
