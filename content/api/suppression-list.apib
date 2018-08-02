@@ -12,7 +12,7 @@ Each entry indicates whether the recipient opted out of receiving one of the fol
 * Non-transactional messages - used to run email campaigns where a list of recipients are targeted, e.g. advertising a sales event.
 
 
-<banner status="success">When setting up your SparkPost account, we <strong>strongly recommend</strong> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</banner>
+<Banner status="success">When setting up your SparkPost account, we <strong>strongly recommend</strong> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</Banner>
 
 ## Recipient Maintenance
 
@@ -62,7 +62,7 @@ By default, the search endpoint will search across the master account's and all 
     }
     ```
 
-## Bulk Create or Update Suppressions [PUT /suppression-list/]
+## Bulk Create or Update Suppressions [PUT /v1/suppression-list/]
 
 Bulk create or update entries in the suppression list.
 
@@ -119,7 +119,7 @@ If this occurs, please re-submit your original request again for processing.
             ]
         }
 
-### Create or Update a Suppression [PUT /suppression-list/{recipient}]
+### Create or Update a Suppression [PUT /v1/suppression-list/{recipient}]
 
 If the recipient was added by our compliance system, it cannot be updated.
 
@@ -170,7 +170,7 @@ If the recipient was added by our compliance system, it cannot be updated.
             ]
         }
 
-### Retrieve a Suppression [GET /suppression-list/{recipient}]
+### Retrieve a Suppression [GET /v1/suppression-list/{recipient}]
 
 Return all suppression entries for a recipient. If the recipient is not in the suppression list, an HTTP status of 404 is returned.
 
@@ -226,7 +226,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
         }
 
 
-### Delete a Suppression [DELETE /suppression-list/{recipient}]
+### Delete a Suppression [DELETE /v1/suppression-list/{recipient}]
 
 + Data Structure
     + type (enum) - The type of suppression to delete. If not provided, the suppression will be deleted for both transactional and non-transactional.
@@ -269,7 +269,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
         }
 
 
-### Search Suppressions [GET /suppression-list{?to,from,domain,sources,types,description,cursor,per_page,page,sort}]
+### Search Suppressions [GET /v1/suppression-list{?to,from,domain,sources,types,description,cursor,per_page,page,sort}]
 
 Perform a filtered search for entries in your suppression list. Returns an array of suppression objects.
 
@@ -327,7 +327,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
 
 
 
-### Retrieve Summary [GET /suppression-list/summary]
+### Retrieve Summary [GET /v1/suppression-list/summary]
 
 Returns the total number of suppressions for your account, as well as a break down of suppressions by source.
 

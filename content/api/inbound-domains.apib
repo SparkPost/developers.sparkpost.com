@@ -1,24 +1,10 @@
 FORMAT: 1A
 title: Inbound Domains
-description: Manage inbound domains, which enable you to customize the address to which inbound messages are sent.
+description: Manage inbound domains, which enable you to receive emails.
 
 # Group Inbound Domains
 
-Specifying an inbound domain enables you to customize the address to which inbound messages are sent.
-Inbound domains are used in conjunction with [Relay Webhooks](/api/relay-webhooks/).
-You can have multiple inbound domains but each domain must be globally unique.
-
-## Inbound Domains Object
-
-+ Data Structure
-    + domain (string) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
-+ Sample
-    
-    ```
-    {
-        "domain": "inbounddomain.test.com"
-    }
-    ```
+Inbound Domains allow you to receive emails using SparkPost. When combined with [Relay Webhooks](/api/relay-webhooks/), you can have SparkPost receive the emails sent to the inbound domain, and post the contents to your server.
 
 ## Configuring your MX records
 
@@ -41,18 +27,30 @@ The following DNS settings are for SparkPost EU:
 | `inbounddomain.test.com` | MX   | rx1.eu.sparkpostmail.com | 10       |
 | `inbounddomain.test.com` | MX   | rx2.eu.sparkpostmail.com | 10       |
 | `inbounddomain.test.com` | MX   | rx3.eu.sparkpostmail.com | 10       |
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers</strong>, you will need to use MX records similar to your existing domains.  In many cases
+
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers</strong>, you will need to use MX records similar to your existing domains. In many cases
 the MX records for existing domains point at <code>inbound.<main-bounce-domain></code>.
 The following DNS settings assume that your existing domains point
 at <code>inbound.<main-bounce-domain></code>.  Please check with your TAM
-if you are unsure of the setting in your own environment.</banner>
+if you are unsure of the setting in your own environment.</Banner>
 
 | Name                     | Type | Data                           | Priority |
 |--------------------------|------|--------------------------------|----------|
 | `inbounddomain.test.com` | MX   | `inbound.<main-bounce-domain>` | 10       |
 
+## Inbound Domains Object
 
-### Create an Inbound Domain [POST /inbound-domains]
++ Data Structure
+    + domain (string) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
++ Sample
+    
+    ```
+    {
+        "domain": "inbounddomain.test.com"
+    }
+    ```
+
+### Create an Inbound Domain [POST /v1/inbound-domains]
 
 + Data Structure
     + domain (string, required) - Domain name for which SparkPost will receive inbound emails.
@@ -100,7 +98,7 @@ if you are unsure of the setting in your own environment.</banner>
                 ]
             }
 
-### Retrieve an Inbound Domain [GET /inbound-domains/{domain}]
+### Retrieve an Inbound Domain [GET /v1/inbound-domains/{domain}]
 
 + Parameters
     + domain (required, string, `inbounddomain.test.com`)
@@ -136,7 +134,7 @@ if you are unsure of the setting in your own environment.</banner>
             }
 
 
-### Delete an Inbound Domain [DELETE /inbound-domains/{domain}]
+### Delete an Inbound Domain [DELETE /v1/inbound-domains/{domain}]
 
 + Parameters
     + domain (required, string, `inbounddomain.test.com`)
@@ -177,7 +175,7 @@ if you are unsure of the setting in your own environment.</banner>
             }
 
 
-### List all Inbound Domains [GET /inbound-domains]
+### List all Inbound Domains [GET /v1/inbound-domains]
 
 Returns a list of all your inbound domains.
 

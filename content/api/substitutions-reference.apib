@@ -234,7 +234,7 @@ This would be the result:
 
 The substitution engine supports triple curly braces to signify that HTML escaping should not occur.
 
-<banner status="danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</banner>
+<Banner status="danger">If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
 
 Using the same substitution data as above, and a slightly modified template HTML part (`{{{...}}}`):
 
@@ -280,9 +280,9 @@ Then the above URL will be rendered as
 
 ## Disabling URL Encoding
 
-<banner status="info"><strong>Note</strong>: The protocol (`https://`) must be included before any substitution variables.</banner>
-<banner status="warning"><strong>Warning</strong>: Disabling URL encoding of substitution variables requires care to avoid broken links.</banner>
-<banner status="danger"><strong>Danger</strong>: If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</banner>
+<Banner status="info">The protocol (`https://`) must be included before any substitution variables.</Banner>
+<Banner status="warning">Disabling URL encoding of substitution variables requires care to avoid broken links.</Banner>
+<Banner status="danger">If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
 
 In order to disable URL encoding, use triple curly braces.
 This is useful when you have multiple pieces of the URL in one variable.
@@ -318,7 +318,7 @@ Triple curlies are also necessary if the entire URL resides in substitution data
 }
 ```
 
-<banner status="warning"><strong>Warning</strong>: Including the protocol in a substitution variable (as above) will disable click tracking for that link</banner>
+<Banner status="warning">Including the protocol in a substitution variable (as above) will disable click tracking for that link</Banner>
 
 ## Link Names
 
@@ -365,7 +365,7 @@ The tracked link generated will look like this:
 http://<hostname>/f/custom_path/<encoded target url>
 ```
 
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing">here</a>.</banner>
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing">here</a>.</Banner>
 
 ## Link Attributes in Text Parts
 
@@ -558,7 +558,7 @@ The indentation will appear in the rendered content, so it is not advisable to i
 
 ## Array Indexing
 
-<banner status="info"><strong>Note</strong>: array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</banner>
+<Banner status="info">Array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</Banner>
 
 It is possible to access specific items within an array, using traditional square brackets syntax:
 
@@ -768,7 +768,7 @@ Hello {{address.name}}
 Your email is {{address.email}}
 ```
 
-<banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise only</strong></a>: The <code>return_path</code> substitution variable is available to SparkPost Enterprise users</a></banner>
+<Banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise only</strong></a>: The <code>return_path</code> substitution variable is available to SparkPost Enterprise users</a></Banner>
 
 ```
 Hello {{address.name}}

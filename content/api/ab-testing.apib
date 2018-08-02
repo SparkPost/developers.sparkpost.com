@@ -23,8 +23,6 @@ The `test_mode` defines what happens once the A/B test completes. In `learning` 
 
 In Bayesian mode, when a template reaches the set `confidence_level` it becomes the winner. If a test ends by hitting one of the other conditions and the `confidence_level` has not been reached, the default template will be considered the winner.
 
-<banner status="info">Bayesian test mode is coming soon!</banner>
-
 ### Versions
 
 A/B test versions allow you to run multiple tests within the same A/B test. This lets you iterate without changing your transmissions call. The version increments each time the A/B test is updated after its first completed or cancelled run.
@@ -41,9 +39,9 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
         + completed
         + cancelled
     + winning_template_id (string) - The winner of the A/B test. Only present when the state is `completed`.
-    + version (number) - The current version of the test. 
+    + version (number) - The current version of the test.
     + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
-    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object). 
+    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
     + metric (enum) - Which metric to use when comparing the templates.
         + count_unique_clicked
         + count_unique_confirmed_opened
@@ -105,13 +103,13 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
     + count_accepted (number) - **Read only.** Messages an ISP or other remote domain accepted (less Out-of-Band Bounces).
     + `engagement_rate` (number) - **Read only.** A number between 0 and 1 calculated by (`count_unique_clicked` or `count_unique_confirmed_opened`) / `count_accepted`.
 
-<banner status="warning"><strong>Note</strong>: The templates must have tracking enabled for the A/B test to properly run.</banner>
+<Banner status="warning">The templates must have tracking enabled for the A/B test to properly run.</Banner>
 
 
-### Create an A/B Test [POST /ab-test]
+### Create an A/B Test [POST /v1/ab-test]
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided.
     + name (string, required) - Display name.
     + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
     + variants (array[object], required) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
@@ -135,7 +133,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
 
 Returns the A/B test ID, when successful.
 
-+ Request A/B Test using a percentage for distribution 
++ Request A/B Test using a percentage for distribution
 
     + Headers
 
@@ -238,7 +236,7 @@ Returns the A/B test ID, when successful.
             ]
         }
 
-### Retrieve an A/B Test [GET /ab-test/{id}{?version}]
+### Retrieve an A/B Test [GET /v1/ab-test/{id}{?version}]
 
 + Parameters
     + id (required, string, `password-reset`)
@@ -304,9 +302,9 @@ Returns the A/B test ID, when successful.
         ]
     }
 
-### Update an A/B Test [PUT /ab-test/{id}]
+### Update an A/B Test [PUT /v1/ab-test/{id}]
 
-<banner status="warning"><strong>Note</strong>: You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</banner>
+<Banner status="warning">You can not update an A/B test while it is <code>running</code>. Tests in <code>running</code> state must be cancelled before updating.</Banner>
 
 If the A/B test's latest version is cancelled or completed, updating it creates a new version, effectively restarting the test. The `winning_template_id` will be reset for the new version. If `winning_template_id` existed in the previous version, the `default_tempate.template_id` of the new version will default to that value, unless overridden by the update.
 
@@ -385,7 +383,7 @@ Returns the new `version`.
         ]
     }
 
-### Cancel an A/B Test [POST /ab-test/{id}/cancel]
+### Cancel an A/B Test [POST /v1/ab-test/{id}/cancel]
 
 Any transmissions using this A/B test will send the `default_template`.
 
@@ -419,9 +417,48 @@ Returns the `status`.
             ]
         }
 
-### List All A/B Tests [GET /ab-test]
+### Delete an A/B Test [DELETE /ab-test/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'cancelled' or 'completed' to use this endpoint"
+            }
+        ]
+    }
+
+### List All A/B Tests [GET /v1/ab-test{?status}]
 
 Returns an array of latest versions of your A/B tests.
+
++ Parameters
+    + status (optional, string, `completed`)
+      If provided, filters the list of A/B tests returned by the provided status. Available options are: draft, scheduled, running, cancelled, completed.
 
 + Request
 
@@ -512,14 +549,14 @@ Returns an array of latest versions of your A/B tests.
             ]
         }
 
-## A/B Test Drafts [/ab-test/draft]
+## A/B Test Drafts [/v1/ab-test/draft]
 
 A/B Test drafts allow you to build a A/B test in a series of steps instead of all at once.
 
 ### Create an A/B Test draft [POST]
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided.
     + name (string, required) - Display name.
     + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
 
@@ -532,7 +569,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             Accept: application/json
 
     + Body
-    
+
             {
                 "id": "payment-confirmation",
                 "name": "Payment Confirmation",
@@ -560,7 +597,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             ]
         }
 
-### Retrieve an A/B Test draft [GET /ab-test/draft/{id}]
+### Retrieve an A/B Test draft [GET /v1/ab-test/draft/{id}]
 
 + Parameters
     + id (required, string, `my-draft-test`)
@@ -589,7 +626,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             }
         }
 
-### Update an A/B Test draft [PUT /ab-test/draft/{id}]
+### Update an A/B Test draft [PUT /v1/ab-test/draft/{id}]
 
 + Data Structure
     + name (string) - Display name.
@@ -664,7 +701,42 @@ Returns the A/B test ID.
             ]
         }
 
-### Schedule an A/B Test draft [POST /ab-test/draft/{id}/schedule]
+### Delete an A/B Test Draft [DELETE /ab-test/draft/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'draft' to use this endpoint"
+            }
+        ]
+    }
+
+### Schedule an A/B Test draft [POST /v1/ab-test/draft/{id}/schedule]
 
 + Data Structure
     + start_time (string, required) - ISO Date specifying when the test should begin.

@@ -18,7 +18,7 @@ The following APIs have subaccount support:
 * [Tracking Domains](/api/tracking-domains/)
 * [Webhooks](/api/webhooks/)
 
-<banner status="info"><strong>Note</strong>: all subaccount-level transmissions must use <code>inline</code> recipients. Stored recipient lists are not supported for subaccounts.</banner>
+<Banner status="info"><strong>Note</strong>: all subaccount-level transmissions must use <code>inline</code> recipients. Stored recipient lists are not supported for subaccounts.</Banner>
 
 ### Terminology
 
@@ -38,7 +38,7 @@ You can also use the header to filter out subaccount data. By default, when you 
 
 When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header, only master account is affected by default, so setting the header to `0` makes no difference. The exception here is webhooks. They act like GET requests, where if you omit the header, they will be sent both the master account and subaccount data, but if you set the `X-MSYS-SUBACCOUNT` header to `0`, they will only receive the master account data. 
 
-<banner status="info"><strong>Note:</strong> `X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</banner>
+<Banner status="info">`X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</Banner>
 
 ### Subaccount object
 
@@ -67,7 +67,7 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
     }
     ```
 
-### Create a Subaccount [POST /subaccounts]
+### Create a Subaccount [POST /v1/subaccounts]
 
 Creates a new subaccount and an initial subaccount API key. Subaccount API keys are only allowed very specific grants.
 
@@ -91,7 +91,7 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
 
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
-<banner status="info"><strong>Note</strong>: Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</banner>
+<Banner status="info">Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</Banner>
 
 + Request (application/json)
 
@@ -167,7 +167,7 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
             ]
         }
 
-### Retrieve a Subaccount [GET /subaccounts/{id}]
+### Retrieve a Subaccount [GET /v1/subaccounts/{id}]
 
 This endpoint only returns information about the subaccount, not the resources associated with it.
 
@@ -193,7 +193,7 @@ This endpoint only returns information about the subaccount, not the resources a
             }
         }
 
-### Update a subaccount [PUT /subaccounts/{id}]
+### Update a subaccount [PUT /v1/subaccounts/{id}]
 
 + Data Structure
     + name (string) - Subaccount display name. <br />Max length: 64 characters
@@ -202,7 +202,7 @@ This endpoint only returns information about the subaccount, not the resources a
         + suspended
         + terminated
     + ip_pool (string)
-        The ID of an IP Pool in which to restrict this subaccount's mail deliveries. If the supplied `ip_pool` is a empty or not present, this subaccount may use any of the account's IP Pools.
+        The ID of an IP Pool in which to restrict this subaccount's mail deliveries. To unassign the current IP Pool, provide an empty string.
         <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers: please consult with your TAM on IP management.
 
 
@@ -244,7 +244,7 @@ This endpoint only returns information about the subaccount, not the resources a
         }
 
 
-### List all Subaccounts [GET /subaccounts]
+### List all Subaccounts [GET /v1/subaccounts]
 
 Returns a list of your subaccounts. 
 
@@ -281,7 +281,7 @@ Returns a list of your subaccounts.
             ]
         }
 
-### Retrieve Subaccounts Summary [GET /subaccounts/summary]
+### Retrieve Subaccounts Summary [GET /v1/subaccounts/summary]
 
 Returns the total number of subaccounts.
 
