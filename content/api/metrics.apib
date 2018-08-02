@@ -53,6 +53,31 @@ Definitions for terms found in Metrics API
 
 <banner status="info"><strong>Note</strong>: For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</banner>
 
+## Metrics Precision
+
+The following table describes the validation for the **precision** parameter:
+
+| Value of                       | Valid time windows      |
+|--------------------------------|-------------------------|
+| `1min`, `5min`, `15min`        | day                     |
+| `hour`                         | month                   |
+| `12hr`, `day`, `week`, `month` | _any_ (for time-series) |
+
+When precision is specified for the a time-series query, it reflects the period
+of time the data is grouped by.
+
+When precision is specified for aggregate queries, the bounds of the request
+are rounded to the nearest time matching the precision.
+
+For example, requesting data between `4:22` to `6:37` would return results
+within the following time windows:
+
+| Precision | Rounded time window   |
+|-----------|-----------------------|
+| `1min`    | `4:22:00` - `6:36:59` |
+| `5min`    | `4:20:00` - `6:39:59` |
+| `15min`   | `4:15:00` - `6:44:59` |
+| `hour`    | `4:00:00` - `6:59:59` |
 
 ### Discoverability Links [GET /metrics/]
 
@@ -138,17 +163,13 @@ aggregate data, which can be used as "group by" qualifiers.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -230,17 +251,13 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -326,17 +343,13 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -422,17 +435,13 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -516,17 +525,13 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -623,17 +628,13 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -730,17 +731,13 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -825,17 +822,13 @@ Provides aggregate metrics grouped by template over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -921,17 +914,13 @@ in the world.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
             + `5min`
             + `15min`
             + `hour`
-            + `12hr`
-            + `day`
-            + `week`
-            + `month`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1004,14 +993,6 @@ in the world.
 ### Time-Series Metrics [GET /metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
 Provides deliverability metrics ordered by a precision of time.
-
-The following table describes the validation for the **precision** parameter:
-
-| Value of               | Valid for time window of |
-|------------------------|--------------------------|
-| 1min, 5min, 15min      | day                      |
-| hour                   | month                    |
-| 12hr, day, week, month | _any_                    |
 
 + Parameters
     + from (required, datetime, `2018-07-11T07:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
