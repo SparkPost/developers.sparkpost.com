@@ -350,14 +350,14 @@ The following attributes should be set in the `content` object when using a temp
             }
         }
 
-+ Response 404 (application/json)
++ Response 422 (application/json)
 
         {
             "errors": [
                 {
-                    "message": "resource not found",
+                    "message": "Subresource not found",
                     "description": "template 'christmas_offer' does not exist",
-                    "code": "1600"
+                    "code": "1603"
                 }
             ]
         }
