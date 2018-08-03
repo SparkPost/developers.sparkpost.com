@@ -350,14 +350,14 @@ The following attributes should be set in the `content` object when using a temp
             }
         }
 
-+ Response 404 (application/json)
++ Response 422 (application/json)
 
         {
             "errors": [
                 {
-                    "message": "resource not found",
+                    "message": "Subresource not found",
                     "description": "template 'christmas_offer' does not exist",
-                    "code": "1600"
+                    "code": "1603"
                 }
             ]
         }
@@ -404,6 +404,17 @@ When using substitution data with A/B tests, data for all possible templates mus
                 "total_accepted_recipients": 1,
                 "id": "11668787493850529"
             }
+        }
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Subresource not found",
+                    "description": "ab_test_id 'password_reset' does not exist",
+                    "code": "1603"
+                }
+            ]
         }
 
 
