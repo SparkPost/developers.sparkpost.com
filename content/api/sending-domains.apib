@@ -353,7 +353,7 @@ Returns the full sending domain object, except the `domain` field.
 
 + Data Structure
     + tracking_domain (string) - Associated tracking domain. To remove the current value, set it to an empty string. The tracking domain and sending domain must belong to the same subaccount.
-    + dkim (object) - Object in which DKIM key configuration is defined. If DKIM configuration is specified in an update, the new DKIM information will be verified prior to updating the sending domain. If dkim verification fails, the update will return a failure.
+    + dkim (object) - DKIM configuration. Will be verified prior to update. If verification fails, the update will fail.
         + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). To remove the current value, set it to an empty string. <br /><span class="label label-warning"><strong>Enterprise</strong></span> accounts only.
         + private (string, required) - Valued used as the private key which will be used to create the DKIM Signature.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
