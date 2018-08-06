@@ -10,7 +10,7 @@ Alerts can be configured to send notifications via email to up to 10 email addre
 
 ## Alerts Object
 
-+ Data Structure
++ Data Structure: Attributes
     + name (string) - Display name of alert
     + description (string) - Description of alert
     + id (string) - Unique alphanumeric id
@@ -61,6 +61,7 @@ Creates a new alert
                 + Default: `"gt"`
     + enabled (boolean) - Whether or not the alert is active
         + Default: true
+
 
 + Request (application/json)
 
@@ -149,4 +150,57 @@ Retrieve full information about a single alert.
             }
         },
         "enabled": true
+    }
+
+
+### Updates an Alert [PUT /labs/alerts/{id}]
+Updates an existing alert
+
++ Data Structure
+    + name (string) - Display name of alert
+    + description (string) - Description of alert
+    + email_addresses (array) - List of email addresses to send alert notifications
+    + threshold (object) - Configuration for level and threshold at which an alert is generated
+        + error (object) - Error level alert configuration
+            + target (number) - Percentage value at which an alert will be generated
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+                + Default: `"gt"`
+    + enabled (boolean) - Whether or not the alert is active
+        + Default: true
+
+
++ Parameters
+    + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Content-Type: application/json
+
+    + Body
+   
+        {
+            "name": "Sparky's Updated Monthly Alert",
+            "description": "Updated Example alert that will notify when 80% of monthly sending limit is used",
+            "email_addresses": [
+                "sparky@sparkpost.com"
+            ],
+            "threshold": {
+                "error": {
+                    "target": 80,
+                }
+            }
+        }
+
++ Response 200 (application/json)
+    
+    {
+        "results": {
+            "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+            "name": "Sparky's Updated Monthly Alert",
+            "enabled": true,
+            "alert_metric": "monthly_sending_limit"
+        }
     }
