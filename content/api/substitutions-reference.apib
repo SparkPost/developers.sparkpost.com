@@ -759,8 +759,8 @@ The four macros for outputting braces are listed below followed by their output:
 The following substitution variables are reserved and automatically available for each recipient:
 
 * `address.name`: Recipient's name from the _address.name_ recipient json field
-* `email` and `address.email`: Recipient's email address from the _address_ or _address.email_ recipient json field
-
+* `email`, `email_id`, and `address.email`: Recipient's email address from the _address_ or _address.email_ recipient json field
+* `env_from`: Return-Path address, sometimes called a "bounce address" or "envelope sender address"
 The following example works for all SparkPost users.
 
 ```
