@@ -3,26 +3,26 @@ title: Alerts
 description: Configure alerts for your SparkPost account.
 
 # Group Alerts
-SparkPost alerts can be used to get notifications regarding various activities on your SparkPost account.
+Alerts can be used to get notifications regarding various activities on your SparkPost account.
 
 Alerts can be configured to send notifications via email to up to 10 email addresses, and supports the following activity:
 * Approaching monthly sending limit
 
-## Alerts Object
+## Alert Object
 
 + Data Structure: Attributes
-    + name (string) - Display name of alert
-    + description (string) - Description of alert
-    + id (string) - Unique alphanumeric id
-    + email_addresses (array) - List of email addresses to send alert notifications
-    + alert_metric (enum) - Metric that the alert is configured to track
+    + name (string) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + id (string) - Unique alphanumeric id.
+    + email_addresses (array) - List of email addresses to send alert notifications.
+    + alert_metric (enum) - Metric that the alert is configured to track.
         + `"monthly_sending_limit"`
-    + threshold (object) - Configuration for level and threshold at which an alert is generated
-        + error (object) - Error level alert configuration
-            + target (number) - Percentage value at which an alert will be generated
-            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+    + threshold (object) - Configuration for level and threshold at which an alert is generated.
+        + error (object) - Error level alert configuration.
+            + target (number) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
                 + `"gt"`
-    + enabled (boolean) - Whether or not the alert is active
+    + enabled (boolean) - Whether or not the alert is active.
 
 + Sample
         
@@ -49,26 +49,21 @@ Alerts can be configured to send notifications via email to up to 10 email addre
 Creates a new alert
 
 + Data Structure
-    + name (string) - Display name of alert
-    + description (string) - Description of alert
-    + email_addresses (array) - List of email addresses to send alert notifications
+    + name (string) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + email_addresses (array) - List of up to 10 email addresses to send alert notifications
     + alert_metric (enum) - Metric that the alert is configured to track
         + `"monthly_sending_limit"`
-    + threshold (object) - Configuration for level and threshold at which an alert is generated
-        + error (object) - Error level alert configuration
-            + target (number) - Percentage value at which an alert will be generated
-            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+    + threshold (object) - Configuration for level and threshold at which an alert is generated.
+        + error (object) - Error level alert configuration.
+            + target (number) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
                 + Default: `"gt"`
-    + enabled (boolean) - Whether or not the alert is active
+    + enabled (boolean) - Whether or not the alert is active.
         + Default: true
 
 
 + Request (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Content-Type: application/json
 
     + Body
    
@@ -98,41 +93,11 @@ Creates a new alert
         }
     }
 
-### List all Alerts [GET /labs/alerts]
-Retrive a list of all alerts.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-    {
-        "results": [
-            {
-                "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
-                "name": "Sparky's Monthly Alert",
-                "enabled": true,
-                "alert_metric": "monthly_sending_limit"
-            }
-        ]
-   }
-
 ### Retrieve an Alert [GET /labs/alerts/{id}]
 Retrieve full information about a single alert.
 
 + Parameters
     + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -157,27 +122,21 @@ Retrieve full information about a single alert.
 Updates an existing alert
 
 + Data Structure
-    + name (string) - Display name of alert
-    + description (string) - Description of alert
-    + email_addresses (array) - List of email addresses to send alert notifications
-    + threshold (object) - Configuration for level and threshold at which an alert is generated
-        + error (object) - Error level alert configuration
-            + target (number) - Percentage value at which an alert will be generated
-            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value
+    + name (string) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + email_addresses (array) - List of up to 10 email addresses to send alert notifications.
+    + threshold (object) - Configuration for level and threshold at which an alert is generated.
+        + error (object) - Error level alert configuration.
+            + target (number) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
                 + Default: `"gt"`
-    + enabled (boolean) - Whether or not the alert is active
-        + Default: true
+    + enabled (boolean) - Whether or not the alert is active.
 
 
 + Parameters
     + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
 
 + Request (application/json)
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Content-Type: application/json
 
     + Body
    
@@ -204,3 +163,27 @@ Updates an existing alert
             "alert_metric": "monthly_sending_limit"
         }
     }
+
+### List all Alerts [GET /labs/alerts]
+Returns an array of all your Alerts. Each Alert isn't returned as a full Alert Object, and is abbreviated to the following attributes:
+
++ Data Structure: Attributes
+    + name (string) - Display name of the alert.
+    + id (string) - Unique alphanumeric id.
+    + enabled (boolean) - Whether or not the alert is active.
+    + alert_metric (enum) - Metric that the alert is configured to track.
+
+
++ Response 200 (application/json)
+
+    {
+        "results": [
+            {
+                "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+                "name": "Sparky's Monthly Alert",
+                "enabled": true,
+                "alert_metric": "monthly_sending_limit"
+            }
+        ]
+   }
+
