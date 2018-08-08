@@ -53,24 +53,12 @@ Definitions for terms found in Metrics API
 
 <Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
-## Metrics Precision
+## Precision Parameter
 
-The following table describes the validation for the **precision** parameter:
+**Agregate Metrics**
 
-| Value of                       | Valid time windows      |
-|--------------------------------|-------------------------|
-| `1min`, `5min`, `15min`        | day                     |
-| `hour`                         | month                   |
-| `12hr`, `day`, `week`, `month` | _any_ (for time-series) |
-
-When precision is specified for the a time-series query, it reflects the period
-of time the data is grouped by.
-
-When precision is specified for aggregate queries, the bounds of the request
-are rounded to the nearest time matching the precision.
-
-For example, requesting data between `4:22` to `6:37` would return results
-within the following time windows:
+When the `precision` parameter is specified for aggregate metric requests the bounds of the time window (`from`, `to`) are rounded to the nearest time matching the precision.
+For example, requesting data between `4:22` to `6:37` would return results within the following time windows:
 
 | Precision | Rounded time window   |
 |-----------|-----------------------|
@@ -78,6 +66,12 @@ within the following time windows:
 | `5min`    | `4:20:00` - `6:39:59` |
 | `15min`   | `4:15:00` - `6:44:59` |
 | `hour`    | `4:00:00` - `6:59:59` |
+
+All precisions are valid up to a 24 hour time window, except for `hour` which is also valid up to a 31 day time window.
+
+**Time-series Metrics**
+
+When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
 
 ### Discoverability Links [GET /v1/metrics/]
 
@@ -163,7 +157,10 @@ aggregate data, which can be used as "group by" qualifiers.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -251,7 +248,10 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -343,7 +343,10 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -435,7 +438,10 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -525,7 +531,10 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -628,7 +637,10 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -731,7 +743,10 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -822,7 +837,10 @@ Provides aggregate metrics grouped by template over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
@@ -914,7 +932,10 @@ in the world.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision = `1min` (optional, string) ... Precision of timeseries data returned.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
