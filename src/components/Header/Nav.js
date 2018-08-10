@@ -10,31 +10,19 @@ export default styled(({ children, secondary, ...props }) => (
   </nav>
 ))`
   display: block;
-  width: 100%;
-  font-weight: ${weight('medium')};
 
-  ul {
+  > ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    font-weight: ${weight('medium')};
   }
-
-  li {
-    display: block;
-    font-weight: inherit;
-  }
-
 
   ${mediaQuery('md', css`
-    li {
-      margin: 0;
-      display: inline-block;
+    > ul {
+      display: flex;
+      align-items: center;
+      ${props => props.secondary && css` font-weight: ${weight('light')};`}
     }
-
-    ${props => props.secondary && css`
-      text-align: right;
-      flex-grow: 1;
-      font-weight: ${weight('light')};
-    `}
   `)}
 `

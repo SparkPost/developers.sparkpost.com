@@ -7,6 +7,7 @@ import { grayscale, shadow } from 'utils/colors'
 import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
+import Search from './Search'
 import StatusIcon from './StatusIcon'
 import Hamburger from './Hamburger'
 
@@ -17,9 +18,10 @@ const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   font-size: 0.833333333rem;
   padding: 1rem 1rem;
+  white-space: nowrap;
 
   ${props => props.isSticky && css`
     box-shadow: ${shadow(1)};
@@ -39,7 +41,6 @@ const NavWrapper = styled.div`
   bottom: 0;
   left: 0;
   transform: translateY(0%);
-  overflow: hidden;
   background: ${grayscale('white')};
   transition: .2s cubic-bezier(.1,1,.4,1);
   z-index: -1;
@@ -113,6 +114,7 @@ class Header extends Component {
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
             <NavLink to="http://slack.sparkpost.com">Community</NavLink>
           </Nav>
+          <Search />
           <Nav secondary>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
