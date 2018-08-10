@@ -61,4 +61,4 @@ Create a branch for your work in the repo:
 
 1. Stage and commit your changes (`git add -A && git commit -m "Describe what you did"`)
 1. Push your changes (`git push origin your-branch-name`)
-1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `master` branch.
+1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `master` branch. Netlify will publish a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) so you can share and preview your changes as a live site.
