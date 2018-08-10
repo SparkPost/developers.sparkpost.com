@@ -275,7 +275,7 @@ class AutoComplete extends Component {
         renderSectionTitle={section =>
           section.hits.length > 0 && (
             <SectionTitle>
-              {section.index === 'api_docs_dev' && 'API Reference'}
+              {section.index === 'api_reference' && 'API Reference'}
               {section.index === 'production_site_posts_support_article' &&
                 'Documentation'}
               {section.index === 'production_site_posts_post' && 'Blog'}
@@ -353,7 +353,7 @@ const Search = () => (
     <InstantSearch
       appId="SFXAWCYDV8"
       apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
-      indexName="api_docs_dev"
+      indexName="api_reference"
     >
       <Index indexName="production_site_posts_support_article" />
       <Index indexName="production_site_posts_post">
