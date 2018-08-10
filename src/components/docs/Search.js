@@ -8,7 +8,6 @@ import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
-import Link from 'components/Link'
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};

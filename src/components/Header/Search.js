@@ -14,7 +14,6 @@ import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
 import { mediaQuery } from 'utils/breakpoint'
-import Link from 'components/Link'
 import EventListener from 'react-event-listener'
 
 // prettier-ignore
