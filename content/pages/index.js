@@ -218,7 +218,7 @@ const IndexPage = props => {
                 in a developer-friendly, quick to set up cloud service.{' '}
               </Subtitle>
               <ButtonWrapper>
-                <Button to="https://app.sparkpost.com/join" secondary>
+                <Button to="https://app.sparkpost.com/join" outline>
                   Sign Up
                 </Button>
               </ButtonWrapper>

@@ -7,7 +7,10 @@ import tableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
 import ApiaryRedirects from 'components/api/ApiaryRedirects'
+import HttpHeading from 'components/api/components/HttpHeading'
 import API from 'components/api'
+import { grayscale } from 'utils/colors'
+import { StickyContainer, Sticky } from 'react-sticky'
 
 import { mediaQuery } from 'utils/breakpoint'
 import parseResult from 'minim-parse-result'
@@ -111,10 +114,32 @@ class Template extends Component {
           />
         </Sidebar>
         <Content>
-          <Wrapper>
+          <Fragment>
+            <StickyContainer
+              style={{
+                float: 'right',
+                width: '45%',
+                padding: '1rem 1.5rem',
+                height: '100%',
+                position: 'absolute',
+                top: '0',
+                right: '0',
+                borderLeft: `1px solid ${grayscale('8')}`,
+                zIndex: 1,
+              }}
+            >
+              <Sticky topOffset={-80}>
+                {({ style }) => (
+                  <div style={{ ...style, top: `80px` }}>
+                    <HttpHeading>Hello</HttpHeading>
+                    <textarea name="" id="" cols="30" rows="10" />
+                  </div>
+                )}
+              </Sticky>
+            </StickyContainer>
             {!meta.full && <RightBackground />}
             <API api={api} />
-          </Wrapper>
+          </Fragment>
         </Content>
       </Layout>
     )
