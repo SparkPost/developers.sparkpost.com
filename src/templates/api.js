@@ -80,6 +80,16 @@ class Template extends Component {
 
   render() {
     const { props } = this
+    const metaTableOfContents = tableOfContents.map(category => ({
+      ...category,
+      pages: category.pages.map(file => ({
+        file,
+        title: props.data.allFile.edges.find(({ node }) => node.base === file)
+          .node.childApiBlueprint.meta.title,
+        path: props.data.allFile.edges.find(({ node }) => node.base === file)
+          .node.childApiBlueprint.fields.path,
+      })),
+    }))
 
     const {
       ast,
@@ -90,7 +100,7 @@ class Template extends Component {
 
     const fullTableOfContents = insertPageTableOfContents({
       file: props.pageContext.file,
-      tableOfContents,
+      tableOfContents: metaTableOfContents,
       pageTableOfContents,
     })
 
@@ -125,6 +135,21 @@ export default Template
 
 export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {
+    allFile(filter: { extension: { eq: "apib" } }) {
+      edges {
+        node {
+          base
+          childApiBlueprint {
+            meta {
+              title
+            }
+            fields {
+              path
+            }
+          }
+        }
+      }
+    }
     file(base: { eq: $file }) {
       base
       childApiBlueprint {
@@ -134,6 +159,9 @@ export const pageQuery = graphql`
           title
           description
           full
+        }
+        fields {
+          path
         }
       }
     }
