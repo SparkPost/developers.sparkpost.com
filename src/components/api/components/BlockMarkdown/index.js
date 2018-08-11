@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import { mapValues, keys } from 'lodash'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
+import Button from 'components/Button'
 import Heading from '../Heading'
 import DataStructure from './DataStructure'
 import MessageEvents from './MessageEvents'
 import WebhookEvents from './WebhookEvents'
+import SubstitutionReferenceContext from 'components/api/SubstitutionReferenceContext'
 
 const EmptyHeader = styled.th`
   padding: 0;
@@ -84,6 +86,30 @@ const components = mapValues(
           <Banner status={status}>
             <p>{children}</p>
           </Banner>
+        </div>
+      )
+    },
+    replbutton({ children }) {
+      const code = JSON.parse(children.join(''))
+
+      const replCode = {}
+
+      // allow either html or data or both
+      if (code.html)
+        replCode.html = code.html
+
+      if (code.substitution_data)
+        replCode.substitution_data = JSON.stringify(code.substitution_data, null, 2)
+
+      return (
+        <div className="block" style={{ marginBottom: `1rem` }}>
+          <SubstitutionReferenceContext.Consumer>
+            {data => (
+              <Button size="small" outline onClick={() => {
+                data.setREPL(replCode, { debounce: false })
+              }}>Try it</Button>
+            )}
+          </SubstitutionReferenceContext.Consumer>
         </div>
       )
     },
