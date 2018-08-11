@@ -95,19 +95,28 @@ const components = mapValues(
       const replCode = {}
 
       // allow either html or data or both
-      if (code.html)
-        replCode.html = code.html
+      if (code.html) replCode.html = code.html
 
       if (code.substitution_data)
-        replCode.substitution_data = JSON.stringify(code.substitution_data, null, 2)
+        replCode.substitution_data = JSON.stringify(
+          code.substitution_data,
+          null,
+          2
+        )
 
       return (
         <div className="block" style={{ marginBottom: `1rem` }}>
           <SubstitutionReferenceContext.Consumer>
             {data => (
-              <Button size="small" outline onClick={() => {
-                data.setREPL(replCode, { debounce: false })
-              }}>Try it</Button>
+              <Button
+                size="small"
+                outline
+                onClick={() => {
+                  data.setREPL(replCode, { debounce: false })
+                }}
+              >
+                Try it
+              </Button>
             )}
           </SubstitutionReferenceContext.Consumer>
         </div>

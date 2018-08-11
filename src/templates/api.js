@@ -68,20 +68,19 @@ const Third = styled.div`
   flex-direction: column;
 
   > * {
-    padding-left: .5rem;
-    padding-right: .5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   ${HttpHeading} {
-    padding: .5rem;
+    padding: 0.5rem;
     background: ${grayscale('light')};
     border-bottom: 1px solid ${grayscale('8')};
   }
 `
 
 const Textarea = styled.textarea`
-  ${monospace}
-  margin-top: 12px;
+  ${monospace} margin-top: 12px;
   flex-grow: 1;
   border: 0;
   border-bottom: 1px solid ${grayscale('8')};
@@ -130,16 +129,16 @@ class Provider extends Component {
     },
     results: '',
     errors: [],
-    loading: true
+    loading: true,
   }
 
   setREPL = (code, { debounce }) => {
     const newCode = {
       ...this.state.code,
-      ...code
+      ...code,
     }
 
-    this.setState({ code: newCode, loading: true  })
+    this.setState({ code: newCode, loading: true })
 
     if (debounce) {
       this.debouncedFetchPreview({ code: newCode })
@@ -150,8 +149,7 @@ class Provider extends Component {
 
   // request a preview from the API
   fetchPreview = ({ code }) => {
-    axios.post('/.netlify/functions/substitution-repl', code)
-    .then((response) => {
+    axios.post('/.netlify/functions/substitution-repl', code).then(response => {
       const { results, errors = [] } = response.data
 
       this.setState({ results, errors, loading: false })
@@ -166,10 +164,12 @@ class Provider extends Component {
 
   render() {
     return (
-      <SubstitutionReferenceContext.Provider value={{
-        ...this.state,
-        setREPL: this.setREPL
-      }}>
+      <SubstitutionReferenceContext.Provider
+        value={{
+          ...this.state,
+          setREPL: this.setREPL,
+        }}
+      >
         {this.props.children}
       </SubstitutionReferenceContext.Provider>
     )
@@ -225,54 +225,78 @@ class Template extends Component {
         </Sidebar>
         <Content>
           <Provider>
-          <Fragment>
-            <SubstitutionReferenceContext.Consumer>
-            {data => (
-            <StyledStickyContainer>
-              <Sticky topOffset={-63}>
-                {({ style }) => (
-                  <div style={{ ...style, paddingTop: `63px`, height: `100%` }}>
-                    <div style={{height: `100%`}}>
-                      <Third>
-                        <HttpHeading>Substitution Data</HttpHeading>
-                        <Textarea value={data.code.substitution_data} onChange={
-                          (event) => data.setREPL({
-                            substitution_data: event.target.value
-                          }, { debounce: true })
-                        } />
-                      </Third>
-                      <Third>
-                      <HttpHeading>HTML</HttpHeading>
-                      <Textarea value={data.code.html} onChange={
-                          (event) => data.setREPL({
-                            html: event.target.value
-                          }, { debounce: true })
-                        } />
-                      </Third>
-                      <Third>
-                        <HttpHeading>Results</HttpHeading>
-                        {data.loading && <Results>loading</Results>}
-                        {!data.loading && data.errors.length > 0 && <pre>
-                          {data.errors.map((v) => JSON.stringify(v, null, 2))}
-                        </pre>}
-                        {!data.loading && data.errors.length === 0 && (
-                          <Results
-                            dangerouslySetInnerHTML={{
-                              __html: data.results.html
-                            }}
-                          />
-                        )}
-                      </Third>
-                    </div>
-                  </div>
+            <Fragment>
+              <SubstitutionReferenceContext.Consumer>
+                {data => (
+                  <StyledStickyContainer>
+                    <Sticky topOffset={-63}>
+                      {({ style }) => (
+                        <div
+                          style={{
+                            ...style,
+                            paddingTop: `63px`,
+                            height: `100%`,
+                          }}
+                        >
+                          <div style={{ height: `100%` }}>
+                            <Third>
+                              <HttpHeading>Substitution Data</HttpHeading>
+                              <Textarea
+                                value={data.code.substitution_data}
+                                onChange={event =>
+                                  data.setREPL(
+                                    {
+                                      substitution_data: event.target.value,
+                                    },
+                                    { debounce: true }
+                                  )
+                                }
+                              />
+                            </Third>
+                            <Third>
+                              <HttpHeading>HTML</HttpHeading>
+                              <Textarea
+                                value={data.code.html}
+                                onChange={event =>
+                                  data.setREPL(
+                                    {
+                                      html: event.target.value,
+                                    },
+                                    { debounce: true }
+                                  )
+                                }
+                              />
+                            </Third>
+                            <Third>
+                              <HttpHeading>Results</HttpHeading>
+                              {data.loading && <Results>loading</Results>}
+                              {!data.loading &&
+                                data.errors.length > 0 && (
+                                  <pre>
+                                    {data.errors.map(v =>
+                                      JSON.stringify(v, null, 2)
+                                    )}
+                                  </pre>
+                                )}
+                              {!data.loading &&
+                                data.errors.length === 0 && (
+                                  <Results
+                                    dangerouslySetInnerHTML={{
+                                      __html: data.results.html,
+                                    }}
+                                  />
+                                )}
+                            </Third>
+                          </div>
+                        </div>
+                      )}
+                    </Sticky>
+                  </StyledStickyContainer>
                 )}
-              </Sticky>
-            </StyledStickyContainer>
-            )}
-            </SubstitutionReferenceContext.Consumer>
-            {!meta.full && <RightBackground />}
-            <API api={api} />
-          </Fragment>
+              </SubstitutionReferenceContext.Consumer>
+              {!meta.full && <RightBackground />}
+              <API api={api} />
+            </Fragment>
           </Provider>
         </Content>
       </Layout>
