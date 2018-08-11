@@ -3,18 +3,25 @@
   "description": "SparkPost Developer Site",
   "version": "1.0.0",
   "author": "SparkPost <dev-relations@sparkpost.com>",
+  "bugs": {
+    "url": "https://github.com/SparkPost/developers.sparkpost.com/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
+  },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
     "escape-string-regexp": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.0-beta.1",
+    "gatsby": "^2.0.0-beta.62",
     "gatsby-plugin-google-tagmanager": "^2.0.0-beta.1",
     "gatsby-plugin-lodash": "^3.0.1-beta.1",
-    "gatsby-plugin-netlify": "^2.0.0-beta.2",
+    "gatsby-plugin-netlify": "^2.0.0-beta.3",
     "gatsby-plugin-netlify-cms": "^2.0.0-beta.1",
-    "gatsby-plugin-nprogress": "^1.0.14",
-    "gatsby-plugin-offline": "^1.0.18",
+    "gatsby-plugin-nprogress": "^2.0.0-beta.4",
+    "gatsby-plugin-offline": "^2.0.0-beta.9",
     "gatsby-plugin-page-creator": "^2.0.0-beta.1",
     "gatsby-plugin-react-helmet": "^3.0.0-beta.1",
     "gatsby-plugin-styled-components": "^3.0.0-beta.1",
@@ -45,20 +52,23 @@
     "slugify": "^1.2.9",
     "styled-components": "^2.4.0",
     "styled-normalize": "^4.0.0",
+    "typeface-source-code-pro": "0.0.54",
     "unified": "^7.0.0"
   },
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-plugin-algolia && npm install",
-    "develop": "source .env && gatsby develop",
+    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-plugin-algolia && npm install && cd ../gatsby-source-sparkpost-api && npm install",
+    "develop": "gatsby develop",
     "docs": "GATSBY_ACTIVE_ENV=docs gatsby develop",
     "build": "NODE_ENV=production gatsby build",
     "publish": "GATSBY_ACTIVE_ENV=publish npm run build",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\" \"content/**/*.js\"",
-    "precommit": "npm run format"
+    "precommit": "npm run format",
+    "prepush": "auditmated"
   },
   "devDependencies": {
+    "auditmated": "^0.1.2",
     "axios": "^0.18.0",
     "husky": "^0.14.3",
     "prettier": "^1.9.2"

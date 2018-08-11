@@ -13,6 +13,7 @@ const tableOfContents = flatten(require(`${apiDirectory}/table-of-contents.json`
 
 module.exports = [
   {
+    indexName: `api_reference`,
     query: `{
       allFile(filter:{extension:{eq:"apib"}}) {
         edges {
@@ -48,7 +49,6 @@ module.exports = [
 
       return filteredSearchableChunks
     },
-    indexName: `api_docs_dev`
   }
 ]
 

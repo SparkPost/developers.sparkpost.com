@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Layout from 'components/Layout'
 import tableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
+import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import API from 'components/api'
 
 import { mediaQuery } from 'utils/breakpoint'
@@ -48,7 +50,8 @@ function insertPageTableOfContents({
           return {
             ...page,
             children:
-              pageTableOfContents.length === 1
+              pageTableOfContents.length === 1 &&
+              pageTableOfContents[0].children
                 ? pageTableOfContents[0].children
                 : pageTableOfContents, // if we only have one item at the top, skip it
           }
@@ -99,6 +102,7 @@ class Template extends Component {
           title={meta.title}
           meta={[{ name: 'description', content: meta.description }]}
         />
+        <ApiaryRedirects />
         <Sidebar>
           <Search />
           <Navigation

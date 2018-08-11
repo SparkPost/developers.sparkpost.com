@@ -45,7 +45,8 @@
       {
         "title": "A/B Testing",
         "file": "ab-testing.apib",
-        "path": "/api/ab-testing/"
+        "path": "/api/ab-testing/",
+        "label": "New"
       },
       {
         "title": "Substitutions Reference",

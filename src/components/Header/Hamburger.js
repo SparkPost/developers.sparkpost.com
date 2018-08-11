@@ -12,6 +12,10 @@ const Hamburger = styled(({ isOpen, ...props }) => (
 ))`
   display: block;
   cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 
   // hide on desktop
   ${mediaQuery(

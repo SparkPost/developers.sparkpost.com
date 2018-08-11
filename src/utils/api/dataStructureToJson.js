@@ -1,8 +1,9 @@
+function getType(attribute) {
+  return attribute.id.toValue() ? attribute.id.toValue() : attribute.element
+}
+
 function renderBase(attribute) {
-  // const key = attribute.key.toValue
-  const type = attribute.id.toValue()
-    ? attribute.id.toValue()
-    : attribute.element
+  const type = getType(attribute)
   const description = attribute.description && attribute.description.toValue()
   const value = attribute.toValue()
 
@@ -27,17 +28,25 @@ function renderTypeAttributes(member) {
   if (valueAttributes.get('enumerations')) {
     properties.enumerations = valueAttributes
       .get('enumerations')
-      .map(enumeration => ({
-        type: enumeration.element,
-        value: enumeration.toValue(),
-      }))
+      .map(enumeration => {
+        if (enumeration.element === 'object') {
+          return renderAttribute(enumeration)
+        } else {
+          return {
+            type: enumeration.element,
+            value: enumeration.toValue(),
+          }
+        }
+      })
   }
 
   return properties
 }
 
 function renderAttribute(attribute, dataStructures) {
-  switch (attribute.element) {
+  const type = getType(attribute)
+
+  switch (type) {
     /**
      * Primitive Types
      */
@@ -92,6 +101,11 @@ function renderAttribute(attribute, dataStructures) {
 }
 
 function renderMember(member, dataStructures) {
+  // if we have a title, it should be used as the type
+  if (member.title) {
+    member.value.id.set(member.title.toValue())
+  }
+
   return {
     ...renderTypeAttributes(member),
     ...renderAttribute(member.value, dataStructures),

@@ -2,7 +2,7 @@ import React from 'react'
 import { keyBy } from 'lodash'
 import plainSlugify from 'utils/slugify'
 import Debug from 'components/api/Debug'
-import Context from 'components/api/Context'
+import DataStructureContext from 'components/api/DataStructureContext'
 import { Heading, BlockMarkdown } from 'components/api/components'
 import ResourceGroup from './ResourceGroup'
 
@@ -21,7 +21,7 @@ export default function API({ api }) {
 
   return (
     <Debug title="API">
-      <Context.Provider value={dataStructuresObject}>
+      <DataStructureContext.Provider value={dataStructuresObject}>
         {title && (
           <Heading level={1} id={plainSlugify(title)}>
             {title}
@@ -31,7 +31,7 @@ export default function API({ api }) {
         {resourceGroups.map((resourceGroup, i) => (
           <ResourceGroup key={i} resourceGroup={resourceGroup} />
         ))}
-      </Context.Provider>
+      </DataStructureContext.Provider>
     </Debug>
   )
 }

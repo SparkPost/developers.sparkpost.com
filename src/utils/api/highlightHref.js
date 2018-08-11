@@ -25,7 +25,7 @@ export default function highlightHref(href, hrefVariables) {
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
         new RegExp(
-          `(.+)({\\?(?:.+,)?)${escapeRegExp(param.name)}((?:,.+)?})`,
+          `(.+)({\\?(?:.*,)?)${escapeRegExp(param.name)}((?:,.+)?})`,
           'i'
         ),
         replacementString
@@ -36,10 +36,13 @@ export default function highlightHref(href, hrefVariables) {
     modifiedHref = modifiedHref.replace(/&,+/g, '&')
 
     // remove the wrapper notation from the query params
-    modifiedHref = modifiedHref.replace(/(.+){\?(.+)}/i, `$1?$2`)
+    modifiedHref = modifiedHref.replace(/(.+){\?,?(.+)}/i, `$1?$2`)
 
     // remove the extra ampersand
     modifiedHref = modifiedHref.replace(/&$/, '')
+
+    // if there was no variables inserted we end up with "{?}" on the end - we should remove it
+    modifiedHref = modifiedHref.replace(/{\?}$/, '')
   }
 
   return modifiedHref

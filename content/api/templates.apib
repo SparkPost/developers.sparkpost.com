@@ -5,14 +5,14 @@ description: Manage reusable content templates that are run through the SparkPos
 # Group Templates
 
 Templates are a way to store and edit email content.
-Instead of passing inline content to a [Transmission](/api/transmissions) request, a template can be set to provide the content.
-All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference) for personalized emails.
+Instead of passing inline content to a [Transmission](/api/transmissions/) request, a template can be set to provide the content.
+All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference/) for personalized emails.
 
 ## Drafts & Published versions
 
 Templates can have both a draft and a published version. Transmissions send the published version by default.
 This allows you to work on an upcoming version of the content while continuing to send the last published version.
-Once ready, [publish the draft](#templates-publish-a-draft-put) to the start sending the new version without needing to change the transmission request.
+Once ready, [publish the draft](#templates-put-publish-a-draft) to the start sending the new version without needing to change the transmission request.
 If needed, it's also possible to update the published version of a template directly, without affecting the draft version.
 
 ## Template Object
@@ -103,7 +103,7 @@ Each error is described in a object with the following attributes:
     }
     ```
 
-### Create a Template [POST /template]
+### Create a Template [POST /v1/templates]
 
 Templates are created as drafts.
 
@@ -125,7 +125,6 @@ Templates are created as drafts.
         + open_tracking (boolean) - Enable or disable open tracking.
         + click_tracking (boolean) - Enable or disable click tracking.
     + shared_with_subaccounts (boolean) - Whether this template can be used by subaccounts. Can only be set if the template belongs to the master account.
-    + subaccount_id (number) - Subaccount to assign the template to.
 
 
 + Request (application/json)
@@ -185,7 +184,7 @@ Templates are created as drafts.
         }
 
 
-### Retrieve a Template [GET /templates/{id}{?draft}]
+### Retrieve a Template [GET /v1/templates/{id}{?draft}]
 
 Use the `draft` query parameter to specify the draft or published version of the template.
 
@@ -234,7 +233,7 @@ Use the `draft` query parameter to specify the draft or published version of the
             }
         }
 
-### Update a Draft [PUT /templates/{id}]
+### Update a Draft [PUT /v1/templates/{id}]
 
 Updates the draft version of a template.
 
@@ -292,7 +291,7 @@ The new content will completely overwrite the existing content.
 
 + Response 200
 
-### Publish a Draft [PUT /templates/{id}]
+### Publish a Draft [PUT /v1/templates/{id}]
 
 Uses the draft version to create a new published version.
 
@@ -317,7 +316,7 @@ Uses the draft version to create a new published version.
 
 + Response 200
 
-### Update a Published Template [PUT /templates/{id}{?update_published}]
+### Update a Published Template [PUT /v1/templates/{id}{?update_published}]
 
 An existing published version can be overwritten directly by setting the `update_published` query parameter to `true`.
 If the query param is not passed or set to `false`, it will result in an update to the draft version.
@@ -377,7 +376,7 @@ The new content will completely overwrite the existing content.
 
 + Response 200
 
-### Preview a Template [POST /templates/{id}/preview{?draft}]
+### Preview a Template [POST /v1/templates/{id}/preview{?draft}]
 
 The template's content will be expanded using the substitution data provided and returned in the response.
 Use the `draft` query parameter to specify a draft or published version.
@@ -427,11 +426,11 @@ See [Substitutions Reference](/api/substitutions-reference/) for more informatio
             }
         }
 
-### Delete a Template [DELETE /templates/{id}]
+### Delete a Template [DELETE /v1/templates/{id}]
 
 Deletes both published and draft versions of a template.
 
-<banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</banner>
+<Banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</Banner>
 
 + Parameters
     + id (required, string, `11714265276872`)
@@ -458,7 +457,7 @@ Deletes both published and draft versions of a template.
             ]
         }
 
-### List all Templates [GET /templates{?draft,shared_with_subaccounts}]
+### List all Templates [GET /v1/templates{?draft,shared_with_subaccounts}]
 
 Returns an array with each template in your account.
 
@@ -501,7 +500,7 @@ Returns an array with each template in your account.
             ]
         }
 
-### Create an RFC 822 Template [POST /template]
+### Create an RFC 822 Template [POST /v1/templates]
 
 Instead of the standard attributes, the content object may contain a single `email_rfc822` attribute. `email_rfc822` is mutually exclusive with all other content attributes.
 

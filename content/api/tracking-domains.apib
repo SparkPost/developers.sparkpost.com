@@ -8,7 +8,7 @@ Tracking domains are used in engagement tracking to report email opens and link 
 They wrap the open pixel and all links in your emails.
 When clicked, these links report the event to SparkPost, then quickly forward to the intended destination.
 By default, the tracking domain on your account is `spgo.io` (`eu.spgo.io` for EU accounts). This API allows you to set up and manage custom tracking domains.
-You can also set one up from <a href="https://app.sparkpost.com/account/tracking-domains/create" target="_blank">your account</a>.
+You can also set one up from <a href="https://app.sparkpost.com/account/tracking-domains/create" target="_blank">your account</a> (<a href="https://app.eu.sparkpost.com/account/tracking-domains/create" target="_blank">EU</a>).
 
 As an example, say your email contains this link:
 
@@ -29,7 +29,7 @@ With a custom tracking domain you can replace the domain part of the link. So if
 ```
 
 ### Association to Sending Domains and Defaults
-In order for a tracking domain to be used, it must be associated to a [sending domain](/api/sending-domains) or set as a default.
+In order for a tracking domain to be used, it must be associated to a [sending domain](/api/sending-domains/) or set as a default.
 Once that is done, templates and transmissions that have open or click tracking on will automatically use the domain to wrap links.
 If a tracking domain is set as default, it will automatically be used with sending domains that aren't associated with a different tracking domain.
 Default tracking domains do not override associated tracking domains. You can set a default for each subaccount as well.
@@ -70,7 +70,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
             + blocked
     + subaccount_id (number) - ID of the subaccount the tracking domain is assigned to. Not returned unless set and can only be set on creation.
 + Sample
-    
+
     ```
     {
         "domain": "example.domain.com",
@@ -85,7 +85,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
     }
     ```
 
-### Create a Tracking Domain [POST /tracking-domains]
+### Create a Tracking Domain [POST /v1/tracking-domains]
 
 + Data Structure
     + domain (string, required) - Name of the tracking domain.
@@ -159,7 +159,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
                 ]
             }
 
-### Verify a Tracking Domain [POST /tracking-domains/{domain}/verify]
+### Verify a Tracking Domain [POST /v1/tracking-domains/{domain}/verify]
 Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
 
 + Parameters
@@ -211,7 +211,7 @@ Initiate a check against the configured redirect for the specified tracking doma
                 ]
             }
 
-### Retrieve a Tracking Domain [GET /tracking-domains/{domain}]
+### Retrieve a Tracking Domain [GET /v1/tracking-domains/{domain}]
 
 Retrieve an existing tracking domain.
 
@@ -258,7 +258,7 @@ Retrieve an existing tracking domain.
             }
 
 
-### Update a Tracking Domain [PUT /tracking-domains/{domain}]
+### Update a Tracking Domain [PUT /v1/tracking-domains/{domain}]
 
 Update the attributes of an existing tracking domain. The master account and each subaccount can only have one default tracking domain.
 Setting a new default automatically unsets the current relevant default, if it exists.
@@ -323,7 +323,7 @@ Setting a new default automatically unsets the current relevant default, if it e
             }
 
 
-### Delete a Tracking Domain [DELETE /tracking-domains/{domain}]
+### Delete a Tracking Domain [DELETE /v1/tracking-domains/{domain}]
 
 Delete an existing tracking domain.
 
@@ -354,7 +354,7 @@ Delete an existing tracking domain.
 
 
 
-### List All Tracking Domains [GET /tracking-domains]
+### List All Tracking Domains [GET /v1/tracking-domains]
 
 Returns an array with all tracking domains. Each item in the array is a full tracking domain object.
 

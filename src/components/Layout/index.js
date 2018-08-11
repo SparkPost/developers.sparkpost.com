@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, withPrefix } from 'gatsby'
+import { graphql, StaticQuery, withPrefix } from 'gatsby'
 import Helmet from 'react-helmet'
 import { StickyContainer, Sticky } from 'react-sticky'
 
@@ -28,8 +28,8 @@ const Layout = ({ data, children, location }) => (
     render={data => (
       <StickyContainer>
         <Sticky>
-          {({ style, isSticky, distanceFromTop }) => (
-            <div style={{ ...style, zIndex: zIndex('header') }}>
+          {({ style: { width, ...style }, isSticky, distanceFromTop }) => (
+            <div style={{ ...style, width: `100%`, zIndex: zIndex('header') }}>
               <Header
                 path={location.pathname}
                 isSticky={
