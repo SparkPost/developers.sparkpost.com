@@ -127,7 +127,7 @@ class Provider extends Component {
       substitution_data: `{"name": "world"}`,
       html: `Hello, {{name}}`,
     },
-    results: '',
+    results: { html: '' },
     errors: [],
     loading: true,
   }
