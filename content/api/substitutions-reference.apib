@@ -193,7 +193,124 @@ The length operator `#` gives the length of an array. From the sample data above
 
 ### `each` statement
 
+You can use an `each` statement to iterate of array. If the array is empty of the value is `null`, nothing is rendered.
+
+Inside the loop, you can access the current value via the `loop_var` variable. The current index can be accessed through the `loop_index` variable.
+
+The following example iterates over array of strings and print out the value of each string:
+
+<REPLButton>
+```
+{   
+    "substitution_data": {
+        "children": [
+            "Rusty",
+            "Audrey"
+        ]
+    },
+    "html": "{{ each children }}\nYou have a child named {{loop_var}}\n{{ end }}"
+}
+```
+</REPLButton>
+
+To iterate over an array of objects, the syntax is the same, but access to the nested fields of the object is done using dot notation:
+
+<REPLButton>
+```
+{   
+    "substitution_data": {
+        "shopping_cart": [
+            {
+              "item_name": "Jacket",
+              "price": 39.99
+            },
+            {
+                "item_name": "Gloves",
+                "price": 5.00
+            }
+        ]
+    },
+    "html": "Your shopping cart has items in it: \n\n{{each shopping_cart}}\nItem:\n{{loop_var.item_name}}, Price: {{loop_var.item_price}}\n{{end}}"
+}
+```
+</REPLButton>
+
+#### Nested loops
+
+When using nested loops, because you have multiple loop variables, you should access the values using `loop_vars.<name of the array>` (notice `loop_vars` is plural).
+The following example uses `shopping_cart` and `a_nested_array`: 
+
+<REPLButton>
+```
+{
+    "substitution_data": {
+        "shopping_cart": [
+            {
+                "item_name": "Jacket",
+                "price": 39.99,
+                "a_nested_array": [
+                    {
+                        "key": "v2"
+                    },
+                    {
+                        "key": "v1"
+                    }
+                ]
+            },
+            {
+                "item_name": "Gloves",
+                "price": 5.00
+            }
+        ]
+    },
+    "html": "{{each shopping_cart}}\nItem: {{loop_vars.shopping_cart.item_name}}, Price: {{loop_vars.shopping_cart.item_price}}\nThis item has the following nested values:\n{{each loop_vars.shopping_cart.a_nested_array}}\nNested value: {{loop_vars.a_nested_array.key}}\n{{end}}\n{{end}}"
+}
+```
+</REPLButton>
 
 
+#### Array Indexing
 
+<Banner status="info">Array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</Banner>
 
+It is possible to access specific items within an array:
+
+```
+You have children named {{ children[1] }} and {{ children[2] }}.
+```
+
+Array indexing and dot notation may also be used together:
+
+```
+The first item in your shopping cart is {{ shopping_cart[1].item_name }}.
+```
+
+## Advanced
+
+### Substitutions in email_rfc822 Headers
+
+When it is desirable to have substitutions in RFC2047 encoded headers which are folded, be sure that
+each line of the header is separately RFC2047 encoded.  Otherwise, the server will not be able to decode
+the header to look for substitution syntax.
+
+**Correct:**
+
+```
+Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=?=
+   =?gb2312?B?ztLE3M3Mz8Kyo8Gntvg=?= 
+```
+
+**Incorrect:**
+
+```
+Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
+   ztLE3M3Mz8Kyo8Gntvg=?=
+```
+
+### Encoding Rules
+
+* If after substitution, a text/plain or text/html part contains 8-bit data,
+then that part will be quoted-printable encoded before being placed back into the
+MIME structure.  The Content-Type will be updated appropriately.
+* If after substitution, a header value contains 8-bit data, then the header
+value will be RFC2047 base64 encoded before being written back to the headers structure.
