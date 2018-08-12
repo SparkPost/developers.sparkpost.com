@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { graphql } from 'gatsby'
 import { debounce } from 'lodash'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
+import { rgba } from 'polished'
+import styled, { keyframes } from 'styled-components'
 import axios from 'axios'
 import Layout from 'components/Layout'
 import tableOfContents from '../../content/api/table-of-contents.json'
@@ -12,7 +13,7 @@ import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import SubstitutionReferenceContext from 'components/api/SubstitutionReferenceContext'
 import HttpHeading from 'components/api/components/HttpHeading'
 import API from 'components/api'
-import { grayscale } from 'utils/colors'
+import { grayscale, color } from 'utils/colors'
 import { monospace } from 'utils/fonts'
 import { StickyContainer, Sticky } from 'react-sticky'
 
@@ -90,9 +91,54 @@ const Textarea = styled.textarea`
 
 const Results = styled.div`
   margin-top: 12px;
-  flex-grow: 1;
-  border-bottom: 1px solid ${grayscale('8')};
+  height: 100%;
   outline: 0;
+`
+
+const Errors = styled(({ errors, ...props }) => (
+  <div {...props}>
+    {errors.map(error => {
+      return <div>{JSON.stringify(error, null, 2)}</div>
+    })}
+  </div>
+))`
+  ${monospace} color: #ec4852;
+  margin: 0.5rem 0;
+  white-space: pre;
+  flex-grow: 1;
+  overflow: auto;
+`
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+// show the loading background after half a second
+const Spinner = styled.div`
+  z-index: 1;
+  position: absolute;
+  transform: translateZ(0);
+  top: 0.55rem;
+  right: 0.5rem;
+  border-style: solid;
+  border-width: 0.2em;
+  border-color: ${color('blue')};
+  border-color: ${rgba(grayscale('medium'), 0.25)};
+  border-left-color: transparent;
+  padding: 0;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  animation: ${rotate360} 0.7s infinite linear;
+  opacity: 0;
+  transition: opacity 0.15s;
+  ${props => props.visible && `opacity: 1;`};
 `
 
 function insertPageTableOfContents({
@@ -268,24 +314,28 @@ class Template extends Component {
                               />
                             </Third>
                             <Third>
-                              <HttpHeading>Results</HttpHeading>
-                              {data.loading && <Results>loading</Results>}
-                              {!data.loading &&
-                                data.errors.length > 0 && (
-                                  <pre>
-                                    {data.errors.map(v =>
-                                      JSON.stringify(v, null, 2)
-                                    )}
-                                  </pre>
-                                )}
-                              {!data.loading &&
-                                data.errors.length === 0 && (
-                                  <Results
-                                    dangerouslySetInnerHTML={{
-                                      __html: data.results.html,
-                                    }}
-                                  />
-                                )}
+                              <Spinner visible={data.loading} />
+                              {data.errors.length > 0 ? (
+                                <HttpHeading
+                                  style={{
+                                    background: `#ec4852`,
+                                    color: `white`,
+                                  }}
+                                >
+                                  Error
+                                </HttpHeading>
+                              ) : (
+                                <HttpHeading>Results</HttpHeading>
+                              )}
+                              {data.errors.length > 0 ? (
+                                <Errors errors={data.errors} />
+                              ) : (
+                                <Results
+                                  dangerouslySetInnerHTML={{
+                                    __html: data.results.html,
+                                  }}
+                                />
+                              )}
                             </Third>
                           </div>
                         </div>
