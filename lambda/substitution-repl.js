@@ -35,8 +35,12 @@ exports.handler = async function(event, context) {
   const body = JSON.parse(event.body)
   const { html, substitution_data: substitution_data_string } = body
 
-  if (!html || !substitution_data_string) {
-    return error('html or substitution_data is missing')
+  if (!html) {
+    return error('html is missing')
+  }
+
+  if (!substitution_data_string) {
+    return error('substitution_data is missing')
   }
 
   // convert substitution_data_string into a JSON object
@@ -113,7 +117,6 @@ function error(message) {
       errors: [
         {
           message,
-          description: message
         }
       ],
       statusCode: 400
