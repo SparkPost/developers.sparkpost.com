@@ -12,13 +12,15 @@ Expressions allow you to insert substitution values into your content.
 An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside the double curly braces is ignored. All of the following are equivalent:
 
 <REPLButton>
-```
+```json
 {
-    "substitution_data": {
-        "value": "Hello 👋"
-    },
-    "html": "{{ value }}<br />\n{{value}}<br />\n{{  value   }}<br />"
+    "value": "Hello 👋"
 }
+```
+```html
+{{ value }}
+{{value}}
+{{  value   }}
 ```
 </REPLButton>
 
@@ -27,14 +29,17 @@ An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside
 When looking for a key, the template look in the recipient-level substitution data followed by the recipient-level metadata. If the key doesn't exist, the template will then look for the key in the global substitution data and metadata.  An empty string is substituted for keys that do not exist or have a value of `null`.
 
 <REPLButton>
+```html
+* {{name}}
+* {{age}}
+* {{job}}
+* {{location}}
 ```
+```json
 {
-    "substitution_data": {
-        "name": "Jane",
-        "age": null,
-        "job": "Software Engineer" 
-    },
-    "html": "<ul>\n  <li>{{name}}</li>\n  <li>{{age}}</li>\n  <li>{{job}}</li>\n  <li>{{location}}</li>\n</ul>"
+    "name": "Jane",
+    "age": null,
+    "job": "Software Engineer" 
 }
 ```
 </REPLButton>
@@ -45,11 +50,11 @@ To avoid rendering an empty string, you can set default values using the `or` op
 will evaluate as `Customer`.
 
 <REPLButton>
+```html
+Hello {{ name or 'Customer' }}
 ```
-{
-    "substitution_data": {},
-    "html": "Hello {{ name or 'Customer' }}"
-}
+```json
+{}
 ```
 </REPLButton>
 
@@ -58,15 +63,16 @@ will evaluate as `Customer`.
 Nested paths allow you to reference keys that are nested inside arrays or objects using dot notation and square brackets.
 
 <REPLButton>
+```html
+Street: {{address.street}}
+City: {{address['city']}}
 ```
+```json
 {
-    "substitution_data": {
-        "address": {
-            "street": "Howard Street",
-            "city": "San Fransisco"
-        }
-    },
-    "html": "Street: {{address.street}}<br/>\nCity: {{address['city']}}"
+    "address": {
+        "street": "Howard Street",
+        "city": "San Francisco"
+    }
 }
 ```
 </REPLButton>
@@ -79,12 +85,13 @@ By default, values in the `html` content **are** HTML escaped. However, in the `
 
 
 <REPLButton>
+```html
+Escaped: {{custom_html}}
+Unescaped: {{{custom_html}}}
 ```
+```json
 {
-    "substitution_data": {
-        "custom_html": "<b>Hello, World</b>"
-    },
-    "html": "Escaped: {{custom_html}} <br/>\nUnescaped: {{{custom_html}}}"
+    "custom_html": "<b>Hello, World</b>"
 }
 ```
 </REPLButton>
@@ -99,12 +106,16 @@ Unlike expressions, statements don't return a value. Therefore, if they are on t
 In the following example, the template renders without blank lines: 
 
 <REPLButton>
+```html
+Start of template
+{{ if state == "MD" }}
+Maryland
+{{ end }}
+End of template
 ```
+```json
 {
-    "substitution_data": {
-        "state": "md"
-    },
-    "html": "Start of template\n{{ if state == 'MD' }}\nMaryland\n{{ end }}\nEnd of template"
+    "state": "MD"
 }
 ```
 </REPLButton>
@@ -200,15 +211,17 @@ Inside the loop, you can access the current value via the `loop_var` variable. T
 The following example iterates over array of strings and print out the value of each string:
 
 <REPLButton>
+```html
+{{ each children }}
+You have a child named {{loop_var}}
+{{ end }}
 ```
-{   
-    "substitution_data": {
-        "children": [
-            "Rusty",
-            "Audrey"
-        ]
-    },
-    "html": "{{ each children }}\nYou have a child named {{loop_var}}\n{{ end }}"
+```json
+{
+    "children": [
+        "Rusty",
+        "Audrey"
+    ]
 }
 ```
 </REPLButton>
@@ -216,21 +229,24 @@ The following example iterates over array of strings and print out the value of 
 To iterate over an array of objects, the syntax is the same, but access to the nested fields of the object is done using dot notation:
 
 <REPLButton>
+```html
+Your shopping cart has items in it:
+{{each shopping_cart}}
+Item: {{loop_var.name}}, Price: {{loop_var.price}}
+{{end}}
 ```
+```json
 {   
-    "substitution_data": {
-        "shopping_cart": [
-            {
-              "item_name": "Jacket",
-              "price": 39.99
-            },
-            {
-                "item_name": "Gloves",
-                "price": 5.00
-            }
-        ]
-    },
-    "html": "Your shopping cart has items in it: \n\n{{each shopping_cart}}\nItem:\n{{loop_var.item_name}}, Price: {{loop_var.item_price}}\n{{end}}"
+    "shopping_cart": [
+        {
+          "name": "Jacket",
+          "price": 39.99
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
 }
 ```
 </REPLButton>
@@ -241,29 +257,38 @@ When using nested loops, because you have multiple loop variables, you should ac
 The following example uses `shopping_cart` and `a_nested_array`: 
 
 <REPLButton>
+```html
+---
+{{each shopping_cart}}
+Item: {{loop_vars.shopping_cart.name}}
+Price: {{loop_vars.shopping_cart.price}}
+This item has the following nested values:
+{{each loop_vars.shopping_cart.a_nested_array}}
+Nested value: {{loop_vars.a_nested_array.key}}
+{{end}}
+---
+{{end}}
 ```
+```json
 {
-    "substitution_data": {
-        "shopping_cart": [
-            {
-                "item_name": "Jacket",
-                "price": 39.99,
-                "a_nested_array": [
-                    {
-                        "key": "v2"
-                    },
-                    {
-                        "key": "v1"
-                    }
-                ]
-            },
-            {
-                "item_name": "Gloves",
-                "price": 5.00
-            }
-        ]
-    },
-    "html": "{{each shopping_cart}}\nItem: {{loop_vars.shopping_cart.item_name}}, Price: {{loop_vars.shopping_cart.item_price}}\nThis item has the following nested values:\n{{each loop_vars.shopping_cart.a_nested_array}}\nNested value: {{loop_vars.a_nested_array.key}}\n{{end}}\n{{end}}"
+    "shopping_cart": [
+        {
+            "name": "Jacket",
+            "price": 39.99,
+            "a_nested_array": [
+                {
+                    "key": "v2"
+                },
+                {
+                    "key": "v1"
+                }
+            ]
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
 }
 ```
 </REPLButton>
@@ -284,6 +309,153 @@ Array indexing and dot notation may also be used together:
 ```
 The first item in your shopping cart is {{ shopping_cart[1].item_name }}.
 ```
+
+## Links
+
+## Macros
+
+### `empty`
+
+### Curly brace macros
+
+## Dynamic content
+
+Sometimes it may be convenient to place links and substitution expressions not only within a template, but within substitution values themselves. For example, the 'my_html_chunk' substitution value below contains a link as well as a substitution expression referencing a username:
+
+```json
+{
+  "substitution_data" : {
+    "my_html_chunk" : "<p><a href = \"http://www.example.com?q={{username}}\">Click here</a></p>",
+    "username" : "foo"
+  }
+}
+```
+
+By default, this will not work. In general, the rules are as follows:
+
+* Links within substitution values are *not* automatically converted to click trackable links.
+* Substitution expressions within substitution values are *not* automatically executed.
+
+Using the above `substitution_data` and the following template:
+
+```html
+<body>
+<p>Attempting to insert a chunk of html:</p>
+{{{ my_html_chunk }}}
+</body>
+```
+
+Will result in the following unexpected rendered content:
+
+```html
+<body>
+<p>Attempting to insert a chunk of html:</p>
+<p><a href = "http://www.example.com?q={{username}}">Click here</a></p>
+</body>
+```
+
+Notice that the **username** variable was not replaced
+and the link was not converted into a click trackable form.
+
+In order to correct this problem, the system must be informed of the need to perform such
+substitutions and link tracking.  This can be accomplished with two steps:
+
+1) The html chunk must be specified in the transmission level substitution data underneath a special
+`dynamic_html` json object.  All key value pairs underneath `dynamic_html` will undergo substitutions as well
+as link tracking.
+
+In the above example, the transmission level substitution data would need to be structured as:
+
+```json
+{
+  "substitution_data" : {
+    "dynamic_html" : {
+      "my_html_chunk" : "<p><a href = \"http://www.example.com?q={{username}}\">Click here</a></p>"
+    }
+  }
+}
+```
+
+2) The `render_dynamic_content()` macro must be used to wrap all uses of dynamic_html variables.
+Continuing with the example above, the template would need to be structured as:
+
+```html
+<body>
+<p>Attempting to insert a chunk of html:</p>
+{{ render_dynamic_content(dynamic_html.my_html_chunk) }}
+</body>
+```
+
+The dynamic content will be correctly inserted *without* html escaping,
+regardless of whether double or triple curly braces are used.  There is no need to use triple curly braces in this case.
+
+
+To insert dynamic content into the `text/plain` part of a message, one must place the dynamic content into the transmission
+level substitution variable `dynamic_plain`.  For example:
+
+```json
+{
+  "substitution_data" : {
+    "dynamic_plain" : {
+      "my_plain_text_chunk" : "A chunk of plain text content with a link and a substitution. http://www.example.com?q={{username}}"
+    }
+  }
+}
+```
+
+As with `dynamic_html`, `dynamic_plain` variables must be wrapped in the `render_dynamic_content()` macro when used
+in the template:
+
+```
+Attempting to insert a chunk of plain text:
+{{ render_dynamic_content(dynamic_plain.my_plain_text_chunk) }}
+```
+
+Finally, as a more realistic example, `render_dynamic_content()` can also be used inside an `each` loop. Full transmission json examples follow.
+
+```json
+{
+  "recipients": [
+    {
+      "address": {
+        "email": "foo@example.com"
+      },
+      "substitution_data": {
+        "name": "The A-Team",
+        "offers": [ "offer2", "offer1" ]
+      }
+    },
+    {
+      "address": {
+        "email": "bar@example.com"
+      },
+      "substitution_data": {
+        "name": "Johnnie Rico",
+        "offers": [ "offer3" ]
+      }
+    }
+  ],
+  "substitution_data": {
+    "dynamic_html": {
+      "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+      "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+      "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+    },
+    "dynamic_plain": {
+      "offer1": "Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}",
+      "offer2": "Corks -- http://t.com/offer/2?name={{name}}",
+      "offer3": "Super-effective bug spray -- http://t.com/offer/3?name={{name}}"
+    }
+  },
+  "content": {
+    "text": "Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n",
+    "html": "<p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>\n{{end}}\n</ul>",
+    "from": "test@example.com",
+    "subject": "offers"
+  }
+}
+```
+
 
 ## Advanced
 

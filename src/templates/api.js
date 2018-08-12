@@ -292,8 +292,8 @@ class Template extends Component {
         </Sidebar>
         <Content>
           <Provider>
-            <Fragment>
-              <SubstitutionReferenceContext.Consumer>
+            <Wrapper>
+              {'' /*<SubstitutionReferenceContext.Consumer>
                 {data => (
                   <StyledStickyContainer>
                     <Sticky topOffset={-63}>
@@ -353,10 +353,10 @@ class Template extends Component {
                     </Sticky>
                   </StyledStickyContainer>
                 )}
-              </SubstitutionReferenceContext.Consumer>
+              </SubstitutionReferenceContext.Consumer>*/}
               {!meta.full && <RightBackground />}
               <API api={api} />
-            </Fragment>
+            </Wrapper>
           </Provider>
         </Content>
       </Layout>
