@@ -81,7 +81,8 @@ function dynamicPreview({ html, substitution_data }) {
  */
 function simplePreview({ html, substitution_data }) {
   return sparkpost.templates.preview(PREVIEW_TEMPLATE_ID, merge({
-    substitution_data
+    substitution_data,
+    draft: 'false'
   }, {
     substitution_data: {
       dynamic_html: { html },
