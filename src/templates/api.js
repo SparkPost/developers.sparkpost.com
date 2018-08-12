@@ -91,6 +91,7 @@ const REPLHeading = styled(HttpHeading)`
 
 const Textarea = styled.textarea`
   ${monospace} margin-top: 12px;
+  color: ${grayscale('dark')};
   flex-grow: 1;
   border: 0;
   outline: 0;
@@ -98,7 +99,10 @@ const Textarea = styled.textarea`
 `
 
 const Results = styled.div`
+  ${monospace}
+  color: ${grayscale('dark')};
   margin-top: 12px;
+  white-space: pre;
   height: 100%;
   outline: 0;
 `
@@ -340,11 +344,7 @@ class Template extends Component {
                               {data.errors.length > 0 ? (
                                 <Errors errors={data.errors} />
                               ) : (
-                                <Results
-                                  dangerouslySetInnerHTML={{
-                                    __html: data.results.html,
-                                  }}
-                                />
+                                <Results>{data.results.html}</Results>
                               )}
                             </Third>
                           </div>
