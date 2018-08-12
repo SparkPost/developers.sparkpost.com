@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { graphql } from 'gatsby'
 import { debounce } from 'lodash'
 import Helmet from 'react-helmet'
-import { rgba } from 'polished'
+import { rgba, lighten } from 'polished'
 import styled, { keyframes } from 'styled-components'
 import axios from 'axios'
 import Layout from 'components/Layout'
@@ -72,19 +72,27 @@ const Third = styled.div`
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+`
 
-  ${HttpHeading} {
-    padding: 0.5rem;
-    background: ${grayscale('light')};
-    border-bottom: 1px solid ${grayscale('8')};
-  }
+const REPLHeading = styled(HttpHeading)`
+  padding: 0.5rem;
+  background: ${grayscale('light')};
+  border-top: 1px solid ${grayscale('8')};
+  border-bottom: 1px solid ${grayscale('8')};
+
+  ${props =>
+    props.error &&
+    `
+    border-color: ${lighten(0.2, '#ec4852')};
+    background: #ec4852;
+    color: ${grayscale('white')};
+  `};
 `
 
 const Textarea = styled.textarea`
   ${monospace} margin-top: 12px;
   flex-grow: 1;
   border: 0;
-  border-bottom: 1px solid ${grayscale('8')};
   outline: 0;
   resize: none;
 `
@@ -98,7 +106,7 @@ const Results = styled.div`
 const Errors = styled(({ errors, ...props }) => (
   <div {...props}>
     {errors.map(error => {
-      return <div>{JSON.stringify(error, null, 2)}</div>
+      return <div key={error.message}>{JSON.stringify(error, null, 2)}</div>
     })}
   </div>
 ))`
@@ -194,12 +202,21 @@ class Provider extends Component {
   }
 
   // request a preview from the API
-  fetchPreview = ({ code }) => {
-    axios.post('/.netlify/functions/substitution-repl', code).then(response => {
-      const { results, errors = [] } = response.data
+  fetchPreview = async ({ code }) => {
+    try {
+      const { data } = await axios.post(
+        '/.netlify/functions/substitution-repl',
+        code
+      )
+      const { results, errors = [] } = data
 
       this.setState({ results, errors, loading: false })
-    })
+    } catch (e) {
+      this.setState({
+        errors: [{ message: e.message }],
+        loading: false,
+      })
+    }
   }
 
   debouncedFetchPreview = debounce(this.fetchPreview, 500)
@@ -286,7 +303,7 @@ class Template extends Component {
                         >
                           <div style={{ height: `100%` }}>
                             <Third>
-                              <HttpHeading>Substitution Data</HttpHeading>
+                              <REPLHeading>Substitution Data</REPLHeading>
                               <Textarea
                                 value={data.code.substitution_data}
                                 onChange={event =>
@@ -300,7 +317,7 @@ class Template extends Component {
                               />
                             </Third>
                             <Third>
-                              <HttpHeading>HTML</HttpHeading>
+                              <REPLHeading>HTML</REPLHeading>
                               <Textarea
                                 value={data.code.html}
                                 onChange={event =>
@@ -316,16 +333,9 @@ class Template extends Component {
                             <Third>
                               <Spinner visible={data.loading} />
                               {data.errors.length > 0 ? (
-                                <HttpHeading
-                                  style={{
-                                    background: `#ec4852`,
-                                    color: `white`,
-                                  }}
-                                >
-                                  Error
-                                </HttpHeading>
+                                <REPLHeading error>Error</REPLHeading>
                               ) : (
-                                <HttpHeading>Results</HttpHeading>
+                                <REPLHeading>Results</REPLHeading>
                               )}
                               {data.errors.length > 0 ? (
                                 <Errors errors={data.errors} />
