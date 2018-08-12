@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { mapValues, keys } from 'lodash'
+import { mapValues, isString, keys } from 'lodash'
 import Markdown from 'components/Markdown'
 import Banner from 'components/Banner'
 import Button from 'components/Button'
@@ -90,19 +90,43 @@ const components = mapValues(
       )
     },
     replbutton({ children }) {
-      const code = JSON.parse(children.join(''))
+      const codeBlock = children.find(
+        component =>
+          component.type &&
+          (component.type.displayName || component.type.name === 'pre')
+      )
 
-      const replCode = {}
+      const replToString = ({ props: { children } }) => {
+        return children
+          .map(component => {
+            if (isString(component)) {
+              return component
+            } else if (component.props.children.length > 0) {
+              return replToString(component)
+            } else {
+              return component.props.children[0]
+            }
+          })
+          .join('')
+      }
+
+      const code = replToString(codeBlock)
+      const json = JSON.parse(code)
+
+      const replValue = {}
 
       // allow either html or data or both
-      if (code.html) replCode.html = code.html
+      if (json.html) {
+        replValue.html = json.html
+      }
 
-      if (code.substitution_data)
-        replCode.substitution_data = JSON.stringify(
-          code.substitution_data,
+      if (json.substitution_data) {
+        replValue.substitution_data = JSON.stringify(
+          json.substitution_data,
           null,
           2
         )
+      }
 
       return (
         <div className="block" style={{ marginBottom: `1rem` }}>
@@ -112,7 +136,7 @@ const components = mapValues(
                 size="small"
                 outline
                 onClick={() => {
-                  data.setREPL(replCode, { debounce: false })
+                  data.setREPL(replValue, { debounce: false })
                 }}
               >
                 Try it
