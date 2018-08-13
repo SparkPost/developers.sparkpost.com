@@ -129,7 +129,7 @@ class REPL extends Component {
         substitution_data: props.substitution_data,
         html: props.html,
       },
-      results: { html: '' },
+      results: { html: props.results },
       errors: [],
       loading: true,
       activeTab: props.activeTab || 0,
@@ -173,12 +173,17 @@ class REPL extends Component {
   debouncedFetchPreview = debounce(this.fetchPreview, 500)
 
   componentDidMount() {
-    this.fetchPreview(this.state)
+    // if we weren't given a default result, fetch a preview
+    if (this.state.results.html.length > 0) {
+      this.setState({ loading: false })
+    } else {
+      this.fetchPreview(this.state)
+    }
   }
 
   render() {
     return (
-      <div className="block" style={{ display: `flex` }}>
+      <div className="block" style={{ display: `flex`, marginBottom: `1rem` }}>
         <div
           style={{
             width: `60%`,
@@ -250,13 +255,6 @@ class REPL extends Component {
           }}
         >
           <Spinner visible={this.state.loading} />
-          {
-            '' /*<div style={{
-            background: grayscale('light'),
-            borderBottom: `1px solid ${grayscale(8)}`,
-            padding: `.76rem`
-          }}>Result</div>*/
-          }
           {this.state.errors.length > 0 ? (
             <Errors errors={this.state.errors} />
           ) : (
@@ -268,6 +266,23 @@ class REPL extends Component {
   }
 }
 
+const getBlockType = component =>
+    component.props.children[0].props.className.split('language-')[1].trim()
+
+const replToString = ({ props: { children } }) => {
+  return children
+    .map(component => {
+      if (isString(component)) {
+        return component
+      } else if (component.props.children.length > 0) {
+        return replToString(component)
+      } else {
+        return component.props.children[0]
+      }
+    })
+    .join('')
+}
+
 export default ({ children }) => {
   const codeBlocks = children.filter(
     component =>
@@ -275,32 +290,19 @@ export default ({ children }) => {
       (component.type.displayName || component.type.name === 'pre')
   )
 
-  const getBlockType = component =>
-    component.props.children[0].props.className.split('language-')[1].trim()
-
   const jsonBlock = codeBlocks.find(
     component => getBlockType(component) === 'json'
   )
   const htmlBlock = codeBlocks.find(
     component => getBlockType(component) === 'html'
   )
-
-  const replToString = ({ props: { children } }) => {
-    return children
-      .map(component => {
-        if (isString(component)) {
-          return component
-        } else if (component.props.children.length > 0) {
-          return replToString(component)
-        } else {
-          return component.props.children[0]
-        }
-      })
-      .join('')
-  }
+  const resultsBlock = codeBlocks.find(
+    component => getBlockType(component) === 'results'
+  )
 
   // default html and substitution data
   const html = htmlBlock ? replToString(htmlBlock) : ''
+  const results = resultsBlock ? replToString(resultsBlock) : ''
   let json = jsonBlock ? replToString(jsonBlock) : '{}'
   try {
     json = JSON.stringify(JSON.parse(json), null, 2)
@@ -311,8 +313,13 @@ export default ({ children }) => {
   const isJsonFirst =
     codeBlocks.length > 0 && getBlockType(codeBlocks[0]) === 'json'
 
-  const replValue = { html, substitution_data: json }
-
-  // set the the second tab to active, if the json block was written first
-  return <REPL {...replValue} activeTab={isJsonFirst ? 1 : 0} />
+  return (
+    <REPL
+      html={html}
+      results={results}
+      substitution_data={json}
+      // set the the second tab to active, if the json block was written first
+      activeTab={isJsonFirst ? 1 : 0}
+    />
+  )
 }
