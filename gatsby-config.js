@@ -85,6 +85,16 @@ module.exports = {
     },
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          // Disable cache for Gatsby's default service worker file path
+          // suggested by https://www.netlify.com/blog/2018/06/28/5-pro-tips-and-plugins-for-optimizing-your-gatsby---netlify-site/
+          "/sw.js": [ "Cache-Control: no-cache" ]
+        },
+      }
+    }
   ])
 }
