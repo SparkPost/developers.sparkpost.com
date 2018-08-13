@@ -267,7 +267,7 @@ class REPL extends Component {
 }
 
 const getBlockType = component =>
-    component.props.children[0].props.className.split('language-')[1].trim()
+  component.props.children[0].props.className.split('language-')[1].trim()
 
 const replToString = ({ props: { children } }) => {
   return children

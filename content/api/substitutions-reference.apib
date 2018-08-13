@@ -1,13 +1,93 @@
 FORMAT: 1A
-title: Substitutions Reference
+title: Template Language
 description: Documentation for the template language and substitution capabilities of SparkPost.
 full: true
 
-# Substitutions Reference
+# Template Language
+
+The SparkPost API provides a powerful handlebars-style template language that you can use in the email subject, headers, text, and HTML content. 
+
+**Features include:** 
+* Sophisticated logic with full [conditionals](#header-if-else-statement) and [logical operators](#header-relational-and-logical-operators).
+* [Looping](#header-each-statement) over arrays.
+* Reference nested [object paths](#header-nested-object-paths).
+* [Default values](#header-default-values) if substitution data is absent.
+* Completely [dynamic content](#header-dynamic-content).
+* Execution of built-in [macros](#header-macros).
+* Automatic [HTML escaping](#header-html-escaping).
+* Automatic encoding of UTF-8 variables in email headers.
+
+<Banner status="warning">The template language can only be used through the API, not via SMTP</Banner>
+
+## Template Variables
+
+You can pass in JSON data to a template through both the transmission and individual recipient. The data can be anything from a simple string or deeply nested arrays and objects. That data can then be used in [expressions](#header-expressions) or [statements](#header-statements) to generate the email.
+
+
+**Keys**<br />
+The substitution keys can be contain any US-ASCII letters, digits, and underscores, not beginning with a digit, with the exception of the following keywords:
+
+* address, email, email_id, env_from, return_path
+* and, break, do, else, elseif
+* end, false, for, function, if
+* in, local, nil ,not, or ,each
+* repeat, return, then, true, until, while
+
+**Values**<br />
+The substitution values can be any valid UTF-8 string or JSON value.
+
+
+### Sources
+
+Data can be passed in as `substitution_data` or `metadata`. The difference is that the `metadata` is sent through [webhook](/api/webhooks/) payloads and [message events](/api/message-events/), while `substitution_data` is only used for generating the template. If there is a conflict between `substitution_data` and `metadata`, the `substitution_data` value takes precedence.
+
+Both `metadata` and `substitution_data` can be set inside the top-level transmission object **and** inside each recipient. The recipient-level data takes precedence over the transmission-level data.
+
+In the following transmissions example, the order of the values for `city` are as follows: `San Francisco`, `Seattle`, `Baltimore`, and  `New York`. 
+
+The email would therefore render as: `Hello, New York`.
+
+```json
+{
+  "metadata": {
+    "city": "San Francisco"
+  },
+  "substitution_data": {
+    "city": "Seattle"
+  },
+  "recipients": [
+    {
+      "address": "wilma@flintstone.com",
+      "metadata": {
+        "city": "Baltimore"
+      },
+      "substitution_data": {
+        "city": "New York"
+      }
+    }
+  ],
+  "content": {
+    "from": "fred@flintstone.com",
+    "subject": "Hello",
+    "html": "Hello, {{city}}!"
+  }
+}
+```
+
+
+### Reserved Variables
+
+As a convenience, SparkPost also adds additional variables based on the transmission details. They are as follows: 
+
+* `address.name` – Name from the recipient details.
+* `email`, `email_id`, and `address.email` – Email address from recipient details.
+* `env_from` – Return-Path address, sometimes called a "bounce address" or "envelope sender address"
+
+<Banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a>: The <code>return_path</code> substitution variable is available to SparkPost Enterprise users</a></Banner>
 
 ## Expressions
 
-Expressions allow you to insert substitution values into your content.
+Expressions allow you to insert variables into your content.
 
 An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside the double curly braces is ignored. All of the following are equivalent:
 
@@ -22,11 +102,16 @@ An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside
     "value": "Hello 👋"
 }
 ```
+```results
+Hello 👋
+Hello 👋
+Hello 👋
+```
 </REPL>
 
-### Missing Values
+### Missing Variables
 
-When looking for a key, the template look in the recipient-level substitution data followed by the recipient-level metadata. If the key doesn't exist, the template will then look for the key in the global substitution data and metadata.  An empty string is substituted for keys that do not exist or have a value of `null`.
+An empty string is substituted for variables that do not exist or have a value of `null`.
 
 <REPL>
 ```html
@@ -42,6 +127,12 @@ When looking for a key, the template look in the recipient-level substitution da
     "job": "Software Engineer" 
 }
 ```
+```results
+* Jane
+* 
+* Software Engineer
+* 
+```
 </REPL>
 
 ### Default Values
@@ -54,13 +145,18 @@ will evaluate as `Customer`.
 Hello {{ name or 'Customer' }}
 ```
 ```json
-{}
+{
+    "name": null
+}
+```
+```results
+Hello Customer
 ```
 </REPL>
 
 ### Nested Object Paths
 
-Nested paths allow you to reference keys that are nested inside arrays or objects using dot notation and square brackets. You can even use variables as part of the path like `part` is used in the example below.
+You can reference variables that are nested inside arrays or objects using dot notation and square brackets. You can even use variables as part of the path like `part` is used in the example below.
 
 <REPL>
 ```html
@@ -77,13 +173,16 @@ Dynamic: {{address[part]}}
     "part": "street"
 }
 ```
+```results
+Street: Howard Street
+City: San Francisco
+Dynamic: Howard Street
+```
 </REPL>
 
 ### HTML Escaping
 
-By default, values in the `html` content **are** HTML escaped. However, in the `text` content, values are **not** HTML escaped. To render a value unescaped in the `html` content, wrap it in triple curly braces, `{{{ value }}}`.
-
-<Banner status="danger">If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
+By default, variables in the transmissions `html` content **are** HTML escaped. However, in the `text` content, variables are **not** HTML escaped. To render a value unescaped in the `html` content, wrap it in triple curly braces, `{{{ value }}}`.
 
 
 <REPL>
@@ -96,7 +195,13 @@ Unescaped: {{{custom_html}}}
     "custom_html": "<b>Hello, World</b>"
 }
 ```
+```results
+Escaped: &lt;b&gt;Hello, World&lt;&#x2F;b&gt;
+Unescaped: <b>Hello, World</b>
+```
 </REPL>
+
+<Banner status="danger">If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
 
 
 ## Statements
@@ -120,11 +225,16 @@ End of template
     "state": "MD"
 }
 ```
+```results
+Start of template
+Maryland
+End of template
+```
 </REPL>
 
-### `if...else` Statement
+### `if/else` Statement
 
-The `if...else` statement allows you to conditionally render some content if a specified condition is `true` or is not `null`. If the condition is `false` or `null`, another block of content may be rendered.
+The `if/else` statement allows you to conditionally render some content if a specified condition is `true` or is not `null`. If the condition is `false` or `null`, another block of content may be rendered.
 
 ```
 {{if signed_up}}
@@ -140,7 +250,7 @@ Welcome
 {{end}}
 ```
 
-You can combine multiple `if...else` statements using `elseif` statements.
+You can combine multiple `if/else` statements using `elseif` statements.
 
 ```
 {{if signed_up}}
@@ -213,11 +323,14 @@ Number of states: {{#states}}
     "states": ["MD", "CA"]
 }
 ```
+```results
+Number of states: 2
+```
 </REPL>
 
 ### `each` Statement
 
-You can use an `each` statement to iterate of array. If the array is empty of the value is `null`, nothing is rendered.
+You can use an `each` statement to iterate over array. If the array is empty or the value is `null`, nothing is rendered.
 
 Inside the loop, you can access the current value via the `loop_var` variable. The current index can be accessed through the `loop_index` variable.
 
@@ -236,6 +349,10 @@ You have a child named {{loop_var}}
         "Audrey"
     ]
 }
+```
+```results
+You have a child named Rusty
+You have a child named Audrey
 ```
 </REPL>
 
@@ -261,6 +378,11 @@ Item: {{loop_var.name}}, Price: {{loop_var.price}}
         }
     ]
 }
+```
+```results
+Your shopping cart has items in it:
+Item: Jacket, Price: 39.99
+Item: Gloves, Price: 5
 ```
 </REPL>
 
@@ -304,6 +426,19 @@ This item has the following nested values:
     ]
 }
 ```
+```results
+---
+Item: Jacket
+Price: 39.99
+This item has the following nested values:
+  Nested value: v2
+  Nested value: v1
+---
+Item: Gloves
+Price: 5
+This item has the following nested values:
+---
+```
 </REPL>
 
 
@@ -324,6 +459,10 @@ The first item in your shopping cart is {{ shopping_cart[1].name }}.
 ```
 
 ## Links
+
+The template language handles links slightly differently than regular content. In addition, it also provides a couple of custom attributes for extra functionality.
+
+You can 
 
 ## Macros
 
@@ -372,6 +511,22 @@ Given an array as an argument, the `empty` macro returns true if the array is em
     ]
 }
 ```
+```results
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>Jacket</td>
+    <td>$39.99</td>
+  </tr>
+  <tr>
+    <td>Gloves</td>
+    <td>$5</td>
+  </tr>
+</table>
+```
 </REPL>
 
 
@@ -390,13 +545,16 @@ If you want opening or closing braces to appear in the content, you must escape 
 ```html
 Here is a curly: {{ opening_double_curly() }}
 ```
+```results
+Here is a curly: {{
+```
 </REPL>
 
 ## Dynamic Content
 
-Sometimes you might have some dynamic content containing expressions and links passed in through a substitution value. For example, the `my_html_chunk` substitution value below contains a link as well as a substitution expression referencing a `username`.
+Sometimes you might have some dynamic content containing expressions and links passed in through a variable. For example, the `my_html_chunk` substitution value below contains a link as well as a substitution expression referencing a `username`.
 
-However, links within in substitution values are **not** converted to trackable links and expressions within substitution values are **not** executed.
+However, links within in variables are **not** converted to trackable links and expressions within variables are **not** executed.
 
 <REPL>
 ```html
@@ -422,7 +580,7 @@ To correctly render this dynamic content, you must do the following:
 
 1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
 
-Here is the functioning version of the above example:
+Here is the functioning version of the example above:
 
 <REPL>
 ```html
@@ -474,15 +632,20 @@ Finally, as a more complex example, `render_dynamic_content()` can also be used 
     }
 }
 ```
+```results
+<h3>Today's special offers</h3>
+<ul>
+    <li><a href="http://t.com/offer/1?name=John">Premium-brand wirecutters</a></li>
+    <li><a href="http://t.com/offer/3?name=John">Super-effective bug spray</a></li>
+</ul>
+```
 </REPL>
 
 ## Advanced
 
 ### Substitutions in email_rfc822 Headers
 
-When it is desirable to have substitutions in RFC2047 encoded headers which are folded, be sure that
-each line of the header is separately RFC2047 encoded.  Otherwise, the server will not be able to decode
-the header to look for substitution syntax.
+When it is desirable to have substitutions in RFC2047 encoded headers which are folded, be sure that each line of the header is separately RFC2047 encoded. Otherwise, the server will not be able to decode the header to look for substitution syntax.
 
 **Correct:**
 
@@ -500,8 +663,6 @@ Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
 
 ### Encoding Rules
 
-* If after substitution, a text/plain or text/html part contains 8-bit data,
-then that part will be quoted-printable encoded before being placed back into the
-MIME structure.  The Content-Type will be updated appropriately.
+* If after substitution, a text/plain or text/html part contains 8-bit data, then that part will be quoted-printable encoded before being placed back into the MIME structure. The Content-Type will be updated appropriately.
 * If after substitution, a header value contains 8-bit data, then the header
 value will be RFC2047 base64 encoded before being written back to the headers structure.
