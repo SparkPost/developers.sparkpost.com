@@ -21,6 +21,7 @@
     "gatsby-plugin-netlify": "^2.0.0-beta.3",
     "gatsby-plugin-netlify-cms": "^2.0.0-beta.1",
     "gatsby-plugin-nprogress": "^2.0.0-beta.4",
+    "gatsby-plugin-offline": "^2.0.0-beta.9",
     "gatsby-plugin-page-creator": "^2.0.0-beta.1",
     "gatsby-plugin-react-helmet": "^3.0.0-beta.1",
     "gatsby-plugin-styled-components": "^3.0.0-beta.1",
