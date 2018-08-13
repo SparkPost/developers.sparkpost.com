@@ -12,15 +12,15 @@ Expressions allow you to insert substitution values into your content.
 An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside the double curly braces is ignored. All of the following are equivalent:
 
 <REPLButton>
-```json
-{
-    "value": "Hello 👋"
-}
-```
 ```html
 {{ value }}
 {{value}}
 {{  value   }}
+```
+```json
+{
+    "value": "Hello 👋"
+}
 ```
 </REPLButton>
 
@@ -60,19 +60,21 @@ Hello {{ name or 'Customer' }}
 
 ### Nested object paths
 
-Nested paths allow you to reference keys that are nested inside arrays or objects using dot notation and square brackets.
+Nested paths allow you to reference keys that are nested inside arrays or objects using dot notation and square brackets. You can even use variables as part of the path like `part` is used in the example below.
 
 <REPLButton>
 ```html
 Street: {{address.street}}
 City: {{address['city']}}
+Dynamic: {{address[part]}}
 ```
 ```json
 {
     "address": {
         "street": "Howard Street",
         "city": "San Francisco"
-    }
+    },
+    "part": "street"
 }
 ```
 </REPLButton>
@@ -200,7 +202,18 @@ The relational and logical operators are as follows:
 
 **The Length Operator**
 
-The length operator `#` gives the length of an array. From the sample data above: `#shopping_cart` produces `2`.
+The length operator `#` gives the length of an array.
+
+<REPLButton>
+```html
+Number of states: {{#states}}
+```
+```json
+{
+    "states": ["MD", "CA"]
+}
+```
+</REPLButton>
 
 ### `each` statement
 
@@ -239,8 +252,8 @@ Item: {{loop_var.name}}, Price: {{loop_var.price}}
 {   
     "shopping_cart": [
         {
-          "name": "Jacket",
-          "price": 39.99
+            "name": "Jacket",
+            "price": 39.99
         },
         {
             "name": "Gloves",
@@ -264,7 +277,7 @@ Item: {{loop_vars.shopping_cart.name}}
 Price: {{loop_vars.shopping_cart.price}}
 This item has the following nested values:
 {{each loop_vars.shopping_cart.a_nested_array}}
-Nested value: {{loop_vars.a_nested_array.key}}
+  Nested value: {{loop_vars.a_nested_array.key}}
 {{end}}
 ---
 {{end}}
@@ -307,155 +320,161 @@ You have children named {{ children[1] }} and {{ children[2] }}.
 Array indexing and dot notation may also be used together:
 
 ```
-The first item in your shopping cart is {{ shopping_cart[1].item_name }}.
+The first item in your shopping cart is {{ shopping_cart[1].name }}.
 ```
 
 ## Links
 
 ## Macros
 
-### `empty`
+Macros are built-in functions. Each macro consists of a name followed by parentheses, which may enclose any arguments that the macro accepts.
 
-### Curly brace macros
+#### `render_dynamic_content()`
+
+This macro allows you to render substitution variables, stored inside the `dynamic_html` and `dynamic_part`. It will execute all expressions and will track all links.
+
+Learn more about [dynamic content](#header-dynamic-content).
+
+#### `empty()`
+
+Given an array as an argument, the `empty` macro returns true if the array is empty or false if the array is not empty. This is useful for determining whether to include a header in a dynamically generated HTML table and blocking iteration of the table if it is empty.
+
+<REPLButton>
+```html
+{{ if not empty(shopping_cart) }}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+{{ each shopping_cart }}
+  <tr>
+    <td>{{loop_var.name}}</td>
+    <td>${{loop_var.price}}</td>
+  </tr>
+{{ end }}
+</table>
+{{ else }}
+<b>Buy something!</b>
+{{ end }}
+```
+```json
+{   
+    "shopping_cart": [
+        {
+            "name": "Jacket",
+            "price": 39.99
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
+}
+```
+</REPLButton>
+
+
+#### Braces macros
+
+If you want opening or closing braces to appear in the content, you must escape them. The four macros for outputting braces are as follows:
+
+| Macro                    | Output | 
+|--------------------------|--------|
+| `opening_double_curly()` | `{{`   |
+| `closing_double_curly()` | `}}`   |
+| `opening_triple_curly()` | `{{{`  |
+| `closing_triple_curly()` | `}}}`  |
+
+<REPLButton>
+```html
+Here is a curly: {{ opening_double_curly() }}
+```
+</REPLButton>
 
 ## Dynamic content
 
-Sometimes it may be convenient to place links and substitution expressions not only within a template, but within substitution values themselves. For example, the 'my_html_chunk' substitution value below contains a link as well as a substitution expression referencing a username:
+Sometimes you might have some dynamic content containing expressions and links passed in through a substitution value. For example, the `my_html_chunk` substitution value below contains a link as well as a substitution expression referencing a `username`.
 
-```json
-{
-  "substitution_data" : {
-    "my_html_chunk" : "<p><a href = \"http://www.example.com?q={{username}}\">Click here</a></p>",
-    "username" : "foo"
-  }
-}
-```
+However, links within in substitution values are **not** converted to trackable links and expressions within substitution values are **not** executed.
 
-By default, this will not work. In general, the rules are as follows:
-
-* Links within substitution values are *not* automatically converted to click trackable links.
-* Substitution expressions within substitution values are *not* automatically executed.
-
-Using the above `substitution_data` and the following template:
-
+<REPLButton>
 ```html
 <body>
 <p>Attempting to insert a chunk of html:</p>
 {{{ my_html_chunk }}}
 </body>
 ```
-
-Will result in the following unexpected rendered content:
-
-```html
-<body>
-<p>Attempting to insert a chunk of html:</p>
-<p><a href = "http://www.example.com?q={{username}}">Click here</a></p>
-</body>
-```
-
-Notice that the **username** variable was not replaced
-and the link was not converted into a click trackable form.
-
-In order to correct this problem, the system must be informed of the need to perform such
-substitutions and link tracking.  This can be accomplished with two steps:
-
-1) The html chunk must be specified in the transmission level substitution data underneath a special
-`dynamic_html` json object.  All key value pairs underneath `dynamic_html` will undergo substitutions as well
-as link tracking.
-
-In the above example, the transmission level substitution data would need to be structured as:
-
 ```json
 {
-  "substitution_data" : {
-    "dynamic_html" : {
-      "my_html_chunk" : "<p><a href = \"http://www.example.com?q={{username}}\">Click here</a></p>"
-    }
-  }
+    "my_html_chunk" : "<p><a href=\"http://www.example.com?q={{username}}\">Click here</a></p>",
+    "username" : "foo"
 }
 ```
+</REPLButton>
 
-2) The `render_dynamic_content()` macro must be used to wrap all uses of dynamic_html variables.
-Continuing with the example above, the template would need to be structured as:
+Notice that the `username` variable was not replaced
+and the link was not converted into a click trackable form.
 
+To correctly render this dynamic content, you must do the following:
+
+1. Add the dynamic content inside the `dynamic_html` object at the _transmission-level_ substitution data.
+
+1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
+
+Here is the functioning version of the above example:
+
+<REPLButton>
 ```html
 <body>
 <p>Attempting to insert a chunk of html:</p>
 {{ render_dynamic_content(dynamic_html.my_html_chunk) }}
 </body>
 ```
-
-The dynamic content will be correctly inserted *without* html escaping,
-regardless of whether double or triple curly braces are used.  There is no need to use triple curly braces in this case.
-
-
-To insert dynamic content into the `text/plain` part of a message, one must place the dynamic content into the transmission
-level substitution variable `dynamic_plain`.  For example:
-
 ```json
 {
-  "substitution_data" : {
-    "dynamic_plain" : {
-      "my_plain_text_chunk" : "A chunk of plain text content with a link and a substitution. http://www.example.com?q={{username}}"
-    }
-  }
-}
-```
-
-As with `dynamic_html`, `dynamic_plain` variables must be wrapped in the `render_dynamic_content()` macro when used
-in the template:
-
-```
-Attempting to insert a chunk of plain text:
-{{ render_dynamic_content(dynamic_plain.my_plain_text_chunk) }}
-```
-
-Finally, as a more realistic example, `render_dynamic_content()` can also be used inside an `each` loop. Full transmission json examples follow.
-
-```json
-{
-  "recipients": [
-    {
-      "address": {
-        "email": "foo@example.com"
-      },
-      "substitution_data": {
-        "name": "The A-Team",
-        "offers": [ "offer2", "offer1" ]
-      }
-    },
-    {
-      "address": {
-        "email": "bar@example.com"
-      },
-      "substitution_data": {
-        "name": "Johnnie Rico",
-        "offers": [ "offer3" ]
-      }
-    }
-  ],
-  "substitution_data": {
     "dynamic_html": {
-      "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
-      "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
-      "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+        "my_html_chunk" : "<p><a href=\"http://www.example.com?q={{username}}\">Click here</a></p>"
     },
-    "dynamic_plain": {
-      "offer1": "Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}",
-      "offer2": "Corks -- http://t.com/offer/2?name={{name}}",
-      "offer3": "Super-effective bug spray -- http://t.com/offer/3?name={{name}}"
-    }
-  },
-  "content": {
-    "text": "Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n",
-    "html": "<p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>\n{{end}}\n</ul>",
-    "from": "test@example.com",
-    "subject": "offers"
-  }
+    "username" : "foo"
 }
 ```
+</REPLButton>
 
+The dynamic content will be correctly rendered *without* HTML escaping,
+regardless of whether double or triple curly braces are used.
+
+#### Plain text
+
+To insert dynamic content into the `text/plain` part of a message, place the dynamic content into the transmission-level substitution variable `dynamic_plain`.
+
+As with `dynamic_html`, `dynamic_plain` variables must be wrapped in the `render_dynamic_content()` macro when used in the template.
+
+**Complex Example**
+
+Finally, as a more complex example, `render_dynamic_content()` can also be used inside an `each` loop. This example only renders the offers available as listed in the `offers` array.
+
+<REPLButton>
+```html
+<h3>Today's special offers</h3>
+<ul>
+{{each offers}}
+    <li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>
+{{end}}
+</ul>
+```
+```json
+{
+    "name": "John",
+    "offers": [ "offer1", "offer3" ],
+    "dynamic_html": {
+        "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+        "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+        "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+    }
+}
+```
+</REPLButton>
 
 ## Advanced
 
