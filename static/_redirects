@@ -1,5 +1,6 @@
 /api/labs-introduction.html  /api/labs/
 /api/smtp-api.html           /api/smtp/
+/api/smtp-api                /api/smtp/
 
 # Redirect domain aliases to primary domain
 https://dev.sparkpost.com/* https://developers.sparkpost.com/:splat 301!
