@@ -18,7 +18,6 @@ import { keyframes } from 'styled-components'
 import { grayscale, color, shadow } from 'utils/colors'
 import { monospace, weight } from 'utils/fonts'
 
-
 const EmptyHeader = styled.th`
   padding: 0;
 `
@@ -59,12 +58,11 @@ const Errors = styled(({ errors, ...props }) => (
     })}
   </div>
 ))`
-  ${monospace}
-  background: #FCF2F4;
+  ${monospace} background: #FCF2F4;
   color: #ec4852;
   white-space: pre;
   overflow: auto;
-  padding: .5rem;
+  padding: 0.5rem;
 `
 
 const rotate360 = keyframes`
@@ -100,19 +98,21 @@ const Spinner = styled.div`
 `
 
 const Trigger = styled.div`
-  font-size: .833333333rem;
+  font-size: 0.833333333rem;
   font-weight: ${weight('medium')};
   border-radius: 2px;
-  padding: 0.25rem .5rem;
+  padding: 0.25rem 0.5rem;
   color: ${grayscale('medium')};
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   cursor: pointer;
   border: 1px solid ${grayscale(7)};
 
-  ${props => props.isActive && `
+  ${props =>
+    props.isActive &&
+    `
     background: ${grayscale('white')};
     box-shadow: ${shadow(1)};
-  `}
+  `};
 `
 const Tabs = styled.div`
   width: 100%;
@@ -122,10 +122,11 @@ const Tabs = styled.div`
 const Tab = styled.div`
   width: 100%;
   display: none;
-  ${props => props.isActive && `
+  ${props =>
+    props.isActive &&
+    `
     display: flex;
-  `}
-
+  `};
 `
 
 class REPL extends Component {
@@ -134,10 +135,13 @@ class REPL extends Component {
 
     // calculate the inital code height
     const htmlLines = props.html.split(/\r\n|\r|\n/).length
-    const substitutionDataLines = props.substitution_data.split(/\r\n|\r|\n/).length
+    const substitutionDataLines = props.substitution_data.split(/\r\n|\r|\n/)
+      .length
 
     // get the tallest height possible
-    const codeHeight = 16 * (htmlLines > substitutionDataLines ? htmlLines : substitutionDataLines)
+    const codeHeight =
+      16 *
+      (htmlLines > substitutionDataLines ? htmlLines : substitutionDataLines)
 
     this.state = {
       code: {
@@ -148,7 +152,7 @@ class REPL extends Component {
       errors: [],
       loading: true,
       activeTab: props.activeTab || 0,
-      codeHeight
+      codeHeight,
     }
   }
 
@@ -194,17 +198,23 @@ class REPL extends Component {
   render() {
     return (
       <div className="block" style={{ display: `flex` }}>
-        <div style={{
-          width: `60%`, display: `flex`, flexDirection: `column`,
-          background: grayscale('light'),
-          borderRadius: `4px 0 0 4px`,
-          border: `1px solid ${grayscale(8)}`
-        }}>
-          <div style={{
+        <div
+          style={{
+            width: `60%`,
+            display: `flex`,
+            flexDirection: `column`,
             background: grayscale('light'),
-            padding: `.5rem`,
-            display: `flex`
-          }}>
+            borderRadius: `4px 0 0 4px`,
+            border: `1px solid ${grayscale(8)}`,
+          }}
+        >
+          <div
+            style={{
+              background: grayscale('light'),
+              padding: `.5rem`,
+              display: `flex`,
+            }}
+          >
             <Trigger
               isActive={this.state.activeTab === 0}
               onClick={() => this.setState({ activeTab: 0 })}
@@ -217,7 +227,6 @@ class REPL extends Component {
             >
               Data
             </Trigger>
-
           </div>
           <Tabs>
             <Tab isActive={this.state.activeTab === 0}>
@@ -250,19 +259,23 @@ class REPL extends Component {
             </Tab>
           </Tabs>
         </div>
-        <div style={{
-          width: `40%`,
-          border: `1px solid ${grayscale(8)}`,
-          borderLeft: 0,
-          borderRadius: `0 4px 4px 0`,
-          display: `flex`
-        }}>
+        <div
+          style={{
+            width: `40%`,
+            border: `1px solid ${grayscale(8)}`,
+            borderLeft: 0,
+            borderRadius: `0 4px 4px 0`,
+            display: `flex`,
+          }}
+        >
           <Spinner visible={this.state.loading} />
-          {'' /*<div style={{
+          {
+            '' /*<div style={{
             background: grayscale('light'),
             borderBottom: `1px solid ${grayscale(8)}`,
             padding: `.76rem`
-          }}>Result</div>*/}
+          }}>Result</div>*/
+          }
           {this.state.errors.length > 0 ? (
             <Errors errors={this.state.errors} />
           ) : (
@@ -270,7 +283,7 @@ class REPL extends Component {
           )}
         </div>
       </div>
-)
+    )
   }
 }
 
@@ -301,8 +314,8 @@ const components = mapValues(
     },
     ol(props) {
       return (
-        <div class="block">
-          <ul {...props} />
+        <div className="block">
+          <ol {...props} />
         </div>
       )
     },
@@ -352,11 +365,15 @@ const components = mapValues(
           (component.type.displayName || component.type.name === 'pre')
       )
 
-      const getBlockType = (component) => component.props.children[0].props.className.split('language-')[1].trim()
+      const getBlockType = component =>
+        component.props.children[0].props.className.split('language-')[1].trim()
 
-      const jsonBlock = codeBlocks.find((component) => getBlockType(component) === 'json')
-      const htmlBlock = codeBlocks.find((component) => getBlockType(component) === 'html')
-
+      const jsonBlock = codeBlocks.find(
+        component => getBlockType(component) === 'json'
+      )
+      const htmlBlock = codeBlocks.find(
+        component => getBlockType(component) === 'html'
+      )
 
       const replToString = ({ props: { children } }) => {
         return children
@@ -377,12 +394,12 @@ const components = mapValues(
       let json = jsonBlock ? replToString(jsonBlock) : '{}'
       try {
         json = JSON.stringify(JSON.parse(json), null, 2)
-      }
-      catch(e) {
+      } catch (e) {
         // fallbacks to the broken json
       }
 
-      const isJsonFirst = codeBlocks.length > 0 && getBlockType(codeBlocks[0]) === 'json'
+      const isJsonFirst =
+        codeBlocks.length > 0 && getBlockType(codeBlocks[0]) === 'json'
 
       const replValue = { html, substitution_data: json }
 
