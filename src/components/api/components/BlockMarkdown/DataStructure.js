@@ -6,7 +6,7 @@ import Right from '../Right'
 import Json from '../Json'
 import Row from '../Row'
 
-function DataStructure ({ id, title, sample }) {
+function DataStructure({ id, title, sample }) {
   return (
     <DataStructureContext.Consumer>
       {dataStructures => {

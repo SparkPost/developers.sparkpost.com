@@ -110,7 +110,11 @@ const hasComponent = props =>
       component =>
         component.type &&
         componentNames.includes(
-          (component.type.displayName || component.type.name || '').toLowerCase()
+          (
+            component.type.displayName ||
+            component.type.name ||
+            ''
+          ).toLowerCase()
         )
     ) || []
   ).includes(true)
