@@ -15,7 +15,7 @@ const Bar = styled.div`
   margin: auto;
   display: inline-block;
   z-index: ${zIndex('overlay')};
-  max-width: 700px;
+  max-width: 790px;
   display: flex;
   justify-content: center;
   border-radius: 4px;
