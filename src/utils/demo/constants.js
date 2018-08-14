@@ -17,7 +17,7 @@ export const DESCRIPTIONS = {
 }
 
 export const CATEGORIES = {
-  message_event: "Message Event",
-  track_event: "Track Event",
+  message_event: 'Message Event',
+  track_event: 'Track Event',
   bouce: 'Bounce',
 }
