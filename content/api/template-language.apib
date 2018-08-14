@@ -27,11 +27,9 @@ You can pass in JSON data to a template through both the transmission and indivi
 **Keys**<br />
 The substitution keys can be contain any US-ASCII letters, digits, and underscores, not beginning with a digit, with the exception of the following keywords:
 
-* address, email, email_id, env_from, return_path
-* and, break, do, else, elseif
-* end, false, for, function, if
-* in, local, nil ,not, or ,each
-* repeat, return, then, true, until, while
+|                                                  |
+| ------------------------------------------------ |
+| `address`, `email`, `email_id`, `env_from`, `return_path`, `and`, `break`, `do`, `else`, `elseif`, `end`, `false`, `for`, `function`, `if`, `local`, `nil` ,`not`, `or`, `each`, `return`, `then`, `true`, `until`, `while` |             
 
 **Values**<br />
 The substitution values can be any valid UTF-8 string or JSON value.
@@ -43,7 +41,7 @@ Data can be passed in as `substitution_data` or `metadata`. The difference is th
 
 Both `metadata` and `substitution_data` can be set inside the top-level transmission object **and** inside each recipient. The recipient-level data takes precedence over the transmission-level data.
 
-In the following transmissions example, the order of the values for `city` are as follows: `San Francisco`, `Seattle`, `Baltimore`, and  `New York`. 
+In the following transmissions example, the hierarchy for the value of `city` is as follows: `San Francisco`, `Seattle`, `Baltimore`, and  `New York`. 
 
 The email would therefore render as: `Hello, New York`.
 
@@ -82,8 +80,7 @@ As a convenience, SparkPost also adds additional variables based on the transmis
 * `address.name` – Name from the recipient details.
 * `email`, `email_id`, and `address.email` – Email address from recipient details.
 * `env_from` – Return-Path address, sometimes called a "bounce address" or "envelope sender address"
-
-<Banner status="info"><a href="https://www.sparkpost.com/enterprise-email/"><strong>SparkPost Enterprise</strong></a>: The <code>return_path</code> substitution variable is available to SparkPost Enterprise users</a></Banner>
+* `return_path` - <span class="label label-info">Enterprise</span> The `return_path` substitution variable is available to SparkPost Enterprise users.
 
 ## Expressions
 
