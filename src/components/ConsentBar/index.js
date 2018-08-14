@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { has } from 'lodash'
 import { withCookies } from 'react-cookie'
 import Link from 'components/Link'
 import { grayscale, shadow } from 'utils/colors'
@@ -82,16 +83,6 @@ const Dismiss = styled(Link)`
 `
 
 class ConsentBar extends Component {
-  constructor(props) {
-    super(props)
-
-    const { cookies } = props
-
-    this.state = {
-      consentGiven: cookies.get('cookieConsent') || false,
-    }
-  }
-
   setConsentFlag = () => {
     const { cookies } = this.props
     const time = new Date().toISOString()
@@ -107,8 +98,16 @@ class ConsentBar extends Component {
     this.setState({ consentGiven: time })
   }
 
+  componentDidMount() {
+    const { cookies } = this.props
+
+    this.setState({
+      consentGiven: cookies.get('cookieConsent') || false,
+    })
+  }
+
   render() {
-    if (this.state.consentGiven) {
+    if (!has(this.state, 'consentGiven') || this.state.consentGiven) {
       return null
     }
 
