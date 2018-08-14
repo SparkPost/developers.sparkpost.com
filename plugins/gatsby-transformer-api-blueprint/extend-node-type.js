@@ -1,5 +1,5 @@
 const { GraphQLJSON } = require('gatsby/graphql')
-const flatMapDeep = require('lodash/flatmapdeep')
+const { flatMapDeep } = require('lodash')
 const parseApiBlueprint = require('./parse-api-blueprint')
 const minim = require('minim').namespace()
 const unified = require('unified')
