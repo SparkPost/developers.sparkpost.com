@@ -1,4 +1,5 @@
 const { GraphQLJSON } = require('gatsby/graphql')
+const flatMapDeep = require('lodash/flatmapdeep')
 const parseApiBlueprint = require('./parse-api-blueprint')
 const minim = require('minim').namespace()
 const unified = require('unified')
@@ -32,9 +33,14 @@ function getItems(node, current = {}) {
     return {}
   } else if (node.type === "paragraph") {
     const heading = childrenToString(node.children[0])
-    current.slug = slugify.markdown({ heading })
-    current.title = heading
-    return current
+
+    return {
+      ...current,
+      ...generateHeading({
+        title: heading,
+        slug: slugify.markdown({ heading })
+      })
+    }
   } else {
     if (node.type === "list") {
       current.children = node.children.map(i => getItems(i, {}))
@@ -50,12 +56,6 @@ function getItems(node, current = {}) {
   return {}
 }
 
-function findHeadings(tree) {
-  return tree.children.reduce((headings, node) => {
-    return node.type === 'heading' ? [ ...headings, childrenToString(node) ] : headings
-  }, [])
-}
-
 /**
  * Generate a table of content where the heading hierarchy is respected
  */
@@ -67,14 +67,17 @@ function generateLeveledMarkdownTableOfContents(markdown) {
 
 
 function generateMarkdownTableOfContents(markdown) {
-  const tree = parseMarkdown(markdown.join(''))
+  const toc = generateLeveledMarkdownTableOfContents(markdown)
 
-  const headings = findHeadings(tree)
+  // flatten the leveled table of contents
+  return flatMapDeep(toc, (heading) => {
+    const { children = [], ...justHeading } = heading
 
-  return headings.map((heading) => generateHeading({
-    title: heading,
-    slug: slugify.markdown({ heading })
-  }))
+    return [
+      justHeading,
+      ...children
+    ]
+  })
 }
 
 async function generateTableOfContents(node) {
