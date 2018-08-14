@@ -4,6 +4,7 @@ const minim = require('minim').namespace()
 const unified = require('unified')
 const remarkParse = require('remark-parse')
 const remarkStringify = require('remark-stringify')
+const toc = require('mdast-util-toc')
 const slugify = require('../../src/utils/api/slugify')
 const { gatherDataStructures, replaceDataStructures, insertDataStructures } = require('./data-structures')
 
@@ -26,11 +27,44 @@ function childrenToString(node) {
   return node.children.map(({ value }) => value).join('')
 }
 
+function getItems(node, current = {}) {
+  if (!node) {
+    return {}
+  } else if (node.type === "paragraph") {
+    const heading = childrenToString(node.children[0])
+    current.slug = slugify.markdown({ heading })
+    current.title = heading
+    return current
+  } else {
+    if (node.type === "list") {
+      current.children = node.children.map(i => getItems(i, {}))
+      return current
+    } else if (node.type === "listItem") {
+      const heading = getItems(node.children[0], {})
+      if (node.children.length > 1) {
+        getItems(node.children[1], heading)
+      }
+      return heading
+    }
+  }
+  return {}
+}
+
 function findHeadings(tree) {
   return tree.children.reduce((headings, node) => {
     return node.type === 'heading' ? [ ...headings, childrenToString(node) ] : headings
   }, [])
 }
+
+/**
+ * Generate a table of content where the heading hierarchy is respected
+ */
+function generateLeveledMarkdownTableOfContents(markdown) {
+  const tree = parseMarkdown(markdown.join(''))
+
+  return getItems(toc(tree).map).children || []
+}
+
 
 function generateMarkdownTableOfContents(markdown) {
   const tree = parseMarkdown(markdown.join(''))
@@ -47,7 +81,7 @@ async function generateTableOfContents(node) {
   const { api } = await parseApiBlueprint(node.internal.content)
 
   let toc = [
-    ...generateMarkdownTableOfContents(api.copy.toValue()),
+    ...generateLeveledMarkdownTableOfContents(api.copy.toValue()),
     ...api.resourceGroups.map((resourceGroup) => {
       return generateHeading({
         title: resourceGroup.title.toValue(),
