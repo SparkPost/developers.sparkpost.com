@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba, lighten } from 'polished'
 import { color, grayscale, shadow } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
+import Demo from 'utils/demo/demo'
 import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
@@ -233,6 +234,7 @@ const IndexPage = props => {
                 <Tabs>
                   <Tab active>cURL</Tab>
                   <Tab>Node.js</Tab>
+                  <Button>Run the Code</Button>
                 </Tabs>
                 <Sample>
                   <code
@@ -252,6 +254,35 @@ const IndexPage = props => {
   }'`}</code>
                 </Sample>
               </Samples>
+              <Demo>
+                {({ startDemo, events, handleChange }) => (
+                  <div>
+                    <form onSubmit={startDemo}>
+                      <input type="email" onChange={handleChange} />
+                      <Button type="submit" value="Submit">
+                        Run code
+                      </Button>
+                    </form>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <th>Category</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                        </tr>
+                        {!!events.length &&
+                          events.map((e, index) => (
+                            <tr key={index}>
+                              <td>{e.category}</td>
+                              <td>{e.name}</td>
+                              <td>{e.description}</td>
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </Demo>
             </Column>
           </Row>
         </Container>
