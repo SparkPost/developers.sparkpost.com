@@ -4,8 +4,45 @@ import { isString } from 'lodash'
 import axios from 'axios'
 import { debounce } from 'lodash'
 import { rgba } from 'polished'
+import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, color, shadow } from 'utils/colors'
 import { monospace, weight } from 'utils/fonts'
+
+const Wrapper = styled.div.attrs({ className: 'block' })`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+`
+
+// prettier-ignore
+const Code = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: ${grayscale('light')};
+  border: 1px solid ${grayscale(8)};
+  border-radius: 4px 4px 0 0;
+  ${mediaQuery('md', `
+    width: 60%;
+    border-radius: 4px 0 0 4px;
+  `)}
+`
+
+// prettier-ignore
+const Output = styled.div`
+  width: 100%;
+  border: 1px solid ${grayscale(8)};
+  border-top-width: 0;
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  min-height: 100px;
+  ${mediaQuery('md', `
+    width: 40%;
+    border-top-width: 1px;
+    border-left-width: 0;
+    border-radius: 0 4px 4px 0;
+  `)}
+`
 
 const Textarea = styled.textarea`
   ${monospace}
@@ -39,7 +76,9 @@ const Errors = styled(({ errors, ...props }) => (
     })}
   </div>
 ))`
-  ${monospace} background: #FCF2F4;
+  ${monospace}
+  width: 100%;
+  background: #FCF2F4;
   color: #ec4852;
   white-space: pre;
   overflow: auto;
@@ -78,6 +117,11 @@ const Spinner = styled.div`
   ${props => props.visible && `opacity: 1;`};
 `
 
+const Triggers = styled.div`
+  padding: 0.5rem;
+  display: flex;
+`
+
 const Trigger = styled.div`
   font-size: 0.833333333rem;
   font-weight: ${weight('medium')};
@@ -95,11 +139,13 @@ const Trigger = styled.div`
     box-shadow: ${shadow(1)};
   `};
 `
+
 const Tabs = styled.div`
   width: 100%;
   flex-grow: 1;
   display: flex;
 `
+
 const Tab = styled.div`
   width: 100%;
   display: none;
@@ -109,6 +155,23 @@ const Tab = styled.div`
     display: flex;
   `};
 `
+
+const getBlockType = component =>
+  component.props.children[0].props.className.split('language-')[1].trim()
+
+const mdastToString = ({ props: { children } }) => {
+  return children
+    .map(component => {
+      if (isString(component)) {
+        return component
+      } else if (component.props.children.length > 0) {
+        return mdastToString(component)
+      } else {
+        return component.props.children[0]
+      }
+    })
+    .join('')
+}
 
 class REPL extends Component {
   constructor(props) {
@@ -183,24 +246,9 @@ class REPL extends Component {
 
   render() {
     return (
-      <div className="block" style={{ display: `flex`, marginBottom: `1rem` }}>
-        <div
-          style={{
-            width: `60%`,
-            display: `flex`,
-            flexDirection: `column`,
-            background: grayscale('light'),
-            borderRadius: `4px 0 0 4px`,
-            border: `1px solid ${grayscale(8)}`,
-          }}
-        >
-          <div
-            style={{
-              background: grayscale('light'),
-              padding: `.5rem`,
-              display: `flex`,
-            }}
-          >
+      <Wrapper>
+        <Code>
+          <Triggers>
             <Trigger
               isActive={this.state.activeTab === 0}
               onClick={() => this.setState({ activeTab: 0 })}
@@ -213,7 +261,7 @@ class REPL extends Component {
             >
               Data
             </Trigger>
-          </div>
+          </Triggers>
           <Tabs>
             <Tab isActive={this.state.activeTab === 0}>
               <Textarea
@@ -244,43 +292,18 @@ class REPL extends Component {
               />
             </Tab>
           </Tabs>
-        </div>
-        <div
-          style={{
-            width: `40%`,
-            border: `1px solid ${grayscale(8)}`,
-            borderLeft: 0,
-            borderRadius: `0 4px 4px 0`,
-            display: `flex`,
-          }}
-        >
+        </Code>
+        <Output>
           <Spinner visible={this.state.loading} />
           {this.state.errors.length > 0 ? (
             <Errors errors={this.state.errors} />
           ) : (
             <Results>{this.state.results.html}</Results>
           )}
-        </div>
-      </div>
+        </Output>
+      </Wrapper>
     )
   }
-}
-
-const getBlockType = component =>
-  component.props.children[0].props.className.split('language-')[1].trim()
-
-const replToString = ({ props: { children } }) => {
-  return children
-    .map(component => {
-      if (isString(component)) {
-        return component
-      } else if (component.props.children.length > 0) {
-        return replToString(component)
-      } else {
-        return component.props.children[0]
-      }
-    })
-    .join('')
 }
 
 export default ({ children }) => {
@@ -301,9 +324,9 @@ export default ({ children }) => {
   )
 
   // default html and substitution data
-  const html = htmlBlock ? replToString(htmlBlock) : ''
-  const results = resultsBlock ? replToString(resultsBlock) : ''
-  let json = jsonBlock ? replToString(jsonBlock) : '{}'
+  const html = htmlBlock ? mdastToString(htmlBlock) : ''
+  const results = resultsBlock ? mdastToString(resultsBlock) : ''
+  let json = jsonBlock ? mdastToString(jsonBlock) : '{}'
   try {
     json = JSON.stringify(JSON.parse(json), null, 2)
   } catch (e) {
@@ -313,12 +336,12 @@ export default ({ children }) => {
   const isJsonFirst =
     codeBlocks.length > 0 && getBlockType(codeBlocks[0]) === 'json'
 
+  // set the the second tab to active, if the json block was written first
   return (
     <REPL
       html={html}
       results={results}
       substitution_data={json}
-      // set the the second tab to active, if the json block was written first
       activeTab={isJsonFirst ? 1 : 0}
     />
   )
