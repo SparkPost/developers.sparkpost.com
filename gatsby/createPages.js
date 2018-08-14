@@ -4,23 +4,36 @@
 
 'use strict'
 
-const fs = require('fs')
 const { resolve } = require('path')
 const { flatten } = require('lodash')
-const apiDirectory = resolve(__dirname, `../content/api`)
 const apiTemplate = resolve(__dirname, `../src/templates/api.js`)
-const tableOfContents = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
+const files = flatten(require(`../content/api/table-of-contents.json`).map(({ pages }) => pages))
 
-const buildOldPath = path => path === '/api/' ? `/api/index.html` : `${path.replace(/\/$/, '')}.html`
-
-module.exports = async ({  graphql, actions }) => {
+module.exports = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
 
-  tableOfContents.forEach(({ file, path }) => {
-    if (fs.existsSync(`${apiDirectory}/${file}`)) {
+  const { data: { allApiBlueprint: { edges } } } = await graphql(`
+    {
+      allApiBlueprint {
+        edges {
+          node {
+            fields {
+              path
+              file
+            }
+          }
+        }
+      }
+    }
+  `)
 
+  edges.forEach(({ node: { fields: { path, file } } }) => {
+    if (files.includes(file)) {
       // redirect /{api}.html paths to /{api}/
-      createRedirect({ fromPath: buildOldPath(path), toPath: path })
+      createRedirect({
+        fromPath: `/api/${file.replace(/\.apib$/, '.html')}`,
+        toPath: path
+      })
 
       createPage({
         path,

@@ -6,34 +6,32 @@
 
 const slugify = require('./src/utils/api/slugify')
 const { flatten } = require('lodash')
-const apiDirectory = `${__dirname}/content/api`
 const parseResult = require('minim-parse-result')
 const minim = require('minim').namespace().use(parseResult)
-const tableOfContents = flatten(require(`${apiDirectory}/table-of-contents.json`).map(({ pages }) => pages))
+const files = flatten(require(`${__dirname}/content/api/table-of-contents.json`).map(({ pages }) => pages))
 
 module.exports = [
   {
     indexName: `api_reference`,
     query: `{
-      allFile(filter:{extension:{eq:"apib"}}) {
+      allApiBlueprint {
         edges {
           node {
-            base
-            childApiBlueprint {
-              ast
+            ast
+            fields {
+              path
+              file
             }
           }
         }
       }
-
     }`,
     transformer(results) {
-      const apiPages = orderApiPages(results.data.allFile.edges.map(({ node }) => node))
+      const pages = results.data.allApiBlueprint.edges.map(({ node }) => node)
+      const apiPages = orderApiPages(pages)
 
-      const searchableChunks = flatten(apiPages.map(({ base, childApiBlueprint }, pageIndex) => {
-        const { path } = tableOfContents.find(({ file }) => file === base)
-
-        return gatherSearchableCunks({ path, ast: childApiBlueprint.ast, pageIndex })
+      const searchableChunks = flatten(apiPages.map(({ fields: { path }, ast }, pageIndex) => {
+        return gatherSearchableCunks({ path, ast, pageIndex })
       }))
 
       /**
@@ -129,8 +127,8 @@ function rank(index, scale) {
 
 function orderApiPages(apiPages) {
   // order the api pages into the order given by the table of contents
-  const orderedApiPages = tableOfContents.map(({ file }) => {
-    return apiPages.find(({ base }) => base === file)
+  const orderedApiPages = files.map((file) => {
+    return apiPages.find(({ fields: { file: apiFile } }) => apiFile === file)
   })
 
   return orderedApiPages
