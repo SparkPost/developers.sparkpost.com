@@ -42,7 +42,7 @@ let components = {
   },
   ol(props) {
     return (
-      <div class="block">
+      <div className="block">
         <ol {...props} />
       </div>
     )

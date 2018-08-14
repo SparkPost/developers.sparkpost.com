@@ -511,13 +511,13 @@ Just as with [HTML escaping](#header-html-escaping), you can disable URL encodin
 
 Macros are built-in functions. Each macro consists of a name followed by parentheses, which may enclose any arguments that the macro accepts.
 
-#### `render_dynamic_content()`
+### `render_dynamic_content()`
 
 This macro allows you to render substitution variables, stored inside the `dynamic_html` and `dynamic_part`. It will execute all expressions and will track all links.
 
 Learn more about [dynamic content](#header-dynamic-content).
 
-#### `empty()`
+### `empty()`
 
 Given an array as an argument, the `empty` macro returns true if the array is empty or false if the array is not empty. This is useful for determining whether to include a header in a dynamically generated HTML table and blocking iteration of the table if it is empty.
 
@@ -573,7 +573,7 @@ Given an array as an argument, the `empty` macro returns true if the array is em
 </REPL>
 
 
-#### Braces Macros
+### Braces Macros
 
 If you want opening or closing braces to appear in the content, you must escape them. The four macros for outputting braces are as follows:
 
@@ -645,7 +645,7 @@ Here is the functioning version of the example above:
 The dynamic content will be correctly rendered *without* HTML escaping,
 regardless of whether double or triple curly braces are used.
 
-#### Plain text
+### Plain text
 
 To insert dynamic content into the `text/plain` part of a message, place the dynamic content into the transmission-level substitution variable `dynamic_plain`.
 
