@@ -460,11 +460,13 @@ The first item in your shopping cart is {{ shopping_cart[1].name }}.
 
 ## Links
 
-The template language handles links slightly differently than regular content.  All of the following applies to both links in the `html` and `text` content.
-
-**Links start with http. If the http is inside the variable, then the parser won't pick it up as a link and won't do all the fancy things listed below, link url encoding the variables and tracking the link.**
+Links are handle slightly differently than regular content. All of the following applies to both links in the `html` and `text` content.
 
 ### Links in Variables
+
+The template language identifies links by the fact that they start with a protocol – `https://` or `http://`. If the protocol is stored inside the variable, the link won't get recognized correctly. The means that it won't get tracked and expressions that are used in the link won't be escaped properly.
+
+To use links that are entirely stored in variables processed correctly, render them as [dynamic content](#header-dynamic-content).
 
 ### Personalized Links
 
