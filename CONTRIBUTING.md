@@ -4,11 +4,11 @@ Thank you for your interest in contributing to the SparkPost Developer Site!
 
 ## API reference
 
-The API reference broadly follows [API Blueprint](https://apiblueprint.org/), an an open source extension of markdown designed for writing API specs, with an [open source extension](#api-blueprint-extensions).
+The API reference broadly follows [API Blueprint](https://apiblueprint.org/), an an open source extension of markdown designed for writing API specs, with a copule of [extensions](#api-blueprint-extensions).
 
-Each top-level section in the API reference has a corresponding file under `content/api/`. Each file represents either an API endpoint such as /api/v1/transmissions or a high-level concept like "template substitution". When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it doesn't get generated.
+Each top-level section in the API reference has a corresponding file under `content/api/`. Each file represents either an API endpoint such as /api/v1/transmissions or a high-level concept like "template language". When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it won't get generated.
 
-If you are looking for commit history before July 2018, visit the archived [sparkpost-api-documentation](https://github.com/SparkPost/sparkpost-api-documentation) repository.
+If you are looking for API reference history before July 2018, visit the archived [sparkpost-api-documentation](https://github.com/SparkPost/sparkpost-api-documentation) repository.
 
 Here are some resources for learning API Blueprint and Markdown:
 
@@ -21,25 +21,19 @@ Here are some resources for learning API Blueprint and Markdown:
 
 **Location**:  `content/api/table-of-contents.json`
 
-The table of contents is set in the `table-of-contents.json` file. It contains an array of "category" objects. Each of those objects has a `pages` key which contains an array of "page" objects.
+The table of contents is set in the `table-of-contents.json` file. It contains an array of "category" objects. Each of those objects has a `pages` key which contains an array of file names.
 
-Each page object should have the following:
-
-* `title` - The title to be used in the navigation bar.
-* `file` - The source file.
-* `path` - The URL for the page.
-* `label` - (Optional) An additional label to be shown next to the navigation link. This is great for calling out a new endpoint.
-
-When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it doesn't get generated.
+When adding a new API reference page, be sure to add it to the table of contents. If a file is not listed in the table of contents, it wont get generated.
 
 ### Metadata
 
 Each API Blueprint file starts with metadata. At minimum, it needs the `FORMAT` and `title`.
 
 * `FORMAT` - Denotes the document is an API Blueprint file. It should always be `1A`.
-* `title`  - Use to set the page `<title>` tag.
+* `title`  - Use to set the page `<title>` tag and title in the navigation bar.
 * `description` - Use to set the page description.
-* `full` - Use this to set the layout to be a single column. Set to `true` for pages that are purely markdown.
+* `label` - (Optional) An additional label to be shown next to the navigation link. This is great for calling out a new endpoint.
+* `full` - (Optional) Use this to set the layout to be a single column. Set to `true` for pages that are purely markdown.
 
 ### Content
 
