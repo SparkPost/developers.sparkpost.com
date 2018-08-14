@@ -1,12 +1,12 @@
 FORMAT: 1A
 title: Templates
-description: Manage reusable content templates that are run through the SparkPost substitution engine and can be used when sending messages.
+description: Manage reusable content templates that are run through the SparkPost template engine and can be used when sending messages.
 
 # Group Templates
 
 Templates are a way to store and edit email content.
 Instead of passing inline content to a [Transmission](/api/transmissions/) request, a template can be set to provide the content.
-All email content in a template (from, headers, text, and html) supports [substitution syntax](/api/substitutions-reference/) for personalized emails.
+All email content in a template (from, headers, text, and html) supports the [template language](/api/template-language/) for personalized emails.
 
 ## Drafts & Published versions
 
@@ -21,7 +21,7 @@ If needed, it's also possible to update the published version of a template dire
     + id (string) - Unique alphanumeric ID.
     + name (string) - Display name.
     + description (string) - Description of the template.
-    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes.
+    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes.
         + html (string) - HTML content for the email's `text/html` MIME part.
         + text (string) - Text content for the email's `text/plain` MIME part.
         + subject (string) - Email subject line.
@@ -69,7 +69,7 @@ If needed, it's also possible to update the published version of a template dire
 * Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto-generated upon construction of the email.
 * The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Substitution syntax is supported in headers.
+* The template language is supported in headers.
 
 ### Error Object
 
@@ -111,7 +111,7 @@ Templates are created as drafts.
     + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
     + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object, required) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+    + content (object, required) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
@@ -243,7 +243,7 @@ The new content will completely overwrite the existing content.
 + Data Structure
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
@@ -328,7 +328,7 @@ The new content will completely overwrite the existing content.
 + Data Structure
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object) - Content that will be used to construct an email. Substitution syntax is supported in all content attributes. Maximum length - 20 MBs
+    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 20 MBs
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
@@ -381,11 +381,11 @@ The new content will completely overwrite the existing content.
 The template's content will be expanded using the substitution data provided and returned in the response.
 Use the `draft` query parameter to specify a draft or published version.
 
-See [Substitutions Reference](/api/substitutions-reference/) for more information.
+See [Template Language](/api/template-language/) for more information.
 
 
 + Data Structure
-    + substitution_data (object) - Data used to expand substitution syntax.
+    + substitution_data (object) - Data passed to the template engine.
 
 
 + Parameters
