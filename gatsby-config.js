@@ -56,13 +56,20 @@ module.exports = {
         displayName: true
       }
     },
-    // Google Analytics, HotJar, etc. are added through GTM
+    // Google Analytics, etc. are added through GTM
     {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: 'GTM-WN7C84',
         includeInDevelopment: false,
       }
+    },
+    {
+      resolve: `gatsby-plugin-hotjar`,
+      options: {
+        id: '706123',
+        sv: '6'
+      },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
