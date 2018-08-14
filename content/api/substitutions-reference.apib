@@ -649,40 +649,17 @@ Here is a curly: {{
 
 ## Dynamic Content
 
-Sometimes you might have some dynamic content containing expressions and links passed in through a variable. For example, the `my_html_chunk` substitution value below contains a link as well as a substitution expression referencing a `username`.
-
-However, links within in variables are **not** converted to trackable links and expressions within variables are **not** executed.
-
-<REPL>
-```html
-<body>
-<p>Attempting to insert a chunk of html:</p>
-{{{ my_html_chunk }}}
-</body>
-```
-```json
-{
-    "my_html_chunk" : "<p><a href=\"http://www.example.com?q={{username}}\">Click here</a></p>",
-    "username" : "foo"
-}
-```
-</REPL>
-
-Notice that the `username` variable was not replaced
-and the link was not converted into a click trackable form.
-
-To correctly render this dynamic content, you must do the following:
+Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, links are not tracked. To correctly render dynamic content, you must do the following:
 
 1. Add the dynamic content inside the `dynamic_html` object at the _transmission-level_ substitution data.
-
 1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
 
-Here is the functioning version of the example above:
+Here is an example of dynamic content used correctly. Notice that the `{{username}}` is replaced with `foo` in the output.
 
 <REPL>
 ```html
 <body>
-<p>Attempting to insert a chunk of html:</p>
+<p>Insert a chunk of html:</p>
 {{ render_dynamic_content(dynamic_html.my_html_chunk) }}
 </body>
 ```
