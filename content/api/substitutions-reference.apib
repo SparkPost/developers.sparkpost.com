@@ -485,6 +485,10 @@ Personalized link:
     "offercode": "Daily Deal!"
 }
 ```
+```results
+Personalized link:
+<a href="https://company.com/dailydeals?user=john&offercode=Daily%20Deal%21">Go!</a>
+```
 </REPL>
 
 ### URL Encoding
@@ -503,6 +507,10 @@ Just as with [HTML escaping](#header-html-escaping), you can disable URL encodin
 ```html
 <a href="https://{{{link}}}">click me</a>
 <a href="http://www.company.com/{{{the_entire_suffix}}}">Go</a>
+```
+```results
+<a href="https://www.company.com/groups">click me</a>
+<a href="http://www.company.com/groups/join?user=clark">Go</a>
 ```
 </REPL>
 
@@ -672,6 +680,12 @@ Here is an example of dynamic content used correctly. Notice that the `{{usernam
     },
     "username" : "foo"
 }
+```
+```results
+<body>
+<p>Insert a chunk of html:</p>
+<p><a href="http://www.example.com?q=foo">Click here</a></p>
+</body>
 ```
 </REPL>
 
