@@ -464,6 +464,8 @@ The template language handles links slightly differently than regular content.  
 
 **Links start with http. If the http is inside the variable, then the parser won't pick it up as a link and won't do all the fancy things listed below, link url encoding the variables and tracking the link.**
 
+### Links in Variables
+
 ### Personalized Links
 
 You can use expressions inside of links to customize them. Instead of HTML escaping the value, expression will URL encode the value.
@@ -482,8 +484,6 @@ Personalized link:
 }
 ```
 </REPL>
-
-As always, you can use triple curly braces to skip the encoding.
 
 ### URL Encoding
 
@@ -506,6 +506,60 @@ Just as with [HTML escaping](#header-html-escaping), you can disable URL encodin
 
 <Banner status="danger">If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
 
+### Custom Link Attributes
+
+The template language provides a few custom HTML attributes for attaching extra functionality to your links.
+
+These custom HTML can also be used for links in the `text` part of a message using a double-square-bracket notation.
+
+```no-highlight
+http://www.example.com[[data-msys-clicktrack="0"]]
+```
+
+
+#### Link Names
+
+Link names are used to identify links in click events in both webhook playloads and message events. You can name links through the `data-msys-linkname` custom attribute. If this attribute is not specified the link name will be reported as `Raw URL`. For example:
+
+```html
+<a href="http://www.example.com" data-msys-linkname="banner">Example</a>
+```
+
+Link names have a maximum length of 63 characters and are truncated if they exceed the limit.
+
+#### Unsubscribe Links
+
+You can configure a link in your content to generate an `link_unsubscribe` event  when clicked using the `data-msys-unsubscribe` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/unsub_handler?id=1234" data-msys-unsubscribe="1">Unsubscribe</a>
+```
+
+More information can be found [here](https://support.sparkpost.com/customer/portal/articles/1929894-setting-up-unsubscribe-links).
+
+#### Per-link Disabling of Click Tracking
+
+When click-tracking is enabled for a transmission, individual links can be skipped using the `data-msys-clicktrack` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/" data-msys-clicktrack="0">Click</a>
+```
+
+#### Custom Link Sub-Paths
+
+It is possible to add a custom sub-path to a tracked URL using the `data-msys-sublink` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/" data-msys-sublink="custom_path">Click</a>
+```
+
+The tracked link generated will look like this:
+
+```no-highlight
+http://<hostname>/f/custom_path/<encoded target url>
+```
+
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing">here</a>.</Banner>
 
 ## Macros
 
@@ -645,7 +699,7 @@ Here is the functioning version of the example above:
 The dynamic content will be correctly rendered *without* HTML escaping,
 regardless of whether double or triple curly braces are used.
 
-### Plain text
+**Plain text**
 
 To insert dynamic content into the `text/plain` part of a message, place the dynamic content into the transmission-level substitution variable `dynamic_plain`.
 
