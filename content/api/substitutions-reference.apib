@@ -460,9 +460,52 @@ The first item in your shopping cart is {{ shopping_cart[1].name }}.
 
 ## Links
 
-The template language handles links slightly differently than regular content. In addition, it also provides a couple of custom attributes for extra functionality.
+The template language handles links slightly differently than regular content.  All of the following applies to both links in the `html` and `text` content.
 
-You can 
+**Links start with http. If the http is inside the variable, then the parser won't pick it up as a link and won't do all the fancy things listed below, link url encoding the variables and tracking the link.**
+
+### Personalized Links
+
+You can use expressions inside of links to customize them. Instead of HTML escaping the value, expression will URL encode the value.
+
+<Banner status="warning">No spaces are allowed when an expression is used inside a query string.</Banner>
+
+<REPL>
+```html
+Personalized link:
+<a href="https://company.com/dailydeals?user={{user}}&offercode={{offercode}}">Go!</a>
+```
+```json
+{
+    "user": "john",
+    "offercode": "Daily Deal!"
+}
+```
+</REPL>
+
+As always, you can use triple curly braces to skip the encoding.
+
+### URL Encoding
+
+Just as with [HTML escaping](#header-html-escaping), you can disable URL encoding by using triple curly braces. This is useful when you have multiple pieces of the URL in one variable.
+
+<Banner status="warning">Disabling URL encoding of variables can lead to broken links – be careful with this!</Banner>
+
+<REPL>
+```json
+{
+    "link" : "www.company.com/groups",
+    "the_entire_suffix" : "groups/join?user=clark"
+}
+```
+```html
+<a href="https://{{{link}}}">click me</a>
+<a href="http://www.company.com/{{{the_entire_suffix}}}">Go</a>
+```
+</REPL>
+
+<Banner status="danger">If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
+
 
 ## Macros
 
