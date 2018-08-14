@@ -327,7 +327,7 @@ Number of states: 2
 
 ### `each` Statement
 
-You can use an `each` statement to iterate over array. If the array is empty or the value is `null`, nothing is rendered.
+You can use an `each` statement to iterate over an array. If the array is empty or the value is `null`, nothing is rendered.
 
 Inside the loop, you can access the current value via the `loop_var` variable. The current index can be accessed through the `loop_index` variable.
 
@@ -457,7 +457,7 @@ The first item in your shopping cart is {{ shopping_cart[1].name }}.
 
 ## Links
 
-Links are handle slightly differently than regular content. All of the following applies to both links in the `html` and `text` content.
+Links are handled slightly differently than regular content. All of the following applies to both links in the `html` and `text` content.
 
 ### Links in Variables
 
@@ -467,7 +467,7 @@ To use links that are entirely stored in variables processed correctly, render t
 
 ### Personalized Links
 
-You can use expressions inside of links to customize them. Instead of HTML escaping the value, expression will URL encode the value.
+You can use expressions inside of links to customize them. Instead of HTML escaping the value, expressions will URL encode the value.
 
 <Banner status="warning">No spaces are allowed when an expression is used inside a query string.</Banner>
 
