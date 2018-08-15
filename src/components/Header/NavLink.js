@@ -9,7 +9,7 @@ import Link from 'components/Link'
  */
 // prettier-ignore
 const NavLink = styled(({ active, className, ...props }) => (
-  <li className={`${className} navLink`}><Link.Unstyled {...props} /></li>
+  <li className={className}><Link.Unstyled {...props} className="navLink" /></li>
 ))`
   display: block;
   font-weight: inherit;
