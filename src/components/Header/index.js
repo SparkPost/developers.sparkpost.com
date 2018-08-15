@@ -125,10 +125,7 @@ class Header extends Component {
             </NavLink>
           </Nav>
           <Search />
-          <Nav secondary>
-            <NavLink to="https://www.sparkpost.com/blog/category/developer">
-              Blog
-            </NavLink>
+          <Nav>
             <NavLink to="https://app.sparkpost.com/auth">Log In</NavLink>
             {
               <li>
