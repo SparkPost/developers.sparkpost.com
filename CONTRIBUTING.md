@@ -200,18 +200,18 @@ If the `json` code block is first, the **Data** tab will be selected. Otherwise 
 
 **Example**
 
-```
+~~~
 <REPL>
-\`\`\`html
+```html
 {{ value }}
-\`\`\`
-\`\`\`json
+```
+```json
 {
     "value": "Hello 👋"
 }
-\`\`\`
-\`\`\`results
-Hello 👋
-\`\`\`
-</REPL>
 ```
+```results
+Hello 👋
+```
+</REPL>
+~~~
