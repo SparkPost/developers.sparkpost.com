@@ -192,7 +192,7 @@ class CodeEditor extends Component {
     this.inputRef = React.createRef()
   }
 
-  onKeyDown = (event) => {
+  onKeyDown = event => {
     // tab was pressed
     if (event.keyCode === 9) {
       event.preventDefault()
@@ -203,17 +203,20 @@ class CodeEditor extends Component {
       const tabbedValue = [
         value.substring(0, selectionStart),
         '  ',
-        value.substring(selectionEnd)
+        value.substring(selectionEnd),
       ].join('')
 
-      this.props.onChange({
-        target: {
-          value: tabbedValue
+      this.props.onChange(
+        {
+          target: {
+            value: tabbedValue,
+          },
+        },
+        () => {
+          this.inputRef.current.selectionStart = this.inputRef.current.selectionEnd =
+            selectionStart + 2
         }
-      }, () => {
-        this.inputRef.current.selectionStart =
-          this.inputRef.current.selectionEnd = selectionStart + 2
-      })
+      )
     }
   }
 
@@ -223,7 +226,8 @@ class CodeEditor extends Component {
         onKeyDown={this.onKeyDown}
         innerRef={this.inputRef}
         {...this.props}
-      />)
+      />
+    )
   }
 }
 
@@ -330,18 +334,28 @@ class REPL extends Component {
               <CodeEditor
                 style={{ height }}
                 value={code.html}
-                onChange={(event, done) => this.onChange({
-                  html: event.target.value
-                }, done)}
+                onChange={(event, done) =>
+                  this.onChange(
+                    {
+                      html: event.target.value,
+                    },
+                    done
+                  )
+                }
               />
             </Tab>
             <Tab isActive={activeTab === 1}>
               <CodeEditor
                 style={{ height }}
                 value={code.substitution_data}
-                onChange={(event, done) => this.onChange({
-                  substitution_data: event.target.value
-                }, done)}
+                onChange={(event, done) =>
+                  this.onChange(
+                    {
+                      substitution_data: event.target.value,
+                    },
+                    done
+                  )
+                }
               />
             </Tab>
           </Tabs>
