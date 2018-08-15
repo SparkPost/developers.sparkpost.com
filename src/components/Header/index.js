@@ -34,8 +34,8 @@ const Wrapper = styled.header`
 `
 
 const NavButton = styled(Button)`
-  top: -2px;
   margin: 0 0 0 0.5rem;
+  line-height: 0.9rem;
 `
 
 // prettier-ignore
@@ -117,25 +117,30 @@ class Header extends Component {
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-            <NavLink to="http://slack.sparkpost.com">Community</NavLink>
-          </Nav>
-          <Search />
-          <Nav secondary>
+            <NavLink to="http://slack.sparkpost.com">Slack</NavLink>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status
               </span>
             </NavLink>
+          </Nav>
+          <Search />
+          <Nav secondary>
             <NavLink to="https://www.sparkpost.com/blog/category/developer">
               Blog
             </NavLink>
-            <NavButton
-              to="https://app.sparkpost.com/join"
-              secondary
-              size="small"
-            >
-              Sign Up
-            </NavButton>
+            <NavLink to="https://app.sparkpost.com/auth">
+              Log In
+            </NavLink>
+            {<li>
+              <NavButton
+                to="https://app.sparkpost.com/join"
+                secondary
+                size="small"
+              >
+                Sign Up
+              </NavButton>
+            </li>}
           </Nav>
         </NavWrapper>
         <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />
