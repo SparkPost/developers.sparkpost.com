@@ -23,12 +23,12 @@ const generateTemplateContent = (html) => ({
  * Dynamic previews are previews that have dynamic content. Dynamic content
  * is content passed in through substitution_data.dynamic_html or
  * substitution_data.dynamic_plain which can contain expressions to
- * be compiled (.i.e. "hello {{name}}").
+ * be render (.i.e. "hello {{name}}").
  *
- * Simple previews are straight complication without any dynamic content.
+ * Simple previews are previews without any dynamic content.
  *
  * We use dynamic content to render the simple previews to avoid updating
- * the template unnecessarily. However, for dynamic previews to work properly
+ * the template, unnecessarily. However, for dynamic previews to work properly
  * we have to update the template draft and _then_ preview the new draft.
  */
 exports.handler = async function(event, context) {
@@ -36,11 +36,11 @@ exports.handler = async function(event, context) {
   const { html, substitution_data: substitution_data_string } = body
 
   if (!html) {
-    return error('html is missing')
+    return SparkPostError('html is missing')
   }
 
   if (!substitution_data_string) {
-    return error('substitution_data is missing')
+    return SparkPostError('substitution_data is missing')
   }
 
   // convert substitution_data_string into a JSON object
@@ -48,7 +48,7 @@ exports.handler = async function(event, context) {
   try {
     substitution_data = JSON.parse(substitution_data_string)
   } catch(e) {
-    return error(e.message)
+    return SparkPostError(e.message)
   }
 
   if (/{{\s*render_dynamic_content.*}}/.test(html)) {
@@ -110,7 +110,7 @@ function done(response) {
 /**
  * Function for returning SparkPost-like errors
  */
-function error(message) {
+function sparkPostError(message) {
   return Promise.resolve({
     statusCode: 200,
     body: JSON.stringify({

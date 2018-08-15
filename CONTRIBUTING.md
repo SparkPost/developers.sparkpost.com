@@ -190,9 +190,9 @@ The `<Banner>` component allows you to define an alert. Only use a banner when c
 
 #### REPL
 
-The `<REPL>` component allows you to insert a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for the SparkPost template language. This lets the docs have live examples of the template language.
+The `<REPL>` component allows you to insert a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) for a live playground of the SparkPost template language.
 
-Inside the `<REPL>` You can add 3 code blocks: an `html` code block, a `json` code, and a `results` code block.
+Inside the `<REPL>` You can add 3 code blocks: an `html` code block, a `json` code block, and a `results` code block.
 
 The `html` code will be used as the HTML body for the preview. The `json` code will be used as the substitution data. The `results` code will be used as the initial preview content. If no `results` field is given, a preview request will be made when the page loads.
 
