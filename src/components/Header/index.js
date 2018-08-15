@@ -103,7 +103,7 @@ class Header extends Component {
     const { path, isSticky } = this.props
 
     return (
-      <Wrapper isSticky={isSticky} id="header">
+      <Wrapper isSticky={isSticky}>
         <Logo />
         <Hamburger isOpen={this.state.isOpen} onClick={this.toggleOpen} />
         <NavWrapper isOpen={this.state.isOpen}>
