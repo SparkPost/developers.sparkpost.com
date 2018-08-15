@@ -157,7 +157,9 @@ const Tab = styled(({ isActive, ...props }) => <div {...props}/>)`
  * get the block type: will be `json`, `html, `result`, etc
  */
 const getBlockType = component => {
-  return last(get(component, 'props.children[0].props.className', '').split('language-')).trim()
+  return last(
+    get(component, 'props.children[0].props.className', '').split('language-')
+  ).trim()
 }
 
 /**
@@ -178,6 +180,51 @@ const mdastToString = ({ props: { children } }) => {
       }
     })
     .join('')
+}
+
+/**
+ * Textarea that has support for tabbing
+ */
+class CodeEditor extends Component {
+  constructor(props) {
+    super(props)
+
+    this.inputRef = React.createRef()
+  }
+
+  onKeyDown = (event) => {
+    // tab was pressed
+    if (event.keyCode === 9) {
+      event.preventDefault()
+
+      const { value } = this.props
+      const { selectionStart, selectionEnd } = event.target
+
+      const tabbedValue = [
+        value.substring(0, selectionStart),
+        '  ',
+        value.substring(selectionEnd)
+      ].join('')
+
+      this.props.onChange({
+        target: {
+          value: tabbedValue
+        }
+      }, () => {
+        this.inputRef.current.selectionStart =
+          this.inputRef.current.selectionEnd = selectionStart + 2
+      })
+    }
+  }
+
+  render() {
+    return (
+      <Textarea
+        onKeyDown={this.onKeyDown}
+        innerRef={this.inputRef}
+        {...this.props}
+      />)
+  }
 }
 
 class REPL extends Component {
@@ -206,13 +253,13 @@ class REPL extends Component {
     }
   }
 
-  onChange = (code) => {
+  onChange = (code, done) => {
     const newCode = {
       ...this.state.code,
       ...code,
     }
 
-    this.setState({ code: newCode, loading: true })
+    this.setState({ code: newCode, loading: true }, done)
     this.debouncedFetchPreview({ code: newCode })
   }
 
@@ -227,12 +274,12 @@ class REPL extends Component {
 
       this.setState({
         response: { results: get(results, 'html', ''), errors },
-        loading: false
+        loading: false,
       })
     } catch (e) {
       this.setState({
-        response: { errors: [ { message: e.message } ], },
-        loading: false
+        response: { errors: [{ message: e.message }] },
+        loading: false,
       })
     }
   }
@@ -258,7 +305,7 @@ class REPL extends Component {
       activeTab,
       code,
       response,
-      editorHeight: height
+      editorHeight: height,
     } = this.state
 
     return (
@@ -280,21 +327,21 @@ class REPL extends Component {
           </Triggers>
           <Tabs>
             <Tab isActive={activeTab === 0}>
-              <Textarea
+              <CodeEditor
                 style={{ height }}
                 value={code.html}
-                onChange={event =>
-                  this.onChange({ html: event.target.value, })
-                }
+                onChange={(event, done) => this.onChange({
+                  html: event.target.value
+                }, done)}
               />
             </Tab>
             <Tab isActive={activeTab === 1}>
-              <Textarea
+              <CodeEditor
                 style={{ height }}
                 value={code.substitution_data}
-                onChange={event =>
-                  this.onChange({ substitution_data: event.target.value, })
-                }
+                onChange={(event, done) => this.onChange({
+                  substitution_data: event.target.value
+                }, done)}
               />
             </Tab>
           </Tabs>
