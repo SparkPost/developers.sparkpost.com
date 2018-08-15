@@ -15,7 +15,7 @@
       "tracking-domains.apib",
       "templates.apib",
       "ab-testing.apib",
-      "substitutions-reference.apib",
+      "template-language.apib",
       "recipient-lists.apib",
       "suppression-list.apib",
       "sending-ips.apib",

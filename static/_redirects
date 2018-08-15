@@ -1,7 +1,10 @@
-/api/labs-introduction.html  /api/labs/
-/api/labs-introduction       /api/labs/
-/api/smtp-api.html           /api/smtp/
-/api/smtp-api                /api/smtp/
+/api/labs-introduction.html         /api/labs/
+/api/labs-introduction              /api/labs/
+/api/smtp-api.html                  /api/smtp/
+/api/smtp-api                       /api/smtp/
+/api/substitutions-reference.html   /api/template-language/
+/api/substitutions-reference        /api/template-language/
+
 
 # Redirect domain aliases to primary domain
 https://dev.sparkpost.com/* https://developers.sparkpost.com/:splat 301!

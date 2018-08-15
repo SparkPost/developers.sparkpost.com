@@ -38,6 +38,12 @@ This will only develop the API reference pages and skip unnecessary queries.
 1. Run `npm run docs`
 1. open [http://localhost:8000/api/](http://localhost:8000/api/) to view the docs.
 
+#### Develop Netlify Lambda Functions
+
+To develop [Netlify Functions](https://www.netlify.com/docs/functions/) locally, run `npm run lambda`. This will start a second development server for the serverless functions.
+
+Each file located in the `lambda/` directory will be deployed as a serverless function.
+
 ## Contributing
 
 You'll find the all the content, pages, and data inside the `content` folder. If you are contributing content, take a few minutes and read through the [contributing guidelines](CONTRIBUTING.md).

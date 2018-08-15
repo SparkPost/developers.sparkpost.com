@@ -7,6 +7,7 @@ import Heading from '../Heading'
 import DataStructure from './DataStructure'
 import MessageEvents from './MessageEvents'
 import WebhookEvents from './WebhookEvents'
+import REPL from './REPL'
 
 const EmptyHeader = styled.th`
   padding: 0;
@@ -41,8 +42,8 @@ let components = {
   },
   ol(props) {
     return (
-      <div class="block">
-        <ul {...props} />
+      <div className="block">
+        <ol {...props} />
       </div>
     )
   },
@@ -88,6 +89,7 @@ let components = {
   DataStructure,
   MessageEvents,
   WebhookEvents,
+  REPL,
 }
 
 // remove any ambiguity between uppercase and lowercase components
