@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { isString } from 'lodash'
+import { isString, max, get, first, last } from 'lodash'
 import axios from 'axios'
 import { debounce } from 'lodash'
 import { rgba } from 'polished'
@@ -76,9 +76,8 @@ const Errors = styled(({ errors, ...props }) => (
     })}
   </div>
 ))`
-  ${monospace}
-  width: 100%;
-  background: #FCF2F4;
+  ${monospace} width: 100%;
+  background: #fcf2f4;
   color: #ec4852;
   white-space: pre;
   overflow: auto;
@@ -122,7 +121,8 @@ const Triggers = styled.div`
   display: flex;
 `
 
-const Trigger = styled.div`
+// prettier-ignore
+const Trigger = styled(({ isActive, ...props }) => <div {...props}/>)`
   font-size: 0.833333333rem;
   font-weight: ${weight('medium')};
   border-radius: 2px;
@@ -132,9 +132,7 @@ const Trigger = styled.div`
   cursor: pointer;
   border: 1px solid ${grayscale(7)};
 
-  ${props =>
-    props.isActive &&
-    `
+  ${props =>props.isActive && `
     background: ${grayscale('white')};
     box-shadow: ${shadow(1)};
   `};
@@ -146,28 +144,37 @@ const Tabs = styled.div`
   display: flex;
 `
 
-const Tab = styled.div`
+// prettier-ignore
+const Tab = styled(({ isActive, ...props }) => <div {...props}/>)`
   width: 100%;
   display: none;
-  ${props =>
-    props.isActive &&
-    `
+  ${props => props.isActive &&`
     display: flex;
   `};
 `
 
-const getBlockType = component =>
-  component.props.children[0].props.className.split('language-')[1].trim()
+/**
+ * get the block type: will be `json`, `html, `result`, etc
+ */
+const getBlockType = component => {
+  return last(get(component, 'props.children[0].props.className', '').split('language-')).trim()
+}
 
+/**
+ * returns the number of lines in a string
+ */
+const countLines = str => str.split(/\r\n|\r|\n/).length
+
+/**
+ * converts a mdast node to a string
+ */
 const mdastToString = ({ props: { children } }) => {
   return children
     .map(component => {
       if (isString(component)) {
         return component
-      } else if (component.props.children.length > 0) {
-        return mdastToString(component)
       } else {
-        return component.props.children[0]
+        return mdastToString(component)
       }
     })
     .join('')
@@ -177,42 +184,36 @@ class REPL extends Component {
   constructor(props) {
     super(props)
 
-    // calculate the inital code height
-    const htmlLines = props.html.split(/\r\n|\r|\n/).length
-    const substitutionDataLines = props.substitution_data.split(/\r\n|\r|\n/)
-      .length
+    // calculate the inital heights for the textarea
+    const htmlLines = countLines(props.html)
+    const substitutionDataLines = countLines(props.substitution_data)
 
-    // get the tallest height possible
-    const codeHeight =
-      16 *
-      (htmlLines > substitutionDataLines ? htmlLines : substitutionDataLines)
+    // get the tallest height
+    const editorHeight = 16 * max([htmlLines, substitutionDataLines])
 
     this.state = {
       code: {
         substitution_data: props.substitution_data,
         html: props.html,
       },
-      results: { html: props.results },
-      errors: [],
+      response: {
+        results: props.results,
+        errors: [],
+      },
       loading: true,
       activeTab: props.activeTab || 0,
-      codeHeight,
+      editorHeight,
     }
   }
 
-  setREPL = (code, { debounce }) => {
+  onChange = (code) => {
     const newCode = {
       ...this.state.code,
       ...code,
     }
 
     this.setState({ code: newCode, loading: true })
-
-    if (debounce) {
-      this.debouncedFetchPreview({ code: newCode })
-    } else {
-      this.fetchPreview({ code: newCode })
-    }
+    this.debouncedFetchPreview({ code: newCode })
   }
 
   // request a preview from the API
@@ -224,20 +225,27 @@ class REPL extends Component {
       )
       const { results, errors = [] } = data
 
-      this.setState({ results, errors, loading: false })
+      this.setState({
+        response: { results: get(results, 'html', ''), errors },
+        loading: false
+      })
     } catch (e) {
       this.setState({
-        errors: [{ message: e.message }],
-        loading: false,
+        response: { errors: [ { message: e.message } ], },
+        loading: false
       })
     }
   }
 
   debouncedFetchPreview = debounce(this.fetchPreview, 500)
 
+  /**
+   * if we weren't given a default result, fetch a preview
+   */
   componentDidMount() {
-    // if we weren't given a default result, fetch a preview
-    if (this.state.results.html.length > 0) {
+    const { results } = this.state.response
+
+    if (results.length > 0) {
       this.setState({ loading: false })
     } else {
       this.fetchPreview(this.state)
@@ -245,60 +253,58 @@ class REPL extends Component {
   }
 
   render() {
+    const {
+      loading,
+      activeTab,
+      code,
+      response,
+      editorHeight: height
+    } = this.state
+
     return (
       <Wrapper>
         <Code>
           <Triggers>
             <Trigger
-              isActive={this.state.activeTab === 0}
+              isActive={activeTab === 0}
               onClick={() => this.setState({ activeTab: 0 })}
             >
               HTML
             </Trigger>
             <Trigger
-              isActive={this.state.activeTab === 1}
+              isActive={activeTab === 1}
               onClick={() => this.setState({ activeTab: 1 })}
             >
               Data
             </Trigger>
           </Triggers>
           <Tabs>
-            <Tab isActive={this.state.activeTab === 0}>
+            <Tab isActive={activeTab === 0}>
               <Textarea
-                style={{ height: this.state.codeHeight }}
-                value={this.state.code.html}
+                style={{ height }}
+                value={code.html}
                 onChange={event =>
-                  this.setREPL(
-                    {
-                      html: event.target.value,
-                    },
-                    { debounce: true }
-                  )
+                  this.onChange({ html: event.target.value, })
                 }
               />
             </Tab>
-            <Tab isActive={this.state.activeTab === 1}>
+            <Tab isActive={activeTab === 1}>
               <Textarea
-                style={{ height: this.state.codeHeight }}
-                value={this.state.code.substitution_data}
+                style={{ height }}
+                value={code.substitution_data}
                 onChange={event =>
-                  this.setREPL(
-                    {
-                      substitution_data: event.target.value,
-                    },
-                    { debounce: true }
-                  )
+                  this.onChange({ substitution_data: event.target.value, })
                 }
               />
             </Tab>
           </Tabs>
         </Code>
         <Output>
-          <Spinner visible={this.state.loading} />
-          {this.state.errors.length > 0 ? (
-            <Errors errors={this.state.errors} />
+          <Spinner visible={loading} />
+          {response.errors.length > 0 ? (
+            <Errors errors={response.errors} />
           ) : (
-            <Results>{this.state.results.html}</Results>
+            <Results>{response.results}</Results>
           )}
         </Output>
       </Wrapper>
@@ -306,6 +312,9 @@ class REPL extends Component {
   }
 }
 
+/**
+ * Convert the markdown into props for the REPL component
+ */
 export default ({ children }) => {
   const codeBlocks = children.filter(
     component =>
@@ -334,7 +343,7 @@ export default ({ children }) => {
   }
 
   const isJsonFirst =
-    codeBlocks.length > 0 && getBlockType(codeBlocks[0]) === 'json'
+    codeBlocks.length > 0 && getBlockType(first(codeBlocks)) === 'json'
 
   // set the the second tab to active, if the json block was written first
   return (
