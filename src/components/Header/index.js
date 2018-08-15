@@ -129,18 +129,18 @@ class Header extends Component {
             <NavLink to="https://www.sparkpost.com/blog/category/developer">
               Blog
             </NavLink>
-            <NavLink to="https://app.sparkpost.com/auth">
-              Log In
-            </NavLink>
-            {<li>
-              <NavButton
-                to="https://app.sparkpost.com/join"
-                secondary
-                size="small"
-              >
-                Sign Up
-              </NavButton>
-            </li>}
+            <NavLink to="https://app.sparkpost.com/auth">Log In</NavLink>
+            {
+              <li>
+                <NavButton
+                  to="https://app.sparkpost.com/join"
+                  secondary
+                  size="small"
+                >
+                  Sign Up
+                </NavButton>
+              </li>
+            }
           </Nav>
         </NavWrapper>
         <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />
