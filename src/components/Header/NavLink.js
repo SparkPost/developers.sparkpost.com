@@ -4,9 +4,12 @@ import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, color } from 'utils/colors'
 import Link from 'components/Link'
 
+/**
+ * navLink is used in a GTM trigger
+ */
 // prettier-ignore
 const NavLink = styled(({ active, className, ...props }) => (
-  <li className={className}><Link.Unstyled {...props} /></li>
+  <li className={className}><Link.Unstyled {...props} className="navLink" /></li>
 ))`
   display: block;
   font-weight: inherit;

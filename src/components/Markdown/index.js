@@ -12,7 +12,7 @@ const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkRehype, { allowDangerousHTML: true })
   .use(rehypeRaw)
-  .use(rehypeHighlight, { plainText: ['no-highlight'] })
+  .use(rehypeHighlight, { plainText: ['no-highlight', 'results'] })
 
 const baseMarkdownProcessor = markdownProcessor().use(rehypeReact, {
   createElement: React.createElement,

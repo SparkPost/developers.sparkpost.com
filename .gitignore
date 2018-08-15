@@ -7,3 +7,5 @@ public/
 .DS_Store
 yarn-error.log
 .env
+# Netlify functions are built to this directory
+functions/
