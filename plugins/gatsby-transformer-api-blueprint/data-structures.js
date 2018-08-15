@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const visit = require('unist-util-visit')
 const modify = require('unist-util-modify-children')
 const removePosition = require('unist-util-remove-position')
-const flatten = require('lodash.flatten')
+const { flatten } = require('lodash')
 const unified = require('unified')
 const remarkParse = require('remark-parse')
 
