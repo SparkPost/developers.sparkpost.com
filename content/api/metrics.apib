@@ -4,18 +4,19 @@ description: Query real-time data about message processing, message disposition,
 
 # Group Metrics
 
-SparkPost logs copious amounts of statistical, real-time data about message processing, message disposition, and campaign performance. This reporting data is available in the [app](https://app.sparkpost.com/reports/summary) ([EU](https://app.eu.sparkpost.com/reports/summary)) or through the Metrics API. The Metrics API provides a variety of endpoints enabling you to retrieve a summary of the data, data grouped by a specific qualifier, or data by event type. Within each endpoint, you can also apply various filters to drill down to the data for your specific reporting needs.
+SparkPost logs copious amounts of statistical, real-time data about email processing, email disposition, and campaign performance.
+This reporting data is available in the [app](https://app.sparkpost.com/reports/summary) ([EU](https://app.eu.sparkpost.com/reports/summary)) or through the Metrics API enpoints.
+The Metrics API provides a variety of endpoints enabling you to retrieve a summary of the data, data grouped by a specific qualifier, or data by event type.
+Within each endpoint, you can also apply various filters to drill down to the data for your specific reporting needs.
 
-## Data retention
+<Banner status="info">Metrics data is retained for 6 months.</Banner>
 
-Metrics API data is retained for 6 months.
+## Metrics Definitions
 
-## Terminology 
+Definition for each metric available.
 
-Definitions for terms found in Metrics API
-
-| Term                             | Definition                                                                                          |
-|---------------------------------:|-----------------------------------------------------------------------------------------------------|
+| Metric                           | Definition                                                                                          |
+|----------------------------------|-----------------------------------------------------------------------------------------------------|
 | `count_targeted`                 | Messages successfully injected into SparkPost as well as rejected by it                             |
 | `count_injected`                 | Messages injected to or received by SparkPost                                                       |
 | `count_sent`                     | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces            |
@@ -50,22 +51,22 @@ Definitions for terms found in Metrics API
 | `total_delivery_time_subsequent` | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
 | `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
 
+## Enterprise Metrics Definitions
 
-<Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
+The majority of metrics available to Enterprise accounts are the same as defined above.
+There are some differences when it comes to "Unique" metrics:
+* Unique metrics aren't approximated for Enterprise accounts, but can take longer to update.
+* An extra approximate metric is available for each "Unique" metric, for quicker updates.
+
 
 
 ### Discoverability Links [GET /v1/metrics/]
 
 The Metrics API is designed for discoverability of child links. Calling the API root displays a list of URIs that exists within the Metrics API.
 
-<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> Accounts: Metric discoverability links for binding-groups and bindings apply to SparkPost Enterprise customers only.</Banner>
+<Banner status="info">Discoverability links for binding-groups and bindings apply to <strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> customers only.</Banner>
 
 + Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
 + Response 200
 
@@ -118,7 +119,8 @@ The Metrics API is designed for discoverability of child links. Calling the API 
 
 ## Deliverability [/v1/metrics/deliverability]
 
-The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
+The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template.
+You can also get specific types of data, such as rejection reason, to better understand your sending.
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
 
@@ -176,10 +178,6 @@ aggregate data, which can be used as "group by" qualifiers.
 
 + Request
 
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -303,7 +301,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
-        
+
         + Values
             + `count_injected`
             + `count_bounce`
@@ -387,7 +385,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
-        
+
         + Values
             + `count_injected`
             + `count_bounce`
@@ -469,7 +467,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
-        
+
         + Values
             + `count_injected`
             + `count_bounce`
@@ -564,7 +562,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
-        
+
         + Values
             + `count_injected`
             + `count_bounce`
@@ -1625,7 +1623,7 @@ Returns a list of domains that the Metrics API contains data on.
                 ]
             }
         }
- 
+
 ### Bindings Groups [GET /v1/metrics/binding-groups{?from,to,timezone,match,limit}]
 
 <Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the IP Pools list endpoint instead.</Banner>
