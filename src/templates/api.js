@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Layout from 'components/Layout'
 import tableOfContents from '../../content/api/table-of-contents.json'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
+import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import API from 'components/api'
 
 import { mediaQuery } from 'utils/breakpoint'
@@ -48,7 +50,8 @@ function insertPageTableOfContents({
           return {
             ...page,
             children:
-              pageTableOfContents.length === 1
+              pageTableOfContents.length === 1 &&
+              pageTableOfContents[0].children
                 ? pageTableOfContents[0].children
                 : pageTableOfContents, // if we only have one item at the top, skip it
           }
@@ -77,17 +80,35 @@ class Template extends Component {
 
   render() {
     const { props } = this
-
     const {
       ast,
       TableOfContents: pageTableOfContents = [],
       meta,
-    } = props.data.file.childApiBlueprint
+    } = props.data.apiBlueprint
     const { api } = minim.fromRefract(ast)
+
+    // decorate the table of contents with title, path, and label
+    const decoratedTableOfContents = tableOfContents.map(category => {
+      return {
+        ...category,
+        pages: category.pages.map(file => {
+          const pageNode = props.data.allApiBlueprint.edges.find(
+            ({ node }) => node.fields.file === file
+          ).node
+
+          return {
+            file,
+            title: pageNode.meta.title,
+            path: pageNode.fields.path,
+            label: pageNode.meta.label,
+          }
+        }),
+      }
+    })
 
     const fullTableOfContents = insertPageTableOfContents({
       file: props.pageContext.file,
-      tableOfContents,
+      tableOfContents: decoratedTableOfContents,
       pageTableOfContents,
     })
 
@@ -99,6 +120,7 @@ class Template extends Component {
           title={meta.title}
           meta={[{ name: 'description', content: meta.description }]}
         />
+        <ApiaryRedirects />
         <Sidebar>
           <Search />
           <Navigation
@@ -121,16 +143,30 @@ export default Template
 
 export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {
-    file(base: { eq: $file }) {
-      base
-      childApiBlueprint {
-        ast
-        TableOfContents
-        meta {
-          title
-          description
-          full
+    allApiBlueprint {
+      edges {
+        node {
+          meta {
+            title
+            label
+          }
+          fields {
+            path
+            file
+          }
         }
+      }
+    }
+    apiBlueprint(fields: { file: { eq: $file } }) {
+      ast
+      TableOfContents
+      meta {
+        title
+        description
+        full
+      }
+      fields {
+        path
       }
     }
   }

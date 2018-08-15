@@ -5,9 +5,11 @@ import { color, grayscale } from 'utils/colors'
 import { font, weight, monospace, uppercase } from 'utils/fonts'
 import normalize from 'styled-normalize'
 
-injectGlobal`
-  @import 'https://cloud.typography.com/6240112/7284192/css/fonts.css';
+// import font families
+import 'typeface-source-code-pro'
+import './fonts.css'
 
+injectGlobal`
   ${normalize}
 
   html {
@@ -40,6 +42,7 @@ injectGlobal`
     font-size: 17px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: ${grayscale('medium')};
     line-height: 1.15;
 

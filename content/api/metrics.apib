@@ -18,13 +18,15 @@ Definitions for terms found in Metrics API
 |---------------------------------:|-----------------------------------------------------------------------------------------------------|
 | `count_targeted`                 | Messages successfully injected into SparkPost as well as rejected by it                             |
 | `count_injected`                 | Messages injected to or received by SparkPost                                                       |
-| `count_sent`                     | Messages that SparkPost attempted to deliver, which includes both Deliveries and In-Band Bounces    |
+| `count_sent`                     | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces            |
 | `count_accepted`                 | Messages an ISP or other remote domain accepted (less Out-of-Band Bounces)                          |
 | `count_delivered`                | Messages delivered                                                                                  |
 | `count_delivered_first`          | Messages delivered on the first attempt                                                             |
 | `count_delivered_subsequent`     | Messages delivered that required more than one delivery attempt                                     |
 | `count_rendered`                 | Total renderings of a message                                                                       |
+| `count_initial_rendered`         | Total initial renderings of a message                                                               |
 | `count_unique_rendered`          | Total number of messages that were rendered at least once                                           |
+| `count_unique_initial_rendered`  | Total number of messages that were initally rendered at least once                                  |
 | `count_unique_confirmed_opened`  | Total number of messages that were rendered or had at least one link selected                       |
 | `count_clicked`                  | Total number of times that links were selected across all messages                                  |
 | `count_unique_clicked`           | Total number of messages which had at least one link selected one or more times                     |
@@ -49,14 +51,14 @@ Definitions for terms found in Metrics API
 | `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
 
 
-<banner status="info"><strong>Note</strong>: For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</banner>
+<Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
 
-### Discoverability Links [GET /metrics/]
+### Discoverability Links [GET /v1/metrics/]
 
 The Metrics API is designed for discoverability of child links. Calling the API root displays a list of URIs that exists within the Metrics API.
 
-<banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise customers only</a></strong>: Metric discoverability links for binding-groups and bindings apply to SparkPost Enterprise customers only.</banner>
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> Accounts: Metric discoverability links for binding-groups and bindings apply to SparkPost Enterprise customers only.</Banner>
 
 + Request
 
@@ -114,13 +116,13 @@ The Metrics API is designed for discoverability of child links. Calling the API 
         }
 
 
-## Deliverability [/metrics/deliverability]
+## Deliverability [/v1/metrics/deliverability]
 
 The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
 
-### Metrics Summary [GET /metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone}]
+### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone}]
 
 Provides high-level summary of aggregate metrics and lists the child endpoints that contain
 aggregate data, which can be used as "group by" qualifiers.
@@ -201,7 +203,7 @@ aggregate data, which can be used as "group by" qualifiers.
 
 
 
-### Metrics by Recipient Domain [GET /metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,order_by,limit}]
+### Metrics by Recipient Domain [GET /v1/metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,order_by,limit}]
 
 Provides aggregate metrics grouped by domain over the time window specified.
 
@@ -285,7 +287,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
         }
 
 
-### Metrics by Sending IP [GET /metrics/deliverability/sending-ip{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Sending IP [GET /v1/metrics/deliverability/sending-ip{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by sending IP over the time window specified.
 
@@ -369,7 +371,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
         }
 
 
-### Metrics by IP Pool [GET /metrics/deliverability/ip-pool{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by IP Pool [GET /v1/metrics/deliverability/ip-pool{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by IP pool over the time window specified.
 
@@ -451,7 +453,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
         }
 
 
-### Metrics by Sending Domain [GET /metrics/deliverability/sending-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Sending Domain [GET /v1/metrics/deliverability/sending-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by sending domain over the time window specified.
 
@@ -546,7 +548,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             ]
         }
 
-### Metrics by Subaccount [GET /metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Subaccount [GET /v1/metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by subaccount over the time window specified. Please note that master account events will be returned grouped by the subaccount_id field containing the value `0`.
 
@@ -641,7 +643,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             ]
         }
 
-### Metrics by Campaign [GET /metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Campaign [GET /v1/metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by campaign over the time window specified.
 
@@ -724,7 +726,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
         }
 
 
-### Metrics by Template [GET /metrics/deliverability/template{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Template [GET /v1/metrics/deliverability/template{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by template over the time window specified.
 
@@ -806,7 +808,7 @@ Provides aggregate metrics grouped by template over the time window specified.
             ]
         }
 
-### Metrics by Watched Domain [GET /metrics/deliverability/watched-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Watched Domain [GET /v1/metrics/deliverability/watched-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by watched domain over the time window specified. The difference
 between domain and watched domain is that watched domains are comprised of the top 99% domains
@@ -891,7 +893,7 @@ in the world.
         }
 
 
-### Time-Series Metrics [GET /metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
+### Time-Series Metrics [GET /v1/metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
 Provides deliverability metrics ordered by a precision of time.
 
@@ -1037,7 +1039,7 @@ The following table describes the validation for the **precision** parameter:
         }
 
 
-### Bounce Reason Metrics [GET /metrics/deliverability/bounce-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
+### Bounce Reason Metrics [GET /v1/metrics/deliverability/bounce-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce reasons.
 
@@ -1058,6 +1060,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1099,7 +1102,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
         }
 
 
-### Bounce Reason Metrics By Domain [GET /metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
+### Bounce Reason Metrics By Domain [GET /v1/metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
 Provides deliverability metrics, specific to bounce events, grouped by the domain and bounce reasons.
 
@@ -1120,6 +1123,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1163,7 +1167,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
         }
 
 
-### Bounce Classification Metrics [GET /metrics/deliverability/bounce-classification{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
+### Bounce Classification Metrics [GET /v1/metrics/deliverability/bounce-classification{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
 
@@ -1185,6 +1189,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
             + `count_bounce`
             + `count_inband_bounce`
             + `count_outofband_bounce`
+            + `count_admin_bounce`
 
     + limit (optional, int, `5`) ... Maximum number of results to return.
 
@@ -1221,7 +1226,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
         }
 
 
-### Rejection Reason Metrics [GET /metrics/deliverability/rejection-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
+### Rejection Reason Metrics [GET /v1/metrics/deliverability/rejection-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to rejection events, grouped by the rejection reasons.
 
@@ -1259,7 +1264,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
         }
 
 
-### Rejection Reason Metrics By Domain [GET /metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
+### Rejection Reason Metrics By Domain [GET /v1/metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to rejection events, grouped by the domain and rejection reasons.
 
@@ -1299,7 +1304,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
         }
 
 
-### Delay Reason Metrics [GET /metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
+### Delay Reason Metrics [GET /v1/metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the delay reasons.
 
@@ -1342,7 +1347,7 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
         }
 
 
-### Delay Reason Metrics By Domain [GET /metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
+### Delay Reason Metrics By Domain [GET /v1/metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the domain and delay reasons.
 
@@ -1387,9 +1392,9 @@ Provides deliverability metrics, specific to delay events, grouped by the domain
         }
 
 
-### Engagement Details [GET /metrics/deliverability/link-name{?from,to,delimiter,timezone,campaigns,templates,subaccounts,sending_domains,metrics,limit}]
+### Engagement Details [GET /v1/metrics/deliverability/link-name{?from,to,delimiter,timezone,campaigns,templates,subaccounts,sending_domains,metrics,limit}]
 
-Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/substitutions-reference.html#header-link-names).
+Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/substitutions-reference/#header-link-names).
 
 + Parameters
     + from (required, datetime, `2014-07-11T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1433,7 +1438,7 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
         }
 
 
-### Deliveries By Attempt [GET /metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
+### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
 
 Provides aggregate count of deliveries grouped by the attempt number.
 
@@ -1475,15 +1480,15 @@ Provides aggregate count of deliveries grouped by the attempt number.
         }
 
 
-### Metrics by Binding [GET /metrics/deliverability/binding{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Binding [GET /v1/metrics/deliverability/binding{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
 
-<banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by Sending IP endpoint instead.</banner>
+<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by Sending IP endpoint instead.</Banner>
 
 + Request
 
-### Metrics by Binding Group [GET /metrics/deliverability/binding-group{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Binding Group [GET /v1/metrics/deliverability/binding-group{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
 
-<banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by IP Pool endpoint instead.</banner>
+<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by IP Pool endpoint instead.</Banner>
 
 + Request
 
@@ -1491,7 +1496,7 @@ Provides aggregate count of deliveries grouped by the attempt number.
 
 Each of the the following endpoints returns a list of their resources for which we have metrics. These help you get an overview of what metrics are available to you.
 
-### IP Pools [GET /metrics/ip-pools{?from,to,timezone,match,limit}]
+### IP Pools [GET /v1/metrics/ip-pools{?from,to,timezone,match,limit}]
 
 Returns a list of IP pools that the Metrics API contains data on.
 
@@ -1524,7 +1529,7 @@ Returns a list of IP pools that the Metrics API contains data on.
         }
 
 
-### Sending IPs [GET /metrics/sending-ips{?from,to,timezone,match,limit}]
+### Sending IPs [GET /v1/metrics/sending-ips{?from,to,timezone,match,limit}]
 
 Returns a list of sending IPs that the Metrics API contains data on.
 
@@ -1557,7 +1562,7 @@ Returns a list of sending IPs that the Metrics API contains data on.
         }
 
 
-### Campaigns [GET /metrics/campaigns{?from,to,timezone,limit,match}]
+### Campaigns [GET /v1/metrics/campaigns{?from,to,timezone,limit,match}]
 
 Returns a list of campaigns that the Metrics API contains data on.
 
@@ -1589,7 +1594,7 @@ Returns a list of campaigns that the Metrics API contains data on.
             }
         }
 
-### Domains [GET /metrics/domains{?from,to,timezone,limit,match}]
+### Domains [GET /v1/metrics/domains{?from,to,timezone,limit,match}]
 
 Returns a list of domains that the Metrics API contains data on.
 
@@ -1621,14 +1626,14 @@ Returns a list of domains that the Metrics API contains data on.
             }
         }
  
-### Bindings Groups [GET /metrics/binding-groups{?from,to,timezone,match,limit}]
+### Bindings Groups [GET /v1/metrics/binding-groups{?from,to,timezone,match,limit}]
 
-<banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the IP Pools list endpoint instead.</banner>
+<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the IP Pools list endpoint instead.</Banner>
 
 + Request
 
-### Bindings [GET /metrics/bindings{?from,to,timezone,match,limit}]
+### Bindings [GET /v1/metrics/bindings{?from,to,timezone,match,limit}]
 
-<banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Sending IPs list endpoint instead.</banner>
+<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Sending IPs list endpoint instead.</Banner>
 
 + Request

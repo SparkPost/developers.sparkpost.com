@@ -48,7 +48,7 @@ Recipients are described in an array of objects with the following attributes:
         + (object)
         + (string)
     + return_path (string) 
-        Email address to use for envelope FROM. Overrides transmission level return_path. The domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-verify-post). The local part of the return_path address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost.
+        Email address to use for envelope FROM. Overrides transmission level return_path. The domain part of the return_path address must be a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-post-verify-a-sending-domain). The local part of the return_path address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the return_path may be any valid email address and the localpart in the return_path will **not** be overwritten by SparkPost.
     + tags (array) - Array of text labels associated with a recipient. Tags are available in Webhook events.  Maximum number of tags - 10 per recipient, 100 system wide.  Any tags over the limits are ignored.
     + metadata (object) - Key/value pairs associated with a recipient. Metadata is available during events through the Webhooks and is provided to the substitution engine.  A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is available with recipient metadata taking precedence over transmission metadata when there are conflicts.
     + substitution_data (object) - Key/value pairs associated with a recipient that are provided to the substitution engine. Recipient substitution data takes precedence over transmission substitution data. Unlike metadata, substitution data is not included in Webhook events.
@@ -120,7 +120,7 @@ or:
 
 The `To` header is only constructed for messages built from email part content.  The `To` header is not built for email_rfc822 content.
 
-### Create a Recipient List [POST /recipient-lists{?num_rcpt_errors}]
+### Create a Recipient List [POST /v1/recipient-lists{?num_rcpt_errors}]
 
 + Data Structure
     + id (string) - Unique alphanumeric ID. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
@@ -266,7 +266,7 @@ returned.
                 ]
             }
 
-### Retrieve a Recipient List [GET /recipient-lists/{id}{?show_recipients}]
+### Retrieve a Recipient List [GET /v1/recipient-lists/{id}{?show_recipients}]
 
 Retrieve details about a specified recipient list by specifying its id in the URI path.  To
 retrieve the recipients contained in a list, the list must be specified and the `show_recipients` parameter must be set to true.
@@ -373,7 +373,7 @@ retrieve the recipients contained in a list, the list must be specified and the 
                 ]
             }
 
-### Update a Recipient List [PUT /recipient-lists/{id}{?num_rcpt_errors}]
+### Update a Recipient List [PUT /v1/recipient-lists/{id}{?num_rcpt_errors}]
 
 If a `recipients` array is provided in the update request, it will replace the current recipients. This means that if you're adding, updating, or removing a single recipient, the `recipients` array must contain all current recipients, regardless they are being changed or not.
 
@@ -550,9 +550,9 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
             }
 
 
-### Delete a Recipient List [DELETE /recipient-lists/{id}]
+### Delete a Recipient List [DELETE /v1/recipient-lists/{id}]
 
-<banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</banner>
+<Banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</Banner>
 
 + Parameter
     + id (required, string, `unique_id_4_graduate_students_list`)
@@ -597,9 +597,9 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
         }
 
 
-### List all Recipient Lists [GET /recipient-lists]
+### List all Recipient Lists [GET /v1/recipient-lists]
 
-Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-retrieve-a-recipient-list-get) to get a list the recipients.
+Returns an array of abbreviated recipient list objects. The recipients for each list are not included in the results. [Retrieve a single list](#recipient-lists-get-retrieve-a-recipient-list) to get a list the recipients.
 
 + Request
 

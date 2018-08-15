@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mediaQuery } from 'utils/breakpoint'
 import slugify from 'utils/api/slugify'
 import Tooltip from 'components/Tooltip'
 import Link from 'components/Link'
@@ -7,12 +8,19 @@ import Debug from 'components/api/Debug'
 import { Heading, BlockMarkdown } from 'components/api/components'
 import Resource from './Resource'
 
+// prettier-ignore
 const TitleWrapper = styled.div.attrs({ className: 'block' })`
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column-reverse;
+
+  ${mediaQuery('sm', `
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  `)}
 `
 
+// prettier-ignore
 const PostmanLink = styled(props => (
   <Tooltip
     {...props}
@@ -26,6 +34,12 @@ const PostmanLink = styled(props => (
     </Link>
   </Tooltip>
 ))`
+  margin: 2.5rem 0 -1rem 0;
+
+  ${mediaQuery('sm', `
+    margin: 0;
+  `)}
+
   a {
     line-height: 1rem;
   }

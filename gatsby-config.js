@@ -28,33 +28,7 @@ module.exports = {
           useACF: false,
           excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
         }
-      },
-      {
-        resolve: 'gatsby-source-github',
-        options: {
-          headers: {
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-          },
-          queries: [
-            `{
-              search(type: REPOSITORY, query: "is:public user:SparkPost", first: 100) {
-                edges {
-                  node {
-                    ... on Repository {
-                      name
-                      url
-                      description
-                      stargazers {
-                        totalCount
-                      }
-                    }
-                  }
-                }
-              }
-            }`,
-          ],
-        }
-      },
+      }
     ] : [],
     process.env.GATSBY_ACTIVE_ENV === 'publish' ? [
       {
@@ -68,6 +42,7 @@ module.exports = {
     ] : [],
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
+    `gatsby-source-sparkpost-api`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -98,6 +73,16 @@ module.exports = {
     },
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          // Disable cache for Gatsby's default service worker file path
+          // suggested by https://www.netlify.com/blog/2018/06/28/5-pro-tips-and-plugins-for-optimizing-your-gatsby---netlify-site/
+          "/sw.js": [ "Cache-Control: no-cache" ]
+        },
+      }
+    }
   ])
 }

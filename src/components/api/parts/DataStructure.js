@@ -32,14 +32,14 @@ const Enums = styled.p`
 
 const EnumTitle = styled.b`
   color: ${grayscale(4)};
-  fontsize: 0.833333333rem;
-  fontweight: ${weight('medium')};
+  font-size: 0.833333333rem;
+  font-weight: ${weight('medium')};
 `
 
 const nativeTypes = ['boolean', 'string', 'number', 'object', 'array', 'enum']
 
 function Attribute(props) {
-  const {
+  let {
     name,
     type,
     description,
@@ -58,15 +58,17 @@ function Attribute(props) {
   const actualType = nativeTypes.includes(type) ? type : 'object'
 
   let isMultipleTypes, types
-  if (actualType === 'enum') {
-    // where we have no values for an enum, it is simply the definition that a single field can be of multiple types
-    isMultipleTypes = !enumerations.find(
-      enumeration => !isEmpty(enumeration.value)
-    )
+  if (!!enumerations && actualType === 'enum') {
+    types = uniq(enumerations.map(({ type }) => type))
+    isMultipleTypes = types.length > 1
+  }
 
-    if (isMultipleTypes) {
-      types = uniq(enumerations.map(({ type }) => type))
-    }
+  if (
+    !!enumerations &&
+    !children &&
+    enumerations.find(({ type }) => type === 'object')
+  ) {
+    children = enumerations.find(({ type }) => type === 'object').children
   }
 
   return (
@@ -74,9 +76,7 @@ function Attribute(props) {
       <div>
         <Name>{name}</Name>{' '}
         <Property>
-          {isMultipleTypes
-            ? types.join(' or ')
-            : actualType /*generate link to dereferenced type */}
+          {isMultipleTypes ? types.join(' or ') : type}
           {actualType === 'array' &&
             ((sampleTypes &&
               uniq(sampleTypes).length === 1 &&
@@ -148,7 +148,6 @@ const AttributeWrapper = styled.div`
 
   div &:first-of-type {
     border-top: 1px solid ${grayscale(8)};
-    // padding-top: 0;
   }
 
   p {
@@ -200,12 +199,15 @@ const ChildrenWrapper = styled.div`
     width: 0.5rem;
   }
 
-  ${AttributeWrapper} {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  /* extra specificity to fix some weird server-side vs client-side rendering */
+  && {
+    ${AttributeWrapper} {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
 
-    &:last-child {
-      border-bottom: 0;
+      &:last-child {
+        border-bottom: 0;
+      }
     }
   }
 `
@@ -256,13 +258,19 @@ const ChildrenToggle = styled.button`
 export default function DataStructure({
   title = 'Request Body',
   dataStructure,
+  jsonArray,
   isParameter,
+  ...props
 }) {
-  const jsonArray = dataStructureToJson(dataStructure)
+  jsonArray = jsonArray || dataStructureToJson(dataStructure)
 
   return (
-    <AttributesWrapper className="block">
-      <AttributesTitle>{title}</AttributesTitle>
+    <AttributesWrapper className="block" {...props}>
+      {title && (
+        <AttributesTitle>
+          {title.trim().length > 0 ? title : <span>&nbsp;</span>}
+        </AttributesTitle>
+      )}
       {jsonArray.map((props, i) => (
         <Attribute key={i} isParameter={isParameter} {...props} />
       ))}

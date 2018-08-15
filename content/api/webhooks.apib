@@ -12,12 +12,18 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 * Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for auditing and prevention of processing duplicate batches.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
 
+### Webhook Event Types
+
+You can receive any of the following types of events in webhook payloads.
+
+<WebhookEvents></WebhookEvents>
+
 ## Webhooks Object
 
 + Data Structure: Attributes
     + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + auth_type (enum) - Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
@@ -57,14 +63,14 @@ ___
 
 __The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
-### Create a Webhook [POST /webhooks]
+### Create a Webhook [POST /v1/webhooks]
 
 When a webhook is created, a test POST request is sent to the `target` URL. If this request does not receive an HTTP 200 response, your request to the Webhook API will fail with HTTP 400 and the webhook will not be created. If created successfully, the webhook will begin to receive event data after 1 minute.
 
 + Data Structure
     + name (string, required) - Name for webhook
     + target (string, required) - URL of the target to which to POST event batches. 
-    + events (array, required)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array, required)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
         + Default: true
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
@@ -145,7 +151,7 @@ When a webhook is created, a test POST request is sent to the `target` URL. If t
             ]
         }
 
-### Validate a Webhook [POST /webhooks/{id}/validate]
+### Validate a Webhook [POST /v1/webhooks/{id}/validate]
 
 The validation request sends an example message event batch the target URL, validates that the target responds with HTTP 200,
 and returns information on the response received from the target.
@@ -195,7 +201,7 @@ and returns information on the response received from the target.
             }
         }
 
-### Retrieve a Webhook [GET /webhooks/{id}{?timezone}]
+### Retrieve a Webhook [GET /v1/webhooks/{id}{?timezone}]
 
 + Parameters
     + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
@@ -253,7 +259,7 @@ and returns information on the response received from the target.
         }
 
 
-### Retrieve Batch Status Information [GET /webhooks/{id}/batch-status{?limit}]
+### Retrieve Batch Status Information [GET /v1/webhooks/{id}/batch-status{?limit}]
 
 Returns the status information for the batches that have been generated. Status information includes the successes of batches that previously failed to reach the webhook's target URL and batches that are currently in a failed state.
 
@@ -292,12 +298,12 @@ Returns the status information for the batches that have been generated. Status 
         }
 
 
-### Update a Webhook [PUT /webhooks/{id}]
+### Update a Webhook [PUT /v1/webhooks/{id}]
 
 + Data Structure
     + name (string) - Name for webhook
     + target (string) - URL of the target to which to POST event batches. 
-    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types.
+    + events (array)  - Array of event types this webhook will send. Use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + auth_type: none, basic, oauth2 (enum)
@@ -327,7 +333,7 @@ Any batches already queued for delivery to this webhook will not be affected. Fo
             {
                 "name": "Renamed webhook",
                 "events": [
-                    "rejection",
+                    "generation_rejection",
                     "delay"
                 ],
                 "auth_type": "none",
@@ -353,7 +359,7 @@ Any batches already queued for delivery to this webhook will not be affected. Fo
 
 
 
-### Delete a Webhook [DELETE /webhooks/{id}]
+### Delete a Webhook [DELETE /v1/webhooks/{id}]
 
 This will not affect any webhook batches that are already queued for delivery.
 
@@ -369,7 +375,7 @@ This will not affect any webhook batches that are already queued for delivery.
 + Response 204
 
 
-### List all Webhooks [GET /webhooks{?timezone}]
+### List all Webhooks [GET /v1/webhooks{?timezone}]
 
 Returns a list of all your webhooks.
 
@@ -496,7 +502,7 @@ Returns a list of all your webhooks.
 
 
 
-## Documentation [/webhooks/events/documentation] 
+## Documentation [/v1/webhooks/events/documentation] 
 
 ### Events Documentation [GET]
 
@@ -519,14 +525,14 @@ Returns a list of descriptions of the events, event types, and event fields that
     }
 
 
-### Event Samples [GET /webhooks/events/samples{?events}]
+### Event Samples [GET /v1/webhooks/events/samples{?events}]
 
 Returns an example of the event data that will be posted by a webhook for the specified events.
 
 The data that will arrive at your target URL during normal operation (as opposed to calls to this endpoint) will <strong>not</strong> contain the top level <code>results</code> key shown in the example response.
 
 + Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the [Events Documentation](#webhooks-documentation-get) endpoint to list the available event types, defaults to all event types.
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload, use the [Events Documentation](#webhooks-documentation) endpoint to list the available event types, defaults to all event types.
 
 + Request
 
