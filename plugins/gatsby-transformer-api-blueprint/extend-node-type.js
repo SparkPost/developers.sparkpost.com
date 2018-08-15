@@ -1,11 +1,11 @@
 const { GraphQLJSON } = require('gatsby/graphql')
-const { flatMapDeep } = require('lodash')
+const { flatMapDeep, flatten } = require('lodash')
 const parseApiBlueprint = require('./parse-api-blueprint')
 const minim = require('minim').namespace()
 const unified = require('unified')
 const remarkParse = require('remark-parse')
 const remarkStringify = require('remark-stringify')
-const toc = require('mdast-util-toc')
+const generateTOC = require('mdast-util-toc')
 const slugify = require('../../src/utils/api/slugify')
 const { gatherDataStructures, replaceDataStructures, insertDataStructures } = require('./data-structures')
 
@@ -56,16 +56,40 @@ function getItems(node, current = {}) {
   return {}
 }
 
+
+/**
+ * remove empty steps in the ToC that happen when the headers skip a level
+ */
+function removeEmptySteps(toc) {
+  return flatten(toc.map((heading) => {
+    if (heading.children && !heading.title) {
+      return removeEmptySteps(heading.children)
+    }
+
+    if (heading.children) {
+      return {
+        ...heading,
+        children: removeEmptySteps(heading.children)
+      }
+    }
+
+    return heading
+  }))
+}
+
 /**
  * Generate a table of content where the heading hierarchy is respected
  */
 function generateLeveledMarkdownTableOfContents(markdown) {
   const tree = parseMarkdown(markdown.join(''))
+  const toc = getItems(generateTOC(tree).map).children || []
 
-  return getItems(toc(tree).map).children || []
+  return removeEmptySteps(toc)
 }
 
-
+/**
+ * Flatten the markdon table of contents
+ */
 function generateMarkdownTableOfContents(markdown) {
   const toc = generateLeveledMarkdownTableOfContents(markdown)
 
