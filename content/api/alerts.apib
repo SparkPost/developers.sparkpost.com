@@ -119,7 +119,7 @@ Retrieve full information about a single alert.
 
 
 ### Updates an Alert [PUT /labs/alerts/{id}]
-Updates an existing alert
+Updates an existing alert. Updating email_addresses replaces the the existing array with the new array. 
 
 + Data Structure
     + name (string) - Display name of the alert.
@@ -163,6 +163,19 @@ Updates an existing alert
             "alert_metric": "monthly_sending_limit"
         }
     }
+    
+    
+### Delete an Alert [DELETE /labs/alerts/{id}]
+
+Deletes the alert with the matching id. 
+
++ Parameters
+    + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
+
++ Request
+
++ Response 204
+
 
 ### List all Alerts [GET /labs/alerts]
 Returns an array of all your Alerts. Each Alert isn't returned as a full Alert Object, and is abbreviated to the following attributes:
