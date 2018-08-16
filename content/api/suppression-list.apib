@@ -187,7 +187,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
 
 + Parameters
     + recipient: `rcpt@example.com` (string, required) - Recipient email address.
-    + types: transactional (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
+    + types: `transactional` (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
     + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
@@ -279,17 +279,21 @@ Perform a filtered search for entries in your suppression list. Returns an array
     + from: `2017-01-01T09:00:00-0400` (string, optional) - Date the suppressions were last updated, in the format `YYYY-MM-DDTHH:mm:ssZ`.
     + domain: `example.com` (string, optional) - Domains to match in the search.
     + sources: `Bounce%20Rule,Manually%20Added` (list, optional) - Sources to match in the search, i.e. entries that were added by this source.
-    + types: transactional (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
+    + types: `transactional` (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
     + description (string, optional) - String to match in suppression descriptions.
     + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
     + page (number, optional) - The results page number to return. Used with `per_page` for paging through results. Works up to 10,000 results. Use the `cursor` parameter to page larger result sets.
-    + sort (enum, optional) - Sort will return results sorted by the `updated` field in ascending (`asc`) or descending (`desc`) order.
-        + asc
-        + desc
-        + Default: desc
-        
+    + sort = `desc` (enum, optional) -
+
+        Sort will return results sorted by the `updated` field in ascending (`asc`) or descending (`desc`) order.
+
+        + Values
+            + asc
+            + desc
+
+
 + Request
 
 + Response 200 (application/json)
