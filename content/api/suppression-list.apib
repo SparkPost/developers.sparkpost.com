@@ -285,13 +285,12 @@ Perform a filtered search for entries in your suppression list. Returns an array
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
     + page (number, optional) - The results page number to return. Used with `per_page` for paging through results. Works up to 10,000 results. Use the `cursor` parameter to page larger result sets.
-    + sort = `desc` (enum, optional) -
-
+    + sort = `desc` (enum, optional)
         Sort will return results sorted by the `updated` field in ascending (`asc`) or descending (`desc`) order.
 
         + Values
-            + asc
-            + desc
+            + `asc`
+            + `desc`
 
 
 + Request
