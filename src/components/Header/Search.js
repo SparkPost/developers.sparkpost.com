@@ -21,6 +21,7 @@ const SearchWrapper = styled.div`
   display: none;
   text-align: right;
   white-space: normal;
+  padding-right: 0.5rem;
 
   & > div {
     max-width: 20rem;

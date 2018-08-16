@@ -22,7 +22,7 @@ export default styled(({ children, secondary, ...props }) => (
     > ul {
       display: flex;
       align-items: center;
-      ${props => props.secondary && css` font-weight: ${weight('light')};`}
+      ${props => props.secondary && css` font-weight: ${weight('normal')};`}
     }
   `)}
 `

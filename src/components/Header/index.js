@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, shadow } from 'utils/colors'
-
+import Button from 'components/Button'
 import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
@@ -31,6 +31,11 @@ const Wrapper = styled.header`
   ${mediaQuery('md', `
     padding: 0 1rem;
   `)}
+`
+
+const NavButton = styled(Button)`
+  margin: 0 0 0 0.5rem;
+  line-height: 0.9rem;
 `
 
 // prettier-ignore
@@ -112,19 +117,27 @@ class Header extends Component {
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-            <NavLink to="http://slack.sparkpost.com">Community</NavLink>
-          </Nav>
-          <Search />
-          <Nav secondary>
+            <NavLink to="http://slack.sparkpost.com">Slack</NavLink>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status
               </span>
             </NavLink>
-            <NavLink to="https://www.sparkpost.com/blog/category/developer">
-              Blog
-            </NavLink>
-            <NavLink to="https://app.sparkpost.com/join">Sign Up</NavLink>
+          </Nav>
+          <Search />
+          <Nav>
+            <NavLink to="https://app.sparkpost.com/auth">Log In</NavLink>
+            {
+              <li>
+                <NavButton
+                  to="https://app.sparkpost.com/join"
+                  secondary
+                  size="small"
+                >
+                  Sign Up
+                </NavButton>
+              </li>
+            }
           </Nav>
         </NavWrapper>
         <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />
