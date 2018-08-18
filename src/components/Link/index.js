@@ -6,6 +6,10 @@ import { color, grayscale } from 'utils/colors'
 import { weight } from 'utils/fonts'
 
 function Link({ to = null, onClick, children, ...props }) {
+  if (props.target === '_blank') {
+    props.rel = 'noopener';
+  }
+
   return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (
     <a href={to} onClick={onClick} {...props}>
       {children}
