@@ -51,6 +51,7 @@ const Layout = ({ data, children, location }) => (
             defaultTitle={data.site.siteMetadata.title}
             titleTemplate="%s - SparkPost"
           >
+            <html lang="en" />
             <meta
               name="description"
               content={data.site.siteMetadata.description}
@@ -64,7 +65,7 @@ const Layout = ({ data, children, location }) => (
             <meta name="twitter:card" content="summary_large_image" />
             <meta
               name="twitter:image"
-              content={withPrefix('/favicons/cover.jpg')}
+              content={withPrefix('/meta/cover.jpg')}
             />
             {'' /* favicon and app data */}
             <link
@@ -84,7 +85,6 @@ const Layout = ({ data, children, location }) => (
               href={withPrefix('/favicons/favicon-16x16.png')}
               sizes="16x16"
             />
-            <link rel="manifest" href={withPrefix('/favicons/manifest.json')} />
             <link
               rel="mask-icon"
               href={withPrefix('/favicons/safari-pinned-tab.svg')}
@@ -96,8 +96,9 @@ const Layout = ({ data, children, location }) => (
             />
             <meta
               name="msapplication-config"
-              content={withPrefix('/favicons/browserconfig.xml')}
+              content={withPrefix('/meta/browserconfig.xml')}
             />
+            <link rel="manifest" href={withPrefix('/meta/manifest.json')} />
             <meta name="theme-color" content="#ffffff" />
           </Helmet>
           {children}
