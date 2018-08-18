@@ -74,7 +74,13 @@ const SocialIcons = styled.ul`
 `
 
 const AltText = styled.span`
-  display: none;
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 `
 
 const SocialIcon = styled(({ to, icon, alt, ...props }) => (
