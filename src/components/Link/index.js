@@ -7,7 +7,7 @@ import { weight } from 'utils/fonts'
 
 function Link({ to = null, onClick, children, ...props }) {
   if (props.target === '_blank') {
-    props.rel = 'noopener';
+    props.rel = 'noopener'
   }
 
   return (to && (isAbsoluteUrl(to) || to.startsWith('#'))) || onClick ? (

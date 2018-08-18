@@ -83,6 +83,7 @@ module.exports = {
         showSpinner: false,
       }
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
     {
