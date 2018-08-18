@@ -73,10 +73,15 @@ const SocialIcons = styled.ul`
   margin: 1.25rem 0 0 0;
 `
 
-const SocialIcon = styled(({ to, icon, ...props }) => (
+const AltText = styled.span`
+  display: none;
+`
+
+const SocialIcon = styled(({ to, icon, alt, ...props }) => (
   <li {...props}>
     <Link.Unstyled to={to} target="_blank">
       <i className={`fa fa-${icon}`} />
+      <AltText>{alt}</AltText>
     </Link.Unstyled>
   </li>
 ))`
@@ -142,22 +147,38 @@ export default () => (
               <SocialIcon
                 to="https://www.facebook.com/sparkpost/"
                 icon="facebook-square"
+                alt="Facebook"
               />
-              <SocialIcon to="https://twitter.com/SparkPost" icon="twitter" />
+              <SocialIcon
+                to="https://twitter.com/SparkPost"
+                icon="twitter"
+                alt="Twitter"
+              />
               <SocialIcon
                 to="https://www.linkedin.com/company/sparkpost"
                 icon="linkedin-square"
+                alt="LinkedIn"
               />
               <SocialIcon
                 to="https://www.youtube.com/channel/UC5vz6wEfpJjGipY_alrYuhQ"
                 icon="youtube"
+                alt="Youtube"
               />
               <SocialIcon
-                to="http://www.slideshare.net/SparkPost"
+                to="https://www.slideshare.net/SparkPost"
                 icon="slideshare"
+                alt="Slideshare"
               />
-              <SocialIcon to="http://slack.sparkpost.com/" icon="slack" />
-              <SocialIcon to="https://github.com/SparkPost" icon="github" />
+              <SocialIcon
+                to="http://slack.sparkpost.com/"
+                icon="slack"
+                alt="Slack"
+              />
+              <SocialIcon
+                to="https://github.com/SparkPost"
+                icon="github"
+                alt="GitHub"
+              />
             </SocialIcons>
           </FooterColumn>
         </Row>
