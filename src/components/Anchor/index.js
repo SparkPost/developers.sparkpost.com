@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import slugify from 'slugify'
+import { castArray } from 'lodash'
 import Link from 'components/Link'
 
 function Anchor({ title, children, ...props }) {
+  if (!title) title = castArray(children).join('')
+
   return (
     <Anchor.Target title={title} {...props}>
       {children}{' '}

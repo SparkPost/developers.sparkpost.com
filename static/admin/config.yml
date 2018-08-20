@@ -2,10 +2,8 @@ backend:
   name: github
   repo: SparkPost/developers.sparkpost.com
   branch: changelog
-
 media_folder: static/media
 public_folder: /media
-
 collections:
   - label: Changelog
     name: changelog
@@ -13,8 +11,9 @@ collections:
     folder: "/content/changelog"
     create: true
     extension: md
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - { label: Date, name: date, widget: date }
       - { label: Title, name: title, widget: string, required: false }
       - { label: Body, name: body, widget: markdown }
-      - { label: Details, name: details, widget: markdown }
+      - { label: Details, name: details, widget: markdown, required: false }

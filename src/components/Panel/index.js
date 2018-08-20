@@ -8,7 +8,6 @@ const PanelWrapper = styled.div`
   border: 1px solid ${grayscale('light')};
   box-shadow: ${shadow(1)};
   border-radius: 2px;
-  overflow: hidden;
 
   ${props => props.accent && `border-top: 3px solid ${color('orange')};`};
 `

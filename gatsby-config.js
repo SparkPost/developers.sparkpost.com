@@ -52,6 +52,7 @@ module.exports = {
         }
       }
     ] : [],
+    `gatsby-transformer-remark`,
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
     `gatsby-source-sparkpost-api`,
@@ -73,7 +74,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: 'GTM-WN7C84',
-        includeInDevelopment: true,
+        includeInDevelopment: false,
       }
     },
     {
@@ -86,6 +87,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
