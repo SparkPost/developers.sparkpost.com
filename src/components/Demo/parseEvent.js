@@ -1,6 +1,6 @@
 import { DESCRIPTIONS, NAMES, CATEGORIES } from './constants'
 
-const parseEvent = (event) => {
+const parseEvent = event => {
   const { type } = event
 
   return {

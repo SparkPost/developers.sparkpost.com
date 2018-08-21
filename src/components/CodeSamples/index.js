@@ -5,11 +5,9 @@ import { rgba } from 'polished'
 import { color, grayscale } from 'utils/colors'
 import { weight } from 'utils/fonts'
 
-
 import Markdown from 'components/Markdown'
 import Demo from 'components/Demo'
 import Button from 'components/Button'
-
 
 const Wrapper = styled.div`
   background: ${grayscale('white')};
@@ -258,7 +256,7 @@ class CodeSamples extends Component {
 
     this.state = {
       activeIndex: 0,
-      email: null
+      email: null,
     }
   }
 
@@ -289,8 +287,18 @@ class CodeSamples extends Component {
         {samples.map(({ label, language, code }, i) => (
           <Sample key={label} isActive={this.state.activeIndex === i}>
             <Markdown>{`\`\`\`${language}\n${code}\n\`\`\``}</Markdown>
-            <input type='email' onChange={this.handleChange} placeholder='you@youremail.com'/>
-            <Button primary onClick={() => { startDemo(this.state.email) }} style={{ float: 'right' }}>
+            <input
+              type="email"
+              onChange={this.handleChange}
+              placeholder="you@youremail.com"
+            />
+            <Button
+              primary
+              onClick={() => {
+                startDemo(this.state.email)
+              }}
+              style={{ float: 'right' }}
+            >
               Run Code
             </Button>
           </Sample>
