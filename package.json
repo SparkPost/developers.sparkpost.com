@@ -45,6 +45,7 @@
     "react-helmet": "^5.2.0",
     "react-instantsearch": "^5.1.0",
     "react-sticky": "^6.0.2",
+    "react-timeago": "^4.1.9",
     "rehype-highlight": "^2.1.0",
     "rehype-raw": "^2.0.0",
     "rehype-react": "^3.0.2",

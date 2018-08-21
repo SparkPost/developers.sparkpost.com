@@ -14,6 +14,7 @@ import Button from 'components/Button'
 import Link from 'components/Link'
 import Anchor from 'components/Anchor'
 import CodeSamples from 'components/CodeSamples'
+import Demo from 'components/Demo'
 import map from 'utils/map'
 
 import flameBackground from 'assets/flame-background.png'
@@ -224,7 +225,7 @@ const IndexPage = props => {
               </ButtonWrapper>
             </Column>
             <Column md={6} sm={10} xs={12}>
-              <CodeSamples />
+              <Demo />
             </Column>
           </Row>
         </Container>
