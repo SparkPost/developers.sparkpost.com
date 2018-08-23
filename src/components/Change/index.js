@@ -8,11 +8,14 @@ import { grayscale } from 'utils/colors'
 import { weight } from 'utils/fonts'
 
 const markdownComponents = {
-  h1(props) {
-    return <h4 {...props} />
+  h1({ children, ...props }) {
+    return <h4 {...props}>{children}</h4>
   },
-  h2(props) {
-    return <h5 {...props} />
+  h2({ children, ...props }) {
+    return <h5 {...props}>{children}</h5>
+  },
+  h3({ children, ...props }) {
+    return <h5 {...props}>{children}</h5>
   },
 }
 
