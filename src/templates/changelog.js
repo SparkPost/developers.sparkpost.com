@@ -40,7 +40,7 @@ export default props => {
             <Column md={7} sm={10} xs={11}>
               <TopSection>
                 <h1>
-                  <Link.Unstyled to="/changelog">Changelog</Link.Unstyled>
+                  <Link.Unstyled to="/changelog/">Changelog</Link.Unstyled>
                 </h1>
                 <p>
                   A running log of what's new and what's been changed in
@@ -50,7 +50,7 @@ export default props => {
               <Change change={change} expanded={true} />
               <br />
               <div className="textCenter">
-                <Button to="https://sparkpost.com/docs" secondary>
+                <Button to="https://app.sparkpost.com/join" secondary>
                   Sign Up
                 </Button>
                 <Button to="https://sparkpost.com/docs" outline>
