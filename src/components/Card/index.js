@@ -42,15 +42,6 @@ const Author = styled(Link)`
   color: inherit;
 `
 
-const ReadMore = styled(Link)`
-  font-weight: ${weight('normal')};
-  font-size: 0.888888889rem;
-
-  i {
-    padding-left: 0.5rem;
-  }
-`
-
 export default ({ image, date, author, title, description, link }) => (
   <Card>
     <Image style={{ backgroundImage: `url(${image})` }} />
@@ -61,9 +52,7 @@ export default ({ image, date, author, title, description, link }) => (
       </ByLine>
       <Title>{title}</Title>
       <div dangerouslySetInnerHTML={{ __html: description }} />
-      <ReadMore to={link}>
-        read more <i className="fa fa-chevron-right" />
-      </ReadMore>
+      <Link.ReadMore to={link} />
     </Text>
   </Card>
 )

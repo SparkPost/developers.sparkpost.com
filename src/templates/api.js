@@ -142,7 +142,7 @@ class Template extends Component {
 export default Template
 
 export const pageQuery = graphql`
-  query apiTemplateQuery($file: String!) {
+  query($file: String!) {
     allApiBlueprint {
       edges {
         node {

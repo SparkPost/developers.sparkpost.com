@@ -49,4 +49,17 @@ Link.Action = styled(Link.Unstyled)`
   }
 `
 
+Link.ReadMore = styled(({ children, ...props }) => (
+  <Link {...props}>
+    {children || 'read more'} <i className="fa fa-chevron-right" />
+  </Link>
+))`
+  font-weight: ${weight('normal')};
+  font-size: 0.888888889rem;
+
+  i {
+    padding-left: 0.25rem;
+  }
+`
+
 export default Link

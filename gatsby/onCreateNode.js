@@ -1,6 +1,7 @@
 'use strict'
 
 const axios = require('axios')
+const slugify = require('slugify')
 const { resolve } = require('path')
 const tableOfContents = require(`../content/api/table-of-contents.json`)
 
@@ -44,6 +45,20 @@ module.exports = async ({ node, actions, getNode }) => {
       node,
       name: `file`,
       value: file
+    })
+  }
+
+  /**
+   * Add the path to the changelog nodes
+   */
+  if (node.internal.type === 'MarkdownRemark' && node.fileAbsolutePath.includes('changelog/')) {
+    const slug = slugify(node.frontmatter.title)
+
+    // add path
+    createNodeField({
+      node,
+      name: `path`,
+      value: `/changelog/${slug}/`
     })
   }
 }

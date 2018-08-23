@@ -105,6 +105,7 @@ injectGlobal`
     color: ${color('blue')};
     font-weight: ${weight('medium')};
     text-decoration: none;
+    cursor: pointer;
   }
 
   a:hover {

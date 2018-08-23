@@ -1,13 +1,3 @@
-/**
- * There are two parts to the changelog: the changelog page and each change page.
- *
- * This is the changelog page. It shows all of the changes with the all details
- * collapsed.
- *
- * Each individual change is generated into it's own page using the template
- * located at src/template/changelog.js
- */
-
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
@@ -15,6 +5,8 @@ import { graphql } from 'gatsby'
 import Layout from 'components/Layout'
 import { Container, Row, Column } from 'components/Grid'
 import Section from 'components/Section'
+import Button from 'components/Button'
+import Link from 'components/Link'
 import Change from 'components/Change'
 
 const TopSection = styled.div`
@@ -28,15 +20,13 @@ const TopSection = styled.div`
 
 export default props => {
   const {
-    data: {
-      allMarkdownRemark: { edges: changes },
-    },
+    data: { markdownRemark: change },
   } = props
 
   return (
     <Layout {...props}>
       <Helmet
-        title={'Changelog'}
+        title={`Changes on ${change.frontmatter.date}`}
         meta={[
           {
             name: 'description',
@@ -49,15 +39,24 @@ export default props => {
           <Row center="xs">
             <Column md={7} sm={10} xs={11}>
               <TopSection>
-                <h1>Changelog</h1>
+                <h1>
+                  <Link.Unstyled to="/changelog">Changelog</Link.Unstyled>
+                </h1>
                 <p>
                   A running log of what's new and what's been changed in
                   SparkPost.
                 </p>
               </TopSection>
-              {changes.map(({ node: change }, i) => (
-                <Change key={i} change={change} />
-              ))}
+              <Change change={change} expanded={true} />
+              <br />
+              <div className="textCenter">
+                <Button to="https://sparkpost.com/docs" secondary>
+                  Sign Up
+                </Button>
+                <Button to="https://sparkpost.com/docs" outline>
+                  Read docs
+                </Button>
+              </div>
             </Column>
           </Row>
         </Container>
@@ -67,16 +66,9 @@ export default props => {
 }
 
 export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/changelog/" } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      edges {
-        node {
-          ...Change
-        }
-      }
+  query($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      ...Change
     }
   }
 `

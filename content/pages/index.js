@@ -414,7 +414,7 @@ const IndexPage = props => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query indexQuery {
+  query {
     eventsJson {
       events {
         name
