@@ -19,6 +19,26 @@ const markdownComponents = {
   },
 }
 
+const ChangeMarkdown = styled(Markdown)`
+  > div {
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+`
+
 const DateLabel = styled.span`
   font-size: 0.833333333rem;
   font-weight: ${weight('medium')};
@@ -38,6 +58,9 @@ const ReadMore = styled(({ isActive, ...props }) => (
     {isActive ? 'hide' : 'read'} more
   </Link.ReadMore>
 ))`
+  display: inline-block;
+  margin-top: 0.5rem;
+
   i {
     transition: transform .15s;
 
@@ -89,7 +112,7 @@ class Change extends Component {
           />
         )}
         <Panel.Section>
-          <Markdown components={markdownComponents}>{body}</Markdown>
+          <ChangeMarkdown components={markdownComponents}>{body}</ChangeMarkdown>
           {!expanded &&
             details && (
               <ReadMore
@@ -100,7 +123,7 @@ class Change extends Component {
         </Panel.Section>
         {details && (
           <DetailsSection isActive={this.state.isActive}>
-            <Markdown components={markdownComponents}>{details}</Markdown>
+            <ChangeMarkdown components={markdownComponents}>{details}</ChangeMarkdown>
           </DetailsSection>
         )}
       </Panel>
