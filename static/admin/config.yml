@@ -11,7 +11,7 @@ collections:
     folder: "/content/changelog"
     create: true
     extension: md
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}"
     fields:
       - { label: Date, name: date, widget: date }
       - { label: Title, name: title, widget: string }
