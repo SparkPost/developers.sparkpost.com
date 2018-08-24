@@ -112,7 +112,9 @@ class Change extends Component {
           />
         )}
         <Panel.Section>
-          <ChangeMarkdown components={markdownComponents}>{body}</ChangeMarkdown>
+          <ChangeMarkdown components={markdownComponents}>
+            {body}
+          </ChangeMarkdown>
           {!expanded &&
             details && (
               <ReadMore
@@ -123,7 +125,9 @@ class Change extends Component {
         </Panel.Section>
         {details && (
           <DetailsSection isActive={this.state.isActive}>
-            <ChangeMarkdown components={markdownComponents}>{details}</ChangeMarkdown>
+            <ChangeMarkdown components={markdownComponents}>
+              {details}
+            </ChangeMarkdown>
           </DetailsSection>
         )}
       </Panel>

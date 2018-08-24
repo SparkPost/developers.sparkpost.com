@@ -52,7 +52,7 @@ module.exports = async ({ node, actions, getNode }) => {
    * Add the path to the changelog nodes
    */
   if (node.internal.type === 'MarkdownRemark' && node.fileAbsolutePath.includes('changelog/')) {
-    const slug = slugify(node.frontmatter.title)
+    const slug = slugify(node.frontmatter.title, { lower: true })
 
     // add path
     createNodeField({
