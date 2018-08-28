@@ -465,6 +465,18 @@ The template language identifies links by the fact that they start with a protoc
 
 To use links that are entirely stored in variables processed correctly, render them as [dynamic content](#header-dynamic-content).
 
+### Link Extraction
+
+Links are extracted from the template based on the fact they start with a protocol as explained in [Links in Variables](#header-links-in-variables).  When links are templated inside of loops or conditionals, there should be clear whitespace delimitars such as new lines or space between the link and any templating keywords.
+
+```no-highlight
+{{if host}}
+https://{{{host}}}/
+{{else}}
+https://www.sparkpost.com/
+{{end}}
+```
+
 ### Personalized Links
 
 You can use expressions inside of links to customize them. Instead of HTML escaping the value, expressions will URL encode the value.
