@@ -667,6 +667,26 @@ Attempting to insert a chunk of plain text:
 {{ render_dynamic_content(dynamic_plain.my_plain_text_chunk) }}
 ```
 
+You can also insert dynamic content into the `text/x-amp-html` part of a message using the transmission level `dynamic_amp_html`
+variable:
+
+```json
+{
+  "substitution_data" : {
+    "dynamic_amp_html" : {
+      "my_amp_html_chunk": "<amp-img width=\"30\" height=\"30\" src=\"https://www.example.com?u={{username}}\">"
+    }
+  }
+}
+```
+
+As with `dynamic_html` and `dynamic_plain`, you must use the `render_dynamic_content()` macro to include your dynamic AMPHTML in the template:
+
+```
+Attempting to insert a chunk of amp html:
+{{ render_dynamic_content(dynamic_amp_html.my_amp_html_chunk) }}
+```
+
 Finally, as a more realistic example, `render_dynamic_content()` can also be used inside an `each` loop. Full transmission json examples follow.
 
 ```json
@@ -701,11 +721,17 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
       "offer1": "Premium-brand wirecutters -- http://t.com/offer/1?name={{name}}",
       "offer2": "Corks -- http://t.com/offer/2?name={{name}}",
       "offer3": "Super-effective bug spray -- http://t.com/offer/3?name={{name}}"
+    },
+    "dynamic_amp_html": {
+      "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+      "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+      "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
     }
   },
   "content": {
     "text": "Today's special offers:\n\n{{each offers}}\n* {{render_dynamic_content(dynamic_plain[loop_var])}}\n{{end}}\n",
     "html": "<p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>\n{{end}}\n</ul>",
+    "amp_html": "<!doctype html><html amp4email><head><meta charset=\"utf-8\"><script async src=\"https://cdn.ampproject.org/v0.js\"></script><style amp4email-boilerplate>body{visibility:hidden}</style></head><body><p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_amp_html[loop_var])}}</li>\n{{end}}\n</ul></body></html>",
     "from": "test@example.com",
     "subject": "offers"
   }
