@@ -1,70 +1,54 @@
 FORMAT: 1A
 title: Snippets
-description: Manage reusable content snippets that can be referenced within inline content and stored templates.
+description: Manage reusable content snippets that can be referenced within inline content and stored templates. 
 
 # Group Snippets
 
-Snippets are short reusable pieces of email content.
-Snippets can be imported into any template content or transmission content using substitution syntax.
+The Snippets API provides the means to manage your reusable content snippets which can be referenced within inline content and stored templates.
+Refer to the [Substitutions Reference](https://developers.sparkpost.com/api/substitutions-reference.html) page for details of the substitution macro call
+which allows a snippet to be imported into a specific location in the html, amp_html, and/or text email content.
 
-For example, if you have a snippet with the ID `ourfooter` and the following HTML content:
+## Snippet Attributes
 
-```html
-<footer>
-    <p>Our HTML footer</p>
-</footer>
-```
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|id    | string  |Short, unique, alphanumeric ID used to reference the snippet   | yes |After a snippet has been created, this property cannot be changed.  Maximum length - 64 bytes   |
+|content              |JSON  |HTML, AMPHTML, and plain text content of the snippet  |  yes  |  For a full description, see the [Content Attributes](#header-content-attributes). |
+|shared_with_subaccounts | boolean | Whether this snippet can be used by subaccounts | no | Defaults to `false`.  Only available to snippets belonging to a master account.|
 
-The snippet can be imported into an HTML email's content using the `render_snippet` macro call.
+### Content Attributes
 
-```html
-<html>
-    <p>Our body content</p>
-    {{ render_snippet( "ourfooter" ) }}
-</html>
-```
+Content for a snippet is described in a JSON object with the following fields:
 
-The resulting rendered HTML content would look like:
+| Field         | Type     | Description                           | Required   | Notes   |
+|------------------------|:-:       |---------------------------------------|-------------|--------|
+|html    |string  |HTML content which will be used when the snippet is referenced from the HTML part of a stored template or inline content.  |no.  |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls.  In other words, snippets may not reference other snippets. Maximum length - 100KB |
+|text    |string  |Plain text content which will be used when the snippet is referenced from the plain text part of a stored template or inline content.  |no.  |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls.  In other words, snippets may not reference other snippets. Maximum length - 100KB|
+|amp_html |string |AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a stored template or inline content.  |no.  |Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.  Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls.  In other words, snippets may not reference other snippets. Maximum length - 100KB |
 
-```html
-<html>
-    <p>Our body content</p>
-    <footer><p>Our HTML footer</p></footer>
-</html>
-```
+## Create and List [/snippets]
 
-See the [Subsitution Refernce](/api/substitutions-reference/#header-snippets)
-for a more detailed explanation of the `render_snippet` macro and more complicated examples.
+### Create a Snippet [POST]
 
-## Snippet Object
+Create a snippet by providing a **snippet object** as the POST request body.
 
-+ Data Structure: Attributes
-    + id (string) - Unique ID used to reference the snippet.
-    + content (object) - HTML and/or text content.
-        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content.
-    + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
+The `id` and `content` fields are required, where content must contain at least one of the 'html', 'amp_html', or 'text' fields.
 
-## Create a Snippet [POST /snippets]
++ Request Create Basic Snippet (application/json)
 
-+ Data Structure
-    + id (required, string) - Unique ID used to reference the snippet.
-    + content (required, object) - HTML and/or text content. Substitution syntax is supported with the exception of the `render_dynamic_content()` and `render_snippet()` macro calls. In other words, snippets may not reference other snippets.
-        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
-    + shared_with_subaccounts (required, boolean) - Whether this snippet can be used by subaccounts.
-        + Default: false
+    + Headers
 
-
-+ Request (application/json)
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
     + Body
 
         ```
         {
             "id" : "header",
+            "shared_with_subaccounts": false,
+
             "content": {
-                "html": "<b>Our cool header snippet for {{name}}</b>"
+                "html": "<b>Header snippet data for {{name}}</b>"
             }
         }
         ```
@@ -75,6 +59,18 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
           "results": {
             "id": "header"
           }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "errors" : [
+            {
+              "description" : "Subaccounts cannot set the shared_with_subaccounts flag",
+              "code" : "1200",
+              "message" : "invalid params"
+            }
+          ]
         }
 
 + Response 422 (application/json)
@@ -91,13 +87,92 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
           ]
         }
 
-## Retrieve a Snippet [GET /snippets/{id}]
 
-+ Parameters
-    + id (required, string, `ourfooter`)
+### List all Snippets [GET /snippets]
+
+Lists each snippet in your account.
+
+Each snippet object in the list will have the following field:
+- id: Unique snippet ID.
+
+Additionally, snippets owned by the Master account will have the following field:
+- shared_with_subaccounts: Whether the snippet is shared with subaccounts.
 
 + Request
 
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+          "results" : [
+            {
+              "id" : "header",
+              "shared_with_subaccount" : true
+            },
+            {
+              "id" : "footer",
+              "shared_with_subaccount" : true
+            }
+          ]
+        }
+
+### List Snippets selectively [GET /snippets{?shared_with_subaccounts}]
+
+Lists each shared snippet to which you have access.
+
+Each snippet object in the list will have the following field:
+- id: Unique snippet ID.
+
+Additionally, snippets owned by the Master account will have the following field:
+- shared_with_subaccounts: Whether the snippet is shared with subaccounts.
+
++ Parameters
+    + shared_with_subaccounts (optional, boolean, `true`) ...If true, returns only shared snippets. If false, returns only non-shared snippets.  When not provided, returns both shared and non-shared snippets.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+          "results" : [
+            {
+              "id" : "header",
+              "shared_with_subaccount" : true
+            },
+            {
+              "id" : "footer",
+              "shared_with_subaccount" : true
+            }
+          ]
+        }
+
+
+## Retrieve [/snippets/{id}]
+
+### Retrieve a Snippet [GET]
+
+Retrieve a single snippet by specifying its ID in the URI path.
+
+For a master account owned snippet **only**, the result will include the `shared_with_subaccounts` field reflecting the snippet's shared status.
+
++ Parameters
+    + id (required, string, `ourfooter`) ... ID of the snippet
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -106,28 +181,32 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
             "id" : "ourfooter",
             "content": {
               "html" : "<b>Our standard footer</b>",
-              "text" : "Our standard footer"
+              "text" : "Our standard footer",
+              "amp_html" : "<b>Our standard footer</b>"
             }
           }
         }
 
-## Update a Snippet [PUT /snippets/{id}]
+## Update [/snippets/{id}]
+
+### Update a Snippet [PUT]
+
+Update an existing snippet by specifying its ID in the URI path and a **snippet object** as the PUT request body.
+
+The `id` field may not be updated.
 
 If a content object is provided in the update request, it must
 contain all relevant content fields whether they are being changed or not.
 The new content will completely overwrite the existing content.
 
-+ Data Structure
-    + content (object) - HTML and/or text content. Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls. In other words, snippets may not reference other snippets.
-        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
-    + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
-
-
 + Parameters
-    + id (required, string, `ourfooter`)
+    + id (required, string, `ourfooter`) ... ID of the snippet
 
 + Request Update (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
     + Body
 
@@ -135,20 +214,29 @@ The new content will completely overwrite the existing content.
        {
          "content": {
            "html" : "<b>Our updated footer</b>",
-           "text" : "Our updated footer"
-          }
+           "text" : "Our updated footer",
+           "amp_html" : "<b>Our updated footer</b>"
+          },
+          "shared_with_subaccounts" : false
         }
         ```
 
 + Response 200
 
-## Delete a Snippet [DELETE /snippets/{id}]
+## Delete [/snippets/{id}]
 
+### Delete a Snippet [DELETE]
+
+Delete a snippet by specifying its ID in the URI path.
 
 + Parameters
-    + id (required, string, `ourfooter`)
+    + id (required, string, `ourfooter`) ... ID of the snippet
 
 + Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Response 204 (application/json)
 
@@ -167,27 +255,3 @@ The new content will completely overwrite the existing content.
         ]
         }
         ```
-
-### List all Snippets [GET /snippets]
-
-Returns an array with all your Snippets.
-
-+ Parameters
-    + shared_with_subaccounts (optional, boolean) ... If true, returns only shared snippets. If false, returns only non-shared snippets.
-
-+ Request
-
-+ Response 200 (application/json)
-
-        {
-          "results" : [
-            {
-              "id" : "header",
-              "shared_with_subaccount" : false
-            },
-            {
-              "id" : "footer",
-              "shared_with_subaccount" : true
-            }
-          ]
-        }

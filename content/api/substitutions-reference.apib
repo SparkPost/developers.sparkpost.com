@@ -103,7 +103,7 @@ Expressions return values that are inserted into the template content.  The foll
 {{ airports[code].city }}
 {{ name or 'Customer' }}
 ```
-
+ 
 Statements do not return a value but implement logic using keywords such as if, else, not, end,
 each.  The following are examples:
 
@@ -119,13 +119,13 @@ each.  The following are examples:
 An empty string is substituted for keys that do not appear in the substitution
 data or are present in the substitution data but have a value of JSON null.
 
-When `name` does not exist, the following example will render as **Hello []**.
+When `name` does not exist, the following example will render as **Hello []**. 
 
 ```
 Hello [{{ name }}]
 ```
 
-When `name` is null, the following expression resolves to **You don't have a name!**:
+When `name` is null, the following expression resolves to **You don't have a name!**: 
 
 ```
 {{ if name }}
@@ -158,11 +158,11 @@ Hello {{ name or 'Customer' }}
 Substitution statements that exist on their own line of the template will **not**
 produce a blank line in the resulting output.  This is a convenience to the
 template writer.  In addition, any whitespace after the closing **}}** and before
-the `LF` or `CRLF` will **not** be present in the output.
+the `LF` or `CRLF` will **not** be present in the output. 
 
 These rules do not apply to substitution expressions.
 
-In the following example, the template will render without blank lines:
+In the following example, the template will render without blank lines: 
 
 ```
 Start of template
@@ -208,7 +208,7 @@ The substitution engine automatically HTML escapes substitution values before th
 inserted into the HTML part of the content.  Substitution values inserted into
 plain text portions of content are not HTML escaped.
 
-Using the following substitution data:
+Using the following substitution data: 
 
 ```json
 { "custom_html": "<p>Hello</p>" }
@@ -261,7 +261,7 @@ For example:
 <a href="https://company.com/dailydeals?user={{user}}&offercode={{offercode}}">Go!</a>
 ```
 
-In this case `{{user}}` and `{{offercode}}` are the items taken from the substitution data or metadata.
+In this case `{{user}}` and `{{offercode}}` are the items taken from the substitution data or metadata. 
 
 The substitution engine automatically URL encodes substitution values before they are
 inserted into URLs.  For example, if 'user' and 'offercode' are defined in the substitution_data as
@@ -430,7 +430,7 @@ Street: {{address.street}}
 
 ### if then else Syntax
 
-Notice the "then" is not required.  The following are equivalent:
+Notice the "then" is not required.  The following are equivalent: 
 
 ```
 {{if signed_up}}
@@ -487,7 +487,7 @@ do something
 
 ## Relational and Logical Operators
 
-The relational and logical operators are as follows:
+The relational and logical operators are as follows: 
 
 **Relational Operators**
 
@@ -541,7 +541,7 @@ Item: {{loop_var.item_name}}, Price: {{loop_var.item_price}}
 
 Nested loops are possible.  When nested loops are in use, loop variables must
 be accessed using `loop_vars.<name of the array>` (notice it is plural `loop_vars` and not `loop_var`).
-The following example uses `shopping_cart` and `a_nested_array`:
+The following example uses `shopping_cart` and `a_nested_array`: 
 
 ```
 {{each shopping_cart}}
@@ -571,54 +571,6 @@ Array indexing and dot notation may also be used together:
 ```
 The first item in your shopping cart is {{ shopping_cart[1].item_name }}.
 ```
-
-## Macros
-
-Macros are function calls that may or may not take arguments. The currently available macros are:
-
-**empty**
-
-This function takes a JSON array as an argument and returns true if the array is empty or false if the array is not empty.
-This is useful for determining whether to include a header in a dynamically
-generated HTML table and blocking iteration of the table if it is empty.
-
-Example:
-
-```html
-{{ if not empty(shopping_cart) }}
-<table border = "1">
-<tr>
-<th>Name</th>
-<th>Price</th>
-</tr>
-{{ each shopping_cart }}
-<tr>
-<td>{{loop_var.item_name}}</td>
-<td>${{loop_var.item_price}}</td>
-</tr>
-{{ end }}
-</table>
-{{ else }}
-<b>Buy something!</b>
-{{ end }}
-```
-
-**Braces Macros**
-
-The four macros for outputting braces are listed below followed by their output:
-
-* `opening_double_curly()` - {{
-* `closing_double_curly()` - }}
-* `opening_triple_curly()` - {{{
-* `closing_triple_curly()` - }}}
-
-**Dynamic HTML**
-
-See [this section](#header-links-and-substitution-expressions-within-substitution-values).
-
-**Render Snippet**
-
-See [this section](#header-snippets).
 
 ## Links and Substitution Expressions Within Substitution Values
 
@@ -761,29 +713,31 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
 ```
 
 ## Snippets
-
-Snippets are pieces of reusable content that are managed using the [Snippets endpoint](/api/snippets).
-Once a snippet is created, it can be imported into any html or text email content using the `render_snippet` macro call.
-
-Snippets are similar to the `dynamic_html` and `dynamic_plain` described in the previous section,
-with the key difference being snippets are created ahead of time rather than
-defined inline within a transmissions request.
-
-For example, the /api/v1/snippets endpoint can be used to create a snippet with the ID `ourfooter`:
-
+ 
+Snippets are pieces of reusable content that are managed using the /api/v1/snippets endpoint.
+Once a snippet is created, it can be imported into any html, amp_html, or text email content using the
+`render_snippet` macro call.
+ 
+Snippets are similar to the dynamic_html, dynamic_amp_html, and dynamic_plain described in the previous topic,
+with the key difference being snippets are created and stored ahead of time rather than
+passed inline within a transmissions request.
+ 
+For example, the /api/v1/snippets endpoint can be used to create a snippet called *ourfooter*:
+ 
 ```
 {
   "id" : "ourfooter",
   "content" : {
     "html" : "<footer><p>Our standard html footer content</p></footer>",
-    "text" : "Our standard plain text footer content"
+    "text" : "Our standard plain text footer content",
+    "amp_html" : "<footer><p>Our standard amp html footer content</p></footer>"
   }
 }
 ```
-
-The snippet can then be imported into either plain text or html email content
-using the `render_snippet` macro call. The macro call will automatically use the appropriate
-content.html or content.text snippet value based on the type of content that the snippet
+ 
+The *ourfooter* snippet can be imported into either plain text, html, or amp_html email content
+using the `render_snippet` macro call.  The macro call will automatically use the appropriate
+content.html, content.amp_html, or content.text snippet value based on the type of content that the snippet
 is being inserted into.
 For example, if a transmission was injected with content.html of the form:
 ```
@@ -792,7 +746,7 @@ For example, if a transmission was injected with content.html of the form:
 {{ render_snippet( "ourfooter" ) }}
 </html>
 ```
-
+ 
 The resulting rendered HTML email content would look like:
 ```
 <html>
@@ -800,10 +754,11 @@ The resulting rendered HTML email content would look like:
 <footer><p>Our standard html footer content</p></footer>
 </html>
 ```
-
-The `render_snippet` macro takes a snippet ID as its only argument, which may come from `substitution_data`.
-The following example illustrates how one of two plain text snippets can be utilized, based on the recipient's `substitution_data`.
-
+ 
+The `render_snippet` macro takes a snippet id as its only argument.  This snippet id
+may in fact may come from substitution_data.  The following example
+illustrates how one of two plain text snippets can be utilized, based on the recipient's substitution_data.
+ 
 Two snippets are created:
 ```
 {
@@ -813,7 +768,7 @@ Two snippets are created:
   }
 }
 ```
-
+ 
 ```
 {
   "id" : "banner_snippet_B",
@@ -822,32 +777,74 @@ Two snippets are created:
   }
 }
 ```
-
-transmission with content.text:
+ 
+transmission injected with content.text:
 ```
 The following banner depends on the "banner_id" substitution_data value
 {{ render_snippet( banner_id ) }}
 ```
-
+ 
 Where Recipient 1 has substitution_data:
 ```
 {
   "banner_id" : "banner_snippet_A"
 }
 ```
-
+ 
 And Recipient 2 has substitution_data:
 ```
 {
   "banner_id" : "banner_snippet_B"
 }
 ```
-
+ 
 Other notes on snippet usage:
-* Snippets themselves may contain substitution syntax. Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
-* Snippets may contain links (which will be click tracked if `click_tracking` is enabled).
+* snippets themselves may contain substitution syntax, just like a regular template.  Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
+* snippets may contain links (which will be click tracked if click_tracking is enabled).
 * If a `render_snippet` call references a snippet which does not exist, the transmission will be discarded with a generation failure event.
-* Each of the HTML and plain text email parts may utilize `render_snippet` at most 30 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
+* Each of the HTML, AMPHTML, and plain text email parts may utilize `render_snippet` at most 30 times.  If this limit is exceeded, the transmission will be discarded with a generation failure event.
+
+## Macros
+
+Macros are function calls that may or may not take arguments.  The currently available macros are:
+
+**empty**
+
+This function takes a JSON array as an argument and returns true if the array is empty or false if the array is not empty.
+This is useful for determining whether to include a header in a dynamically
+generated HTML table and blocking iteration of the table if it is empty.
+
+Example:
+
+```html
+{{ if not empty(shopping_cart) }}
+<table border = "1">
+<tr>
+<th>Name</th>
+<th>Price</th>
+</tr>
+{{ each shopping_cart }}
+<tr>
+<td>{{loop_var.item_name}}</td>
+<td>${{loop_var.item_price}}</td>
+</tr>
+{{ end }}
+</table>
+{{ else }}
+<b>Buy something!</b>
+{{ end }}
+```
+
+**Braces Macros**
+
+The four macros for outputting braces are listed below followed by their output:
+
+* `opening_double_curly()` - {{
+* `closing_double_curly()` - }}
+* `opening_triple_curly()` - {{{
+* `closing_triple_curly()` - }}}
+
+
 
 ## Reserved Recipient Substitution Variables
 
@@ -880,7 +877,7 @@ the header to look for substitution syntax.
 
 ```
 Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=?=
-   =?gb2312?B?ztLE3M3Mz8Kyo8Gntvg=?=
+   =?gb2312?B?ztLE3M3Mz8Kyo8Gntvg=?= 
 ```
 
 **Incorrect:**
