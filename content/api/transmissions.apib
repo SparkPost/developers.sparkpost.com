@@ -8,7 +8,7 @@ The Transmissions endpoint lets you send email. Each transmission can send an em
 
 When creating a transmission, the [options](#header-request-body) allow you to configure engagement tracking, sending optimization, global substitution data, and more to control how your emails are sent.
 
-To set the recipients you can include the all recipients in the request or use a [stored recipient list](/api/recipient-lists/). In each recipient, you can pass in metadata and substitution data to [personalize](/api/substitutions-reference/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
+To set the recipients you can include the all recipients in the request or use a [stored recipient list](/api/recipient-lists/). In each recipient, you can pass in metadata and substitution data to [personalize](/api/template-language/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
 
 The content of the messages can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), a [stored template](#transmissions-post-send-a-template), an [A/B test](#transmissions-post-send-an-a-b-test), or raw [RFC822 content](#transmissions-post-send-rfc822-content). Each method has different use cases they are best suited for. All of these types of content can use the substitution data and metadata to create a unique message for each recipient.
 
@@ -75,8 +75,8 @@ You can create a transmission in a number of ways. In all cases, you can use the
     + content (object, required) - Content used to generate the messages. The content can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), [stored template](#transmissions-post-send-a-template), [A/B test](#transmissions-post-send-an-a-b-test), or [RFC822 content](#transmissions-post-send-rfc822-content).
     + campaign_id (string) - Name of the campaign. Maximum length - 64 bytes
     + description (string) - Description of the transmission. Maximum length - 1024 bytes
-    + metadata (object) - Transmission level metadata. Metadata is available in Webhook events and can also be used as substitution data. Recipient metadata takes precedence over transmission metadata. A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is allowed.
-    + substitution_data (object) - Object of data used to replace [substitution syntax](/api/substitutions-reference/) in the content. Recipient substitution data takes precedence over transmission substitution data.
+    + metadata (object) - Transmission level metadata. Metadata is available in Webhook events and can also be used in the template language. Recipient metadata takes precedence over transmission metadata. A maximum of 1000 bytes of merged metadata (transmission level + recipient level) is allowed.
+    + substitution_data (object) - Object of data passed to the [template language](/api/template-language/) in the content. Recipient substitution data takes precedence over transmission substitution data.
     + return_path (string)
         Email address to use for envelope FROM. The domain of the `return_path` address must be a [CNAME-verified sending domain](sending-domains.html#header-using-a-sending-domain-as-a-bounce-domain).  The local part of the `return_path` address will be overwritten by SparkPost.<br><br>For <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, the `return_path` may be any valid email address and the local part in the `return_path` will **not** be overwritten by SparkPost.  To support [Variable Envelope Return Path](https://en.wikipedia.org/wiki/Variable_envelope_return_path) (VERP), this field can be specified in each recipient object in order to give the recipients unique envelope MAIL FROM addresses.
 + Sample
@@ -161,7 +161,7 @@ The following `recipients` attributes should be set in the `recipients` object w
 
 ### Send Inline Content [POST]
 
-Substitution syntax is supported in `from`, `subject`, `text`, `html`, `reply_to`, and `headers`. The following attributes are used when specifying inline content in the transmission's `content` object:
+The template language is supported in `from`, `subject`, `text`, `html`, `reply_to`, and `headers`. The following attributes are used when specifying inline content in the transmission's `content` object:
 
 + Data Structure: Content Attributes
     + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
@@ -182,7 +182,7 @@ Substitution syntax is supported in `from`, `subject`, `text`, `html`, `reply_to
 * Headers such as `Content-Type` and `Content-Transfer-Encoding` are not allowed, as they are auto-generated upon construction of the email.
 * The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
-* Substitution syntax is supported in headers.
+* The template language is supported in headers.
 
 #### Attachment Object
 
@@ -350,14 +350,14 @@ The following attributes should be set in the `content` object when using a temp
             }
         }
 
-+ Response 404 (application/json)
++ Response 422 (application/json)
 
         {
             "errors": [
                 {
-                    "message": "resource not found",
+                    "message": "Subresource not found",
                     "description": "template 'christmas_offer' does not exist",
-                    "code": "1600"
+                    "code": "1603"
                 }
             ]
         }
@@ -404,6 +404,17 @@ When using substitution data with A/B tests, data for all possible templates mus
                 "total_accepted_recipients": 1,
                 "id": "11668787493850529"
             }
+        }
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Subresource not found",
+                    "description": "ab_test_id 'password_reset' does not exist",
+                    "code": "1603"
+                }
+            ]
         }
 
 

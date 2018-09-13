@@ -67,6 +67,7 @@ export default () => (
   <Logo>
     <Link to="https://sparkpost.com">
       <Svg>
+        <title>SparkPost logo</title>
         <Base />
         <Flame />
       </Svg>

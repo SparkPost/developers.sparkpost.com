@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const visit = require('unist-util-visit')
 const modify = require('unist-util-modify-children')
 const removePosition = require('unist-util-remove-position')
-const flatten = require('lodash.flatten')
+const { flatten } = require('lodash')
 const unified = require('unified')
 const remarkParse = require('remark-parse')
 
@@ -33,7 +33,7 @@ function gatherDataStructures(tree) {
 
 
 /**
- * replace all data structures with html data-structure tags
+ * replace all data structures with html DataStructure tags
  */
 
 function replaceDataStructures(tree, dataStructures) {
@@ -132,14 +132,14 @@ function parseDataStructure(node) {
 }
 
 /**
- * generate the node for the data-structure tag
+ * generate the node for the DataStructure tag
  */
 function generateHtmlReplacement({ id, title, sample }) {
   return Object.assign({}, {
     type: "paragraph",
     children: [
-      { type: "html", value: `<data-structure id="${id}" ${title ? ` title="${title}"` : ''} ${sample ? ` sample="${sample}"` : ''}>` },
-      { type: "html", value: "</data-structure>" }
+      { type: "html", value: `<DataStructure id="${id}" ${title ? ` title="${title}"` : ''} ${sample ? ` sample="${sample}"` : ''}>` },
+      { type: "html", value: "</DataStructure>" }
     ]
   })
 }

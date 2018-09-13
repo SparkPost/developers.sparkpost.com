@@ -35,15 +35,6 @@ const Content = styled.div`
     }
   `)}
 
-  h1, h2, h3, h4, h5, h6 {
-    margin-top: 2rem;
-  }
-
-  h1 {
-    padding-top: 2.5rem;
-    margin: 0 0 1.5rem 0;
-  }
-
   .label {
     display: inline-block;
     padding: 0 0.35em;

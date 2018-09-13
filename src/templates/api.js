@@ -80,17 +80,35 @@ class Template extends Component {
 
   render() {
     const { props } = this
-
     const {
       ast,
       TableOfContents: pageTableOfContents = [],
       meta,
-    } = props.data.file.childApiBlueprint
+    } = props.data.apiBlueprint
     const { api } = minim.fromRefract(ast)
+
+    // decorate the table of contents with title, path, and label
+    const decoratedTableOfContents = tableOfContents.map(category => {
+      return {
+        ...category,
+        pages: category.pages.map(file => {
+          const pageNode = props.data.allApiBlueprint.edges.find(
+            ({ node }) => node.fields.file === file
+          ).node
+
+          return {
+            file,
+            title: pageNode.meta.title,
+            path: pageNode.fields.path,
+            label: pageNode.meta.label,
+          }
+        }),
+      }
+    })
 
     const fullTableOfContents = insertPageTableOfContents({
       file: props.pageContext.file,
-      tableOfContents,
+      tableOfContents: decoratedTableOfContents,
       pageTableOfContents,
     })
 
@@ -125,16 +143,30 @@ export default Template
 
 export const pageQuery = graphql`
   query apiTemplateQuery($file: String!) {
-    file(base: { eq: $file }) {
-      base
-      childApiBlueprint {
-        ast
-        TableOfContents
-        meta {
-          title
-          description
-          full
+    allApiBlueprint {
+      edges {
+        node {
+          meta {
+            title
+            label
+          }
+          fields {
+            path
+            file
+          }
         }
+      }
+    }
+    apiBlueprint(fields: { file: { eq: $file } }) {
+      ast
+      TableOfContents
+      meta {
+        title
+        description
+        full
+      }
+      fields {
+        path
       }
     }
   }

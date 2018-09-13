@@ -53,6 +53,25 @@ Definitions for terms found in Metrics API
 
 <Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
+## Precision Parameter
+
+**Agregate Metrics**
+
+When the `precision` parameter is specified for aggregate metric requests, the bounds of the time window (`from`, `to`) are rounded to the nearest time matching the precision.
+For example, requesting data between `4:22` to `6:37` would return results within the following time windows:
+
+| Precision | Rounded time window   |
+|-----------|-----------------------|
+| `1min`    | `4:22:00` - `6:36:59` |
+| `5min`    | `4:20:00` - `6:39:59` |
+| `15min`   | `4:15:00` - `6:44:59` |
+| `hour`    | `4:00:00` - `6:59:59` |
+
+All precisions are valid up to a 24 hour time window, except for `hour` which is also valid up to a 31 day time window.
+
+**Time-series Metrics**
+
+When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
 
 ### Discoverability Links [GET /v1/metrics/]
 
@@ -122,7 +141,7 @@ The deliverability endpoints allow you to get high-level summaries of your data 
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
 
-### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone}]
+### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
 Provides high-level summary of aggregate metrics and lists the child endpoints that contain
 aggregate data, which can be used as "group by" qualifiers.
@@ -138,6 +157,17 @@ aggregate data, which can be used as "group by" qualifiers.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
         + Values
@@ -203,7 +233,7 @@ aggregate data, which can be used as "group by" qualifiers.
 
 
 
-### Metrics by Recipient Domain [GET /v1/metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,order_by,limit}]
+### Metrics by Recipient Domain [GET /v1/metrics/deliverability/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,order_by,limit}]
 
 Provides aggregate metrics grouped by domain over the time window specified.
 
@@ -217,7 +247,18 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
         + Values
@@ -287,7 +328,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
         }
 
 
-### Metrics by Sending IP [GET /v1/metrics/deliverability/sending-ip{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Sending IP [GET /v1/metrics/deliverability/sending-ip{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by sending IP over the time window specified.
 
@@ -301,7 +342,18 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
         + Values
@@ -371,7 +423,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
         }
 
 
-### Metrics by IP Pool [GET /v1/metrics/deliverability/ip-pool{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by IP Pool [GET /v1/metrics/deliverability/ip-pool{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by IP pool over the time window specified.
 
@@ -385,7 +437,18 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
         + Values
@@ -453,7 +516,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
         }
 
 
-### Metrics by Sending Domain [GET /v1/metrics/deliverability/sending-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Sending Domain [GET /v1/metrics/deliverability/sending-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by sending domain over the time window specified.
 
@@ -467,7 +530,18 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
         + Values
@@ -548,7 +622,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             ]
         }
 
-### Metrics by Subaccount [GET /v1/metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Subaccount [GET /v1/metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by subaccount over the time window specified. Please note that master account events will be returned grouped by the subaccount_id field containing the value `0`.
 
@@ -562,7 +636,18 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
         + Values
@@ -643,7 +728,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             ]
         }
 
-### Metrics by Campaign [GET /v1/metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Campaign [GET /v1/metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by campaign over the time window specified.
 
@@ -658,6 +743,17 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
         + Values
@@ -726,7 +822,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
         }
 
 
-### Metrics by Template [GET /v1/metrics/deliverability/template{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Template [GET /v1/metrics/deliverability/template{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by template over the time window specified.
 
@@ -741,6 +837,17 @@ Provides aggregate metrics grouped by template over the time window specified.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
         + Values
@@ -808,7 +915,7 @@ Provides aggregate metrics grouped by template over the time window specified.
             ]
         }
 
-### Metrics by Watched Domain [GET /v1/metrics/deliverability/watched-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit,order_by}]
+### Metrics by Watched Domain [GET /v1/metrics/deliverability/watched-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by watched domain over the time window specified. The difference
 between domain and watched domain is that watched domains are comprised of the top 99% domains
@@ -823,8 +930,19 @@ in the world.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
         + Values
@@ -896,14 +1014,6 @@ in the world.
 ### Time-Series Metrics [GET /v1/metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
 Provides deliverability metrics ordered by a precision of time.
-
-The following table describes the validation for the **precision** parameter:
-
-| Value of         | Valid for time window of    |
-|---------------|-------------|
-|1min, 5min |day |
-|hour |month |
-|day, month |_any_ |
 
 + Parameters
     + from (required, datetime, `2018-07-11T07:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1240,7 +1350,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
 
@@ -1278,7 +1388,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
 
@@ -1318,7 +1428,7 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
 
@@ -1361,7 +1471,7 @@ Provides deliverability metrics, specific to delay events, grouped by the domain
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
 
@@ -1394,7 +1504,7 @@ Provides deliverability metrics, specific to delay events, grouped by the domain
 
 ### Engagement Details [GET /v1/metrics/deliverability/link-name{?from,to,delimiter,timezone,campaigns,templates,subaccounts,sending_domains,metrics,limit}]
 
-Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/substitutions-reference/#header-link-names).
+Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/template-language/#header-link-names).
 
 + Parameters
     + from (required, datetime, `2014-07-11T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1454,7 +1564,7 @@ Provides aggregate count of deliveries grouped by the attempt number.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + bindings (optional, list, `Confirmation`) ... <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning">Enterprise</span></a> delimited list of bindings to include.
     + binding_groups (optional, list) ... <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning">Enterprise</span></a> delimited list of binding groups to include.
-    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include..
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
 
 + Request

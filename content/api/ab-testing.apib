@@ -1,6 +1,7 @@
 FORMAT: 1A
 title: A/B Testing
 description: A/B Testing of templates.
+label: New
 
 # Group A/B Testing
 
@@ -39,9 +40,9 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
         + completed
         + cancelled
     + winning_template_id (string) - The winner of the A/B test. Only present when the state is `completed`.
-    + version (number) - The current version of the test. 
+    + version (number) - The current version of the test.
     + default_template (object) - Details for the default template. See [Template Object](#header-template-object).
-    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object). 
+    + variants (array) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
     + metric (enum) - Which metric to use when comparing the templates.
         + count_unique_clicked
         + count_unique_confirmed_opened
@@ -109,7 +110,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
 ### Create an A/B Test [POST /v1/ab-test]
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided.
     + name (string, required) - Display name.
     + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
     + variants (array[object], required) - Specifies which variants to test, as well as how messages are distributed to each variant. See [Template Object](#header-template-object).
@@ -133,7 +134,7 @@ A/B test versions allow you to run multiple tests within the same A/B test. This
 
 Returns the A/B test ID, when successful.
 
-+ Request A/B Test using a percentage for distribution 
++ Request A/B Test using a percentage for distribution
 
     + Headers
 
@@ -417,9 +418,48 @@ Returns the `status`.
             ]
         }
 
-### List All A/B Tests [GET /v1/ab-test]
+### Delete an A/B Test [DELETE /ab-test/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'cancelled' or 'completed' to use this endpoint"
+            }
+        ]
+    }
+
+### List All A/B Tests [GET /v1/ab-test{?status}]
 
 Returns an array of latest versions of your A/B tests.
+
++ Parameters
+    + status (optional, string, `completed`)
+      If provided, filters the list of A/B tests returned by the provided status. Available options are: draft, scheduled, running, cancelled, completed.
 
 + Request
 
@@ -517,7 +557,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
 ### Create an A/B Test draft [POST]
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided. 
+    + id (string) - Unique alphanumeric ID used to reference the A/B test. It is auto-generated from the `name`, if not provided.
     + name (string, required) - Display name.
     + default_template (object, required) - Details for the default template. See [Template Object](#header-template-object).
 
@@ -530,7 +570,7 @@ A/B Test drafts allow you to build a A/B test in a series of steps instead of al
             Accept: application/json
 
     + Body
-    
+
             {
                 "id": "payment-confirmation",
                 "name": "Payment Confirmation",
@@ -661,6 +701,41 @@ Returns the A/B test ID.
                 }
             ]
         }
+
+### Delete an A/B Test Draft [DELETE /ab-test/draft/{id}]
+
++ Parameters
+    + id (required, string, `password-reset`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 204 (application/json)
+
+
++ Response 404 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "Resource could not be found"
+            }
+        ]
+    }
+
++ Response 409 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "A/B test 'password-reset' must have status 'draft' to use this endpoint"
+            }
+        ]
+    }
 
 ### Schedule an A/B Test draft [POST /v1/ab-test/draft/{id}/schedule]
 

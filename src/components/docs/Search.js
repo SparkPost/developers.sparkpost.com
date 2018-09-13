@@ -2,90 +2,28 @@ import React, { Component } from 'react'
 import { push } from 'gatsby'
 import styled from 'styled-components'
 import { isEqual } from 'lodash'
+import isAbsoluteUrl from 'is-absolute-url'
 import { InstantSearch, Configure } from 'react-instantsearch/dom'
 import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Autosuggest from 'react-autosuggest'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
-import Link from 'components/Link'
-import EventListener from 'react-event-listener'
-
-const SlashIcon = styled.div.attrs({ children: '/' })`
-  color: ${grayscale(6)};
-  border: 1px solid ${grayscale(7)};
-  border-radius: 2px;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  line-height: 0.9rem;
-  text-align: center;
-  font-size: 0.555555556rem;
-  font-weight: ${weight('bold')};
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0.5rem;
-  margin: auto;
-  transition: opacity 0.05s;
-`
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};
-  border: 1px solid ${grayscale(8)};
-  box-shadow: ${shadow(1)};
+  border: 1px solid ${grayscale(7)};
   border-radius: 2px;
   font: inherit;
   font-size: 0.833333333rem;
-  padding: 0.5rem;
+  padding: 0.45rem 0.5rem;
   width: 100%;
   outline: 0;
 
   &:focus {
     border-color: ${color('blue')};
     box-shadow: 0 0 0 1px ${color('blue')}, ${shadow(1)};
-
-    + ${SlashIcon} {
-      opacity: 0;
-    }
   }
 `
-
-class FocusableInput extends Component {
-  constructor(props) {
-    super(props)
-    this.inputRef = React.createRef()
-
-    this.state = {
-      isFocused: false,
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <EventListener
-          target="window"
-          onKeydown={e => {
-            if (e.key === '/' && e.target.tagName === 'BODY') {
-              e.preventDefault()
-              this.inputRef.current.focus()
-            }
-
-            if (
-              e.key === 'Escape' &&
-              e.target === this.inputRef.current &&
-              this.inputRef.current.value.length === 0
-            ) {
-              this.inputRef.current.blur()
-            }
-          }}
-        />
-        <SearchInput {...this.props} innerRef={this.inputRef} />
-        <SlashIcon />
-      </div>
-    )
-  }
-}
 
 const SearchResults = styled.div`
   display: block;
@@ -114,11 +52,13 @@ const SearchResults = styled.div`
 
 // prettier-ignore
 const SearchResult = styled(
-  ({ isHighlighted, ...props }) => <Link.Unstyled {...props} />
+  ({ isHighlighted, ...props }) => <div {...props} />
 )`
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .75rem;
   font-size: 0.833333333rem;
+  font-weight: ${weight('medium')};
+  cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,8 +70,9 @@ const SearchResult = styled(
 `
 
 const Category = styled.div`
-  font-size: 0.666666667rem;
+  font-size: 0.722222222rem;
   margin-top: 0.15rem;
+  font-weight: ${weight('normal')};
 `
 
 function serializeHit(hit) {
@@ -209,13 +150,14 @@ class AutoComplete extends Component {
 
     return (
       <Autosuggest
+        id="reference"
         inputProps={inputProps}
         suggestions={hits}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={hit => serializeHit(hit).title}
         renderSuggestion={renderSuggestion}
-        renderInputComponent={props => <FocusableInput {...props} />}
+        renderInputComponent={props => <SearchInput {...props} />}
         renderSuggestionsContainer={({ containerProps, children, query }) =>
           query.length > 0 &&
           children && (
@@ -223,9 +165,20 @@ class AutoComplete extends Component {
           )
         }
         onSuggestionSelected={(e, { suggestion: hit }) => {
-          const { href } = serializeHit(hit)
+          let href
+          if (hit.post_type) {
+            href = hit.permalink
+          } else {
+            const { href: hitHref } = serializeHit(hit)
+            href = hitHref
+          }
 
-          // get the pathname with the hash
+          // catch external links and send them out
+          if (isAbsoluteUrl(href)) {
+            return (window.location.href = href)
+          }
+
+          // get the pathname without the hash
           let pathname = href
           if (pathname.split(`#`).length > 1) {
             pathname = pathname
@@ -233,6 +186,7 @@ class AutoComplete extends Component {
               .slice(0, -1)
               .join(``)
           }
+
           // check if we are on the same page as the select result
           if (pathname === window.location.pathname) {
             const hashFragment = href
@@ -243,7 +197,7 @@ class AutoComplete extends Component {
               ? document.getElementById(hashFragment)
               : null
 
-            // scroll to the correct element
+            // if we are, scroll to the correct element
             if (element !== null) {
               element.scrollIntoView()
               return true
@@ -253,6 +207,7 @@ class AutoComplete extends Component {
             }
           }
 
+          // otherwise just navigate to the relative path
           push(href)
         }}
       />
@@ -266,7 +221,7 @@ const Search = () => (
   <InstantSearch
     appId="SFXAWCYDV8"
     apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
-    indexName="api_docs_dev"
+    indexName="api_reference"
   >
     <Configure hitsPerPage={10} />
     <ConnectedAutoComplete />

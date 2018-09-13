@@ -1,9 +1,11 @@
 const { GraphQLJSON } = require('gatsby/graphql')
+const { flatMapDeep, flatten } = require('lodash')
 const parseApiBlueprint = require('./parse-api-blueprint')
 const minim = require('minim').namespace()
 const unified = require('unified')
 const remarkParse = require('remark-parse')
 const remarkStringify = require('remark-stringify')
+const generateTOC = require('mdast-util-toc')
 const slugify = require('../../src/utils/api/slugify')
 const { gatherDataStructures, replaceDataStructures, insertDataStructures } = require('./data-structures')
 
@@ -26,28 +28,90 @@ function childrenToString(node) {
   return node.children.map(({ value }) => value).join('')
 }
 
-function findHeadings(tree) {
-  return tree.children.reduce((headings, node) => {
-    return node.type === 'heading' ? [ ...headings, childrenToString(node) ] : headings
-  }, [])
+/**
+ * Convert mdast node to our ToC structure
+ */
+function convertMdastTOC(node, current = {}) {
+  if (!node) {
+    return {}
+  } else if (node.type === "paragraph") {
+    const heading = childrenToString(node.children[0])
+
+    return {
+      ...current,
+      ...generateHeading({
+        title: heading,
+        slug: slugify.markdown({ heading })
+      })
+    }
+  } else {
+    if (node.type === "list") {
+      current.children = node.children.map(i => convertMdastTOC(i, {}))
+      return current
+    } else if (node.type === "listItem") {
+      const heading = convertMdastTOC(node.children[0], {})
+      if (node.children.length > 1) {
+        convertMdastTOC(node.children[1], heading)
+      }
+      return heading
+    }
+  }
+  return {}
 }
 
-function generateMarkdownTableOfContents(markdown) {
-  const tree = parseMarkdown(markdown.join(''))
 
-  const headings = findHeadings(tree)
+/**
+ * remove empty steps in the ToC that happen when the headers skip a level
+ */
+function removeEmptySteps(toc) {
+  return flatten(toc.map((heading) => {
+    if (heading.children && !heading.title) {
+      return removeEmptySteps(heading.children)
+    }
 
-  return headings.map((heading) => generateHeading({
-    title: heading,
-    slug: slugify.markdown({ heading })
+    if (heading.children) {
+      return {
+        ...heading,
+        children: removeEmptySteps(heading.children)
+      }
+    }
+
+    return heading
   }))
+}
+
+/**
+ * Generate a table of content where the heading hierarchy is respected
+ */
+function generateLeveledMarkdownTableOfContents(markdown) {
+  const tree = parseMarkdown(markdown.join(''))
+  const toc = convertMdastTOC(generateTOC(tree).map).children || []
+
+  return removeEmptySteps(toc)
+}
+
+/**
+ * Flatten the markdon table of contents
+ */
+function generateMarkdownTableOfContents(markdown) {
+  const toc = generateLeveledMarkdownTableOfContents(markdown)
+
+  // flatten the leveled table of contents
+  return flatMapDeep(toc, (heading) => {
+    const { children = [], ...justHeading } = heading
+
+    return [
+      justHeading,
+      ...children
+    ]
+  })
 }
 
 async function generateTableOfContents(node) {
   const { api } = await parseApiBlueprint(node.internal.content)
 
   let toc = [
-    ...generateMarkdownTableOfContents(api.copy.toValue()),
+    ...generateLeveledMarkdownTableOfContents(api.copy.toValue()),
     ...api.resourceGroups.map((resourceGroup) => {
       return generateHeading({
         title: resourceGroup.title.toValue(),

@@ -17,7 +17,7 @@ Message event data is retained for 10 days and is generally available within 1 m
 
 You can query the following types of events from the Message Events API.
 
-<message-events></message-events>
+<MessageEvents></MessageEvents>
 
 
 ___
@@ -134,10 +134,6 @@ Returns a list of descriptions of the event fields that could be included in a r
             "description": "Type of event this record describes",
             "sampleValue": "bounce"
           },
-          "bounce_class": {
-            "description": "Classification code for a given message (see [Bounce Classification Codes](https://support.sparkpost.com/customer/portal/articles/1929896))",
-            "sampleValue": "1"
-          },
           ...
         },
         ...
@@ -167,8 +163,6 @@ Returns an example message event for each event type listed in the `events` para
       "results": [
         {
           "type": "bounce",
-          "bounce_class": "1",
-          "campaign_id": "Example Campaign Name",
           ...
         }
       ]

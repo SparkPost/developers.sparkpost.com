@@ -1,56 +1,54 @@
 FORMAT: 1A
 title: Inbound Domains
-description: Manage inbound domains, which enable you to customize the address to which inbound messages are sent.
+description: Manage inbound domains, which enable you to receive emails.
 
 # Group Inbound Domains
 
-Specifying an inbound domain enables you to customize the address to which inbound messages are sent.
-Inbound domains are used in conjunction with [Relay Webhooks](/api/relay-webhooks/).
-You can have multiple inbound domains but each domain must be globally unique.
+Inbound Domains allow you to receive emails using SparkPost.
+When combined with [Relay Webhooks](/api/relay-webhooks/), SparkPost can parse the emails sent to the inbound domain and post their contents to your server.
 
-## Inbound Domains Object
+## Configuring MX records
+
+In order to use an inbound domain, you will need to add MX records to your DNS settings.
+The DNS settings required depend on whether you have a US, EU, Enterprise account.
+
+### US Accounts
+
+| Name               | Type | Data                  | Priority |
+|--------------------|------|-----------------------|----------|
+| `<inbound domain>` | MX   | rx1.sparkpostmail.com | 10       |
+| `<inbound domain>` | MX   | rx2.sparkpostmail.com | 10       |
+| `<inbound domain>` | MX   | rx3.sparkpostmail.com | 10       |
+
+### EU Accounts
+
+| Name               | Type | Data                     | Priority |
+|--------------------|------|--------------------------|----------|
+| `<inbound domain>` | MX   | rx1.eu.sparkpostmail.com | 10       |
+| `<inbound domain>` | MX   | rx2.eu.sparkpostmail.com | 10       |
+| `<inbound domain>` | MX   | rx3.eu.sparkpostmail.com | 10       |
+
+### Enterprise Accounts
+
+Enterprise MX records are specific to each account.
+They usually follow the format of `<tenant>.mx.e.sparkpost.com`, where `<tenant>` is unique to your account.
+Please check with your TAM if you are unsure of the setting in your own environment.
+
+| Name               | Type | Data                           | Priority |
+|--------------------|------|--------------------------------|----------|
+| `<inbound domain>` | MX   | `<tenant>.mx.e.sparkpost.com`  | 10       |
+
+## Inbound Domain Object
 
 + Data Structure
     + domain (string) - Domain (or subdomain) name for which SparkPost will receive inbound emails. Your DNS provider's MX record for this domain must point back to SparkPost.
 + Sample
-    
+
     ```
     {
-        "domain": "inbounddomain.test.com"
+        "domain": "indbound.example.com"
     }
     ```
-
-## Configuring your MX records
-
-Before you can use your inbound domain (e.g. `inbounddomain.test.com`),
-you will need to add MX records to your DNS settings. The DNS settings required
-depend on whether you are a SparkPost, SparkPost EU, or SparkPost Enterprise customer.
-
-The following DNS settings are for SparkPost:
-
-| Name                     | Type | Data                  | Priority |
-|--------------------------|------|-----------------------|----------|
-| `inbounddomain.test.com` | MX   | rx1.sparkpostmail.com | 10       |
-| `inbounddomain.test.com` | MX   | rx2.sparkpostmail.com | 10       |
-| `inbounddomain.test.com` | MX   | rx3.sparkpostmail.com | 10       |
-
-The following DNS settings are for SparkPost EU:
-
-| Name                     | Type | Data                     | Priority |
-|--------------------------|------|--------------------------|----------|
-| `inbounddomain.test.com` | MX   | rx1.eu.sparkpostmail.com | 10       |
-| `inbounddomain.test.com` | MX   | rx2.eu.sparkpostmail.com | 10       |
-| `inbounddomain.test.com` | MX   | rx3.eu.sparkpostmail.com | 10       |
-<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise</a> customers</strong>, you will need to use MX records similar to your existing domains.  In many cases
-the MX records for existing domains point at <code>inbound.<main-bounce-domain></code>.
-The following DNS settings assume that your existing domains point
-at <code>inbound.<main-bounce-domain></code>.  Please check with your TAM
-if you are unsure of the setting in your own environment.</Banner>
-
-| Name                     | Type | Data                           | Priority |
-|--------------------------|------|--------------------------------|----------|
-| `inbounddomain.test.com` | MX   | `inbound.<main-bounce-domain>` | 10       |
-
 
 ### Create an Inbound Domain [POST /v1/inbound-domains]
 
@@ -60,31 +58,13 @@ if you are unsure of the setting in your own environment.</Banner>
 
 + Request (application/json)
 
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
     + Body
 
             {
-              "domain": "inbounddomain.test.com"
+              "domain": "indbound.example.com"
             }
 
 + Response 200
-
-+ Response 400 (application/json)
-
-    + Body
-
-                {
-                    "errors": [
-                        {
-                            "message" : "Restricted domain",
-                            "description" : "Please contact SparkPost support to get this domain authorized for your account.",
-                            "code" : "7000"
-                        }
-                    ]
-                }
 
 + Response 409 (application/json)
 
@@ -103,14 +83,9 @@ if you are unsure of the setting in your own environment.</Banner>
 ### Retrieve an Inbound Domain [GET /v1/inbound-domains/{domain}]
 
 + Parameters
-    + domain (required, string, `inbounddomain.test.com`)
+    + domain: `indbound.example.com` (string, required)
 
 + Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -118,7 +93,7 @@ if you are unsure of the setting in your own environment.</Banner>
 
             {
                 "results": {
-                    "domain": "inbounddomain.test.com"
+                    "domain": "indbound.example.com"
                 }
             }
 
@@ -139,13 +114,9 @@ if you are unsure of the setting in your own environment.</Banner>
 ### Delete an Inbound Domain [DELETE /v1/inbound-domains/{domain}]
 
 + Parameters
-    + domain (required, string, `inbounddomain.test.com`)
+    + domain: `indbound.example.com` (string, required)
 
 + Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Response 200
 
@@ -179,14 +150,9 @@ if you are unsure of the setting in your own environment.</Banner>
 
 ### List all Inbound Domains [GET /v1/inbound-domains]
 
-Returns a list of all your inbound domains.
+Returns an array with all your inbound domains.
 
 + Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
 + Response 200 (application/json)
 
@@ -195,7 +161,7 @@ Returns a list of all your inbound domains.
             {
                 "results": [
                     {
-                        "domain": "inbounddomain.test.com"
+                        "domain": "indbound.example.com"
                     },
                     {
                         "domain": "inbounddomain2.test.com"

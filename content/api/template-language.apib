@@ -1,0 +1,767 @@
+FORMAT: 1A
+title: Template Language
+description: Documentation for the template language and substitution capabilities of SparkPost.
+full: true
+
+# Template Language
+
+The SparkPost API provides a powerful handlebars-style template language that you can use in the email subject, headers, text, and HTML content. 
+
+**Features include:** 
+* Sophisticated logic with full [conditionals](#header-if-else-statement) and [logical operators](#header-relational-and-logical-operators).
+* [Looping](#header-each-statement) over arrays.
+* Reference nested [object paths](#header-nested-object-paths).
+* [Default values](#header-default-values) if substitution data is absent.
+* Completely [dynamic content](#header-dynamic-content).
+* Execution of built-in [macros](#header-macros).
+* Automatic [HTML escaping](#header-html-escaping).
+* Automatic encoding of UTF-8 variables in email headers.
+
+<Banner status="warning">The template language can only be used through the API, not via SMTP</Banner>
+
+## Template Variables
+
+You can pass in JSON data to a template through both the transmission and individual recipient. The data can be anything from a simple string or deeply nested arrays and objects. That data can then be used in [expressions](#header-expressions) or [statements](#header-statements) to generate the email.
+
+
+**Keys**<br />
+The substitution keys can be contain any US-ASCII letters, digits, and underscores, not beginning with a digit, with the exception of the following keywords:
+
+|                                                  |
+| ------------------------------------------------ |
+| `address`, `email`, `email_id`, `env_from`, `return_path`, `and`, `break`, `do`, `else`, `elseif`, `end`, `false`, `for`, `function`, `if`, `local`, `nil` ,`not`, `or`, `each`, `return`, `then`, `true`, `until`, `while` |             
+
+**Values**<br />
+The substitution values can be any valid UTF-8 string or JSON value.
+
+
+### Sources
+
+Data can be passed in as `substitution_data` or `metadata`. The difference is that the `metadata` is sent through [webhook](/api/webhooks/) payloads and [message events](/api/message-events/), while `substitution_data` is only used for generating the template. If there is a conflict between `substitution_data` and `metadata`, the `substitution_data` value takes precedence.
+
+Both `metadata` and `substitution_data` can be set inside the top-level transmission object **and** inside each recipient. The recipient-level data takes precedence over the transmission-level data.
+
+In the following transmissions example, the hierarchy for the value of `city` is as follows: `San Francisco`, `Seattle`, `Baltimore`, and  `New York`. 
+
+The email would therefore render as: `Hello, New York`.
+
+```json
+{
+  "metadata": {
+    "city": "San Francisco"
+  },
+  "substitution_data": {
+    "city": "Seattle"
+  },
+  "recipients": [
+    {
+      "address": "wilma@flintstone.com",
+      "metadata": {
+        "city": "Baltimore"
+      },
+      "substitution_data": {
+        "city": "New York"
+      }
+    }
+  ],
+  "content": {
+    "from": "fred@flintstone.com",
+    "subject": "Hello",
+    "html": "Hello, {{city}}!"
+  }
+}
+```
+
+
+### Reserved Variables
+
+As a convenience, SparkPost also adds additional variables based on the transmission details. They are as follows: 
+
+* `address.name` – Name from the recipient details.
+* `email`, `email_id`, and `address.email` – Email address from recipient details.
+* `env_from` – Return-Path address, sometimes called a "bounce address" or "envelope sender address"
+* `return_path` - <span class="label label-info">Enterprise</span> The `return_path` substitution variable is available to SparkPost Enterprise users.
+
+## Expressions
+
+Expressions allow you to insert variables into your content.
+
+An expression is a `{{`, some content, followed by a `}}`. Any whitespace inside the double curly braces is ignored. All of the following are equivalent:
+
+<REPL>
+```html
+{{ value }}
+{{value}}
+{{  value   }}
+```
+```json
+{
+    "value": "Hello 👋"
+}
+```
+```results
+Hello 👋
+Hello 👋
+Hello 👋
+```
+</REPL>
+
+### Missing Variables
+
+An empty string is substituted for variables that do not exist or have a value of `null`.
+
+<REPL>
+```html
+* {{name}}
+* {{age}}
+* {{job}}
+* {{location}}
+```
+```json
+{
+    "name": "Jane",
+    "age": null,
+    "job": "Software Engineer" 
+}
+```
+```results
+* Jane
+* 
+* Software Engineer
+* 
+```
+</REPL>
+
+### Default Values
+
+To avoid rendering an empty string, you can set default values using the `or` operator. In the following example, if `name` does not exist, then the expression
+will evaluate as `Customer`.
+
+<REPL>
+```html
+Hello {{ name or 'Customer' }}
+```
+```json
+{
+    "name": null
+}
+```
+```results
+Hello Customer
+```
+</REPL>
+
+### Nested Object Paths
+
+You can reference variables that are nested inside arrays or objects using dot notation and square brackets. You can even use variables as part of the path like `part` is used in the example below.
+
+<REPL>
+```html
+Street: {{address.street}}
+City: {{address['city']}}
+Dynamic: {{address[part]}}
+```
+```json
+{
+    "address": {
+        "street": "Howard Street",
+        "city": "San Francisco"
+    },
+    "part": "street"
+}
+```
+```results
+Street: Howard Street
+City: San Francisco
+Dynamic: Howard Street
+```
+</REPL>
+
+### HTML Escaping
+
+By default, variables in the transmissions `html` content **are** HTML escaped. However, in the `text` content, variables are **not** HTML escaped. To render a value unescaped in the `html` content, wrap it in triple curly braces, `{{{ value }}}`.
+
+
+<REPL>
+```html
+Escaped: {{custom_html}}
+Unescaped: {{{custom_html}}}
+```
+```json
+{
+    "custom_html": "<b>Hello, World</b>"
+}
+```
+```results
+Escaped: &lt;b&gt;Hello, World&lt;&#x2F;b&gt;
+Unescaped: <b>Hello, World</b>
+```
+</REPL>
+
+<Banner status="danger">If your messages contain user-generated content, disabling HTML escaping (without handling escaping in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
+
+
+## Statements
+
+Statements allow you to implement logic into your templates. You can conditionally render content and loop through the data passed to the template. They have the same syntax as expressions but start with specific keywords such as `if`.
+
+Unlike expressions, statements don't return a value. Therefore, if they are on their own line, they will **not** produce a blank line in the resulting output. In addition, any whitespace after the statement will also not rendered.
+
+In the following example, the template renders without blank lines: 
+
+<REPL>
+```html
+Start of template
+{{ if state == "MD" }}
+Maryland
+{{ end }}
+End of template
+```
+```json
+{
+    "state": "MD"
+}
+```
+```results
+Start of template
+Maryland
+End of template
+```
+</REPL>
+
+### `if/else` Statement
+
+The `if/else` statement allows you to conditionally render some content if a specified condition is `true` or is not `null`. If the condition is `false` or `null`, another block of content may be rendered.
+
+```
+{{if signed_up}}
+Welcome
+{{end}}
+```
+
+You may optionally include `then` at the end of an `if` statement.
+
+```
+{{if signed_up then}}
+Welcome
+{{end}}
+```
+
+You can combine multiple `if/else` statements using `elseif` statements.
+
+```
+{{if signed_up}}
+Welcome
+{{elseif rejected_sign_up}}
+We won't bug you
+{{else}}
+Please sign up
+{{end}}
+```
+
+#### Relational and Logical Operators
+
+You can use relational and logical operators for granular control of what content renders.
+
+```
+{{if not signed_up}}
+Don't forget to sign up!
+{{end}}
+
+{{if age > 30}}
+do something
+{{else}}
+do something else
+{{end}}
+
+{{if address.state == "MD"}}
+do something
+{{end}}
+
+-- multi part conditionals
+{{if age > 30 and address.state == "MD"}}
+do something
+{{end}}
+```
+
+The relational and logical operators are as follows: 
+
+**Relational Operators**
+
+| Expression | Description                     |
+|------------|---------------------------------|
+| `x == y`   | x is equal to y                 |
+| `x != y`   | x is not equal to y             |
+| `x < y`    | x is less than y                |
+| `x > y`    | x is greater than y             |
+| `x <= y`   | x is less than or equal to y    |
+| `x >= y`   | x is greater than or equal to y |
+
+
+**Logical Operators**
+
+| Expression |
+|------------|
+| and        |
+| or         |
+| not        |
+
+
+**The Length Operator**
+
+The length operator `#` gives the length of an array.
+
+<REPL>
+```html
+Number of states: {{#states}}
+```
+```json
+{
+    "states": ["MD", "CA"]
+}
+```
+```results
+Number of states: 2
+```
+</REPL>
+
+### `each` Statement
+
+You can use an `each` statement to iterate over an array. If the array is empty or the value is `null`, nothing is rendered.
+
+Inside the loop, you can access the current value via the `loop_var` variable. The current index can be accessed through the `loop_index` variable.
+
+The following example iterates over array of strings and print out the value of each string:
+
+<REPL>
+```html
+{{ each children }}
+You have a child named {{loop_var}}
+{{ end }}
+```
+```json
+{
+    "children": [
+        "Rusty",
+        "Audrey"
+    ]
+}
+```
+```results
+You have a child named Rusty
+You have a child named Audrey
+```
+</REPL>
+
+To iterate over an array of objects, the syntax is the same, but access to the nested fields of the object is done using dot notation:
+
+<REPL>
+```html
+Your shopping cart has items in it:
+{{each shopping_cart}}
+Item: {{loop_var.name}}, Price: {{loop_var.price}}
+{{end}}
+```
+```json
+{   
+    "shopping_cart": [
+        {
+            "name": "Jacket",
+            "price": 39.99
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
+}
+```
+```results
+Your shopping cart has items in it:
+Item: Jacket, Price: 39.99
+Item: Gloves, Price: 5
+```
+</REPL>
+
+#### Nested Loops
+
+When using nested loops, because you have multiple loop variables, you should access the values using `loop_vars.<name of the array>` (notice `loop_vars` is plural).
+The following example uses `shopping_cart` and `a_nested_array`: 
+
+<REPL>
+```html
+---
+{{each shopping_cart}}
+Item: {{loop_vars.shopping_cart.name}}
+Price: {{loop_vars.shopping_cart.price}}
+This item has the following nested values:
+{{each loop_vars.shopping_cart.a_nested_array}}
+  Nested value: {{loop_vars.a_nested_array.key}}
+{{end}}
+---
+{{end}}
+```
+```json
+{
+    "shopping_cart": [
+        {
+            "name": "Jacket",
+            "price": 39.99,
+            "a_nested_array": [
+                {
+                    "key": "v2"
+                },
+                {
+                    "key": "v1"
+                }
+            ]
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
+}
+```
+```results
+---
+Item: Jacket
+Price: 39.99
+This item has the following nested values:
+  Nested value: v2
+  Nested value: v1
+---
+Item: Gloves
+Price: 5
+This item has the following nested values:
+---
+```
+</REPL>
+
+
+#### Array Indexing
+
+<Banner status="info">Array indexes start at <code>1</code>. i.e. The first value in an array named <code>items</code> is <code>items[1]</code>.</Banner>
+
+It is possible to access specific items within an array:
+
+```
+You have children named {{ children[1] }} and {{ children[2] }}.
+```
+
+Array indexing and dot notation may also be used together:
+
+```
+The first item in your shopping cart is {{ shopping_cart[1].name }}.
+```
+
+## Links
+
+Links are handled slightly differently than regular content. All of the following applies to both links in the `html` and `text` content.
+
+### Links in Variables
+
+The template language identifies links by the fact that they start with a protocol – `https://` or `http://`. If the protocol is stored inside the variable, the link won't get recognized correctly. The means that it won't get tracked and expressions that are used in the link won't be escaped properly.
+
+To use links that are entirely stored in variables processed correctly, render them as [dynamic content](#header-dynamic-content).
+
+### Links in Loops and Conditionals
+
+Links are extracted from the template based on the fact they start with a protocol as explained in [Links in Variables](#header-links-in-variables).  When links are templated inside of loops or conditionals, there should be clear whitespace delimiters such as new lines or space between the link and any templating keywords.
+
+```no-highlight
+{{if host}}
+https://{{{host}}}/
+{{else}}
+https://www.sparkpost.com/
+{{end}}
+```
+
+### Personalized Links
+
+You can use expressions inside of links to customize them. Instead of HTML escaping the value, expressions will URL encode the value.
+
+<Banner status="warning">No spaces are allowed when an expression is used inside a query string.</Banner>
+
+<REPL>
+```html
+Personalized link:
+<a href="https://company.com/dailydeals?user={{user}}&offercode={{offercode}}">Go!</a>
+```
+```json
+{
+    "user": "john",
+    "offercode": "Daily Deal!"
+}
+```
+```results
+Personalized link:
+<a href="https://company.com/dailydeals?user=john&offercode=Daily%20Deal%21">Go!</a>
+```
+</REPL>
+
+### URL Encoding
+
+Just as with [HTML escaping](#header-html-escaping), you can disable URL encoding by using triple curly braces. This is useful when you have multiple pieces of the URL in one variable.
+
+<Banner status="warning">Disabling URL encoding of variables can lead to broken links – be careful with this!</Banner>
+
+<REPL>
+```json
+{
+    "link" : "www.company.com/groups",
+    "the_entire_suffix" : "groups/join?user=clark"
+}
+```
+```html
+<a href="https://{{{link}}}">click me</a>
+<a href="http://www.company.com/{{{the_entire_suffix}}}">Go</a>
+```
+```results
+<a href="https://www.company.com/groups">click me</a>
+<a href="http://www.company.com/groups/join?user=clark">Go</a>
+```
+</REPL>
+
+<Banner status="danger">If your messages contain user-generated content, disabling URL encoding (without handling encoding in your application) may expose recipients of your messages to various types of attacks such as <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)">CSRF</a> or <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">XSS</a>.</Banner>
+
+### Custom Link Attributes
+
+The template language provides a few custom HTML attributes for attaching extra functionality to your links.
+
+These custom HTML can also be used for links in the `text` part of a message using a double-square-bracket notation.
+
+```no-highlight
+http://www.example.com[[data-msys-clicktrack="0"]]
+```
+
+
+#### Link Names
+
+Link names are used to identify links in click events in both webhook playloads and message events. You can name links through the `data-msys-linkname` custom attribute. If this attribute is not specified the link name will be reported as `Raw URL`. For example:
+
+```html
+<a href="http://www.example.com" data-msys-linkname="banner">Example</a>
+```
+
+Link names have a maximum length of 63 characters and are truncated if they exceed the limit.
+
+#### Unsubscribe Links
+
+You can configure a link in your content to generate an `link_unsubscribe` event  when clicked using the `data-msys-unsubscribe` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/unsub_handler?id=1234" data-msys-unsubscribe="1">Unsubscribe</a>
+```
+
+More information can be found [here](https://support.sparkpost.com/customer/portal/articles/1929894-setting-up-unsubscribe-links).
+
+#### Per-link Disabling of Click Tracking
+
+When click-tracking is enabled for a transmission, individual links can be skipped using the `data-msys-clicktrack` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/" data-msys-clicktrack="0">Click</a>
+```
+
+#### Custom Link Sub-Paths
+
+It is possible to add a custom sub-path to a tracked URL using the `data-msys-sublink` custom attribute. For example:
+
+```html
+<a href="http://www.example.com/" data-msys-sublink="custom_path">Click</a>
+```
+
+The tracked link generated will look like this:
+
+```no-highlight
+http://<hostname>/f/custom_path/<encoded target url>
+```
+
+<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">SparkPost Enterprise only</a>:</strong> An example of how to use <strong>data-msys-sublink</strong> to support iOS Universal Links can be found <a href="https://support.sparkpostelite.com/customer/en/portal/articles/2231112-ios9-universal-links-support?b_id=8730#Creating%20Universal%20Links%20in%20Templates%20&%20Sub-Pathing">here</a>.</Banner>
+
+## Macros
+
+Macros are built-in functions. Each macro consists of a name followed by parentheses, which may enclose any arguments that the macro accepts.
+
+### `render_dynamic_content()`
+
+This macro allows you to render substitution variables, stored inside the `dynamic_html` and `dynamic_part`. It will execute all expressions and will track all links.
+
+Learn more about [dynamic content](#header-dynamic-content).
+
+### `empty()`
+
+Given an array as an argument, the `empty` macro returns true if the array is empty or false if the array is not empty. This is useful for determining whether to include a header in a dynamically generated HTML table and blocking iteration of the table if it is empty.
+
+<REPL>
+```html
+{{ if not empty(shopping_cart) }}
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+{{ each shopping_cart }}
+  <tr>
+    <td>{{loop_var.name}}</td>
+    <td>${{loop_var.price}}</td>
+  </tr>
+{{ end }}
+</table>
+{{ else }}
+<b>Buy something!</b>
+{{ end }}
+```
+```json
+{   
+    "shopping_cart": [
+        {
+            "name": "Jacket",
+            "price": 39.99
+        },
+        {
+            "name": "Gloves",
+            "price": 5.00
+        }
+    ]
+}
+```
+```results
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td>Jacket</td>
+    <td>$39.99</td>
+  </tr>
+  <tr>
+    <td>Gloves</td>
+    <td>$5</td>
+  </tr>
+</table>
+```
+</REPL>
+
+
+### Braces Macros
+
+If you want opening or closing braces to appear in the content, you must escape them. The four macros for outputting braces are as follows:
+
+| Macro                    | Output | 
+|--------------------------|--------|
+| `opening_double_curly()` | `{{`   |
+| `closing_double_curly()` | `}}`   |
+| `opening_triple_curly()` | `{{{`  |
+| `closing_triple_curly()` | `}}}`  |
+
+<REPL>
+```html
+Here is a curly: {{ opening_double_curly() }}
+```
+```results
+Here is a curly: {{
+```
+</REPL>
+
+## Dynamic Content
+
+Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, links are not tracked. To correctly render dynamic content, you must do the following:
+
+1. Add the dynamic content inside the `dynamic_html` object at the _transmission-level_ substitution data.
+1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
+
+Here is an example of dynamic content used correctly. Notice that the `{{username}}` is replaced with `foo` in the output.
+
+<REPL>
+```html
+<body>
+<p>Insert a chunk of html:</p>
+{{ render_dynamic_content(dynamic_html.my_html_chunk) }}
+</body>
+```
+```json
+{
+    "dynamic_html": {
+        "my_html_chunk" : "<p><a href=\"http://www.example.com?q={{username}}\">Click here</a></p>"
+    },
+    "username" : "foo"
+}
+```
+```results
+<body>
+<p>Insert a chunk of html:</p>
+<p><a href="http://www.example.com?q=foo">Click here</a></p>
+</body>
+```
+</REPL>
+
+The dynamic content will be correctly rendered *without* HTML escaping,
+regardless of whether double or triple curly braces are used.
+
+**Plain text**
+
+To insert dynamic content into the `text/plain` part of a message, place the dynamic content into the transmission-level substitution variable `dynamic_plain`.
+
+As with `dynamic_html`, `dynamic_plain` variables must be wrapped in the `render_dynamic_content()` macro when used in the template.
+
+**Complex Example**
+
+Finally, as a more complex example, `render_dynamic_content()` can also be used inside an `each` loop. This example only renders the offers available as listed in the `offers` array.
+
+<REPL>
+```html
+<h3>Today's special offers</h3>
+<ul>
+{{each offers}}
+    <li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>
+{{end}}
+</ul>
+```
+```json
+{
+    "name": "John",
+    "offers": [ "offer1", "offer3" ],
+    "dynamic_html": {
+        "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+        "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+        "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+    }
+}
+```
+```results
+<h3>Today's special offers</h3>
+<ul>
+    <li><a href="http://t.com/offer/1?name=John">Premium-brand wirecutters</a></li>
+    <li><a href="http://t.com/offer/3?name=John">Super-effective bug spray</a></li>
+</ul>
+```
+</REPL>
+
+## Advanced
+
+### Substitutions in email_rfc822 Headers
+
+When it is desirable to have substitutions in RFC2047 encoded headers which are folded, be sure that each line of the header is separately RFC2047 encoded. Otherwise, the server will not be able to decode the header to look for the template language syntax.
+
+**Correct:**
+
+```
+Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=?=
+   =?gb2312?B?ztLE3M3Mz8Kyo8Gntvg=?= 
+```
+
+**Incorrect:**
+
+```
+Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
+   ztLE3M3Mz8Kyo8Gntvg=?=
+```
+
+### Encoding Rules
+
+* If after substitution, a text/plain or text/html part contains 8-bit data, then that part will be quoted-printable encoded before being placed back into the MIME structure. The Content-Type will be updated appropriately.
+* If after substitution, a header value contains 8-bit data, then the header
+value will be RFC2047 base64 encoded before being written back to the headers structure.
