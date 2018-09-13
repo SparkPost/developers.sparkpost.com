@@ -1,6 +1,7 @@
 FORMAT: 1A
 title: Alerts
 description: Configure alerts for your SparkPost account.
+label: Labs
 
 # Group Alerts
 Alerts can be used to get notifications regarding various activities on your SparkPost account.
@@ -31,7 +32,7 @@ Alerts are configured to be account-wide. Currently, subaccount level alerts are
     ```
     {
         "name": "Sparky's Monthly Alert",
-        "description": "Example alert that will notify when 90% of monthly sending limit is used",
+        "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
         "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
         "email_addresses": [
             "sparky@sparkpost.com"
@@ -71,7 +72,7 @@ Creates a new alert
    
         {
             "name": "Sparky's Monthly Alert",
-            "description": "Example alert that will notify when 90% of monthly sending limit is used",
+            "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
             "email_addresses": [
                 "sparky@sparkpost.com"
             ],
@@ -105,7 +106,7 @@ Retrieve full information about a single alert.
 
     {
         "name": "Sparky's Monthly Alert",
-        "description": "Example alert that will notify when 90% of monthly sending limit is used",
+        "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
         "email_addresses": [
             "sparky@sparkpost.com"
         ],
@@ -144,7 +145,7 @@ Updates an existing alert. Updating email_addresses replaces the the existing ar
    
         {
             "name": "Sparky's Updated Monthly Alert",
-            "description": "Updated Example alert that will notify when 80% of monthly sending limit is used",
+            "description": "Updated example alert that will send a notification when 80% of monthly sending limit is used",
             "email_addresses": [
                 "sparky@sparkpost.com"
             ],
