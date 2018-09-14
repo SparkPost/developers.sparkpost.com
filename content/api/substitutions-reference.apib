@@ -202,6 +202,41 @@ will yield:
 Here is a curly: {{
 ```
 
+## Escaping curly braces in amp-mustache templates
+
+AMP HTML email content may contain "amp-mustache" templates.  Most double and triple curly brace expressions
+within amp-mustache templates are automatically escaped by SparkPost such that the amp-mustache expressions
+are preserved upon delivery to email clients.
+
+There are certain expressions that SparkPost will *not* escape.  These include:
+* Expressions that contain the keyword "sparkpost"
+* Expressions that are already a call to one of the curly escape macros: opening_double_curly(), closing_double_curly(), opening_triple_curly(), and closing_triple_curly()
+* Expressions that contain use of "loop_var"
+* The "else" and "end" control statements
+
+In the following example, {{name}}, {{price}}, {{#cart_items}}, {{/cart_items}}, and {{^cart_items}} will be automatically
+escaped such that they are preserved as amp-mustache template expressions upon delivery of the email.
+On the other hand, {{sparkpost_name}} will be treated as a sparkpost templating expression since it contains the "sparkpost" keyword.
+
+```
+<amp-list src="https://ampbyexample.com/json/cart.json" layout="fixed-height" height="80">
+    <template type="amp-mustache">
+      <div id="cart">
+        Cart items for {{sparkpost_name}}:<br>
+        {{#cart_items}}
+        <div class="cart-item">
+            <span>{{name}}</span>
+            <span>{{price}}</span>
+          </div>
+        {{/cart_items}}
+        {{^cart_items}}
+          There are no featured products available. Please check back again later.
+        {{/cart_items}}
+      </div>
+    </template>
+  </amp-list>
+```
+
 ## Escaping HTML Values
 
 The substitution engine automatically HTML escapes substitution values before they are
