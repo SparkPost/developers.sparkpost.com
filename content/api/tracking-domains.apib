@@ -354,9 +354,14 @@ Delete an existing tracking domain.
 
 
 
-### List All Tracking Domains [GET /v1/tracking-domains]
+### List All Tracking Domains [GET /v1/tracking-domains{?default,subaccounts}]
 
 Returns an array with all tracking domains. Each item in the array is a full tracking domain object.
+
++ Parameters
+    + default = `false` (optional, boolean) ... Restrict results to default domains when true.
+    + subaccounts (optional, list) ... Delimited list of subaccounts to include in results.
+    + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
 
 + Request
 
