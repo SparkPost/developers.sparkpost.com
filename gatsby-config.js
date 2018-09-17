@@ -1,7 +1,5 @@
 'use strict'
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
 const { flatten } = require('lodash')
 const queries = require('./algolia-queries.js')
 const proxy = require('http-proxy-middleware')
