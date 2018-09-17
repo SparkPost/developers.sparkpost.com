@@ -1,7 +1,7 @@
 {
   "name": "developers.sparkpost.com",
   "description": "SparkPost Developer Site",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "author": "SparkPost <dev-relations@sparkpost.com>",
   "bugs": {
     "url": "https://github.com/SparkPost/developers.sparkpost.com/issues"

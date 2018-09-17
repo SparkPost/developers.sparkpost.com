@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv').config();
 const socket = require('socket.io');
 const SparkPost = require('sparkpost');
 
-const sp = new SparkPost(process.env.SP_API_KEY);
+const sp = new SparkPost();
 const app = express();
 
 app.use(bodyParser.json());

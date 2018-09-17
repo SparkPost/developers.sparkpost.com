@@ -19,7 +19,8 @@ npm start
 The server runs using [nodemon](https://github.com/remy/nodemon), so it restarts everytime a change is saved.
 
 ### Tunneling
-I listens on port `localhost` port `8100`.
+
+It listens on port `localhost` port `8100`.
 The developer site connects to the server locally, but you will need to surface the port through a tunnel in order to recieve webhook batches.
 
 TODO: Standardize tunnel process

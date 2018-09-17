@@ -1,14 +1,15 @@
 {
   "name": "developer-server",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Server for the SparkPost Developer Site",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js "
+    "develop": "nodemon index.js",
+    "serve": "node index.js "
   },
-  "author": "SparkPost",
-  "license": "ISC",
+  "author": "SparkPost <dev-relations@sparkpost.com>",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
