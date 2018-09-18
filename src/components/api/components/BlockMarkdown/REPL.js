@@ -134,7 +134,7 @@ const Trigger = styled(({ isActive, ...props }) => <div {...props}/>)`
 
   ${props =>props.isActive && `
     background: ${grayscale('white')};
-    box-shadow: ${shadow(1)};
+    box-shadow: ${shadow('base')};
   `};
 `
 

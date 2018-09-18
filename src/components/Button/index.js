@@ -91,7 +91,7 @@ export default styled(({
     color: ${grayscale('medium')};
     background: ${grayscale('white')};
     border-color: ${grayscale(7)};
-    box-shadow: ${shadow(1)};
+    box-shadow: ${shadow('base')};
 
     ${hoverSelector} {
       background: #f1f1f2;

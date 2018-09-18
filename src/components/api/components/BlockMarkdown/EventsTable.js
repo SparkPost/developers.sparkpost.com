@@ -27,7 +27,7 @@ const Select = styled.select`
   font-weight: 400;
   font-size: 0.833333333rem;
   line-height: 1.333333333rem;
-  box-shadow: ${shadow(1)};
+  box-shadow: ${shadow('base')};
   transition: border 0.15s;
 
   &:hover {

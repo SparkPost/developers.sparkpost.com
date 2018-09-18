@@ -49,9 +49,10 @@ const grayscaleMap = {
  * Outputs box shadow 🆒
  */
 const shadowMap = {
-  1: `0px 1px 2px ${rgba(grayscale('dark'), 0.1)}`,
-  2: `0px 5px 9px ${rgba(grayscale('dark'), 0.14)}`,
-  3: `0px 10px 30px ${rgba(grayscale('dark'), 0.16)}`,
+  base: `0px 1px 2px ${rgba(grayscale('dark'), 0.1)}`,
+  shallow: `0px 2px 4px ${rgba(grayscale('dark'), 0.1)}`,
+  deep: `0px 5px 9px ${rgba(grayscale('dark'), 0.14)}`,
+  deeper: `0px 10px 30px ${rgba(grayscale('dark'), 0.16)}`,
 }
 
 function color(c) {

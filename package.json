@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
+    "downshift": "^2.2.2",
     "escape-string-regexp": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
@@ -38,8 +39,8 @@
     "netlify-cms": "^1.9.2",
     "netlify-lambda": "^0.4.0",
     "polished": "^1.9.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-autosuggest": "^9.3.4",
     "react-cookie": "^2.2.0",
     "react-dom": "^16.4.1",
     "react-event-listener": "^0.6.1",
