@@ -292,14 +292,11 @@ const Response = styled(({ children, ...props }) => (
 `
 
 class Form extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      activeIndex: 0,
-      isSending: false,
-      email: '',
-    }
+  state = {
+    activeIndex: 0,
+    isSending: false,
+    email: '',
+    response: null,
   }
 
   setActiveIndex = i => {
@@ -310,14 +307,9 @@ class Form extends Component {
     this.setState({ email: target.value })
   }
 
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.response) {
-      setTimeout(() => this.props.nextStep(), 1000)
-    }
-  }
-
   render() {
-    const { sendEmail, response } = this.props
+    const { sendEmail } = this.props
+    const { response } = this.state
 
     return (
       <Fragment>
@@ -350,9 +342,11 @@ class Form extends Component {
             disabled={
               !isEmail.validate(this.state.email) || this.state.isSending
             }
-            onClick={() => {
+            onClick={async () => {
               this.setState({ isSending: true })
-              sendEmail(this.state.email)
+              const response = await sendEmail(this.state.email)
+              this.setState({ isSending: false, response })
+              setTimeout(() => this.props.nextStep(), 1000)
             }}
           >
             {this.state.isSending ? 'Sending...' : 'Run Code'}

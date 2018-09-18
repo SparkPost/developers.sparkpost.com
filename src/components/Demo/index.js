@@ -28,6 +28,7 @@ class Demo extends Component {
     step: 1,
     error: null,
     response: null,
+    timeout: null,
     events: [],
   }
 
@@ -38,13 +39,6 @@ class Demo extends Component {
     const socket = io.connect('http://localhost:8100')
 
     socket.on('demo__event', this.handleEvent)
-    socket.on('demo__emailSent', response => {
-      console.log(response)
-      setTimeout(
-        () => this.setState({ response: JSON.stringify(response, null, 2) }),
-        0
-      )
-    })
     socket.on('demo__error', error => this.setState({ error }))
     this.setState({ socket })
   }
@@ -59,7 +53,15 @@ class Demo extends Component {
   }
 
   sendEmail = email => {
-    this.state.socket.emit('demo__sendEmail', { email })
+    return new Promise((resolve, reject) => {
+      this.state.socket.once('demo__emailSent', response => resolve(response))
+      this.state.socket.once('demo__error', error => reject(error))
+
+      this.state.socket.emit('demo__sendEmail', { email })
+      this.setState({
+        timeout: setTimeout(() => this.setState({ step: 3 }), 1 * 60 * 1000),
+      })
+    })
   }
 
   nextStep = () => {
@@ -96,11 +98,7 @@ class Demo extends Component {
           }}
         >
           {step === 1 && (
-            <Form
-              sendEmail={this.sendEmail}
-              nextStep={this.nextStep}
-              response={this.state.response}
-            />
+            <Form sendEmail={this.sendEmail} nextStep={this.nextStep} />
           )}
           {step === 2 && <Events events={events} />}
           {step === 3 && <NextSteps />}

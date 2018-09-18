@@ -55,7 +55,7 @@ const Resource = styled(Link.Unstyled)`
   flex-direction: column;
   background: ${grayscale('white')};
   height: 100%;
-  box-shadow: 0px 2px 4px rgba(65, 65, 70, 0.14);
+  box-shadow: ${shadow('shallow')};
   margin: 0 2rem;
   border-radius: 2px;
   transition: 0.25s;
@@ -76,10 +76,13 @@ const Resource = styled(Link.Unstyled)`
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: ${shadow(2)};
+    box-shadow: ${shadow('deep')};
 
     svg {
       // transform: scale(1);
+    }
+    i {
+      padding-left: 0.266666667rem;
     }
   }
 `
@@ -109,13 +112,9 @@ const ResourceLink = styled(({ children, ...props }) => (
   width: 100%;
 
   i {
-    transition: 0.15s;
+    transition: 0.25s;
     padding-left: 0.166666667rem;
     font-size: 0.7rem;
-  }
-
-  span:hover i {
-    padding-left: 0.366666667rem;
   }
 `
 
