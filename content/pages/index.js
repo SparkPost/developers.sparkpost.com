@@ -292,132 +292,53 @@ const IndexPage = props => {
           </Row>
         </Container>
       </Section>
-      {
-        '' /*<Section light spacingTop="xs" spacingBottom="none">
-        <Container style={{ marginTop: -95 }}>
-          <Row center="xs">
-            <Column xs={11}>
-              <Panel sectioned style={{ padding: `1rem 1.5rem .75rem` }}>
-                <Resources />
-
-                <Row>
-                  <Column md={12}>
-                    <Anchor.Target title="client-libraries" />
-                    <LanguageWrapper>
-                      <Language to="https://github.com/SparkPost/node-sparkpost">
-                        <img height={2 * 18} src={nodeJs} alt="Node.js" />
-                        Node.js
-                      </Language>
-                      <Language to="https://github.com/SparkPost/php-sparkpost">
-                        <img height={2 * 18} src={php} alt="PHP" />
-                        PHP
-                      </Language>
-                      <Language to="https://github.com/SparkPost/python-sparkpost">
-                        <img height={2 * 18} src={python} alt="Python" />
-                        Python
-                      </Language>
-                      <Language to="https://github.com/SparkPost/java-sparkpost">
-                        <img height={2 * 18} src={java} alt="Java" />
-                        Java
-                      </Language>
-                      <Language to="https://github.com/SparkPost/elixir-sparkpost">
-                        <img height={2 * 18} src={elixir} alt="Elixir" />
-                        Elixir
-                      </Language>
-                      <Language to="https://github.com/search?l=Ruby&q=sparkpost&type=Repositories">
-                        <img height={2 * 18} src={ruby} alt="Ruby" />
-                        Ruby
-                      </Language>
-                      <Language to="https://github.com/SparkPost/gosparkpost">
-                        <img height={2 * 18} src={go} alt="Go" />
-                        Go Lang
-                      </Language>
-                      <Language to="https://github.com/darrencauthon/csharp-sparkpost">
-                        <img height={2 * 18} src={cSharp} alt="C#" />
-                        C#
-                      </Language>
-                    </LanguageWrapper>
-                  </Column>
-                </Row>
-              </Panel>
-            </Column>
-          </Row>
-        </Container>
-        <Container>
-          <Row center="xs">
-            <Column md={8} sm={10} xs={11}>
-              <h2
-                style={{
-                  fontSize: `1.5rem`,
-                  textAlign: 'center',
-                  margin: `10rem 0 2rem`,
-                }}
-              >
-                Steps to Start Sending
-              </h2>
-              <p
-                style={{
-                  textAlign: 'center',
-                  fontSize: `1.166666667rem`,
-                  color: grayscale(4),
-                  lineHeight: `1.5em`,
-                  marginBottom: `4.5rem`,
-                }}
-              >
-                Start sending with the most powerful email platform. Check out
-                the{' '}
-                <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/">
-                  full guide
-                </Link>{' '}
-                to get started.
-              </p>
-            </Column>
-          </Row>
-          <Row center="xs">
-            <Column lg={5} md={6} sm={8} xs={10}>
-              <div style={{ padding: `0 0 0 .75rem` }}>
-                <StartTimeline />
-                <StartStep>
-                  <StartIcon icon="user" color="magenta" />
-                  <h3>Sign up for a developer account</h3>
-                  <p>
-                    Create a free developer account to start sending up to
-                    15,000 emails every month.
-                  </p>
-                  <Link to="https://app.sparkpost.com/join">
-                    Sign up <i className="fa fa-chevron-right" />
-                  </Link>
-                </StartStep>
-                <StartStep>
-                  <StartIcon icon="at" color="mustard" />
-                  <h3>Set up your domain</h3>
-                  <p>
-                    Add the domain you want to send from and verify you own it
-                    through DNS settings.
-                  </p>
-                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#preparing-your-from-address">
-                    Add a sending domain <i className="fa fa-chevron-right" />
-                  </Link>
-                </StartStep>
-                <StartStep>
-                  <StartIcon icon="server" color="teal" />
-                  <h3>Start sending!</h3>
-                  <p>
-                    Send emails from your domain using the API or SMTP. You can
-                    also send with your favorite programming language using any
-                    of our official or community supported{' '}
-                    <Link to="#client-libraries">client libraries</Link>.
-                  </p>
-                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#sending-email">
-                    Send your first email <i className="fa fa-chevron-right" />
-                  </Link>
-                </StartStep>
-              </div>
-            </Column>
-          </Row>
-        </Container>
-      </Section>*/
-      }
+      {/*       <Section light> */}
+      {/*         <Container> */}
+      {/*           <Row center="xs"> */}
+      {/*             <Column xs={11}> */}
+      {/*                 <Row> */}
+      {/*                   <Column md={12}> */}
+      {/*                     <Anchor.Target title="client-libraries" /> */}
+      {/*                     <LanguageWrapper> */}
+      {/*                       <Language to="https://github.com/SparkPost/node-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={nodeJs} alt="Node.js" /> */}
+      {/*                         Node.js */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/SparkPost/php-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={php} alt="PHP" /> */}
+      {/*                         PHP */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/SparkPost/python-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={python} alt="Python" /> */}
+      {/*                         Python */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/SparkPost/java-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={java} alt="Java" /> */}
+      {/*                         Java */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/SparkPost/elixir-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={elixir} alt="Elixir" /> */}
+      {/*                         Elixir */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/search?l=Ruby&q=sparkpost&type=Repositories"> */}
+      {/*                         <img height={2 * 18} src={ruby} alt="Ruby" /> */}
+      {/*                         Ruby */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/SparkPost/gosparkpost"> */}
+      {/*                         <img height={2 * 18} src={go} alt="Go" /> */}
+      {/*                         Go Lang */}
+      {/*                       </Language> */}
+      {/*                       <Language to="https://github.com/darrencauthon/csharp-sparkpost"> */}
+      {/*                         <img height={2 * 18} src={cSharp} alt="C#" /> */}
+      {/*                         C# */}
+      {/*                       </Language> */}
+      {/*                     </LanguageWrapper> */}
+      {/*                   </Column> */}
+      {/*                 </Row> */}
+      {/*             </Column> */}
+      {/*           </Row> */}
+      {/*         </Container> */}
+      {/*       </Section> */}
       <Section>
         <Container>
           <h2 className="textCenter" style={{ marginBottom: `4rem` }}>

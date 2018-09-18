@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import isEmail from 'isemail'
 import { color, grayscale } from 'utils/colors'
+import { monospace } from 'utils/fonts'
 import { weight } from 'utils/fonts'
 import Panel from 'components/Panel'
 import Markdown from 'components/Markdown'
@@ -255,9 +256,42 @@ const Action = styled.div`
   }
 `
 
-const Response = styled.div``
+const Response = styled(({ children, ...props }) => (
+  <div {...props}>
+    <h5>JSON response</h5>
+    <pre>{children}</pre>
+  </div>
+))`
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  background: ${rgba(grayscale('white'), 0.96)};
+  border: 1px solid ${grayscale(9)};
+  box-shadow: 0 2px 13px 0 rgba(65, 65, 70, 0.1);
+  border-radius: 4px;
+  width: 60%;
+  max-width: 450px;
 
-class Step1 extends Component {
+  h5 {
+    font-size: 14px;
+    font-weight: ${weight('medium')};
+    color: ${grayscale(1)};
+    text-align: center;
+    border-bottom: 1px solid ${grayscale(9)};
+    margin: 0;
+    padding: 0.666666667rem;
+  }
+
+  pre {
+    background: white;
+    margin: 0;
+    padding: 1rem 0.666666667rem;
+    line-height: 1.15rem;
+    ${monospace};
+  }
+`
+
+class Form extends Component {
   constructor(props) {
     super(props)
 
@@ -276,9 +310,9 @@ class Step1 extends Component {
     this.setState({ email: target.value })
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps = nextProps => {
     if (nextProps.response) {
-      // setTimeout(() => this.props.nextStep(), 1000);
+      setTimeout(() => this.props.nextStep(), 1000)
     }
   }
 
@@ -330,4 +364,4 @@ class Step1 extends Component {
   }
 }
 
-export default Step1
+export default Form
