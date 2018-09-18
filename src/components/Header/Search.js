@@ -1,20 +1,12 @@
-import React, { Component, Fragment } from 'react'
-import { push } from 'gatsby'
+import React, { Fragment, Component }  from 'react'
 import styled from 'styled-components'
-import { isEqual } from 'lodash'
-import isAbsoluteUrl from 'is-absolute-url'
-import {
-  InstantSearch,
-  Index,
-  Configure,
-  Snippet,
-} from 'react-instantsearch/dom'
-import { connectAutoComplete } from 'react-instantsearch/connectors'
-import Autosuggest from 'react-autosuggest'
+import EventListener from 'react-event-listener'
+import { Snippet } from 'react-instantsearch/dom'
+import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
-import { mediaQuery } from 'utils/breakpoint'
-import EventListener from 'react-event-listener'
+import Search, { serializeHit } from 'components/Search'
+
 
 // prettier-ignore
 const SearchWrapper = styled.div`
@@ -80,6 +72,59 @@ const SearchInput = styled.input`
     }
   }
 `
+const SearchResults = styled.ul`
+  display: block;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  width: 500px;
+  border-radius: 2px;
+  background: ${grayscale('white')};
+  margin: 0.35rem 0 0 0;
+  box-shadow: ${shadow('deep')};
+  border: 1px solid ${grayscale(8)};
+  z-index: 9;
+  max-height: 400px;
+  overflow: auto;
+  padding: 0;
+  list-style: none;
+`
+
+const SectionTitle = styled(({ children, ...props }) => <li {...props}><h5>{children}</h5></li>)`
+  display: block;
+
+  h5 {
+    margin: 0;
+    padding: 0.35rem 0.5rem;
+    color: ${grayscale(4)};
+    font-size: 0.777777778rem;
+    display: block;
+    border-top: 1px solid ${grayscale(9)};
+    border-bottom: 1px solid ${grayscale(9)};
+  }
+`
+
+// prettier-ignore
+const SearchResult = styled(
+  ({ isHighlighted, ...props }) => <li {...props} />
+)`
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: .833333333rem;
+  font-weight: ${weight('medium')};
+  cursor: pointer;
+
+  ${props => props.isHighlighted &&`
+    background: ${grayscale('light')};
+    color: ${grayscale(1)};
+  `}
+`
+
+const Category = styled.div`
+  font-size: 0.722222222rem;
+  margin-top: 0.15rem;
+  font-weight: ${weight('normal')};
+`
 
 class FocusableInput extends Component {
   constructor(props) {
@@ -114,255 +159,70 @@ class FocusableInput extends Component {
   }
 }
 
-const SearchResults = styled.div`
-  display: block;
-  position: absolute;
-  right: 0;
-  text-align: left;
-  width: 500px;
-  border-radius: 2px;
-  background: ${grayscale('white')};
-  margin: 0.35rem 0 0 0;
-  box-shadow: ${shadow('deep')};
-  border: 1px solid ${grayscale(8)};
-  z-index: 9;
-  max-height: 400px;
-  overflow: auto;
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    margin: 0;
-    padding: 0;
-  }
-`
-
-const SectionTitle = styled.h5`
-  margin: 0;
-  padding: 0.35rem 0.5rem;
-  color: ${grayscale(4)};
-  font-size: 0.777777778rem;
-  display: block;
-  border-top: 1px solid ${grayscale(9)};
-  border-bottom: 1px solid ${grayscale(9)};
-`
-
-// prettier-ignore
-const SearchResult = styled(
-  ({ isHighlighted, ...props }) => <div {...props} />
-)`
-  display: block;
-  padding: 0.5rem 1rem;
-  font-size: .833333333rem;
-  font-weight: ${weight('medium')};
-  cursor: pointer;
-
-  ${props => props.isHighlighted &&`
-    background: ${grayscale('light')};
-    color: ${grayscale(1)};
-  `}
-`
-
-const Category = styled.div`
-  font-size: 0.722222222rem;
-  margin-top: 0.15rem;
-  font-weight: ${weight('normal')};
-`
-
-function serializeHit(hit) {
-  if (hit.actionName) {
-    return {
-      href: hit.objectID,
-      title: hit.actionName,
-      category:
-        hit.actionName === hit.resGroupName ? hit.resName : hit.resGroupName,
-    }
-  } else if (hit.resName) {
-    return {
-      href: hit.objectID,
-      title: hit.resName,
-      category: hit.resGroupName,
-    }
-  } else if (hit.resGroupName) {
-    return {
-      href: hit.objectID,
-      title: hit.resGroupName,
-      category: 'SparkPost API',
-    }
-  } else {
-    return {
-      href: hit.objectID,
-      title: hit.sectionName,
-      category: 'SparkPost API',
-    }
-  }
-}
-
-function renderSuggestion(hit, { isHighlighted }) {
-  let title, category, content
-  // documentation
-  if (hit.post_type === 'support_article') {
-    title = hit.post_title
-    content = hit.content
-  }
-  // blog post
-  else if (hit.post_type === 'post') {
-    title = hit.post_title
-    content = hit.content
-  }
-  // api reference
-  else {
-    const { title: hitTitle, category: hitCategory } = serializeHit(hit)
-    title = hitTitle
-    category = hitCategory
-  }
-
+const UniversalSearch = () => {
   return (
-    <SearchResult isHighlighted={isHighlighted}>
-      {title}
-      {category && <Category>{category}</Category>}
-      {content && (
-        <Category>
-          {<Snippet attribute="content" hit={hit} tagName="strong" />}
-        </Category>
-      )}
-    </SearchResult>
+    <SearchWrapper>
+      <Search
+        algolia={{ hitsPerPage: 3 }}
+        indexes={[
+          'api_reference',
+          'production_site_posts_support_article',
+          {
+            index: 'production_site_posts_post',
+            config: {
+              facetFilters: '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
+            }
+          }
+        ]}
+      >
+        {({ getInputProps, getMenuProps, getItemProps, isOpen, hits: indexes, highlightedIndex }) => {
+            let hitIndex = -1
+            return (
+              <div>
+                <FocusableInput {...getInputProps({ placeholder: 'Search' })} />
+                {isOpen && (
+                    <SearchResults {...getMenuProps()}>
+                      {indexes.map(({ index: indexName, hits }) => (
+                        !!hits.length && <Fragment>
+                          <SectionTitle>
+                          {indexName === 'api_reference' && 'API Reference'}
+                          {indexName === 'production_site_posts_support_article' &&
+                            'Documentation'}
+                          {indexName === 'production_site_posts_post' && 'Blog'}
+                          </SectionTitle>
+                          {hits.map((hit) => {
+                            const { to, title, category, content } = serializeHit(hit)
+                            hitIndex++
+
+                            return (
+                              <SearchResult
+                                key={to}
+                                {...getItemProps({
+                                  item: hit,
+                                  isHighlighted: highlightedIndex === hitIndex,
+                                })}
+                              >
+                                {title}
+                                {category && <Category>{category}</Category>}
+                                {content && (
+                                  <Category>
+                                    {<Snippet attribute="content" hit={hit} tagName="strong" />}
+                                  </Category>
+                                )}
+                              </SearchResult>
+                            )
+                          })}
+                        </Fragment>
+                      ))}
+                    </SearchResults>
+                  )}
+              </div>
+            )
+        }}
+      </Search>
+    </SearchWrapper>
   )
 }
 
-class AutoComplete extends Component {
-  state = { value: '', hits: [] }
-
-  onChange = (event, { newValue, method }) => {
-    if (method === 'type' || method === 'escape') {
-      this.setState({ value: newValue })
-    }
-  }
-
-  onSuggestionsFetchRequested = ({ reason, value }) => {
-    return this.props.refine(value)
-  }
-
-  onSuggestionsClearRequested = () => {
-    this.setState({ hits: [] })
-  }
-
-  componentDidUpdate() {
-    // if the new hits we have don't match our stored hits, update our hits
-    if (!isEqual(this.props.hits, this.state.hits)) {
-      this.setState({ hits: this.props.hits })
-    }
-  }
-
-  render() {
-    const { value, hits } = this.state
-
-    const inputProps = {
-      placeholder: 'Search',
-      value,
-      onChange: this.onChange,
-    }
-
-    return (
-      <Autosuggest
-        id="universal"
-        inputProps={inputProps}
-        multiSection={true}
-        renderSectionTitle={section =>
-          section.hits.length > 0 && (
-            <SectionTitle>
-              {section.index === 'api_reference' && 'API Reference'}
-              {section.index === 'production_site_posts_support_article' &&
-                'Documentation'}
-              {section.index === 'production_site_posts_post' && 'Blog'}
-            </SectionTitle>
-          )
-        }
-        getSectionSuggestions={section => section.hits}
-        suggestions={hits}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={hit => hit}
-        renderSuggestion={renderSuggestion}
-        renderInputComponent={props => <FocusableInput {...props} />}
-        renderSuggestionsContainer={({ containerProps, children, query }) =>
-          query.length > 0 &&
-          children && (
-            <SearchResults {...containerProps}>{children}</SearchResults>
-          )
-        }
-        onSuggestionSelected={(e, { suggestion: hit }) => {
-          let href
-          if (hit.post_type) {
-            href = hit.permalink
-          } else {
-            const { href: hitHref } = serializeHit(hit)
-            href = hitHref
-          }
-
-          // catch external links and send them out
-          if (isAbsoluteUrl(href)) {
-            return (window.location.href = href)
-          }
-
-          // get the pathname without the hash
-          let pathname = href
-          if (pathname.split(`#`).length > 1) {
-            pathname = pathname
-              .split(`#`)
-              .slice(0, -1)
-              .join(``)
-          }
-
-          // check if we are on the same page as the select result
-          if (pathname === window.location.pathname) {
-            const hashFragment = href
-              .split(`#`)
-              .slice(1)
-              .join(`#`)
-            const element = hashFragment
-              ? document.getElementById(hashFragment)
-              : null
-
-            // if we are, scroll to the correct element
-            if (element !== null) {
-              element.scrollIntoView()
-              return true
-            } else {
-              window.scrollTo(0, 0)
-              return true
-            }
-          }
-
-          // otherwise just navigate to the relative path
-          push(href)
-        }}
-      />
-    )
-  }
-}
-
-const ConnectedAutoComplete = connectAutoComplete(AutoComplete)
-
-const Search = () => (
-  <SearchWrapper>
-    <InstantSearch
-      appId="SFXAWCYDV8"
-      apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
-      indexName="api_reference"
-    >
-      <Index indexName="production_site_posts_support_article" />
-      <Index indexName="production_site_posts_post">
-        <Configure facetFilters="[[&quot;taxonomies_hierarchical.category.lvl0:Developer&quot;]]" />
-      </Index>
-      <Configure hitsPerPage={3} />
-      <ConnectedAutoComplete />
-    </InstantSearch>
-  </SearchWrapper>
-)
-
-export default Search
+export default UniversalSearch

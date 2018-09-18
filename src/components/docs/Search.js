@@ -64,26 +64,26 @@ const Category = styled.div`
 function serializeHit(hit) {
   if (hit.actionName) {
     return {
-      to: hit.objectID,
+      href: hit.objectID,
       title: hit.actionName,
       category:
         hit.actionName === hit.resGroupName ? hit.resName : hit.resGroupName,
     }
   } else if (hit.resName) {
     return {
-      to: hit.objectID,
+      href: hit.objectID,
       title: hit.resName,
       category: hit.resGroupName,
     }
   } else if (hit.resGroupName) {
     return {
-      to: hit.objectID,
+      href: hit.objectID,
       title: hit.resGroupName,
       category: 'SparkPost API',
     }
   } else {
     return {
-      to: hit.objectID,
+      href: hit.objectID,
       title: hit.sectionName,
       category: 'SparkPost API',
     }
@@ -92,36 +92,38 @@ function serializeHit(hit) {
 
 const DocsSearch = () => {
   return (
-    <Search
-      indexes={[ 'api_reference' ]}
-    >{({ getInputProps, isOpen, hits, highlightedIndex, getItemProps }) => (
-      <div>
-        <SearchInput {...getInputProps({
-          placeholder: 'Search API reference'
-        })} />
-        {isOpen && hits.length > 0 && (
-          <SearchResults>
-            {hits.map((hit, index) => {
-              const { title, category, to } = serializeHit(hit)
-
-              return (
-                <SearchResult
-                  key={to}
-                  {...getItemProps({
-                    item: hit,
-                    to,
-                    isHighlighted: highlightedIndex === index
-                  })}
-                >
-                  {title}
-                  <Category>{category}</Category>
-                </SearchResult>
-              )
+    <Search indexes={['api_reference']}>
+      {({ getInputProps, getMenuProps, getItemProps, isOpen, hits, highlightedIndex }) => (
+        <div>
+          <SearchInput
+            {...getInputProps({
+              placeholder: 'Search API reference',
             })}
-          </SearchResults>
-        )}
-      </div>
-    )}</Search>
+          />
+          {isOpen &&
+            hits.length > 0 && (
+              <SearchResults {...getMenuProps()}>
+                {hits.map((hit, index) => {
+                  const { title, category, href } = serializeHit(hit)
+
+                  return (
+                    <SearchResult
+                      key={href}
+                      {...getItemProps({
+                        item: hit,
+                        isHighlighted: highlightedIndex === index,
+                      })}
+                    >
+                      {title}
+                      <Category>{category}</Category>
+                    </SearchResult>
+                  )
+                })}
+              </SearchResults>
+            )}
+        </div>
+      )}
+    </Search>
   )
 }
 

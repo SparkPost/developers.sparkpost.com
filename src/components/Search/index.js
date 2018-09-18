@@ -6,17 +6,18 @@ import { InstantSearch, Configure, Index } from 'react-instantsearch/dom'
 import { connectAutoComplete } from 'react-instantsearch/connectors'
 import Downshift from 'downshift'
 import PropTypes from 'prop-types'
+import serializeHit from './serializeHit'
 
-function onChange(hit) {
-  let href = hit.to || hit.permalink || hit.objectID
+function defaultOnChange(hit) {
+  const { to } = serializeHit(hit)
 
   // catch external links and send them out
-  if (isAbsoluteUrl(href)) {
-    return (window.location.href = href)
+  if (isAbsoluteUrl(to)) {
+    return (window.location.href = to)
   }
 
   // get the pathname without the hash
-  let pathname = href
+  let pathname = to
   if (pathname.split(`#`).length > 1) {
     pathname = pathname
       .split(`#`)
@@ -26,13 +27,11 @@ function onChange(hit) {
 
   // check if we are on the same page as the select result
   if (pathname === window.location.pathname) {
-    const hashFragment = href
+    const hashFragment = to
       .split(`#`)
       .slice(1)
       .join(`#`)
-    const element = hashFragment
-      ? document.getElementById(hashFragment)
-      : null
+    const element = hashFragment ? document.getElementById(hashFragment) : null
 
     // if we are, scroll to the correct element
     if (element !== null) {
@@ -45,47 +44,46 @@ function onChange(hit) {
   }
 
   // otherwise just navigate to the relative path
-  push(href)
+  push(to)
 }
 
-const AutoComplete = ({ children, downshiftConfig, ...algoliaProps }) => {
+const AutoComplete = connectAutoComplete(({ children, downshift, ...algoliaProps }) => {
   return (
     <Downshift
-      onChange={onChange}
-      {...downshiftConfig}
+      itemToString={(h) => h ? serializeHit(h).to : h}
+      onChange={defaultOnChange} {...downshift}
     >
       {({ getInputProps: downshiftGetInputProps, ...downshiftProps }) => {
         // be default, refine the search when the input value changes
-        const getInputProps = (props) => downshiftGetInputProps({
-          onChange(e) {
-            algoliaProps.refine(e.target.value)
-          },
-          value: undefined,
-          ...props
-        })
-
-
+        const getInputProps = props =>
+          downshiftGetInputProps({
+            onChange(e) {
+              algoliaProps.refine(e.target.value)
+            },
+            value: undefined,
+            ...props,
+          })
 
         return children({
           getInputProps,
           ...downshiftProps,
-          ...algoliaProps
+          ...algoliaProps,
         })
       }}
     </Downshift>
   )
-}
-
-const ConnectedAutoComplete = connectAutoComplete(AutoComplete)
+})
 
 class Search extends Component {
   render() {
-    const { indexes, config, children, ...downshiftConfig } = this.props
+    const { indexes, algolia, children, downshift } = this.props
 
     // convert all indexes to be objects with a `index` prop and an optional `config` prop
-    const indexesObjects = indexes.map((index) => isString(index) ? { index } : index)
-    // first index with out a config
-    const firstIndex = indexesObjects.find((index) => !index.config).index
+    const indexesObjects = indexes.map(
+      index => (isString(index) ? { index } : index)
+    )
+    // first index without a config
+    const firstIndex = indexesObjects.find(index => !index.config).index
 
     return (
       <InstantSearch
@@ -93,17 +91,15 @@ class Search extends Component {
         apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
         indexName={firstIndex}
       >
-        <Configure
-          hitsPerPage={10}
-          {...config}
-        />
+        <Configure hitsPerPage={10} {...algolia} />
         {indexesObjects
           .filter(({ index }) => index !== firstIndex)
           .map(({ index, config }) => (
-            <Index indexName={index}>{config && <Configure {...config} />}</Index>
-          ))
-        }
-        <ConnectedAutoComplete downshiftConfig={downshiftConfig}>{children}</ConnectedAutoComplete>
+            <Index indexName={index}>
+              {config && <Configure {...config} />}
+            </Index>
+          ))}
+        <AutoComplete downshift={downshift}>{children}</AutoComplete>
       </InstantSearch>
     )
   }
@@ -112,6 +108,8 @@ class Search extends Component {
 Search.propTypes = {
   indexes: PropTypes.array.isRequired,
   children: PropTypes.func.isRequired,
-};
+}
 
 export default Search
+
+export { serializeHit }
