@@ -52,11 +52,8 @@ const SectionTitle = styled(({ indexName, ...props }) => (
   <li {...props}>
     <h5>
       {indexName === 'api_reference' && 'API Reference'}
-      {indexName ===
-        'production_site_posts_support_article' &&
-        'Documentation'}
-      {indexName === 'production_site_posts_post' &&
-        'Blog'}
+      {indexName === 'production_site_posts_support_article' && 'Documentation'}
+      {indexName === 'production_site_posts_post' && 'Blog'}
     </h5>
   </li>
 ))`
@@ -150,24 +147,26 @@ const UniversalSearch = () => {
               <FocusableInput {...getInputProps({ placeholder: 'Search' })} />
               {isOpen && (
                 <SearchResults {...getMenuProps()}>
-                  {indexes.map(({ index: indexName, hits }) =>
-                    !!hits.length && (
-                    <Fragment key={indexName}>
-                      <SectionTitle indexName={indexName} />
-                      {hits.map(hit => {
-                        hitIndex++
-                        return (
-                          <Hit
-                            key={hitIndex}
-                            hit={hit}
-                            {...getItemProps({
-                              item: hit,
-                              isHighlighted: hitIndex === highlightedIndex
-                            })}
-                          />
-                        )
-                      })}
-                    </Fragment>)
+                  {indexes.map(
+                    ({ index: indexName, hits }) =>
+                      !!hits.length && (
+                        <Fragment key={indexName}>
+                          <SectionTitle indexName={indexName} />
+                          {hits.map(hit => {
+                            hitIndex++
+                            return (
+                              <Hit
+                                key={hitIndex}
+                                hit={hit}
+                                {...getItemProps({
+                                  item: hit,
+                                  isHighlighted: hitIndex === highlightedIndex,
+                                })}
+                              />
+                            )
+                          })}
+                        </Fragment>
+                      )
                   )}
                 </SearchResults>
               )}

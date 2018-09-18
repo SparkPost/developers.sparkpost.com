@@ -1,5 +1,27 @@
 /**
- * Render prop component for searches throughout the site.
+ * Render prop component for searches throughout the site powered by Algolia and Downshift.
+ *
+ * The component handles the link behavior, and passes all hits to the children render prop. The children should handle the rest.
+ *
+ * Links:
+ * - https://community.algolia.com/react-instantsearch/
+ * - https://github.com/paypal/downshift
+ *
+ *
+ * Usage:
+ *
+ * <Search
+ *   algolia={algoliaConfig}
+ *   downshift={downshiftConfig}
+ *   indexes=['indexes_to_search', { indexName: 'another_index', config: configurationForTheIndex }] // https://community.algolia.com/react-instantsearch/guide/Search_parameters.html
+ * >{({ ...allAlgoliaAutoCompleteProps, ...allDownshiftProps }) => {
+ *   return (
+ *     <div>
+ *       Your search setup goes here.
+ *       Example: https://github.com/paypal/downshift/blob/master/stories/examples/react-instantsearch.js
+ *     </div>
+ *   )
+ * }}</Search>
  */
 import React, { Component } from 'react'
 import { isString } from 'lodash'
@@ -74,7 +96,7 @@ const AutoComplete = connectAutoComplete(({ children, ...props }) =>
  */
 class Search extends Component {
   render() {
-    const { indexes, algolia, children, downshift } = this.props
+    const { indexes, algolia, downshift, children } = this.props
 
     // convert all indexes to be objects with a `index` prop and an optional `config` prop
     const indexesObjects = indexes.map(
@@ -87,7 +109,9 @@ class Search extends Component {
       indexesObjects
         .filter(({ indexName }) => indexName !== firstIndex)
         .map(({ indexName, config }) => (
-          <Index key={indexName} indexName={indexName}>{config && <Configure {...config} />}</Index>
+          <Index key={indexName} indexName={indexName}>
+            {config && <Configure {...config} />}
+          </Index>
         ))
 
     return (
