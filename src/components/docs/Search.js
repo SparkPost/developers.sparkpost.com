@@ -21,7 +21,7 @@ const SearchInput = styled.input`
 
   &:focus {
     border-color: ${color('blue')};
-    box-shadow: 0 0 0 1px ${color('blue')}, ${shadow(1)};
+    box-shadow: 0 0 0 1px ${color('blue')}, ${shadow('base')};
   }
 `
 
@@ -33,7 +33,7 @@ const SearchResults = styled.div`
   background: ${grayscale('white')};
   margin: 0.166666667rem 0;
   border: 1px solid ${grayscale(8)};
-  box-shadow: ${shadow(1)};
+  box-shadow: ${shadow('base')};
   z-index: 9;
   max-height: 400px;
   overflow: auto;

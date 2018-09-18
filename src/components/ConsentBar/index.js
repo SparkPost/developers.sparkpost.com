@@ -19,7 +19,7 @@ const Bar = styled.div`
   display: flex;
   justify-content: center;
   border-radius: 4px;
-  box-shadow: ${shadow(2)};
+  box-shadow: ${shadow('deep')};
   background: ${grayscale(2)};
   color: ${grayscale(10)};
 `

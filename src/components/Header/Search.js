@@ -73,7 +73,7 @@ const SearchInput = styled.input`
   &:focus {
     width: 100%;
     border-color: ${color('blue')};
-    box-shadow: 0 0 0 1px ${color('blue')}, ${shadow(1)};
+    box-shadow: 0 0 0 1px ${color('blue')}, ${shadow('base')};
 
     + ${SlashIcon} {
       opacity: 0;
@@ -123,7 +123,7 @@ const SearchResults = styled.div`
   border-radius: 2px;
   background: ${grayscale('white')};
   margin: 0.35rem 0 0 0;
-  box-shadow: ${shadow(2)};
+  box-shadow: ${shadow('deep')};
   border: 1px solid ${grayscale(8)};
   z-index: 9;
   max-height: 400px;

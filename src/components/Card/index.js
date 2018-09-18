@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { grayscale } from 'utils/colors'
+import { grayscale, shadow } from 'utils/colors'
 import { weight, uppercase } from 'utils/fonts'
 import Link from 'components/Link'
 
 const Card = styled.div`
   background-color: ${grayscale('white')};
-  border: 1px solid ${grayscale(7)};
+  border: 1px solid ${grayscale(8)};
+  box-shadow: ${shadow('base')};
   text-align: center;
   overflow: hidden;
   border-radius: 2px;
