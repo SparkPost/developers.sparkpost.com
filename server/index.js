@@ -26,35 +26,29 @@ io.on('connect', (socket) => {
   });
 
   // Demo starting, sends email
-  socket.on('startDemo', ({ email }) => {
+  socket.on('demo__sendEmail', ({ email }) => {
 
     console.log(`Starting demo for ${socket.id}`);
-
     sp.transmissions.send({
       content: {
         template_id: 'demo-template'
       },
       recipients: [
-        {
-          name: 'Email Developer',
-          address: email
-        }
+        { address: email }
       ],
-      metadata: {
-        socketId: socket.id
-      }
+      metadata: { socketId: socket.id }
     })
     .then((data) => {
       console.log(`Demo email sent to ${email}`);
 
       // Let the client know the email sent
-      socket.emit('accepted');
+      socket.emit('demo__emailSent', data);
     })
     .catch((err) => {
       console.log('Error sending email: ', err);
 
       // Let the client know there was an error
-      socket.emit('demoError', err);
+      socket.emit('demo__error', err);
     });
 
   });
@@ -72,7 +66,7 @@ app.post('/demo', (req, res) => {
       console.log(`${category} event for: ${socketId}`);
 
       if (socketId) {
-        io.to(socketId).emit('demoEvent',
+        io.to(socketId).emit('demo__event',
           {
             ...msys[`${category}`]
           });

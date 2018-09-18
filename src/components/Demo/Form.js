@@ -1,21 +1,13 @@
 /* eslint-disable no-useless-escape */
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
+import isEmail from 'isemail'
 import { color, grayscale } from 'utils/colors'
 import { weight } from 'utils/fonts'
-
+import Panel from 'components/Panel'
 import Markdown from 'components/Markdown'
-import Demo from 'components/Demo'
 import Button from 'components/Button'
-
-const Wrapper = styled.div`
-  background: ${grayscale('white')};
-  border-radius: 4px;
-  box-shadow: 0 10px 31px -13px ${rgba(grayscale('dark'), 0.1)},
-    0 12px 20px -9px ${rgba('#3D3D49', 0.1)};
-  min-height: 300px;
-`
 
 // prettier-ignore
 const Sample = styled.pre`
@@ -250,13 +242,29 @@ sparky.Transmissions.Send(transmission);`,
   },
 ]
 
-class CodeSamples extends Component {
+const Action = styled.div`
+  border-top: 1px solid ${grayscale(8)};
+  background: ${grayscale('light')};
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.666666667rem;
+
+  ${Button} {
+    margin: 0;
+  }
+`
+
+const Response = styled.div``
+
+class Step1 extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       activeIndex: 0,
-      email: null,
+      isSending: false,
+      email: '',
     }
   }
 
@@ -268,11 +276,17 @@ class CodeSamples extends Component {
     this.setState({ email: target.value })
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.response) {
+      // setTimeout(() => this.props.nextStep(), 1000);
+    }
+  }
+
   render() {
-    const { startDemo } = this.props
+    const { sendEmail, response } = this.props
 
     return (
-      <Wrapper>
+      <Fragment>
         <Tabs>
           {samples.map(({ label }, i) => (
             <Tab
@@ -287,25 +301,33 @@ class CodeSamples extends Component {
         {samples.map(({ label, language, code }, i) => (
           <Sample key={label} isActive={this.state.activeIndex === i}>
             <Markdown>{`\`\`\`${language}\n${code}\n\`\`\``}</Markdown>
-            <input
-              type="email"
-              onChange={this.handleChange}
-              placeholder="you@youremail.com"
-            />
-            <Button
-              primary
-              onClick={() => {
-                startDemo(this.state.email)
-              }}
-              style={{ float: 'right' }}
-            >
-              Run Code
-            </Button>
           </Sample>
         ))}
-      </Wrapper>
+        <Action>
+          <input
+            type="email"
+            onChange={this.handleChange}
+            value={this.state.email}
+            placeholder="you@youremail.com"
+          />
+          <Button
+            size="small"
+            primary
+            disabled={
+              !isEmail.validate(this.state.email) || this.state.isSending
+            }
+            onClick={() => {
+              this.setState({ isSending: true })
+              sendEmail(this.state.email)
+            }}
+          >
+            {this.state.isSending ? 'Sending...' : 'Run Code'}
+          </Button>
+        </Action>
+        {response && <Response>{response}</Response>}
+      </Fragment>
     )
   }
 }
 
-export default CodeSamples
+export default Step1

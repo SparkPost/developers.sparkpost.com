@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { rgba, lighten } from 'polished'
-import { color, grayscale } from 'utils/colors'
+import { color, grayscale, shadow } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
 import { mediaQuery } from 'utils/breakpoint'
 import Layout from 'components/Layout'
@@ -13,7 +13,6 @@ import Card from 'components/Card'
 import Button from 'components/Button'
 import Link from 'components/Link'
 import Anchor from 'components/Anchor'
-import CodeSamples from 'components/CodeSamples'
 import Demo from 'components/Demo'
 import map from 'utils/map'
 
@@ -31,93 +30,122 @@ import RawCode from 'components/icons/Code'
 import RawNotes from 'components/icons/Notes'
 import RawPeople from 'components/icons/People'
 
-const Code = styled(props => <RawCode viewBox="-3 -3 30 30" {...props} />)`
-  && {
-    fill: ${grayscale('white')};
-    background: ${color('orange')};
-    border-radius: 50%;
-    border: 3px solid ${lighten(0.25, color('orange'))};
-    box-sizing: content-box;
-  }
-`
-const Notes = styled(props => <RawNotes viewBox="-3 -3 30 30" {...props} />)`
-  && {
-    fill: ${grayscale('white')};
-    background: ${color('blue')};
-    border-radius: 50%;
-    border: 3px solid ${lighten(0.25, color('blue'))};
-    box-sizing: content-box;
-  }
-`
-const People = styled(props => <RawPeople viewBox="-3 -3 30 30" {...props} />)`
-  && {
-    fill: ${grayscale('white')};
-    background: ${color('mustard')};
-    border-radius: 50%;
-    border: 3px solid ${lighten(0.25, color('mustard'))};
-    box-sizing: content-box;
-  }
-`
-
-const SectionLink = styled(Link.Unstyled)`
-  &:hover svg {
-    transform: scale(1);
-  }
-`
-
-const SectionTitle = styled.h4`
-  margin-bottom: 0.35rem;
-
-  svg {
-    margin-right: 0.35rem;
-    transform: scale(0.9);
-    transition: 0.2s;
-  }
+const TopSection = styled(props => <Section {...props} light />)`
+  background-image: url(${flameBackground});
+  background-size: 150%;
+  padding: 6rem 0;
 `
 
 const Title = styled.h1`
-  color: ${grayscale('white')};
-  font-size: 2em;
+  font-size: 2.25em;
   text-align: center;
-
-  ${mediaQuery(
-    'md',
-    `
-    margin-top: 3.5rem;
-    text-align: left;
-  `
-  )};
 `
 
 const Subtitle = styled.p`
   margin-bottom: 2rem;
   line-height: 28px;
-  font-size: 1.166666667rem;
+  font-size: 1.25rem;
+  color: ${grayscale(3)};
   text-align: center;
-
-  ${mediaQuery(
-    'md',
-    `
-    text-align: left;
-  `
-  )};
 `
 
-const ButtonWrapper = styled.div`
-  text-align: center;
-  margin-bottom: 4rem;
+const Resource = styled(Link.Unstyled)`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: ${grayscale('white')};
+  height: 100%;
+  box-shadow: 0px 2px 4px rgba(65, 65, 70, 0.14);
+  margin: 0 2rem;
+  border-radius: 2px;
+  transition: 0.25s;
 
-  ${Button} {
-    margin-bottom: 0.5rem;
+  p {
+    margin: 0;
+    padding: 0.666666667rem 1.166666667rem;
+    flex-grow: 1;
   }
 
-  ${mediaQuery(
-    'md',
-    `
-    text-align: left;
-    margin-bottom: 0rem;
-  `
-  )};
+  svg {
+    transform: scale(1.15);
+    transition: 0.2s;
+    padding: 1rem 0 0.5rem;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: ${shadow(2)};
+
+    svg {
+      // transform: scale(1);
+    }
+  }
+`
+
+const ResourceTitle = styled.h4`
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid ${grayscale('light')};
+  font-size: 1.05rem;
+  font-weight: ${weight('medium')};
+  text-align: center;
+  width: 100%;
+`
+
+const ResourceLink = styled(({ children, ...props }) => (
+  <div {...props}>
+    <span>
+      {children} <i className="fa fa-chevron-right" />
+    </span>
+  </div>
+))`
+  border-top: 1px solid ${grayscale('light')};
+  font-weight: ${weight('medium')};
+  color: ${color('blue')};
+  font-size: 0.833333333rem;
+  padding: 0.666666667rem 1.166666667rem;
+  width: 100%;
+
+  i {
+    transition: 0.15s;
+    padding-left: 0.166666667rem;
+    font-size: 0.7rem;
+  }
+
+  span:hover i {
+    padding-left: 0.366666667rem;
+  }
+`
+
+const Code = styled(props => <RawCode viewBox="-3 -3 30 30" {...props} />)`
+  && {
+    fill: ${color('orange')};
+    border-radius: 50%;
+    box-sizing: content-box;
+  }
+`
+const Notes = styled(props => <RawNotes viewBox="-3 -3 30 30" {...props} />)`
+  && {
+    fill: ${color('blue')};
+    border-radius: 50%;
+    box-sizing: content-box;
+  }
+`
+const People = styled(props => <RawPeople viewBox="-3 -3 30 30" {...props} />)`
+  && {
+    fill: ${color('mustard')};
+    border-radius: 50%;
+    box-sizing: content-box;
+  }
+`
+
+const Resources = styled(props => <h3 {...props}>Resources</h3>)`
+  ${uppercase} font-size: .833333333rem;
+  font-weight: ${weight('bold')};
+  color: ${grayscale(3)};
+  margin-bottom: 1.75rem;
 `
 
 const LanguageWrapper = styled.div`
@@ -153,21 +181,6 @@ const Language = styled(Link.Unstyled)`
     margin: 0 auto 0.5rem;
     display: block;
   }
-`
-
-const TopSection = styled(Section)`
-  background-color: ${grayscale('dark')};
-  background-image: url(${flameBackground});
-  background-size: 150%;
-  color: ${grayscale('white')};
-  padding: 8rem 0 10rem 0;
-`
-
-const Resources = styled(props => <h3 {...props}>Resources</h3>)`
-  ${uppercase} font-size: .833333333rem;
-  font-weight: ${weight('bold')};
-  color: ${grayscale(3)};
-  margin-bottom: 1.75rem;
 `
 
 const timelineWidth = 4
@@ -212,64 +225,81 @@ const IndexPage = props => {
       <TopSection>
         <Container>
           <Row center="xs">
-            <Column md={6} sm={10} xs={11}>
-              <Title>Send email from your app!</Title>
+            <Column md={12} sm={10} xs={11}>
+              <Title>SparkPost Developers</Title>
               <Subtitle>
-                The world’s most powerful email delivery solution is now yours
-                in a developer-friendly, quick to set up cloud service.{' '}
+                Start sending with the most powerful email platform.
               </Subtitle>
-              <ButtonWrapper>
-                <Button to="https://app.sparkpost.com/join" secondary>
-                  Sign Up
-                </Button>
-              </ButtonWrapper>
-            </Column>
-            <Column md={6} sm={10} xs={12}>
-              <Demo />
+              <div className="textCenter">
+                <input
+                  placeholder="Search documentation, API reference, blog posts"
+                  type="text"
+                  style={{
+                    width: `100%`,
+                    maxWidth: `700px`,
+                    margin: `0 0 5rem 0`,
+                    boxSizing: 'border-box',
+                    padding: `0.63rem 1rem`,
+                    border: `1px solid ${grayscale(8)}`,
+                    boxShadow: `0 1px 2px ${rgba(grayscale(1), 0.1)}`,
+                  }}
+                />
+              </div>
+              <Row>
+                <Column xs={12} sm={4}>
+                  <Resource to="/api">
+                    <Code />
+                    <ResourceTitle>API Reference</ResourceTitle>
+                    <p>
+                      Comprehensive specification of our API endpoints and
+                      parameters.
+                    </p>
+                    <ResourceLink>Start reading</ResourceLink>
+                  </Resource>
+                </Column>
+                <Column xs={12} sm={4}>
+                  <Resource to="https://sparkpost.com/docs">
+                    <Notes />
+                    <ResourceTitle>Documentation</ResourceTitle>
+                    <p>
+                      Understand SparkPost and how to use it most effectively.
+                    </p>
+                    <ResourceLink>Get started</ResourceLink>
+                  </Resource>
+                </Column>
+                <Column xs={12} sm={4}>
+                  <Resource to="http://slack.sparkpost.com">
+                    <People />
+                    <ResourceTitle>Community</ResourceTitle>
+                    <p>
+                      Join a community happy to help with code or other
+                      questions you might have!
+                    </p>
+                    <ResourceLink>Join now</ResourceLink>
+                  </Resource>
+                </Column>
+              </Row>
             </Column>
           </Row>
         </Container>
       </TopSection>
-      <Section light spacingTop="xs" spacingBottom="none">
+      <Section>
+        <Container>
+          <Row center="xs">
+            <Column md={9}>
+              <Demo />
+            </Column>
+          </Row>
+        </Container>
+      </Section>
+      {
+        '' /*<Section light spacingTop="xs" spacingBottom="none">
         <Container style={{ marginTop: -95 }}>
           <Row center="xs">
             <Column xs={11}>
               <Panel sectioned style={{ padding: `1rem 1.5rem .75rem` }}>
                 <Resources />
-                <Row>
-                  <Column xs={12} sm={4}>
-                    <SectionLink to="/api">
-                      <SectionTitle>
-                        <Code /> API Reference
-                      </SectionTitle>
-                      <p>
-                        Comprehensive specification of our API endpoints and
-                        parameters.
-                      </p>
-                    </SectionLink>
-                  </Column>
-                  <Column xs={12} sm={4}>
-                    <SectionLink to="https://sparkpost.com/docs">
-                      <SectionTitle>
-                        <Notes /> Documentation
-                      </SectionTitle>
-                      <p>
-                        Understand SparkPost and how to use it most effectively.
-                      </p>
-                    </SectionLink>
-                  </Column>
-                  <Column xs={12} sm={4}>
-                    <SectionLink to="http://slack.sparkpost.com">
-                      <SectionTitle>
-                        <People /> Community
-                      </SectionTitle>
-                      <p>
-                        Join a community happy to help with code or other
-                        questions you might have!
-                      </p>
-                    </SectionLink>
-                  </Column>
-                </Row>
+
                 <Row>
                   <Column md={12}>
                     <Anchor.Target title="client-libraries" />
@@ -300,7 +330,7 @@ const IndexPage = props => {
                       </Language>
                       <Language to="https://github.com/SparkPost/gosparkpost">
                         <img height={2 * 18} src={go} alt="Go" />
-                        Go
+                        Go Lang
                       </Language>
                       <Language to="https://github.com/darrencauthon/csharp-sparkpost">
                         <img height={2 * 18} src={cSharp} alt="C#" />
@@ -386,7 +416,8 @@ const IndexPage = props => {
             </Column>
           </Row>
         </Container>
-      </Section>
+      </Section>*/
+      }
       <Section>
         <Container>
           <h2 className="textCenter" style={{ marginBottom: `4rem` }}>

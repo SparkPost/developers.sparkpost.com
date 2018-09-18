@@ -7,7 +7,7 @@ import Link from 'components/Link'
 
 // prettier-ignore
 const hoverSelector = css`
-  &:hover ${props => (props.hover || props.active) && `, &`}
+  ${props => !props.disabled ? css`&:hover ${props => (props.hover || props.active) && `, &`}` : '.noop'}
 `
 
 // prettier-ignore
