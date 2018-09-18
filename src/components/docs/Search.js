@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
-import Search from 'components/Search'
+import Search, { serializeHit } from 'components/Search'
 
 const SearchInput = styled.input`
   background: ${grayscale('white')};
@@ -61,35 +61,6 @@ const Category = styled.div`
   font-weight: ${weight('normal')};
 `
 
-function serializeHit(hit) {
-  if (hit.actionName) {
-    return {
-      href: hit.objectID,
-      title: hit.actionName,
-      category:
-        hit.actionName === hit.resGroupName ? hit.resName : hit.resGroupName,
-    }
-  } else if (hit.resName) {
-    return {
-      href: hit.objectID,
-      title: hit.resName,
-      category: hit.resGroupName,
-    }
-  } else if (hit.resGroupName) {
-    return {
-      href: hit.objectID,
-      title: hit.resGroupName,
-      category: 'SparkPost API',
-    }
-  } else {
-    return {
-      href: hit.objectID,
-      title: hit.sectionName,
-      category: 'SparkPost API',
-    }
-  }
-}
-
 const DocsSearch = () => {
   return (
     <Search indexes={['api_reference']}>
@@ -111,11 +82,11 @@ const DocsSearch = () => {
             hits.length > 0 && (
               <SearchResults {...getMenuProps()}>
                 {hits.map((hit, index) => {
-                  const { title, category, href } = serializeHit(hit)
+                  const { title, category, to } = serializeHit(hit)
 
                   return (
                     <SearchResult
-                      key={href}
+                      key={to}
                       {...getItemProps({
                         item: hit,
                         isHighlighted: highlightedIndex === index,

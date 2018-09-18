@@ -78,16 +78,16 @@ class Search extends Component {
 
     // convert all indexes to be objects with a `index` prop and an optional `config` prop
     const indexesObjects = indexes.map(
-      index => (isString(index) ? { index } : index)
+      indexName => (isString(indexName) ? { indexName } : indexName)
     )
     // first index without a config
-    const firstIndex = indexesObjects.find(index => !index.config).index
+    const firstIndex = indexesObjects.find(index => !index.config).indexName
 
     const IndexesConfig = () =>
       indexesObjects
-        .filter(({ index }) => index !== firstIndex)
-        .map(({ index, config }) => (
-          <Index indexName={index}>{config && <Configure {...config} />}</Index>
+        .filter(({ indexName }) => indexName !== firstIndex)
+        .map(({ indexName, config }) => (
+          <Index key={indexName} indexName={indexName}>{config && <Configure {...config} />}</Index>
         ))
 
     return (
