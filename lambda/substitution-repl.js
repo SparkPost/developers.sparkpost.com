@@ -36,11 +36,11 @@ exports.handler = async function(event, context) {
   const { html, substitution_data: substitution_data_string } = body
 
   if (!html) {
-    return SparkPostError('html is missing')
+    return sparkPostError('html is missing')
   }
 
   if (!substitution_data_string) {
-    return SparkPostError('substitution_data is missing')
+    return sparkPostError('substitution_data is missing')
   }
 
   // convert substitution_data_string into a JSON object
@@ -48,7 +48,7 @@ exports.handler = async function(event, context) {
   try {
     substitution_data = JSON.parse(substitution_data_string)
   } catch(e) {
-    return SparkPostError(e.message)
+    return sparkPostError(e.message)
   }
 
   if (/{{\s*render_dynamic_content.*}}/.test(html)) {

@@ -126,7 +126,7 @@ class Header extends Component {
           </Nav>
           <Search />
           <Nav>
-            <NavLink to="https://app.sparkpost.com/auth">Log In</NavLink>
+            <NavLink to="https://app.sparkpost.com/auth">Login</NavLink>
             {
               <li>
                 <NavButton
