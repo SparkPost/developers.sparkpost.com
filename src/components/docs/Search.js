@@ -93,7 +93,14 @@ function serializeHit(hit) {
 const DocsSearch = () => {
   return (
     <Search indexes={['api_reference']}>
-      {({ getInputProps, getMenuProps, getItemProps, isOpen, hits, highlightedIndex }) => (
+      {({
+        getInputProps,
+        getMenuProps,
+        getItemProps,
+        isOpen,
+        hits,
+        highlightedIndex,
+      }) => (
         <div>
           <SearchInput
             {...getInputProps({

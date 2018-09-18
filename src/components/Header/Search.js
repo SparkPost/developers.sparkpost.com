@@ -1,4 +1,4 @@
-import React, { Fragment, Component }  from 'react'
+import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
 import EventListener from 'react-event-listener'
 import { Snippet } from 'react-instantsearch/dom'
@@ -6,7 +6,6 @@ import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale, shadow } from 'utils/colors'
 import { weight } from 'utils/fonts'
 import Search, { serializeHit } from 'components/Search'
-
 
 // prettier-ignore
 const SearchWrapper = styled.div`
@@ -90,7 +89,11 @@ const SearchResults = styled.ul`
   list-style: none;
 `
 
-const SectionTitle = styled(({ children, ...props }) => <li {...props}><h5>{children}</h5></li>)`
+const SectionTitle = styled(({ children, ...props }) => (
+  <li {...props}>
+    <h5>{children}</h5>
+  </li>
+))`
   display: block;
 
   h5 {
@@ -159,7 +162,6 @@ class FocusableInput extends Component {
   }
 }
 
-
 const UniversalSearch = () => {
   return (
     <SearchWrapper>
@@ -171,28 +173,45 @@ const UniversalSearch = () => {
           {
             index: 'production_site_posts_post',
             config: {
-              facetFilters: '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
-            }
-          }
+              facetFilters:
+                '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
+            },
+          },
         ]}
       >
-        {({ getInputProps, getMenuProps, getItemProps, isOpen, hits: indexes, highlightedIndex }) => {
-            let hitIndex = -1
-            return (
-              <div>
-                <FocusableInput {...getInputProps({ placeholder: 'Search' })} />
-                {isOpen && (
-                    <SearchResults {...getMenuProps()}>
-                      {indexes.map(({ index: indexName, hits }) => (
-                        !!hits.length && <Fragment>
+        {({
+          getInputProps,
+          getMenuProps,
+          getItemProps,
+          isOpen,
+          hits: indexes,
+          highlightedIndex,
+        }) => {
+          let hitIndex = -1
+          return (
+            <div>
+              <FocusableInput {...getInputProps({ placeholder: 'Search' })} />
+              {isOpen && (
+                <SearchResults {...getMenuProps()}>
+                  {indexes.map(
+                    ({ index: indexName, hits }) =>
+                      !!hits.length && (
+                        <Fragment>
                           <SectionTitle>
-                          {indexName === 'api_reference' && 'API Reference'}
-                          {indexName === 'production_site_posts_support_article' &&
-                            'Documentation'}
-                          {indexName === 'production_site_posts_post' && 'Blog'}
+                            {indexName === 'api_reference' && 'API Reference'}
+                            {indexName ===
+                              'production_site_posts_support_article' &&
+                              'Documentation'}
+                            {indexName === 'production_site_posts_post' &&
+                              'Blog'}
                           </SectionTitle>
-                          {hits.map((hit) => {
-                            const { to, title, category, content } = serializeHit(hit)
+                          {hits.map(hit => {
+                            const {
+                              to,
+                              title,
+                              category,
+                              content,
+                            } = serializeHit(hit)
                             hitIndex++
 
                             return (
@@ -207,18 +226,25 @@ const UniversalSearch = () => {
                                 {category && <Category>{category}</Category>}
                                 {content && (
                                   <Category>
-                                    {<Snippet attribute="content" hit={hit} tagName="strong" />}
+                                    {
+                                      <Snippet
+                                        attribute="content"
+                                        hit={hit}
+                                        tagName="strong"
+                                      />
+                                    }
                                   </Category>
                                 )}
                               </SearchResult>
                             )
                           })}
                         </Fragment>
-                      ))}
-                    </SearchResults>
+                      )
                   )}
-              </div>
-            )
+                </SearchResults>
+              )}
+            </div>
+          )
         }}
       </Search>
     </SearchWrapper>

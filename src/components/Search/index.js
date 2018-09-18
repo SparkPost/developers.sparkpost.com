@@ -1,3 +1,6 @@
+/**
+ * Render prop component for searches throughout the site.
+ */
 import React, { Component } from 'react'
 import { isString } from 'lodash'
 import { push } from 'gatsby'
@@ -8,6 +11,9 @@ import Downshift from 'downshift'
 import PropTypes from 'prop-types'
 import serializeHit from './serializeHit'
 
+/**
+ * find and go to the link of the selected hit
+ */
 function defaultOnChange(hit) {
   const { to } = serializeHit(hit)
 
@@ -47,33 +53,25 @@ function defaultOnChange(hit) {
   push(to)
 }
 
-const AutoComplete = connectAutoComplete(({ children, downshift, ...algoliaProps }) => {
-  return (
-    <Downshift
-      itemToString={(h) => h ? serializeHit(h).to : h}
-      onChange={defaultOnChange} {...downshift}
-    >
-      {({ getInputProps: downshiftGetInputProps, ...downshiftProps }) => {
-        // be default, refine the search when the input value changes
-        const getInputProps = props =>
-          downshiftGetInputProps({
-            onChange(e) {
-              algoliaProps.refine(e.target.value)
-            },
-            value: undefined,
-            ...props,
-          })
+const defaultAlgoliaConfig = {
+  hitsPerPage: 10,
+}
 
-        return children({
-          getInputProps,
-          ...downshiftProps,
-          ...algoliaProps,
-        })
-      }}
-    </Downshift>
-  )
-})
+const defaultDownshiftConfig = {
+  itemToString: h => (h ? serializeHit(h).to : h),
+  onChange: defaultOnChange,
+}
 
+/**
+ * Algolia render prop component
+ */
+const AutoComplete = connectAutoComplete(({ children, ...props }) =>
+  children(props)
+)
+
+/**
+ * Search render props component that combines downshift and algolia
+ */
 class Search extends Component {
   render() {
     const { indexes, algolia, children, downshift } = this.props
@@ -85,21 +83,47 @@ class Search extends Component {
     // first index without a config
     const firstIndex = indexesObjects.find(index => !index.config).index
 
+    const IndexesConfig = () =>
+      indexesObjects
+        .filter(({ index }) => index !== firstIndex)
+        .map(({ index, config }) => (
+          <Index indexName={index}>{config && <Configure {...config} />}</Index>
+        ))
+
     return (
       <InstantSearch
         appId="SFXAWCYDV8"
         apiKey="9ba87280f36f539fcc0a318c2d4fcfe6"
         indexName={firstIndex}
       >
-        <Configure hitsPerPage={10} {...algolia} />
-        {indexesObjects
-          .filter(({ index }) => index !== firstIndex)
-          .map(({ index, config }) => (
-            <Index indexName={index}>
-              {config && <Configure {...config} />}
-            </Index>
-          ))}
-        <AutoComplete downshift={downshift}>{children}</AutoComplete>
+        <Configure {...defaultAlgoliaConfig} {...algolia} />
+        <IndexesConfig />
+        <AutoComplete>
+          {algoliaProps => (
+            <Downshift {...defaultDownshiftConfig} {...downshift}>
+              {({
+                getInputProps: downshiftGetInputProps,
+                ...downshiftProps
+              }) => {
+                // be default, refine the search when the input value changes
+                const getInputProps = props =>
+                  downshiftGetInputProps({
+                    onChange(e) {
+                      algoliaProps.refine(e.target.value)
+                    },
+                    value: undefined,
+                    ...props,
+                  })
+
+                return children({
+                  getInputProps,
+                  ...downshiftProps,
+                  ...algoliaProps,
+                })
+              }}
+            </Downshift>
+          )}
+        </AutoComplete>
       </InstantSearch>
     )
   }

@@ -1,3 +1,19 @@
+/**
+ * Given a algolia hit result, this function returns the `to`, `title`, and `content`/`category`
+ */
+export default function serializeHit(hit) {
+  // documentation or blog post
+  if (hit.post_type === 'support_article' || hit.post_type === 'post') {
+    return {
+      to: hit.permalink,
+      title: hit.post_title,
+      content: hit.content,
+    }
+  }
+
+  return serializeApiReference(hit)
+}
+
 function serializeApiReference(hit) {
   if (hit.actionName) {
     return {
@@ -25,17 +41,4 @@ function serializeApiReference(hit) {
       category: 'SparkPost API',
     }
   }
-}
-
-export default function serializeHit(hit) {
-  // documentation or blog post
-  if (hit.post_type === 'support_article' || hit.post_type === 'post') {
-    return {
-      to: hit.permalink,
-      title: hit.post_title,
-      content: hit.content
-    }
-  }
-
-  return serializeApiReference(hit)
 }
