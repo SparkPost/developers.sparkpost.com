@@ -121,8 +121,9 @@ class ConsentBar extends Component {
             to="https://www.sparkpost.com/policies/privacy/"
           >
             Cookie Policy
-          </Link>. By using our site without disabling cookies, you consent to
-          our use of them.
+          </Link>
+          . By using our site without disabling cookies, you consent to our use
+          of them.
         </Content>
         <Dismiss onClick={this.setConsentFlag}>
           <DismissIcon />
