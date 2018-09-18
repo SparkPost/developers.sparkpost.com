@@ -52,14 +52,14 @@ Alerts are configured to be account-wide. Currently, subaccount level alerts are
 Creates a new alert
 
 + Data Structure
-    + name (string) - Display name of the alert.
+    + name (string, required) - Display name of the alert.
     + description (string) - Description of the alert.
-    + email_addresses (array) - List of up to 10 email addresses to send alert notifications
-    + alert_metric (enum) - Metric that the alert is configured to track
+    + email_addresses (array, required) - List of up to 10 email addresses to send alert notifications
+    + alert_metric (enum, required) - Metric that the alert is configured to track
         + `"monthly_sending_limit"`
-    + threshold (object) - Configuration for level and threshold at which an alert is generated.
-        + error (object) - Error level alert configuration.
-            + target (number) - Percentage value at which an alert will be generated.
+    + threshold (object, required) - Configuration for level and threshold at which an alert is generated.
+        + error (object, required) - Error level alert configuration.
+            + target (number, required) - Percentage value at which an alert will be generated.
             + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
                 + Default: `"gt"`
     + enabled (boolean) - Whether or not the alert is active.
@@ -122,7 +122,7 @@ Retrieve full information about a single alert.
 
 
 ### Updates an Alert [PUT /labs/alerts/{id}]
-Updates an existing alert. Updating email_addresses replaces the the existing array with the new array. 
+Updates an existing alert. Updating `email_addresses` replaces the the existing array with the new array. 
 
 + Data Structure
     + name (string) - Display name of the alert.
