@@ -11,10 +11,9 @@
     "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-styled-components": "^1.7.1",
     "downshift": "^2.2.2",
     "escape-string-regexp": "^1.0.5",
-    "extract-text-webpack-plugin": "^3.0.2",
     "font-awesome": "^4.7.0",
     "gatsby": "^2.0.3",
     "gatsby-plugin-google-tagmanager": "^2.0.5",
