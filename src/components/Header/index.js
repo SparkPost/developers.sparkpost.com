@@ -24,7 +24,7 @@ const Wrapper = styled.header`
   white-space: nowrap;
 
   ${props => props.isSticky && css`
-    box-shadow: ${shadow(1)};
+    box-shadow: ${shadow('base')};
     background-color: ${grayscale('white')};
   `}
 

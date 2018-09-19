@@ -6,7 +6,7 @@ const PanelWrapper = styled.div`
   margin-bottom: 1rem;
   background: ${grayscale('white')};
   border: 1px solid ${grayscale('light')};
-  box-shadow: ${shadow(1)};
+  box-shadow: ${shadow('base')};
   border-radius: 2px;
   overflow: hidden;
 

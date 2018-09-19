@@ -135,7 +135,9 @@ function Attribute(props) {
       {children &&
         children.length > 0 && (
           <AttributeChildren>
-            {children.map((props, i) => <Attribute key={i} {...props} />)}
+            {children.map((props, i) => (
+              <Attribute key={i} {...props} />
+            ))}
           </AttributeChildren>
         )}
     </AttributeWrapper>
