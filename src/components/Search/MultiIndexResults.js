@@ -21,9 +21,7 @@ import Hit from './Hit'
 
 const SectionTitle = styled(({ indexLabels, indexName, ...props }) => (
   <li {...props}>
-    <h5>
-      {indexLabels[indexName]}
-    </h5>
+    <h5>{indexLabels[indexName]}</h5>
   </li>
 ))`
   display: block;
@@ -39,7 +37,12 @@ const SectionTitle = styled(({ indexLabels, indexName, ...props }) => (
   }
 `
 
-const MultiIndexResults = ({ indexes, indexLabels, getItemProps, highlightedIndex }) => {
+const MultiIndexResults = ({
+  indexes,
+  indexLabels,
+  getItemProps,
+  highlightedIndex,
+}) => {
   let hitIndex = -1
 
   return (
@@ -68,6 +71,5 @@ const MultiIndexResults = ({ indexes, indexLabels, getItemProps, highlightedInde
     </Fragment>
   )
 }
-
 
 export default MultiIndexResults

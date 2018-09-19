@@ -30,6 +30,7 @@ export default styled(({
   border-radius: 2px;
   margin-right: 0.5rem;
   display: inline-block;
+  transition: .15s;
 
   &[disabled] {
     opacity: 0.5;

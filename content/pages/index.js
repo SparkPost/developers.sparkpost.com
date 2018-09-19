@@ -267,8 +267,7 @@ const HomeSearch = () => (
       {
         indexName: 'production_site_posts_post',
         config: {
-          facetFilters:
-            '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
+          facetFilters: '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
         },
       },
     ]}
@@ -284,7 +283,9 @@ const HomeSearch = () => (
       return (
         <div style={{ maxWidth: '700px', margin: 'auto' }}>
           <SearchInput
-            {...getInputProps({ placeholder: 'Search documentation, API reference, blog posts' })}
+            {...getInputProps({
+              placeholder: 'Search documentation, API reference, blog posts',
+            })}
           />
           {isOpen && (
             <SearchResults {...getMenuProps()}>

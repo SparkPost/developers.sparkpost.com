@@ -1,18 +1,17 @@
 /* eslint-disable no-useless-escape */
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { rgba } from 'polished'
 import isEmail from 'isemail'
 import { color, grayscale } from 'utils/colors'
 import { monospace } from 'utils/fonts'
 import { weight } from 'utils/fonts'
-import Panel from 'components/Panel'
 import Markdown from 'components/Markdown'
 import Button from 'components/Button'
+import { LoadingSVG } from 'components/Loading'
 
 // prettier-ignore
-const Sample = styled.pre`
-  padding: 1rem;
+const Sample = styled.div`
   margin: 0;
   background: transparent;
   color: ${grayscale('medium')};
@@ -20,7 +19,6 @@ const Sample = styled.pre`
 
   pre {
     background: transparent;
-    padding: 0;
     margin: 0;
   }
 
@@ -256,6 +254,18 @@ const Action = styled.div`
   }
 `
 
+const responseAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(50px) scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+`
+
 const Response = styled(({ children, ...props }) => (
   <div {...props}>
     <h5>JSON response</h5>
@@ -265,12 +275,13 @@ const Response = styled(({ children, ...props }) => (
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  background: ${rgba(grayscale('white'), 0.96)};
+  background: ${rgba(grayscale('white'), 0.95)};
   border: 1px solid ${grayscale(9)};
   box-shadow: 0 2px 13px 0 rgba(65, 65, 70, 0.1);
   border-radius: 4px;
   width: 60%;
   max-width: 450px;
+  animation: ${responseAnimation} 0.3s ease-out;
 
   h5 {
     font-size: 14px;
@@ -283,11 +294,58 @@ const Response = styled(({ children, ...props }) => (
   }
 
   pre {
-    background: white;
+    background: transparent;
     margin: 0;
     padding: 1rem 0.666666667rem;
     line-height: 1.15rem;
     ${monospace};
+  }
+`
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+// prettier-ignore
+const Spinner = styled(({ isVisible, ...props }) => (
+  <div {...props}>
+    <span></span>
+    <span></span>
+  </div>
+))`
+  display: inline-block;
+
+  span:first-child {
+    width: 0;
+    display: inline-block;
+    transition: width 0.15s;
+
+    ${props => props.isVisible && `width: 1.4em;`}
+  }
+
+  span:last-child {
+    position: absolute;
+    transform: translateZ(0) translateY(-50%);
+    top: -1px;
+    left: -0.3em;
+    border-style: solid;
+    border-width: 0.2em;
+    border-color: ${grayscale('white')};
+    border-left-color: transparent;
+    padding: 0;
+    border-radius: 50%;
+    width: 1.15em;
+    height: 1.15em;
+    animation: ${rotate360} .9s infinite linear;
+    opacity: 0;
+    transition: opacity 0.1s;
+    ${props => props.isVisible && `opacity: 1;`};
   }
 `
 
@@ -340,19 +398,22 @@ class Form extends Component {
             size="small"
             primary
             disabled={
-              !isEmail.validate(this.state.email) || this.state.isSending
+              !isEmail.validate(this.state.email) ||
+              this.state.isSending ||
+              response
             }
             onClick={async () => {
               this.setState({ isSending: true })
               const response = await sendEmail(this.state.email)
               this.setState({ isSending: false, response })
-              setTimeout(() => this.props.nextStep(), 1000)
+              setTimeout(() => this.props.nextStep(), 2500)
             }}
           >
-            {this.state.isSending ? 'Sending...' : 'Run Code'}
+            <Spinner isVisible={this.state.isSending} />
+            Run Code
           </Button>
         </Action>
-        {response && <Response>{response}</Response>}
+        {response && <Response>{JSON.stringify(response, null, 2)}</Response>}
       </Fragment>
     )
   }

@@ -47,7 +47,6 @@ const SearchResults = styled.ul`
   list-style: none;
 `
 
-
 const UniversalSearch = () => {
   return (
     <SearchWrapper>

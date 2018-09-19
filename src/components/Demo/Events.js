@@ -129,7 +129,9 @@ const Events = ({ events, loading }) => (
       <p>Waiting for events...(or appropriate loading)</p>
     ) : (
       <EventsTable>
-        {events.map((event, index) => <Event key={index} {...event} />)}
+        {events.map((event, index) => (
+          <Event key={index} {...event} />
+        ))}
       </EventsTable>
     )}
   </Fragment>

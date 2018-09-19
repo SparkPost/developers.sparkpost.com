@@ -8,6 +8,7 @@ const colorMap = {
   gray: '#55555a',
   orange: '#fa6423',
   blue: '#37aadc',
+  white: '#ffffff',
 
   // Secondary
   green: '#9bcd5a',

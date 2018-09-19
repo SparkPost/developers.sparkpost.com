@@ -29,6 +29,14 @@ io.on('connect', (socket) => {
   socket.on('demo__sendEmail', ({ email }) => {
 
     console.log(`Starting demo for ${socket.id}`);
+
+    return socket.emit('demo__emailSent', {
+  "results": {
+    "total_rejected_recipients": 0,
+    "total_accepted_recipients": 1,
+    "id": "11668787493850529"
+  }
+});
     sp.transmissions.send({
       content: {
         template_id: 'demo-template'

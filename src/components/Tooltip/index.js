@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
+import { isFunction } from 'lodash'
 import { grayscale } from 'utils/colors'
 import zIndex from 'utils/zIndex'
 
 const arrowMargin = `10px`
 
-const Tip = styled.div`
+const Tip = styled.span`
   display: block;
   position: absolute;
   top: -0.777777778rem;
@@ -24,7 +25,7 @@ const Tip = styled.div`
   z-index: -1;
 `
 
-const Tooltip = styled.div`
+const Tooltip = styled.span`
   display: block;
   position: absolute;
   z-index: ${zIndex('tooltip')};
@@ -46,7 +47,7 @@ const Tooltip = styled.div`
   transition: 0.06s ease-out;
 `
 
-const Content = styled.div`
+const Content = styled.span`
   position: relative;
   z-index: 1;
   border-radius: 4px;
@@ -77,7 +78,7 @@ export default ({ content, children, ...props }) => {
       {children}
       <Tooltip>
         <Tip />
-        <Content>{content}</Content>
+        <Content>{isFunction(content) ? content() : content}</Content>
       </Tooltip>
     </Activator>
   )
