@@ -14,6 +14,8 @@ import Button from 'components/Button'
 import Link from 'components/Link'
 import Anchor from 'components/Anchor'
 import Demo from 'components/Demo'
+import Search from 'components/Search'
+import MultiIndexResults from 'components/Search/MultiIndexResults'
 import map from 'utils/map'
 
 import flameBackground from 'assets/flame-background.png'
@@ -218,6 +220,92 @@ const StartIcon = styled(({ icon, color, ...props }) => (
   transform: translate(-50%, -15%);
 `
 
+const SearchInput = styled.input`
+  width: 100%;
+  margin: 0 0 5rem 0;
+  padding: 0.63rem 1rem;
+  border: 1px solid ${grayscale(8)};
+  box-shadow: ${shadow('base')};
+  background: ${grayscale('white')};
+  border-radius: 2px;
+  font: inherit;
+  font-size: 0.833333333rem;
+  outline: 0;
+  transition: 0.2s;
+
+  &:focus {
+    border-color: ${color('blue')};
+    box-shadow: 0 0 0 1px ${color('blue')}, ${shadow('base')};
+  }
+`
+
+const SearchResults = styled.ul`
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  text-align: left;
+  width: 100%;
+  border-radius: 2px;
+  background: ${grayscale('white')};
+  margin: 0.35rem 0 0 0;
+  box-shadow: ${shadow('deep')};
+  border: 1px solid ${grayscale(8)};
+  z-index: 9;
+  max-height: 400px;
+  overflow: auto;
+  padding: 0;
+  list-style: none;
+`
+
+const HomeSearch = () => (
+  <Search
+    algolia={{ hitsPerPage: 3 }}
+    indexes={[
+      'api_reference',
+      'production_site_posts_support_article',
+      {
+        indexName: 'production_site_posts_post',
+        config: {
+          facetFilters:
+            '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
+        },
+      },
+    ]}
+  >
+    {({
+      getInputProps,
+      getMenuProps,
+      getItemProps,
+      isOpen,
+      hits: indexes,
+      highlightedIndex,
+    }) => {
+      return (
+        <div style={{ maxWidth: '700px', margin: 'auto' }}>
+          <SearchInput
+            {...getInputProps({ placeholder: 'Search documentation, API reference, blog posts' })}
+          />
+          {isOpen && (
+            <SearchResults {...getMenuProps()}>
+              <MultiIndexResults
+                indexes={indexes}
+                indexLabels={{
+                  api_reference: 'API Reference',
+                  production_site_posts_support_article: 'Documentation',
+                  production_site_posts_post: 'Blog',
+                }}
+                highlightedIndex={highlightedIndex}
+                getItemProps={getItemProps}
+              />
+            </SearchResults>
+          )}
+        </div>
+      )
+    }}
+  </Search>
+)
+
 const IndexPage = props => {
   return (
     <Layout {...props}>
@@ -230,19 +318,7 @@ const IndexPage = props => {
                 Start sending with the most powerful email platform.
               </Subtitle>
               <div className="textCenter">
-                <input
-                  placeholder="Search documentation, API reference, blog posts"
-                  type="text"
-                  style={{
-                    width: `100%`,
-                    maxWidth: `700px`,
-                    margin: `0 0 5rem 0`,
-                    boxSizing: 'border-box',
-                    padding: `0.63rem 1rem`,
-                    border: `1px solid ${grayscale(8)}`,
-                    boxShadow: `0 1px 2px ${rgba(grayscale(1), 0.1)}`,
-                  }}
-                />
+                <HomeSearch />
               </div>
               <Row>
                 <Column xs={12} sm={4}>

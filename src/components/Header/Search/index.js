@@ -1,10 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Snippet } from 'react-instantsearch/dom'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, shadow } from 'utils/colors'
-import { weight } from 'utils/fonts'
-import Search, { serializeHit } from 'components/Search'
+import Search from 'components/Search'
+import MultiIndexResults from 'components/Search/MultiIndexResults'
 import FocusableInput from './FocusableInput'
 
 // prettier-ignore
@@ -48,73 +47,6 @@ const SearchResults = styled.ul`
   list-style: none;
 `
 
-const SectionTitle = styled(({ indexName, ...props }) => (
-  <li {...props}>
-    <h5>
-      {indexName === 'api_reference' && 'API Reference'}
-      {indexName === 'production_site_posts_support_article' && 'Documentation'}
-      {indexName === 'production_site_posts_post' && 'Blog'}
-    </h5>
-  </li>
-))`
-  display: block;
-
-  h5 {
-    margin: 0;
-    padding: 0.35rem 0.5rem;
-    color: ${grayscale(4)};
-    font-size: 0.777777778rem;
-    display: block;
-    border-top: 1px solid ${grayscale(9)};
-    border-bottom: 1px solid ${grayscale(9)};
-  }
-`
-
-// prettier-ignore
-const Hit = styled(
-  ({ hit, isHighlighted, ...props }) => {
-    const {
-      title,
-      category,
-      content,
-    } = serializeHit(hit)
-
-    return (
-      <li {...props}>
-        {title}
-        {category && <Category>{category}</Category>}
-        {content && (
-          <Category>
-            {
-              <Snippet
-                attribute="content"
-                hit={hit}
-                tagName="strong"
-              />
-            }
-          </Category>
-        )}
-      </li>
-    )
-  }
-)`
-  display: block;
-  padding: 0.5rem 1rem;
-  font-size: .833333333rem;
-  font-weight: ${weight('medium')};
-  cursor: pointer;
-
-  ${props => props.isHighlighted &&`
-    background: ${grayscale('light')};
-    color: ${grayscale(1)};
-  `}
-`
-
-const Category = styled.div`
-  font-size: 0.722222222rem;
-  margin-top: 0.15rem;
-  font-weight: ${weight('normal')};
-`
 
 const UniversalSearch = () => {
   return (
@@ -141,33 +73,21 @@ const UniversalSearch = () => {
           hits: indexes,
           highlightedIndex,
         }) => {
-          let hitIndex = -1
           return (
             <div>
               <FocusableInput {...getInputProps({ placeholder: 'Search' })} />
               {isOpen && (
                 <SearchResults {...getMenuProps()}>
-                  {indexes.map(
-                    ({ index: indexName, hits }) =>
-                      !!hits.length && (
-                        <Fragment key={indexName}>
-                          <SectionTitle indexName={indexName} />
-                          {hits.map(hit => {
-                            hitIndex++
-                            return (
-                              <Hit
-                                key={hitIndex}
-                                hit={hit}
-                                {...getItemProps({
-                                  item: hit,
-                                  isHighlighted: hitIndex === highlightedIndex,
-                                })}
-                              />
-                            )
-                          })}
-                        </Fragment>
-                      )
-                  )}
+                  <MultiIndexResults
+                    indexes={indexes}
+                    indexLabels={{
+                      api_reference: 'API Reference',
+                      production_site_posts_support_article: 'Documentation',
+                      production_site_posts_post: 'Blog',
+                    }}
+                    highlightedIndex={highlightedIndex}
+                    getItemProps={getItemProps}
+                  />
                 </SearchResults>
               )}
             </div>
