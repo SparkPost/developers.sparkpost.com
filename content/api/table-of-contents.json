@@ -27,7 +27,8 @@
     "pages": [
       "metrics.apib",
       "message-events.apib",
-      "webhooks.apib"
+      "webhooks.apib",
+      "alerts.apib"
     ]
   },
   {
