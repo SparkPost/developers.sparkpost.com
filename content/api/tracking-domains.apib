@@ -123,9 +123,9 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
             {
                 "errors" : [
                     {
-                        "code" : "7000",
-                        "message" : "restricted domain",
-                        "description" : "Please contact SparkPost support to get this domain authorized for your account."
+                        "param" : "domain",
+                        "message" : "domain is on a DNS blacklist",
+                        "value": "baddomain.com"
                     }
                 ]
             }
@@ -137,9 +137,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
             {
                 "errors" : [
                     {
-                        "code" : "1602",
-                        "message" : "resource conflict",
-                        "description" : "The tracking domain already exists."
+                        "message" : "The tracking domain already exists"
                     }
                 ]
             }
@@ -152,9 +150,9 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
             {
                 "errors": [
                     {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Error domain name contains invalid characters or spaces for domain: 'example*&#.domain.com'"
+                        "param": "domain",
+                        "message": "domain must be valid",
+                        "value": "baddomain"
                     }
                 ]
             }
@@ -183,20 +181,6 @@ Initiate a check against the configured redirect for the specified tracking doma
             }
         }
 
-+ Response 404 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "code": "1600",
-                        "message": "resource not found",
-                        "description": "Resource not found: example.domain.com"
-                    }
-                ]
-            }
-
 + Response 400 (application/json)
 
     + Body
@@ -204,13 +188,23 @@ Initiate a check against the configured redirect for the specified tracking doma
             {
                 "errors": [
                     {
-                        "code": "1404",
-                        "message": "request to remote endpoint failed",
-                        "description":  "Unable to reach https://example.domain.com:443. Please verify that your redirect is functioning and that your SSL certificate is valid."
+                        "message": "HTTP request to https://example.domain.com:443 failed.  Please verify that your redirect is functioning and that your SSL certificate is valid.",
                     }
                 ]
             }
 
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "resource not found"
+                    }
+                ]
+            }
+            
 ### Retrieve a Tracking Domain [GET /v1/tracking-domains/{domain}]
 
 Retrieve an existing tracking domain.
@@ -243,6 +237,20 @@ Retrieve an existing tracking domain.
                 }
             }
 
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "param": "domain",
+                        "message": "domain must be valid",
+                        "value": "baddomain"
+                    }
+                ]
+            }
+
 + Response 404 (application/json)
 
     + Body
@@ -250,12 +258,11 @@ Retrieve an existing tracking domain.
             {
                 "errors": [
                     {
-                        "code": "1600",
-                        "message": "resource not found",
-                        "description": "Resource not found: example.domain.com"
+                        "message": "resource not found"
                     }
                 ]
             }
+            
 
 
 ### Update a Tracking Domain [PUT /v1/tracking-domains/{domain}]
@@ -294,6 +301,20 @@ Setting a new default automatically unsets the current relevant default, if it e
                 }
             }
 
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "param": "domain",
+                        "message": "domain must be valid",
+                        "value": "baddomain"
+                    }
+                ]
+            }
+
 + Response 404 (application/json)
 
     + Body
@@ -301,9 +322,7 @@ Setting a new default automatically unsets the current relevant default, if it e
             {
                 "errors": [
                     {
-                        "code": "1600",
-                        "message": "resource not found",
-                        "description": "Resource not found: example.domain.com"
+                        "message": "resource not found"
                     }
                 ]
             }
@@ -315,9 +334,7 @@ Setting a new default automatically unsets the current relevant default, if it e
             {
                 "errors": [
                     {
-                        "code": "1300",
-                        "message": "invalid data format/type",
-                        "description": "Tracking domain 'example.domain.com' unverified."
+                        "message": "Tracking domain 'example.domain.com' unverified."
                     }
                 ]
             }
@@ -338,6 +355,20 @@ Delete an existing tracking domain.
 
 + Response 204
 
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "param": "domain",
+                        "message": "domain must be valid",
+                        "value": "baddomain"
+                    }
+                ]
+            }
+            
 + Response 404 (application/json)
 
     + Body
@@ -345,9 +376,7 @@ Delete an existing tracking domain.
             {
                 "errors": [
                     {
-                        "code": "1600",
-                        "message": "resource not found",
-                        "description": "Resource not found: example.domain.com"
+                        "message": "resource not found"
                     }
                 ]
             }
