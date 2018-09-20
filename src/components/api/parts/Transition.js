@@ -19,9 +19,7 @@ const Wrapper = styled(Row)`
 `
 
 const TransitionHeading = Heading.extend`
-  &&& {
-    margin-top: 0;
-  }
+  margin-top: 0;
 `
 
 const HrefWrapper = styled.div`

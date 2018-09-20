@@ -299,7 +299,7 @@ const IndexPage = props => {
                       </Language>
                       <Language to="https://github.com/SparkPost/gosparkpost">
                         <img height={2 * 18} src={go} alt="Go" />
-                        Go
+                        Go Lang
                       </Language>
                       <Language to="https://github.com/darrencauthon/csharp-sparkpost">
                         <img height={2 * 18} src={cSharp} alt="C#" />

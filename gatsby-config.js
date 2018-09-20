@@ -2,6 +2,7 @@
 
 const { flatten } = require('lodash')
 const queries = require('./algolia-queries.js')
+const proxy = require('http-proxy-middleware')
 
 // Environment variables prefixed by "GATSBY" are accessible in src/ files
 process.env.GATSBY_ACTIVE_ENV = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV
@@ -10,6 +11,17 @@ module.exports = {
   siteMetadata: {
     title: `SparkPost Developers`,
     description: `SparkPost developer resources including documentation, API reference, and client libraries.`,
+  },
+  developMiddleware: app => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      })
+    )
   },
   plugins: flatten([
     process.env.GATSBY_ACTIVE_ENV !== 'docs' ? [
@@ -71,8 +83,18 @@ module.exports = {
         showSpinner: false,
       }
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          // Disable cache for Gatsby's default service worker file path
+          // suggested by https://www.netlify.com/blog/2018/06/28/5-pro-tips-and-plugins-for-optimizing-your-gatsby---netlify-site/
+          "/sw.js": [ "Cache-Control: no-cache" ]
+        },
+      }
+    }
   ])
 }

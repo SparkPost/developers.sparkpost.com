@@ -27,7 +27,7 @@ const Select = styled.select`
   font-weight: 400;
   font-size: 0.833333333rem;
   line-height: 1.333333333rem;
-  box-shadow: ${shadow(1)};
+  box-shadow: ${shadow('base')};
   transition: border 0.15s;
 
   &:hover {
@@ -111,15 +111,13 @@ const TableDataStructure = styled(DataStructure)`
 `
 
 const DescriptionHeading = styled(HttpHeading)`
-  &&& {
-    ${uppercase}
-    font-weight: ${weight('medium')};
-    font-size: 0.75rem;
-    color: ${grayscale(7)};
-    border-bottom: 1px solid ${grayscale(1)};
-    margin: 1rem 0 0.5rem;
-    padding-bottom: 0.5rem;
-  }
+  ${uppercase}
+  font-weight: ${weight('medium')};
+  font-size: 0.75rem;
+  color: ${grayscale(7)};
+  border-bottom: 1px solid ${grayscale(1)};
+  margin: 1rem 0 0.5rem;
+  padding-bottom: 0.5rem;
 `
 
 const Description = styled.p`

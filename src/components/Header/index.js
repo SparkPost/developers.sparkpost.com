@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, shadow } from 'utils/colors'
-
+import Button from 'components/Button'
 import Logo from './Logo'
 import Nav from './Nav'
 import NavLink from './NavLink'
+import Search from './Search'
 import StatusIcon from './StatusIcon'
 import Hamburger from './Hamburger'
 
@@ -17,18 +18,24 @@ const Wrapper = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   font-size: 0.833333333rem;
   padding: 1rem 1rem;
+  white-space: nowrap;
 
   ${props => props.isSticky && css`
-    box-shadow: ${shadow(1)};
+    box-shadow: ${shadow('base')};
     background-color: ${grayscale('white')};
   `}
 
   ${mediaQuery('md', `
     padding: 0 1rem;
   `)}
+`
+
+const NavButton = styled(Button)`
+  margin: 0 0 0 0.5rem;
+  line-height: 0.9rem;
 `
 
 // prettier-ignore
@@ -39,7 +46,6 @@ const NavWrapper = styled.div`
   bottom: 0;
   left: 0;
   transform: translateY(0%);
-  overflow: hidden;
   background: ${grayscale('white')};
   transition: .2s cubic-bezier(.1,1,.4,1);
   z-index: -1;
@@ -111,18 +117,27 @@ class Header extends Component {
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-            <NavLink to="http://slack.sparkpost.com">Community</NavLink>
-          </Nav>
-          <Nav secondary>
+            <NavLink to="http://slack.sparkpost.com">Slack</NavLink>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status
               </span>
             </NavLink>
-            <NavLink to="https://www.sparkpost.com/blog/category/developer">
-              Blog
-            </NavLink>
-            <NavLink to="https://app.sparkpost.com/join">Sign Up</NavLink>
+          </Nav>
+          <Search />
+          <Nav>
+            <NavLink to="https://app.sparkpost.com/auth">Login</NavLink>
+            {
+              <li>
+                <NavButton
+                  to="https://app.sparkpost.com/join"
+                  secondary
+                  size="small"
+                >
+                  Sign Up
+                </NavButton>
+              </li>
+            }
           </Nav>
         </NavWrapper>
         <Overlay isOpen={this.state.isOpen} onClick={this.toggleOpen} />

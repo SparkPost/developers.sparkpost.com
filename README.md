@@ -38,6 +38,12 @@ This will only develop the API reference pages and skip unnecessary queries.
 1. Run `npm run docs`
 1. open [http://localhost:8000/api/](http://localhost:8000/api/) to view the docs.
 
+#### Develop Netlify Lambda Functions
+
+To develop [Netlify Functions](https://www.netlify.com/docs/functions/) locally, run `npm run lambda`. This will start a second development server for the serverless functions.
+
+Each file located in the `lambda/` directory will be deployed as a serverless function.
+
 ## Contributing
 
 You'll find the all the content, pages, and data inside the `content` folder. If you are contributing content, take a few minutes and read through the [contributing guidelines](CONTRIBUTING.md).
@@ -46,8 +52,8 @@ You'll find the all the content, pages, and data inside the `content` folder. If
 
 Create a branch for your work in the repo:
 
-1. `git checkout next` to checkout the main branch
-1. `git pull origin next` to get the lastest code
+1. `git checkout master` to checkout the main branch
+1. `git pull origin master` to get the lastest code
 1. `git checkout -b your-branch-name` to create a branch
 
 ### Make your changes
@@ -61,4 +67,6 @@ Create a branch for your work in the repo:
 
 1. Stage and commit your changes (`git add -A && git commit -m "Describe what you did"`)
 1. Push your changes (`git push origin your-branch-name`)
-1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `next` branch.
+1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `master` branch. Netlify will publish a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) so you can share and preview your changes as a live site.
+
+After you push your changes, you may see a commit you didn't make such as `your-branch-name npm audit fix`. We use [auditmated](https://github.com/SparkPost/auditmated) to help keep our dependencies secure and up-to-date. To skip this, use the `--no-verify` command line option when you push your code.

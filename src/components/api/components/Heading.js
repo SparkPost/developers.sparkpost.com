@@ -12,9 +12,21 @@ const Id = styled.span`
   position: absolute;
 `
 
-const Heading = ({ level = 3, id, className, children, ...props }) => {
-  const Tag = `h${level}`
+// prettier-ignore
+const Tag = styled(({ level, ...props }) => {
+  const H = `h${level}`
 
+  return <H {...props} />
+})`
+  margin-top: 2rem;
+
+  ${props => props.level === 1 && `
+    padding-top: 2.5rem;
+    margin: 0 0 1.5rem 0;
+  `}
+`
+
+const Heading = ({ level = 3, id, className, children, ...props }) => {
   const slug =
     id ||
     slugify.markdown({
@@ -22,7 +34,7 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
     })
 
   return (
-    <Tag className={`${className} block`} {...props}>
+    <Tag level={level} className={`${className} block`} {...props}>
       <Id id={slug} />
       <Link.Unstyled to={`#${slug}`}>{children}</Link.Unstyled>
     </Tag>

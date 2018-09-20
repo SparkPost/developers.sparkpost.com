@@ -4,33 +4,43 @@ import { mediaQuery } from 'utils/breakpoint'
 import { grayscale, color } from 'utils/colors'
 import Link from 'components/Link'
 
+/**
+ * navLink is used in a GTM trigger
+ */
 // prettier-ignore
-const NavLink = styled(({ active, ...props }) => (
-  <li><Link.Unstyled {...props} /></li>
+const NavLink = styled(({ active, className, ...props }) => (
+  <li className={className}><Link.Unstyled {...props} className="navLink" /></li>
 ))`
-  padding: .5rem 1rem;
-  font-weight: inherit;
   display: block;
-  color: ${grayscale(4)};
-  text-decoration: none;
-  border-top: 3px solid transparent;
-  transition-property: color, border;
-  ${props => props.active && css`
-    color: ${color('orange')};
-  `}
+  font-weight: inherit;
 
-  &:hover {
-    color: ${grayscale('medium')};
+  a {
+    display: inherit;
+    font-weight: inherit;
+    padding: .5rem 1rem;
+    color: ${grayscale(4)};
+    text-decoration: none;
+    border-top: 3px solid transparent;
+    transition-property: color, border;
+    ${props => props.active && css`
+      color: ${color('orange')};
+    `}
+
+    &:hover {
+      color: ${grayscale('medium')};
+    }
   }
 
   ${mediaQuery('md', css`
-    padding: 1rem 0.75rem;
     display: inline-block;
 
-    ${props => props.active && css`
-      border-top-color: ${color('orange')};
-      color: ${grayscale('medium')};
-    `}
+    a {
+      padding: 1rem 0.75rem;
+      ${props => props.active && css`
+        border-top-color: ${color('orange')};
+        color: ${grayscale('medium')};
+      `}
+    }
   `)}
 `
 

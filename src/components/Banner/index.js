@@ -65,7 +65,7 @@ const Wrapper = styled.div`
   border: 1px solid ${grayscale(8)};
   border-left: 0;
   border-radius: 2px;
-  box-shadow: ${shadow(1)};
+  box-shadow: ${shadow('base')};
 
   background: ${grayscale('white')};
 

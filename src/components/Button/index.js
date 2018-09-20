@@ -16,7 +16,11 @@ const activeSelector = css`
 `
 
 // prettier-ignore
-const Button = styled.button`
+export default styled(({
+  block, size, primary, secondary, outline, ...props
+}) => (
+  !!props.to ? <Link.Unstyled {...props} /> : <button {...props} />)
+)`
   ${uppercase} border: 1px solid transparent;
   padding: 0.6em 1.8em;
   font-size: 0.9375em; // 15px
@@ -87,7 +91,7 @@ const Button = styled.button`
     color: ${grayscale('medium')};
     background: ${grayscale('white')};
     border-color: ${grayscale(7)};
-    box-shadow: ${shadow(1)};
+    box-shadow: ${shadow('base')};
 
     ${hoverSelector} {
       background: #f1f1f2;
@@ -95,9 +99,3 @@ const Button = styled.button`
     }
   `}
 `
-
-const ButtonLink = Button.withComponent(Link.Unstyled)
-
-export default styled(
-  props => (!!props.to ? <ButtonLink {...props} /> : <Button {...props} />)
-)``
