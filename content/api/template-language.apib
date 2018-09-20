@@ -5,7 +5,7 @@ full: true
 
 # Template Language
 
-The SparkPost API provides a powerful handlebars-style template language that you can use in the email subject, headers, text, and HTML content. 
+The SparkPost API provides a powerful handlebars-style template language that you can use in the email subject, headers, text, HTML, and AMP HTML content. 
 
 **Features include:** 
 * Sophisticated logic with full [conditionals](#header-if-else-statement) and [logical operators](#header-relational-and-logical-operators).
@@ -666,9 +666,44 @@ Here is a curly: {{
 ```
 </REPL>
 
+### Escaping curly braces in amp-mustache templates
+
+AMP HTML email content may contain "amp-mustache" templates.  Most double and triple curly brace expressions
+within amp-mustache templates are automatically escaped by SparkPost such that the amp-mustache expressions
+are preserved upon delivery to email clients.
+
+There are certain expressions that SparkPost will *not* escape.  These include:
+* Expressions that contain the keyword "sparkpost"
+* Expressions that are already a call to one of the curly escape macros: opening_double_curly(), closing_double_curly(), opening_triple_curly(), and closing_triple_curly()
+* Expressions that contain use of "loop_var"
+* The "else" and "end" control statements
+
+In the following example, {{name}}, {{price}}, {{#cart_items}}, {{/cart_items}}, and {{^cart_items}} will be automatically
+escaped such that they are preserved as amp-mustache template expressions upon delivery of the email.
+On the other hand, {{sparkpost_name}} will be treated as a sparkpost templating expression since it contains the "sparkpost" keyword.
+
+```
+<amp-list src="https://ampbyexample.com/json/cart.json" layout="fixed-height" height="80">
+    <template type="amp-mustache">
+      <div id="cart">
+        Cart items for {{sparkpost_name}}:<br>
+        {{#cart_items}}
+        <div class="cart-item">
+            <span>{{name}}</span>
+            <span>{{price}}</span>
+          </div>
+        {{/cart_items}}
+        {{^cart_items}}
+          There are no featured products available. Please check back again later.
+        {{/cart_items}}
+      </div>
+    </template>
+  </amp-list>
+```
+
 ## Dynamic Content
 
-Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, links are not tracked. To correctly render dynamic content, you must do the following:
+Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, are not tracked. To correctly render dynamic content, you must do the following:
 
 1. Add the dynamic content inside the `dynamic_html` object at the _transmission-level_ substitution data.
 1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
@@ -701,13 +736,37 @@ Here is an example of dynamic content used correctly. Notice that the `{{usernam
 The dynamic content will be correctly rendered *without* HTML escaping,
 regardless of whether double or triple curly braces are used.
 
+
 **Plain text**
 
 To insert dynamic content into the `text/plain` part of a message, place the dynamic content into the transmission-level substitution variable `dynamic_plain`.
 
 As with `dynamic_html`, `dynamic_plain` variables must be wrapped in the `render_dynamic_content()` macro when used in the template.
 
+**AMP HTML**
+
+You can also insert dynamic content into the `text/x-amp-html` part of a message using the transmission level `dynamic_amp_html`
+variable:
+
+```json
+{
+  "substitution_data" : {
+    "dynamic_amp_html" : {
+      "my_amp_html_chunk": "<amp-img width=\"30\" height=\"30\" src=\"https://www.example.com?u={{username}}\">"
+    }
+  }
+}
+```
+
+As with `dynamic_html` and `dynamic_plain`, you must use the `render_dynamic_content()` macro to include your dynamic AMPHTML in the template:
+
+```
+Attempting to insert a chunk of amp html:
+{{ render_dynamic_content(dynamic_amp_html.my_amp_html_chunk) }}
+```
+
 **Complex Example**
+
 
 Finally, as a more complex example, `render_dynamic_content()` can also be used inside an `each` loop. This example only renders the offers available as listed in the `offers` array.
 
@@ -720,6 +779,7 @@ Finally, as a more complex example, `render_dynamic_content()` can also be used 
 {{end}}
 </ul>
 ```
+
 ```json
 {
     "name": "John",
@@ -739,6 +799,33 @@ Finally, as a more complex example, `render_dynamic_content()` can also be used 
 </ul>
 ```
 </REPL>
+
+For AMP HTML, the same example could be laid out using the `amp_html` part
+
+```json
+{
+    "name": "John",
+    "offers": [ "offer1", "offer3" ],
+    "dynamic_html": {
+        "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+        "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+        "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+    },
+    "dynamic_amp_html": {
+      "offer1": "<a href=\"http://t.com/offer/1?name={{name}}\">Premium-brand wirecutters</a>",
+      "offer2": "<a href=\"http://t.com/offer/2?name={{name}}\">Corks</a>",
+      "offer3": "<a href=\"http://t.com/offer/3?name={{name}}\">Super-effective bug spray</a>"
+    },
+     "content": {
+        "html": "<p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_html[loop_var])}}</li>\n{{end}}\n</ul>",
+        "amp_html": "<!doctype html><html amp4email><head><meta charset=\"utf-8\"><script async src=\"https://cdn.ampproject.org/v0.js\"></script><style amp4email-boilerplate>body{visibility:hidden}</style></head><body><p>Today's special offers</p><ul>\n{{each offers}}\n<li>{{render_dynamic_content(dynamic_amp_html[loop_var])}}</li>\n{{end}}\n</ul></body></html>",
+        "from": "test@example.com",
+        "subject": "offers"
+    }
+  }
+}
+```
+
 
 ## Advanced
 
@@ -762,6 +849,6 @@ Subject: =?gb2312?B?ztLE3M3Mz8Kyo8Gntviyu8nLye3M5c7SxNzNzM/CsqPBp7b4srvJy8ntzOU=
 
 ### Encoding Rules
 
-* If after substitution, a text/plain or text/html part contains 8-bit data, then that part will be quoted-printable encoded before being placed back into the MIME structure. The Content-Type will be updated appropriately.
+* If after substitution, a text/plain, text/html, or text/x-amp-html part contains 8-bit data, then that part will be quoted-printable encoded before being placed back into the MIME structure. The Content-Type will be updated appropriately.
 * If after substitution, a header value contains 8-bit data, then the header
 value will be RFC2047 base64 encoded before being written back to the headers structure.
