@@ -703,7 +703,7 @@ On the other hand, {{sparkpost_name}} will be treated as a sparkpost templating 
 
 ## Dynamic Content
 
-Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, are not tracked. To correctly render dynamic content, you must do the following:
+Dynamic content is content stored in a variable that contains expressions, statements, and links. Expressions inside of variables are **not** executed by default. Likewise, links are not tracked. To correctly render dynamic content, you must do the following:
 
 1. Add the dynamic content inside the `dynamic_html` object at the _transmission-level_ substitution data.
 1. Use the `render_dynamic_content()` macro to render the `dynamic_html` variables.
