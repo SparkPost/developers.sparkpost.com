@@ -179,7 +179,7 @@ Dynamic: Howard Street
 
 ### HTML Escaping
 
-By default, variables in the transmissions `html` content **are** HTML escaped. However, in the `text` content, variables are **not** HTML escaped. To render a value unescaped in the `html` content, wrap it in triple curly braces, `{{{ value }}}`.
+By default, variables in the transmissions `html` and `amp_html` content **are** HTML escaped. However, in the `text` content, variables are **not** HTML escaped. To render a value unescaped in the `html` and `amp_html` content, wrap it in triple curly braces, `{{{ value }}}`.
 
 
 <REPL>
@@ -457,7 +457,7 @@ The first item in your shopping cart is {{ shopping_cart[1].name }}.
 
 ## Links
 
-Links are handled slightly differently than regular content. All of the following applies to both links in the `html` and `text` content.
+Links are handled slightly differently than regular content. All of the following applies to both links in the `html`, `amp_html` and `text` content.
 
 ### Links in Variables
 
