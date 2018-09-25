@@ -116,9 +116,13 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
 
 ## Update a Snippet [PUT /snippets/{id}]
 
-If a content object is provided in the update request, it must
-contain all relevant content fields whether they are being changed or not.
-The new content will completely overwrite the existing content.
+Unlike the [Templates API](api/templates/), if a content object is
+provided in the update request, it only needs to include the fields that
+are being updated. Fields that are not included will keep their current
+values.
+
+To remove a content field that was specified previously, simply set that
+field to an empty string in the update request.
 
 + Data Structure
     + content (object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls. In other words, snippets may not reference other snippets.
