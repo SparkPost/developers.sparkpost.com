@@ -148,6 +148,20 @@ field to an empty string in the update request.
         }
         ```
 
++ Request Update (application/json)
+
+    + Body
+
+        ```
+       {
+         "content": {
+           "html" : "",
+           "text" : "Our updated footer",
+           "amp_html" : "<b>Our updated footer</b>"
+          }
+        }
+        ```
+
 + Response 200
 
 ## Delete a Snippet [DELETE /snippets/{id}]
