@@ -1,6 +1,7 @@
 FORMAT: 1A
 title: Snippets
 description: Manage reusable content snippets that can be referenced within inline content and stored templates.
+label: New
 
 # Group Snippets
 
@@ -85,10 +86,8 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
           "errors" : [
             {
               "part" : "text",
-              "description" : "Error while compiling part text: line 4: syntax error near 'age'",
-              "line" : 4,
-              "code" : "3000",
-              "message" : "substitution language syntax error in snippet content"
+              "message" : "Error while compiling text part: line 4: syntax error near 'age'",
+              "line" : 4
             }
           ]
         }
@@ -169,9 +168,7 @@ field to an empty string in the update request.
         {
         "errors": [
           {
-            "message": "resource not found",
-            "code": "1600",
-            "description": "Snippet does not exist"
+            "message": "Snippet does not exist"
           }
         ]
         }
