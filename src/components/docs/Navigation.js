@@ -29,13 +29,14 @@ const List = styled.ul`
 `
 
 const Children = styled.ul`
-  border-left: 2px solid ${grayscale(8)};
+  border-left: 1px solid ${grayscale(7)};
   margin-left: 0.1rem;
   padding-left: 0.75rem;
 
   a {
     font-size: 0.833333333rem;
-    color: ${grayscale(4)};
+    font-weight: ${weight('normal')};
+    color: ${grayscale(3)};
   }
 `
 
