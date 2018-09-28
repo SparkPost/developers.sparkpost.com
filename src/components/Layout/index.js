@@ -15,6 +15,10 @@ function onApiPage(location) {
   return location.pathname.startsWith('/api')
 }
 
+function onDocsPage(location) {
+  return location.pathname.startsWith('/docs')
+}
+
 const Layout = ({ data, children, location }) => (
   <StaticQuery
     query={graphql`
@@ -102,7 +106,7 @@ const Layout = ({ data, children, location }) => (
             <meta name="theme-color" content="#ffffff" />
           </Helmet>
           {children}
-          {!onApiPage(location) && <Footer />}
+          {!onApiPage(location) && !onDocsPage(location) && <Footer />}
         </StickyContainer>
         <ConsentBar />
       </CookiesProvider>
