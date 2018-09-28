@@ -75,7 +75,7 @@ const samples = [
   {
     label: `cURL`,
     language: `bash`,
-    code: `curl -XPOST https://api.sparkpost.com/api/v1/transmissions
+    code: `curl -XPOST https://api.sparkpost.com/api/v1/transmissions \\
   -H "Authorization: <YOUR API KEY>" \\
   -H "Content-Type: application/json" \\
   -d '{
