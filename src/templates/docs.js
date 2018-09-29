@@ -1,11 +1,18 @@
 import React, { Component, Fragment } from 'react'
+import { graphql } from 'gatsby'
 import styled, { css } from 'styled-components'
-import tableOfContents from '../docs/table-of-contents.yml'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import tableOfContents from '../../content/docs/table-of-contents.yml'
 import Layout from 'components/Layout'
-import { Search, Sidebar } from 'components/docs'
+import { Search, Sidebar, Content } from 'components/docs'
 import { default as Base } from 'components/Link'
 import { color, grayscale } from 'utils/colors'
 import { uppercase, weight } from 'utils/fonts'
+
+const MaxWidth = styled.div`
+  max-width: 45rem;
+  margin: auto;
+`
 
 const Cheveron = styled(({ isOpen, ...props }) => (
   <svg
@@ -192,11 +199,17 @@ const renderItem = item => {
 }
 
 export default class extends Component {
-  state = {
-    isOpen: true,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      openIndex: null,
+    }
   }
 
   render() {
+    console.log(this.props)
+
     return (
       <div>
         <Layout {...this.props}>
@@ -246,9 +259,23 @@ export default class extends Component {
               })}
             </Nav>
           </Sidebar>
-          {/* {JSON.stringify(tableOfContents, null, 2)} */}
+          <Content>
+            <MaxWidth>
+              <MDXRenderer>{this.props.data.mdx.code.body}</MDXRenderer>
+            </MaxWidth>
+          </Content>
         </Layout>
       </div>
     )
   }
 }
+
+export const pageQuery = graphql`
+  query($id: String!) {
+    mdx(id: { eq: $id }) {
+      code {
+        body
+      }
+    }
+  }
+`

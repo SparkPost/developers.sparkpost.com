@@ -70,7 +70,6 @@ module.exports = {
       : [],
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
-    `gatsby-mdx`,
     `gatsby-source-sparkpost-api`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -112,6 +111,7 @@ module.exports = {
           "/sw.js": ["Cache-Control: no-cache"]
         }
       }
-    }
+    },
+    `gatsby-mdx`
   ])
 };
