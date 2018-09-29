@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import tableOfContents from "../docs/table-of-contents.yml";
 import Layout from "components/Layout";
 import { Search, Sidebar } from "components/docs";
@@ -28,14 +28,13 @@ const Cheveron = styled(props => (
 `;
 
 // prettier-ignore
-const Link = styled(Base.Unstyled)`
+const link = css`
   display: block;
   margin: 0.35rem 0;
-  line-height: 1.65;
   font-size: 0.833333333rem;
   font-weight: ${weight("normal")};
   color: ${grayscale(3)};
-
+  line-height: 1.65;
   ${props => props.isActive ? `
     color: ${color('orange')};
     font-weight: ${weight('medium')};
@@ -44,57 +43,109 @@ const Link = styled(Base.Unstyled)`
       color: ${grayscale(1)};
     }
   `}
+`
+
+const PlainLink = styled(Base.Unstyled)`
+  ${link};
 `;
 
-const CategoryTitle = styled.div``;
+// prettier-ignore
+const Link = styled(({ className, ...props }) => (
+  <li className={className}><Base.Unstyled {...props}/></li>
+))`
+  ${link}
+
+  a {
+    display: block;
+    font: inherit;
+    color: inherit;
+  }
+`;
+
+const topLevelLink = `
+font-size: 0.888888889rem;
+font-weight: ${weight("medium")};
+margin: 0.35rem 0 0;
+line-height: 1.65;
+cursor: pointer;
+color: inherit;
+`;
+
+const Topic = styled.li``;
 
 // prettier-ignore
-const Category = styled.div`
-  margin: 0.5rem 0;
+const TopicItems = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.5rem;
 
   transition: opacity .15s;
   ${props => props.isOpen === false && `
-      position: absolute; 
-      overflow: hidden; 
-      clip: rect(0 0 0 0); 
-      height: 1px; width: 1px; 
-      margin: -1px; padding: 0; border: 0; 
-      opacity: 0;
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
+    opacity: 0;
   `}
-  
-  & & {
-    border-left: 1px solid ${grayscale(7)};
-    margin: 0.35rem 0;
-    padding: 0 0 0 0.666666667rem;
-  }
+`;
 
-  ${CategoryTitle} {
-    ${uppercase} font-size: .72rem;
-    margin: 0.75rem 0 0.666666667rem 0;
-    color: ${grayscale(4)};
-    font-weight: ${weight("medium")};
+const TopicTitle = styled.button`
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  ${topLevelLink};
+`;
+
+const CategoryTitle = styled.span`
+  display: block;
+  ${uppercase} font-size: .72rem;
+  margin: 0.75rem 0 0.666666667rem 0;
+  color: ${grayscale(4)};
+  font-weight: ${weight("medium")};
+`;
+
+const Category = styled.li`
+  margin: 0.5rem 0;
+  display: block;
+`;
+
+const CategoryItems = styled.ul`
+  list-style: none;
+  border-left: 1px solid ${grayscale(7)};
+  margin: 0.35rem 0;
+  padding: 0 0 0 0.666666667rem;
+`;
+
+const Divider = styled(props => (
+  <li {...props}>
+    <hr />
+  </li>
+))`
+  hr {
+    margin: 0.75rem 0;
+    border-bottom: 1px solid ${grayscale(8)};
   }
 `;
 
-const Divider = styled.hr``;
-
-const Nav = styled.nav`
-  > ${Category} {
-    padding-left: 0.5rem;
+const Nav = styled(({ children, ...props }) => (
+  <nav aria-label="Documentation Navigation" {...props}>
+    <ul>{children}</ul>
+  </nav>
+))`
+  > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  > ${CategoryTitle}, > ${Link} {
-    font-size: 0.888888889rem;
-    font-weight: ${weight("medium")};
-    margin: 0.35rem 0 0;
-    line-height: 1.65;
-    cursor: pointer;
-    color: inherit;
-  }
-
-  ${Divider} {
-    margin: 0.75rem 0;
-    border-bottom: 1px solid ${grayscale(8)};
+  > ul > ${Link} {
+    ${topLevelLink};
   }
 `;
 
@@ -112,84 +163,114 @@ export default class extends Component {
             <br />
             <Nav>
               <Link>Getting Started Guide</Link>
-              <CategoryTitle
-                onClick={() => {
-                  this.setState(({ isOpen }) => ({
-                    isOpen: !isOpen
-                  }));
-                }}
-              >
-                Sending
-                <Cheveron isOpen={this.state.isOpen} />
-              </CategoryTitle>
-              <Category isOpen={this.state.isOpen}>
-                <Link>Overview</Link>
-                <CategoryTitle>Domain Configuration</CategoryTitle>
-                <Category>
-                  <Link isActive={true}>Sending Domain</Link>
-                  <Link>Tracking Domain</Link>
-                  <Link>Custom Return Path</Link>
-                </Category>
-                <CategoryTitle>API</CategoryTitle>
-                <Category>
-                  <Link>Send an email</Link>
-                  <Link>Sending attachments</Link>
-                  <Link>Scheduled Sends</Link>
-                </Category>
-                <CategoryTitle>SMTP</CategoryTitle>
-                <Category>
-                  <Link>Send an email</Link>
-                  <Link>SMTP Tracking</Link>
-                  <Link>Debugging</Link>
-                </Category>
-                <CategoryTitle>Deliverability</CategoryTitle>
-                <Category>
+              <Topic>
+                <TopicTitle
+                  onClick={() => {
+                    this.setState(({ isOpen }) => ({
+                      isOpen: !isOpen
+                    }));
+                  }}
+                >
+                  Sending
+                  <Cheveron isOpen={this.state.isOpen} />
+                </TopicTitle>
+                <TopicItems isOpen={this.state.isOpen}>
                   <Link>Overview</Link>
+                  <Category>
+                    <CategoryTitle>Domain Configuration</CategoryTitle>
+                    <CategoryItems>
+                      <Link isActive={true}>Sending Domain</Link>
+                      <Link>Tracking Domain</Link>
+                      <Link>Custom Return Path</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Category>
+                    <CategoryTitle>API</CategoryTitle>
+                    <CategoryItems>
+                      <Link>Send an email</Link>
+                      <Link>Sending attachments</Link>
+                      <Link>Scheduled Sends</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Category>
+                    <CategoryTitle>SMTP</CategoryTitle>
+                    <CategoryItems>
+                      <Link>Send an email</Link>
+                      <Link>SMTP Tracking</Link>
+                      <Link>Debugging</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Category>
+                    <CategoryTitle>Deliverability</CategoryTitle>
+                    <CategoryItems>
+                      <Link>Overview</Link>
+                      <Link>Best Practices</Link>
+                      <Link>Debugging</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Category>
+                    <CategoryTitle>IP Management</CategoryTitle>
+                    <CategoryItems>
+                      <Link>Overview</Link>
+                      <Link>Purchase IPs</Link>
+                      <Link>Manage IP Pools</Link>
+                      <Link>IP Warm-up</Link>
+                      <Link>DKIM Signing By IP Pool</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Category>
+                    <PlainLink>Webhooks</PlainLink>
+                    <CategoryItems>
+                      <Link>Webhook Authentication</Link>
+                    </CategoryItems>
+                  </Category>
+                  <Divider />
                   <Link>Best Practices</Link>
-                  <Link>Debugging</Link>
-                </Category>
-                <CategoryTitle>IP Management</CategoryTitle>
-                <Category>
-                  <Link>Overview</Link>
-                  <Link>Purchase IPs</Link>
-                  <Link>Manage IP Pools</Link>
-                  <Link>IP Warm-up</Link>
-                  <Link>DKIM Signing By IP Pool</Link>
-                </Category>
-                <Link>Webhooks</Link>
-                <Category>
-                  <Link>Webhook Authentication</Link>
-                </Category>
-                <Divider />
-                <Link>Best Practices</Link>
-                <Link>Testing</Link>
-              </Category>
-              <CategoryTitle>
-                Recipient Management <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Personalization <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Templates <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Analytics and Reports <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Receiving <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Subaccounts <Cheveron />
-              </CategoryTitle>
+                  <Link>Testing</Link>
+                </TopicItems>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Recipient Management <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Personalization <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Templates <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Analytics and Reports <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Receiving <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Subaccounts <Cheveron />
+                </TopicTitle>
+              </Topic>
               <Divider />
-              <CategoryTitle>Integrations</CategoryTitle>
-              <CategoryTitle>
-                Development <Cheveron />
-              </CategoryTitle>
-              <CategoryTitle>
-                Migrations <Cheveron />
-              </CategoryTitle>
+              <Link>Integrations</Link>
+              <Topic>
+                <TopicTitle>
+                  Development <Cheveron />
+                </TopicTitle>
+              </Topic>
+              <Topic>
+                <TopicTitle>
+                  Migrations <Cheveron />
+                </TopicTitle>
+              </Topic>
             </Nav>
           </Sidebar>
           {/* {JSON.stringify(tableOfContents, null, 2)} */}
