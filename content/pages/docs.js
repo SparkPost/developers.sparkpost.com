@@ -1,12 +1,11 @@
-import React, { Component } from "react";
-import styled, { css } from "styled-components";
-import tableOfContents from "../docs/table-of-contents.yml";
-import Layout from "components/Layout";
-import { Search, Sidebar } from "components/docs";
-import { default as Base } from "components/Link";
-import { color, grayscale } from "utils/colors";
-import { uppercase, weight } from "utils/fonts";
-import { buttons } from "polished";
+import React, { Component, Fragment } from 'react'
+import styled, { css } from 'styled-components'
+import tableOfContents from '../docs/table-of-contents.yml'
+import Layout from 'components/Layout'
+import { Search, Sidebar } from 'components/docs'
+import { default as Base } from 'components/Link'
+import { color, grayscale } from 'utils/colors'
+import { uppercase, weight } from 'utils/fonts'
 
 const Cheveron = styled(({ isOpen, ...props }) => (
   <svg
@@ -26,7 +25,7 @@ const Cheveron = styled(({ isOpen, ...props }) => (
   transition: transform 0.1s ease;
   right: 0;
   fill: ${grayscale(5)};
-`;
+`
 
 // prettier-ignore
 const link = css`
@@ -47,10 +46,10 @@ const link = css`
 `
 
 const PlainLink = styled(({ isActive, ...props }) => (
-  <Base.Unstyled {...props} aria-current={isActive ? "page" : null} />
+  <Base.Unstyled {...props} aria-current={isActive ? 'page' : null} />
 ))`
   ${link};
-`;
+`
 
 // prettier-ignore
 const Link = styled(({ className, isActive, ...props }) => (
@@ -67,14 +66,14 @@ const Link = styled(({ className, isActive, ...props }) => (
 
 const topLevelLink = `
 font-size: 0.888888889rem;
-font-weight: ${weight("medium")};
+font-weight: ${weight('medium')};
 margin: 0.35rem 0 0;
 line-height: 1.65;
 cursor: pointer;
 color: inherit;
-`;
+`
 
-const Topic = styled.li``;
+const Topic = styled.li``
 
 // prettier-ignore
 const TopicItems = styled(({ isOpen, ...props }) => <ul {...props} />)`
@@ -105,27 +104,27 @@ const TopicTitle = styled(({ isOpen, ...props }) => (
   text-align: left;
 
   ${topLevelLink};
-`;
+`
 
 const CategoryTitle = styled.span`
   display: block;
   ${uppercase} font-size: .72rem;
   margin: 0.75rem 0 0.666666667rem 0;
   color: ${grayscale(4)};
-  font-weight: ${weight("medium")};
-`;
+  font-weight: ${weight('medium')};
+`
 
 const Category = styled.li`
   margin: 0.5rem 0;
   display: block;
-`;
+`
 
 const CategoryItems = styled.ul`
   list-style: none;
   border-left: 1px solid ${grayscale(7)};
   margin: 0.35rem 0;
   padding: 0 0 0 0.666666667rem;
-`;
+`
 
 const Divider = styled(props => (
   <li {...props}>
@@ -136,7 +135,7 @@ const Divider = styled(props => (
     margin: 0.75rem 0;
     border-bottom: 1px solid ${grayscale(8)};
   }
-`;
+`
 
 const Nav = styled(({ children, ...props }) => (
   <nav aria-label="Documentation Navigation" {...props}>
@@ -152,12 +151,50 @@ const Nav = styled(({ children, ...props }) => (
   > ul > ${Link} {
     ${topLevelLink};
   }
-`;
+`
+
+const renderItem = item => {
+  const type = item.hasOwnProperty('link')
+    ? item.hasOwnProperty('items')
+      ? 'link-category'
+      : 'link'
+    : item === 'divider'
+      ? 'divider'
+      : 'category'
+
+  if (type === 'link') {
+    return <Link to={item.link}>{item.title}</Link>
+  } else if (type === 'category') {
+    return (
+      <Category>
+        <CategoryTitle>{item.title}</CategoryTitle>
+        <CategoryItems>
+          {item.items.map((item, i) => {
+            return <Fragment key={i}>{renderItem(item)}</Fragment>
+          })}
+        </CategoryItems>
+      </Category>
+    )
+  } else if (type === 'link-category') {
+    return (
+      <Category>
+        <PlainLink to={item.link}>{item.title}</PlainLink>
+        <CategoryItems>
+          {item.items.map((item, i) => {
+            return <Fragment key={i}>{renderItem(item)}</Fragment>
+          })}
+        </CategoryItems>
+      </Category>
+    )
+  } else {
+    return <Divider />
+  }
+}
 
 export default class extends Component {
   state = {
-    isOpen: true
-  };
+    isOpen: true,
+  }
 
   render() {
     return (
@@ -167,121 +204,51 @@ export default class extends Component {
             <Search />
             <br />
             <Nav>
-              <Link>Getting Started Guide</Link>
-              <Topic>
-                <TopicTitle
-                  isOpen={this.state.isOpen}
-                  onClick={() => {
-                    this.setState(({ isOpen }) => ({
-                      isOpen: !isOpen
-                    }));
-                  }}
-                >
-                  Sending
-                  <Cheveron isOpen={this.state.isOpen} />
-                </TopicTitle>
-                <TopicItems isOpen={this.state.isOpen}>
-                  <Link>Overview</Link>
-                  <Category>
-                    <CategoryTitle>Domain Configuration</CategoryTitle>
-                    <CategoryItems>
-                      <Link isActive={true}>Sending Domain</Link>
-                      <Link>Tracking Domain</Link>
-                      <Link>Custom Return Path</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Category>
-                    <CategoryTitle>API</CategoryTitle>
-                    <CategoryItems>
-                      <Link>Send an email</Link>
-                      <Link>Sending attachments</Link>
-                      <Link>Scheduled Sends</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Category>
-                    <CategoryTitle>SMTP</CategoryTitle>
-                    <CategoryItems>
-                      <Link>Send an email</Link>
-                      <Link>SMTP Tracking</Link>
-                      <Link>Debugging</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Category>
-                    <CategoryTitle>Deliverability</CategoryTitle>
-                    <CategoryItems>
-                      <Link>Overview</Link>
-                      <Link>Best Practices</Link>
-                      <Link>Debugging</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Category>
-                    <CategoryTitle>IP Management</CategoryTitle>
-                    <CategoryItems>
-                      <Link>Overview</Link>
-                      <Link>Purchase IPs</Link>
-                      <Link>Manage IP Pools</Link>
-                      <Link>IP Warm-up</Link>
-                      <Link>DKIM Signing By IP Pool</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Category>
-                    <PlainLink>Webhooks</PlainLink>
-                    <CategoryItems>
-                      <Link>Webhook Authentication</Link>
-                    </CategoryItems>
-                  </Category>
-                  <Divider />
-                  <Link>Best Practices</Link>
-                  <Link>Testing</Link>
-                </TopicItems>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Recipient Management <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Personalization <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Templates <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Analytics and Reports <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Receiving <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Subaccounts <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Divider />
-              <Link>Integrations</Link>
-              <Topic>
-                <TopicTitle>
-                  Development <Cheveron />
-                </TopicTitle>
-              </Topic>
-              <Topic>
-                <TopicTitle>
-                  Migrations <Cheveron />
-                </TopicTitle>
-              </Topic>
+              {tableOfContents.map((item, i) => {
+                const type = item.hasOwnProperty('link')
+                  ? 'link'
+                  : item === 'divider'
+                    ? 'divider'
+                    : 'topic'
+
+                if (type === 'link') {
+                  return (
+                    <Link to={item.link} key={i}>
+                      {item.title}
+                    </Link>
+                  )
+                } else if (type === 'topic') {
+                  const isOpen = this.state.openIndex === i
+
+                  return (
+                    <Topic key={i}>
+                      <TopicTitle
+                        isOpen={isOpen}
+                        onClick={() => {
+                          this.setState(({ openIndex }) => ({
+                            openIndex: openIndex !== i ? i : null,
+                          }))
+                        }}
+                      >
+                        {item.title}
+                        <Cheveron isOpen={isOpen} />
+                      </TopicTitle>
+                      <TopicItems isOpen={isOpen}>
+                        {item.items.map((item, i) => {
+                          return <Fragment key={i}>{renderItem(item)}</Fragment>
+                        })}
+                      </TopicItems>
+                    </Topic>
+                  )
+                } else if (type === 'divider') {
+                  return <Divider />
+                }
+              })}
             </Nav>
           </Sidebar>
           {/* {JSON.stringify(tableOfContents, null, 2)} */}
         </Layout>
       </div>
-    );
+    )
   }
 }

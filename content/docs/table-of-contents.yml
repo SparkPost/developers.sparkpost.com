@@ -1,0 +1,150 @@
+- title: Getting Started Guide
+  link: /getting-started
+- title: Sending
+  items:
+    - title: Overview
+      link: /docs/sending
+    - title: Domain Configuration
+      items:
+        - title: Sending Domain
+          link: /sending-domain
+        - title: Tracking Domain
+          link: /tracking-domain
+        - title: Custom Return Path
+          link: /custom-return-path
+    - title: API
+      items:
+        - title: Send an email
+          link: /
+        - title: Sending attachments
+          link: /
+        - title: Scheduled Sends
+          link: /
+    - title: SMTP
+      items:
+        - title: Send an email
+          link: /
+        - title: SMTP Tracking
+          link: /
+        - title: Debugging
+          link: /
+    - title: Deliverability
+      items:
+        - title: Overview
+          link: /
+        - title: Best Practices
+          link: /
+        - title: Debugging
+          link: /
+    - title: IP management
+      items:
+        - title: Overview
+          link: /
+        - title: Purchase IPs
+          link: /
+        - title: Manage IP Pools
+          link: /
+        - title: IP Warm-up
+          link: /
+        - title: DKIM Signing By IP Pool
+          link: /
+    - divider
+    - title: Best Practices
+      link: /
+    - title: Testing
+      link: /
+- title: Recipient Management
+  items:
+    - title: Recipient Lists
+      link: /
+    - title: Suppression List
+      link: /
+      items:
+        - title: Managing Supressions
+          link: /
+        - title: Handling Unsubscribes
+          link: /
+    - divider
+    - title: Best Practices
+      link: /
+- title: Personalization
+  items:
+    - title: something
+      link: /
+- title: Templates
+  items:
+    - title: A/B Testing
+      link: /
+      items:
+        - title: Overview
+          link: /
+        - title: Configure an A/B test
+          link: /
+        - title: Send an A/B test
+          link: /
+        - title: Iterate on an A/B test
+          link: /
+    - divider
+    - title: Testing
+      link: /
+- title: Analytics and Reports
+  items:
+    - title: Overview
+      link: /
+    - title: Email Lifecycle
+      link: /
+    - title: Metrics Overview
+      link: /
+    - title: Webhooks
+      link: /
+      items:
+        - title: Using Webhooks
+          link: /
+        - title: Webhook Authentication
+          link: /
+    - divider
+    - title: Dashboard
+      link: /
+- title: Receiving
+  items:
+    - title: Setup
+      link: /
+    - title: Handling incoming emails
+      link: /
+    - title: Parsing attachments
+      link: /
+- title: Subaccounts
+  items:
+    - title: Overview
+      link: /
+    - title: Management
+      link: /
+    - title: Creating
+      link: /
+    - title: Updating
+      link: /
+    - title: Compliance
+      link: /
+- divider
+- title: Development
+  items:
+    - title: API Keys
+      link: /docs/api-keys
+    - title: Security
+      link: /docs/security
+    - title: Libraries
+      link: /docs/libraries
+    - title: Errors
+      link: /docs/errors
+- title: Integrations
+  link: /integrations
+- title: Migrations
+  items:
+    - title: SendGrid
+      link: /docs/migrations/sendgrid
+    - title: MailJet
+      link: /docs/migrations/sendgrid
+    - title: Mailgun
+      link: /docs/migrations/sendgrid
+    - title: Mandrill
+      link: /docs/migrations/sendgrid
