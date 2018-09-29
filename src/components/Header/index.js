@@ -116,7 +116,8 @@ class Header extends Component {
             <NavLink to="/api/" active={path.startsWith('/api')}>
               API Reference
             </NavLink>
-            <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
+            <NavLink to="/docs/">Documentation</NavLink>
+            <NavLink to="https://sparkpost.com/help">Support</NavLink>
             <NavLink to="http://slack.sparkpost.com">Slack</NavLink>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
