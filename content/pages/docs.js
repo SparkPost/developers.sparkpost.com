@@ -6,8 +6,9 @@ import { Search, Sidebar } from "components/docs";
 import { default as Base } from "components/Link";
 import { color, grayscale } from "utils/colors";
 import { uppercase, weight } from "utils/fonts";
+import { buttons } from "polished";
 
-const Cheveron = styled(props => (
+const Cheveron = styled(({ isOpen, ...props }) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
@@ -45,13 +46,15 @@ const link = css`
   `}
 `
 
-const PlainLink = styled(Base.Unstyled)`
+const PlainLink = styled(({ isActive, ...props }) => (
+  <Base.Unstyled {...props} aria-current={isActive ? "page" : null} />
+))`
   ${link};
 `;
 
 // prettier-ignore
-const Link = styled(({ className, ...props }) => (
-  <li className={className}><Base.Unstyled {...props}/></li>
+const Link = styled(({ className, isActive, ...props }) => (
+  <li className={className}><Base.Unstyled {...props} aria-current={isActive ? "page" : null} /></li>
 ))`
   ${link}
 
@@ -74,12 +77,12 @@ color: inherit;
 const Topic = styled.li``;
 
 // prettier-ignore
-const TopicItems = styled.ul`
+const TopicItems = styled(({ isOpen, ...props }) => <ul {...props} />)`
   list-style: none;
   margin: 0;
   padding: 0 0 0 0.5rem;
 
-  transition: opacity .15s;
+  transition: opacity 0.15s;
   ${props => props.isOpen === false && `
     position: absolute; 
     overflow: hidden; 
@@ -87,10 +90,12 @@ const TopicItems = styled.ul`
     height: 1px; width: 1px; 
     margin: -1px; padding: 0; border: 0; 
     opacity: 0;
-  `}
+  `};
 `;
 
-const TopicTitle = styled.button`
+const TopicTitle = styled(({ isOpen, ...props }) => (
+  <button {...props} aria-haspopup="true" aria-expanded={isOpen === true} />
+))`
   background: transparent;
   margin: 0;
   padding: 0;
@@ -165,6 +170,7 @@ export default class extends Component {
               <Link>Getting Started Guide</Link>
               <Topic>
                 <TopicTitle
+                  isOpen={this.state.isOpen}
                   onClick={() => {
                     this.setState(({ isOpen }) => ({
                       isOpen: !isOpen
