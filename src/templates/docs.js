@@ -351,12 +351,9 @@ export default class extends Component {
             <MaxWidth>
               <TitleWrapper>
                 <Title>{props.data.mdx.frontmatter.title}</Title>
-                <Button outline size="small">
-                  <i className="fa fa-github" /> Edit on GitHub
-                </Button>
               </TitleWrapper>
               <MDXRenderer>{props.data.mdx.code.body}</MDXRenderer>
-              <RelatedContainer>
+              {/* <RelatedContainer>
                 <Related>
                   <div>
                     <RelatedDirection>Next</RelatedDirection>
@@ -371,8 +368,29 @@ export default class extends Component {
                   </div>
                   <RelatedCheveron />
                 </Related>
+              </RelatedContainer> */}
+              <RelatedContainer
+                style={{
+                  borderTop: `1px solid ${grayscale(8)}`,
+                  paddingTop: `1.25rem`
+                }}
+              >
+                <span
+                  style={{
+                    // fontWeight: weight("medium"),
+                    fontSize: 16
+                  }}
+                >
+                  Was this page helpful?
+                  <i className="fa fa-thumbs-up" />
+                  <i className="fa fa-thumbs-down" />
+                </span>
+                <Base.Unstyled
+                  style={{ fontWeight: weight("medium"), fontSize: 15 }}
+                >
+                  <i className="fa fa-github" /> Edit on GitHub
+                </Base.Unstyled>
               </RelatedContainer>
-              <h3 className="textCenter">Was this page helpful?</h3>
             </MaxWidth>
           </Content>
         </Layout>
