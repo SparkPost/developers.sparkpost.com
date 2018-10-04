@@ -43,7 +43,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
     + id (string) - Unique ID used to reference the snippet.
     + content (object) - HTML, AMPHTML, and/or text content.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content.
         + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content.
     + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
 
@@ -53,7 +53,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
     + id (required, string) - Unique ID used to reference the snippet.
     + content (required, object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the `render_dynamic_content()` and `render_snippet()` macro calls. In other words, snippets may not reference other snippets.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content. Maximum length - 100KB.
         + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content. Maximum length - 100KB.
     + shared_with_subaccounts (required, boolean) - Whether this snippet can be used by subaccounts.
         + Default: false
@@ -126,7 +126,7 @@ field to an empty string in the update request.
 + Data Structure
     + content (object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls. In other words, snippets may not reference other snippets.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
-        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content. Maximum length - 100KB.
         + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content. Maximum length - 100KB.
     + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
 
