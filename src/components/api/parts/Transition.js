@@ -77,7 +77,7 @@ export default function Transition({
       ? mergeDuplicateTransactions(transition.transactions)
       : []
   const href = (transition.href || {}).content || resource.href.content
-  const version = href === 'ab-testing' ? 'labs' : 'v1'
+  const version = href.startsWith('/snippets') ? 'labs' : 'v1'
 
   return (
     <Debug title="Transition">
