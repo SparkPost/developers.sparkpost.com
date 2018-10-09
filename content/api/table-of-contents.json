@@ -45,7 +45,8 @@
       {
         "title": "Snippets",
         "file": "snippets.apib",
-        "path": "/api/snippets"
+        "path": "/api/snippets",
+        "label": "New"
       },
       {
         "title": "A/B Testing",
