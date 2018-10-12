@@ -675,7 +675,8 @@ are preserved upon delivery to email clients.
 There are certain expressions that SparkPost will *not* escape.  These include:
 * Expressions that contain the keyword "sparkpost"
 * Expressions that are already a call to one of the curly escape macros: opening_double_curly(), closing_double_curly(), opening_triple_curly(), and closing_triple_curly()
-* Expressions that contain use of "loop_var"
+* Expressions that contain a call to the render_snippet() macro
+* Expressions that contain use of "loop_var" or "loop_index"
 * The "else" and "end" control statements
 
 In the following example, {{name}}, {{price}}, {{#cart_items}}, {{/cart_items}}, and {{^cart_items}} will be automatically
