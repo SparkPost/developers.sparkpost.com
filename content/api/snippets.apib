@@ -1,6 +1,7 @@
 FORMAT: 1A
 title: Snippets
 description: Manage reusable content snippets that can be referenced within inline content and stored templates.
+label: New
 
 # Group Snippets
 
@@ -40,6 +41,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
 
 + Data Structure: Attributes
     + id (string) - Unique ID used to reference the snippet.
+    + name (string) - Display name
     + content (object) - HTML, AMPHTML, and/or text content.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content.
         + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content.
@@ -50,6 +52,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
 
 + Data Structure
     + id (required, string) - Unique ID used to reference the snippet.
+    + name (string) - Display name
     + content (required, object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the `render_dynamic_content()` and `render_snippet()` macro calls. In other words, snippets may not reference other snippets.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
         + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content. Maximum length - 100KB.
@@ -65,6 +68,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
         ```
         {
             "id" : "header",
+            "name": "Header snippet",
             "content": {
                 "html": "<b>Our cool header snippet for {{name}}</b>"
             }
@@ -104,11 +108,14 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
         {
           "results" : {
             "id" : "ourfooter",
+            "name": "Footer",
             "content": {
               "html" : "<b>Our standard footer</b>",
               "text" : "Our standard footer",
               "amp_html" : "<b>Our standard footer</b>"
-            }
+            },
+            "created_at": "2018-10-11T19:13:29.548Z",
+            "updated_at": "2018-10-11T19:14:50.181Z"
           }
         }
 
@@ -123,6 +130,7 @@ To remove a content field that was specified previously, simply set that
 field to an empty string in the update request.
 
 + Data Structure
+    + name (string) - Display name
     + content (object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the render_dynamic_content() and render_snippet() macro calls. In other words, snippets may not reference other snippets.
         + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
         + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part or headers of a template or inline content. Maximum length - 100KB.
@@ -180,7 +188,7 @@ field to an empty string in the update request.
         {
         "errors": [
           {
-            "message": "Snippet does not exist"
+            "message": "A snippet with id 'snippet' does not exist."
           }
         ]
         }
@@ -201,11 +209,15 @@ Returns an array with all your Snippets.
           "results" : [
             {
               "id" : "header",
-              "shared_with_subaccount" : false
+              "shared_with_subaccount" : false,
+              "created_at": "2018-10-11T19:13:29.548Z",
+              "updated_at": "2018-10-11T19:14:50.181Z"
             },
             {
               "id" : "footer",
-              "shared_with_subaccount" : true
+              "shared_with_subaccount" : true,
+              "created_at": "2018-10-05T20:21:04.853Z",
+              "updated_at": "2018-10-09T19:23:53.022Z"
             }
           ]
         }
