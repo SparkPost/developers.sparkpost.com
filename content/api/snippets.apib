@@ -155,7 +155,7 @@ field to an empty string in the update request.
         }
         ```
 
-+ Request Update (application/json)
++ Request Update to Remove a Content Part (application/json)
 
     + Body
 
@@ -179,20 +179,6 @@ field to an empty string in the update request.
 + Request
 
 + Response 204 (application/json)
-
-+ Response 404 (application/json)
-
-    + Body
-
-        ```
-        {
-        "errors": [
-          {
-            "message": "A snippet with id 'snippet' does not exist."
-          }
-        ]
-        }
-        ```
 
 ### List all Snippets [GET /snippets]
 
