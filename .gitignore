@@ -7,3 +7,9 @@ public/
 .DS_Store
 yarn-error.log
 .env
+
+*.swo
+*.swp
+
+# old ruby gems
+bin/
