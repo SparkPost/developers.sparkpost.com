@@ -1,18 +1,27 @@
 FORMAT: 1A
 title: Events
-description: TODO
+description: Query detailed event data for futher analysis and processing.
 
 # Group Events
 
-TODO
+The Events API allows searching for recent events, and supports various types of result filtering. 
+Available events include message status – injection, delivery, bounce – as well as recipient engagement – clicks and opens. 
+You can fetch all event types or only specific ones, such as bounces, deliveries, or clicks.
+You can also filter by date range, campaign, or just about any other field.
+It provides access to similar event data that can also delivered via [webhooks](/api/webhooks/).
+
+### Filtering Data
+*Note:* The maximum URI length is 4096 characters so please keep your queries below that size when adding query parameters to an API call.
+
+TODO: new section, talk about difference between wildcard and fuzzy matching should also probably talk about paging
 
 ### Data Retention
 
-TODO
+Data in the Events API is retained for 10 days. Aggregate reporting data is available through [metrics](/api/metrics/) or the app for up to 6 months.
 
 ### Event Types
 
-TODO
+You can query the following types of events from the Events API.
 
 <MessageEvents></MessageEvents>
 
@@ -24,34 +33,40 @@ __The SparkPost Message Events API uses MaxMind software [MaxMind License](https
 
 ___
 
-### Search for Message Events [GET /v1/events/message{?}]
+### Search for Message Events [GET /v1/events/message]
 
-TODO
+Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
 + Parameters
-    + from
-    + to
-    + timezone
-    + cursor
-    + events
-    + subaccounts
-    + recipients
-    + campaign_ids
-    + template_ids
-    + message_ids
-    + transmission_ids
-    + friendly_froms
-    + bounce_classes
-    + reason
-    + subject
-    + sending_domains
-    + sending_ips
-    + ip_pools
-    + ab_test_ids
-    + ab_test_version
+    + from (datetime, optional) ... Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `One minute ago`
+    + to (datetime, optional) ... Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `24 hours ago`
+    + timezone (string, optional) ... Standard timezone identification string.
+        + Default: `UTC`
+    + cursor () - TODO NEW
+    + per_page (optional number) ... Maximum number of results to return per page. Must be between 1 and 10,000.
+    + events (list, optional) ... Delimited list of event types to search. Defaults to all event types.
+    + subaccounts (list, optional) ... Delimited list of subaccount IDs to search.
+    + recipients (list, optional, `recipient@example.com`) ... Delimited list of recipients to search.
+    + campaign_ids (list, optional) ... Delimited list of campaign IDs to search.
+    + template_ids (list, optional, `my-template`) ... Delimited list of template IDs to search.
+    + message_ids (list, optional) ... Delimited list of message IDs to search.
+    + transmission_ids (list, optional) ... Delimited list of transmission IDs to search.
+    + friendly_froms () - TODO maybe update?
+    + bounce_classes (list, optional) ... Delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
+    + reason (string, optional) ... Bounce/failure/rejection reason that will be matched using a wildcard (e.g., %reason%).
+    + subject () - TODO new
+    + sending_domains () - TODO new
+    + sending_ips () - TODO new
+    + ip_pools () - TODO new
+    + ab_test_ids () - TODO new
+    + ab_test_version () - TODO new
 
-### Documentation [GET /v1/events/message/documentation]
+### Message Events Documentation [GET /v1/events/message/documentation]
 
 TODO
 
-### Documentation [GET /v1/events/message/samples{?events}]
+### Message Events Samples [GET /v1/events/message/samples{?events}]
+
+TODO
