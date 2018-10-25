@@ -48,7 +48,7 @@ Returns a list of message events that matched the filtered search. The response 
         + Default: `1000`
     + events (string, optional) - Comma delimited list of event types to search. Defaults to all event types.
     + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
-    + recipients (string, optional, `recipient@example.com`) - Comma delimited list of recipients to search.
+    + recipients (string, optional, `recipient@example.com`) - Comma delimited list of recipients to search. Supports wildcarding in both the localpart and domain part of the email address.
     + campaign_ids (string, optional) - Comma delimited list of campaign IDs to search.
     + template_ids (string, optional, `my-template`) - Comma delimited list of template IDs to search.
     + message_ids (string, optional) - Comma delimited list of message IDs to search.
