@@ -1,6 +1,6 @@
 FORMAT: 1A
 title: Events
-description: Query detailed event data for futher analysis and processing.
+description: Query detailed SparkPost event data for futher analysis and processing.
 
 # Group Events
 
@@ -8,10 +8,10 @@ The Events API allows searching for recent events, and supports various types of
 Available events include message status – injection, delivery, bounce – as well as recipient engagement – clicks and opens. 
 You can fetch all event types or only specific ones, such as bounces, deliveries, or clicks.
 You can also filter by date range, campaign, or just about any other field.
-It provides access to similar event data that can also delivered via [webhooks](/api/webhooks/).
+It provides access to similar event data that can also delivered via [Webhooks](/api/webhooks/).
 
 ### Filtering Data
-*Note:* The maximum URI length is 4096 characters so please keep your queries below that size when adding query parameters to an API call.
+*Note:* The maximum URI length is 4096 characters, so please keep your queries below that size when adding filters to an API call.
 
 TODO: new section, talk about difference between wildcard and fuzzy matching should also probably talk about paging
 
@@ -25,48 +25,101 @@ You can query the following types of events from the Events API.
 
 <MessageEvents></MessageEvents>
 
-### Licensing
+___
+
+__The SparkPost Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
 
 ___
 
-__The SparkPost Message Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
-
-___
-
-### Search for Message Events [GET /v1/events/message]
+### Search for Message Events [GET /v1/events/message{?recipients,from,to,timezone,cursor,per_page,events,subaccounts,campaign_ids,template_ids,message_ids,transmission_ids,from_addresses,bounce_classes,reason,subject,sending_domains,sending_ips,ip_pools,ab_test_ids,ab_test_version}]
 
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
 + Parameters
-    + from (datetime, optional) ... Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `One minute ago`
-    + to (datetime, optional) ... Datetime in format of YYYY-MM-DDTHH:MM.
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `1 minute ago`
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
         + Default: `24 hours ago`
-    + timezone (string, optional) ... Standard timezone identification string.
+    + timezone (string, optional) - Standard timezone identification string.
         + Default: `UTC`
-    + cursor () - TODO NEW
-    + per_page (optional number) ... Maximum number of results to return per page. Must be between 1 and 10,000.
-    + events (list, optional) ... Delimited list of event types to search. Defaults to all event types.
-    + subaccounts (list, optional) ... Delimited list of subaccount IDs to search.
-    + recipients (list, optional, `recipient@example.com`) ... Delimited list of recipients to search.
-    + campaign_ids (list, optional) ... Delimited list of campaign IDs to search.
-    + template_ids (list, optional, `my-template`) ... Delimited list of template IDs to search.
-    + message_ids (list, optional) ... Delimited list of message IDs to search.
-    + transmission_ids (list, optional) ... Delimited list of transmission IDs to search.
-    + friendly_froms () - TODO maybe update?
-    + bounce_classes (list, optional) ... Delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
-    + reason (string, optional) ... Bounce/failure/rejection reason that will be matched using a wildcard (e.g., %reason%).
-    + subject () - TODO new
-    + sending_domains () - TODO new
-    + sending_ips () - TODO new
-    + ip_pools () - TODO new
-    + ab_test_ids () - TODO new
-    + ab_test_version () - TODO new
+    + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter.
+        + Default: `initial`
+    + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
+        + Default: `1000`
+    + events (string, optional) - Comma delimited list of event types to search. Defaults to all event types.
+    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
+    + recipients (string, optional, `recipient@example.com`) - Comma delimited list of recipients to search.
+    + campaign_ids (string, optional) - Comma delimited list of campaign IDs to search.
+    + template_ids (string, optional, `my-template`) - Comma delimited list of template IDs to search.
+    + message_ids (string, optional) - Comma delimited list of message IDs to search.
+    + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
+    + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
+    + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
+    + reason (string, optional) - Bounce/failure/rejection reason that will be matched using a wildcard (e.g., %reason%).
+    + subject (string, optional) - Subject line from the email header that will be matched using a wildcard (e.g., %avocados%).
+    + sending_domains (string, optional) - Comma delimited list of Sending Domains to search.
+    + sending_ips (string, optional) - Comma delimited list of IP addresses to search.
+    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search.
+    + ab_test_ids (string, optional) - Comma delimited list of A/B test IDs to search.
+    + ab_test_version (number, optional) - Version number of A/B test to search. Used in conjunction with `ab_test_ids` parameter.
 
-### Message Events Documentation [GET /v1/events/message/documentation]
++ Request
 
-TODO
+    + Headers
 
-### Message Events Samples [GET /v1/events/message/samples{?events}]
+        Accept: application/json
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-TODO
++ Response
+    
+        {
+            "results": [
+                {
+                    "type": "click",
+                    "campaign_id": "Example Campaign Name",
+                    "customer_id": "1",
+                    "delv_method": "esmtp",
+                    "event_id": "92356927693813856",
+                    "friendly_from": "sender@example.com",
+                    "geo_ip": {
+                        "country": "US",
+                        "region": "MD",
+                        "city": "Columbia",
+                        "latitude": "39.1749",
+                        "longitude": "-76.8375"
+                    },
+                    "injection_time": "2016-04-18T14:25:07.000Z",
+                    "ip_address": "127.0.0.1",
+                    "ip_pool": "Example-Ip-Pool",
+                    "message_id": "000443ee14578172be22",
+                    "msg_from": "sender@example.com",
+                    "msg_size": "1337",
+                    "num_retries": "2",
+                    "queue_time": "12",
+                    "rcpt_meta": {
+                        "customKey": "customValue",
+                        "anotherKey": ["value1", "value2", "value3"]
+                    },
+                    "rcpt_tags": [
+                        "male",
+                        "US"
+                    ],
+                    "rcpt_to": "recipient@example.com",
+                    "raw_rcpt_to": "recipient@example.com",
+                    "rcpt_type": "cc",
+                    "routing_domain": "example.com",
+                    "sending_ip": "127.0.0.1",
+                    "subaccount_id": "101",
+                    "subject": "Summer deals are here!",
+                    "target_link_name": "Example Link Name",
+                    "target_link_url": "http://example.com",
+                    "template_id": "my-template",
+                    "template_version": "1",
+                    "timestamp": "2016-04-18T14:25:07.000+00:00",
+                    "transmission_id": "65832150921904138",
+                    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36"
+                }
+            ]
+        }
+
+
