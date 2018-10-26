@@ -10,10 +10,7 @@ You can fetch all event types or only specific ones, such as bounces, deliveries
 You can also filter by date range, campaign, or just about any other field.
 It provides access to similar event data that can also delivered via [Webhooks](/api/webhooks/).
 
-### Filtering Data
 *Note:* The maximum URI length is 4096 characters, so please keep your queries below that size when adding filters to an API call.
-
-TODO: new section, talk about difference between wildcard and fuzzy matching should also probably talk about paging
 
 ### Data Retention
 
@@ -48,9 +45,9 @@ Returns a list of message events that matched the filtered search. The response 
         + Default: `1000`
     + events (string, optional) - Comma delimited list of event types to search. Defaults to all event types.
     + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
-    + recipients (string, optional, `recipient@example.com`) - Comma delimited list of recipients to search. Supports wildcarding in both the localpart and domain part of the email address.
+    + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search. Supports wildcarding in both the localpart and domain part of the email address. For example, `*@gmail.com` and `sparky@yahoo.*` are both valid values.
     + campaign_ids (string, optional) - Comma delimited list of campaign IDs to search.
-    + template_ids (string, optional, `my-template`) - Comma delimited list of template IDs to search.
+    + template_ids (string, optional, `my-template`) ... Comma delimited list of template IDs to search.
     + message_ids (string, optional) - Comma delimited list of message IDs to search.
     + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
     + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
@@ -122,4 +119,61 @@ Returns a list of message events that matched the filtered search. The response 
             ]
         }
 
+## Documentation [/v1/events/message/documentation]
 
+These endpoints are used to generate the samples and descriptions for the [Event Types](#header-event-types) section.
+
+### Events Documentation [GET]
+
+Returns a list of descriptions of the event fields that could be included in a response from the message events search. Fields will vary by event type.
+
++ Request
+
+    + Headers
+
+            Accept: application/json
+
++ Response
+
+    ```
+    {
+      "results": [
+        {
+          "type": {
+            "description": "Type of event this record describes",
+            "sampleValue": "bounce"
+          },
+          ...
+        },
+        ...
+      ]
+    }
+    ```
+
+
+
+### Events Samples [GET /v1/events/samples{?events}]
+
+Returns an example message event for each event type listed in the `events` parameter.
+
++ Parameters
+    + events (optional, string, `bounce`) ... Event types for which to get a sample payload. Defaults to all event types. See [Events Types](/api/events/#header-event-types) for the list of available event types.
+
++ Request
+
+  + Headers
+
+            Accept: application/json
+
++ Response
+
+    ```
+    {
+      "results": [
+        {
+          "type": "bounce",
+          ...
+        }
+      ]
+    }
+    ```
