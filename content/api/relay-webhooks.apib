@@ -15,7 +15,7 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
     + auth_type (enum) - Type of authentication to be used during POST requests to target.
         + none
         + oauth2
-    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target. Use this token in your target application to confirm that data is coming from SparkPost.
@@ -154,9 +154,9 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
     + target: (string, required) - URL of the target to which to POST relay batches
     + auth_type: none, oauth2 (enum) - Type of authentication to be used during POST requests to target.
         + Default: none
-    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
         + url (string, required) - The URL for the authorization server.
-        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, and client secret.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object, required) - Restrict which inbound messages will be relayed to the target.
         + domain (string, required) - Inbound domain associated with this webhook.
@@ -180,8 +180,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
                     "url": "http://client.example.com/tokens",
                     "body": {
                         "client_id": "CLIENT123",
-                        "client_secret": "9sdfj791d2bsbf",
-                        "grant_type": "client_credentials"
+                        "client_secret": "9sdfj791d2bsbf"
                     }
                 },
                 "custom_headers": {
@@ -335,7 +334,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + auth_type: none, oauth2 (enum)
         Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
-    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
     + match (object) - Restrict which inbound messages will be relayed to the target.
