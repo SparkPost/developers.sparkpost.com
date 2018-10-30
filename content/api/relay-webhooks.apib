@@ -208,9 +208,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "invalid params",
-                        "description": "Domain '(domain)' is not a registered inbound domain",
-                        "code": "1200"
+                        "message": "Domain 'domain' is not a registered inbound domain",
                     }
                 ]
             }
@@ -222,9 +220,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "resource conflict",
-                        "description": "Domain '(domain)' is already in use",
-                        "code": "1602"
+                        "message": "Domain 'domain' is already in use",
                     }
                 ]
             }
@@ -236,9 +232,9 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors" : [
                     {
-                        "message": "Invalid custom header",
-                        "description": "Header '(header_name)' is reserved and cannot be used",
-                        "code": "10000"
+                        "param": "custom_headers",
+                        "message": "Header is reserved and cannot be used",
+                        "value": "reserved-header"
                     }
                 ]
             }
@@ -250,9 +246,8 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "custom_headers exceeded maximum headers allowed",
-                        "description": "A maximum of 5 custom headers are permitted",
-                        "code": "10002"
+                        "param": "custom_headers",
+                        "message": "You may only have up to 5 custom headers"
                     }
                 ]
             }
@@ -305,8 +300,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
         {
             "errors": [
                 {
-                    "message": "Unauthorized Tenant",
-                    "code": "1303"
+                    "message": "Unauthorized",
                 }
             ]
         }
@@ -318,8 +312,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
         {
             "errors": [
                 {
-                    "message": "resource not found",
-                    "code": "1600"
+                    "message": "Resource could not be found"
                 }
             ]
         }
@@ -383,23 +376,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "invalid params",
-                        "description": "Domain ('domain') is not a registered inbound domain",
-                        "code": "1200"
-                    }
-                ]
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "invalid params",
-                        "description": "esme address not configured",
-                        "code": "1200"
+                        "message": "Domain 'domain' is not a registered inbound domain",
                     }
                 ]
             }
@@ -411,8 +388,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource not found",
-                        "code": "1600"
+                        "message": "Resource could not be found"
                     }
                 ]
             }
@@ -424,9 +400,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource conflict",
-                        "description": "Domain '(domain)' is already in use",
-                        "code": "1602"
+                        "message": "Domain 'domain' is already in use",
                     }
                 ]
             }
@@ -453,8 +427,7 @@ Delete a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource not found",
-                        "code": "1600"
+                        "message": "Resource could not be found"
                     }
                 ]
             }
@@ -497,8 +470,7 @@ List all your relay webhooks.
             {
                 "errors": [
                     {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
+                        "message": "Unauthorized",
                     }
                 ]
             }
