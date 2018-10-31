@@ -44,9 +44,9 @@ Returns a list of message events that matched the filtered search. The response 
     + ab_test_ids (optional, list) ... Delimited list of A/B test IDs to search.
     + message_ids (optional, list) ... Delimited list of message IDs to search.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
-    + to (datetime, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
         + Default: `1 minute ago`
-    + from (datetime, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
         + Default: `24 hours ago`
     + page = `1` (optional, number) ... The results page number to return. Used with per_page for paging through results.
     + per_page = `1000` (optional, number, `1`) ... Number of results to return per page. Must be between 1 and 10,000 (inclusive).
