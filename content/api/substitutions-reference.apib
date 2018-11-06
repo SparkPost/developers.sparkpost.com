@@ -762,14 +762,14 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
 
 ## Snippets
 
-Snippets are pieces of reusable content that are managed using the [Snippets endpoint](/api/v1/snippets).
+Snippets are pieces of reusable content that are managed using the [Snippets endpoint](/api/snippets).
 Once a snippet is created, it can be imported into any html, amp_html, text, or header email content using the `render_snippet` macro call.
 
 Snippets are similar to the `dynamic_html`, `dynamic_amp_html`, and `dynamic_plain` described in the previous section,
 with the key difference being snippets are created ahead of time rather than
 defined inline within a transmissions request.
 
-For example, the /api/v1/snippets endpoint can be used to create a snippet with the ID `ourfooter`:
+For example, the /api/labs/snippets endpoint can be used to create a snippet with the ID `ourfooter`:
 
 ```
 {
@@ -824,7 +824,7 @@ Two snippets are created:
 }
 ```
 
-transmission with content.text:
+Transmission with content.text:
 ```
 The following banner depends on the "banner_id" substitution_data value
 {{ render_snippet( banner_id ) }}
@@ -848,7 +848,7 @@ Other notes on snippet usage:
 * Snippets themselves may contain substitution syntax. Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
 * Snippets may contain links (which will be click tracked if `click_tracking` is enabled).
 * If a `render_snippet` call references a snippet which does not exist, the transmission will be discarded with a generation failure event.
-* Each of the HTML, AMPHTML, and plain text email parts may utilize `render_snippet` at most 30 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
+* A template may utilize `render_snippet` at most 30 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
 
 ## Reserved Recipient Substitution Variables
 
