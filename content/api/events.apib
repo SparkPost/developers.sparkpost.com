@@ -48,8 +48,6 @@ Filters that support wildcarding are:
 * `subject`
 * `templates`
 
-Note: `reason` and `subject` only support wildcarding, so it is unnecessary to provide the wilcard character `*` when using these two filters.
-
 ## Pagination [/v1/events]
 The Events API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
 The `per_page` query parameter tells the Events API the number of events to return in a single request, and supports a maximum value of 10,000.
@@ -66,8 +64,6 @@ the `next` object in the `links` array, and use that to make the request for the
 at which point the `links` array will not have a `next` object, and no further additional requests are necessary.
 
 Note: Pagination requests count towards the number of requests allowed by rate limiting, the same as non-paginated requests.
-
-TODO: talking point, would it be helpful to provide a code example for what doing this looks like?
 
 ### Retrieve First Page [GET /v1/events/message{?per_page,cursor}]
 
@@ -110,7 +106,7 @@ TODO: talking point, would it be helpful to provide a code example for what doin
       "links": [
         {
           "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=initial",
-          "rel": "first"
+          "rel": "previous"
         },
         {
           "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA0VDIyOjQ1OjM5LjAwMFonLCAndWF0LTM4MTQ1MjE3MjUyNTY2NTIwJ10=",
@@ -127,36 +123,36 @@ TODO: talking point, would it be helpful to provide a code example for what doin
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
 + Parameters
-    + ab_test_ids (string, optional) - Comma delimited list of A/B test IDs to search. Supports wildcarding.
-    + ab_test_version (number, optional) - Version number of A/B test to search. If provided, `ab_test_ids` parameter becomes required.
-    + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
-    + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports wildcarding.
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `24 hours ago`
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `1 minute ago`
+    + timezone (string, optional) - Standard timezone identification string.
+        + Default: `UTC`
     + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
         + Default: `initial`
+    + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
+        + Default: `1000`
     + delimiter (optional, string) ... Specifies the delimiter for query parameter lists.
         + Default: `,`
     + events (string, optional) - Comma delimited list of event types to search.
         + Default: `all event types`
-    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `24 hours ago`
-    + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
-    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search. Supports wildarding.
-    + message_ids (string, optional) - Comma delimited list of message IDs to search.
-    + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
-        + Default: `1000`
     + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search.
     + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports wildcarding.
-    + reason (optional, string) ... Bounce/failure/rejection reason that will be matched using wildcarding (e.g., `*reason*`).
-    + sending_domains (string, optional) - Comma delimited list of Sending Domains to search. Supports wildcarding.
-    + sending_ips (string, optional) - Comma delimited list of IP addresses to search.
-    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
-    + subject (string, optional) - Subject line from the email header that will be matched using wildcarding (e.g., `*avocados*`).
+    + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
+    + sending_domains (string, optional) - Comma delimited list of sending domains to search. Supports wildcarding.
+    + subject (string, optional) - Subject line from the email header to search. Supports wildcarding.
+    + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
+    + reason (optional, string) ... Bounce/failure/rejection reason to search. Supports wildcarding.
+    + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports wildcarding.
     + templates (string, optional, `my-template`) ... Comma delimited list of template IDs to search. Supports wildcarding.
-    + timezone (string, optional) - Standard timezone identification string.
-        + Default: `UTC`
-    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `1 minute ago`
+    + sending_ips (string, optional) - Comma delimited list of sending IP addresses to search.
+    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search. Supports wildarding.
+    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
+    + message_ids (string, optional) - Comma delimited list of message IDs to search.
     + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
+    + ab_tests (string, optional) - Comma delimited list of A/B test IDs to search. Supports wildcarding.
+    + ab_test_version (number, optional) - Version number of A/B test to search. If provided, `ab_tests` parameter becomes required.
 
 + Request
 
