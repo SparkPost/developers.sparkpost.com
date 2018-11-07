@@ -12,6 +12,12 @@ It provides access to similar event data that can also delivered via [Webhooks](
 
 *Note:* The maximum URI length is 4096 characters, so please keep your queries below that size when adding filters to an API call.
 
+___
+
+__The SparkPost Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
+
+___
+
 ### Data Retention
 
 Data in the Events API is retained for 10 days. Aggregate reporting data is available through [metrics](/api/metrics/) or the app for up to 6 months.
@@ -22,43 +28,135 @@ You can query the following types of events from the Events API.
 
 <MessageEvents></MessageEvents>
 
-___
+### Wildcarding
+Some of the filtering query parameters in the Events API support wildcarding. Wildcarding allows for filtering results without the precise value
+and also allows filtering for multiple values, without having to enter in each value individually.
 
-__The SparkPost Events API uses MaxMind software [MaxMind License](https://www.maxmind.com/download/geoip/database/LICENSE.txt)__
+For example, suppose the following campaigns are sent via SparkPost: `blackfriday-specials`, `blackfriday-members`, and `blackfriday-flash-deals`.
+Without wildcarding, to retrieve results for all three campaigns, `?campaigns=blackfriday-specials,blackfriday-members,blackfriday-flash-deals` would need to be
+added to the Events API request. With wildcarding, the previous example can be condensed into `?campaigns=blackfriday*`, and the same data is returned as would be by
+the much longer filter. The wildcard operator the Events API supports is `*`. 
 
-___
+Filters that support wildcarding are:
 
-### Search for Message Events [GET /v1/events/message{?recipients,from,to,timezone,cursor,per_page,events,subaccounts,campaign_ids,template_ids,message_ids,transmission_ids,from_addresses,bounce_classes,reason,subject,sending_domains,sending_ips,ip_pools,ab_test_ids,ab_test_version}]
+* `ab_test_ids`
+* `campaigns`
+* `ip_pools`
+* `reason`
+* `recipient_domains`
+* `sending_domains`
+* `subject`
+* `templates`
+
+Note: `reason` and `subject` only support wildcarding, so it is unnecessary to provide the wilcard character `*` when using these two filters.
+
+## Pagination [/v1/events]
+The Events API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
+The `per_page` query parameter tells the Events API the number of events to return in a single request, and supports a maximum value of 10,000.
+
+To start a paging request, add the query parameter `?cursor=initial` to your Events API request. This will fetch the first page of results. If cursor is not provided, then the default value of `initial` is applied.
+In the response body, there are three main keys: `results`, `total_count` and `links`. `results` is an array which contains the page of JSON events that matched the request,
+`total_count` is an integer that describes the total number of JSON events that matched your request, and `links` is an array which provides a way to request the next page of events, if there is more than one page.
+
+Once you have the response, you then can use `links` to retrieve the URL for your next page, which will be prefilled with the appropriate value for the `cursor` query parameter,
+as well as any other filters you supplied with the original request.
+
+In the following examples, to retrieve the first page, we use the `initial` value for the `cursor` query parameter.  the `cursor` value from
+the `next` object in the `links` array, and use that to make the request for the second page. This process would then be repeated until all results have been paged through,
+at which point the `links` array will not have a `next` object, and no further additional requests are necessary.
+
+Note: Pagination requests count towards the number of requests allowed by rate limiting, the same as non-paginated requests.
+
+TODO: talking point, would it be helpful to provide a code example for what doing this looks like?
+
+### Retrieve First Page [GET /v1/events/message{?per_page,cursor}]
+
++ Parameters
+    + per_page: `1000` (string, optional) 
+    + cursor: `initial` (string, optional)
+
++ Response
+```
+    {
+      "results": [
+        ...
+      ],
+      "total_count": 20000,
+      "links": [
+        {
+          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=initial",
+          "rel": "first"
+        },
+        {
+          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA1VDIyOjQ1OjM5LjAwMFonLCAnc3BjLTM4MTQ1MjY3MjMyNTA2NTEwJ10=",
+          "rel": "next"
+        }
+      ]
+    }
+```
+
+### Retrieve Subsequent Page [GET /v1/events/message{?per_page,cursor}]
++ Parameters
+    + per_page: `1000` (string, optional) 
+    + cursor: `WycyMDE4LTExLTA1VDIyOjQ1OjM5LjAwMFonLCAnc3BjLTM4MTQ1MjY3MjMyNTA2NTEwJ10=` (string, optional)
+
++ Response
+```
+    {
+      "results": [
+        ...
+      ],
+      "total_count": 20000,
+      "links": [
+        {
+          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=initial",
+          "rel": "first"
+        },
+        {
+          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA0VDIyOjQ1OjM5LjAwMFonLCAndWF0LTM4MTQ1MjE3MjUyNTY2NTIwJ10=",
+          "rel": "next"
+        }
+      ]
+    }
+```
+
+## Search [/v1/events]
+
+### Search for Message Events [GET /v1/events/message{?ab_test_ids,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,subaccounts,templates,timezone,to,transmission_ids}]
 
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
 + Parameters
-    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `1 minute ago`
-    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
-        + Default: `24 hours ago`
-    + timezone (string, optional) - Standard timezone identification string.
-        + Default: `UTC`
-    + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter.
+    + ab_test_ids (string, optional) - Comma delimited list of A/B test IDs to search. Supports wildcarding.
+    + ab_test_version (number, optional) - Version number of A/B test to search. If provided, `ab_test_ids` parameter becomes required.
+    + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
+    + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports wildcarding.
+    + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
         + Default: `initial`
+    + delimiter (optional, string) ... Specifies the delimiter for query parameter lists.
+        + Default: `,`
+    + events (string, optional) - Comma delimited list of event types to search.
+        + Default: `all event types`
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `24 hours ago`
+    + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
+    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search. Supports wildarding.
+    + message_ids (string, optional) - Comma delimited list of message IDs to search.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: `1000`
-    + events (string, optional) - Comma delimited list of event types to search. Defaults to all event types.
-    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
-    + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search. Supports wildcarding in both the localpart and domain part of the email address. For example, `*@gmail.com` and `sparky@yahoo.*` are both valid values.
-    + campaign_ids (string, optional) - Comma delimited list of campaign IDs to search.
-    + template_ids (string, optional, `my-template`) ... Comma delimited list of template IDs to search.
-    + message_ids (string, optional) - Comma delimited list of message IDs to search.
-    + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
-    + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
-    + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
-    + reason (string, optional) - Bounce/failure/rejection reason that will be matched using a wildcard (e.g., %reason%).
-    + subject (string, optional) - Subject line from the email header that will be matched using a wildcard (e.g., %avocados%).
-    + sending_domains (string, optional) - Comma delimited list of Sending Domains to search.
+    + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search.
+    + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports wildcarding.
+    + reason (optional, string) ... Bounce/failure/rejection reason that will be matched using wildcarding (e.g., *reason*).
+    + sending_domains (string, optional) - Comma delimited list of Sending Domains to search. Supports wildcarding.
     + sending_ips (string, optional) - Comma delimited list of IP addresses to search.
-    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search.
-    + ab_test_ids (string, optional) - Comma delimited list of A/B test IDs to search.
-    + ab_test_version (number, optional) - Version number of A/B test to search. Used in conjunction with `ab_test_ids` parameter.
+    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
+    + subject (string, optional) - Subject line from the email header that will be matched using wildcarding (e.g., *avocados*).
+    + templates (string, optional, `my-template`) ... Comma delimited list of template IDs to search. Supports wildcarding.
+    + timezone (string, optional) - Standard timezone identification string.
+        + Default: `UTC`
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `1 minute ago`
+    + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
 
 + Request
 
@@ -116,6 +214,13 @@ Returns a list of message events that matched the filtered search. The response 
                     "transmission_id": "65832150921904138",
                     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36"
                 }
+            ],
+            "total_count": 1,
+            "links": [
+              {
+                "href": "/api/v1/events/message?recipients=recipient@example.com&template_ids=my-template"
+                "rel": "first"
+              }
             ]
         }
 
