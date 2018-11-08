@@ -42,7 +42,7 @@ the much longer filter. The wildcard operator the Events API supports is `*`.
 
 Filters that support wildcarding are:
 
-* `ab_test_ids`
+* `ab_tests`
 * `campaigns`
 * `ip_pools`
 * `reason`
@@ -121,7 +121,7 @@ Note: Pagination requests count towards the number of requests allowed by rate l
 
 ## Search [/v1/events]
 
-### Search for Message Events [GET /v1/events/message{?ab_test_ids,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,subaccounts,templates,timezone,to,transmission_ids}]
+### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,subaccounts,templates,timezone,to,transmission_ids}]
 
 Returns a list of message events that matched the filtered search. The response is sorted by descending timestamp.
 
