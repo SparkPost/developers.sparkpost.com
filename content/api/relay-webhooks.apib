@@ -252,6 +252,37 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
                 ]
             }
 
+### Validate a Relay Webhook [POST /v1/relay-webhooks/{id}/validate]
+The validation request sends an example batch to the target URL, validates that the target responds with HTTP 200,
+and returns information on the response received from the target.
+
+[Example batch](#header-relay-webhook-payload)
+
++ Parameters
+    + id (required, string, `12013026328707075`)
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "msg": "Test POST to endpoint succeeded",
+                "response": {
+                    "status": 200,
+                    "headers": {
+                        "Content-Type": "text/plain"
+                    },
+                    "body": "OK"
+                }
+            }
+        }
+
 ### Retrieve a Relay Webhook [GET /v1/relay-webhooks/{id}]
 
 Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
