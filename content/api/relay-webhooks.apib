@@ -455,6 +455,17 @@ List all your relay webhooks.
                         "name": "Replies Webhook",
                         "target": "https://webhooks.customer.example/replies",
                         "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                        "auth_type": "oauth2",
+                        "auth_request_details": {
+                            "url": "https://oauth.myurl.com/tokens",
+                            "body": {
+                                "client_id": "<oauth client id>",
+                                "client_secret": "<oauth client secret>"
+                            }
+                        },
+                        "custom_headers": {
+                            "x-webhook-source": "sparkpost"
+                        },
                         "match": {
                             "protocol": "SMTP",
                             "domain": "email.example.com"
@@ -470,7 +481,7 @@ List all your relay webhooks.
             {
                 "errors": [
                     {
-                        "message": "Unauthorized",
+                        "message": "Unauthorized"
                     }
                 ]
             }
