@@ -239,6 +239,8 @@ Returns the A/B test ID, when successful.
 
 ### Retrieve an A/B Test [GET /v1/ab-test/{id}{?version}]
 
+*Note:* Results for running tests are updated approximately every 15 minutes.
+
 + Parameters
     + id (required, string, `password-reset`)
     + version (optional, number) ... If passed, returns information about the specific version of the A/B test. If not specified, returns information about the latest version.
