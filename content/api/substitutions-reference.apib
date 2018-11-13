@@ -763,7 +763,7 @@ Finally, as a more realistic example, `render_dynamic_content()` can also be use
 ## Snippets
 
 Snippets are pieces of reusable content that are managed using the [Snippets endpoint](/api/snippets).
-Once a snippet is created, it can be imported into any html, amp_html, text, or header email content using the `render_snippet` macro call.
+Once a snippet is created, it can be imported into any html, amp_html, or text email content using the `render_snippet` macro call.
 
 Snippets are similar to the `dynamic_html`, `dynamic_amp_html`, and `dynamic_plain` described in the previous section,
 with the key difference being snippets are created ahead of time rather than
@@ -782,7 +782,7 @@ For example, the /api/labs/snippets endpoint can be used to create a snippet wit
 }
 ```
 
-The snippet can then be imported into either plain text, html, amp_html, or header email content
+The snippet can then be imported into either plain text, html, or amp_html email content
 using the `render_snippet` macro call. The macro call will automatically use the appropriate
 content.html, content.amp_html, or content.text snippet value based on the type of content that the snippet
 is being inserted into.
