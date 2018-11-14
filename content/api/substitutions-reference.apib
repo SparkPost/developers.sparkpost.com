@@ -848,7 +848,7 @@ Other notes on snippet usage:
 * Snippets themselves may contain substitution syntax. Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
 * Snippets may contain links (which will be click tracked if `click_tracking` is enabled).
 * If a `render_snippet` call references a snippet which does not exist, the transmission will be discarded with a generation failure event.
-* A template may utilize `render_snippet` at most 30 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
+* A template may utilize `render_snippet` at most 5 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
 
 ## Reserved Recipient Substitution Variables
 
