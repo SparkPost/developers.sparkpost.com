@@ -13,7 +13,7 @@ You can fetch all event types or only specific ones, such as bounces, deliveries
 You can also filter by date range, campaign, or just about any other field.
 It provides access to similar event data that can also delivered via [Webhooks](/api/webhooks/).
 
-*Note:* The maximum URI length is 4096 characters, so please keep your queries below that size when adding filters to an API call.
+<Banner status="info">The maximum URI length is 4096 characters, so please keep your queries below that size when adding filters to an API call.</Banner>
 
 ___
 
@@ -38,7 +38,10 @@ and also allows filtering for multiple values, without having to enter in each v
 For example, suppose the following campaigns are sent via SparkPost: `blackfriday-specials`, `blackfriday-members`, and `blackfriday-flash-deals`.
 Without wildcarding, to retrieve results for all three campaigns, `?campaigns=blackfriday-specials,blackfriday-members,blackfriday-flash-deals` would need to be
 added to the Events API request. With wildcarding, the previous example can be condensed into `?campaigns=blackfriday*`, and the same data is returned as would be by
-the much longer filter. The wildcard operator the Events API supports is `*`. 
+the much longer filter.
+
+The Events API supports two different wildcarding operators. The `*` operator is used to match any number of characters, while the `?` operator is used to match a single character.
+If you want to use either `*` or `?` as a literal in a search, then you must escape these operators with the `\` character (i.e. `?campaigns=foo-bar-\*` will return results for `foo-bar-*`).
 
 Filters that support wildcarding are:
 
@@ -57,16 +60,18 @@ The `per_page` query parameter tells the Events API the number of events to retu
 
 To start a paging request, add the query parameter `?cursor=initial` to your Events API request. This will fetch the first page of results. If cursor is not provided, then the default value of `initial` is applied.
 In the response body, there are three main keys: `results`, `total_count` and `links`. `results` is an array which contains the page of JSON events that matched the request,
-`total_count` is an integer that describes the total number of JSON events that matched your request, and `links` is an array which provides a way to request the next page of events, if there is more than one page.
+`total_count` is an integer that describes the total number of JSON events that matched your request, and `links` is an object which provides a way to request the next page of events, if there is more than one page.
 
 Once you have the response, you then can use `links` to retrieve the URL for your next page, which will be prefilled with the appropriate value for the `cursor` query parameter,
 as well as any other filters you supplied with the original request.
 
 In the following examples, to retrieve the first page, we use the `initial` value for the `cursor` query parameter.  the `cursor` value from
-the `next` object in the `links` array, and use that to make the request for the second page. This process would then be repeated until all results have been paged through,
-at which point the `links` array will not have a `next` object, and no further additional requests are necessary.
+the `next` key in the `links` object, and use that to make the request for the second page. This process would then be repeated until all results have been paged through,
+at which point the `links` object will not have a `next` key, and no further additional requests are necessary.
 
-Note: Pagination requests count towards the number of requests allowed by rate limiting, the same as non-paginated requests.
+If your result set is less than one page of data, then the `links` object will not have a `next` key.
+
+<Banner status="info">Pagination requests count towards the number of requests allowed by rate limiting, the same as non-paginated requests.</Banner>
 
 ### Retrieve First Page [GET /v1/events/message{?per_page,cursor}]
 
@@ -81,16 +86,9 @@ Note: Pagination requests count towards the number of requests allowed by rate l
         ...
       ],
       "total_count": 20000,
-      "links": [
-        {
-          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=initial",
-          "rel": "first"
-        },
-        {
-          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA1VDIyOjQ1OjM5LjAwMFonLCAnc3BjLTM4MTQ1MjY3MjMyNTA2NTEwJ10=",
-          "rel": "next"
-        }
-      ]
+      "links": {
+        "next": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA1VDIyOjQ1OjM5LjAwMFonLCAnc3BjLTM4MTQ1MjY3MjMyNTA2NTEwJ10="
+      }
     }
 ```
 
@@ -106,16 +104,9 @@ Note: Pagination requests count towards the number of requests allowed by rate l
         ...
       ],
       "total_count": 20000,
-      "links": [
-        {
-          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=initial",
-          "rel": "previous"
-        },
-        {
-          "href": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA0VDIyOjQ1OjM5LjAwMFonLCAndWF0LTM4MTQ1MjE3MjUyNTY2NTIwJ10=",
-          "rel": "next"
-        }
-      ]
+      "links": {
+        "next": "/api/v1/events/message?events=delivery&per_page=1000&cursor=WycyMDE4LTExLTA0VDIyOjQ1OjM5LjAwMFonLCAndWF0LTM4MTQ1MjE3MjUyNTY2NTIwJ10="
+      }
     }
 ```
 
@@ -215,12 +206,7 @@ Returns a list of message events that matched the filtered search. The response 
                 }
             ],
             "total_count": 1,
-            "links": [
-              {
-                "href": "/api/v1/events/message?recipients=recipient@example.com&template_ids=my-template"
-                "rel": "first"
-              }
-            ]
+            "links": {}
         }
 
 ## Documentation [/v1/events/message/documentation]
