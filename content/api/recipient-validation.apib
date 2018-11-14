@@ -12,28 +12,18 @@ Any invalid email address responses will also provide a reason why it is invalid
 ### Single Address Validation [/recipient-validation/single/{address}]
 
 + Parameters
-    + address (required, string) ... Recipient Email Address
+    + address (required, string, `valid@ddress.com`)
 
 + Request
 
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
 
-+ Response 200 (application/json) - Valid
++ Response 200 (application/json)
 
         {
             "results": {
                 "valid": true
-            }
-        }
-
-+ Response 200 (application/json) - Invalid
-
-        {
-            "results": {
-                "valid": false,
-                "reason": "Invalid Domain"
             }
         }
