@@ -1,24 +1,18 @@
 FORMAT: 1A
 title: Recipient Validation
-description: Tool for validating email recipient addresses.
+description: Tool for validating recipient email addresses.
 label: Beta
 
 # Group Recipient Validation
 
 Recipient Validation is a tool for validating recipient email addresses. 
-An address will either be returned as valid or invalid. 
-Any invalid email address responses will also provide a reason why it is invalid.
 
 ## Single Address Validation [GET /v1/recipient-validation/single/{address}]
 
-Validate a single email address.
+Validate a single email address. An address will either be returned as valid or invalid. 
+Any invalid email address responses will also provide a reason why it is invalid.
 
 + Request
-
-    + Headers
-
-            Accept: application/json
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Parameters
 
