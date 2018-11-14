@@ -9,20 +9,6 @@ Recipient Validation is a tool for validating recipient email addresses.
 An address will either be returned as valid or invalid. 
 Any invalid email address responses will also provide a reason why it is invalid.
 
-## Recipient Validation Object
-
-+ Data Structure
-    + valid (boolean) - Indicates if the recipient email address is valid or invalid.
-    + reason (string) - Explanation of why an address is invalid. Only included if the valid boolean is false.
-+ Sample
-    
-    ```
-    {
-        "valid": false,
-        "reason": "Invalid Domain"
-    }
-    ```
-
 ## Single Address Validation [GET /v1/recipient-validation/single/{address}]
 
 Validate a single email address.
