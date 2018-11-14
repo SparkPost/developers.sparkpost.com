@@ -18,12 +18,23 @@ Any invalid email address responses will also provide a reason why it is invalid
 
     + address (required, string, `valid@ddress.com`)
 
-+ Response 200 (application/json)
++ Response 200 - Valid (application/json)
 
     + Body
 
             {
                 "results": {
                     "valid": true
+                }   
+            }
+
++ Response 200 - Invalid (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "valid": false,
+                    "reason": "Invalid Domain"
                 }   
             }
