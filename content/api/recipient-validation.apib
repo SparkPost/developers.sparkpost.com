@@ -1,22 +1,26 @@
 FORMAT: 1A
 title: Recipient Validation
-description: Tool for validating recipient email addresses.
+description: Check if email addresses are valid before sending.
 label: Beta
 
 # Group Recipient Validation
 
-Recipient Validation is a tool for validating recipient email addresses. 
+Recipient Validation checks email addresses to ensure you are sending to valid recipients.
+
+Recipient Validation is available early for SparkPost beta testers. [Sign-up to be a beta tester](https://www.sparkpost.com/sparkpost-beta-tester/) if you'd like to try it out.
+This feature is not currently available to EU accounts, check back soon for availability.
+
 
 ## Single Address Validation [GET /v1/recipient-validation/single/{address}]
 
-Validate a single email address. An address will either be returned as valid or invalid. 
+Validate an email address. An address will either be returned as valid or invalid.
 Any invalid email address responses will also provide a reason why it is invalid.
 
 + Request
 
 + Parameters
 
-    + address (required, string, `valid@ddress.com`)
+    + address (required, string, `some@ddress.com`)
 
 + Response 200 - Valid (application/json)
 
@@ -25,7 +29,7 @@ Any invalid email address responses will also provide a reason why it is invalid
             {
                 "results": {
                     "valid": true
-                }   
+                }
             }
 
 + Response 200 - Invalid (application/json)
@@ -36,5 +40,5 @@ Any invalid email address responses will also provide a reason why it is invalid
                 "results": {
                     "valid": false,
                     "reason": "Invalid Domain"
-                }   
+                }
             }
