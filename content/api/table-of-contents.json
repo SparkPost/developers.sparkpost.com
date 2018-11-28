@@ -19,7 +19,8 @@
       "recipient-lists.apib",
       "suppression-list.apib",
       "sending-ips.apib",
-      "ip-pools.apib"
+      "ip-pools.apib",
+      "snippets.apib"
     ]
   },
   {
