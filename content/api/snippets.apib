@@ -34,7 +34,7 @@ The resulting rendered HTML content would look like:
 </html>
 ```
 
-See the [Substitution Reference](/api/substitutions-reference/#header-snippets)
+See the [Template Language documentation](/api/template-language/#header-snippets)
 for a more detailed explanation of the `render_snippet` macro and more complicated examples.
 
 ## Snippet Object
@@ -49,7 +49,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
     + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
     + subaccount_id (number) - Subaccount the snippet belongs to. Only present on snippets that belong to a subaccount.
 
-## Create a Snippet [POST /snippets]
+## Create a Snippet [POST /labs/snippets]
 
 + Data Structure
     + id (required, string) - Unique ID used to reference the snippet.
@@ -94,7 +94,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
           ]
         }
 
-## Retrieve a Snippet [GET /snippets/{id}]
+## Retrieve a Snippet [GET /labs/snippets/{id}]
 
 + Parameters
     + id (required, string, `ourfooter`)
@@ -119,7 +119,7 @@ for a more detailed explanation of the `render_snippet` macro and more complicat
           }
         }
 
-## Update a Snippet [PUT /snippets/{id}]
+## Update a Snippet [PUT /labs/snippets/{id}]
 
 Unlike the [Templates API](api/templates/), if a content object is
 provided in the update request, it only needs to include the fields that
@@ -170,7 +170,7 @@ field to an empty string in the update request.
 
 + Response 200
 
-## Delete a Snippet [DELETE /snippets/{id}]
+## Delete a Snippet [DELETE /labs/snippets/{id}]
 
 
 + Parameters
@@ -180,7 +180,7 @@ field to an empty string in the update request.
 
 + Response 204 (application/json)
 
-### List all Snippets [GET /snippets]
+### List all Snippets [GET /labs/snippets]
 
 Returns an array with all your Snippets.
 
