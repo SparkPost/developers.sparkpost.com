@@ -17,6 +17,7 @@
       "ab-testing.apib",
       "template-language.apib",
       "recipient-lists.apib",
+      "recipient-validation.apib",
       "suppression-list.apib",
       "sending-ips.apib",
       "ip-pools.apib",
