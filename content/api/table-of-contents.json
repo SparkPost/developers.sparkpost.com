@@ -16,12 +16,12 @@
       "templates.apib",
       "ab-testing.apib",
       "template-language.apib",
+      "snippets.apib",
       "recipient-lists.apib",
       "recipient-validation.apib",
       "suppression-list.apib",
       "sending-ips.apib",
-      "ip-pools.apib",
-      "snippets.apib"
+      "ip-pools.apib"
     ]
   },
   {
