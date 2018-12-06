@@ -112,7 +112,7 @@ If your result set is less than one page of data, then the `links` object will n
 
 ## Search [/v1/events]
 
-### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,order,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,sort,subaccounts,templates,timezone,to,transmission_ids}]
+### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,subaccounts,templates,timezone,to,transmission_ids}]
 
 Returns a list of message events that matched the filtered search.
 
@@ -131,24 +131,6 @@ Returns a list of message events that matched the filtered search.
         + Default: `,`
     + events (string, optional) - Comma delimited list of event types to search.
         + Default: `all event types`
-    + sort = `timestamp` (enum, optional) ... Specifies field used to sort query results. Used in conjunction with `order` parameter.
-        + `timestamp`
-        + `recipients`
-        + `campaigns`
-        + `templates`
-        + `message_ids`
-        + `transmission_ids`
-        + `from_addresses`
-        + `bounce_classes`
-        + `reason`
-        + `subject`
-        + `sending_domains`
-        + `sending_ips`
-        + `ip_pools`
-        + `ab_tests`
-    + order = `desc` (enum, optional) ... Specifies the sorting order for query results. Used in conjunction with `sort` parameter.
-        + `asc`
-        + `desc`
     + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search.
     + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports wildcarding.
     + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
