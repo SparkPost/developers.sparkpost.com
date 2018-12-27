@@ -12,6 +12,12 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
     + id (string) - Unique ID
     + name (string) - Relay webhook name
     + target (string) - URL of the target to which to POST relay batches
+    + auth_type (enum) - Type of authentication to be used during POST requests to target.
+        + none
+        + oauth2
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target. Use this token in your target application to confirm that data is coming from SparkPost.
     + match: SMTP (object) - Restrict which inbound messages will be relayed to the target.
         + protocol: SMTP (string) - Inbound messaging protocol associated with this webhook.
@@ -31,7 +37,7 @@ Relay Webhooks are a way to instruct SparkPost to forward messages sent to an in
         }
     }
     ```
-        
+
 ### Custom HTTP Headers Properties
 
 The custom headers JSON object allows you to add up to five custom headers to your relay webhook. The `custom_headers` object may only be up to 3,000 bytes in size, and must be formatted as an object with keys as strings or numbers. Headers already used by SparkPost will not be allowed, and SparkPost may also disallow some HTTP headers for security reasons.
@@ -75,11 +81,11 @@ The following fields will be included in each object posted to the relay webhook
             Raw MIME content for an email. If the Raw MIME content contains at least one non UTF-8 encoded character, the entire `email_rfc822` value will be base64 encoded and `email_rfc822_is_base64` will be set to true.
         + email_rfc822_is_base64 (boolean)
             Whether the `email_rfc822` value is base64 encoded.
-    + friendly_from (string) 
+    + friendly_from (string)
         Email address used to compose the "From" header
     + msg_from (string)
         [SMTP envelope](http://www.rfcreader.com/#rfc5321_line817) "MAIL FROM", matches "Return-Path" header address
-    + rcpt_to (string) 
+    + rcpt_to (string)
         [SMTP envelope](http://www.rfcreader.com/#rfc5321_line817) "RCPT TO"
     + webhook_id (string) - ID of the relay webhook which triggered this relay message.
     + protocol: smtp (string) - Protocol of the originating inbound message.
@@ -146,6 +152,11 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
 + Data Structure
     + name (string) - Relay webhook name
     + target: (string, required) - URL of the target to which to POST relay batches
+    + auth_type: none, oauth2 (enum) - Type of authentication to be used during POST requests to target.
+        + Default: none
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, and client secret.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + match (object, required) - Restrict which inbound messages will be relayed to the target.
         + domain (string, required) - Inbound domain associated with this webhook.
@@ -164,6 +175,17 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
                 "name": "Replies Webhook",
                 "target": "https://webhooks.customer.example/replies",
                 "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                "auth_type": "oauth2",
+                "auth_request_details": {
+                    "url": "http://client.example.com/tokens",
+                    "body": {
+                        "client_id": "CLIENT123",
+                        "client_secret": "9sdfj791d2bsbf"
+                    }
+                },
+                "custom_headers": {
+                    "x-api-key": "abcd"
+                },
                 "match": {
                     "domain": "email.example.com"
                 }
@@ -186,9 +208,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "invalid params",
-                        "description": "Domain '(domain)' is not a registered inbound domain",
-                        "code": "1200"
+                        "message": "Domain 'domain' is not a registered inbound domain",
                     }
                 ]
             }
@@ -200,9 +220,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "resource conflict",
-                        "description": "Domain '(domain)' is already in use",
-                        "code": "1602"
+                        "message": "Domain 'domain' is already in use",
                     }
                 ]
             }
@@ -214,9 +232,9 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors" : [
                     {
-                        "message": "Invalid custom header",
-                        "description": "Header '(header_name)' is reserved and cannot be used",
-                        "code": "10000"
+                        "param": "custom_headers",
+                        "message": "Header is reserved and cannot be used",
+                        "value": "reserved-header"
                     }
                 ]
             }
@@ -228,12 +246,42 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
             {
                 "errors": [
                     {
-                        "message": "custom_headers exceeded maximum headers allowed",
-                        "description": "A maximum of 5 custom headers are permitted",
-                        "code": "10002"
+                        "param": "custom_headers",
+                        "message": "You may only have up to 5 custom headers"
                     }
                 ]
             }
+
+### Validate a Relay Webhook [POST /v1/relay-webhooks/{id}/validate]
+The validation request sends an example batch to the target URL, validates that the target responds with HTTP 200,
+and returns information on the response received from the target.
+
+[Example batch](#header-relay-webhook-payload)
+
++ Parameters
+    + id (required, string, `12013026328707075`)
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "msg": "Test POST to endpoint succeeded",
+                "response": {
+                    "status": 200,
+                    "headers": {
+                        "Content-Type": "text/plain"
+                    },
+                    "body": "OK"
+                }
+            }
+        }
 
 ### Retrieve a Relay Webhook [GET /v1/relay-webhooks/{id}]
 
@@ -258,6 +306,17 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
                     "name": "Replies Webhook",
                     "target": "https://webhooks.customer.example/replies",
                     "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                    "auth_type": "oauth2",
+                    "auth_request_details": {
+                        "url": "https://oauth.myurl.com/tokens",
+                        "body": {
+                            "client_id": "<oauth client id>",
+                            "client_secret": "<oauth client secret>"
+                        }
+                    },
+                    "custom_headers": {
+                        "x-api-key": "abcd"
+                    },
                     "match": {
                         "protocol": "SMTP",
                         "domain": "email.example.com"
@@ -272,8 +331,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
         {
             "errors": [
                 {
-                    "message": "Unauthorized Tenant",
-                    "code": "1303"
+                    "message": "Unauthorized",
                 }
             ]
         }
@@ -285,8 +343,7 @@ Retrieve a specific relay webhook by specifying the webhook ID in the URI path.
         {
             "errors": [
                 {
-                    "message": "resource not found",
-                    "code": "1600"
+                    "message": "Resource could not be found"
                 }
             ]
         }
@@ -299,6 +356,11 @@ Update a relay webhook by specifying the webhook ID in the URI path.
     + name (string) - Relay webhook name
     + target (string) - URL of the target to which to POST relay batches
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
+    + auth_type: none, oauth2 (enum)
+        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
+    + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
+        + url (string, required) - The URL for the authorization server.
+        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
     + match (object) - Restrict which inbound messages will be relayed to the target.
         + domain (string) - Inbound domain associated with this webhook.
     + custom_headers (object) - Object of custom HTTP headers to be used during POST requests to target.
@@ -319,6 +381,10 @@ Update a relay webhook by specifying the webhook ID in the URI path.
                 "name": "New Replies Webhook",
                 "target": "https://webhook.customer.example/replies",
                 "auth_token": "A different auth token",
+                "auth_type": "none",
+                "custom_headers": {
+                    "x-api-key": "abcd"
+                },
                 "match": {
                     "domain": "email.a-different-domain.com"
                 }
@@ -341,23 +407,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "invalid params",
-                        "description": "Domain ('domain') is not a registered inbound domain",
-                        "code": "1200"
-                    }
-                ]
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "invalid params",
-                        "description": "esme address not configured",
-                        "code": "1200"
+                        "message": "Domain 'domain' is not a registered inbound domain",
                     }
                 ]
             }
@@ -369,8 +419,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource not found",
-                        "code": "1600"
+                        "message": "Resource could not be found"
                     }
                 ]
             }
@@ -382,9 +431,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource conflict",
-                        "description": "Domain '(domain)' is already in use",
-                        "code": "1602"
+                        "message": "Domain 'domain' is already in use",
                     }
                 ]
             }
@@ -411,8 +458,7 @@ Delete a relay webhook by specifying the webhook ID in the URI path.
             {
                 "errors": [
                     {
-                        "message": "resource not found",
-                        "code": "1600"
+                        "message": "Resource could not be found"
                     }
                 ]
             }
@@ -440,6 +486,17 @@ List all your relay webhooks.
                         "name": "Replies Webhook",
                         "target": "https://webhooks.customer.example/replies",
                         "auth_token": "5ebe2294ecd0e0f08eab7690d2a6ee69",
+                        "auth_type": "oauth2",
+                        "auth_request_details": {
+                            "url": "https://oauth.myurl.com/tokens",
+                            "body": {
+                                "client_id": "<oauth client id>",
+                                "client_secret": "<oauth client secret>"
+                            }
+                        },
+                        "custom_headers": {
+                            "x-webhook-source": "sparkpost"
+                        },
                         "match": {
                             "protocol": "SMTP",
                             "domain": "email.example.com"
@@ -455,8 +512,7 @@ List all your relay webhooks.
             {
                 "errors": [
                     {
-                        "message": "Unauthorized Tenant",
-                        "code": "1303"
+                        "message": "Unauthorized"
                     }
                 ]
             }
