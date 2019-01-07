@@ -545,3 +545,45 @@ Instead of the standard attributes, the content object may contain a single `ema
                 "id": "another_summer_sale"
             }
         }
+
+### Preview an inline Template [POST /v1/utils/content-previewer]
+
+Requests to this endpoint must include the "substitution_data" and "content" fields. The content will be expanded using the substitution data and returned in the response.
+
+See the [Templates API](/api/templates/#header-template-object) section for the definition of the content object.
+
+See [Template Language](/api/template-language/) for more information.
+
++ Data Structure
+    + substitution_data (object) - Data passed to the template engine.
+    + content (object) - Inline template content fields.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "substitution_data": {
+                    "name": "Natalie",
+                    "age": 35,
+                    "member": true
+                },
+                "content": {
+                  "from" : "sandbox@sparkpostbox.com",
+                  "subject": "Summer deals for {{name}}",
+                  "html": "<b>Check out these deals {{name}}!</b>"
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+          "results" : {
+            "subject": "Summer deals for Natalie",
+            "html": "<b>Check out these deals Natalie!</b>"
+          }
+        }
