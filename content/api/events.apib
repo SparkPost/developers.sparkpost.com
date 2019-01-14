@@ -31,19 +31,20 @@ You can query the following types of events from the Events API.
 
 <MessageEvents></MessageEvents>
 
-### Wildcarding
-Some of the filtering query parameters in the Events API support wildcarding. Wildcarding allows for filtering results without the precise value
-and also allows filtering for multiple values, without having to enter in each value individually.
+### Keyword Searching
+Some of the filter query parameters in the Events API support keyword searching.  Keyword searching allows for filtering results without the precise value
+and also allows filtering for multiple values, without having to enter in each value individually.  Keywords are determined by natural breaks in phrases by
+spaces, dashes, underscores, and in special cases periods(`recipient_domains` and `sending_domains`).
 
 For example, suppose the following campaigns are sent via SparkPost: `blackfriday-specials`, `blackfriday-members`, and `blackfriday-flash-deals`.
-Without wildcarding, to retrieve results for all three campaigns, `?campaigns=blackfriday-specials,blackfriday-members,blackfriday-flash-deals` would need to be
-added to the Events API request. With wildcarding, the previous example can be condensed into `?campaigns=blackfriday*`, and the same data is returned as would be by
+Without keyword searching, to retrieve results for all three campaigns, `?campaigns=blackfriday-specials,blackfriday-members,blackfriday-flash-deals` would need to be
+added to the Events API request. With keyword searching, the previous example can be condensed into `?campaigns=blackfriday`, and the same data is returned as would be by
 the much longer filter.
 
-The Events API supports two different wildcarding operators. The `*` operator is used to match any number of characters, while the `?` operator is used to match a single character.
-If you want to use either `*` or `?` as a literal in a search, then you must escape these operators with the `\` character (i.e. `?campaigns=foo-bar-\*` will return results for `foo-bar-*`).
+Its important to distinguish that searching for a keyword is different than a partial search.  In the previous example, 
+searching for `?campaigns=friday` will not return any of the same results that `?campaigns=blackfriday` would return.
 
-Filters that support wildcarding are:
+Filters that support keyword searching are:
 
 * `ab_tests`
 * `campaigns`
@@ -127,26 +128,26 @@ Returns a list of message events that matched the filtered search.
         + Default: `initial`
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: `1000`
-    + delimiter (optional, string) ... Specifies the delimiter for query parameter lists.
+    + delimiter (string, optional) ... Specifies the delimiter for query parameter lists.
         + Default: `,`
     + events (string, optional) - Comma delimited list of event types to search.
         + Default: `all event types`
     + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search.
-    + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports wildcarding.
+    + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports keyword searching by domain segment.
     + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
-    + sending_domains (string, optional) - Comma delimited list of sending domains to search. Supports wildcarding.
-    + subject (string, optional) - Subject line from the email header to search. Supports wildcarding.
+    + sending_domains (string, optional) - Comma delimited list of sending domains to search. Supports keyword searching by domain segment.
+    + subject (string, optional) - Comma delimited list of subject lines from the email header to search. Supports keyword searching.
     + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
-    + reason (optional, string) ... Bounce/failure/rejection reason to search. Supports wildcarding.
-    + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports wildcarding.
-    + templates (string, optional, `my-template`) ... Comma delimited list of template IDs to search. Supports wildcarding.
+    + reasons (string, optional) ... Comma delimited list of Bounce/failure/rejection reason to search. Supports keyword searching
+    + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports keyword searching.
+    + templates (string, optional, `my-template`) ... Comma delimited list of template IDs to search. Supports keyword searching.
     + sending_ips (string, optional) - Comma delimited list of sending IP addresses to search.
-    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search. Supports wildarding.
+    + ip_pools (string, optional) - Comma delimited list of IP pool IDs to search. Supports keyword searching.
     + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
     + message_ids (string, optional) - Comma delimited list of message IDs to search.
     + transmission_ids (string, optional) - Comma delimited list of transmission IDs to search.
-    + ab_tests (string, optional) - Comma delimited list of A/B test IDs to search. Supports wildcarding.
-    + ab_test_version (number, optional) - Version number of A/B test to search. If provided, `ab_tests` parameter becomes required.
+    + ab_tests (string, optional) - Comma delimited list of A/B test IDs to search. Supports keyword searching.
+    + ab_test_versions (number, optional) - Version number of A/B test to search. If provided, `ab_tests` parameter becomes required.
 
 + Request
 
@@ -192,7 +193,9 @@ Returns a list of message events that matched the filtered search.
                     "rcpt_to": "recipient@example.com",
                     "raw_rcpt_to": "recipient@example.com",
                     "rcpt_type": "cc",
+                    "recipient_domain": "example.com",
                     "routing_domain": "example.com",
+                    "sending_domain" "example.com",
                     "sending_ip": "127.0.0.1",
                     "subaccount_id": "101",
                     "subject": "Summer deals are here!",
