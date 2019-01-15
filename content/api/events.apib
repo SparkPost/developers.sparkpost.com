@@ -49,10 +49,10 @@ Filters that support keyword searching are:
 * `ab_tests`
 * `campaigns`
 * `ip_pools`
-* `reason`
+* `reasons`
 * `recipient_domains`
 * `sending_domains`
-* `subject`
+* `subjects`
 * `templates`
 
 ## Pagination [/v1/events]
@@ -136,7 +136,7 @@ Returns a list of message events that matched the filtered search.
     + recipient_domains (string, optional) ... Comma delimited list of recipient domains to search. Supports keyword searching by domain segment.
     + from_addresses (string, optional) - Comma delimited list of friendly from addresses to search.
     + sending_domains (string, optional) - Comma delimited list of sending domains to search. Supports keyword searching by domain segment.
-    + subject (string, optional) - Comma delimited list of subject lines from the email header to search. Supports keyword searching.
+    + subjects (string, optional) - Comma delimited list of subject lines from the email header to search. Supports keyword searching.
     + bounce_classes (number, optional) - Comma delimited list of bounce classification codes to search. See [Bounce Classification Codes](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/).
     + reasons (string, optional) ... Comma delimited list of Bounce/failure/rejection reason to search. Supports keyword searching
     + campaigns (string, optional) ... Comma delimited list of campaign IDs to search. Supports keyword searching.
