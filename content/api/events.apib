@@ -113,7 +113,7 @@ If your result set is less than one page of data, then the `links` object will n
 
 ## Search [/v1/events]
 
-### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_version,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,message_ids,per_page,reason,recipients,recipient_domains,subject,sending_domains,sending_ips,subaccounts,templates,timezone,to,transmission_ids}]
+### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_versions,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,messages,per_page,reasons,recipients,recipient_domains,subjects,sending_domains,sending_ips,subaccounts,templates,to,transmissions}]
 
 Returns a list of message events that matched the filtered search.
 
@@ -122,8 +122,6 @@ Returns a list of message events that matched the filtered search.
         + Default: `24 hours ago`
     + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
         + Default: `1 minute ago`
-    + timezone (string, optional) - Standard timezone identification string. Used for both querying, as well as formatting for `timestamp` and `injection_time` fields in reults.
-        + Default: `UTC`
     + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
         + Default: `initial`
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
