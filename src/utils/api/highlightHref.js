@@ -32,8 +32,8 @@ export default function highlightHref(href, hrefVariables) {
       )
     }
 
-    // remove the comma deliminators
-    modifiedHref = modifiedHref.replace(/&,+/g, '&')
+    // remove the comma delimiters
+    modifiedHref = modifiedHref.replace(/,+/g, '')
 
     // remove the wrapper notation from the query params
     modifiedHref = modifiedHref.replace(/(.+){\?,?(.+)}/i, `$1?$2`)
