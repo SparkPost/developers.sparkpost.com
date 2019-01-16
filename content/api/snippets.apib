@@ -1,0 +1,211 @@
+FORMAT: 1A
+title: Snippets
+description: Manage reusable content snippets that can be referenced within inline content and stored templates.
+label: New
+
+# Group Snippets
+
+Snippets are short reusable pieces of email content.
+Snippets can be imported into any template content or transmission content using substitution syntax.
+
+For example, if you have a snippet with the ID `ourfooter` and the following HTML content:
+
+```html
+<footer>
+    <p>Our HTML footer</p>
+</footer>
+```
+
+The snippet can be imported into an HTML email's content using the `render_snippet` macro call.
+
+```html
+<html>
+    <p>Our body content</p>
+    {{ render_snippet( "ourfooter" ) }}
+</html>
+```
+
+The resulting rendered HTML content would look like:
+
+```html
+<html>
+    <p>Our body content</p>
+    <footer><p>Our HTML footer</p></footer>
+</html>
+```
+
+See the [Template Language documentation](/api/template-language/#header-snippets)
+for a more detailed explanation of the `render_snippet` macro and more complicated examples.
+
+## Snippet Object
+
++ Data Structure: Attributes
+    + id (string) - Unique ID used to reference the snippet.
+    + name (string) - Display name
+    + content (object) - HTML, AMPHTML, and/or text content.
+        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content.
+        + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content.
+    + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
+    + subaccount_id (number) - Subaccount the snippet belongs to. Only present on snippets that belong to a subaccount.
+
+## Create a Snippet [POST /labs/snippets]
+
++ Data Structure
+    + id (required, string) - Unique ID used to reference the snippet.
+    + name (string) - Display name
+    + content (required, object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the `render_dynamic_content()` and `render_snippet()` macro calls. In other words, snippets may not reference other snippets.
+        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
+        + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content. Maximum length - 100KB.
+    + shared_with_subaccounts (required, boolean) - Whether this snippet can be used by subaccounts.
+        + Default: false
+
+
++ Request (application/json)
+
+    + Body
+
+        ```
+        {
+            "id" : "header",
+            "name": "Header snippet",
+            "content": {
+                "html": "<b>Our cool header snippet for {{name}}</b>"
+            }
+        }
+        ```
+
++ Response 200 (application/json)
+
+        {
+          "results": {
+            "id": "header"
+          }
+        }
+
++ Response 422 (application/json)
+
+        {
+          "errors" : [
+            {
+              "message" : "Error while compiling part text: line 1: substitution statement missing ending '}}'"
+            }
+          ]
+        }
+
+## Retrieve a Snippet [GET /labs/snippets/{id}]
+
++ Parameters
+    + id (required, string, `ourfooter`)
+
++ Request
+
+
++ Response 200 (application/json)
+
+        {
+          "results" : {
+            "id" : "ourfooter",
+            "name": "Footer",
+            "content": {
+              "html" : "<b>Our standard footer</b>",
+              "text" : "Our standard footer",
+              "amp_html" : "<b>Our standard footer</b>"
+            },
+            "created_at": "2018-10-11T19:13:29.548Z",
+            "updated_at": "2018-10-11T19:14:50.181Z",
+            "subaccount_id": 273
+          }
+        }
+
+## Update a Snippet [PUT /labs/snippets/{id}]
+
+Unlike the [Templates API](api/templates/), if a content object is
+provided in the update request, it only needs to include the fields that
+are being updated. Fields that are not included will keep their current
+values.
+
+To remove a content field that was specified previously, simply set that
+field to an empty string in the update request.
+
++ Data Structure
+    + name (string) - Display name
+    + content (object) - HTML, AMPHTML, and/or text content. Substitution syntax is supported with the exception of the `render_dynamic_content()` and `render_snippet()` macro calls. In other words, snippets may not reference other snippets.
+        + html (string) - HTML content which will be used when the snippet is referenced from the HTML part of a template or inline content. Maximum length - 100KB.
+        + text (string) - Plain text content which will be used when the snippet is referenced from the plain text part of a template or inline content. Maximum length - 100KB.
+        + amp_html (string) - AMPHTML content which will be used when the snippet is referenced from the AMPHTML part of a template or inline content. Maximum length - 100KB.
+    + shared_with_subaccounts (boolean) - Whether this snippet can be used by subaccounts.
+
+
++ Parameters
+    + id (required, string, `ourfooter`)
+
++ Request Update (application/json)
+
+    + Body
+
+        ```
+       {
+         "content": {
+           "html" : "<b>Our updated footer</b>",
+           "text" : "Our updated footer",
+           "amp_html" : "<b>Our updated footer</b>"
+          }
+        }
+        ```
+
++ Request Update to Remove the HTML Part (application/json)
+
+    + Body
+
+        ```
+       {
+         "content": {
+           "html" : "",
+           "amp_html" : "<b>Our updated footer</b>"
+          }
+        }
+        ```
+
++ Response 200
+
+## Delete a Snippet [DELETE /labs/snippets/{id}]
+
+
++ Parameters
+    + id (required, string, `ourfooter`)
+
++ Request
+
++ Response 204 (application/json)
+
+### List all Snippets [GET /labs/snippets]
+
+Returns an array with all your Snippets.
+
++ Parameters
+    + shared_with_subaccounts (optional, boolean) ... If true, returns only shared snippets. If false, returns only non-shared snippets.  When not provided, returns both shared and non-shared snippets.
+
++ Request
+
++ Response 200 (application/json)
+
+        {
+          "results" : [
+            {
+              "id" : "header",
+              "name": "Header",
+              "shared_with_subaccount" : false,
+              "created_at": "2018-10-11T19:13:29.548Z",
+              "updated_at": "2018-10-11T19:14:50.181Z"
+            },
+            {
+              "id" : "footer",
+              "name": "Footer",
+              "shared_with_subaccount" : true,
+              "created_at": "2018-10-05T20:21:04.853Z",
+              "updated_at": "2018-10-09T19:23:53.022Z"
+            }
+          ]
+        }

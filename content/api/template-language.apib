@@ -645,6 +645,9 @@ Given an array as an argument, the `empty` macro returns true if the array is em
 ```
 </REPL>
 
+### `render_snippet()`
+
+See [this section](#header-snippets).
 
 ### Braces Macros
 
@@ -826,6 +829,95 @@ For AMP HTML, the same example could be laid out using the `amp_html` part
 }
 ```
 
+## Snippets
+
+Snippets are pieces of reusable content that are managed using the [Snippets endpoint](/api/snippets).
+Once a snippet is created, it can be imported into any html, amp_html, or text email content using the `render_snippet` macro call.
+
+Snippets are similar to the `dynamic_html`, `dynamic_amp_html`, and `dynamic_plain` described in the previous section,
+with the key difference being snippets are created ahead of time rather than
+defined inline within a transmissions request.
+
+For example, the /api/labs/snippets endpoint can be used to create a snippet with the ID `ourfooter`:
+
+```
+{
+  "id" : "ourfooter",
+  "content" : {
+    "html" : "<footer><p>Our standard html footer content</p></footer>",
+    "text" : "Our standard plain text footer content",
+    "amp_html" : "<footer><p>Our standard amp html footer content</p></footer>"
+  }
+}
+```
+
+The snippet can then be imported into either plain text, html, or amp_html email content
+using the `render_snippet` macro call. The macro call will automatically use the appropriate
+content.html, content.amp_html, or content.text snippet value based on the type of content that the snippet
+is being inserted into.
+For example, if a transmission was injected with content.html of the form:
+```
+<html>
+<p>Our body content</p>
+{{ render_snippet( "ourfooter" ) }}
+</html>
+```
+
+The resulting rendered HTML email content would look like:
+```
+<html>
+<p>Our body content</p>
+<footer><p>Our standard html footer content</p></footer>
+</html>
+```
+
+The `render_snippet` macro takes a snippet ID as its only argument, which may come from `substitution_data`.
+The following example illustrates how one of two plain text snippets can be utilized, based on the recipient's `substitution_data`.
+
+Two snippets are created:
+```
+{
+  "id" : "banner_snippet_A",
+  "content" : {
+    "text" : "Banner A"
+  }
+}
+```
+
+```
+{
+  "id" : "banner_snippet_B",
+  "content" : {
+    "text" : "Banner B"
+  }
+}
+```
+
+Transmission with content.text:
+```
+The following banner depends on the "banner_id" substitution_data value
+{{ render_snippet( banner_id ) }}
+```
+
+Where Recipient 1 has substitution_data:
+```
+{
+  "banner_id" : "banner_snippet_A"
+}
+```
+
+And Recipient 2 has substitution_data:
+```
+{
+  "banner_id" : "banner_snippet_B"
+}
+```
+
+Other notes on snippet usage:
+* Snippets themselves may contain substitution syntax. Though some restrictions apply: snippets cannot reference other snippets (`render_snippet`), nor can they utilize `render_dynamic_content`.
+* Snippets may contain links (which will be click tracked if `click_tracking` is enabled).
+* If a `render_snippet` call references a snippet which does not exist, the transmission will be discarded with a generation failure event.
+* A template may utilize `render_snippet` at most 5 times. If this limit is exceeded, the transmission will be discarded with a generation failure event.
 
 ## Advanced
 

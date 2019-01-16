@@ -50,6 +50,9 @@ Retrieve information regarding your SparkPost account and set account options.
             + limit (number) - Total allowance for this period
             + start (string) - ISO date when this period started
             + end (string) - ISO date when this period ends
+        + sandbox (object) - Sandbox domain usage report.
+            + used (number) - Total messages sent over the lifetime of the account
+            + limit (number) - Total allowance for the account
     + support (object) - Support entitlement details.
         + phone (boolean) - Whether account is entitled to phone support
         + online (boolean) - Whether account is entitled to online support
@@ -159,7 +162,12 @@ Retrieve information regarding your SparkPost account and set account options.
                         "limit": 1500000,
                         "start": "2018-03-11T08:00:00.000Z",
                         "end": "2016-04-11T08:00:00.000Z"
+                    },
+                    "sandbox": {
+                        "used": 3,
+                        "limit": 5
                     }
+
                 }
             }
         }

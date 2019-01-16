@@ -24,6 +24,8 @@ The `test_mode` defines what happens once the A/B test completes. In `learning` 
 
 In Bayesian mode, when a template reaches the set `confidence_level` it becomes the winner. If a test ends by hitting one of the other conditions and the `confidence_level` has not been reached, the default template will be considered the winner.
 
+<Banner status="warning">A/B Tests only support inline single recipient transmissions currently</Banner>
+
 ### Versions
 
 A/B test versions allow you to run multiple tests within the same A/B test. This lets you iterate without changing your transmissions call. The version increments each time the A/B test is updated after its first completed or cancelled run.
