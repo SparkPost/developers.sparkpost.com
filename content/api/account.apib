@@ -38,7 +38,7 @@ Retrieve information regarding your SparkPost account and set account options.
         + initial_open_pixel_tracking (boolean) - Account-level default for Initial Open tracking
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
-    + usage (object) - Account quota usage details. Specify 'include=usage' in query string to include usage info. Usage data is available for self-serve customers only.
+    + usage (object) - Account quota usage details. Specify 'include=usage' in query string to include usage info. Usage data is not available for Enterprise accounts.
         + timestamp (string) - ISO date usage data was retrieved
         + day (object) - Daily usage report.
             + used (number) - Total messages sent in this period
