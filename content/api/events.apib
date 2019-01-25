@@ -68,7 +68,7 @@ In the following examples, to retrieve the first page, we use the `initial` valu
 the `next` key in the `links` object, and use that to make the request for the second page. This process would then be repeated until all results have been paged through,
 at which point the `links` object will not have a `next` key, and no further additional requests are necessary.
 
-If your result set is less than one page of data, then the `links` object will not have a `next` key.
+If your result set fits in one page of data, then the `links` object will not have a `next` key.
 
 <Banner status="info">Pagination requests count towards the number of requests allowed by rate limiting, the same as non-paginated requests.</Banner>
 
