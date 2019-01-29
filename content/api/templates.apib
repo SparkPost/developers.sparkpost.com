@@ -463,7 +463,7 @@ Deletes both published and draft versions of a template.
 
 ### List all Templates [GET /v1/templates{?draft,shared_with_subaccounts}]
 
-Returns an array with each template in your account.
+Returns an array containing up to 50,000 of your templates.
 
 + Parameters
     + draft (optional, boolean, `true`) ... If true, returns the draft templates. If false, returns the published templates. When not provided, returns the most recently edited templates (draft or published).
