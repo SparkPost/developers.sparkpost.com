@@ -69,7 +69,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
         + ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  Not performed on AMPHTML Email content.
             + Default: false
-        + perform_substitutions (boolean) - Enable or disable substitutions. **Only usable with inline templates. Disables all macros (including snippets).**
+        + perform_substitutions (boolean) - Enable or disable substitutions. Only usable with inline templates. Disables all macros (including [snippets](/api/template-language/#header-snippets)).
             + Default: true
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
         + (array)
