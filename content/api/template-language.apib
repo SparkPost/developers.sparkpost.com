@@ -651,10 +651,12 @@ See [this section](#header-snippets).
 
 ### Braces Macros
 
-If you want opening or closing braces to appear in the content, you must escape them. The four macros for outputting braces are as follows:
+If you want opening or closing braces to appear in the content, you must escape them. The six macros for outputting braces are as follows:
 
 | Macro                    | Output | 
 |--------------------------|--------|
+| `opening_single_curly()` | `{`    |
+| `closing_single_curly()` | `}`    |
 | `opening_double_curly()` | `{{`   |
 | `closing_double_curly()` | `}}`   |
 | `opening_triple_curly()` | `{{{`  |
@@ -677,7 +679,7 @@ are preserved upon delivery to email clients.
 
 There are certain expressions that SparkPost will *not* escape.  These include:
 * Expressions that contain the keyword "sparkpost"
-* Expressions that are already a call to one of the curly escape macros: opening_double_curly(), closing_double_curly(), opening_triple_curly(), and closing_triple_curly()
+* Expressions that are already a call to one of the curly escape macros: opening_single_curly(), closing_single_curly(), opening_double_curly(), closing_double_curly(), opening_triple_curly(), and closing_triple_curly()
 * Expressions that contain use of "loop_var"
 * The "else" and "end" control statements
 
