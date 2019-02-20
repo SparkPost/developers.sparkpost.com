@@ -8,8 +8,10 @@ Alerts can be used to get notifications regarding various activities on your Spa
 
 Alerts can be configured to send notifications via email to up to 10 email addresses, and supports the following activity:
 * Approaching monthly sending limit
+* Decreasing health score
+* Decreasing health score, over a single day or over a week
 
-Alerts are configured to be account-wide. Currently, subaccount level alerts are not supported. 
+Alerts are configured to be account-wide. Currently, subaccount level alerts are not supported.
 
 ## Alert Object
 
@@ -20,6 +22,9 @@ Alerts are configured to be account-wide. Currently, subaccount level alerts are
     + email_addresses (array) - List of email addresses to send alert notifications.
     + alert_metric (enum) - Metric that the alert is configured to track.
         + `"monthly_sending_limit"`
+        + `"signals_health_threshold"`
+        + `"signals_health_dod"`
+        + `"signals_health_wow"`
     + threshold (object) - Configuration for level and threshold at which an alert is generated.
         + error (object) - Error level alert configuration.
             + target (number) - Percentage value at which an alert will be generated.
@@ -28,7 +33,7 @@ Alerts are configured to be account-wide. Currently, subaccount level alerts are
     + enabled (boolean) - Whether or not the alert is active.
 
 + Sample
-        
+
     ```
     {
         "name": "Sparky's Monthly Alert",
@@ -57,6 +62,9 @@ Creates a new alert
     + email_addresses (array, required) - List of up to 10 email addresses to send alert notifications
     + alert_metric (enum, required) - Metric that the alert is configured to track
         + `"monthly_sending_limit"`
+        + `"signals_health_threshold"`
+        + `"signals_health_dod"`
+        + `"signals_health_wow"`
     + threshold (object, required) - Configuration for level and threshold at which an alert is generated.
         + error (object, required) - Error level alert configuration.
             + target (number, required) - Percentage value at which an alert will be generated.
@@ -69,7 +77,7 @@ Creates a new alert
 + Request (application/json)
 
     + Body
-   
+
         {
             "name": "Sparky's Monthly Alert",
             "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
@@ -86,7 +94,7 @@ Creates a new alert
 
 + Response 200 (application/json)
 
-    
+
     {
         "results": {
             "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
@@ -122,7 +130,7 @@ Retrieve full information about a single alert.
 
 
 ### Updates an Alert [PUT /labs/alerts/{id}]
-Updates an existing alert. Updating `email_addresses` replaces the the existing array with the new array. 
+Updates an existing alert. Updating `email_addresses` replaces the the existing array with the new array.
 
 + Data Structure
     + name (string) - Display name of the alert.
@@ -142,7 +150,7 @@ Updates an existing alert. Updating `email_addresses` replaces the the existing 
 + Request (application/json)
 
     + Body
-   
+
         {
             "name": "Sparky's Updated Monthly Alert",
             "description": "Updated example alert that will send a notification when 80% of monthly sending limit is used",
@@ -157,7 +165,7 @@ Updates an existing alert. Updating `email_addresses` replaces the the existing 
         }
 
 + Response 200 (application/json)
-    
+
     {
         "results": {
             "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
@@ -166,11 +174,11 @@ Updates an existing alert. Updating `email_addresses` replaces the the existing 
             "alert_metric": "monthly_sending_limit"
         }
     }
-    
-    
+
+
 ### Delete an Alert [DELETE /labs/alerts/{id}]
 
-Deletes the alert with the matching id. 
+Deletes the alert with the matching id.
 
 + Parameters
     + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
@@ -202,4 +210,3 @@ Returns an array of all your Alerts. Each Alert isn't returned as a full Alert O
             }
         ]
    }
-
