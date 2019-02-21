@@ -348,11 +348,7 @@ const IndexPage = props => {
                 <StartTimeline />
                 <StartStep>
                   <StartIcon icon="user" color="magenta" />
-                  <h3>Sign up for a developer account</h3>
-                  <p>
-                    Create a free developer account to start sending up to
-                    15,000 emails every month.
-                  </p>
+                  <h3>Sign up for an account</h3>
                   <Link to="https://app.sparkpost.com/join">
                     Sign up <i className="fa fa-chevron-right" />
                   </Link>
