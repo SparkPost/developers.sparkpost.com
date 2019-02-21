@@ -1,0 +1,65 @@
+FORMAT: 1A
+title: Ingest
+description: Send event data to SparkPost for processing
+label: New
+
+# Group Ingest
+
+The Events Ingest API provides an interface for on-premise MTA users to quickly, easily, and safely
+take advantage of SparkPost's cloud-specific services.
+The Events Ingest API accepts email event data, normalizes it, and sends it through SparkPost's data pipeline until it is ultimately consumable by various analytical services. 
+
+### Event Format
+
+Events sent to the Ingest API must adhere to a specific format in order to be correctly processed by SparkPost.
+Only certain aspects of incoming API requests are validated during the REST transaction. Requests that do not pass validation at this point are rejected and a HTTP error code will be returned.
+The body of the request must contain gzip-encoded, [new-line-delimited](http://ndjson.org/) JSON along with the appropriate headers.
+
+Additional validation occurs out of band of the request. This additional validation ensures that events specified as part of the request body
+are properly formatted and consumable by SparkPost analytical services. Events that are not proper JSON, lack the correct wrapper, or are missing required fields will be dropped. 
+Please see [Processing Out of Band Errors](#header-processing-out-of-band-errors) for additional information.
+
+
+### Processing Out of Band Errors
+
+**Coming Soon**
+
+## Ingest [/v1/ingest]
+
+### Send Events [POST /v1/ingest/events]
+
+Post a new-line delimited list of JSON events.
+
++ Data Structure
+    + msys (object, required) - The event wrapper
+        + [event grouping] (object, required) - Designates the event grouping <br />One of: `message_event`, `track_event`, `gen_event`, `adaptive_event`, `unsubscribe_event`, `relay_event`, `ab_test_event`
+            + type (string, required) - The type of event
+            + [transport method] (string, required) - The method in which the message was either received or delivered <br />One of: `recv_method`, `delv_method`
++ Sample
+
+    ```
+    {"msys":{"message_event":{"msg_batchname":"1A/50-00001-B03B45C5","template_version":"0","tenant_id":"keyspace_default","msg_spoolname":"2A/50-00001-B03B45C5","msg_size":"315","bounce_class":"25","template_id":"template_12994410358768097","rcpt_tags":[ ],"recv_method":"rest","binding_group":"default","routing_domain":"gmail.com","binding":"default","rcpt_to":"yargevad@gmail.com","open_tracking":"1","msg_from":"sp-event-agent@test.sparkpost.com","type":"inband","customer_id":"1","raw_reason":"551 5.7.0 [internal] recipient blackholed","conn_name":"00/00-00000-00000000","rcpt_meta":{ },"error_code":"551","message_id":"00000bb3545c0100a205","conn_stage":"22","reason":"551 5.7.0 [internal] recipient blackholed","node_name":"8c9f45e70999","queue_time":"2","click_tracking":"1","num_retries":"0","event_id":"12994410358769058","subject":"sp event agent checking in","timestamp":"1549054731","snippet_count":"0","transmission_id":"12994410358768097"}}}
+    {"msys":{"message_event":{"template_id":"template_12994410358768098","open_tracking":"1","msg_spoolname":"5A/50-00001-B03B45C5","binding_group":"default","message_id":"00000bb3545c0100a505","msg_size":"315","timestamp":"1549054731","template_version":"0","subject":"sp event agent checking in","pathway_group":"default","rcpt_meta":{ },"snippet_count":"0","pathway":"default","msg_batchname":"4A/50-00001-B03B45C5","event_id":"12994410358769060","click_tracking":"1","tenant_id":"keyspace_default","conn_stage":"22","customer_id":"1","type":"reception","conn_name":"00/00-00000-00000000","node_name":"8c9f45e70999","transmission_id":"12994410358768098","rcpt_tags":[ ],"recv_method":"rest","rcpt_to":"yargevad@gmail.com","msg_from":"sp-event-agent@test.sparkpost.com","routing_domain":"gmail.com","binding":"default"}}}
+
+    ```
+
+<br />
+<br />
+<br />
+
+
++ Request
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        Content-Encoding:gzip
+        Content-Type:application/x-ndjson
+
++ Response
+    
+        {
+            "results": {
+                "id": "b2013586-c13f-4da4-baf4-11b9d8e40c50"
+            }
+        }
