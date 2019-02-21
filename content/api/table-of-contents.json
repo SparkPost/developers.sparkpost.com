@@ -31,7 +31,8 @@
       "events.apib",
       "message-events.apib",
       "webhooks.apib",
-      "alerts.apib"
+      "alerts.apib",
+      "events-ingest.apib"
     ]
   },
   {
