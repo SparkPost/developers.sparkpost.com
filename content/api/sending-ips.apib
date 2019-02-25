@@ -12,7 +12,9 @@ description: Manage the sending IPs for your account and assign them to IP pools
     + external_ip (string) - Public-facing IP address of this sending IP
     + hostname (string) - Reverse DNS hostname associated with this IP
     + ip_pool (string) - IP pool this sending IP is held in
-    + customer_provided (boolean) - Whether this sending IP was provided by the customer.
+    + customer_provided (boolean) - Whether this sending IP was provided by the customer
+    + auto_warmup_enabled (boolean) - Whether this sending IP will use auto warmup
+    + auto_warmup_stage (number) - The auto warmup stage that a sending IP has
 + Sample
     
     ```
@@ -45,7 +47,9 @@ Retrieves a specific sending IP.
                 "external_ip": "123.45.67.89",
                 "hostname": "mta472a.sparkpostmail.com",
                 "ip_pool": "cool_kids",
-                "customer_provided": false
+                "customer_provided": false,
+                "auto_warmup_enabled": true,
+                "auto_warmup_stage": 5
             }
         }
 
@@ -74,7 +78,9 @@ Retrieves a specific sending IP.
 ## Update a Sending IP [PUT /v1/sending-ips/{external_ip}]
 
 + Data Structure
-    + ip_pool (string, required) - The IP pool to add this sending IP to.
+    + ip_pool (string) - The IP pool to add this sending IP to.
+    + auto_warmup_enabled (boolean) - Enable or Disable auto IP warmup on this IP.
+    + auto_warmup_stage (number) - The auto warmup stage this IP should be set to. Must be less than or equal to current stage.
 
 Updates which IP Pool holds the sending IP.
 
@@ -99,7 +105,7 @@ Updates which IP Pool holds the sending IP.
 
         {
             "results": {
-                "message": "Updated IP Pool."
+                "message": "Updated Sending IP."
             }
         }
 
@@ -112,7 +118,24 @@ Updates which IP Pool holds the sending IP.
             }
         ]
     }
++ Response 400 (application/json)
 
+    {
+        "errors": [
+            {
+                "message": "auto_warmup_stage must be between 1 and 20"
+            }
+        ]
+    }
++ Response 400 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "auto_warmup_stage must be less than or equal to 5"
+            }
+        ]
+    }
 + Response 404 (application/json)
 
     {
@@ -143,13 +166,16 @@ Returns a list of all sending IPs.
                     "external_ip": "123.45.67.89",
                     "hostname": "mta472a.sparkpostmail.com",
                     "ip_pool": "marketing",
-                    "customer_provided": false
+                    "customer_provided": false,
+                    "auto_warmup_enabled": true,
+                    "auto_warmup_stage": 5
                 },
                 {
                     "external_ip": "123.45.67.80",
                     "hostname": "mta474a.sparkpostmail.com",
                     "ip_pool": "default",
-                    "customer_provided": false
+                    "customer_provided": false,
+                    "auto_warmup_enabled": false
                 }
             ]
         }
