@@ -25,6 +25,12 @@ Alerts are configured to be account-wide. Currently, subaccount level alerts are
         + `"signals_health_threshold"`
         + `"signals_health_dod"`
         + `"signals_health_wow"`
+    + facet_name (enum) - Facet of `alert_metric` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
+        + `"sending_domain"`
+        + `"ip_pool"`
+        + `"campaign_id"`
+        + `"ALL"`
+    + facet_value (string) - Value of `facet_name` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
     + threshold (object) - Configuration for level and threshold at which an alert is generated.
         + error (object) - Error level alert configuration.
             + target (number) - Percentage value at which an alert will be generated.
@@ -65,6 +71,12 @@ Creates a new alert
         + `"signals_health_threshold"`
         + `"signals_health_dod"`
         + `"signals_health_wow"`
+    + facet_name (enum) - Facet of `alert_metric` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
+        + `"sending_domain"`
+        + `"ip_pool"`
+        + `"campaign_id"`
+        + `"ALL"`
+    + facet_value (string) - Value of `facet_name` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
     + threshold (object, required) - Configuration for level and threshold at which an alert is generated.
         + error (object, required) - Error level alert configuration.
             + target (number, required) - Percentage value at which an alert will be generated.
@@ -136,6 +148,12 @@ Updates an existing alert. Updating `email_addresses` replaces the the existing 
     + name (string) - Display name of the alert.
     + description (string) - Description of the alert.
     + email_addresses (array) - List of up to 10 email addresses to send alert notifications.
+    + facet_name (enum) - Facet of `alert_metric` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
+        + `"sending_domain"`
+        + `"ip_pool"`
+        + `"campaign_id"`
+        + `"ALL"`
+    + facet_value (string) - Value of `facet_name` that the alert is configured to track. Note: only applies to an alert_metric prefixed with `"signals_"`
     + threshold (object) - Configuration for level and threshold at which an alert is generated.
         + error (object) - Error level alert configuration.
             + target (number) - Percentage value at which an alert will be generated.
