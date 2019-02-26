@@ -5,15 +5,13 @@ label: Private Access
 
 # Group Recipient Validation
 
-Recipient Validation checks email addresses to ensure you are sending to valid recipients.
-
-This feature is not currently available to EU accounts, check back soon for availability.
+Recipient Validation is an easy, efficient way to verify that email addresses are valid before you send. It runs addresses through a series of checks that catch many common problems, including syntax issues and non-existent mailboxes.
 
 
 ## Single Address Validation [GET /v1/recipient-validation/single/{address}]
 
-Validate an email address. An address will either be returned as valid or invalid.
-Any invalid email address responses will also provide a reason why it is invalid.
+Validate a single email address. The response will contain whether the address is valid or invalid, if it's a disposable address, and if it's a role-based address. If the email address is invalid ,a reason will also be provided.
+
 
 + Request
 
