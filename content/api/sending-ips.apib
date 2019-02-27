@@ -136,6 +136,17 @@ Updates which IP Pool holds the sending IP.
             }
         ]
     }
+
++ Response 400 (application/json)
+
+    {
+        "errors": [
+            {
+                "message": "auto_warmup_enabled must be true to update auto_warmup_stage"
+            }
+        ]
+    }
+
 + Response 404 (application/json)
 
     {
