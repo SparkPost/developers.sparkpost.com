@@ -421,7 +421,7 @@ export const pageQuery = graphql`
       }
     }
     allWordpressPost(
-      filter: { categories: { elemMatch:{ name: { eq: "Developer" } } } }
+      filter: { categories: { elemMatch: { name: { eq: "Developer" } } } }
       sort: { fields: [date], order: DESC }
       limit: 3
     ) {
