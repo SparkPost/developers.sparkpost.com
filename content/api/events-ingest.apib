@@ -34,6 +34,8 @@ Post a new-line delimited list of JSON events.
 + Data Structure
     + msys (object, required) - The event wrapper
         + *event grouping* (object, required) - Designates the event grouping <br />One of: `message_event`, `track_event`, `gen_event`, `adaptive_event`, `unsubscribe_event`, `relay_event`, `ab_test_event`
+            + event_id (string, required) - The event identifier
+            + message_id (string, required) - The message identifier
             + type (string, required) - The type of event
             + *transport method* (string, required) - The method in which the message was either received or delivered <br />One of: `recv_method`, `delv_method`
 + Sample
