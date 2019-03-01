@@ -14,8 +14,7 @@ description: Manage IP pools, which allow you to group and assign dedicated IPs 
     + signing_domain (string) - DKIM-verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. Used only for emails to domains that require DKIM for FBL.  
     + ips (array[object]) - Sending IPs within the pool. Sending IP objects include fields `external_ip`,`hostname`, `auto_warmup_enabled` & `auto_warmup_stage`
-    + auto_warmup_overflow_pool (string) - IP Pool ID to be used as an overflow pool for auto IP warmup
-+ Sample
+    + `auto_warmup_overflow_pool` (string) - IP Pool ID to be used as an overflow pool for auto IP warmup. Non-Enterprise SparkPost accounts can specify `sp_shared`
     
     ```
     {
