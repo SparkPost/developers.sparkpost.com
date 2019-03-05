@@ -11,11 +11,9 @@ Alerts can be configured to send notifications via email to up to 10 email addre
 
 Alerts are configured to be account-wide. Currently, subaccount level alerts are not supported. 
 
-For alert types which belong to Signals, additional attribute behavior is expected, detailed separately below.
-
 ## Alert Object
 
-+ Data Structure: Attributes (Non-Signals Type - monthly_sending_limit)
++ Data Structure: Attributes
     + name (string) - Display name of the alert.
     + description (string) - Description of the alert.
     + id (string) - Unique alphanumeric id.
@@ -29,26 +27,7 @@ For alert types which belong to Signals, additional attribute behavior is expect
                 + `"gt"`
     + enabled (boolean) - Whether or not the alert is active.
 
-+ Data Structure Attributes (Signals Type - ie: signals_health_threshold)
-    + name (string) - Display name of the alert.
-    + description (string) - Description of the alert.
-    + email_addresses (array) - List of up to 10 email addresses to send alert notifications
-    + alert_metric (enum) - Metric that the alert is configured to track
-        + `"signals_health_threshold"`
-        + `"signals_health_dod"`
-        + `"signals_health_wow"`
-    + threshold (object) - Configuration for level and threshold at which an alert is generated.
-        + error (object) - Error level alert configuration.
-            + target (number) - Percentage value at which an alert will be generated.
-            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
-                + Default: `"gt"`
-                + `"lt"`
-    + enabled (boolean) - Whether or not the alert is active.
-    + facet_name (string) - The facet (one of the Signals facets or ALL) against which the target value will be evaluated.
-    + facet_value (string) - Only needed if facet_name is not ALL. The individual facet value (ie: "shared" or "test.com") against which the target value will be evaluated.
-    + alert_subaccount (integer) - The subaccount against which the target value will be evaluated.
-
-+ Sample (Non Signals)
++ Sample
         
     ```
     {
@@ -69,34 +48,10 @@ For alert types which belong to Signals, additional attribute behavior is expect
     }
     ```
 
-+ Sample (Signals)
-        
-    ```
-    {
-        "name": "Sparky's Monthly Alert",
-        "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
-        "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
-        "email_addresses": [
-            "sparky@sparkpost.com"
-        ],
-        "alert_metric": "signals_health_threshold",
-        "threshold": {
-            "error": {
-                "target": 90,
-                "comparator": "gt"
-            }
-        },
-        "enabled": true,
-        "facet_name": "ip_pool",
-        "facet_value": "shared",
-        "alert_subaccount": 10
-    }
-    ```
-
 ### Create an Alert [POST /labs/alerts]
 Creates a new alert
 
-+ Data Structure (Non-Signals Type - monthly_sending_limit)
++ Data Structure
     + name (string, required) - Display name of the alert.
     + description (string) - Description of the alert.
     + email_addresses (array, required) - List of up to 10 email addresses to send alert notifications
@@ -110,27 +65,8 @@ Creates a new alert
     + enabled (boolean) - Whether or not the alert is active.
         + Default: true
 
-+ Data Structure (Signals Type - ie: signals_health_threshold)
-    + name (string, required) - Display name of the alert.
-    + description (string) - Description of the alert.
-    + email_addresses (array, required) - List of up to 10 email addresses to send alert notifications
-    + alert_metric (enum, required) - Metric that the alert is configured to track
-        + `"signals_health_threshold"`
-        + `"signals_health_dod"`
-        + `"signals_health_wow"`
-    + threshold (object, required) - Configuration for level and threshold at which an alert is generated.
-        + error (object, required) - Error level alert configuration.
-            + target (number, required) - Percentage value at which an alert will be generated.
-            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
-                + Default: `"gt"`
-                + `"lt"`
-    + enabled (boolean) - Whether or not the alert is active.
-        + Default: true
-    + facet_name (string, required) - The facet (one of the Signals facets or ALL) against which the target value will be evaluated.
-    + facet_value (string, semi-required) - Only needed if facet_name is not ALL. The individual facet value (ie: "shared" or "test.com") against which the target value will be evaluated.
-    + alert_subaccount (integer, required) - The subaccount against which the target value will be evaluated.
 
-+ Request (Non-Signals) (application/json)
++ Request (application/json)
 
     + Body
    
@@ -148,27 +84,7 @@ Creates a new alert
             }
         }
 
-+ Request (Signals) (application/json)
-
-    + Body
-   
-        {
-            "name": "Sparky's Monthly Alert",
-            "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
-            "email_addresses": [
-                "sparky@sparkpost.com"
-            ],
-            "alert_metric": "signals_health_threshold",
-            "threshold": {
-                "error": {
-                    "target": 90
-                }
-            },
-            "facet_name": "ALL",
-            "alert_subaccount": 10
-        }
-
-+ Response 200 (Non-Signals) (application/json)
++ Response 200 (application/json)
 
     
     {
@@ -177,20 +93,6 @@ Creates a new alert
             "name": "Sparky's Monthly Alert",
             "enabled": true,
             "alert_metric": "monthly_sending_limit"
-        }
-    }
-
-+ Response 200 (Signals) (application/json)
-
-    
-    {
-        "results": {
-            "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
-            "name": "Sparky's Monthly Alert",
-            "enabled": true,
-            "alert_metric": "signals_health_threshold",
-            "facet_name": "ALL",
-            "alert_subaccount": 10
         }
     }
 
@@ -255,7 +157,7 @@ Updates an existing alert. Updating `email_addresses` replaces the the existing 
 + Request (Non-Signals) (application/json)
 
     + Body
-
+   
         {
             "name": "Sparky's Updated Monthly Alert",
             "description": "Updated example alert that will send a notification when 80% of monthly sending limit is used",
