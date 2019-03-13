@@ -4,53 +4,49 @@
 
 'use strict'
 
-const slugify = require('./src/utils/api/slugify')
+const slugify = require('../src/utils/api/slugify')
 const { flatten } = require('lodash')
 const parseResult = require('minim-parse-result')
 const minim = require('minim').namespace().use(parseResult)
 const files = flatten(require(`${__dirname}/content/api/table-of-contents.json`).map(({ pages }) => pages))
 
-module.exports = [
-  {
-    indexName: `api_reference`,
-    query: `{
-      allApiBlueprint {
-        edges {
-          node {
-            ast
-            fields {
-              path
-              file
-            }
+module.exports = {
+  indexName: `api_reference`,
+  query: `{
+    allApiBlueprint {
+      edges {
+        node {
+          ast
+          fields {
+            path
+            file
           }
         }
       }
-    }`,
-    transformer(results) {
-      const pages = results.data.allApiBlueprint.edges.map(({ node }) => node)
-      const apiPages = orderApiPages(pages)
+    }
+  }`,
+  transformer(results) {
+    const pages = results.data.allApiBlueprint.edges.map(({ node }) => node)
+    const apiPages = orderApiPages(pages)
 
-      const searchableChunks = flatten(apiPages.map(({ fields: { path }, ast }, pageIndex) => {
-        return gatherSearchableCunks({ path, ast, pageIndex })
-      }))
+    const searchableChunks = flatten(apiPages.map(({ fields: { path }, ast }, pageIndex) => {
+      return gatherSearchableCunks({ path, ast, pageIndex })
+    }))
 
-      /**
-       * Remove all resources that don't have any description since they are
-       * almost definitely the same title as their transition child and only
-       * create noise in the search.
-       */
-      const filteredSearchableChunks = searchableChunks.filter(({ element, description }) => {
-        return !(element === 'resource' && description.length === 0)
-      })
+    /**
+     * Remove all resources that don't have any description since they are
+     * almost definitely the same title as their transition child and only
+     * create noise in the search.
+     */
+    const filteredSearchableChunks = searchableChunks.filter(({ element, description }) => {
+      return !(element === 'resource' && description.length === 0)
+    })
 
-      console.log(`push ${filteredSearchableChunks.length} chunks to algolia`)
+    console.log(`push ${filteredSearchableChunks.length} chunks to algolia`)
 
-      return filteredSearchableChunks
-    },
-  }
-]
-
-
+    return filteredSearchableChunks
+  },
+}
 
 
 function gatherSearchableCunks({ ast, path, pageIndex }) {

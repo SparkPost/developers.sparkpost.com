@@ -1,7 +1,6 @@
 'use strict'
 
 const { flatten } = require('lodash')
-const queries = require('./algolia-queries.js')
 const proxy = require('http-proxy-middleware')
 
 // Environment variables prefixed by "GATSBY" are accessible in src/ files
@@ -48,7 +47,9 @@ module.exports = {
         options: {
           appId: 'SFXAWCYDV8',
           apiKey: process.env.ALGOLIA_TOKEN,
-          queries
+          queries: [
+            require('./algolia/apiReference'),
+          ]
         }
       }
     ] : [],
