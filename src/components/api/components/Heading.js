@@ -34,7 +34,7 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
     })
 
   return (
-    <Tag level={level} className={`${className} block`} {...props}>
+    <Tag level={level} {...props}>
       <Id id={slug} />
       <Link.Unstyled to={`#${slug}`}>{children}</Link.Unstyled>
     </Tag>

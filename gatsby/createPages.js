@@ -7,7 +7,7 @@
 const { resolve } = require('path')
 const { flatten } = require('lodash')
 const apiTemplate = resolve(__dirname, `../src/templates/api.js`)
-const docsTemplate = resolve(__dirname, `../src/templates/docs.js`)
+const momentumTemplate = resolve(__dirname, `../src/templates/momentum.js`)
 const apiTableOfContents = flatten(require(`../content/api/table-of-contents.json`).map(({ pages }) => pages))
 
 module.exports = async (data) => {
@@ -68,13 +68,12 @@ async function createMomentumDocs({ actions, graphql }) {
         }
       }
     }
-
   `)
 
   edges.forEach(({ node: { id, fields: { path } } }) => {
     createPage({
       path: path,
-      component: docsTemplate,
+      component: momentumTemplate,
       context: { id }
     })
   })

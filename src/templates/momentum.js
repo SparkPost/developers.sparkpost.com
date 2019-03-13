@@ -59,7 +59,7 @@ let components = {
   },
 }
 
-export default class DocsTemplate extends Component {
+export default class MomentumTemplate extends Component {
   render() {
     const { props } = this
     const { mdx } = props.data
@@ -70,7 +70,13 @@ export default class DocsTemplate extends Component {
 
     return (
       <Layout {...props}>
-        <Helmet title={title} />
+        <Helmet
+          title={title}
+          meta={[
+            { name: 'description', content: mdx.excerpt },
+            { name: 'robots', content: 'noindex' },
+          ]}
+        />
         <Sidebar>
           <Search />
           {/*           <Navigation */}
