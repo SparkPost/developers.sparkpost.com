@@ -8,6 +8,7 @@ import { first } from 'lodash'
 import Heading from 'components/api/components/Heading'
 import Layout from 'components/Layout'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
+import tableOfContents from '../../content/momentum/table-of-contents.json'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -68,6 +69,24 @@ export default class MomentumTemplate extends Component {
         ? `${first(mdx.headings).value} - Momentum`
         : 'Momentum'
 
+    const decoratedTableOfContents = tableOfContents.map(category => {
+      return {
+        // ...category,
+        // pages: category.pages.map(file => {
+        //   const pageNode = props.data.allApiBlueprint.edges.find(
+        //     ({ node }) => node.fields.file === file
+        //   ).node
+
+        //   return {
+        //     file,
+        //     title: pageNode.meta.title,
+        //     path: pageNode.fields.path,
+        //     label: pageNode.meta.label,
+        //   }
+        // }),
+      }
+    })
+
     return (
       <Layout {...props}>
         <Helmet
@@ -78,11 +97,11 @@ export default class MomentumTemplate extends Component {
           ]}
         />
         <Sidebar>
-          <Search />
-          {/*           <Navigation */}
-          {/*             navigation={fullTableOfContents} */}
-          {/*             location={props.location} */}
-          {/*           /> */}
+          <Search index="momentum" placeholder="Search Momentum" />
+          <Navigation
+            navigation={tableOfContents}
+            location={props.location}
+          />
         </Sidebar>
         <Content>
           <Wrapper>

@@ -29,6 +29,7 @@ module.exports = {
         return {
           sectionName: value,
           description,
+          momentum: true,
           objectID: `${path}#${slugify.markdown({ heading: value })}`
         }
       })

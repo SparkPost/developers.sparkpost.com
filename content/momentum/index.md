@@ -1,3 +1,5 @@
+|     |     |     |
+|-----|-----|-----|
 | [Prev](production.config)  | Chapter 5. Hardware Considerations |  [Next](before_you_begin) |
 
 ## 5.7. Additional Configuration Notes
@@ -33,5 +35,7 @@ RAID arrays should be configured only in RAID1 or RAID10 configurations. The Mom
 
 Momentum performance testing is executed on physical (non-virtualized) servers. If you run Momentum in Amazon Web Services (AWS) or OpenStack environments, or in other common virtualized environments such as VMware, you should plan for a potential loss of 20% - 30% in performance.
 
+|     |     |     |
+|-----|-----|-----|
 | [Prev](production.config)  | [Up](hardware.requirements) |  [Next](before_you_begin) |
 | 5.6. Production Environment Configurations  | [Table of Contents](index) |  Chapter 6. Before You Begin |
