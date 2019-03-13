@@ -95,6 +95,12 @@ module.exports = {
           "/sw.js": [ "Cache-Control: no-cache" ]
         },
       }
+    },
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        extensions: [".mdx", ".md"]
+      }
     }
   ])
 }
