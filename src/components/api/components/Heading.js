@@ -26,7 +26,7 @@ const Tag = styled(({ level, ...props }) => {
   `}
 `
 
-const Heading = ({ level = 3, id, className, children, ...props }) => {
+const Heading = ({ level = 3, id, children, ...props }) => {
   const slug =
     id ||
     slugify.markdown({

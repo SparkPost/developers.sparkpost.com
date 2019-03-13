@@ -16,7 +16,11 @@ export default function Transaction({ transaction, transition, resource }) {
   return (
     <div>
       <Debug title="Transaction">
-        {title && <Heading level={4}>{title}</Heading>}
+        {title && (
+          <Heading className="block" level={4}>
+            {title}
+          </Heading>
+        )}
         {copy && <Markdown>{copy}</Markdown>}
         {request && (
           <Request

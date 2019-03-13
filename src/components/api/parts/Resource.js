@@ -40,7 +40,11 @@ export default function Resource({ resource, resourceGroup }) {
     <Debug title="Resource">
       <Wrapper>
         {showTitle && (
-          <Heading level={2} id={slugify.resource({ resourceGroup, resource })}>
+          <Heading
+            className="block"
+            level={2}
+            id={slugify.resource({ resourceGroup, resource })}
+          >
             {title}
           </Heading>
         )}
