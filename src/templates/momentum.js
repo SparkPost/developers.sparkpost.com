@@ -76,7 +76,6 @@ export default class MomentumTemplate extends Component {
         //   const pageNode = props.data.allApiBlueprint.edges.find(
         //     ({ node }) => node.fields.file === file
         //   ).node
-
         //   return {
         //     file,
         //     title: pageNode.meta.title,
@@ -98,10 +97,7 @@ export default class MomentumTemplate extends Component {
         />
         <Sidebar>
           <Search index="momentum" placeholder="Search Momentum" />
-          <Navigation
-            navigation={tableOfContents}
-            location={props.location}
-          />
+          <Navigation navigation={tableOfContents} location={props.location} />
         </Sidebar>
         <Content>
           <Wrapper>
