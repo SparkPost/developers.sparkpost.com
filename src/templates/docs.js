@@ -45,9 +45,9 @@ let components = {
   },
   table(props) {
     return (
-        <TableOverflow>
-          <table {...props} />
-        </TableOverflow>
+      <TableOverflow>
+        <table {...props} />
+      </TableOverflow>
     )
   },
   th(props) {
@@ -63,19 +63,20 @@ export default class DocsTemplate extends Component {
   render() {
     const { props } = this
     const { mdx } = props.data
-    const title = mdx.headings.length > 0 ? `${first(mdx.headings).value} - Momentum` : 'Momentum'
+    const title =
+      mdx.headings.length > 0
+        ? `${first(mdx.headings).value} - Momentum`
+        : 'Momentum'
 
     return (
       <Layout {...props}>
-        <Helmet
-          title={title}
-        />
+        <Helmet title={title} />
         <Sidebar>
           <Search />
-{/*           <Navigation */}
-{/*             navigation={fullTableOfContents} */}
-{/*             location={props.location} */}
-{/*           /> */}
+          {/*           <Navigation */}
+          {/*             navigation={fullTableOfContents} */}
+          {/*             location={props.location} */}
+          {/*           /> */}
         </Sidebar>
         <Content>
           <Wrapper>
@@ -101,4 +102,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
