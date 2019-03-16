@@ -2,7 +2,8 @@
   {
     "category": "Momentum",
     "pages": [
-      { "title": "Testing", "path": "/momentum/" }
+      { "title": "Testing", "path": "/momentum/" },
+      { "title": "Another page", "path": "/momentum/another" }
     ]
   }
 ]
