@@ -64,7 +64,7 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-plugin-algolia && npm install && cd ../gatsby-source-sparkpost-api && npm install",
+    "bootstrap": "npm install && cd plugins/gatsby-transformer-api-blueprint && npm install && cd ../gatsby-source-sparkpost-api && npm install",
     "develop": "gatsby develop",
     "lambda": "source .env && netlify-lambda serve lambda",
     "docs": "GATSBY_ACTIVE_ENV=docs gatsby develop",
