@@ -1,7 +1,8 @@
 'use strict'
 
 const axios = require('axios')
-const { resolve, basename } = require('path')
+const { last } = require('lodash')
+const { resolve, basename, dirname, sep } = require('path')
 const tableOfContents = require(`../content/api/table-of-contents.json`)
 
 module.exports = async ({ node, actions, getNode }) => {
@@ -51,12 +52,13 @@ module.exports = async ({ node, actions, getNode }) => {
    * Add the path and file to momentum nodes
    */
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath.includes('momentum')) {
+    const filePath = last(dirname(node.fileAbsolutePath).split(`${sep}momentum`))
     const fileName = basename(node.fileAbsolutePath, '.md')
     // add path
     createNodeField({
       node,
       name: `path`,
-      value: `/momentum/${fileName === 'index' ? '' : `${fileName}/`}`
+      value: `/momentum${filePath}/${fileName === 'index' ? '' : `${fileName}/`}`
     })
   }
 }
