@@ -48,7 +48,7 @@ module.exports = {
           appId: 'SFXAWCYDV8',
           apiKey: process.env.ALGOLIA_TOKEN,
           queries: [
-            // require('./algolia/apiReference'),
+            require('./algolia/apiReference'),
             require('./algolia/momentum')
           ]
         }

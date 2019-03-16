@@ -69,22 +69,22 @@ export default class MomentumTemplate extends Component {
         ? `${first(mdx.headings).value} - Momentum`
         : 'Momentum'
 
-    const decoratedTableOfContents = tableOfContents.map(category => {
-      return {
-        // ...category,
-        // pages: category.pages.map(file => {
-        //   const pageNode = props.data.allApiBlueprint.edges.find(
-        //     ({ node }) => node.fields.file === file
-        //   ).node
-        //   return {
-        //     file,
-        //     title: pageNode.meta.title,
-        //     path: pageNode.fields.path,
-        //     label: pageNode.meta.label,
-        //   }
-        // }),
-      }
-    })
+    // const decoratedTableOfContents = tableOfContents.map(category => {
+    // return {
+    // ...category,
+    // pages: category.pages.map(file => {
+    //   const pageNode = props.data.allApiBlueprint.edges.find(
+    //     ({ node }) => node.fields.file === file
+    //   ).node
+    //   return {
+    //     file,
+    //     title: pageNode.meta.title,
+    //     path: pageNode.fields.path,
+    //     label: pageNode.meta.label,
+    //   }
+    // }),
+    // }
+    // })
 
     return (
       <Layout {...props}>
@@ -102,7 +102,7 @@ export default class MomentumTemplate extends Component {
         <Content>
           <Wrapper>
             <MDXProvider components={components}>
-              <MDXRenderer>{this.props.data.mdx.code.body}</MDXRenderer>
+              <MDXRenderer>{mdx.code.body}</MDXRenderer>
             </MDXProvider>
           </Wrapper>
         </Content>

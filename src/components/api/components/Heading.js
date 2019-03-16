@@ -46,6 +46,10 @@ function stringifyChildren(children) {
     return children
   }
 
+  if (!children.map) {
+    return children.children
+  }
+
   return children
     .map(child => {
       return isString(child) ? child : stringifyChildren(child.props.children)
