@@ -132,7 +132,7 @@ Add [MSON](https://apiblueprint.org/documentation/mson/tutorial.html) items to d
 ```
 
 
-Data Structures can also receive a sample, which they will display on the right of content.
+Data Structures can also receive a sample, which will be displayed on the right of content.
 
 ```
 + Data Structure
