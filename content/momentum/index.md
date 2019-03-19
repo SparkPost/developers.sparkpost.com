@@ -1,4 +1,4 @@
-[Changelogs](changelog/index.md)
+[Changelogs](changelogs/index.md)
 
 [Momentum 4 Documentation](web-momo4/index.md)
 
