@@ -322,7 +322,7 @@ After:  4.4.0 [internal] no mail servers for this domain could be reached at thi
 <li>Fix: MO-6249: Provide api_webhooks.conf file in sample-configs/nginx</li>
 <li>Fix: MO-6302: Fix invalid event-hydrant JSON from messages with json object subject that mixes single and double quotes</li>
 <li>Fix: MO-6312: Fix 1-segment SMS delivery problem when config value is set that also allows long messages</li>
-<li>Enhancement: MO-4497: Suppress creation of memory-mapped files for single-recipient, scheduled transmissions until time of generation </li
+<li>Enhancement: MO-4497: Suppress creation of memory-mapped files for single-recipient, scheduled transmissions until time of generation </li>
 <li>Enhancement: MO-4503: Process start_time "now" scheduled mailing like an immediate mailing</li>
 <li>Enhancement: MO-4551: Provide additional logging for AD when we execute a rule-triggered suspension</li>
 <li>Enhancement: MO-4571: Platform REST APIs will return an empty list with code 200 when message generation is not licensed</li>
