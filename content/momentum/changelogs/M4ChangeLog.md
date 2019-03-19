@@ -3,10 +3,10 @@
 
 <table class="sidebar">
 	<tr><th>Quick Links</th></tr>
-  <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-3-31</a></td></tr>
-  <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-1-5</a></td></tr>
-  <tr><td><a href="#4.2.31">Momentum 4.2.31 released on 2017-6-29</a></td></tr>
-  <tr><td><a href="#4.2.28">Momentum 4.2.28 released on 2017-1-20</a></td></tr>
+  <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-03-31</a></td></tr>
+  <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-01-05</a></td></tr>
+  <tr><td><a href="#4.2.31">Momentum 4.2.31 released on 2017-06-29</a></td></tr>
+  <tr><td><a href="#4.2.28">Momentum 4.2.28 released on 2017-01-20</a></td></tr>
   <tr><td><a href="#4.2 HF14">Momentum 4.2 Hotfix 14 released on 2016-09-27</a></td></tr>
   <tr><td><a href="#4.2 HF12">Momentum 4.2 Hotfix 12 released on 2016-06-01</a></td></tr>
   <tr><td><a href="#4.2 HF11">Momentum 4.2 Hotfix 11 released on 2016-01-06</a></td></tr>
@@ -19,8 +19,7 @@
   <tr><td><a href="#4.0.0">Momentum 4.0.0 released on 2014-04-30</a></td></tr>
 </table>
 
-<h2> <a name="4.3.0">Momentum 4.3.0 released on 2019-03-31</h2>
-(Depending on installation type, all changes may not be applicable)</a>
+<h2> <a name="4.3.0">Momentum 4.3.0 released on 2019-03-31 (Depending on installation type, all changes may not be applicable)</a></h2>
 <ul>
 <li>Feature: MO-7806 - Added support for DSN for outbound messages.</li>
 <li>Feature: SD-258  - Updated the "hot domains" configuration to the current top 20 domains.</li>
@@ -181,8 +180,7 @@ After:  4.4.0 [internal] no mail servers for this domain could be reached at thi
 <li>Fix: MO-7171: Provide performance-enhancing config option to disable Lua usage stats collection by default.</li>
 </ul>
 
-<h2><a name="4.2.31">Momentum 4.2.31 released on 2017-06-29</h2>
-(Depending on installation type, all changes may not be applicable)</a>
+<h2><a name="4.2.31">Momentum 4.2.31 released on 2017-06-29 (Depending on installation type, all changes may not be applicable)</a></h2>
 <ul>
 <li>Feature Epic: PGM-778 (part 1): Support Inline Generation, Engagement Tracking, SMTPAPI and Webhooks on RHEL7.</li>
 <li>Feature Epic: PGM-778 (part 2): Support Inline Generation, Engagement Tracking, SMTPAPI and Webhooks without the Cassandra DB (with a reduced feature set).</li>
@@ -218,8 +216,7 @@ After:  4.4.0 [internal] no mail servers for this domain could be reached at thi
 <li>Enhancement: MO-6120: Refactored mobility loggers' timestamp macros to use a single common function.</li>
 </ul>
 
-<h2><a name="4.2.28">Momentum 4.2.28 released on 2017-01-20</h2>
-(Depending on installation type, all changes may not be applicable)</a>
+<h2><a name="4.2.28">Momentum 4.2.28 released on 2017-01-20 (Depending on installation type, all changes may not be applicable)</a></h2>
 <ul>
 <li>MR Epic: see MR CL: 4.2.1.14 Maintenance Release: https://support.messagesystems.com/start.php?show=changelog&v=4#4.2%20HF14</li>
 <li>MR Epic: see MR CL: 4.2.1.12 Maintenance Release: https://support.messagesystems.com/start.php?show=changelog&v=4#4.2%20HF12</li>
