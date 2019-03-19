@@ -210,7 +210,7 @@
 <li>Fixed ticket #6784: Fix a memory leak in the sieve header comparator when the header being tested is made up of multiple lines.</li>
 <li>Fixed ticket #6785: Using the ec_set_routing_gateway sieve action could result in messages being stuck in the lookuptable and never being delivered.</li>
 <li>Fixed ticket #6786: The maximum allowed length of MAIL FROM and RCPT TO commands is now limited to 4k to avoid increased CPU utilization in the face of extremely long command lines.</li>
-<li>Feature ticket #6787: Added RFC2822 { Lone_LF_in_Body=&#39;fix&#39;} option to canonicalize newlines in the message body.</li>
+<li>Feature ticket #6787: Added RFC2822 {Lone_LF_in_Body=&#39;fix&#39;} option to canonicalize newlines in the message body.</li>
 <li>Feature ticket #6855: Added DNS resolution hooks to C API (core_pre_dns_handle_a_hook, core_post_dns_handle_a_hook, core_pre_dns_handle_mx_hook, core_post_dns_handle_mx_hook).</li>
 <li>Feature ticket #6901: We now support Symantec CSAPI Antivirus engine.</li>
 <li>Feature ticket #6902: We now support the Symantec Brightmail Engine Integration Kit (BEIK) as an in-process alternative to our existing (and still supported) bm_driver module.</li>
