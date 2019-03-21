@@ -103,7 +103,12 @@ export default class MomentumTemplate extends Component {
           <Wrapper>
             <MDXProvider components={components}>
               {'' /*the replace is a temp fix for gatsby-mdx*/}
-              <MDXRenderer>{mdx.code.body.replace(/export\s{\s*MDXContent\s*as\s*default\s*};?/, "return MDXContent;")}</MDXRenderer>
+              <MDXRenderer>
+                {mdx.code.body.replace(
+                  /export\s{\s*MDXContent\s*as\s*default\s*};?/,
+                  'return MDXContent;'
+                )}
+              </MDXRenderer>
             </MDXProvider>
           </Wrapper>
         </Content>
