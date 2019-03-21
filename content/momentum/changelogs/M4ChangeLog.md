@@ -3,7 +3,7 @@
 
 <table class="sidebar">
   <tr><th>Quick Links</th></tr>
-  <tr><td><a href="#4.3.0">Momentum 4.3.0 releas
+  <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-03-31</a></td></tr>
   <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-01-05</a></td></tr>
   <tr><td><a href="#4.2.31">Momentum 4.2.31 released on 2017-06-29</a></td></tr>
   <tr><td><a href="#4.2.28">Momentum 4.2.28 released on 2017-01-20</a></td></tr>
