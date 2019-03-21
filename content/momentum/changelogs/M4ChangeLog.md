@@ -3,7 +3,7 @@
 
 <table class="sidebar">
   <tr><th>Quick Links</th></tr>
-  <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-03-31</a></td></tr>
+  <tr><td><a href="#4.3.0">Momentum 4.3.0 releas
   <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-01-05</a></td></tr>
   <tr><td><a href="#4.2.31">Momentum 4.2.31 released on 2017-06-29</a></td></tr>
   <tr><td><a href="#4.2.28">Momentum 4.2.28 released on 2017-01-20</a></td></tr>
@@ -18,111 +18,6 @@
   <tr><td><a href="#4.1.0">Momentum 4.1.0 released on 2014-10-03</a></td></tr>
   <tr><td><a href="#4.0.0">Momentum 4.0.0 released on 2014-04-30</a></td></tr>
 </table>
-
-<h2> <a name="4.3.0">Momentum 4.3.0 released on 2019-03-31 (Depending on installation type, all changes may not be applicable)</a></h2>
-<ul>
-<li>Feature: MO-7806 - Added support for DSN for outbound messages.</li>
-<li>Feature: SD-258  - Updated the "hot domains" configuration to the current top 20 domains.</li>
-<li>Feature: SD-13   - Upgraded sqlite to address vulnerability cve-2018-8740.</li>
-<li>Feature: TR-738  - Added X-MSYS-ASYNC-GEN header field to enable async message generation for single-recipient messages.</li>
-<li>Feature: SD-598  - Modified OpenDKIM to enable signing of messages with long (>1024 characters) lines in their message bodies.</li>
-<li>Feature: SD-171  - Updated third party packages (gmp, nettle, and gnutls) to latest versions for performance and security fixes.</li>
-<li>Feature: SD-179  - Updated third party package (jemalloc) to latest version for performance and security fixes.</li>
-<li>Feature: TR-3    - Added sending of DSN delivery notifications for delivery "SUCCESS" and temporary fails "DELAY" options.</li>
-<li>Feature: MO-7502 - Updated Rollup MX cache when DNS changes.</li>
-<li>Feature: SD-338  - Patched OpenDKIM to fix a parsing bug that resulted in failed DKIM validation of some messages.</li>
-<li>Feature: SD-373  - Fixed OpenDKIM canonicalization bug that resulted in faulty header signature calculations for some messages.</li>
-<li>Feature: SD-445  - Corrected ILF logger message count to ignore messages transferred with mmove.</li>
-<li>Feature: SD-626  - Changed SPF validation to support multiple or recursive redirects.</li>
-<li>Enhancement: MO-5874 - Added msys-role-mta-versioned meta rpm for rpm install/upgrade not using yum.</li>
-<li>Enhancement: MO-5407 - Removed support for the Momentum 4.0 APIs (v0 APIs).</li>
-<li>Enhancement: MO-7690 - Added tls_fallback_always_new_connection config option to force a new connection when remote server rejects the STARTTLS request (default = true).</li>
-<li>Enhancement: MO-6913 - Added Milestone entries to the Paniclog for system start, stop, and configuration reload.</li>
-<li>Enhancement: MO-7721 - Added logging of console command executions (CONSOLE type, INFO level, off by default).</li>
-<li>Enhancement: SD-217  - Set TLS connection context variables unconditionally.</li>
-<li>Enhancement: SD-237  - Improved memory allocation tracking for fixed size allocations.</li>
-<li>Enhancement: SD-252  - Added details of thread to logging of event state errors.</li>
-<li>Enhancement: SD-209  - Changed adaptive log outputs to reduce confusion.</li>
-<li>Enhancement: SD-299  - Moved adaptive delivery periodic check off of the master scheduler thread.</li>
-<li>Enhancement: SD-315  - Made HTTP Client resistant to missing HTTP response string.</li>
-<li>Enhancement: TR-775  - Added thread name to trace file entries.</li>
-<li>Enhancement: TR-146  - Added ability to tune the frequency of spare Lua thread cleanup.</li>
-<li>Enhancement: TR-299  - Added trace block_mutators statistics logging and added a new ec_console "scriptlet threads stats" section.</li>
-<li>Enhancement: TR-323  - Disabled unnecessary Lua garbage collection to improve API latency.</li>
-<li>Enhancement: TR-102  - Fix incorrect 500 error code in case of transmissions API input not formatted as a json object.</li>
-<li>Enhancement: TR-287  - Ensured that all caches have names and appear in the "cache list all" console command's output.</li>
-<li>Enhancement: TR-96   - Removed the obsolete pre_gen_sched configuration setting in favor of the msg_gen scheduled_send setting.</li>
-<li>Enhancement: TR-222  - Improved efficiency of mail queue hooks in Lua by allowing reuse of Lua threads.</li>
-<li>Enhancement: TR-603  - Defered creation of Lua threads until job start.</li>
-<li>Enhancement: TR-700  - Limited time spent cleaning up Lua Interned variables.</li>
-<li>Enhancement: TR-701  - Removed some unused distributed message generation code.</li>
-<li>Enhancement: TR-834  - Added inclusion of dns-cache statistics in Gimli traces.</li>
-<li>Enhancement: TR-957  - Added configuration option (templates list_limit) to Limit the number of returns from the Templates API list operation.</li>
-<li>Enhancement: SD-138  - Added console command to reset threadpool statistics.</li>
-<li>Enhancement: SD-147  - Renamed is_scheduler_thread() to is_master_scheduler() and is_a_scheduler_thread() to is_event_loop() to limit confusion. The is_scheduler_thread function is maintained for backward compatibility, but will generate a compiler warning when used.</li>
-<li>Enhancement: SD-155  - Changed log messages to distinguish between message expiration and message exceeded max retries.</li>
-<li>Enhancement: SD-2    - Added callback thread name to the output of the "threads cpu queue" ec_console command.</li>
-<li>Enhancement: SD-56   - Added configuration option (Max_Resident_Messages_Per_Binding) as a default limit setting for all bindings.</li>
-<li>Enhancement: SD-591  - Added logging of the MX in delivery events.</li>
-<li>Enhancement: SD-66   - Added an API to the DSN module to enable custom code rewrite/add/get/remove of recipient addresses and to enable copying of DSN recipient options to another message.</li>
-<li>Enhancement: TR-121  - Added "threads busy" and "threads &lt;pool&gt; stats" commands to ec_console.</li>
-<li>Enhancement: TR-147  - Added additional information to the output of the "scriptlet threads stats" command in ec_console.</li>
-<li>Enhancement: TR-151  - Added "warn_on_long_gc_msec" option to the scriptlet module to enable logging to the paniclog when Lua garbage collection takes too long.</li>
-<li>Enhancement: TR-153  - Enhanced gstack script to show threadpool and event loop names.</li>
-<li>Enhancement: TR-161  - Moved Lua thread destruction into a separate threadpool to reduce master thread lock contention.</li>
-<li>Enhancement: TR-162  - Changed Lua thread destruction to move inherited objects into separate threads, rather than the master thread to limit garbage collection lock time.</li>
-<li>Enhancement: TR-166  - Added ability to suppress inclusion of a list of idle or uninteresting callstack signatures in gstack_ecelerity.</li>
-<li>Enhancement: TR-168  - Changed Lua thread management to force thread destruction in msg_gen.</li>
-<li>Enhancement: TR-205  - Improve efficiency of synchronous message generation to reduce API latency.</li>
-<li>Enhancement: TR-210  - Improve efficiency of asynchronous message generation to reduce API latency.</li>
-<li>Enhancement: TR-211  - Share template content lua function handles between transmissions and msg_gen to increase efficiency.</li>
-<li>Enhancement: TR-229  - Included ecelerity version in Milestone: Startup beginning log statement.</li>
-<li>Enhancement: TR-280  - Improved efficiency of link rendering.</li>
-<li>Enhancement: TR-301  - Optimize Lua String Interning to only act on short strings.</li>
-<li>Enhancement: TR-59   - Shut down listeners earlier in shutdown process to prevent accepting new connections during shutdown.</li>
-<li>Enhancement: TR-203  - Transmission API latency improvements.</li>
-<li>Enhancement: SD-114  - Include the msys-opendkim-devel package in release bundles.</li>
-<li>Fix: MO-6817 - Convert bare &lt;CR&gt; to &lt;CR&gt;&lt;LF&gt; in text and html contexts prior to DKIM signing.</li>
-<li>Fix: MO-7474 - Corrected initial_open HTML content to address spacing and pre-header issues.</li>
-<li>Fix: MO-7159 - Fixed display of the Ecelerity version in ec_console.</li>
-<li>Fix: MO-7575 - Removed use of non-existent "validate_accept" hook that resulted in paniclog messages.</li>
-<li>Fix: MO-7567 - Fixed memory leak when using the 'msys.dnsLookup' Lua API with Momentum.</li>
-<li>Fix: MO-7741 - Fixed incorrect rejection logging when sender keeps connection open after sending, but sends no more messages.</li>
-<li>Fix: MO-7827 - Add config option for message generation's maximum reuse of a Lua thread, default == 400.</li>
-<li>Fix: MO-7779 - Corrected logging of negative time values for the time the message spent enqueued.</li>
-<li>Fix: MO-7885 - Removed trailing NULL byte from SMTP PLAIN Auth.</li>
-<li>Fix: SD-197  - Fixed unbound DNS crash when processing long domain names.</li>
-<li>Fix: SD-233  - Fixed bug that caused messages to be put into delay queue when auth changes on an outbound connection.</li>
-<li>Fix: SD-169  - Corrected issue where adaptive delivery could attempt an expired message.</li>
-<li>Fix: SD-126  - Corrected a bug which could cause a suspended message being retried before suspension expiration time.</li>
-<li>Fix: SD-194  - Corrected bug where bounce_pattern was being ignored when bounce_domains matched.</li>
-<li>Fix: SD-310  - Corrected race condition in SPF parser.</li>
-<li>Fix: SD-318  - Fixed infinite loop in adaptive delivery.</li>
-<li>Fix: SD-328  - Fixed memory leak in event handling.</li>
-<li>Fix: SD-342  - Corrected handling of boolean options in X-MSYS-API header.</li>
-<li>Fix: SD-308  - Fixed a Lua error that resulted in crashes when calling into Lua core_log_rejection hooks.</li>
-<li>Fix: SD-463  - Fixed issue with "config reload" when tls_session_reuse module is loaded.</li>
-<li>Fix: SD-589  - Fixed an issue resulting in some messages being retried multiple times at expiration time.</li>
-<li>Fix: SD-595  - Changed "milestone" logging in the panic log to "Notice" rather than "Error" level.</li>
-<li>Fix: TR-273  - Prevent scenario where ecelerity Lua garbage collection can deadlock.</li>
-<li>Fix: TR-353  - Prevented global trace from beginning before a previous garbage collection has completed.</li>
-<li>Fix: MO-7255 - Make rerouting an enqueued message in smpp module supercharger compatible.</li>
-<li>Fix: SD-356  - Fixed a potential crash when email gets rerouted.</li>
-<li>Fix: MO-7189 - Fixed a bug that could result in an attempt to close a connection twice.</li>
-<li>Fix: SD-134  - Fixed a bug where adaptive delivery wasn't respecting adaptive_positive_adjustment_interval.</li>
-<li>Fix: SD-160  - Fixed SMTP Outbound AUTH for PLAIN type on connection re-use.</li>
-<li>Fix: SD-20   - Unconditionally reset the connection context variables when re-using a TLS session.</li>
-<li>Fix: SD-21   - Fixed adaptive delivery handling of the outbound_throttle_messages setting.</li>
-<li>Fix: SD-212  - Fixed buffer overflow crash caused by very long from domain name in feedback loop messages.</li>
-<li>Fix: SD-63   - Fixed a bug that could result in re-using connections for messages with differing credentials.</li>
-<li>Fix: SD-65   - Fixed adaptive rule override so that custom "augment" mode doesn't override system rules.</li>
-<li>Fix: SD-75   - Fixed unintentional "flooring" of queue time in mainlog entries that resulted in decimal fraction always being "00".</li>
-<li>Fix: SD-93   - Added setting of correct error code when an Out Of Band message is blackholed.</li>
-<li>Fix: TR-1014 - Fixed Gimli "unable to read 8 bytes at &lt;address&gt;" errors.</li>
-<li>Fix: TR-1022 - Changed Glider thread numbering to start at 1.</li>
-<li>Fix: TR-163  - Fixed threadpool annotation in gstack_ecelerity to deal with 4 digit PIDs.</li>
-<li>Fix: TR-181  - Fixed ectop thread sorting so that CPU usage is shown in the correct order.</li>
-</ul>
 
 <h2><a name="4.2.38">Momentum 4.2.38 released on 2018-01-05 (Depending on installation type, all changes may not be applicable)</a></h2>
 <ul>
