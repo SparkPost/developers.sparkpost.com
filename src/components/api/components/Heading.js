@@ -42,6 +42,10 @@ const Heading = ({ level = 3, id, children, ...props }) => {
 }
 
 function stringifyChildren(children) {
+  if (!children) {
+    return ''
+  }
+
   if (isString(children)) {
     return children
   }

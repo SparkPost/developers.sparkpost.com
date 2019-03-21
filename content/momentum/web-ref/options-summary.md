@@ -722,6 +722,7 @@ This section displays all options of the specified type sorted alphabetically.
 
 **Table 9.14. routing options**
 
+
 | Option/Description | Type | Default | Version | Scopes |
 | --- | --- | --- | --- | --- |
 | [allow_ip_literal](conf.ref.allow_ip_literal "allow_ip_literal") – Allow IP addresses in email addresses | receiving | true | 3.0 | esmtp_listener, global, listen, pathway, pathway_group, peer |

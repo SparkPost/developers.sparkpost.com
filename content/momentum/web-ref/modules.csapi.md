@@ -187,12 +187,12 @@ When using this module on Solaris, add the line `scanner_path = "/opt/msys/ecele
 
 1.  Add the following content:
 
-    ```
-    #!/bin/bash
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/msys/3rdParty/symantec/csapi/lib
-    export LD_LIBRARY_PATH
-    /opt/msys/ecelerity/sbin/ec_avscan $*
-    ```
+```
+#!/bin/bash
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/msys/3rdParty/symantec/csapi/lib
+export LD_LIBRARY_PATH
+/opt/msys/ecelerity/sbin/ec_avscan $*
+```
 
 2.  Save this script as `run_ec_avscan` in the `/opt/msys/ecelerity/sbin` directory.
 

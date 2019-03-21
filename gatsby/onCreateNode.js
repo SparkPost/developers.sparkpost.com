@@ -54,11 +54,21 @@ module.exports = async ({ node, actions, getNode }) => {
   if (node.internal.type === 'Mdx' && node.fileAbsolutePath.includes('momentum')) {
     const filePath = last(dirname(node.fileAbsolutePath).split(`${sep}momentum`))
     const fileName = basename(node.fileAbsolutePath, '.md')
+    const path = `/momentum${filePath}/${fileName === 'index' ? '' : `${fileName}/`}`.toLowerCase()
+
+
     // add path
     createNodeField({
       node,
       name: `path`,
-      value: `/momentum${filePath}/${fileName === 'index' ? '' : `${fileName}/`}`
+      value: path
+    })
+
+    // add file
+    createNodeField({
+      node,
+      name: `file`,
+      value: `${fileName}.md`
     })
   }
 }

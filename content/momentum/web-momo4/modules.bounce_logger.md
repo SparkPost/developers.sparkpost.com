@@ -75,7 +75,11 @@ The bounce_logger module allows for a limited set of online commands via `ec_con
 
 <dl className="variablelist">
 
-<dt>bounce_logger:*`bounce_logger_rt`* reopen logs</dt>
+<dt>
+
+bounce_logger:*`bounce_logger_rt`* reopen logs
+
+</dt>
 
 <dd>
 

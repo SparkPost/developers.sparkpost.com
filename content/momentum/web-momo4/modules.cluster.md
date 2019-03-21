@@ -529,7 +529,11 @@ If you modify DuraVIP™ bindings, a possible race condition means that a **conf
 
 </dd>
 
-<dt>cluster duravip debug { on | off }</dt>
+<dt>
+
+cluster duravip debug { on | off }
+
+</dt>
 
 <dd>
 
@@ -547,23 +551,23 @@ Show the current state of DuraVIP™ bindings. Sample output follows.
 12:35:44 ecelerity(/tmp/2025)> cluster duravip show
 DuraVIP State:
 10.80.116.50/flowgomail-hotmail-50/flowgomail-hotmail-51/flowgomail-hotmail-52: (owned,safe) multivip
-	[view stable for 5420 seconds]
-	[configuration stable for 5409 seconds]
-    	labrat-2 multivip
-    	labrat-1 multivip
- *  	labrat-4 multivip
+  [view stable for 5420 seconds]
+  [configuration stable for 5409 seconds]
+      labrat-2 multivip
+      labrat-1 multivip
+ *    labrat-4 multivip
 10.80.116.53/flowgomail-hotmail-53: (owned,safe) multivip
-	[view stable for 5420 seconds]
-	[configuration stable for 5466 seconds]
- *  	labrat-2 multivip
-    	labrat-1 multivip
-    	labrat-4 multivip
+  [view stable for 5420 seconds]
+  [configuration stable for 5466 seconds]
+ *    labrat-2 multivip
+      labrat-1 multivip
+      labrat-4 multivip
 10.80.116.54/flowgomail-hotmail-54: (owned,safe) multivip
-	[view stable for 5420 seconds]
-	[configuration stable for 5465 seconds]
- *  	labrat-2 multivip
-    	labrat-1 multivip
-    	labrat-4 multivip
+  [view stable for 5420 seconds]
+  [configuration stable for 5465 seconds]
+ *    labrat-2 multivip
+      labrat-1 multivip
+      labrat-4 multivip
 ...
 ```
 
@@ -712,16 +716,16 @@ Show the size, name and location of the cluster logs. Sample output follows.
 ```
 15:40:34 ecelerity(/tmp/2025)> cluster show logs
 mainlog
-	[on disk: 1604005 bytes]
-	[subscriber: 'master' @ 00000000:0000a43a]
+  [on disk: 1604005 bytes]
+  [subscriber: 'master' @ 00000000:0000a43a]
 paniclog
-	[on disk: 9184 bytes]
-	[subscriber: 'master' @ 00000000:00000059]
+  [on disk: 9184 bytes]
+  [subscriber: 'master' @ 00000000:00000059]
 rejectlog
-	[on disk: 3950 bytes]
-	[subscriber: 'master' @ 00000000:0000001e]
+  [on disk: 3950 bytes]
+  [subscriber: 'master' @ 00000000:0000001e]
 bouncealllog
-	[on disk: 0 bytes]
+  [on disk: 0 bytes]
 ```
 </dd>
 
@@ -729,4 +733,3 @@ bouncealllog
 
 | [Prev](modules.cloudmark)  | [Up](modules) |  [Next](modules.commtouch) |
 | 71.18. cloudmark – Cloudmark Authority® Content Scanning  | [Table of Contents](index) |  71.20. commtouch_ctasd – Commtouch Spam Protection |
-

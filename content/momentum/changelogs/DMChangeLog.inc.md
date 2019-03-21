@@ -2,7 +2,7 @@
 <h1>Momentum 3.x Change Log</h1>
 
 <table class="sidebar">
-	<tr><th>Quick Links</th></tr>
+  <tr><th>Quick Links</th></tr>
   <tr><td><a href="#3.6.25">Momentum 3.6.25 released on 2016-08-11</a></td></tr>
   <tr><td><a href="#3.6.23">Momentum 3.6.23 released on 2016-04-28</a></td></tr>
   <tr><td><a href="#3.6.22">Momentum 3.6.22 released on 2016-04-04</a></td></tr>
@@ -25,57 +25,57 @@
   <tr><td><a href="#3.6.2">Momentum 3.6.2 released on 2014-05-02</a></td></tr>
   <tr><td><a href="#3.6.1">Momentum 3.6.1 released on 2014-03-06</a></td></tr>
   <tr><td><a href="#3.6.0">Momentum 3.6.0 released on 2013-09-30</a></td></tr>
-	<tr><td><a href="#3.5.11">Momentum 3.5.11 released on 2014-12-15</a></td></tr>
-	<tr><td><a href="#3.5.10">Momentum 3.5.10 released on 2014-09-08</a></td></tr>
-	<tr><td><a href="#3.5.9">Momentum 3.5.9 released on 2014-03-21</a></td></tr>
-	<tr><td><a href="#3.5.8">Momentum 3.5.8 released on 2014-01-08</a></td></tr>
-	<tr><td><a href="#3.5.7">Momentum 3.5.7 released on 2013-10-16</a></td></tr>
-	<tr><td><a href="#3.5.6">Momentum 3.5.6 released on 2013-10-16</a></td></tr>
-	<tr><td><a href="#3.5.5">Momentum 3.5.5 released on 2013-08-14</a></td></tr>
-	<tr><td><a href="#3.5.4">Momentum 3.5.4 released on 2013-07-02</a></td></tr>
-	<tr><td><a href="#3.5.3">Momentum 3.5.3 released on 2013-05-13</a></td></tr>
-	<tr><td><a href="#3.5.2">Momentum 3.5.2 released on 2013-03-26</a></td></tr>
-	<tr><td><a href="#3.5.1">Momentum 3.5.1 released on 2013-01-15</a></td></tr>
-	<tr><td><a href="#3.3.3">Momentum 3.3.3 released on 2012-10-16</a></td></tr>
-	<tr><td><a href="#3.4.2-patch1">Momentum 3.4.2-patch1 released on 2012-07-05</a></td></tr>
-	<tr><td><a href="#3.5.0">Momentum 3.5.0 released on 2012-06-26</a></td></tr>
-	<tr><td><a href="#3.4.2">Momentum 3.4.2 released on 2012-04-02</a></td></tr>
-	<tr><td><a href="#3.4.1">Momentum 3.4.1 released on 2012-03-07</a></td></tr>
-	<tr><td><a href="#3.4.0">Momentum 3.4.0 released on 2012-02-06</a></td></tr>
-	<tr><td><a href="#3.3.2">Momentum 3.3.2 released on 2011-11-01</a></td></tr>
-	<tr><td><a href="#3.3.1">Momentum 3.3.1 released on 2011-10-10</a></td></tr>
-	<tr><td><a href="#3.3.0">Momentum 3.3.0 released on 2011-09-26</a></td></tr>
-	<tr><td><a href="#3.2.5">Momentum 3.2.5 released on 2011-12-19</a></td></tr>
-	<tr><td><a href="#3.2.3">Momentum 3.2.3 released on 2011-08-10</a></td></tr>
-	<tr><td><a href="#3.2.2">Momentum 3.2.2 released on 2011-07-20</a></td></tr>
-	<tr><td><a href="#3.2.1-patch1">Momentum 3.2.1-patch1 released on 2011-06-14</a></td></tr>
-	<tr><td><a href="#3.2.1">Momentum 3.2.1 released on 2011-06-01</a></td></tr>
-	<tr><td><a href="#3.2.0">Momentum 3.2.0 released on 2011-05-16</a></td></tr>
-	<tr><td><a href="#3.1.7">Momentum 3.1.7 released on 2011-12-19</a></td></tr>
-	<tr><td><a href="#3.1.6">Momentum 3.1.6 released on 2011-04-20</a></td></tr>
-	<tr><td><a href="#3.1.5">Momentum 3.1.5 released on 2011-04-14</a></td></tr>
-	<tr><td><a href="#3.1.4">Momentum 3.1.4 released on 2011-04-11</a></td></tr>
-	<tr><td><a href="#3.1.3">Momentum 3.1.3 released on 2011-02-04</a></td></tr>
-	<tr><td><a href="#3.1.2">Momentum 3.1.2 released on 2011-01-27</a></td></tr>
-	<tr><td><a href="#3.1.1">Momentum 3.1.1 released on 2011-01-17</a></td></tr>
-	<tr><td><a href="#3.1.0">Momentum 3.1.0 released on 2010-12-22</a></td></tr>
-	<tr><td><a href="#3.0.28.1">Momentum 3.0.28.1 Sending released on 2010-11-03</a></td></tr>
-	<tr><td><a href="#3.0.28">Momentum 3.0.28 Sending released on 2010-10-18</a></td></tr>
-	<tr><td><a href="#3.0.26">Momentum 3.0.26 Sending released on 2010-09-01</a></td></tr>
-	<tr><td><a href="#3.0.24">Momentum 3.0.24 Sending released on 2010-06-23</a></td></tr>
-	<tr><td><a href="#3.0">Momentum Receiving 3.0 EA released on 2010-03-15</a></td></tr>
-	<tr><td><a href="#3.0.22">Momentum 3.0.22 released on 2010-03-09</a></td></tr>
-	<tr><td><a href="#3.0.21">Momentum 3.0.21 (Sending) released on 2010-02-04</a></td></tr>
-	<tr><td><a href="#3.0.20">Momentum 3.0.20 (Sending) released on 2010-02-01</a></td></tr>
-	<tr><td><a href="#3.0.19">Momentum 3.0.19 released on 2009-12-14</a></td></tr>
-	<tr><td><a href="#3.0.18">Momentum 3.0.18 released on 2009-11-18</a></td></tr>
-	<tr><td><a href="#3.0.17">Momentum 3.0.17 released on 2009-11-06</a></td></tr>
-	<tr><td><a href="#3.0.16">Momentum 3.0.16 released on 2009-09-18</a></td></tr>
-	<tr><td><a href="#3.0.15">Momentum 3.0.15 released on 2009-08-10</a></td></tr>
-	<tr><td><a href="#3.0.14">Momentum 3.0.14 released on 2009-07-15</a></td></tr>
-	<tr><td><a href="#3.0.13">Momentum 3.0.13 released on 2009-07-02</a></td></tr>
-	<tr><td><a href="#3.0.12">Momentum 3.0.12 released on 2009-06-05</a></td></tr>
-	<tr><td><a href="#3.0.11">Delivery Manager 3.0.11 released on 2009-05-12</a></td></tr>
+  <tr><td><a href="#3.5.11">Momentum 3.5.11 released on 2014-12-15</a></td></tr>
+  <tr><td><a href="#3.5.10">Momentum 3.5.10 released on 2014-09-08</a></td></tr>
+  <tr><td><a href="#3.5.9">Momentum 3.5.9 released on 2014-03-21</a></td></tr>
+  <tr><td><a href="#3.5.8">Momentum 3.5.8 released on 2014-01-08</a></td></tr>
+  <tr><td><a href="#3.5.7">Momentum 3.5.7 released on 2013-10-16</a></td></tr>
+  <tr><td><a href="#3.5.6">Momentum 3.5.6 released on 2013-10-16</a></td></tr>
+  <tr><td><a href="#3.5.5">Momentum 3.5.5 released on 2013-08-14</a></td></tr>
+  <tr><td><a href="#3.5.4">Momentum 3.5.4 released on 2013-07-02</a></td></tr>
+  <tr><td><a href="#3.5.3">Momentum 3.5.3 released on 2013-05-13</a></td></tr>
+  <tr><td><a href="#3.5.2">Momentum 3.5.2 released on 2013-03-26</a></td></tr>
+  <tr><td><a href="#3.5.1">Momentum 3.5.1 released on 2013-01-15</a></td></tr>
+  <tr><td><a href="#3.3.3">Momentum 3.3.3 released on 2012-10-16</a></td></tr>
+  <tr><td><a href="#3.4.2-patch1">Momentum 3.4.2-patch1 released on 2012-07-05</a></td></tr>
+  <tr><td><a href="#3.5.0">Momentum 3.5.0 released on 2012-06-26</a></td></tr>
+  <tr><td><a href="#3.4.2">Momentum 3.4.2 released on 2012-04-02</a></td></tr>
+  <tr><td><a href="#3.4.1">Momentum 3.4.1 released on 2012-03-07</a></td></tr>
+  <tr><td><a href="#3.4.0">Momentum 3.4.0 released on 2012-02-06</a></td></tr>
+  <tr><td><a href="#3.3.2">Momentum 3.3.2 released on 2011-11-01</a></td></tr>
+  <tr><td><a href="#3.3.1">Momentum 3.3.1 released on 2011-10-10</a></td></tr>
+  <tr><td><a href="#3.3.0">Momentum 3.3.0 released on 2011-09-26</a></td></tr>
+  <tr><td><a href="#3.2.5">Momentum 3.2.5 released on 2011-12-19</a></td></tr>
+  <tr><td><a href="#3.2.3">Momentum 3.2.3 released on 2011-08-10</a></td></tr>
+  <tr><td><a href="#3.2.2">Momentum 3.2.2 released on 2011-07-20</a></td></tr>
+  <tr><td><a href="#3.2.1-patch1">Momentum 3.2.1-patch1 released on 2011-06-14</a></td></tr>
+  <tr><td><a href="#3.2.1">Momentum 3.2.1 released on 2011-06-01</a></td></tr>
+  <tr><td><a href="#3.2.0">Momentum 3.2.0 released on 2011-05-16</a></td></tr>
+  <tr><td><a href="#3.1.7">Momentum 3.1.7 released on 2011-12-19</a></td></tr>
+  <tr><td><a href="#3.1.6">Momentum 3.1.6 released on 2011-04-20</a></td></tr>
+  <tr><td><a href="#3.1.5">Momentum 3.1.5 released on 2011-04-14</a></td></tr>
+  <tr><td><a href="#3.1.4">Momentum 3.1.4 released on 2011-04-11</a></td></tr>
+  <tr><td><a href="#3.1.3">Momentum 3.1.3 released on 2011-02-04</a></td></tr>
+  <tr><td><a href="#3.1.2">Momentum 3.1.2 released on 2011-01-27</a></td></tr>
+  <tr><td><a href="#3.1.1">Momentum 3.1.1 released on 2011-01-17</a></td></tr>
+  <tr><td><a href="#3.1.0">Momentum 3.1.0 released on 2010-12-22</a></td></tr>
+  <tr><td><a href="#3.0.28.1">Momentum 3.0.28.1 Sending released on 2010-11-03</a></td></tr>
+  <tr><td><a href="#3.0.28">Momentum 3.0.28 Sending released on 2010-10-18</a></td></tr>
+  <tr><td><a href="#3.0.26">Momentum 3.0.26 Sending released on 2010-09-01</a></td></tr>
+  <tr><td><a href="#3.0.24">Momentum 3.0.24 Sending released on 2010-06-23</a></td></tr>
+  <tr><td><a href="#3.0">Momentum Receiving 3.0 EA released on 2010-03-15</a></td></tr>
+  <tr><td><a href="#3.0.22">Momentum 3.0.22 released on 2010-03-09</a></td></tr>
+  <tr><td><a href="#3.0.21">Momentum 3.0.21 (Sending) released on 2010-02-04</a></td></tr>
+  <tr><td><a href="#3.0.20">Momentum 3.0.20 (Sending) released on 2010-02-01</a></td></tr>
+  <tr><td><a href="#3.0.19">Momentum 3.0.19 released on 2009-12-14</a></td></tr>
+  <tr><td><a href="#3.0.18">Momentum 3.0.18 released on 2009-11-18</a></td></tr>
+  <tr><td><a href="#3.0.17">Momentum 3.0.17 released on 2009-11-06</a></td></tr>
+  <tr><td><a href="#3.0.16">Momentum 3.0.16 released on 2009-09-18</a></td></tr>
+  <tr><td><a href="#3.0.15">Momentum 3.0.15 released on 2009-08-10</a></td></tr>
+  <tr><td><a href="#3.0.14">Momentum 3.0.14 released on 2009-07-15</a></td></tr>
+  <tr><td><a href="#3.0.13">Momentum 3.0.13 released on 2009-07-02</a></td></tr>
+  <tr><td><a href="#3.0.12">Momentum 3.0.12 released on 2009-06-05</a></td></tr>
+  <tr><td><a href="#3.0.11">Delivery Manager 3.0.11 released on 2009-05-12</a></td></tr>
 </table>
 <h2><a name="3.6.25">Momentum 3.6.25 released on 2016-08-11</a></h2>
 <ul>
@@ -125,7 +125,7 @@
 <h2><a name="3.6.21">Momentum 3.6.21 released on 2016-03-24</a></h2>
 <ul>
 <li>Defect ticket: MO-5156 - Make alerting module run on own threadpool to avoid contention in the CPU threadpool</li>
-<li>Defect ticket: MO-5145 - Add %vctx_mess{x} macro support for  apn_logger</li>
+<li>{`Defect ticket: MO-5145 - Add %vctx_mess{x} macro support for  apn_logger`}</li>
 <li>Defect ticket: MO-5130 - Prevent crash due to connection closed during TLS handshake</li>
 <li>Defect ticket: MO-5071 - Allow domain specific bounce classifications to work with multi-threading</li>
 <li>Defect ticket: MO-4982 - Drop adaptive_sweep_rule bounce on bc:24; only action on code 10</li>
@@ -153,7 +153,7 @@
 </ul>
 <h2><a name="3.6.17">Momentum 3.6.17 released on 2015-12-16</a></h2>
 <ul>
-<li>Defect ticket: MR-1470 - fixes issue in cert wildcard verification</li> 
+<li>Defect ticket: MR-1470 - fixes issue in cert wildcard verification</li>
 </ul>
 <h2><a name="3.6.16">Momentum 3.6.16 released on 2015-12-10</a></h2>
 <ul>
@@ -381,7 +381,7 @@
 <ul>
 <li>Fixed ticket MR-698: Makes the DNS subsystem case insensitive, allowing compatibility with BIND 9.9.5</li>
 <li>Feature ticket MO-1214: add hook code to allow support for dual stack</li>
-<li>Feature ticket MR-1079: bump thrlua package to 5.1.38</li> 
+<li>Feature ticket MR-1079: bump thrlua package to 5.1.38</li>
 </ul>
 
 <h2><a name="3.5.10">Momentum 3.5.10 released on 2014-09-08</a></h2>
@@ -762,7 +762,7 @@ www.jetmore.org/john/code/swaks/</li>
 <li>Fixed ticket BZ4262: Added Adaptive stanza options for Enable_Bounce_Stats and Enable_FBL_Stats to allow customers to disable performance intensive calculations if not using AD bounce or FBL threshold rules.</li>
 <li>Fixed ticket BZ2522: SMPP connections now show up using the ec_console "show outbound" command. However due to a current limitation in the debug framework, all SMPP connections will show up in ec_console "show outbound" command, whether the connection is for inbound/receiving or outbound/transmission. SMPP connections do not show when using the "show inbound" command.</li>
 <li>Fixed ticket BZ3189: Filter cache is no longer loaded on Web Console login, resolving a display issue for some customers with a very large number of bindings.</li>
-<li>Fixed ticket BZ3934: Riak has been added to Momentum for use with the following new features: AD Cluster Aware, Custom Reports, and	retain mobile messages for retry upon async failure.  See release notes and documentation for important configuration information.</li>
+<li>Fixed ticket BZ3934: Riak has been added to Momentum for use with the following new features: AD Cluster Aware, Custom Reports, and retain mobile messages for retry upon async failure.  See release notes and documentation for important configuration information.</li>
 <li>Fixed ticket BZ4141: Removed spurious "svn permission denied" warning that could occur in webui error log under some circumstances</li>
 <li>Fixed ticket BZ1780: Fix a bug so that the value of "peak objects" shown in the output of the console command "memory" is correct.</li>
 <li>Fixed ticket BZ3931: Cloudmark cartridge does not get replaced if installed by manually by customer.</li>
@@ -1228,7 +1228,7 @@ www.jetmore.org/john/code/swaks/</li>
 <li>Fixed ticket #5001: A minor dirent and memory leak on each configuration reload.</li>
 <li>Feature ticket #5014: Improved memory counter lock performance on non-NUMA systems.</li>
 <li>Fixed ticket #5036: ec_logger and custom_logger would always log the Pathway Group as &quot;default&quot;</li>
-<li>Fixed ticket #5052: Configuring the Outbound_Throttle_Messages or Outbound_Throttle_Connections settings in a Binding default {} stanza would throttle all bindings, as if they had been configured in the global scope instead.</li>
+<li>{`Fixed ticket #5052: Configuring the Outbound_Throttle_Messages or Outbound_Throttle_Connections settings in a Binding default {} stanza would throttle all bindings, as if they had been configured in the global scope instead.`}</li>
 <li>Fixed ticket #5059: hash_get and hash_set sieve functions now return an error when passed an argument that is uninitialized or not a hash.</li>
 <li>Fixed ticket #5076: It is now possible to add options to an empty Datasource stanza in the web UI.</li>
 <li>Fixed ticket #5082: Potential use of memory after it was freed in the spf module that could result in a failure to expand spf macros under heavy load.</li>
@@ -1306,7 +1306,7 @@ www.jetmore.org/john/code/swaks/</li>
 <li>Fixed ticket #4848: Apache log files (from both the web UI and ecconfigd) were not being rotated.  This is now handled by ec_rotate.</li>
 <li>Fixed ticket #4850: eccmgr could get overwhelmed with log move jobs if it had been down for an extended period of time.  It will now back off on log move processing if the number of outstanding jobs exceeds 64k, putting the log move session(s) on hold for 5 seconds.  You may alter the backlog by defining a &quot;log_job&quot; ThreadPool stanza in eccluster.conf and setting the backlog in there.</li>
 <li>Fixed ticket #4853: A binding listed in the signing_stats::binding permastore database table that was not present in the current configuration could result in a crash.  This could occur if you removed a binding from your configuration and restarted the ecelerity process.  A workaround is to manually delete either the offending row(s) from the MasterDB_File, or just to delete the MasterDB_File itself.</li>
-<li>Fixed ticket #4860: High-throughput connections to the ECStream listener port could prevent Momentum from servicing other listener connections.  The symptoms exhibited include unresponsive ec_console and SMTP connections.  If you are experiencing this issue, you should consider setting ECStream { ECStream_Max_Batch_Size = 10 } to reduce the number of messages that will be processed at one time by the ecstream listener.</li>
+<li>{`Fixed ticket #4860: High-throughput connections to the ECStream listener port could prevent Momentum from servicing other listener connections.  The symptoms exhibited include unresponsive ec_console and SMTP connections.  If you are experiencing this issue, you should consider setting ECStream { ECStream_Max_Batch_Size = 10 } to reduce the number of messages that will be processed at one time by the ecstream listener.`}</li>
 <li>Fixed ticket #4861: The lock used to protect the master list of caches has been changed from a spinlock to a mutex.  This improves concurrency when the lock is held, such as when the ec_console cache commands are run.</li>
 <li>Fixed ticket #4862: The seedlist module would copy the envelope from address of the seed triggering message, which could present problems for VERP based bounce processing.  The seedlist module now offers a mail_from option that allows you to override the envelope from address of generated seed messages.  A &quot;seedlist_generate_seed&quot; hook is also available to allow custom processing of the seed message prior to injection into the queue subsystem.</li>
 <li>Fixed ticket #4866: Suppress spurious error message about a missing database name during upgrade.  The error message can be safely ignored.</li>
@@ -1462,6 +1462,6 @@ www.jetmore.org/john/code/swaks/</li>
 <li>Fixed ticket #4678: Some SuSE 10 systems were unable to initialize the msyspg database without manual intervention.</li>
 <li>Fixed ticket #4679: The mailq command (which powers the &quot;Stats&quot; tabs in the web UI) could take a very long time to produce its results on systems with large numbers of bindings, and this could trigger a watchdog kill.</li>
 <li>Fixed ticket #4680: Sites with large numbers of bindings and a highly contended disk subsystem could fall behind with real-time stats processing.  This manifested as high memory usage in the ec_rt_stats2 process and increased disk usage for the associated jlogs.  The root of the problem was the amount of data recorded by the statp module, and this has now been adjusted to check the domain watchlist earlier in the stats gathering process.</li>
-<li>Fixed ticket #4681: The custom_logger %T{0} format printed a trailing decimal point even though the number of decimal places was set to zero.</li>
+<li>{`Fixed ticket #4681: The custom_logger %T{0} format printed a trailing decimal point even though the number of decimal places was set to zero.`}</li>
 </ul>
 </div>

@@ -70,7 +70,12 @@ async function createMomentumDocs({ actions, graphql }) {
     }
   `)
 
-  edges.forEach(({ node: { id, fields: { path } } }) => {
+  edges.forEach(({ node: { id, fields: { path, file } } }) => {
+    createRedirect({
+        fromPath: `/momentum/${file}`,
+        toPath: path
+      })
+
     createPage({
       path: path,
       component: momentumTemplate,

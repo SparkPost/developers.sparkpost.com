@@ -2,7 +2,7 @@
 <h1>Momentum 4.x Change Log</h1>
 
 <table class="sidebar">
-	<tr><th>Quick Links</th></tr>
+  <tr><th>Quick Links</th></tr>
   <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-03-31</a></td></tr>
   <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-01-05</a></td></tr>
   <tr><td><a href="#4.2.31">Momentum 4.2.31 released on 2017-06-29</a></td></tr>
@@ -139,7 +139,7 @@
 <li>Enhancement: REI-324: Vertica version is updated from 7.1 to 7.2 (full-feature only).</li>
 <li>Enhancement: MO-6636: Reduce grace period on deleted/expired transmissions by campaign from 10d to 2d.</li>
 <li>Enhancement: MO-6645: Clarify the temp fail log message when domain's mail servers cannot be reached.<br/>
-Before: 4.4.0 [internal] no MXs for this domain could be reached at this time.<br/>  
+Before: 4.4.0 [internal] no MXs for this domain could be reached at this time.<br/>
 After:  4.4.0 [internal] no mail servers for this domain could be reached at this time.</li>
 <li>Enhancement: MO-6712: Improve paniclog messages for cluster peer node communication problems (msgc_server).</li>
 <li>Enhancement: MO-6788: Improve SMPP paniclog messages.</li>
@@ -353,7 +353,7 @@ After:  4.4.0 [internal] no mail servers for this domain could be reached at thi
 <h2><a name="4.2 HF12">Momentum 4.2 Hotfix 12 released on 2016-06-01</a></h2>
 <ul>
 <li>Fix: MO-5459: Change default APNS message expiration from 60 seconds to 7 days</li>
-<li>Fix: MO-5145: Add %vctx_mess{x} macro support for apn_logger</li>
+<li>{`Fix: MO-5145: Add %vctx_mess{x} macro support for apn_logger`}</li>
 <li>Fix: MO-5130: Prevent crash due to connection closed during TLS handshake</li>
 <li>Fix: MO-4982: Drop adaptive_sweep_rule bounce on bc:24; only action on code 10</li>
 <li>Fix: MO-4847: Prevent crash seen in testing due to use-after-free on connection handle</li>
@@ -475,7 +475,7 @@ After:  4.4.0 [internal] no mail servers for this domain could be reached at thi
 <ul>
 <li> Feature ticket MO-3300 : All message events include recipient detail. </li>
 <li> Feature ticket MO-3267 :  The recipient address is included in click and open URLs and, subsequently, will be included in all click/open events. </li>
-<li> Feature ticket MO-2957 : Metadata is included, by default, as part of click-tracking (already existed in open 
+<li> Feature ticket MO-2957 : Metadata is included, by default, as part of click-tracking (already existed in open
 tracking). This may be turned off in configuration. </li>
 <li> Feature ticket MO-3559 : The jemalloc package was upgraded to version 3.6. </li>
 <li> BETA Feature ticket MO-3159 : Tags, metadata and campaign IDs may be included in SMTP injections via special headers and, subsequently, available in message events. </li>

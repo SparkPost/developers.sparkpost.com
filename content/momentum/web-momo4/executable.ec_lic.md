@@ -118,7 +118,11 @@ Show no message if current license is valid. This should be used together with `
 
 </dd>
 
-<dt>-t {HTTP | SOCKS4 | SOCKS5}</dt>
+<dt>
+
+-t {HTTP | SOCKS4 | SOCKS5}
+
+</dt>
 
 <dd>
 

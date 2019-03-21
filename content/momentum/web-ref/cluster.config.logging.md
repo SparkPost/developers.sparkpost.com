@@ -119,7 +119,11 @@ Additional special place holders are as follows:
 
 <dl className="variablelist">
 
-<dt>%{l}</dt>
+<dt>
+
+%{l}
+
+</dt>
 
 <dd>
 
@@ -127,7 +131,11 @@ Expands to the name of the log as specified as the key in the "logs" dictionary 
 
 </dd>
 
-<dt>%{n}</dt>
+<dt>
+
+%{n}
+
+</dt>
 
 <dd>
 
@@ -135,7 +143,11 @@ Expands to the name of the node
 
 </dd>
 
-<dt>%{s}</dt>
+<dt>
+
+%{s}
+
+</dt>
 
 <dd>
 

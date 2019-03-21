@@ -2,123 +2,123 @@
 <h1>Momentum 2.x Change Log</h1>
 
 <table class="sidebar">
-	<tr><th>Quick Links</th></tr>
-	<tr><td><a href="#2.2.3.51">Ecelerity version 2.2.3.51 released on 2013-05-17</a></td></tr>
-	<tr><td><a href="#2.2.3.50">Ecelerity version 2.2.3.50 released on 2011-12-19</a></td></tr>
-	<tr><td><a href="#2.2.3.49">Ecelerity version 2.2.3.49 released on 2011-05-24</a></td></tr>
-	<tr><td><a href="#2.2.3.48">Ecelerity version 2.2.3.48 released on 2011-04-19</a></td></tr>
-	<tr><td><a href="#2.2.3.47">Ecelerity version 2.2.3.47 released on 2011-02-02</a></td></tr>
-	<tr><td><a href="#2.2.3.46">Ecelerity version 2.2.3.46 released on 2010-08-03</a></td></tr>
-	<tr><td><a href="#2.2.2.45">Ecelerity version 2.2.2.45 released on 2009-11-06</a></td></tr>
-	<tr><td><a href="#2.2.2.44">Ecelerity version 2.2.2.44 released on 2009-10-14</a></td></tr>
-	<tr><td><a href="#2.2.2.43">Ecelerity version 2.2.2.43 released on 2009-06-22</a></td></tr>
-	<tr><td><a href="#2.2.2.42">Ecelerity version 2.2.2.42 released on 2009-06-11</a></td></tr>
-	<tr><td><a href="#2.2.2.41">Ecelerity version 2.2.2.41 released on 2009-04-10</a></td></tr>
-	<tr><td><a href="#2.2.2.40">Ecelerity version 2.2.2.40 released on 2009-02-27</a></td></tr>
-	<tr><td><a href="#2.2.2.39">Ecelerity version 2.2.2.39 released on 2009-02-06</a></td></tr>
-	<tr><td><a href="#2.2.2.38">Ecelerity version 2.2.2.38 released on 2009-01-23</a></td></tr>
-	<tr><td><a href="#2.2.2.37">Ecelerity version 2.2.2.37 released on 2008-12-12</a></td></tr>
-	<tr><td><a href="#2.2.2.36">Ecelerity version 2.2.2.36 released on 2008-10-28</a></td></tr>
-	<tr><td><a href="#2.2.2.35">Ecelerity version 2.2.2.35 released on 2008-09-19</a></td></tr>
-	<tr><td><a href="#2.2.2.34">Ecelerity version 2.2.2.34 released on 2008-08-20</a></td></tr>
-	<tr><td><a href="#2.2.2.33">Ecelerity version 2.2.2.33 released on 2008-08-01</a></td></tr>
-	<tr><td><a href="#2.2.2.32">Ecelerity version 2.2.2.32 released on 2008-06-20</a></td></tr>
-	<tr><td><a href="#2.2.2.31">Ecelerity version 2.2.2.31 released on 2008-05-23</a></td></tr>
-	<tr><td><a href="#2.2.2.30">Ecelerity version 2.2.2.30 released on 2008-05-09</a></td></tr>
-	<tr><td><a href="#2.2.2.29">Ecelerity version 2.2.2.29 released on 2008-03-28</a></td></tr>
-	<tr><td><a href="#2.2.1.28">Ecelerity version 2.2.1.28 released on 2008-02-29</a></td></tr>
-	<tr><td><a href="#2.2.1.27">Ecelerity version 2.2.1.27 released on 2008-02-20</a></td></tr>
-	<tr><td><a href="#2.2.1.26">Ecelerity version 2.2.1.26 released on 2008-02-19</a></td></tr>
-	<tr><td><a href="#2.2.1.25">Ecelerity version 2.2.1.25 released on 2008-01-14</a></td></tr>
-	<tr><td><a href="#2.2.1.24">Ecelerity version 2.2.1.24 released on 2007-12-10</a></td></tr>
-	<tr><td><a href="#2.2.1.23">Ecelerity version 2.2.1.23 released on 2007-11-09</a></td></tr>
-	<tr><td><a href="#2.2.1.22">Ecelerity version 2.2.1.22 released on 2007-10-05</a></td></tr>
-	<tr><td><a href="#2.2.1.21">Ecelerity version 2.2.1.21 released on 2007-09-07</a></td></tr>
-	<tr><td><a href="#2.2.1.20">Ecelerity version 2.2.1.20 released on 2007-08-16</a></td></tr>
-	<tr><td><a href="#2.2.1.19">Ecelerity version 2.2.1.19 released on 2007-08-15</a></td></tr>
-	<tr><td><a href="#2.2.0.18">Ecelerity version 2.2.0.18 released on 2007-08-10</a></td></tr>
-	<tr><td><a href="#2.2.0.17">Ecelerity version 2.2.0.17 released on 2007-08-06</a></td></tr>
-	<tr><td><a href="#2.2.0.16">Ecelerity version 2.2.0.16 released on 2007-07-18</a></td></tr>
-	<tr><td><a href="#2.2.0.15">Ecelerity version 2.2.0.15 released on 2007-07-13</a></td></tr>
-	<tr><td><a href="#2.2.0.14">Ecelerity version 2.2.0.14 released on 2007-07-11</a></td></tr>
-	<tr><td><a href="#2.2.0.13">Ecelerity version 2.2.0.13 released on 2007-07-10</a></td></tr>
-	<tr><td><a href="#2.2.0.12">Ecelerity version 2.2.0.12 released on 2007-07-09</a></td></tr>
-	<tr><td><a href="#2.2.0.11">Ecelerity version 2.2.0.11 released on 2007-07-06</a></td></tr>
-	<tr><td><a href="#2.2.0.10">Ecelerity version 2.2.0.10 released on 2007-07-05</a></td></tr>
-	<tr><td><a href="#2.2.0.9">Ecelerity version 2.2.0.9 released on 2007-06-25</a></td></tr>
-	<tr><td><a href="#2.2.0.8">Ecelerity version 2.2.0.8 released on 2007-06-14</a></td></tr>
-	<tr><td><a href="#2.2.0.7">Ecelerity version 2.2.0.7 released on 2007-06-08</a></td></tr>
-	<tr><td><a href="#2.2.0.6">Ecelerity version 2.2.0.6 released on 2007-05-24</a></td></tr>
-	<tr><td><a href="#2.2.0.5">Ecelerity version 2.2.0.5 released on 2007-05-11</a></td></tr>
-	<tr><td><a href="#2.2.0.4">Ecelerity version 2.2.0.4 released on 2007-05-04</a></td></tr>
-	<tr><td><a href="#2.2.0.3">Ecelerity version 2.2.0.3 released on 2007-04-17</a></td></tr>
-	<tr><td><a href="#2.1.1.25">Ecelerity version 2.1.1.25 released on 2008-07-22</a></td></tr>
-	<tr><td><a href="#2.1.1.24">Ecelerity version 2.1.1.24 released on 2007-09-26</a></td></tr>
-	<tr><td><a href="#2.1.1.23">Ecelerity version 2.1.1.23 released on 2007-07-15</a></td></tr>
-	<tr><td><a href="#2.1.1.22">Ecelerity version 2.1.1.22 released on 2007-06-22</a></td></tr>
-	<tr><td><a href="#2.1.1.21">Ecelerity version 2.1.1.21 released on 2007-05-23</a></td></tr>
-	<tr><td><a href="#2.1.1.20">Ecelerity version 2.1.1.20 released on 2007-05-16</a></td></tr>
-	<tr><td><a href="#2.1.1.19">Ecelerity version 2.1.1.19 released on 2007-05-14</a></td></tr>
-	<tr><td><a href="#2.1.1.18">Ecelerity version 2.1.1.18 released on 2007-05-02</a></td></tr>
-	<tr><td><a href="#2.1.1.17">Ecelerity version 2.1.1.17 released on 2007-04-25</a></td></tr>
-	<tr><td><a href="#2.1.1.16">Ecelerity version 2.1.1.16 released on 2007-04-11</a></td></tr>
-	<tr><td><a href="#2.1.1.15">Ecelerity version 2.1.1.15 released on 2007-03-12</a></td></tr>
-	<tr><td><a href="#2.1.1.14">Ecelerity version 2.1.1.14 released on 2007-02-15</a></td></tr>
-	<tr><td><a href="#2.1.1.13">Ecelerity version 2.1.1.13 released on 2007-01-30</a></td></tr>
-	<tr><td><a href="#2.1.1.12">Ecelerity version 2.1.1.12 released on 2007-01-08</a></td></tr>
-	<tr><td><a href="#2.1.1.11">Ecelerity version 2.1.1.11 released on 2006-10-16</a></td></tr>
-	<tr><td><a href="#2.1.1.10">Ecelerity version 2.1.1.10 released on 2006-09-27</a></td></tr>
-	<tr><td><a href="#2.1.1.9">Ecelerity version 2.1.1.9 released on 2006-09-25</a></td></tr>
-	<tr><td><a href="#2.1.1.8">Ecelerity version 2.1.1.8 released on 2006-08-05</a></td></tr>
-	<tr><td><a href="#2.1.1.7">Ecelerity version 2.1.1.7 released on 2006-08-04</a></td></tr>
-	<tr><td><a href="#2.1.1.6">Ecelerity version 2.1.1.6 released on 2006-07-21</a></td></tr>
-	<tr><td><a href="#2.1.1.4">Ecelerity version 2.1.1.4 released on 2006-07-03</a></td></tr>
-	<tr><td><a href="#2.1.1.3">Ecelerity version 2.1.1.3 released on 2006-06-15</a></td></tr>
-	<tr><td><a href="#2.1.1.2">Ecelerity version 2.1.1.2 released on 2006-06-13</a></td></tr>
-	<tr><td><a href="#2.1.0.3">Ecelerity version 2.1.0.3 released on 2006-03-27</a></td></tr>
-	<tr><td><a href="#2.1.0.2">Ecelerity version 2.1.0.2 released on 2006-03-23</a></td></tr>
-	<tr><td><a href="#2.1.0.1">Ecelerity version 2.1.0.1 released on 2006-03-21</a></td></tr>
-	<tr><td><a href="#2.1.0.0">Ecelerity version 2.1.0.0 released on 2006-06-06</a></td></tr>
-	<tr><td><a href="#2.0.5.2">Ecelerity version 2.0.5.2 released on 2006-02-02</a></td></tr>
-	<tr><td><a href="#2.0.5.1">Ecelerity version 2.0.5.1 released on 2006-01-29</a></td></tr>
-	<tr><td><a href="#2.0.5">Ecelerity version 2.0.5 released on 2006-01-27</a></td></tr>
-	<tr><td><a href="#2.0.4.3">Ecelerity version 2.0.4.3 released on 2006-01-04</a></td></tr>
-	<tr><td><a href="#2.0.4.2">Ecelerity version 2.0.4.2 released on 2005-12-23</a></td></tr>
-	<tr><td><a href="#2.0.4.1">Ecelerity version 2.0.4.1 released on 2005-12-22</a></td></tr>
-	<tr><td><a href="#2.0.4">Ecelerity version 2.0.4 released on 2005-12-21</a></td></tr>
-	<tr><td><a href="#1.2.13">Ecelerity version 1.2.13 released on 2005-11-25</a></td></tr>
-	<tr><td><a href="#2.0.3">Ecelerity version 2.0.3 released on 2005-10-31</a></td></tr>
-	<tr><td><a href="#2.0.1">Ecelerity version 2.0.1 released on 2005-09-13</a></td></tr>
-	<tr><td><a href="#1.2.12.4">Ecelerity version 1.2.12.4 released on 2005-09-06</a></td></tr>
-	<tr><td><a href="#1.2.12.3">Ecelerity version 1.2.12.3 released on 2005-08-15</a></td></tr>
-	<tr><td><a href="#2.0.0">Ecelerity version 2.0.0 released on 2005-08-05</a></td></tr>
-	<tr><td><a href="#1.2.12.2">Ecelerity version 1.2.12.2 released on 2005-06-09</a></td></tr>
-	<tr><td><a href="#1.2.12">Ecelerity version 1.2.12 released on 2005-05-09</a></td></tr>
-	<tr><td><a href="#1.2.10.1">Ecelerity version 1.2.10.1 released on 2005-02-04</a></td></tr>
-	<tr><td><a href="#1.2.10">Ecelerity version 1.2.10 released on 2005-02-03</a></td></tr>
-	<tr><td><a href="#1.2.8">Ecelerity version 1.2.8 released on 2005-01-14</a></td></tr>
-	<tr><td><a href="#1.2.6">Ecelerity version 1.2.6 released on 2004-12-11</a></td></tr>
-	<tr><td><a href="#1.2.5">Ecelerity version 1.2.5 released on 2004-11-09</a></td></tr>
-	<tr><td><a href="#1.2.4">Ecelerity version 1.2.4 released on 2004-11-02</a></td></tr>
-	<tr><td><a href="#1.2.3">Ecelerity version 1.2.3 released on 2004-10.05</a></td></tr>
-	<tr><td><a href="#1.2.2">Ecelerity version 1.2.2 released on 2004-09-25</a></td></tr>
-	<tr><td><a href="#1.2.1">Ecelerity version 1.2.1 released on 2004-08-24</a></td></tr>
-	<tr><td><a href="#1.2.0">Ecelerity version 1.2.0 released on 2004-08-17</a></td></tr>
-	<tr><td><a href="#1.1.8">Ecelerity version 1.1.8 released on 2004-09-20</a></td></tr>
-	<tr><td><a href="#1.1.7">Ecelerity version 1.1.7 released on 2004-09-01</a></td></tr>
-	<tr><td><a href="#1.1.6">Ecelerity version 1.1.6 released on 2004-03-16</a></td></tr>
-	<tr><td><a href="#1.1.5b">Ecelerity version 1.1.5b released on 2004-03-12</a></td></tr>
-	<tr><td><a href="#1.1.5">Ecelerity version 1.1.5 released on 2004-03-10</a></td></tr>
-	<tr><td><a href="#1.1.4">Ecelerity version 1.1.4 released on 2004-03-02</a></td></tr>
-	<tr><td><a href="#1.1.3">Ecelerity version 1.1.3 released on 2004-02-27</a></td></tr>
-	<tr><td><a href="#1.1.2">Ecelerity version 1.1.2 released on 2004-02-17</a></td></tr>
-	<tr><td><a href="#1.1.1">Ecelerity version 1.1.1 released on 2004-01-16</a></td></tr>
-	<tr><td><a href="#1.1.0">Ecelerity version 1.1.0 released on 2004-01-11</a></td></tr>
-	<tr><td><a href="#1.0.4">Ecelerity version 1.0.4 released on 2003.11.20</a></td></tr>
-	<tr><td><a href="#1.0.3">Ecelerity version 1.0.3 released on 2003.11.14</a></td></tr>
-	<tr><td><a href="#1.0.2">Ecelerity version 1.0.2 released on 2003.11.04</a></td></tr>
-	<tr><td><a href="#1.0.1">Ecelerity version 1.0.1 released on 2003.11.03</a></td></tr>
-	<tr><td><a href="#1.0">Ecelerity version 1.0 released on 2003.10.31</a></td></tr>
+  <tr><th>Quick Links</th></tr>
+  <tr><td><a href="#2.2.3.51">Ecelerity version 2.2.3.51 released on 2013-05-17</a></td></tr>
+  <tr><td><a href="#2.2.3.50">Ecelerity version 2.2.3.50 released on 2011-12-19</a></td></tr>
+  <tr><td><a href="#2.2.3.49">Ecelerity version 2.2.3.49 released on 2011-05-24</a></td></tr>
+  <tr><td><a href="#2.2.3.48">Ecelerity version 2.2.3.48 released on 2011-04-19</a></td></tr>
+  <tr><td><a href="#2.2.3.47">Ecelerity version 2.2.3.47 released on 2011-02-02</a></td></tr>
+  <tr><td><a href="#2.2.3.46">Ecelerity version 2.2.3.46 released on 2010-08-03</a></td></tr>
+  <tr><td><a href="#2.2.2.45">Ecelerity version 2.2.2.45 released on 2009-11-06</a></td></tr>
+  <tr><td><a href="#2.2.2.44">Ecelerity version 2.2.2.44 released on 2009-10-14</a></td></tr>
+  <tr><td><a href="#2.2.2.43">Ecelerity version 2.2.2.43 released on 2009-06-22</a></td></tr>
+  <tr><td><a href="#2.2.2.42">Ecelerity version 2.2.2.42 released on 2009-06-11</a></td></tr>
+  <tr><td><a href="#2.2.2.41">Ecelerity version 2.2.2.41 released on 2009-04-10</a></td></tr>
+  <tr><td><a href="#2.2.2.40">Ecelerity version 2.2.2.40 released on 2009-02-27</a></td></tr>
+  <tr><td><a href="#2.2.2.39">Ecelerity version 2.2.2.39 released on 2009-02-06</a></td></tr>
+  <tr><td><a href="#2.2.2.38">Ecelerity version 2.2.2.38 released on 2009-01-23</a></td></tr>
+  <tr><td><a href="#2.2.2.37">Ecelerity version 2.2.2.37 released on 2008-12-12</a></td></tr>
+  <tr><td><a href="#2.2.2.36">Ecelerity version 2.2.2.36 released on 2008-10-28</a></td></tr>
+  <tr><td><a href="#2.2.2.35">Ecelerity version 2.2.2.35 released on 2008-09-19</a></td></tr>
+  <tr><td><a href="#2.2.2.34">Ecelerity version 2.2.2.34 released on 2008-08-20</a></td></tr>
+  <tr><td><a href="#2.2.2.33">Ecelerity version 2.2.2.33 released on 2008-08-01</a></td></tr>
+  <tr><td><a href="#2.2.2.32">Ecelerity version 2.2.2.32 released on 2008-06-20</a></td></tr>
+  <tr><td><a href="#2.2.2.31">Ecelerity version 2.2.2.31 released on 2008-05-23</a></td></tr>
+  <tr><td><a href="#2.2.2.30">Ecelerity version 2.2.2.30 released on 2008-05-09</a></td></tr>
+  <tr><td><a href="#2.2.2.29">Ecelerity version 2.2.2.29 released on 2008-03-28</a></td></tr>
+  <tr><td><a href="#2.2.1.28">Ecelerity version 2.2.1.28 released on 2008-02-29</a></td></tr>
+  <tr><td><a href="#2.2.1.27">Ecelerity version 2.2.1.27 released on 2008-02-20</a></td></tr>
+  <tr><td><a href="#2.2.1.26">Ecelerity version 2.2.1.26 released on 2008-02-19</a></td></tr>
+  <tr><td><a href="#2.2.1.25">Ecelerity version 2.2.1.25 released on 2008-01-14</a></td></tr>
+  <tr><td><a href="#2.2.1.24">Ecelerity version 2.2.1.24 released on 2007-12-10</a></td></tr>
+  <tr><td><a href="#2.2.1.23">Ecelerity version 2.2.1.23 released on 2007-11-09</a></td></tr>
+  <tr><td><a href="#2.2.1.22">Ecelerity version 2.2.1.22 released on 2007-10-05</a></td></tr>
+  <tr><td><a href="#2.2.1.21">Ecelerity version 2.2.1.21 released on 2007-09-07</a></td></tr>
+  <tr><td><a href="#2.2.1.20">Ecelerity version 2.2.1.20 released on 2007-08-16</a></td></tr>
+  <tr><td><a href="#2.2.1.19">Ecelerity version 2.2.1.19 released on 2007-08-15</a></td></tr>
+  <tr><td><a href="#2.2.0.18">Ecelerity version 2.2.0.18 released on 2007-08-10</a></td></tr>
+  <tr><td><a href="#2.2.0.17">Ecelerity version 2.2.0.17 released on 2007-08-06</a></td></tr>
+  <tr><td><a href="#2.2.0.16">Ecelerity version 2.2.0.16 released on 2007-07-18</a></td></tr>
+  <tr><td><a href="#2.2.0.15">Ecelerity version 2.2.0.15 released on 2007-07-13</a></td></tr>
+  <tr><td><a href="#2.2.0.14">Ecelerity version 2.2.0.14 released on 2007-07-11</a></td></tr>
+  <tr><td><a href="#2.2.0.13">Ecelerity version 2.2.0.13 released on 2007-07-10</a></td></tr>
+  <tr><td><a href="#2.2.0.12">Ecelerity version 2.2.0.12 released on 2007-07-09</a></td></tr>
+  <tr><td><a href="#2.2.0.11">Ecelerity version 2.2.0.11 released on 2007-07-06</a></td></tr>
+  <tr><td><a href="#2.2.0.10">Ecelerity version 2.2.0.10 released on 2007-07-05</a></td></tr>
+  <tr><td><a href="#2.2.0.9">Ecelerity version 2.2.0.9 released on 2007-06-25</a></td></tr>
+  <tr><td><a href="#2.2.0.8">Ecelerity version 2.2.0.8 released on 2007-06-14</a></td></tr>
+  <tr><td><a href="#2.2.0.7">Ecelerity version 2.2.0.7 released on 2007-06-08</a></td></tr>
+  <tr><td><a href="#2.2.0.6">Ecelerity version 2.2.0.6 released on 2007-05-24</a></td></tr>
+  <tr><td><a href="#2.2.0.5">Ecelerity version 2.2.0.5 released on 2007-05-11</a></td></tr>
+  <tr><td><a href="#2.2.0.4">Ecelerity version 2.2.0.4 released on 2007-05-04</a></td></tr>
+  <tr><td><a href="#2.2.0.3">Ecelerity version 2.2.0.3 released on 2007-04-17</a></td></tr>
+  <tr><td><a href="#2.1.1.25">Ecelerity version 2.1.1.25 released on 2008-07-22</a></td></tr>
+  <tr><td><a href="#2.1.1.24">Ecelerity version 2.1.1.24 released on 2007-09-26</a></td></tr>
+  <tr><td><a href="#2.1.1.23">Ecelerity version 2.1.1.23 released on 2007-07-15</a></td></tr>
+  <tr><td><a href="#2.1.1.22">Ecelerity version 2.1.1.22 released on 2007-06-22</a></td></tr>
+  <tr><td><a href="#2.1.1.21">Ecelerity version 2.1.1.21 released on 2007-05-23</a></td></tr>
+  <tr><td><a href="#2.1.1.20">Ecelerity version 2.1.1.20 released on 2007-05-16</a></td></tr>
+  <tr><td><a href="#2.1.1.19">Ecelerity version 2.1.1.19 released on 2007-05-14</a></td></tr>
+  <tr><td><a href="#2.1.1.18">Ecelerity version 2.1.1.18 released on 2007-05-02</a></td></tr>
+  <tr><td><a href="#2.1.1.17">Ecelerity version 2.1.1.17 released on 2007-04-25</a></td></tr>
+  <tr><td><a href="#2.1.1.16">Ecelerity version 2.1.1.16 released on 2007-04-11</a></td></tr>
+  <tr><td><a href="#2.1.1.15">Ecelerity version 2.1.1.15 released on 2007-03-12</a></td></tr>
+  <tr><td><a href="#2.1.1.14">Ecelerity version 2.1.1.14 released on 2007-02-15</a></td></tr>
+  <tr><td><a href="#2.1.1.13">Ecelerity version 2.1.1.13 released on 2007-01-30</a></td></tr>
+  <tr><td><a href="#2.1.1.12">Ecelerity version 2.1.1.12 released on 2007-01-08</a></td></tr>
+  <tr><td><a href="#2.1.1.11">Ecelerity version 2.1.1.11 released on 2006-10-16</a></td></tr>
+  <tr><td><a href="#2.1.1.10">Ecelerity version 2.1.1.10 released on 2006-09-27</a></td></tr>
+  <tr><td><a href="#2.1.1.9">Ecelerity version 2.1.1.9 released on 2006-09-25</a></td></tr>
+  <tr><td><a href="#2.1.1.8">Ecelerity version 2.1.1.8 released on 2006-08-05</a></td></tr>
+  <tr><td><a href="#2.1.1.7">Ecelerity version 2.1.1.7 released on 2006-08-04</a></td></tr>
+  <tr><td><a href="#2.1.1.6">Ecelerity version 2.1.1.6 released on 2006-07-21</a></td></tr>
+  <tr><td><a href="#2.1.1.4">Ecelerity version 2.1.1.4 released on 2006-07-03</a></td></tr>
+  <tr><td><a href="#2.1.1.3">Ecelerity version 2.1.1.3 released on 2006-06-15</a></td></tr>
+  <tr><td><a href="#2.1.1.2">Ecelerity version 2.1.1.2 released on 2006-06-13</a></td></tr>
+  <tr><td><a href="#2.1.0.3">Ecelerity version 2.1.0.3 released on 2006-03-27</a></td></tr>
+  <tr><td><a href="#2.1.0.2">Ecelerity version 2.1.0.2 released on 2006-03-23</a></td></tr>
+  <tr><td><a href="#2.1.0.1">Ecelerity version 2.1.0.1 released on 2006-03-21</a></td></tr>
+  <tr><td><a href="#2.1.0.0">Ecelerity version 2.1.0.0 released on 2006-06-06</a></td></tr>
+  <tr><td><a href="#2.0.5.2">Ecelerity version 2.0.5.2 released on 2006-02-02</a></td></tr>
+  <tr><td><a href="#2.0.5.1">Ecelerity version 2.0.5.1 released on 2006-01-29</a></td></tr>
+  <tr><td><a href="#2.0.5">Ecelerity version 2.0.5 released on 2006-01-27</a></td></tr>
+  <tr><td><a href="#2.0.4.3">Ecelerity version 2.0.4.3 released on 2006-01-04</a></td></tr>
+  <tr><td><a href="#2.0.4.2">Ecelerity version 2.0.4.2 released on 2005-12-23</a></td></tr>
+  <tr><td><a href="#2.0.4.1">Ecelerity version 2.0.4.1 released on 2005-12-22</a></td></tr>
+  <tr><td><a href="#2.0.4">Ecelerity version 2.0.4 released on 2005-12-21</a></td></tr>
+  <tr><td><a href="#1.2.13">Ecelerity version 1.2.13 released on 2005-11-25</a></td></tr>
+  <tr><td><a href="#2.0.3">Ecelerity version 2.0.3 released on 2005-10-31</a></td></tr>
+  <tr><td><a href="#2.0.1">Ecelerity version 2.0.1 released on 2005-09-13</a></td></tr>
+  <tr><td><a href="#1.2.12.4">Ecelerity version 1.2.12.4 released on 2005-09-06</a></td></tr>
+  <tr><td><a href="#1.2.12.3">Ecelerity version 1.2.12.3 released on 2005-08-15</a></td></tr>
+  <tr><td><a href="#2.0.0">Ecelerity version 2.0.0 released on 2005-08-05</a></td></tr>
+  <tr><td><a href="#1.2.12.2">Ecelerity version 1.2.12.2 released on 2005-06-09</a></td></tr>
+  <tr><td><a href="#1.2.12">Ecelerity version 1.2.12 released on 2005-05-09</a></td></tr>
+  <tr><td><a href="#1.2.10.1">Ecelerity version 1.2.10.1 released on 2005-02-04</a></td></tr>
+  <tr><td><a href="#1.2.10">Ecelerity version 1.2.10 released on 2005-02-03</a></td></tr>
+  <tr><td><a href="#1.2.8">Ecelerity version 1.2.8 released on 2005-01-14</a></td></tr>
+  <tr><td><a href="#1.2.6">Ecelerity version 1.2.6 released on 2004-12-11</a></td></tr>
+  <tr><td><a href="#1.2.5">Ecelerity version 1.2.5 released on 2004-11-09</a></td></tr>
+  <tr><td><a href="#1.2.4">Ecelerity version 1.2.4 released on 2004-11-02</a></td></tr>
+  <tr><td><a href="#1.2.3">Ecelerity version 1.2.3 released on 2004-10.05</a></td></tr>
+  <tr><td><a href="#1.2.2">Ecelerity version 1.2.2 released on 2004-09-25</a></td></tr>
+  <tr><td><a href="#1.2.1">Ecelerity version 1.2.1 released on 2004-08-24</a></td></tr>
+  <tr><td><a href="#1.2.0">Ecelerity version 1.2.0 released on 2004-08-17</a></td></tr>
+  <tr><td><a href="#1.1.8">Ecelerity version 1.1.8 released on 2004-09-20</a></td></tr>
+  <tr><td><a href="#1.1.7">Ecelerity version 1.1.7 released on 2004-09-01</a></td></tr>
+  <tr><td><a href="#1.1.6">Ecelerity version 1.1.6 released on 2004-03-16</a></td></tr>
+  <tr><td><a href="#1.1.5b">Ecelerity version 1.1.5b released on 2004-03-12</a></td></tr>
+  <tr><td><a href="#1.1.5">Ecelerity version 1.1.5 released on 2004-03-10</a></td></tr>
+  <tr><td><a href="#1.1.4">Ecelerity version 1.1.4 released on 2004-03-02</a></td></tr>
+  <tr><td><a href="#1.1.3">Ecelerity version 1.1.3 released on 2004-02-27</a></td></tr>
+  <tr><td><a href="#1.1.2">Ecelerity version 1.1.2 released on 2004-02-17</a></td></tr>
+  <tr><td><a href="#1.1.1">Ecelerity version 1.1.1 released on 2004-01-16</a></td></tr>
+  <tr><td><a href="#1.1.0">Ecelerity version 1.1.0 released on 2004-01-11</a></td></tr>
+  <tr><td><a href="#1.0.4">Ecelerity version 1.0.4 released on 2003.11.20</a></td></tr>
+  <tr><td><a href="#1.0.3">Ecelerity version 1.0.3 released on 2003.11.14</a></td></tr>
+  <tr><td><a href="#1.0.2">Ecelerity version 1.0.2 released on 2003.11.04</a></td></tr>
+  <tr><td><a href="#1.0.1">Ecelerity version 1.0.1 released on 2003.11.03</a></td></tr>
+  <tr><td><a href="#1.0">Ecelerity version 1.0 released on 2003.10.31</a></td></tr>
 </table>
 
 <h2><a name="2.2.3.51">Ecelerity version 2.2.3.51 released on 2013-05-17</a></h2>
@@ -202,7 +202,7 @@
 <li>Fixed ticket #6019: Eliminate a small memory leak when using AUTH PLAIN.</li>
 <li>Fixed ticket #6033: The Brightmail module would incorrectly report an error when handling messages with mixed case domains.</li>
 <li>Fixed ticket #6237: Implemented Allow_Whitespace_In_Envelope and Allow_Whitespace_In_Command options that handle the trailing white spaces in the SMTP command and white spaces in between &quot;&lt;&gt;&quot; and the recipient address in the RCPT TO or MAIL FROM commands.</li>
-<li>Fixed ticket #6256: RFC2822 { Max_Line_Length } is checked earlier during reception processing, to avoid increased CPU utilization in the face of extremely long headers.</li>
+<li>{`Fixed ticket #6256: RFC2822 { Max_Line_Length } is checked earlier during reception processing, to avoid increased CPU utilization in the face of extremely long headers.`}</li>
 <li>Fixed ticket #6342: Quoted-printable decoder would not handle SMTP-transparency (aka dot-stuffing) correctly in some quoted-printable logical line extension cases.</li>
 <li>Fixed ticket #6410: Reset the internal DNS query failure (domain MX or host query) count when querying for a domain&#39;s MX returns result to prevent mails being wrongly purged due to intermittent domain MX lookup failures.</li>
 <li>Fixed ticket #6508: Use of Suppress_spool could cause a hang in certain circumstances with large max_resident_messages.</li>
@@ -210,7 +210,7 @@
 <li>Fixed ticket #6784: Fix a memory leak in the sieve header comparator when the header being tested is made up of multiple lines.</li>
 <li>Fixed ticket #6785: Using the ec_set_routing_gateway sieve action could result in messages being stuck in the lookuptable and never being delivered.</li>
 <li>Fixed ticket #6786: The maximum allowed length of MAIL FROM and RCPT TO commands is now limited to 4k to avoid increased CPU utilization in the face of extremely long command lines.</li>
-<li>Feature ticket #6787: Added RFC2822 (Lone_LF_in_Body=&#39;fix&#39;) option to canonicalize newlines in the message body.</li>
+<li>{`Feature ticket #6787: Added RFC2822 {Lone_LF_in_Body=&#39;fix&#39;} option to canonicalize newlines in the message body.`}</li>
 <li>Feature ticket #6855: Added DNS resolution hooks to C API (core_pre_dns_handle_a_hook, core_post_dns_handle_a_hook, core_pre_dns_handle_mx_hook, core_post_dns_handle_mx_hook).</li>
 <li>Feature ticket #6901: We now support Symantec CSAPI Antivirus engine.</li>
 <li>Feature ticket #6902: We now support the Symantec Brightmail Engine Integration Kit (BEIK) as an in-process alternative to our existing (and still supported) bm_driver module.</li>
@@ -360,7 +360,7 @@
 <ul>
 <li>Fixed ticket #3916: clustered data replication could try to send too much data at once</li>
 <li>Fixed ticket #3929: potential fault with goodmail, dk, dkim modules when processing headers that have non-standard whitespace around the field name.</li>
-<li>Feature ticket #3930: custom_logger: Add %d, %S and %T{N} formats to enable custom logs closer to mainlog format</li>
+<li>{`Feature ticket #3930: custom_logger: Add %d, %S and %T{N} formats to enable custom logs closer to mainlog format`}</li>
 <li>Fixed ticket #3940: Control listener does not support asynchronous authentication methods</li>
 <li>Fixed ticket #3943: ds_ldap module could crash on first use if it fails to initialize the connection cache</li>
 <li>Fixed ticket #3947: registering the core_config_get_message_routing_domain hook or core_config_get_message_gateway_into_buffer hook from perl would lead to using uninitialized memory in the perl interpreter</li>
@@ -712,7 +712,7 @@
 <li>Feature ticket #2969: ec_sendmail: Accept -oem option, handle -oi as -i</li>
 <li>Fixed ticket #2973: Trace file does not include timed events</li>
 <li>Fixed ticket #2958: Complex, invalid MIME messages could trigger &quot;Assertion write_to &gt; seek_to failed&quot;.  Improved tolerance for bad MIME and transiently reject messages that would otherwise have caused that assert.</li>
-<li>Fixed ticket #2981: Support OpenLDAP&#39;s {CLEARTEXT} password scheme</li>
+<li>{`Fixed ticket #2981: Support OpenLDAP&#39;s {CLEARTEXT} password scheme`}</li>
 <li>Fixed ticket #2986: We now return the first rejection note for multi-recipient messages rejected in the data phase, rather than a generic 553</li>
 <li>Fixed ticket #2994: SNMP community setting didn&#39;t work</li>
 <li>Fixed ticket #3003: Missing_Headers = allow did not accept messages with partial headers</li>
@@ -1153,7 +1153,7 @@
 <li>Fixed ticket #1983: Calculate next_attempt and num_retries from creation_time</li>
 <li>Feature ticket #1996: showqueue command improvements</li>
 <li>Fixed ticket #2010: Renamed omniti_tools to policy_tools</li>
-<li>Fixed ticket #2089: spf %{p} macro crashes string interpolation in sieve</li>
+<li>{`Fixed ticket #2089: spf %{p} macro crashes string interpolation in sieve`}</li>
 <li>Fixed ticket #2090: spurious warning on webconsole summary page on fresh install.</li>
 <li>Fixed ticket #2093: crash when using :raw to test a large message that has a part with no headers</li>
 <li>Fixed ticket #2094: sieve_get_email_message() abort</li>
@@ -1625,7 +1625,7 @@
 <li>Fixed ticket #1060: eccmgr crash in eccmgr_log_feedmgr()</li>
 <li>Fixed ticket #1063: print multiline header in custom_logger</li>
 <li>Feature ticket #1064: Support auto-conversion of transient failure to permanent failure</li>
-<li>Fixed ticket #1066: fixed segfault with custom_logger header if the header is omitted or a single character (%h{} or %h{X}).</li>
+<li>{`Fixed ticket #1066: fixed segfault with custom_logger header if the header is omitted or a single character (%h{} or %h{X}).`}</li>
 <li>Fixed ticket #1072: cloudmark config updates for 1.5 SDK</li>
 <li>Fixed ticket #1078: fixed the problem that else block always gets executed when if block is empty</li>
 <li>Feature ticket #1079: implement ec_rand() sieve action</li>
@@ -1682,7 +1682,7 @@
 <ul>
 <li>Fixed ticket #534: automatic Message-ID: header generation on Windows platforms was not rfc2822 compliant.</li>
 <li>Fixed ticket #535: Possible to wrap message id&#39;s in ecmm</li>
-<li>Fixed ticket #539: %{d} and %{s} failed to expand for domainkeys key file paths on FreeBSD.</li>
+<li>{`Fixed ticket #539: %{d} and %{s} failed to expand for domainkeys key file paths on FreeBSD.`}</li>
 <li>Fixed ticket #54: upgrade PCRE to 6.5</li>
 <li>Fixed ticket #518: Esmtp_Listener=(*.25) causes segv. Changed IPv6 address format in config file and console from &lt;hex&gt;:&lt;hex&gt;::&lt;hex&gt;.&lt;port&gt; to [&lt;hex&gt;:&lt;hex&gt;::&lt;hex&gt;]:port. Brackets are now required.</li>
 <li>Fixed ticket #185: DNS server outage causes segv.</li>
@@ -1765,7 +1765,7 @@
 <li>Fixed ticket #352: Fixed memory leaks in message failure when Generate_Bounces=false</li>
 <li>Fixed ticket #354: Fixed writing of initialized data in ec_logger.</li>
 <li>Fixed ticket #355: Fixed occasional crash bug.</li>
-<li>Feature ticket #360: Added proto={ipv4,ipv6} as a listener attribute to limit &quot;*:&lt;port&gt;&quot; listener specifications to a single address family.</li>
+<li>{`Feature ticket #360: Added proto={ipv4,ipv6} as a listener attribute to limit &quot;*:&lt;port&gt;&quot; listener specifications to a single address family.`}</li>
 <li>Fixed ticket #361: Allow / as a regex delimiter for the regex_binding2 module.</li>
 <li>Fixed ticket #363: Fixed delivery to maildir when rcpt to lists are expanded to meet maildir and non-maildir targets.</li>
 <li>Feature ticket #365: Integrated inbound batch limit size support.</li>
@@ -1794,7 +1794,7 @@
 <li>Fixed ticket #277: Extension_Dir not respected.  Fixed.</li>
 <li>Fixed ticket #278: On startup, if reading the spool directory entries alone exceeded 60 seconds, the monitor would terminate and restart the instance.  Fixed.</li>
 <li>Fixed ticket #284: fixed pinterp crash bug related to incorrect perl stack manipulation.</li>
-<li>Fixed ticket #286: config_get_binding_domain_outbound_{conn,mess}_throttle hooks were not firing.  Fixed.</li>
+<li>{`Fixed ticket #286: config_get_binding_domain_outbound_{conn,mess}_throttle hooks were not firing.  Fixed.`}</li>
 <li>Fixed ticket #288: Separated antivirus modules into Ecelerity-antivirus RPM on Linux.</li>
 <li>Fixed ticket #289: Augmented Ecelerity headers for safe C++ inclusion.</li>
 <li>Fixed ticket #292: Document how to access the message_construct structure from the accept_construct in esmtp_factory.h</li>
@@ -1954,7 +1954,7 @@
 <ul>
 <li>PET 44 was missing configuration support.  It exists in this release.</li>
 <li>Stack trace support on FreeBSD.</li>
-<li>[BI] Insertion of Message-ID if needed. RFC2822 { MessageID_Header = ignore }</li>
+<li>{`[BI] Insertion of Message-ID if needed. RFC2822 { MessageID_Header = ignore }`}</li>
 </ul>
 <h2><a name="1.2.3">Ecelerity version 1.2.3 released on 2004-10.05</a></h2>
 <ul>
@@ -1967,7 +1967,7 @@
 <li>Addition of the MDN_Failures_Notify global option to allow delvery of errors on message with null envelope senders to an alternate email address.</li>
 <li>BUG FIX: [PET 43] Fixes crash bug related to a given MXs being used by more than 20479 domains.</li>
 <li>Increased connection reuse aggression across domains sharing MXs.</li>
-<li>FEATURE REQUEST: [PET 44] Individual MXs can have max_outbound_connections set via: Host mail-in.freeserve.com { Max_Outbound_Connections = 5 }</li>
+<li>{`FEATURE REQUEST: [PET 44] Individual MXs can have max_outbound_connections set via: Host mail-in.freeserve.com { Max_Outbound_Connections = 5 }`}</li>
 <li>Fixes for Sparcv9 (and sparcv8plus)</li>
 <li>Fixes for Opteron x86_64</li>
 <li>Expose configuration APIs though Java.</li>

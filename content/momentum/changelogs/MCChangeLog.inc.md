@@ -426,7 +426,7 @@
 <li>Fixed ticket #bz1596: Unique key check is not enforced in the importer for profile fields</li>
 <li>Fixed ticket #bz1590: Trailing space in email address</li>
 <li>Fixed ticket #bz1599: Create/Edit Content: Error message on save when content contains more than one relational data field</li>
-<li>Fixed ticket #bz1632: Links with upper case anchor tags (<A></A>) are not tracked on link tracking page</li>
+<li>Fixed ticket #bz1632: Links with upper case anchor tags (&lt;A>&lt;/A>) are not tracked on link tracking page</li>
 <li>Fixed ticket #bz1638: Difficult to assign and unassign recipients to mailings in IE 8 on Windows for some users some of the time.</li>
 <li>Fixed ticket #bz1645: Content with pdf attachment display the contents of the attached file in the TEXT view</li>
 <li>Fixed ticket #bz1648: Emailaddress does not appear in the personalization menu in content editor</li>
@@ -448,6 +448,9 @@
 <li>Fixed ticket #bz2157: High volumes of mailings result in slow UI response</li>
 <li>Fixed ticket #bz2169: Report Viewer role can export reports in Domain Stats and Bounce Details</li>
 </ul>
+
+
+
 
 <h2><a name="2.1.7">MC 2.1.7 released on 2010-06-23</a></h2>
 <ul>
