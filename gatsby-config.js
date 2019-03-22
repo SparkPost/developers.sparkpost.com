@@ -1,7 +1,6 @@
 'use strict'
 
 const { flatten } = require('lodash')
-const queries = require('./algolia-queries.js')
 const proxy = require('http-proxy-middleware')
 
 // Environment variables prefixed by "GATSBY" are accessible in src/ files
@@ -48,7 +47,10 @@ module.exports = {
         options: {
           appId: 'SFXAWCYDV8',
           apiKey: process.env.ALGOLIA_TOKEN,
-          queries
+          queries: [
+            require('./algolia/apiReference'),
+            require('./algolia/momentum')
+          ]
         }
       }
     ] : [],
@@ -84,6 +86,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
     {
@@ -94,6 +97,12 @@ module.exports = {
           // suggested by https://www.netlify.com/blog/2018/06/28/5-pro-tips-and-plugins-for-optimizing-your-gatsby---netlify-site/
           "/sw.js": [ "Cache-Control: no-cache" ]
         },
+      }
+    },
+    {
+      resolve: `gatsby-mdx`,
+      options: {
+        extensions: [".mdx", ".md"]
       }
     }
   ])

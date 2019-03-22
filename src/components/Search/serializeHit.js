@@ -11,6 +11,14 @@ export default function serializeHit(hit) {
     }
   }
 
+  if (hit.momentum === true) {
+    return {
+      to: hit.objectID,
+      title: hit.sectionName,
+      category: 'Momentum',
+    }
+  }
+
   return serializeApiReference(hit)
 }
 

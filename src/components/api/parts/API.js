@@ -23,7 +23,7 @@ export default function API({ api }) {
     <Debug title="API">
       <DataStructureContext.Provider value={dataStructuresObject}>
         {title && (
-          <Heading level={1} id={plainSlugify(title)}>
+          <Heading className="block" level={1} id={plainSlugify(title)}>
             {title}
           </Heading>
         )}

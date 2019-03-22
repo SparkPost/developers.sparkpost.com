@@ -61,9 +61,9 @@ const Category = styled.div`
   font-weight: ${weight('normal')};
 `
 
-const DocsSearch = () => {
+const DocsSearch = ({ index, placeholder = '' }) => {
   return (
-    <Search indexes={['api_reference']}>
+    <Search indexes={[index]}>
       {({
         getInputProps,
         getMenuProps,
@@ -75,7 +75,7 @@ const DocsSearch = () => {
         <div>
           <SearchInput
             {...getInputProps({
-              placeholder: 'Search API reference',
+              placeholder: placeholder,
             })}
           />
           {isOpen &&

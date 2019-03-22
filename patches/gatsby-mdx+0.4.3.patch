@@ -1,0 +1,27 @@
+diff --git a/node_modules/gatsby-mdx/mdx-renderer.js b/node_modules/gatsby-mdx/mdx-renderer.js
+index 359c464..4634582 100644
+--- a/node_modules/gatsby-mdx/mdx-renderer.js
++++ b/node_modules/gatsby-mdx/mdx-renderer.js
+@@ -8,6 +8,7 @@ module.exports = withMDXScope(
+     if (!children) {
+       return null;
+     }
++
+     const fullScope = {
+       // React and MDXTag are here just in case the user doesn't pass them in
+       // in a manual usage of the renderer
+diff --git a/node_modules/gatsby-mdx/utils/gen-mdx.js b/node_modules/gatsby-mdx/utils/gen-mdx.js
+index 06c0e56..c602820 100644
+--- a/node_modules/gatsby-mdx/utils/gen-mdx.js
++++ b/node_modules/gatsby-mdx/utils/gen-mdx.js
+@@ -135,8 +135,8 @@ module.exports = async function genMDX({
+   results.scopeIdentifiers = identifiers;
+   // TODO: be more sophisticated about these replacements
+   results.body = result.code
+-    .replace("export { MDXContent as default };", "return MDXContent;")
+-    .replace(/\nexport /g, "\n");
++    .replace(/export\s*{\s*MDXContent\s+as\s+default\s*};?/, "return MDXContent;")
++    .replace(/\nexport\s/g, "\n");
+ 
+   /* results.html = renderToStaticMarkup(
+    *   React.createElement(MDXRenderer, null, results.body)
