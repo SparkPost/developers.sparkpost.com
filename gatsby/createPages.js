@@ -72,7 +72,13 @@ async function createMomentumDocs({ actions, graphql }) {
 
   edges.forEach(({ node: { id, fields: { path, file } } }) => {
     createRedirect({
-        fromPath: `/momentum/${file}`,
+      fromPath: `/momentum/${path.replace(/\/$/, '.md')}`,
+      toPath: path
+    })
+
+    if (file === 'index.md')
+      createRedirect({
+        fromPath: `/momentum/${path}index`,
         toPath: path
       })
 

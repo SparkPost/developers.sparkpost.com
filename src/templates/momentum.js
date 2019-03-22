@@ -58,6 +58,9 @@ let components = {
       <EmptyHeader />
     )
   },
+  a({ href, ...props }) {
+    return <a href={href.startsWith('/') ? href : `../${href}`} {...props} />
+  },
 }
 
 export default class MomentumTemplate extends Component {
@@ -102,13 +105,7 @@ export default class MomentumTemplate extends Component {
         <Content>
           <Wrapper>
             <MDXProvider components={components}>
-              {'' /*the replace is a temp fix for gatsby-mdx*/}
-              <MDXRenderer>
-                {mdx.code.body.replace(
-                  /export\s{\s*MDXContent\s*as\s*default\s*};?/,
-                  'return MDXContent;'
-                )}
-              </MDXRenderer>
+              <MDXRenderer>{mdx.code.body}</MDXRenderer>
             </MDXProvider>
           </Wrapper>
         </Content>
