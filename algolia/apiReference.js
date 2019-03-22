@@ -8,7 +8,7 @@ const slugify = require('../src/utils/api/slugify')
 const { flatten } = require('lodash')
 const parseResult = require('minim-parse-result')
 const minim = require('minim').namespace().use(parseResult)
-const files = flatten(require(`${__dirname}/content/api/table-of-contents.json`).map(({ pages }) => pages))
+const files = flatten(require(`${__dirname}/../content/api/table-of-contents.json`).map(({ pages }) => pages))
 
 module.exports = {
   indexName: `api_reference`,
