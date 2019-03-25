@@ -15,7 +15,7 @@
     "downshift": "^2.2.2",
     "escape-string-regexp": "^1.0.5",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.0.3",
+    "gatsby": "^2.2.11",
     "gatsby-plugin-google-tagmanager": "^2.0.5",
     "gatsby-plugin-lodash": "^3.0.1",
     "gatsby-plugin-netlify": "^2.0.0",
