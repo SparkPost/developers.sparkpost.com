@@ -14,7 +14,7 @@ description: Manage the sending IPs for your account and assign them to IP pools
     + ip_pool (string) - IP pool this sending IP is held in
     + customer_provided (boolean) - Whether this sending IP was provided by the customer
     + auto_warmup_enabled (boolean) - Whether this sending IP will use auto warmup
-    + auto_warmup_stage (number) - The sending IP's auto warmup stage between 1 and 20
+    + auto_warmup_stage (number) - The sending IP's auto warmup stage between 1 and 29
 + Sample
     
     ```
@@ -123,7 +123,7 @@ Updates which IP Pool holds the sending IP.
     {
         "errors": [
             {
-                "message": "auto_warmup_stage must be between 1 and 20"
+                "message": "auto_warmup_stage must be between 1 and 29"
             }
         ]
     }
