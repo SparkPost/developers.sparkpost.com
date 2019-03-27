@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 // import { MDXProvider } from '@mdx-js/tag'
 import { first } from 'lodash'
 import Heading from 'components/api/components/Heading'
+import Markdown from 'components/Markdown'
 import Layout from 'components/Layout'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import tableOfContents from '../../content/momentum/table-of-contents.json'
@@ -58,7 +59,7 @@ let components = {
       <EmptyHeader />
     )
   },
-  a({ href, ...props }) {
+  a({ href = '', ...props }) {
     return <a href={href.startsWith('/') ? href : `../${href}`} {...props} />
   },
 }
@@ -71,23 +72,6 @@ export default class MomentumTemplate extends Component {
       markdownRemark.headings.length > 0
         ? `${first(markdownRemark.headings).value} - Momentum`
         : 'Momentum'
-
-    // const decoratedTableOfContents = tableOfContents.map(category => {
-    // return {
-    // ...category,
-    // pages: category.pages.map(file => {
-    //   const pageNode = props.data.allApiBlueprint.edges.find(
-    //     ({ node }) => node.fields.file === file
-    //   ).node
-    //   return {
-    //     file,
-    //     title: pageNode.meta.title,
-    //     path: pageNode.fields.path,
-    //     label: pageNode.meta.label,
-    //   }
-    // }),
-    // }
-    // })
 
     return (
       <Layout {...props}>
@@ -104,10 +88,7 @@ export default class MomentumTemplate extends Component {
         </Sidebar>
         <Content>
           <Wrapper>
-            <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-            {/*             <MDXProvider components={components}> */}
-            {/*               <MDXRenderer>{markdownRemark.html}</MDXRenderer> */}
-            {/*             </MDXProvider> */}
+            <Markdown components={components}>{markdownRemark.rawMarkdownBody}</Markdown>
           </Wrapper>
         </Content>
       </Layout>
@@ -120,23 +101,10 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      rawMarkdownBody
       headings {
         value
       }
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query MDXQuery($id: String!) {
-//     mdx(id: { eq: $id }) {
-//       id
-//       headings {
-//         value
-//       }
-//       code {
-//         body
-//       }
-//     }
-//   }
-// `
