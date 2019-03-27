@@ -99,11 +99,12 @@ module.exports = {
         },
       }
     },
-    {
-      resolve: `gatsby-mdx`,
-      options: {
-        extensions: [".mdx", ".md"]
-      }
-    }
+    `gatsby-transformer-remark`,
+    // {
+    //   resolve: `gatsby-mdx`,
+    //   options: {
+    //     extensions: [".mdx", ".md"]
+    //   }
+    // }
   ])
 }

@@ -51,7 +51,7 @@ module.exports = async ({ node, actions, getNode }) => {
    /**
    * Add the path and file to momentum nodes
    */
-  if (node.internal.type === 'Mdx' && node.fileAbsolutePath.includes('momentum')) {
+  if (node.internal.type === 'MarkdownRemark' && node.fileAbsolutePath.includes('momentum')) {
     const filePath = last(dirname(node.fileAbsolutePath).split(`${sep}momentum`))
     const fileName = basename(node.fileAbsolutePath, '.md')
     const path = `/momentum${filePath}/${fileName === 'index' ? '' : `${fileName}/`}`.toLowerCase()

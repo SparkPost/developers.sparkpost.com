@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-mdx'
-import { MDXProvider } from '@mdx-js/tag'
+// import { MDXRenderer } from 'gatsby-mdx'
+// import { MDXProvider } from '@mdx-js/tag'
 import { first } from 'lodash'
 import Heading from 'components/api/components/Heading'
 import Layout from 'components/Layout'
@@ -66,10 +66,10 @@ let components = {
 export default class MomentumTemplate extends Component {
   render() {
     const { props } = this
-    const { mdx } = props.data
+    const { markdownRemark } = props.data
     const title =
-      mdx.headings.length > 0
-        ? `${first(mdx.headings).value} - Momentum`
+      markdownRemark.headings.length > 0
+        ? `${first(markdownRemark.headings).value} - Momentum`
         : 'Momentum'
 
     // const decoratedTableOfContents = tableOfContents.map(category => {
@@ -94,7 +94,7 @@ export default class MomentumTemplate extends Component {
         <Helmet
           title={title}
           meta={[
-            { name: 'description', content: mdx.excerpt },
+            { name: 'description', content: markdownRemark.excerpt },
             { name: 'robots', content: 'noindex' },
           ]}
         />
@@ -104,9 +104,10 @@ export default class MomentumTemplate extends Component {
         </Sidebar>
         <Content>
           <Wrapper>
-            <MDXProvider components={components}>
-              <MDXRenderer>{mdx.code.body}</MDXRenderer>
-            </MDXProvider>
+            <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+            {/*             <MDXProvider components={components}> */}
+            {/*               <MDXRenderer>{markdownRemark.html}</MDXRenderer> */}
+            {/*             </MDXProvider> */}
           </Wrapper>
         </Content>
       </Layout>
@@ -115,15 +116,27 @@ export default class MomentumTemplate extends Component {
 }
 
 export const pageQuery = graphql`
-  query MDXQuery($id: String!) {
-    mdx(id: { eq: $id }) {
+  query markdownRemarkQuery($id: String!) {
+    markdownRemark(id: { eq: $id }) {
       id
+      html
       headings {
         value
-      }
-      code {
-        body
       }
     }
   }
 `
+
+// export const pageQuery = graphql`
+//   query MDXQuery($id: String!) {
+//     mdx(id: { eq: $id }) {
+//       id
+//       headings {
+//         value
+//       }
+//       code {
+//         body
+//       }
+//     }
+//   }
+// `

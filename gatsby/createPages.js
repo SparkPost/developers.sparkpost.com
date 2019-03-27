@@ -55,14 +55,17 @@ async function createApiReference({ actions, graphql }) {
 async function createMomentumDocs({ actions, graphql }) {
   const { createPage, createRedirect } = actions
 
-  const { data: { allMdx: { edges} } }  = await graphql(`
+  const { data: { allMarkdownRemark: { edges } } }  = await graphql(`
     {
-      allMdx(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
+      allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
         edges {
           node {
             id
             fields {
               path
+              file {
+                base
+              }
             }
           }
         }
@@ -70,13 +73,13 @@ async function createMomentumDocs({ actions, graphql }) {
     }
   `)
 
-  edges.forEach(({ node: { id, fields: { path, file } } }) => {
+  edges.forEach(({ node: { id, fields: { path, file: { base } } } }) => {
     createRedirect({
       fromPath: `/momentum/${path.replace(/\/$/, '.md')}`,
       toPath: path
     })
 
-    if (file === 'index.md')
+    if (base === 'index.md')
       createRedirect({
         fromPath: `/momentum/${path}index`,
         toPath: path
