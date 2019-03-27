@@ -4,7 +4,7 @@ const slugify = require('../src/utils/api/slugify')
 module.exports = {
   indexName: `momentum`,
   query: `{
-    allMmrkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
       edges {
         node {
           fields {
@@ -20,7 +20,7 @@ module.exports = {
     }
   }`,
   transformer(results) {
-    return flatten(results.data.allMmrkdownRemark.edges.map(({ node: { fields: { path }, headings, rawMarkdownBody } }) => {
+    return flatten(results.data.allMarkdownRemark.edges.map(({ node: { fields: { path }, headings, rawMarkdownBody } }) => {
       const chunks = headings.map(({ value, depth}) => {
         const pattern = new RegExp(`(?:\\n|^)${repeat('#', depth)} ?${escapeRegExp(value)}\\n`)
         // grab content from this header to the next
