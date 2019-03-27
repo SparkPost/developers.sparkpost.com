@@ -4,7 +4,7 @@ const slugify = require('../src/utils/api/slugify')
 module.exports = {
   indexName: `momentum`,
   query: `{
-    allMdx(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
+    allMmrkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum/"}}) {
       edges {
         node {
           fields {
@@ -14,17 +14,17 @@ module.exports = {
             value
             depth
           }
-          rawBody
+          rawMarkdownBody
         }
       }
     }
   }`,
   transformer(results) {
-    return flatten(results.data.allMdx.edges.map(({ node: { fields: { path }, headings, rawBody } }) => {
+    return flatten(results.data.allMmrkdownRemark.edges.map(({ node: { fields: { path }, headings, rawMarkdownBody } }) => {
       const chunks = headings.map(({ value, depth}) => {
         const pattern = new RegExp(`(?:\\n|^)${repeat('#', depth)} ?${escapeRegExp(value)}\\n`)
         // grab content from this header to the next
-        const description = first(last(rawBody.split(pattern)).split(/\n#/)).trim()
+        const description = first(last(rawMarkdownBody.split(pattern)).split(/\n#/)).trim()
 
         return {
           sectionName: value,
