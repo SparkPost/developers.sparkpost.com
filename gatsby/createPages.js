@@ -12,7 +12,7 @@ const apiTableOfContents = flatten(require(`../content/api/table-of-contents.jso
 
 module.exports = async (data) => {
   await createApiReference(data)
-  await createMomentumDocs(data)
+  // await createMomentumDocs(data)
 }
 
 
