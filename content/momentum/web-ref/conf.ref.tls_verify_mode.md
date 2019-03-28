@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_verify)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.trace_smtp_mode.php) |
 
 <a name="conf.ref.tls_verify_mode"></a>
@@ -31,5 +33,7 @@ By default, this option is not specified.
 
 `tls_verify_mode` is valid in the listener, listen, peer and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_verify)  | [Up](conf.ref.files.php) |  [Next](conf.ref.trace_smtp_mode.php) |
 | tls_verify  | [Table of Contents](index) |  trace_smtp_mode |

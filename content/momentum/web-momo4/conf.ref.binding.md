@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bind_address)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.binding_auto_replumb) |
 
 <a name="conf.ref.binding"></a>
@@ -91,6 +93,8 @@ For a complete list of options valid in the binding scope, refer to [Chapter 66
 
 [binding_group](conf.ref.binding_group "binding_group"), [domain](conf.ref.domain "domain"), [host](conf.ref.host "host")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bind_address)  | [Up](config.options.ref) |  [Next](conf.ref.binding_auto_replumb) |
 | bind_address  | [Table of Contents](index) |  binding_auto_replumb |
 

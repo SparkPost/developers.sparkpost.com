@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_header3)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_insertBefore.php) |
 
 <a name="lua.ref.msgpart_insertAfter"></a>
@@ -22,5 +24,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msgpart:insertBefore](lua.ref.msgpart_insertBefore "msgpart:insertBefore")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_header3)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_insertBefore.php) |
 | msgpart:header  | [Table of Contents](index) |  msgpart:insertBefore |

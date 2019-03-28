@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf)  | Chapter 2. Configuration |  [Next](conf.aaa.php) |
 
 ## 2.1. The `ecelerity.conf` File
@@ -311,5 +313,7 @@ The syntax for datasource stanzas is discussed in [Section 14.30, “ds_core �
 
 You can make changes to the ecdb datasource or the auth_ds module through the web console.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf)  | [Up](conf.php) |  [Next](conf.aaa.php) |
 | Chapter 2. Configuration  | [Table of Contents](index) |  2.2. Authentication, Authorization and Accounting |

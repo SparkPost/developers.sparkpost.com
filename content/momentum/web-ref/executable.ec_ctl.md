@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_console)  | 11.2. Executable Commands |  [Next](executable.ec_dkim_ctl.php) |
 
 <a name="executable.ec_ctl"></a>
@@ -29,5 +31,7 @@ The `CONFFILE` and the `CONTROL` variables also have a bearing on **ec_ctl**. Fo
 
 [ecelerity](executable.ecelerity "ecelerity")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_console)  | [Up](exe.commands.details.php) |  [Next](executable.ec_dkim_ctl.php) |
 | ec_console  | [Table of Contents](index) |  ec_dkim_ctl |

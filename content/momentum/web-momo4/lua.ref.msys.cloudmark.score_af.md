@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.score)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cloudmark.set_af_mode_discard) |
 
 <a name="lua.ref.msys.cloudmark.score_af"></a>
@@ -36,7 +38,7 @@ local mod = {};
 function mod:init()
 
   msys.cloudmark.set_af_mode_movemsg("Inbox", "Spam", "no");
-  msys.cloudmark.set_af_msi_address("msi@msi.local"); 
+  msys.cloudmark.set_af_msi_address("msi@msi.local");
 
   return 0;
 end
@@ -57,6 +59,8 @@ msys.registerModule("af_test", mod);
 
 [msys.cloudmark.score_af](lua.ref.msys.cloudmark.score_af "msys.cloudmark.score_af"), [msys.cloudmark.add_af_data](lua.ref.msys.cloudmark.add_af_data "msys.cloudmark.add_af_data"), [msys.cloudmark.set_af_mode_discard](lua.ref.msys.cloudmark.set_af_mode_discard "msys.cloudmark.set_af_mode_discard"), [msys.cloudmark.set_af_mode_keep](lua.ref.msys.cloudmark.set_af_mode_keep "msys.cloudmark.set_af_mode_keep"), [msys.cloudmark.set_af_mode_movemsg](lua.ref.msys.cloudmark.set_af_mode_movemsg "msys.cloudmark.set_af_mode_movemsg"), [msys.cloudmark.set_af_msi_address](lua.ref.msys.cloudmark.set_af_msi_address "msys.cloudmark.set_af_msi_address"), [msys.cloudmark.analyze](lua.ref.msys.cloudmark.analyze "msys.cloudmark.analyze"), [msys.cloudmark.score](lua.ref.msys.cloudmark.score "msys.cloudmark.score"), [Section 71.18, “cloudmark – Cloudmark Authority® Content Scanning”](modules.cloudmark "71.18. cloudmark – Cloudmark Authority® Content Scanning")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.score)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cloudmark.set_af_mode_discard) |
 | msys.cloudmark.score  | [Table of Contents](index) |  msys.cloudmark.set_af_mode_discard |
 

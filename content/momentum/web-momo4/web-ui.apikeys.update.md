@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.create)  | Chapter 44. Managing Your API Keys |  [Next](web-ui.apikeys.delete) |
 
 ## 44.3. Updating an API Key
@@ -20,6 +22,8 @@ Make your changes in the Edit API Key form, as shown in [Figure 44.5, “Edit A
 
 If the API key successfully updates, a message will display upon return to the Settings section. Click the x to close the message.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.create)  | [Up](web-ui.apikeys) |  [Next](web-ui.apikeys.delete) |
 | 44.2. Creating an API Key  | [Table of Contents](index) |  44.4. Deleting an API Key |
 

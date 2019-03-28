@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_set_binding)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_shared_throttle) |
 
 <a name="sieve.ref.ec_set_routing_gateway"></a>
@@ -41,5 +43,8 @@ The sievelib module must be loaded explicitly in your configuration for correct 
 
 [gateway](conf.ref.gateway "gateway"), [routes](conf.ref.routes "routes")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_set_binding)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_shared_throttle) |
 | ec_set_binding  | [Table of Contents](index) |  ec_shared_throttle |

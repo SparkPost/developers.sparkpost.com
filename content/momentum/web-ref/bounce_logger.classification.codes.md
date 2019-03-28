@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.version_3)  | Appendix E. Log Formats |  [Next](log_formats.connection.stages) |
 
 ## E.2. Bounce Classification Codes
@@ -31,5 +33,7 @@ The bounce classification codes are identical for all versions of Momentum. Find
 | 90 | The message is an unsubscribe request. (Unsubscribe) |
 | 100 | The message is a challenge-response probe. (Challenge-Response) |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.version_3)  | [Up](log_formats) |  [Next](log_formats.connection.stages) |
 | E.1. Log Formats for Version 3.x  | [Table of Contents](index) |  E.3. Connection Stages |

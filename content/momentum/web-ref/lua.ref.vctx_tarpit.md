@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set_code)  | 15.2. Lua Functions |  [Next](lua.ref.xml.doc_root.php) |
 
 <a name="lua.ref.vctx_tarpit"></a>
@@ -34,5 +36,7 @@ msys.registerModule("validate_connect", mod);
 
 Enable this function with the statement `require('msys.extended.vctx');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set_code)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.doc_root.php) |
 | vctx:set_code  | [Table of Contents](index) |  doc:root |

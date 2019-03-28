@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.debug_flags)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.default_charset) |
 
 <a name="conf.ref.default_binding"></a>
@@ -34,6 +36,8 @@ If you are using MultiVIP© interfaces, you may want to use one of the following
 
 [suspend_delivery](conf.ref.suspend_delivery "suspend_delivery"), [binding](conf.ref.binding "binding"), and [the section called “`default` Binding”](conf.ref.binding#conf.ref.binding.default "default Binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.debug_flags)  | [Up](config.options.ref) |  [Next](conf.ref.default_charset) |
 | debug_flags  | [Table of Contents](index) |  default_charset |
 

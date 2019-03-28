@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.dns_get_domain)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.core.mail_queue_delay_domain) |
 
 <a name="lua.ref.msys.core.get_now_ts"></a>
@@ -19,6 +21,8 @@ The value returned is the epoch time in UTC measured in seconds.
 
 Because this function is in the msys.core namespace, an explicit `require('msys.core')` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.dns_get_domain)  | [Up](lua.function.details) |  [Next](lua.ref.msys.core.mail_queue_delay_domain) |
 | msys.core.dns_get_domain  | [Table of Contents](index) |  msys.core.mail_queue_delay_domain |
 

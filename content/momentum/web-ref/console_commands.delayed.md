@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.counter)  | 12.2. System Console Commands |  [Next](console_commands.dig.php) |
 
 <a name="console_commands.delayed"></a>
@@ -60,5 +62,7 @@ total messages sent during the life of the domain record
 
 The row detailing the totals represents the totals across *all* domains, not just those listed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.counter)  | [Up](console.commands.non-module.php) |  [Next](console_commands.dig.php) |
 | counter  | [Table of Contents](index) |  dig |

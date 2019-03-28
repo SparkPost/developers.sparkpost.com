@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary_reset)  | 12.2. System Console Commands |  [Next](console_commands.threads.php) |
 
 <a name="console_commands.sysinfo"></a>
@@ -47,5 +49,7 @@ SUSE Linux Enterprise Server 10 (x86_64)
 Linux sel10bare 2.6.16.21-0.8-default #1 Mon Jul 3 18:25:39 UTC 2006 x86_64
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary_reset)  | [Up](console.commands.non-module.php) |  [Next](console_commands.threads.php) |
 | summary reset  | [Table of Contents](index) |  threads |

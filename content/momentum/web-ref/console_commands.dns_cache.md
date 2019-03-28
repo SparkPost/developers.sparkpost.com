@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.dig)  | 12.2. System Console Commands |  [Next](console_commands.domain.php) |
 
 <a name="console_commands.dns_cache"></a>
@@ -74,5 +76,7 @@ DNS cache:
 
 These console commands manipulate the *DNS cache* . The [dig](console_commands.dig "dig"), [refresh domain](console_commands.refresh_domain.php "refresh domain") and [domain](console_commands.domain.php "domain") commands manipulate the *route cache* .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.dig)  | [Up](console.commands.non-module.php) |  [Next](console_commands.domain.php) |
 | dig  | [Table of Contents](index) |  domain |

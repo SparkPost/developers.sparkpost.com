@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text_match)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_addFirstChild) |
 
 <a name="lua.ref.msg_text_replace"></a>
@@ -21,6 +23,8 @@ Streaming interface to a PCRE replacement of textual content from the message bo
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text_match)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_addFirstChild) |
 | msg:text_match  | [Table of Contents](index) |  msgpart:addFirstChild |
 

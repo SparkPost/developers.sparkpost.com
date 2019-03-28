@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](adaptive.log.format)  | Chapter 35. Log Formats |  [Next](log_formats.fbllog) |
 
 ## 35.3. `bouncelog`
@@ -61,6 +63,8 @@ The following is a description of the fields:
 
 Having three unused fields ensures that, like other logs, the fifth field is the log entry type. This makes parsing easier.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](adaptive.log.format)  | [Up](log_formats) |  [Next](log_formats.fbllog) |
 | 35.2. `adaptive` Log  | [Table of Contents](index) |  35.4. `fbllog` |
 

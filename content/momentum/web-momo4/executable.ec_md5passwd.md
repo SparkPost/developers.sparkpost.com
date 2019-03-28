@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_log_trace)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_rotate) |
 
 <a name="executable.ec_md5passwd"></a>
@@ -93,6 +95,8 @@ You do not need to restart the MTA after adding a new user.
 
 [DIGEST-MD5 Authentication](control_auth#control_auth.digest-md5 "17.2.1. DIGEST-MD5 Authentication")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_log_trace)  | [Up](exec.cmds.ref) |  [Next](executable.ec_rotate) |
 | ec_log_trace  | [Table of Contents](index) |  ec_rotate |
 

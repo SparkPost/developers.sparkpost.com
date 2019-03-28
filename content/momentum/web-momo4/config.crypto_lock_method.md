@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_engine)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.debug_flags) |
 
 <a name="config.crypto_lock_method"></a>
@@ -25,6 +27,8 @@ The default value for option is `EC_SSL_DEFAULTLOCK`.
 
 `crypto_lock_method` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_engine)  | [Up](config.options.ref) |  [Next](conf.ref.debug_flags) |
 | crypto_engine  | [Table of Contents](index) |  debug_flags |
 

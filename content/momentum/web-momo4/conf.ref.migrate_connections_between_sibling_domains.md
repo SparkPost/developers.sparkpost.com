@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.message_expiration)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.mime_parse_large_messages_during_reception) |
 
 <a name="conf.ref.migrate_connections_between_sibling_domains"></a>
@@ -23,6 +25,8 @@ The default value is `true`.
 
 `migrate_connections_between_sibling_domains` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.message_expiration)  | [Up](config.options.ref) |  [Next](conf.ref.mime_parse_large_messages_during_reception) |
 | message_expiration  | [Table of Contents](index) |  mime_parse_large_messages_during_reception |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounces_inline_original)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.chroot.php) |
 
 <a name="conf.ref.capabilities"></a>
@@ -80,5 +82,7 @@ We do not recommend that the user in a `Security` stanza be set to `root`. Howev
 
 [chroot](conf.ref.chroot "chroot"), [user](conf.ref.user.php "user"), [supplemental_groups](conf.ref.supplemental_groups.php "supplemental_groups"), [user](conf.ref.user.php "user"), [ecelerity-cluster.conf](ecelerity-cluster.conf.php "ecelerity-cluster.conf")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounces_inline_original)  | [Up](conf.ref.files.php) |  [Next](conf.ref.chroot.php) |
 | bounces_inline_original  | [Table of Contents](index) |  chroot |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spoolbase)  | Chapter 72. Configuration Options Reference |  [Next](config.starttls_injection_policy) |
 
 <a name="config.ssl_lock_method"></a>
@@ -31,6 +33,8 @@ The default value for this option is `mutex`.
 
 `ssl_lock_method` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spoolbase)  | [Up](config.options.ref) |  [Next](config.starttls_injection_policy) |
 | spoolbase  | [Table of Contents](index) |  starttls_injection_policy |
 

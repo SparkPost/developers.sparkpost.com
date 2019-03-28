@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_build)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_forward) |
 
 <a name="lua.ref.msg_discard"></a>
@@ -27,6 +29,8 @@ When a reason is passed to this function, it must begin with an SMTP code, for e
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_build)  | [Up](lua.function.details) |  [Next](lua.ref.msg_forward) |
 | msg:build  | [Table of Contents](index) |  msg:forward |
 

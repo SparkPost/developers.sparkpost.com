@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.extensions)  | Chapter 19. Configuring Inbound Mail Service Using SMTP |  [Next](inbound_ssl) |
 
 ## 19.5. ESMTP_Listener Authentication
@@ -122,6 +124,8 @@ ESMTP_Listener {
 
 However, you still need to configure an account log logging module in order to record the accounting information. Set the `acctlog` option in an [ec_logger](modules.ec_logger "71.30. EC_logger – Momentum-Style Logging") module in your configuration. When log authentication is enabled, a line will be written to the `acctlog` file for every authorization event. Each command and its authorization status will be logged to the `acctlog`. If a command is allowed, the role that matched will be included in the log entry. For `acctlog` format, see [Section 35.1, “`acctlog`”](log_formats#log_formats.acctlog "35.1. acctlog").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.extensions)  | [Up](esmtp_listener) |  [Next](inbound_ssl) |
 | 19.4. SMTP Extensions  | [Table of Contents](index) |  19.6. Inbound SSL |
 

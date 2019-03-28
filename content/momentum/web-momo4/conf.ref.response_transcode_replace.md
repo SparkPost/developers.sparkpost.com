@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_pattern)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.retry_interval) |
 
 <a name="conf.ref.response_transcode_replace"></a>
@@ -41,6 +43,8 @@ This option is valid in the binding, binding_group, domain, and global scopes.
 
 [response_transcode_pattern](conf.ref.response_transcode_pattern "response_transcode_pattern")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_pattern)  | [Up](config.options.ref) |  [Next](conf.ref.retry_interval) |
 | response_transcode_pattern  | [Table of Contents](index) |  retry_interval |
 

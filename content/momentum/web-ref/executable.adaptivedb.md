@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.adaptive_loader)  | 11.2. Executable Commands |  [Next](executable.create_ssl_cert.php) |
 
 <a name="executable.adaptivedb"></a>
@@ -23,5 +25,7 @@ This command initializes the data store used by the adaptive module. You *must* 
 
 [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.adaptive_loader)  | [Up](exe.commands.details.php) |  [Next](executable.create_ssl_cert.php) |
 | adaptive_loader  | [Table of Contents](index) |  create_ssl_cert |

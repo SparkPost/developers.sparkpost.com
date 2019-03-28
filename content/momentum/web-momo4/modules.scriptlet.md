@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sched)  | Chapter 71. Modules Reference |  [Next](modules.securecreds) |
 
 ## 71.60. scriptlet - Lua Policy Scripts
@@ -117,6 +119,8 @@ Duration that the script is cached; the default timeout is 300 seconds. Increasi
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sched)  | [Up](modules) |  [Next](modules.securecreds) |
 | 71.59. sched – The Schedule Module  | [Table of Contents](index) |  71.61. securecreds – Password Encryption/Credential Retrieval |
 

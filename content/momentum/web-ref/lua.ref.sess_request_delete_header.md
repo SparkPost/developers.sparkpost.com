@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_add_header)  | 15.2. Lua Functions |  [Next](lua.ref.sess_request_finalize.php) |
 
 <a name="lua.ref.sess_request_delete_header"></a>
@@ -24,5 +26,7 @@ On success this function returns `1` and on failure `0`.
 
 [sess:request_finalize](lua.ref.sess_request_finalize "sess:request_finalize") and [sess:request_add_header](lua.ref.sess_request_add_header.php "sess:request_add_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_add_header)  | [Up](lua.function.details.php) |  [Next](lua.ref.sess_request_finalize.php) |
 | sess:request_add_header  | [Table of Contents](index) |  sess:request_finalize |

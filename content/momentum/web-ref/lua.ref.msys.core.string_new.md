@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.mail_queue_delay_domain)  | 15.2. Lua Functions |  [Next](lua.ref.msg_code.php) |
 
 <a name="lua.ref.msys.core.string_new"></a>
@@ -19,5 +21,7 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 For a code example see [Example 15.42, “msg:binding example”](lua.ref.msg_binding#lua.ref.msg_binding.example "Example 15.42. msg:binding example").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.mail_queue_delay_domain)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_code.php) |
 | msys.core.mail_queue_delay_domain  | [Table of Contents](index) |  msg:code |

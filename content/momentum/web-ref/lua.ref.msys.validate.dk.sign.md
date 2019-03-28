@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dk.get_responsible_domain)  | 15.2. Lua Functions |  [Next](lua.ref.msys.validate.dkim.get_domains.php) |
 
 <a name="lua.ref.msys.validate.dk.sign"></a>
@@ -39,5 +41,7 @@ Enable this function with the statement `require('msys.validate.dk');`.
 
 [msys.validate.dk.get_responsible_domain](lua.ref.msys.validate.dk.get_responsible_domain "msys.validate.dk.get_responsible_domain"), [Section 14.29, “domainkeys – Yahoo! DomainKeys”](modules.domainkeys.php "14.29. domainkeys – Yahoo! DomainKeys")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dk.get_responsible_domain)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.validate.dkim.get_domains.php) |
 | msys.validate.dk.get_responsible_domain  | [Table of Contents](index) |  msys.validate.dkim.get_domains |

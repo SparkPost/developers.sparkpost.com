@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set_code)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.xml.doc_root) |
 
 <a name="lua.ref.vctx_tarpit"></a>
@@ -34,6 +36,8 @@ end
 msys.registerModule("validate_connect", mod);
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set_code)  | [Up](lua.function.details) |  [Next](lua.ref.xml.doc_root) |
 | vctx:set_code  | [Table of Contents](index) |  doc:root |
 

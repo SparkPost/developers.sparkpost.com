@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan)  | 15.2. Lua Functions |  [Next](lua.ref.msys.base64.decode.php) |
 
 <a name="lua.ref.msys.av.scan_part"></a>
@@ -113,5 +115,7 @@ require("msys.av");
 
 [msys.av.scan](lua.ref.msys.av.scan "msys.av.scan"), [Section 14.17, “clamav – ClamAV”](modules.clamav.php "14.17. clamav – ClamAV"), [Section 14.22, “csapi – The Content Scanning API Module”](modules.csapi.php "14.22. csapi – The Content Scanning API Module"), [Section 14.5, “antivirus – Antivirus Modules”](modules.antivirus.php "14.5. antivirus – Antivirus Modules")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.base64.decode.php) |
 | msys.av.scan  | [Table of Contents](index) |  msys.base64.decode |

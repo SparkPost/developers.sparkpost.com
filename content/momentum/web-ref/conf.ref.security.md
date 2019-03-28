@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scope_max_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.send_8bitmime.php) |
 
 <a name="conf.ref.security"></a>
@@ -92,5 +94,7 @@ Changing the value of options in the security scope at runtime requires restarti
 
 [capabilities](conf.ref.capabilities "capabilities"), [privileges](conf.ref.privileges.php "privileges"), [chroot](conf.ref.chroot.php "chroot"), [supplemental_groups](conf.ref.supplemental_groups.php "supplemental_groups") and [user](conf.ref.user.php "user")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scope_max_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.send_8bitmime.php) |
 | scope_max_outbound_connections  | [Table of Contents](index) |  send_8bitmime |

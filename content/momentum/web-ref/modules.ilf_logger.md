@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.icu)  | Chapter 14. Modules Reference |  [Next](modules.imageanalyzer.php) |
 
 ## 14.39. ilf_logger Module
@@ -51,5 +53,7 @@ How often to write to file. The default value for this option is `60` seconds.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.icu)  | [Up](modules.php) |  [Next](modules.imageanalyzer.php) |
 | 14.38. icu – ICU  | [Table of Contents](index) |  14.40. imageanalyzer – Module |

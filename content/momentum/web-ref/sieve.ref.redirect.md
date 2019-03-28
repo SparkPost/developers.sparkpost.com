@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.qp_encode)  | 16.2. Sieve Function Details |  [Next](sieve.ref.reject) |
 
 <a name="sieve.ref.redirect"></a>
@@ -47,5 +49,8 @@ This is a terminal action; no further Sieve rules will be run for the current me
 
 For an overview of Sieve actions see [Section 8.2.2, “Actions”](sieve.syntax.basic#sieve.syntax.basic.actions "8.2.2. Actions").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.qp_encode)  | [Up](sieve.ref.files) |  [Next](sieve.ref.reject) |
 | qp_encode  | [Table of Contents](index) |  reject |

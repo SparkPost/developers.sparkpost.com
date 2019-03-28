@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.summary)  | Chapter 13. Modules |  [Next](module_specific_console_commands.using) |
 
 ## 13.3. Module-Specific Console Commands
@@ -44,5 +46,7 @@ In addition to the regular console commands there are also system console comman
 
 *   [Section 14.65.2, “sievelib Management Using Console Commands”](modules.sievelib#modules.sievelib.console "14.65.2. sievelib Management Using Console Commands")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.summary)  | [Up](modules.overview) |  [Next](module_specific_console_commands.using) |
 | 13.2. Summary Module Information  | [Table of Contents](index) |  13.4. Using Module-Specific Console Commands |

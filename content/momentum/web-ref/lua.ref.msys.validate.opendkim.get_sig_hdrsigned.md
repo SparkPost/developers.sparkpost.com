@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.opendkim.get_sig_flags)  | 15.2. Lua Functions |  [Next](lua.ref.msys.validate.opendkim.get_sig_identity.php) |
 
 <a name="lua.ref.msys.validate.opendkim.get_sig_hdrsigned"></a>
@@ -11,7 +13,7 @@ msys.validate.opendkim.get_sig_hdrsigned — Determine whether a given header wa
 `msys.validate.opendkim.get_sig_hdrsigned(dkim_sig, header_name)`
 
 ```
-dkim_sig: userdata, DKIM_SIGINFO type 
+dkim_sig: userdata, DKIM_SIGINFO type
 header_name: string
 ```
 <a name="idp27546384"></a>
@@ -60,5 +62,7 @@ Enable this function with the statement `require('msys.validate.opendkim');`.
 
 [msys.validate.opendkim.get_sig_canons](lua.ref.msys.validate.opendkim.get_sig_canons "msys.validate.opendkim.get_sig_canons"), [msys.validate.opendkim.sign](lua.ref.msys.validate.opendkim.sign.php "msys.validate.opendkim.sign"), [msys.validate.opendkim.verify](lua.ref.msys.validate.opendkim.verify.php "msys.validate.opendkim.verify"), [msys.validate.opendkim.get_num_sigs](lua.ref.msys.validate.opendkim.get_num_sigs.php "msys.validate.opendkim.get_num_sigs"), [msys.validate.opendkim.get_sig](lua.ref.msys.validate.opendkim.get_sig.php "msys.validate.opendkim.get_sig"), [msys.validate.opendkim.get_sig_domain](lua.ref.msys.validate.opendkim.get_sig_domain.php "msys.validate.opendkim.get_sig_domain"), [msys.validate.opendkim.get_sig_selector](lua.ref.msys.validate.opendkim.get_sig_selector.php "msys.validate.opendkim.get_sig_selector"), [msys.validate.opendkim.get_sig_errorstr](lua.ref.msys.validate.opendkim.get_sig_errorstr.php "msys.validate.opendkim.get_sig_errorstr"), [msys.validate.opendkim.get_sig_flags](lua.ref.msys.validate.opendkim.get_sig_flags.php "msys.validate.opendkim.get_sig_flags"), [msys.validate.opendkim.get_sig_identity](lua.ref.msys.validate.opendkim.get_sig_identity.php "msys.validate.opendkim.get_sig_identity"), [msys.validate.opendkim.get_sig_keysize](lua.ref.msys.validate.opendkim.get_sig_keysize.php "msys.validate.opendkim.get_sig_keysize"), [msys.validate.opendkim.get_sig_signalg](lua.ref.msys.validate.opendkim.get_sig_signalg.php "msys.validate.opendkim.get_sig_signalg"), [msys.validate.opendkim.get_sig_canons](lua.ref.msys.validate.opendkim.get_sig_canons.php "msys.validate.opendkim.get_sig_canons"), [Section 14.49, “opendkim – OpenDKIM module”](modules.opendkim.php "14.49. opendkim – OpenDKIM module") and [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim.php "14.27. dkim – DomainKeys Identified Mail Signatures")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.opendkim.get_sig_flags)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.validate.opendkim.get_sig_identity.php) |
 | msys.validate.opendkim.get_sig_flags  | [Table of Contents](index) |  msys.validate.opendkim.get_sig_identity |

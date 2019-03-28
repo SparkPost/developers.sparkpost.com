@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd)  | 11.2. Executable Commands |  [Next](executable.ecelerity.php) |
 
 <a name="executable.ecconfigd_ctl"></a>
@@ -23,5 +25,7 @@ If the `EXTRA_ARGS` environment variable is set, its contents will be passed as 
 
 [ecconfigd](executable.ecconfigd "ecconfigd"), [Section 2.1.5, “Environment Variables and Startup Scripts”](conf.ecelerity.conf.php#conf.environment_variables "2.1.5. Environment Variables and Startup Scripts")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd)  | [Up](exe.commands.details.php) |  [Next](executable.ecelerity.php) |
 | ecconfigd  | [Table of Contents](index) |  ecelerity |

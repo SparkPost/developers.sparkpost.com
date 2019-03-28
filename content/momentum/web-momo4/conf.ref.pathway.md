@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_messages)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.pathway_group) |
 
 <a name="conf.ref.pathway"></a>
@@ -43,7 +45,7 @@ pathway "example1" {
 ESMTP_Listener {
   listen ":25" {
     ...
-    **pathway = "example1"** 
+    **pathway = "example1"**
   }
 }
 ```
@@ -64,6 +66,8 @@ The pathway *option* references a pathway scope and is valid within an esmtp_lis
 
 [pathway_group](conf.ref.pathway_group "pathway_group")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_messages)  | [Up](config.options.ref) |  [Next](conf.ref.pathway_group) |
 | outbound_throttle_messages  | [Table of Contents](index) |  pathway_group |
 

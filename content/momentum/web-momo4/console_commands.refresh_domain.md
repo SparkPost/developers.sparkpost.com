@@ -18,6 +18,8 @@ This command takes a single argument in the form of a domain name and refreshes 
 
 This console command manipulates the *route cache* , and likewise with the [dig](console_commands.dig "dig") and [domain](console_commands.domain "domain") commands. The *DNS cache* , is manipulated by the [dns_cache](console_commands.dns_cache "dns_cache") series of console commands.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.rebind)  | [Up](console.cmds.ref) |  [Next](console_commands.reopen_logs) |
 | rebind  | [Table of Contents](index) |  reopen logs |
 

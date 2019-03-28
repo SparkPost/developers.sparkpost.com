@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.sleep)  | 15.2. Lua Functions |  [Next](lua.ref.msys.type.php) |
 
 <a name="lua.ref.msys.snmpTrap"></a>
@@ -36,5 +38,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [SNMP](conf.ref.snmp "SNMP")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.sleep)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.type.php) |
 | msys.sleep  | [Table of Contents](index) |  msys.type |

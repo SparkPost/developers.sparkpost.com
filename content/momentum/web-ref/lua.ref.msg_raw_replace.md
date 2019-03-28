@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_raw_match)  | 15.2. Lua Functions |  [Next](lua.ref.msg_rcptto.php) |
 
 <a name="lua.ref.msg_raw_replace"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:raw_match](lua.ref.msg_raw_match "msg:raw_match")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_raw_match)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_rcptto.php) |
 | msg:raw_match  | [Table of Contents](index) |  msg:rcptto |

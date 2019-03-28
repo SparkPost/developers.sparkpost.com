@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.host)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.hostname.php) |
 
 <a name="conf.ref.host_failure_retry"></a>
@@ -19,5 +21,7 @@ The amount of time in seconds to wait after a connect or protocol failure on a c
 
 host_failure_retry is valid in the domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.host)  | [Up](conf.ref.files.php) |  [Next](conf.ref.hostname.php) |
 | host  | [Table of Contents](index) |  hostname |

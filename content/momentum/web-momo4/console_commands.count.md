@@ -32,6 +32,8 @@ Displaying 'SMTP' from /32 to /32
       1                                 127.0.0.1/32
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.config)  | [Up](console.cmds.ref) |  [Next](console_commands.counter) |
 | config  | [Table of Contents](index) |  counter |
 

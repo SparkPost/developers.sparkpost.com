@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](smtp_injection)  | Part VI. SMTP Injection |  [Next](x-msys-api_header) |
 ## Chapter 41. Tracking Engagement for SMTP
 **Table of Contents**
@@ -18,5 +20,7 @@ When engagement tracking is enabled, you can also specify engagement data for th
 ### Note
 If you want to exclude metadata from click tracking, change the configuration option in the engagement_tracker module. See [Section 71.32, “engagement_tracker – HTTP Engagement Tracking”](modules.engage_tracker "71.32. engagement_tracker – HTTP Engagement Tracking").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](smtp_injection)  | [Up](p.smtp_injections) |  [Next](x-msys-api_header) |
 | Chapter 40. Adjusting your Client Mail Application  | [Table of Contents](index) |  41.2. Using the X-MSYS-API Header for Engagement Tracking |

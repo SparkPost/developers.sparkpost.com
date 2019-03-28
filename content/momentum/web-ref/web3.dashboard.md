@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.overview)  | Chapter 3. Using the Web Console |  [Next](web3.status) |
 
 ## 3.3. The Dashboard
@@ -112,5 +114,8 @@ You can view the details of any item in the queue by clicking the + button besid
 
 When viewing the message detail you can rebounce, purge or retry a specific message using the buttons on the upper left hand side. You can also do this for *all* the messages that appear in the queue.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.overview)  | [Up](web3) |  [Next](web3.status) |
 | 3.2. Web Console Overview  | [Table of Contents](index) |  3.4. Cluster Status |

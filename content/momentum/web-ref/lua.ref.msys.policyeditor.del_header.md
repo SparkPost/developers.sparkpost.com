@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.unlock)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.get_binding_domain_failure_rate.php) |
 
 <a name="lua.ref.msys.policyeditor.del_header"></a>
@@ -32,5 +34,7 @@ The defined parameter for `params` is: `header` the name of the header to delete
 
 [msys.policyeditor.get_header](lua.ref.msys.policyeditor.get_header "msys.policyeditor.get_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.unlock)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.get_binding_domain_failure_rate.php) |
 | msys.unlock  | [Table of Contents](index) |  msys.policyeditor.get_binding_domain_failure_rate |

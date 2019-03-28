@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_flush_domain)  | 12.2. System Console Commands |  [Next](console_commands.cache_list.php) |
 
 <a name="console_commands.binding_summary"></a>
@@ -183,5 +185,7 @@ The number of seconds that Momentum has been running continuously.
 
 If the name you provide is a binding group, then the output will show a listing of all the bindings that are part of that group, followed by a summary for the group.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_flush_domain)  | [Up](console.commands.non-module.php) |  [Next](console_commands.cache_list.php) |
 | binding flush domain  | [Table of Contents](index) |  cache list |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hooks.config_rsrc_setup)  | Chapter 69. Hook Points and C Functions Reference |  [Next](apis.ec_httpsrv_register_auth) |
 
 <a name="apis.ec_config_rsrc_get"></a>
@@ -71,6 +73,8 @@ This hook can be called in any thread.
 
 [config_rsrc_setup](hooks.config_rsrc_setup "config_rsrc_setup")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hooks.config_rsrc_setup)  | [Up](hooks) |  [Next](apis.ec_httpsrv_register_auth) |
 | config_rsrc_setup  | [Table of Contents](index) |  ec_httpsrv_register_auth |
 

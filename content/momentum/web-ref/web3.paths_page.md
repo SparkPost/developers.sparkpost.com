@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.reports)  | Chapter 3. Using the Web Console |  [Next](web3.administration) |
 
 ## 3.7. The Paths Page
@@ -24,5 +26,8 @@ Once the inbound_audit module is loaded, you can create audit series as describe
 
 The audit series that you select are displayed to the right of the IP address. To view the details for a specific IP address, click the IP address.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.reports)  | [Up](web3) |  [Next](web3.administration) |
 | 3.6. The Reporting Page  | [Table of Contents](index) |  3.8. Administration |

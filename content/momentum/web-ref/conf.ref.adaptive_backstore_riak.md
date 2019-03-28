@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_leveldb)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.adaptive_enabled.php) |
 
 <a name="conf.ref.adaptive_backstore_riak"></a>
@@ -35,5 +37,7 @@ The options in this scope replace the `backing_store_connect_timeout` and the `b
 
 [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery"), [adaptive_backstore_leveldb](conf.ref.adaptive_backstore_leveldb.php "adaptive_backstore_leveldb") and [Section 4.4.6.1, “Using an Adaptive Delivery Backing Store Other than Riak”](operations.riak.php#operations.riak.alternate "4.4.6.1. Using an Adaptive Delivery Backing Store Other than Riak")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_leveldb)  | [Up](conf.ref.files.php) |  [Next](conf.ref.adaptive_enabled.php) |
 | adaptive_backstore_leveldb  | [Table of Contents](index) |  adaptive_enabled |

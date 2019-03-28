@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.authorization)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.binding) |
 
 <a name="conf.ref.bind_address"></a>
@@ -40,6 +42,8 @@ bind_address is valid in the global, binding_group, and binding scopes.
 
 [binding](conf.ref.binding "binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.authorization)  | [Up](config.options.ref) |  [Next](conf.ref.binding) |
 | authorization  | [Table of Contents](index) |  binding |
 

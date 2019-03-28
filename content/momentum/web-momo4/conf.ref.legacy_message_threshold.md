@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.large_message_threshold)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.license) |
 
 <a name="conf.ref.legacy_message_threshold"></a>
@@ -32,6 +34,8 @@ legacy_message_threshold is valid in the global scope.
 
 [growbuf_size](conf.ref.growbuf_size "growbuf_size"), [large_message_threshold](conf.ref.large_message_threshold "large_message_threshold")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.large_message_threshold)  | [Up](config.options.ref) |  [Next](conf.ref.license) |
 | large_message_threshold  | [Table of Contents](index) |  license |
 

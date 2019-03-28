@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ecaddons)  |   |  [Next](conf.ref) |
 ## Part II. Command Reference
 **Table of Contents**
@@ -11,5 +13,7 @@
 * [15\. Lua Function Reference](lua)
 * [16\. Sieve++ Function Reference](sieve.ref3)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ecaddons)  |   |  [Next](conf.ref) |
 | 8.4. Sieve++, Momentum-specific extensions  | [Table of Contents](index) |  Chapter 9. Ecelerity.conf Configuration Reference |

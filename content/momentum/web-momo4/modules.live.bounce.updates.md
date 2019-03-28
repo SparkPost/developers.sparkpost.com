@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.jlog)  | Chapter 71. Modules Reference |  [Next](modules.mail_loop) |
 
 ## 71.44. Live Bounce Updates – Live Bounce Updates Service
@@ -39,6 +41,8 @@ This setting enables automatic updating of the adaptive rules using port `443`. 
 
 For information about the adaptive module, see [Section 71.3, “adaptive – Adaptive Delivery”](modules.adaptive "71.3. adaptive – Adaptive Delivery").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.jlog)  | [Up](modules) |  [Next](modules.mail_loop) |
 | 71.43. jlog – jlog-Formatted Logging  | [Table of Contents](index) |  71.45. mail_loop – Mail Loop Detection |
 

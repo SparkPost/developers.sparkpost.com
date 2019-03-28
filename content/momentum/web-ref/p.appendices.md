@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.vctx_mess_set)  |   |  [Next](faq) |
 ## Part III. Appendices
 **Table of Contents**
@@ -13,5 +15,7 @@
 * [I. Copyrights](copyrights)
 * [J. Acronyms](acronyms)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.vctx_mess_set)  |   |  [Next](faq) |
 | vctx_mess_set  | [Table of Contents](index) |  Appendix A. Frequently Asked Questions |

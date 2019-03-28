@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_add_recipient)  | 15.2. Lua Functions |  [Next](lua.ref.vctx_get.php) |
 
 <a name="lua.ref.vctx_disconnect"></a>
@@ -46,5 +48,7 @@ msys.registerModule("vctx_disconnect", mod);
 
 Because this function is in the `msys.core` namespace, an explicit `require('msys.core')` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_add_recipient)  | [Up](lua.function.details.php) |  [Next](lua.ref.vctx_get.php) |
 | vctx:add_recipient  | [Table of Contents](index) |  vctx:get |

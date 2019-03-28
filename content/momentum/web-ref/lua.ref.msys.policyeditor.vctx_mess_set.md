@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_variable)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.vctx_mess_get.php) |
 
 <a name="lua.ref.msys.policyeditor.vctx_mess_set"></a>
@@ -36,5 +38,7 @@ The defined parameters for `params` are:
 
 [msys.policyeditor.vctx_mess_get](lua.ref.msys.policyeditor.vctx_mess_get "msys.policyeditor.vctx_mess_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_variable)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.vctx_mess_get.php) |
 | msys.policyeditor.set_variable  | [Table of Contents](index) |  msys.policyeditor.vctx_mess_get |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats)  | Appendix E. Log Formats |  [Next](bounce_logger.classification.codes.php) |
 
 ## E.1. Log Formats for Version 3.x
@@ -356,5 +358,7 @@ Having three unused fields ensures that, like other logs, the fifth field is the
 
 The bounce classification codes are identical for all versions of Momentum. For a list of the codes and their meanings see [Section E.2, “Bounce Classification Codes”](bounce_logger.classification.codes "E.2. Bounce Classification Codes").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats)  | [Up](log_formats.php) |  [Next](bounce_logger.classification.codes.php) |
 | Appendix E. Log Formats  | [Table of Contents](index) |  E.2. Bounce Classification Codes |

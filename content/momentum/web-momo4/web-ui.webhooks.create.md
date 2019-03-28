@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks)  | Chapter 60. Managing Your Webhooks in the UI |  [Next](web-ui.webhooks.test) |
 
 ## 60.2. Creating a Webhook
@@ -34,6 +36,8 @@ On creation, a test POST is sent to the target URL for validation. If this reque
 
 If the test POST is successful, a message will briefly display upon return to the **`Webhooks`** tab. The events that you selected will begin to be posted to the target URL after after a 1 minute activation time.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks)  | [Up](web-ui.webhooks) |  [Next](web-ui.webhooks.test) |
 | Chapter 60. Managing Your Webhooks in the UI  | [Table of Contents](index) |  60.3. Testing Your Webhook |
 

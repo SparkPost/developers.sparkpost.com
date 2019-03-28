@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unsafe_spool)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.use_ipv6.php) |
 
 <a name="conf.ref.use_iflist_cache"></a>
@@ -28,5 +30,7 @@ Changing the value of this options at runtime requires restarting the ecelerity 
 
 [Section 7.5, “DuraVIP™: IP Fail over”](cluster.config.duravip "7.5. DuraVIP™: IP Fail over")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unsafe_spool)  | [Up](conf.ref.files.php) |  [Next](conf.ref.use_ipv6.php) |
 | _unsafe_spool  | [Table of Contents](index) |  Use_IPv6 |

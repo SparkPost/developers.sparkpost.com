@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_cbv)  | Chapter 71. Modules Reference |  [Next](modules.smtpapi) |
 
 ## 71.66. smtp_rcptto_proxy - SMTP Recipient-To Proxy
@@ -34,6 +36,8 @@ The `smtp_rcptto_proxy` module allows validation of a Lua recipient by doing an 
 
 No information is provided if the RCPT TO fails; the system just returns "fail."
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_cbv)  | [Up](modules) |  [Next](modules.smtpapi) |
 | 71.65. smtp_cbv – SMTP Callback Verification  | [Table of Contents](index) |  71.67. smtpapi – SMTP Engagement Tracking |
 

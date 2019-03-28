@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ec_logger)  | Chapter 14. Modules Reference |  [Next](modules.exim_logger.php) |
 
 ## 14.32. eleven – Module
@@ -159,5 +161,7 @@ The minor score is set to the numeric minor classification, and the minor result
 
 *Note*: The minor results `virus` and `outbreak` are only returned if the `enable_antivir` option is set to `true`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ec_logger)  | [Up](modules.php) |  [Next](modules.exim_logger.php) |
 | 14.31. ec_logger – Momentum-Style Logging  | [Table of Contents](index) |  14.33. exim_logger – Exim-Compatible Logging |

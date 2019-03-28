@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.os.statvfs_read)  | 15.2. Lua Functions |  [Next](lua.ref.msys.qp.decode.php) |
 
 <a name="lua.ref.msys.os.statvfs_subscribe"></a>
@@ -30,5 +32,7 @@ Enable this function with the statement `require('msys.os');`.
 
 [msys.os.statvfs_read](lua.ref.msys.os.statvfs_read "msys.os.statvfs_read") and [ec_statvfs](https://support.messagesystems.com/docs/web-c-api/structs.ec_statvfs.php)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.os.statvfs_read)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.qp.decode.php) |
 | msys.os.statvfs_read  | [Table of Contents](index) |  msys.qp.decode |

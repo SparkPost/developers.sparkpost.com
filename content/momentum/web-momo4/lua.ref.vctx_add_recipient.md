@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.thread.mutex)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.vctx_disconnect) |
 
 <a name="lua.ref.vctx_add_recipient"></a>
@@ -49,6 +51,8 @@ msys.registerModule("validate_data", mod);
 
 Enable this function with the statement `require('msys.extended.vctx');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.thread.mutex)  | [Up](lua.function.details) |  [Next](lua.ref.vctx_disconnect) |
 | thread.mutex  | [Table of Contents](index) |  vctx:disconnect |
 

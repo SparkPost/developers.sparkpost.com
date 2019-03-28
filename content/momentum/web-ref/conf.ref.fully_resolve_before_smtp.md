@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.force_fsync)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.gateway.php) |
 
 <a name="conf.ref.fully_resolve_before_smtp"></a>
@@ -32,5 +34,7 @@ fully_resolve_before_smtp is valid in the binding, binding_group, domain and glo
 
 [relay_domains](conf.ref.relay_domains "relay_domains")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.force_fsync)  | [Up](conf.ref.files.php) |  [Next](conf.ref.gateway.php) |
 | force_fsync  | [Table of Contents](index) |  gateway |

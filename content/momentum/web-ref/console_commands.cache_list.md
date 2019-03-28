@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_summary)  | 12.2. System Console Commands |  [Next](console_commands.cache_stat.php) |
 
 <a name="console_commands.cache_list"></a>
@@ -172,5 +174,7 @@ CAPACITY    ENTRIES     USED    HT/TL   RD/WR CACHE
 
 [cache stat](console_commands.cache_stat "cache stat"), [cache stats](console_commands.cache_stats.php "cache stats"), [match_cache_life](conf.ref.match_cache_life.php "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_summary)  | [Up](console.commands.non-module.php) |  [Next](console_commands.cache_stat.php) |
 | binding summary  | [Table of Contents](index) |  cache stat |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.authorization)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.binding.php) |
 
 <a name="conf.ref.bind_address"></a>
@@ -42,5 +44,7 @@ bind_address is valid in the global, binding_group and binding scopes.
 
 [Section 4.6, “MultiVIP© Interfaces”](operations.multivip "4.6. MultiVIP© Interfaces")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.authorization)  | [Up](conf.ref.files.php) |  [Next](conf.ref.binding.php) |
 | authorization  | [Table of Contents](index) |  binding |

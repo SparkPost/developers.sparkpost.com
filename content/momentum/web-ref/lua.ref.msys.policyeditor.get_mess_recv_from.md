@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_mailfrom)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.get_mess_recv_via.php) |
 
 <a name="lua.ref.msys.policyeditor.get_mess_recv_from"></a>
@@ -32,5 +34,7 @@ There are no defined parameters for `params`.
 
 [msys.policyeditor.get_mess_recv_via](lua.ref.msys.policyeditor.get_mess_recv_via "msys.policyeditor.get_mess_recv_via")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_mailfrom)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.get_mess_recv_via.php) |
 | msys.policyeditor.get_mailfrom  | [Table of Contents](index) |  msys.policyeditor.get_mess_recv_via |

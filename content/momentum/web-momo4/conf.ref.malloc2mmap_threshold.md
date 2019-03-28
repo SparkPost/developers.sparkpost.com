@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.ref.maintainer_pool)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.masterdb_file) |
 
 <a name="conf.ref.malloc2mmap_threshold"></a>
@@ -28,6 +30,8 @@ malloc2mmap_threshold is valid in the global scope.
 
 [use_mmap](conf.ref.use_mmap "use_mmap")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.ref.maintainer_pool)  | [Up](config.options.ref) |  [Next](conf.ref.masterdb_file) |
 | maintainer_pool  | [Table of Contents](index) |  masterdb_file |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.lu_pull)  | 11.2. Executable Commands |  [Next](executable.mbusd.php) |
 
 <a name="executable.mbuscfg"></a>
@@ -85,5 +87,7 @@ Once the mbus.conf file has been checked in to the repository, the copy located 
 
 [mbusd](executable.mbusd "mbusd"), [mbus.conf](mbus.conf.php "mbus.conf")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.lu_pull)  | [Up](exe.commands.details.php) |  [Next](executable.mbusd.php) |
 | lu_pull  | [Table of Contents](index) |  mbusd |

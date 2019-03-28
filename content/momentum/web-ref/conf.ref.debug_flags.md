@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_lock_method)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.default_binding.php) |
 
 <a name="conf.ref.debug_flags"></a>
@@ -69,5 +71,7 @@ Use ‘`ALL`’ instead of listing each service debug flag.
 
 debug_flags is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_lock_method)  | [Up](conf.ref.files.php) |  [Next](conf.ref.default_binding.php) |
 | crypto_lock_method  | [Table of Contents](index) |  default_binding |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_max_line_length)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.rfc2822_messageid_header.php) |
 
 <a name="conf.ref.rfc2822_max_line_length_policy"></a>
@@ -34,5 +36,7 @@ The default value for this option is `none`.
 
 [rfc2822_max_line_length](conf.ref.rfc2822_max_line_length "rfc2822_max_line_length")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_max_line_length)  | [Up](conf.ref.files.php) |  [Next](conf.ref.rfc2822_messageid_header.php) |
 | rfc2822_max_line_length  | [Table of Contents](index) |  rfc2822_messageid_header |

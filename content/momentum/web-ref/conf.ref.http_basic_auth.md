@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.hostname)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.http_host.php) |
 
 <a name="conf.ref.http_basic_auth"></a>
@@ -28,5 +30,7 @@ Theres is no default value for this option.
 
 [http_basic_auth](conf.ref.http_basic_auth "http_basic_auth"), [http_method](conf.ref.http_method.php "http_method"), [http_uri](conf.ref.http_uri.php "http_uri"), [http_host](conf.ref.http_host.php "http_host"), [http_version](conf.ref.http_version.php "http_version") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.hostname)  | [Up](conf.ref.files.php) |  [Next](conf.ref.http_host.php) |
 | hostname  | [Table of Contents](index) |  http_host |

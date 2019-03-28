@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.clear_mail_queue_maintainers)  | Chapter 72. Configuration Options Reference |  [Next](config.click_tracking_scheme) |
 
 <a name="config.click_tracking_enabled"></a>
@@ -31,6 +33,8 @@ The corresponding context variable is `smtpapi_click_tracking`, and the correspo
 
 `click_tracking_enabled` is valid in the esmtp_listener, listen, pathway, pathway_group, and peer scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.clear_mail_queue_maintainers)  | [Up](config.options.ref) |  [Next](config.click_tracking_scheme) |
 | clear_mail_queue_maintainers  | [Table of Contents](index) |  click_tracking_scheme |
 

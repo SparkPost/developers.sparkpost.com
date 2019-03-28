@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.linux)  | Chapter 1. Installation |  [Next](install.options.php) |
 
 ## 1.7. Installation on Solaris
@@ -100,9 +102,9 @@ Optional packages that you may need to install are as follows:
 
 To unpack and install after downloading the file, perform the following commands:
 
-**gzip -dc momentum-*`type`*-bundle-*`version`*-sol5.10.arch.tar.gz | tar xf -** 
+**gzip -dc momentum-*`type`*-bundle-*`version`*-sol5.10.arch.tar.gz | tar xf -**
 
-  **cd delivery-manager-VERSION** 
+  **cd delivery-manager-VERSION**
 
   **./installer**
 ### Note
@@ -151,5 +153,7 @@ to:
 
 Alternately, nscd can be disabled in the following way: **`svcadm disable name-service-cache`**                            .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.linux)  | [Up](install.php) |  [Next](install.options.php) |
 | 1.6. Installation on Linux  | [Table of Contents](index) |  1.8. Installer Options |

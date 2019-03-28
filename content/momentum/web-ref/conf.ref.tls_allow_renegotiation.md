@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_ca.php) |
 
 <a name="conf.ref.tls_allow_renegotiation"></a>
@@ -34,5 +36,7 @@ In Centos/RHEL 5, Solaris AMD and SPARC distributions when renegotiation is disa
 
 [tls](conf.ref.tls "tls")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_ca.php) |
 | tls  | [Table of Contents](index) |  tls_ca |

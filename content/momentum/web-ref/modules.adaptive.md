@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ac_auth)  | Chapter 14. Modules Reference |  [Next](modules.alerting.php) |
 
 ## 14.2. adaptive – Adaptive Delivery
@@ -1207,5 +1209,7 @@ The summary report shows the time in the timezone of the MTA on which it was cre
 
 Adjusting the format of this report by changing the parameters passed to the ad_summary script is **not** recommended. Any changes made will be overwritten if the application is upgraded.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ac_auth)  | [Up](modules.php) |  [Next](modules.alerting.php) |
 | 14.1. ac_auth – Authentication Handler  | [Table of Contents](index) |  14.3. alerting – alerting |

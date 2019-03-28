@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.msgc)  | Chapter 71. Modules Reference |  [Next](modules.mxip) |
 
 ## 71.48. msg_gen – Message Generation
@@ -166,6 +168,8 @@ The precedence for engagement tracking options, from highest to lowest is as fol
 
 For example, if click_tracking is not specified at the transmission level, the value at the template level is used. If the template level is also not specified, the setting of the configuration option in the msg_gen module is used.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.msgc)  | [Up](modules) |  [Next](modules.mxip) |
 | 71.47. msgc – Message Systems Group Communication  | [Table of Contents](index) |  71.49. mxip - IP Addresses In MX Records |
 

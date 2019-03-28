@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.replication)  | Part III. Configuring Momentum |  [Next](postgresql.server) |
 ## Chapter 29. PostgreSQL
 **Table of Contents**
@@ -47,5 +49,7 @@ Default setting is `100MB`. With the default settings, a new log file will be cr
 </dd>
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.replication)  | [Up](p.configuration) |  [Next](postgresql.server) |
 | Chapter 28. Data Replication  | [Table of Contents](index) |  29.2. Running the PostgreSQL Server |

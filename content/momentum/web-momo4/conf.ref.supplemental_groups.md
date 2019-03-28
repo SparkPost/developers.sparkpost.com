@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.starttls_injection_policy)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.suspend_delivery) |
 
 <a name="conf.ref.supplemental_groups"></a>
@@ -16,7 +18,7 @@ This security feature instructs Momentum to issue a `setgroups` system call to s
 
 Security {
   Supplemental_Groups = ( *`"list of group names or ids"`*                         )
-  # Allow binding to privileged ports without requiring a process restart  
+  # Allow binding to privileged ports without requiring a process restart
   Capabilities = "cap_net_bind_service+ep"
 }
 
@@ -34,6 +36,8 @@ Supplemental_Groups is valid in the security scope.
 
 [security](conf.ref.security "security"), [capabilities](conf.ref.capabilities "capabilities"), [user](conf.ref.user "user"), and [chroot](conf.ref.chroot "chroot")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.starttls_injection_policy)  | [Up](config.options.ref) |  [Next](conf.ref.suspend_delivery) |
 | starttls_injection_policy  | [Table of Contents](index) |  suspend_delivery |
 

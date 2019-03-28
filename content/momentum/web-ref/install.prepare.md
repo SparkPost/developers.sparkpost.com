@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.security)  | Chapter 1. Installation |  [Next](install.os-specific.php) |
 
 ## 1.4. Preparing the System
@@ -317,5 +319,7 @@ Momentum queries the available network interfaces from the OS. The order returne
 
 The maximum number of IP aliases that Momentum supports is `10240`. Also, it is better to enumerate the interfaces sequentially rather than assigning them arbitrarily.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.security)  | [Up](install.php) |  [Next](install.os-specific.php) |
 | 1.3. Security Considerations  | [Table of Contents](index) |  1.5. Operating System Specific Preparation |

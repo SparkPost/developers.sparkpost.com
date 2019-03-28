@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.adaptivedb)  | 11.2. Executable Commands |  [Next](executable.credmgr.php) |
 
 <a name="executable.create_ssl_cert"></a>
@@ -83,5 +85,7 @@ shell> /opt/msys/ecelerity/bin/create_ssl_cert ecconfigd *`hostname`* \
 
 [ecconfigd_ctl](executable.ecconfigd_ctl "ecconfigd_ctl"), [Section 3.1, “Starting the Web Console”](web3.starting.web.console.php "3.1. Starting the Web Console"), [Section 1.3, “Security Considerations”](install.security.php "1.3. Security Considerations") and [Section 4.3.3, “Running the PostgreSQL Server”](operations.postgresql.php#operations.postgres-server "4.3.3. Running the PostgreSQL Server")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.adaptivedb)  | [Up](exe.commands.details.php) |  [Next](executable.credmgr.php) |
 | adaptivedb  | [Table of Contents](index) |  credmgr |

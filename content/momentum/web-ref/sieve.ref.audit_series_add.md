@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_series)  | 16.2. Sieve Function Details |  [Next](sieve.ref.audit_service) |
 
 <a name="sieve.ref.audit_series_add"></a>
@@ -106,5 +108,8 @@ When using `audit_series_add`, on a single-node you need to set `serialize` to `
 
 `hash_set $args "serialize" 1;`
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_series)  | [Up](sieve.ref.files) |  [Next](sieve.ref.audit_service) |
 | audit_series  | [Table of Contents](index) |  audit_service |

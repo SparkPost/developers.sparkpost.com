@@ -33,5 +33,7 @@ You can export your template list to a CSV file. Click the `Save as CSV` button 
 Internet Explorer, version 9 does not support exporting data to a CSV file. If you need this function, upgrade Internet Explorer or use Firefox.
 To view the details of a template, click its label to open a detailed view.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](stored_template)  | [Up](p.http_rest) |  [Next](web-ui.templates.create) |
 | Chapter 47. Creating Stored Templates  | [Table of Contents](index) |  48.2. Creating a Template |

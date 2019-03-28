@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding_auto_replumb_interval)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.blackhole) |
 
 <a name="conf.ref.binding_group"></a>
@@ -83,6 +85,8 @@ For a complete list of options valid in the binding_group scope, refer to [Chapt
 
 [binding](conf.ref.binding "binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding_auto_replumb_interval)  | [Up](config.options.ref) |  [Next](conf.ref.blackhole) |
 | binding_auto_replumb_interval  | [Table of Contents](index) |  blackhole |
 

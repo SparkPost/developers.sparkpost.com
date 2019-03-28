@@ -23,6 +23,8 @@ unresolvableproblems.com purged, 62415 messages failed.
 
 [fail domain](console_commands.fail_domain "fail domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain)  | [Up](console.cmds.ref) |  [Next](console_commands.fingerprint_cache_summary) |
 | fail domain  | [Table of Contents](index) |  fingerprint cache summary |
 

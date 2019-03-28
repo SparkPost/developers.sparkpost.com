@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbusd)  | 11.2. Executable Commands |  [Next](executable.migrate_regex_binding2.php) |
 
 <a name="executable.mbusd_monitor"></a>
@@ -139,5 +141,7 @@ Enables quiet mode which disables logging to the console.
 
 [mbusd](executable.mbusd "mbusd"), [mbus.conf](mbus.conf.php "mbus.conf")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbusd)  | [Up](exe.commands.details.php) |  [Next](executable.migrate_regex_binding2.php) |
 | mbusd  | [Table of Contents](index) |  migrate_regex_binding2 |

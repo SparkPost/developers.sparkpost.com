@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](riak)  | Chapter 30. Riak |  [Next](operations.riak.ports) |
 
 ## 30.2. Running the Riak Service
@@ -14,6 +16,8 @@ Riak is configured to start automatically when the system boots. The service can
 
 *   `console` – Start the Riak node in the foreground, giving access to the Erlang shell and runtime messages.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](riak)  | [Up](riak) |  [Next](operations.riak.ports) |
 | Chapter 30. Riak  | [Table of Contents](index) |  30.3. Riak Ports |
 

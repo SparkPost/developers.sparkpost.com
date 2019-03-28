@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.connection_allocation_aggressiveness.php) |
 
 <a name="conf.ref.connect_timeout_to_delay"></a>
@@ -21,5 +23,7 @@ The default value for this option is 900 seconds.
 
 connect_timeout_to_delay is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.connection_allocation_aggressiveness.php) |
 | connect_timeout  | [Table of Contents](index) |  connection_allocation_aggressiveness |

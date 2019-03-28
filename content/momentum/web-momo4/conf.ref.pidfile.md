@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.permastore_interval)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.prohibited_hosts) |
 
 <a name="conf.ref.pidfile"></a>
@@ -24,6 +26,8 @@ pidfile is valid in the global scope.
 <a name="idp25882672"></a>
 ## See Also
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.permastore_interval)  | [Up](config.options.ref) |  [Next](conf.ref.prohibited_hosts) |
 | permastore_interval  | [Table of Contents](index) |  prohibited_hosts |
 

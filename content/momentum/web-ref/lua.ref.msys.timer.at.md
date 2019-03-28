@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.timer.after)  | 15.2. Lua Functions |  [Next](lua.ref.msys.timer.every.php) |
 
 <a name="lua.ref.msys.timer.at"></a>
@@ -41,5 +43,7 @@ Enable this function with the statements `require('msys.timer');` and `require("
 
 [msys.timer.after](lua.ref.msys.timer.after "msys.timer.after"), [msys.timer.every](lua.ref.msys.timer.every.php "msys.timer.every")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.timer.after)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.timer.every.php) |
 | msys.timer.after  | [Table of Contents](index) |  msys.timer.every |

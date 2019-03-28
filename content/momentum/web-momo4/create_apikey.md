@@ -10,7 +10,7 @@ Momentum offers a set of REST API enabling client applications to integrate with
 
 If you are the system administrator, you can generate an API key using the web-based UI.
 
-**Creating an API Key** 
+**Creating an API Key**
 
 This section provides instructions to create an API key in the UI. Take care to record and safeguard your API keys at all times. You cannot retrieve an API key after it has been created.
 
@@ -60,6 +60,8 @@ Follow these steps to create an API key:
 
 Congratulations! You have successfully created an API key using Momentum's UI. In addition to the creating an API key, you can manage your existing API keys using the UI. For more information, see [Chapter 44, *Managing Your API Keys*](web-ui.apikeys "Chapter 44. Managing Your API Keys") .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.http_rest)  | [Up](p.http_rest) |  [Next](web-ui.apikeys) |
 | Part VII. Message Generation (HTTP)  | [Table of Contents](index) |  Chapter 44. Managing Your API Keys |
 

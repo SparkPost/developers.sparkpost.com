@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports)  | Chapter 57. Reports and Engagement Tracking in the UI |  [Next](web-ui.reports.adaptive.delivery) |
 
 ## 57.2. Viewing Your Reports
@@ -236,6 +238,8 @@ The following are the columns in the table:
 
 You can sort the data by any column to show different arrangements. For example, sorting by Delayed in descending order identifies the reason that caused the greatest number of delayed messages.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports)  | [Up](web-ui.reports) |  [Next](web-ui.reports.adaptive.delivery) |
 | Chapter 57. Reports and Engagement Tracking in the UI  | [Table of Contents](index) |  57.3. Adaptive Delivery Report |
 

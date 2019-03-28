@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_binding)  | 15.2. Lua Functions |  [Next](lua.ref.msg_body.php) |
 
 <a name="lua.ref.msg_binding_group"></a>
@@ -30,5 +32,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:binding](lua.ref.msg_binding "msg:binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_binding)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_body.php) |
 | msg:binding  | [Table of Contents](index) |  msg:body |

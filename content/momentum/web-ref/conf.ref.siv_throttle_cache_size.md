@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.signing_stats)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.snmp.php) |
 
 <a name="conf.ref.siv_throttle_cache_size"></a>
@@ -26,5 +28,7 @@ This option sets the maximum number of named throttles created by the Sieve comm
 
 [ec_throttle](sieve.ref.ec_throttle "ec_throttle"), [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive.php "14.2. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.signing_stats)  | [Up](conf.ref.files.php) |  [Next](conf.ref.snmp.php) |
 | signing_stats  | [Table of Contents](index) |  SNMP |

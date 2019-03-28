@@ -22,6 +22,8 @@ Overwriting your existing `ecelerity.conf` file is not recommended. Note that fi
 
 If you are in the middle of a transaction (begun with **config begin** ) **write config**        will not show any changes you have made. Use **config showrecurse**             or **config show**      instead. For more information see [config](console_commands.config "config").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.version)  | [Up](console.cmds.ref) |  [Next](exec.cmds.ref) |
 | version  | [Table of Contents](index) |  Chapter 74. Executable Commands Reference |
 

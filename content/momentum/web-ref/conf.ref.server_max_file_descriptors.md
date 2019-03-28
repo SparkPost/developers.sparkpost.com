@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.send_8bitmime)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.server_max_outbound_connections.php) |
 
 <a name="conf.ref.server_max_file_descriptors"></a>
@@ -30,5 +32,7 @@ server_max_file_descriptors is valid in the global scope only.
 
 [Section 1.5, “Operating System Specific Preparation”](install.os-specific "1.5. Operating System Specific Preparation")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.send_8bitmime)  | [Up](conf.ref.files.php) |  [Next](conf.ref.server_max_outbound_connections.php) |
 | send_8bitmime  | [Table of Contents](index) |  server_max_outbound_connections |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_routing_domain)  | 15.2. Lua Functions |  [Next](lua.ref.msg_text1.php) |
 
 <a name="lua.ref.msg_text"></a>
@@ -17,5 +19,7 @@ This function returns the transfer decoded text for the body, in UTF-8\. Only pa
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_routing_domain)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_text1.php) |
 | msg:routing_domain  | [Table of Contents](index) |  msg:text |

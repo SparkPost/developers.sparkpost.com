@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.operations.eccmgr.console)  | Part V. Using the System Console |  [Next](p.smtp_injections) |
 ## Chapter 39. CIDR Server
 **Table of Contents**
@@ -123,5 +125,7 @@ The `spam` series files appear in the directory defined by the `base_dir` parame
 ### Note
 There is no command to exit the `cidr` shell; use **Ctrl**+**D** .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.operations.eccmgr.console)  | [Up](p.operations) |  [Next](p.smtp_injections) |
 | 38.2. Console Commands for the Cluster Manager  | [Table of Contents](index) |  Part VI. SMTP Injection |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.advertize_esmtp_capability)  | 16.2. Sieve Function Details |  [Next](sieve.ref.audit_connections_on_listener) |
 
 <a name="sieve.ref.antivirus"></a>
@@ -78,5 +80,8 @@ elsif vctx :contains "VIRUS_info" "" {
 
 The %{vctx_mess:*`avscan`*_status_info} will contain textual information from the AV engine itself, typically the virus name. The actual name of this context variable is the engine name prepended to `_status_info` so it varies depending upon the antivirus engine used. (In this particular case it is `clamav_status_info`.) See [Section 14.5, “antivirus – Antivirus Modules”](modules.antivirus "14.5. antivirus – Antivirus Modules") for more details.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.advertize_esmtp_capability)  | [Up](sieve.ref.files) |  [Next](sieve.ref.audit_connections_on_listener) |
 | advertize_esmtp_capability  | [Table of Contents](index) |  audit_connections_on_listener |

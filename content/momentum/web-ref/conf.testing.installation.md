@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.starting)  | Chapter 2. Configuration |  [Next](web3.php) |
 
 ## 2.11. Testing Your Installation
@@ -45,5 +47,7 @@ In this example, for the sake of clarity, the server is specified using the `-s`
 
 To learn more about swaks navigate to the [swaks](http://jetmore.org/john/code/swaks/) website.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.starting)  | [Up](conf.php) |  [Next](web3.php) |
 | 2.10. Starting Momentum  | [Table of Contents](index) |  Chapter 3. Using the Web Console |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exe.commands.details)  | 11.2. Executable Commands |  [Next](executable.adaptive_loader.php) |
 
 <a name="executable.ad_summary"></a>
@@ -139,5 +141,7 @@ The panic log file to operate on. The default value is `/var/log/ecelerity/panic
 
 [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exe.commands.details)  | [Up](exe.commands.details.php) |  [Next](executable.adaptive_loader.php) |
 | 11.2. Executable Commands  | [Table of Contents](index) |  adaptive_loader |

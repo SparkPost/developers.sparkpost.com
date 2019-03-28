@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_text_match)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.asyncOk) |
 
 <a name="lua.ref.msgpart_text_replace"></a>
@@ -21,6 +23,8 @@ Streaming interface to PCRE replacement of textual content from the message body
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_text_match)  | [Up](lua.function.details) |  [Next](lua.ref.msys.asyncOk) |
 | msgpart:text_match  | [Table of Contents](index) |  msys.asyncOk |
 

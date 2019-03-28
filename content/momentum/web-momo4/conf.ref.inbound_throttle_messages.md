@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.idle_timeout)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.initial_hash_buckets) |
 
 <a name="conf.ref.inbound_throttle_messages"></a>
@@ -25,6 +27,8 @@ For a discussion of throttles and fallback see [the section called “Throttles 
 
 inbound_throttle_messages is valid in the global, pathway_group, and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.idle_timeout)  | [Up](config.options.ref) |  [Next](conf.ref.initial_hash_buckets) |
 | idle_timeout  | [Table of Contents](index) |  initial_hash_buckets |
 

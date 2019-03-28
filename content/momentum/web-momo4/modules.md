@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.parsexml)  | Part X. Reference |  [Next](modules.ac_auth) |
 ## Chapter 71. Modules Reference
 **Table of Contents**
@@ -79,5 +81,7 @@
 ## 71.1. Introduction
 This chapter includes module reference material that is specific to Momentum 4.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.parsexml)  | [Up](p.reference) |  [Next](modules.ac_auth) |
 | xml.parsexml  | [Table of Contents](index) |  71.2. ac_auth – Authentication Handler |

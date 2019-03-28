@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.testing.installation)  | Part I. Configuration Guide |  [Next](web3.starting.web.console) |
 ## Chapter 3. Using the Web Console
 **Table of Contents**
@@ -26,5 +28,8 @@ The Momentum web UI supports the following browsers:
 *   Firefox version 3.6 and higher on PC and Mac
 *   Internet Explorer versions 8 and 9
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.testing.installation)  | [Up](p.guide) |  [Next](web3.starting.web.console) |
 | 2.11. Testing Your Installation  | [Table of Contents](index) |  3.1. Starting the Web Console |

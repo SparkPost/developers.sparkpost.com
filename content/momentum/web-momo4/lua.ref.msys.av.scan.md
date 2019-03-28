@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.engines)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.av.scan_part) |
 
 <a name="lua.ref.msys.av.scan"></a>
@@ -112,6 +114,8 @@ require("msys.av");
 
 [msys.av.scan_part](lua.ref.msys.av.scan_part "msys.av.scan_part")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.engines)  | [Up](lua.function.details) |  [Next](lua.ref.msys.av.scan_part) |
 | msys.av.engines  | [Table of Contents](index) |  msys.av.scan_part |
 

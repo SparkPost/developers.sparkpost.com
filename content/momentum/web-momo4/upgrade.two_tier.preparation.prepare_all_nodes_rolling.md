@@ -124,24 +124,24 @@ You should perform these steps at a time of low volume. Some services will need 
 
     ```
     [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select get_config_parameter('MoveOutInterval');"
-     get_config_parameter 
+     get_config_parameter
     ----------------------
      90
     (1 row)
     [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select get_config_parameter('MoveOutSizePct');"
-     get_config_parameter 
+     get_config_parameter
     ----------------------
      50
     (1 row)
-    [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select plannedconcurrency, maxmemorysize, memorysize 
+    [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select plannedconcurrency, maxmemorysize, memorysize
     from resource_pools where name='wosdata';"
-     plannedconcurrency | maxmemorysize | memorysize 
+     plannedconcurrency | maxmemorysize | memorysize
     --------------------+---------------+------------
      6                  | 33%           | 33%
     (1 row)
-    [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select memorysize, maxconcurrency from resource_pools 
+    [root@ops-842-1 ~]# /opt/vertica/bin/vsql -U vertica_dba -c "select memorysize, maxconcurrency from resource_pools
     where name='tm';"
-     memorysize | maxconcurrency 
+     memorysize | maxconcurrency
     ------------+----------------
      600M       |             15
     (1 row)
@@ -151,7 +151,7 @@ You should perform these steps at a time of low volume. Some services will need 
      45035996273704974 | msys          | 45035996273704962 | vertica_dba | 2015-08-17 13:01:40.135772-04 |  (cont'd below)
     (1 row)
 
-                          compliance_message                      | export_subnet | load_balance_policy 
+                          compliance_message                      | export_subnet | load_balance_policy
     --------------------------------------------------------------+---------------+---------------------
      The database is in compliance with respect to raw data size. |             0 | none
     (1 row)
@@ -223,6 +223,8 @@ You should perform these steps at a time of low volume. Some services will need 
         (10 rows)
         ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier_configuration_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.snapshot_cassandra_rolling) |
 | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node  | [Table of Contents](index) |  11.3. Perform a Cassandra Snapshot |
 

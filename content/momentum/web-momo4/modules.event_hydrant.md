@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.engage_tracker)  | Chapter 71. Modules Reference |  [Next](modules.exim_logger) |
 
 ## 71.33. event_hydrant – Message Tracking
@@ -183,6 +185,8 @@ If this option is enabled, logs will be written individually on each Platform no
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.engage_tracker)  | [Up](modules) |  [Next](modules.exim_logger) |
 | 71.32. engagement_tracker – HTTP Engagement Tracking  | [Table of Contents](index) |  71.34. exim_logger – Exim Logging |
 

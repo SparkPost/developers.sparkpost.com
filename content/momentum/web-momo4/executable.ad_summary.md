@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exec.cmds.ref)  | Chapter 74. Executable Commands Reference |  [Next](executable.create_ssl_cert) |
 
 <a name="executable.ad_summary"></a>
@@ -133,6 +135,8 @@ Panic log file to operate on. Default value is `/var/log/ecelerity/paniclog.ec.1
 
 [Section 71.3, “adaptive – Adaptive Delivery”](modules.adaptive "71.3. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exec.cmds.ref)  | [Up](exec.cmds.ref) |  [Next](executable.create_ssl_cert) |
 | Chapter 74. Executable Commands Reference  | [Table of Contents](index) |  create_ssl_cert |
 

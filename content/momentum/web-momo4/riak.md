@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.migrating)  | Part III. Configuring Momentum |  [Next](riak.service) |
 ## Chapter 30. Riak
 **Table of Contents**
@@ -20,5 +22,7 @@ The following describes the default directories and configuration related to the
 *   `/var/log/riak` – Contains log files.
 For additional details about configuration, see [Section 16.7, “Configuring Riak in a Cluster”](cluster.riak.configuration "16.7. Configuring Riak in a Cluster").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.migrating)  | [Up](p.configuration) |  [Next](riak.service) |
 | 29.4. Dumping and Restoring the Database  | [Table of Contents](index) |  30.2. Running the Riak Service |

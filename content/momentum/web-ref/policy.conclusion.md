@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.best.practices)  | Chapter 5. Implementing Policy with Momentum |  [Next](policy.context.variables) |
 
 ## 5.7. Conclusion
@@ -6,5 +8,8 @@ That's essentially all there is to implementing policy. Sieve or Lua scripts pro
 
 You can find more examples of Sieve policy in the `/opt/msys/ecelerity/etc/sieve-scripts` directory and sample Lua scripts in [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets "5.2. Implementing Policy Using Scriptlets").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.best.practices)  | [Up](policy) |  [Next](policy.context.variables) |
 | 5.6. Best Practices for Manually Created Policy Scripts  | [Table of Contents](index) |  Chapter 6. Validation Context Variables |

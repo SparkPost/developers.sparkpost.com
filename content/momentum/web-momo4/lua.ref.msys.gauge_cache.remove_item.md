@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gauge_cache.inc)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.gcm.gcm_classify_error) |
 
 <a name="lua.ref.msys.gauge_cache.remove_item"></a>
@@ -26,6 +28,8 @@ Enable this function with the statement `require('msys.gauge_cache');`.
 
 [msys.gauge_cache.inc](lua.ref.msys.gauge_cache.inc "msys.gauge_cache.inc"), [msys.gauge_cache.dec](lua.ref.msys.gauge_cache.dec "msys.gauge_cache.dec"), [Section 28.1.9, “Shared Gauge Caches”](cluster.config.replication#cluster.replication.gauge_cache "28.1.9. Shared Gauge Caches")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gauge_cache.inc)  | [Up](lua.function.details) |  [Next](lua.ref.msys.gcm.gcm_classify_error) |
 | msys.gauge_cache.inc  | [Table of Contents](index) |  msys.gcm.gcm_classify_error |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.opendkim.get_sig_identity)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.validate.opendkim.get_sig_selector) |
 
 <a name="lua.ref.msys.validate.opendkim.get_sig_keysize"></a>
@@ -68,7 +70,7 @@ function mod:validate_data(msg, accept, vctx)
   local dkim_sig;
   local dkim = msys.validate.opendkim.verify(msg);
   num, stat = msys.validate.opendkim.get_num_sigs(dkim);
-  -- create loop controlled by num 
+  -- create loop controlled by num
   if num > 0 then
     for i = 0, num-1 do
       dkim_sig = msys.validate.opendkim.get_sig(dkim, i);
@@ -78,7 +80,7 @@ function mod:validate_data(msg, accept, vctx)
         ...
       end
     end
-  end 
+  end
   return msys.core.VALIDATE_CONT;
 end
 msys.registerModule("test_opendkim", mod);
@@ -89,6 +91,8 @@ msys.registerModule("test_opendkim", mod);
 
 [msys.validate.opendkim.get_sig_canons](lua.ref.msys.validate.opendkim.get_sig_canons "msys.validate.opendkim.get_sig_canons"), [msys.validate.opendkim.sign](lua.ref.msys.validate.opendkim.sign "msys.validate.opendkim.sign"), [msys.validate.opendkim.verify](lua.ref.msys.validate.opendkim.verify "msys.validate.opendkim.verify"), [msys.validate.opendkim.get_num_sigs](lua.ref.msys.validate.opendkim.get_num_sigs "msys.validate.opendkim.get_num_sigs"), [msys.validate.opendkim.get_sig](lua.ref.msys.validate.opendkim.get_sig "msys.validate.opendkim.get_sig"), [msys.validate.opendkim.get_sig_domain](lua.ref.msys.validate.opendkim.get_sig_domain "msys.validate.opendkim.get_sig_domain"), [msys.validate.opendkim.get_sig_selector](lua.ref.msys.validate.opendkim.get_sig_selector "msys.validate.opendkim.get_sig_selector"), [msys.validate.opendkim.get_sig_errorstr](lua.ref.msys.validate.opendkim.get_sig_errorstr "msys.validate.opendkim.get_sig_errorstr"), [msys.validate.opendkim.get_sig_flags](lua.ref.msys.validate.opendkim.get_sig_flags "msys.validate.opendkim.get_sig_flags"), [msys.validate.opendkim.get_sig_identity](lua.ref.msys.validate.opendkim.get_sig_identity "msys.validate.opendkim.get_sig_identity"), [msys.validate.opendkim.get_sig_signalg](lua.ref.msys.validate.opendkim.get_sig_signalg "msys.validate.opendkim.get_sig_signalg"), [msys.validate.opendkim.get_sig_hdrsigned](lua.ref.msys.validate.opendkim.get_sig_hdrsigned "msys.validate.opendkim.get_sig_hdrsigned")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.opendkim.get_sig_identity)  | [Up](lua.function.details) |  [Next](lua.ref.msys.validate.opendkim.get_sig_selector) |
 | msys.validate.opendkim.get_sig_identity  | [Table of Contents](index) |  msys.validate.opendkim.get_sig_selector |
 

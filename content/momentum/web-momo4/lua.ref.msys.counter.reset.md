@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.read)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.counter.unlink) |
 
 <a name="lua.ref.msys.counter.reset"></a>
@@ -24,6 +26,8 @@ You can also use the [counter](console_commands.counter "counter") console comma
 
 [msys.counter.inc](lua.ref.msys.counter.inc "msys.counter.inc"), [msys.counter.add](lua.ref.msys.counter.add "msys.counter.add"), [msys.counter.open](lua.ref.msys.counter.open "msys.counter.open"), [msys.counter.unlink](lua.ref.msys.counter.unlink "msys.counter.unlink")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.read)  | [Up](lua.function.details) |  [Next](lua.ref.msys.counter.unlink) |
 | msys.counter.read  | [Table of Contents](index) |  msys.counter.unlink |
 

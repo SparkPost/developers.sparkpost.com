@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.retry_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.rfc2821_pedantic_address_rules.php) |
 
 <a name="conf.ref.rfc2821_allow_whitespace_in_envelope"></a>
@@ -28,5 +30,7 @@ The default value for this option is `false`.
 
 [rfc2822_lone_lf_in_body](conf.ref.rfc2822_lone_lf_in_body "rfc2822_lone_lf_in_body"), [rfc2822_lone_lf_in_headers](conf.ref.rfc2822_lone_lf_in_headers.php "rfc2822_lone_lf_in_headers"), [rfc2822_messageid_header](conf.ref.rfc2822_messageid_header.php "rfc2822_messageid_header"), [rfc2822_missing_headers](conf.ref.rfc2822_missing_headers.php "rfc2822_missing_headers"), [rfc2822_trace_headers](conf.ref.rfc2822_trace_headers.php "rfc2822_trace_headers"), [rfc2822_max_line_length](conf.ref.rfc2822_max_line_length.php "rfc2822_max_line_length"), [rfc2822_date_header](conf.ref.rfc2822_date_header.php "rfc2822_date_header"), [rfc2821_pedantic_address_rules](conf.ref.rfc2821_pedantic_address_rules.php "rfc2821_pedantic_address_rules")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.retry_interval)  | [Up](conf.ref.files.php) |  [Next](conf.ref.rfc2821_pedantic_address_rules.php) |
 | retry_interval  | [Table of Contents](index) |  rfc2821_pedantic_address_rules |

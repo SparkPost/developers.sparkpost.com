@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makeContainer)  | 15.2. Lua Functions |  [Next](lua.ref.msg_mime.php) |
 
 <a name="lua.ref.msg_makePart"></a>
@@ -30,5 +32,7 @@ Creates a new, unlinked, singleton (or leaf) message part. `mimetype` specifies 
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makeContainer)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_mime.php) |
 | msg:makeContainer  | [Table of Contents](index) |  msg:mime |

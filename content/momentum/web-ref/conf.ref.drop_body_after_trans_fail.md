@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domainkeys)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.ecstream_port.php) |
 
 <a name="conf.ref.drop_body_after_trans_fail"></a>
@@ -21,5 +23,7 @@ The default value for this option is 3 attempts.
 
 drop_body_after_trans_fail is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domainkeys)  | [Up](conf.ref.files.php) |  [Next](conf.ref.ecstream_port.php) |
 | domainkeys  | [Table of Contents](index) |  ecstream_port |

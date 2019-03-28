@@ -39,5 +39,7 @@ To create an API key that meets your specific requirements, you must understand 
 | Send via SMTP | Allow this API Key to perform SMTP injection (Note that your configuration must support SMTP authorization.) |
 | Manage recipient lists | GET, POST, PUT, DELETE requests on /api/v1/recipient-lists |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](create_apikey)  | [Up](p.http_rest) |  [Next](web-ui.apikeys.create) |
 | Chapter 43. Creating an API Key  | [Table of Contents](index) |  44.2. Creating an API Key |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_insertBefore)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_raw_replace.php) |
 
 <a name="lua.ref.msgpart_raw_match"></a>
@@ -17,5 +19,7 @@ Streaming interface to a PCRE search of the current message part. If no match is
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_insertBefore)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_raw_replace.php) |
 | msgpart:insertBefore  | [Table of Contents](index) |  msgpart:raw_replace |

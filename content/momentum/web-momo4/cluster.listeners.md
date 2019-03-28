@@ -40,6 +40,8 @@ Modules and their configuration options are discussed in the [Chapter 71, *Modu
 
 For general information regarding listeners, see [Section 15.4, “Listeners”](listeners "15.4. Listeners").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.msgc_server.conf)  | [Up](cluster) |  [Next](cluster.config.failover) |
 | 16.4. `msgc_server.conf` File  | [Table of Contents](index) |  16.6. Configuring Momentum for High Availability and Failover |
 

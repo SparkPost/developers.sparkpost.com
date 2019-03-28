@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ca)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_ciphers.php) |
 
 <a name="conf.ref.tls_certificate"></a>
@@ -21,5 +23,7 @@ The special value `none` can be used to indicate that no certificate file should
 
 `tls_certificate` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ca)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_ciphers.php) |
 | tls_ca  | [Table of Contents](index) |  tls_ciphers |

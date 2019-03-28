@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.debug_flags)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.default_charset.php) |
 
 <a name="conf.ref.default_binding"></a>
@@ -39,5 +41,7 @@ binding "default" {
 
 [Section 4.6, “MultiVIP© Interfaces”](operations.multivip "4.6. MultiVIP© Interfaces"), [suspend_delivery](conf.ref.suspend_delivery.php "suspend_delivery"), [binding](conf.ref.binding.php "binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.debug_flags)  | [Up](conf.ref.files.php) |  [Next](conf.ref.default_charset.php) |
 | debug_flags  | [Table of Contents](index) |  default_charset |

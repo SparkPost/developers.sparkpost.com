@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_replace)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_header) |
 
 <a name="lua.ref.msgpart_content_type"></a>
@@ -56,6 +58,8 @@ end
 msys.registerModule('validate_data_spool_each_rcpt', mod);
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_replace)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_header) |
 | msgpart:body_replace  | [Table of Contents](index) |  msgpart:header |
 

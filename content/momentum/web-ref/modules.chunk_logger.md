@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.brightmail)  | Chapter 14. Modules Reference |  [Next](modules.cidrdb.php) |
 
 ## 14.15. chunk_logger – Asynchronous Logging
@@ -86,5 +88,7 @@ call_chunk_logger_log_hook("default", buf, buflen);
 
 "default" is specified here as the name of the log destination. Currently `chunk_logger` only supports one log destination, so this field is ignored. It is recommended that you pass "default" until different log destinations are supported.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.brightmail)  | [Up](modules.php) |  [Next](modules.cidrdb.php) |
 | 14.14. brightmail – Brightmail Module  | [Table of Contents](index) |  14.16. cidrdb – CIDRDB |

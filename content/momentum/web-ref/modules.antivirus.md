@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alias)  | Chapter 14. Modules Reference |  [Next](modules.as_logger.php) |
 
 ## 14.5. antivirus – Antivirus Modules
@@ -241,5 +243,7 @@ AV definitions version: 20150215.001
 Up to date
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alias)  | [Up](modules.php) |  [Next](modules.as_logger.php) |
 | 14.4. alias – Alias Expansion Module  | [Table of Contents](index) |  14.6. as_logger – Audit series logger |

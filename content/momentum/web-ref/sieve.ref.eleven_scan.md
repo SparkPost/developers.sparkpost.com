@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_valid_mime)  | 16.2. Sieve Function Details |  [Next](sieve.ref.envelope) |
 
 <a name="sieve.ref.eleven_scan"></a>
@@ -64,5 +66,8 @@ if vctx :is :comparator "i;ascii-casemap"  "eleven-result" ["spam", "dangerous"]
 
 [Section 14.32, “eleven – Module”](modules.eleven "14.32. eleven – Module")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_valid_mime)  | [Up](sieve.ref.files) |  [Next](sieve.ref.envelope) |
 | ec_valid_mime  | [Table of Contents](index) |  envelope |

@@ -87,6 +87,8 @@ In the output, look for the `ring_members` line and verify that there is an entr
 
 In a cluster configuration, messages in the panic log such as `adaptive_db_sync: Couldn't connect to server` may indicate the failure of one or more Riak servers. If you see such messages, check the status of your Riak servers using the **riak-admin** command.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.failover)  | [Up](cluster) |  [Next](control_listener) |
 | 16.6. Configuring Momentum for High Availability and Failover  | [Table of Contents](index) |  Chapter 17. Configuring Momentum's System Console |
 

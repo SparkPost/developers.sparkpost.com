@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_outbound_connections)  | Chapter 72. Configuration Options Reference |  [Next](config.max_request_size) |
 
 <a name="conf.ref.max_recipients_per_batch"></a>
@@ -21,6 +23,8 @@ The default value is `100`. For example, if a message has `200` recipients and `
 
 max_recipients_per_batch is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_outbound_connections)  | [Up](config.options.ref) |  [Next](config.max_request_size) |
 | max_outbound_connections  | [Table of Contents](index) |  max_request_size |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ehlo_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.eventloop.php) |
 
 <a name="conf.ref.enable_fbl_header_insertion"></a>
@@ -24,5 +26,7 @@ This option is valid in the global, binding, binding_group and the domain scopes
 
 [Section 14.34, “fbl – Feedback Loop Module”](modules.fbl "14.34. fbl – Feedback Loop Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ehlo_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.eventloop.php) |
 | ehlo_timeout  | [Table of Contents](index) |  eventloop |

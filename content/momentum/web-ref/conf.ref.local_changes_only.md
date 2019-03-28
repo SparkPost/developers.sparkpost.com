@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_file)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.mail_queue_check_vm_interval.php) |
 
 <a name="conf.ref.local_changes_only"></a>
@@ -28,5 +30,7 @@ Local_Changes_Only is valid in the global scope.
 
 [local_changes_file](conf.ref.local_changes_file "local_changes_file")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_file)  | [Up](conf.ref.files.php) |  [Next](conf.ref.mail_queue_check_vm_interval.php) |
 | local_changes_file  | [Table of Contents](index) |  mail_queue_check_vm_interval |

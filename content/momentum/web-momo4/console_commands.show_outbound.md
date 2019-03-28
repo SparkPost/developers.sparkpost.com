@@ -38,6 +38,8 @@ This command will also display Google Push notification connections as "http_han
 
 [show inbound](console_commands.show_inbound "show inbound") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_inbound)  | [Up](console.cmds.ref) |  [Next](console_commands.showqueue) |
 | show inbound  | [Table of Contents](index) |  showqueue |
 

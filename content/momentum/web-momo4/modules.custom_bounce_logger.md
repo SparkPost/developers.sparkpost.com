@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.csapi)  | Chapter 71. Modules Reference |  [Next](modules.custom_logger) |
 
 ## 71.24. custom_bounce_logger – Custom Bounce Logging
@@ -27,6 +29,8 @@ custom_bounce_logger custom_bounce_logger1 {
 
 [Section 71.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger "71.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.csapi)  | [Up](modules) |  [Next](modules.custom_logger) |
 | 71.23. csapi – Symantec CSAPI Antivirus Support  | [Table of Contents](index) |  71.25. custom_logger – User-defined Logging |
 

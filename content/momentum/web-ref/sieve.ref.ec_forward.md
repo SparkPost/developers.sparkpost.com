@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_floor)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_gauge_cache) |
 
 <a name="sieve.ref.ec_forward"></a>
@@ -57,5 +59,8 @@ second line
 
 `ec_forward "sender@mailfrom.com" ["rcpt1@rcptto.com", "rcpt2@rcptto.com"] "forwarded via sieve";`
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_floor)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_gauge_cache) |
 | ec_floor  | [Table of Contents](index) |  ec_gauge_cache |

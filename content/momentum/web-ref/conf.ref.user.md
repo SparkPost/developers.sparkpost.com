@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_sendfile)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.watchdog_interval.php) |
 
 <a name="conf.ref.user"></a>
@@ -39,5 +41,7 @@ user and group are valid in the security scope.
 
 [chroot](conf.ref.chroot "chroot"), [supplemental_groups](conf.ref.supplemental_groups.php "supplemental_groups"), [capabilities](conf.ref.capabilities.php "capabilities"), [privileges](conf.ref.privileges.php "privileges")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_sendfile)  | [Up](conf.ref.files.php) |  [Next](conf.ref.watchdog_interval.php) |
 | Use_SendFile  | [Table of Contents](index) |  watchdog_interval |

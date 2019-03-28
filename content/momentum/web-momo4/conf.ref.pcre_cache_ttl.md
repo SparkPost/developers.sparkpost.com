@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pcre_cache_size)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.permastore_interval) |
 
 <a name="conf.ref.pcre_cache_ttl"></a>
@@ -26,6 +28,8 @@ pcre_cache_ttl is valid in the global scope.
 
 [pcre_cache_size](conf.ref.pcre_cache_size "pcre_cache_size")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pcre_cache_size)  | [Up](config.options.ref) |  [Next](conf.ref.permastore_interval) |
 | pcre_cache_size  | [Table of Contents](index) |  permastore_interval |
 

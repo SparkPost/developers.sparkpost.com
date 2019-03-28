@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_active)  | 12.2. System Console Commands |  [Next](console_commands.binding_fail_domain.php) |
 
 <a name="console_commands.binding_delayed"></a>
@@ -65,5 +67,7 @@ The row detailing the totals represents the totals across *all* domains on the g
 
 [binding active](console_commands.binding_active "binding active")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_active)  | [Up](console.commands.non-module.php) |  [Next](console_commands.binding_fail_domain.php) |
 | binding active  | [Table of Contents](index) |  binding fail domain |

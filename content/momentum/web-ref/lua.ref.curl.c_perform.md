@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_close)  | 15.2. Lua Functions |  [Next](lua.ref.curl.c_setopt.php) |
 
 <a name="lua.ref.curl.c_perform"></a>
@@ -34,5 +36,7 @@ c:perform();
 
 See [c:setopt](lua.ref.curl.c_setopt "c:setopt") for an explanation of the parameters passed to `setopt`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_close)  | [Up](lua.function.details.php) |  [Next](lua.ref.curl.c_setopt.php) |
 | c:close  | [Table of Contents](index) |  c:setopt |

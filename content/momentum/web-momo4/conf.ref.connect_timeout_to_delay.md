@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.connection_allocation_aggressiveness) |
 
 <a name="conf.ref.connect_timeout_to_delay"></a>
@@ -21,6 +23,8 @@ The default value is 900 seconds.
 
 connect_timeout_to_delay is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout)  | [Up](config.options.ref) |  [Next](conf.ref.connection_allocation_aggressiveness) |
 | connect_timeout  | [Table of Contents](index) |  connection_allocation_aggressiveness |
 

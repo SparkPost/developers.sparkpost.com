@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecstream_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.ehlo_timeout.php) |
 
 <a name="conf.ref.ehlo_hostname"></a>
@@ -53,5 +55,7 @@ The default value for this option is `__hostname__`.
 
 ehlo_hostname is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecstream_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.ehlo_timeout.php) |
 | ecstream_timeout  | [Table of Contents](index) |  ehlo_timeout |

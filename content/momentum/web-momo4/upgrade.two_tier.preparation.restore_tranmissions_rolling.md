@@ -8,6 +8,8 @@
 
     `pssh -h /var/tmp/vertica-hosts-file "/etc/init.d/msys-nginx reload"`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.upgrade_ecelerity_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.upgrade_vertica_rolling) |
 | 11.8. Upgrade Ecelerity on the Remaining Platform Nodes  | [Table of Contents](index) |  11.10. Upgrade Vertica on the Analytics Nodes |
 

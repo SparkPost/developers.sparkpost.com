@@ -274,5 +274,8 @@ The use of numerous small windows is usually preferable to a few large windows. 
 
 Users of the cluster module may benefit from special replicated data types. As described in , [Section 7.7.1, “Replication Configurations”](cluster.config.replication#cluster.replication.features "7.7.1. Replication Configurations") a number of functions have special support for replicating their values across all nodes of a cluster.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.enhancements)  | [Up](sieve) |  [Next](p.command.ref) |
 | 8.3. RFC Standard Sieve Enhancements  | [Table of Contents](index) |  Part II. Command Reference |

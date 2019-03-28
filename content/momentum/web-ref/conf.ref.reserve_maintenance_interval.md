@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.require_ehlo)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.resolv_conf.php) |
 
 <a name="conf.ref.reserve_maintenance_interval"></a>
@@ -30,5 +32,7 @@ reserve_maintenance_interval is valid in the global scope.
 
 [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.require_ehlo)  | [Up](conf.ref.files.php) |  [Next](conf.ref.resolv_conf.php) |
 | require_ehlo  | [Table of Contents](index) |  resolv_conf |

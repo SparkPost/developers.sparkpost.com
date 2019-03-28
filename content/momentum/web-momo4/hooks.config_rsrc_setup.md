@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hooks.msg_gen_data_spool)  | Chapter 69. Hook Points and C Functions Reference |  [Next](apis.ec_config_rsrc_get) |
 
 <a name="hooks.config_rsrc_setup"></a>
@@ -54,6 +56,8 @@ This hook will be called in any thread.
 
 [ec_httpsrv_register_auth](apis.ec_httpsrv_register_auth "ec_httpsrv_register_auth"), [ec_httpsrv_register](https://support.messagesystems.com/docs/web-c-api/apis.ec_httpsrv_register), [ec_control_register_command3](https://support.messagesystems.com/docs/web-c-api/apis.ec_control_register_command3)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hooks.msg_gen_data_spool)  | [Up](hooks) |  [Next](apis.ec_config_rsrc_get) |
 | msg_gen_data_spool  | [Table of Contents](index) |  ec_config_rsrc_get |
 

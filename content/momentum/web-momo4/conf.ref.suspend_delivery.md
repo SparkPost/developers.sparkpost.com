@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.supplemental_groups)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.tcp_buffer_size) |
 
 <a name="conf.ref.suspend_delivery"></a>
@@ -61,6 +63,8 @@ For more information on the default binding, see [the section called “`default
 
 [binding](conf.ref.binding "binding"), [Section 27.2, “`duravip_follow` and the #mmove Binding”](cluster.config.mmove "27.2. duravip_follow and the #mmove Binding"), [default_binding](conf.ref.default_binding "default_binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.supplemental_groups)  | [Up](config.options.ref) |  [Next](conf.ref.tcp_buffer_size) |
 | supplemental_groups  | [Table of Contents](index) |  tcp_buffer_size |
 

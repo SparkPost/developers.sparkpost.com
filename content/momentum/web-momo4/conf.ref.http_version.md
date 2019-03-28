@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_uri)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.idle_timeout) |
 
 <a name="conf.ref.http_version"></a>
@@ -32,6 +34,8 @@ The default value for this option is `"1.1"`.
 
 [delivery_method](conf.ref.delivery_method "delivery_method"), [http_basic_auth](conf.ref.http_basic_auth "http_basic_auth"), [http_method](conf.ref.http_method "http_method"), [http_uri](conf.ref.http_uri "http_uri"), [http_host](conf.ref.http_host "http_host"), [http_host](conf.ref.http_host "http_host"), and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_uri)  | [Up](config.options.ref) |  [Next](conf.ref.idle_timeout) |
 | http_uri  | [Table of Contents](index) |  idle_timeout |
 

@@ -36,6 +36,8 @@ Portions of this procedure are adapted from the [HP Vertica License Renewals or 
 
 9.  To officially accept the EULA and complete the license upgrade, exit the EULA and choose Accept EULA.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.post-install.vertica_mgmt_console)  | [Up](post_installation) |  [Next](install.security_considerations) |
 | 12.4. Download and Install the Vertica Management Console  | [Table of Contents](index) |  12.6. Security Considerations |
 

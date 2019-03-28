@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.overview.implicit)  | Chapter 13. Modules |  [Next](module_specific_console_commands) |
 
 ## 13.2. Summary Module Information
@@ -171,5 +173,8 @@ This section shows outbound modules. Modules are listed alphabetically with a br
 | [restinjector](https://support.messagesystems.com/docs/web-rest-injector/rest.configuring) (*singleton*) | 3.1 | Activate the REST injection API |   |   |   |   |
 | [Section 14.62, “seedlist – Seedlist Integration”](modules.seedlist "14.62. seedlist – Seedlist Integration") | 3.0 | Deliverability monitoring service |   |   |  ✓ |   |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.overview.implicit)  | [Up](modules.overview) |  [Next](module_specific_console_commands) |
 | 13.1. Module Overview  | [Table of Contents](index) |  13.3. Module-Specific Console Commands |

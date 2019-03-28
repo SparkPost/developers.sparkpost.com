@@ -159,6 +159,8 @@
 
         `service msys-vertica start`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.restore_tranmissions_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.configuration.flyway_rolling) |
 | 11.9. Restore Transmissions to the Remaining Platform Nodes  | [Table of Contents](index) |  11.11. Prepare and Run Flyway |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.generate_bounces)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.generate_delay_dsn.php) |
 
 <a name="conf.ref.generate_bounces_for_multi_recipient_policy_rejections"></a>
@@ -25,5 +27,7 @@ The default value for this option is `true` for conformance with the SMTP specif
 
 generate_bounces_for_multi_recipient_policy_rejections is valid in the global, pathway_group and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.generate_bounces)  | [Up](conf.ref.files.php) |  [Next](conf.ref.generate_delay_dsn.php) |
 | generate_bounces  | [Table of Contents](index) |  generate_delay_dsn |

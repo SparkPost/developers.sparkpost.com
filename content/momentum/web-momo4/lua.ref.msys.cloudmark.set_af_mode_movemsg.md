@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.set_af_mode_keep)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cloudmark.set_af_msi_address) |
 
 <a name="lua.ref.msys.cloudmark.set_af_mode_movemsg"></a>
@@ -62,6 +64,8 @@ msys.registerModule("af_test", mod);
 
 [msys.cloudmark.score_af](lua.ref.msys.cloudmark.score_af "msys.cloudmark.score_af"), [msys.cloudmark.add_af_data](lua.ref.msys.cloudmark.add_af_data "msys.cloudmark.add_af_data"), [msys.cloudmark.set_af_mode_discard](lua.ref.msys.cloudmark.set_af_mode_discard "msys.cloudmark.set_af_mode_discard"), [msys.cloudmark.set_af_mode_keep](lua.ref.msys.cloudmark.set_af_mode_keep "msys.cloudmark.set_af_mode_keep"), [msys.cloudmark.set_af_msi_address](lua.ref.msys.cloudmark.set_af_msi_address "msys.cloudmark.set_af_msi_address"), [msys.cloudmark.analyze](lua.ref.msys.cloudmark.analyze "msys.cloudmark.analyze"), [msys.cloudmark.score](lua.ref.msys.cloudmark.score "msys.cloudmark.score"), [Section 71.18, “cloudmark – Cloudmark Authority® Content Scanning”](modules.cloudmark "71.18. cloudmark – Cloudmark Authority® Content Scanning")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.set_af_mode_keep)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cloudmark.set_af_msi_address) |
 | msys.cloudmark.set_af_mode_keep  | [Table of Contents](index) |  msys.cloudmark.set_af_msi_address |
 

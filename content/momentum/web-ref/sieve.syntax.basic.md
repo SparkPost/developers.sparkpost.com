@@ -427,5 +427,8 @@ if header :contains "X-Spam-Status" "yes" {
 
 `is_rfc821_ip` returns true if a given address is a valid address judged by `is_valid_ip` or such an address in `[]`. It also accepts a list of addresses and returns true only when each of them is valid.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.differences)  | [Up](sieve) |  [Next](sieve.enhancements) |
 | 8.1. The differences between Sieve and Sieve++  | [Table of Contents](index) |  8.3. RFC Standard Sieve Enhancements |

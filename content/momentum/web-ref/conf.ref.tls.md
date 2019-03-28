@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.timestampformat)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_allow_renegotiation.php) |
 
 <a name="conf.ref.tls"></a>
@@ -35,5 +37,7 @@ The default value is `no`.
 
 tls is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.timestampformat)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_allow_renegotiation.php) |
 | timestampformat  | [Table of Contents](index) |  tls_allow_renegotiation |

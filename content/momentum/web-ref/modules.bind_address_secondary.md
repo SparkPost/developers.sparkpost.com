@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.auth_radius)  | Chapter 14. Modules Reference |  [Next](modules.beik.php) |
 
 ## 14.9. bind_address_secondary – Dual-stack IPv4/IPv6 Support
@@ -21,5 +23,7 @@ binding "whatever" {
   bind_address_secondary = *`whatever`*
 }
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.auth_radius)  | [Up](modules.php) |  [Next](modules.beik.php) |
 | 14.8. auth_radius – RADIUS based SMTP Authentication  | [Table of Contents](index) |  14.10. beik – BEIK Module |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tracking_link_expiry)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.transform_8bitmime_content) |
 
 <a name="conf.ref.transfail_drain_rate"></a>
@@ -26,6 +28,8 @@ transfail_drain_rate is valid in the global scope.
 
 [inline_transfail_processing](conf.ref.inline_transfail_processing "inline_transfail_processing") and [max_resident_transfails](conf.ref.max_resident_transfails "max_resident_transfails")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tracking_link_expiry)  | [Up](config.options.ref) |  [Next](conf.ref.transform_8bitmime_content) |
 | tracking_link_expiry  | [Table of Contents](index) |  transform_8bitmime_content |
 

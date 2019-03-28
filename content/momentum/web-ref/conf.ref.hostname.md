@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.host_failure_retry)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.http_basic_auth.php) |
 
 <a name="conf.ref.hostname"></a>
@@ -19,5 +21,7 @@ This configuration directive is used to override the default hostname as determi
 
 hostname is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.host_failure_retry)  | [Up](conf.ref.files.php) |  [Next](conf.ref.http_basic_auth.php) |
 | host_failure_retry  | [Table of Contents](index) |  http_basic_auth |

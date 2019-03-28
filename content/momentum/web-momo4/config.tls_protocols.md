@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_key)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_verified_peer_is_authorized) |
 
 <a name="config.tls_protocols"></a>
@@ -31,6 +33,8 @@ In Centos/RHEL 5, which are typically shipped with OpenSSL 0.98, TLSv1.1 and TLS
 
 `tls_ciphers` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_key)  | [Up](config.options.ref) |  [Next](config.tls_verified_peer_is_authorized) |
 | tls_key  | [Table of Contents](index) |  tls_verified_peer_is_authorized |
 

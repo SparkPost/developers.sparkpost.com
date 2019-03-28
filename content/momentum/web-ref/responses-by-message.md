@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](responses-by-code)  | Appendix F. Message Responses |  [Next](libedit) |
 
 ## F.2. Responses Sorted by Message
@@ -113,5 +115,8 @@
 | 501 | 5.5.4 | unexpected command | See message. |
 | 500 | 5.5.2 | unrecognized command | See message. |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](responses-by-code)  | [Up](responses) |  [Next](libedit) |
 | F.1. Responses Sorted By Codes  | [Table of Contents](index) |  Appendix G. Key Binding Reference for ec_console |

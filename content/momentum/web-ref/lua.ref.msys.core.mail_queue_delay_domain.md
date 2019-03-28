@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.get_now_ts)  | 15.2. Lua Functions |  [Next](lua.ref.msys.core.string_new.php) |
 
 <a name="lua.ref.msys.core.mail_queue_delay_domain"></a>
@@ -26,5 +28,7 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [msys.core.dns_get_domain](lua.ref.msys.core.dns_get_domain "msys.core.dns_get_domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.get_now_ts)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.core.string_new.php) |
 | msys.core.get_now_ts  | [Table of Contents](index) |  msys.core.string_new |

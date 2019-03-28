@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.new)  | 15.2. Lua Functions |  [Next](lua.ref.msg.batch_id.php) |
 
 <a name="lua.ref.json.strerror"></a>
@@ -54,5 +56,7 @@ The follow constants are defined and can be used to determine the cause of failu
 
 [json.new](lua.ref.json.new "json.new")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.new)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg.batch_id.php) |
 | json.new  | [Table of Contents](index) |  msg.batch_id |

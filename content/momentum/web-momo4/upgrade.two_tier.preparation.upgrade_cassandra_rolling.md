@@ -46,6 +46,8 @@ This should be done after each node is updated to verify the cluster is fully fu
 
 2.  Repeat Step 1 for the **remaining Platform nodes** .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.snapshot_cassandra_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.stop_generations_rolling) |
 | 11.3. Perform a Cassandra Snapshot  | [Table of Contents](index) |  11.5. Stop Transmissions to the First Platform Node |
 

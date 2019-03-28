@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.hash_keys)  | 16.2. Sieve Function Details |  [Next](sieve.ref.hash_values) |
 
 <a name="sieve.ref.hash_set"></a>
@@ -35,5 +37,8 @@ ec_log "The value is ${value}";
 
 [hash_create](sieve.ref.hash_create "hash_create"), [hash_dump](sieve.ref.hash_dump "hash_dump") and [hash_get](sieve.ref.hash_get "hash_get").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.hash_keys)  | [Up](sieve.ref.files) |  [Next](sieve.ref.hash_values) |
 | hash_keys  | [Table of Contents](index) |  hash_values |

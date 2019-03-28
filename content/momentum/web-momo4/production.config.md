@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.config)  | Chapter 5. Hardware Considerations |  [Next](addl.config.notes) |
 
 ## 5.6. Production Environment Configurations
@@ -12,13 +14,13 @@ The Enterprise Basic Configuration consists of three nodes running all roles wit
 
 **Table 5.3. Enterprise Basic - Performance Ratings**
 
-| Node Capacity | 
+| Node Capacity |
 
 Cluster Capacity
 
 (2 Nodes Operational)
 
- | 
+ |
 
 Peak Cluster Capacity
 
@@ -45,14 +47,14 @@ Peak Cluster Capacity
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 6 x 300 GB 15k RPM HDD |   |
-| Message Spools | 2 x 300 GB in RAID1 | 
+| Message Spools | 2 x 300 GB in RAID1 |
 
 /var/spool/ecelerity
 
 Note: This array should be dedicated to the spools.
 
  |
-| OS, App Binaries, Logs, Platform DB, Analytics DB | 2 x 300 GB in RAID1 | 
+| OS, App Binaries, Logs, Platform DB, Analytics DB | 2 x 300 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -74,13 +76,13 @@ The Enterprise Standard Configuration consists of three nodes running all roles 
 
 **Table 5.6. Enterprise Standard - Performance Ratings**
 
-| Node Capacity | 
+| Node Capacity |
 
 Cluster Capacity
 
 (2 Nodes Operational)
 
- | 
+ |
 
 Peak Cluster Capacity
 
@@ -107,14 +109,14 @@ Peak Cluster Capacity
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 8 x 300 GB 15k RPM HDD |   |
-| Message Spools | 4 x 300 GB in RAID10 | 
+| Message Spools | 4 x 300 GB in RAID10 |
 
 /var/spool/ecelerity
 
 Note: This array should be dedicated to the spools.
 
  |
-| OS, App Binaries, Logs, Platform DB | 2 x 300 GB in RAID1 | 
+| OS, App Binaries, Logs, Platform DB | 2 x 300 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -125,7 +127,7 @@ Note: This array should be dedicated to the spools.
 *   Platform DB - /var/db/cassandra
 
  |
-| Analytics DB | 2 x 300 GB in RAID1 | 
+| Analytics DB | 2 x 300 GB in RAID1 |
 
 Analytics DB - /var/db/vertica
 
@@ -141,13 +143,13 @@ The Enterprise Plus Configuration consists of three nodes running all roles with
 
 **Table 5.9. Enterprise Plus - Performance Ratings**
 
-| Node Capacity | 
+| Node Capacity |
 
 Cluster Capacity
 
 (2 Nodes Operational)
 
- | 
+ |
 
 Peak Cluster Capacity
 
@@ -174,14 +176,14 @@ Peak Cluster Capacity
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 8 x 600 GB 15k RPM HDD |   |
-| Message Spools | 4 x 600 GB in RAID10 | 
+| Message Spools | 4 x 600 GB in RAID10 |
 
 /var/spool/ecelerity
 
 Note: This array should be dedicated to the spools.
 
  |
-| OS, App Binaries, Logs, Platform DB | 2 x 600 GB in RAID1 | 
+| OS, App Binaries, Logs, Platform DB | 2 x 600 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -192,7 +194,7 @@ Note: This array should be dedicated to the spools.
 *   Platform DB - /var/db/cassandra
 
  |
-| Analytics DB | 2 x 600 GB in RAID1 | 
+| Analytics DB | 2 x 600 GB in RAID1 |
 
 Analytics DB - /var/db/vertica
 
@@ -210,13 +212,13 @@ The baseline system supports the following performance ratings.
 
 **Table 5.12. Enterprise Scaling - Performance Ratings**
 
-| 
+|
 
 Baseline Cluster Capacity
 
 (2 Nodes Operational)
 
- | 
+ |
 
 Baseline Peak Cluster Capacity
 
@@ -243,14 +245,14 @@ Baseline Peak Cluster Capacity
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 8 x 600 GB 15k RPM HDD |   |
-| Message Spools | 4 x 600 GB in RAID10 | 
+| Message Spools | 4 x 600 GB in RAID10 |
 
 /var/spool/ecelerity
 
 Note: This array should be dedicated to the spools.
 
  |
-| OS, App Binaries, Logs, Platform DB | 2 x 600 GB in RAID1 | 
+| OS, App Binaries, Logs, Platform DB | 2 x 600 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -279,7 +281,7 @@ Note: This array should be dedicated to the spools.
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 4 x 600 GB 15k RPM HDD |   |
-| OS, App Binaries, Logs | 2 x 600 GB in RAID1 | 
+| OS, App Binaries, Logs | 2 x 600 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -288,7 +290,7 @@ Note: This array should be dedicated to the spools.
 *   App Binaries - /opt./msys
 
  |
-| Analytics DB | 2 x 600 GB in RAID1 | 
+| Analytics DB | 2 x 600 GB in RAID1 |
 
 Analytics DB - /var/db/vertica
 
@@ -296,6 +298,8 @@ Note: This array should be dedicated to the Analytics DB.
 
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.config)  | [Up](hardware.requirements) |  [Next](addl.config.notes) |
 | 5.5. Hardware Deployment Configuration  | [Table of Contents](index) |  5.7. Additional Configuration Notes |
 

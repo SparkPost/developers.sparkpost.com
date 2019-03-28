@@ -22,6 +22,8 @@ Logging of authentication events is enabled by turning on `log_authentication` i
 
 More information about authentication modules can be found at [Section 71.8, “auth_ds – Datasource based SMTP Authentication”](modules.auth_ds "71.8. auth_ds – Datasource based SMTP Authentication").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_auth)  | [Up](control_listener) |  [Next](control_authz) |
 | 17.2. Control_Listener Authentication  | [Table of Contents](index) |  17.4. Control_Listener Authorization |
 

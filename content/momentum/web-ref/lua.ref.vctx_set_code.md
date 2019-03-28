@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set)  | 15.2. Lua Functions |  [Next](lua.ref.vctx_tarpit.php) |
 
 <a name="lua.ref.vctx_set_code"></a>
@@ -21,5 +23,7 @@ Sets the inbound disposition and response message. This can cause the current me
 
 Because this function is in the `msys.core` namespace, an explicit `require('msys.core')` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_set)  | [Up](lua.function.details.php) |  [Next](lua.ref.vctx_tarpit.php) |
 | vctx:set  | [Table of Contents](index) |  vctx:tarpit |

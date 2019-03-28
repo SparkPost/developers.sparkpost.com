@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.config)  | 12.2. System Console Commands |  [Next](console_commands.counter.php) |
 
 <a name="console_commands.count"></a>
@@ -32,5 +34,7 @@ Displaying 'SMTP' from /32 to /32
       1                                 127.0.0.1/32
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.config)  | [Up](console.commands.non-module.php) |  [Next](console_commands.counter.php) |
 | config  | [Table of Contents](index) |  counter |

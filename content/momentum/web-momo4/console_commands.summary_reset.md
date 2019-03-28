@@ -24,6 +24,8 @@ The **summary reset**       command resets the statistics counters of the runnin
 
 [binding summary](console_commands.binding_summary "binding summary"), [summary](console_commands.summary "summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary)  | [Up](console.cmds.ref) |  [Next](console_commands.sysinfo) |
 | summary  | [Table of Contents](index) |  sysinfo |
 

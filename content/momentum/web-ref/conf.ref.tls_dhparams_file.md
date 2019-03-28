@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ciphers)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_enable_dhe_ciphers.php) |
 
 <a name="conf.ref.tls_dhparams_file"></a>
@@ -23,5 +25,7 @@ This option has no default value; instead, it uses internally-specified DHE para
 
 tls_dhparams_file is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ciphers)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_enable_dhe_ciphers.php) |
 | tls_ciphers  | [Table of Contents](index) |  tls_enable_dhe_ciphers |

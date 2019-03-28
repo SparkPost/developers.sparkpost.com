@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.hash_dump)  | 16.2. Sieve Function Details |  [Next](sieve.ref.hash_keys) |
 
 <a name="sieve.ref.hash_get"></a>
@@ -35,5 +37,8 @@ $hash = hash_create;
 
 [hash_create](sieve.ref.hash_create "hash_create"), [hash_dump](sieve.ref.hash_dump "hash_dump") and [hash_get](sieve.ref.hash_get "hash_get")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.hash_dump)  | [Up](sieve.ref.files) |  [Next](sieve.ref.hash_keys) |
 | hash_dump  | [Table of Contents](index) |  hash_keys |

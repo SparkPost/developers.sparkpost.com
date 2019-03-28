@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rewrite_mailfrom)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_rfc2047_encode_header.php) |
 
 <a name="sieve.ref.ec_rfc2047_encode_addresses"></a>
@@ -24,5 +26,8 @@ $encoded = ec_rfc2047_encode_addresses $to;
 
 You might use this function in one of the custom bounce generation hooks, or at any point after data (when you have a message).
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rewrite_mailfrom)  | [Up](sieve.ref.files.php) |  [Next](sieve.ref.ec_rfc2047_encode_header.php) |
 | ec_rewrite_mailfrom  | [Table of Contents](index) |  ec_rfc2047_encode_header |

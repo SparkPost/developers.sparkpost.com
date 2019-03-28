@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.guide)  | Part I. Configuration Guide |  [Next](install.requirements.php) |
 ## Chapter 1. Installation
 **Table of Contents**
@@ -43,5 +45,7 @@ If you are upgrading to Momentum version 3.3, be sure to review [Section 4.3.1,
 *   Solaris variants: Solaris 10 (minimum level U3) on both SPARC and AMD64 architectures
 *   Note that Momentum 3.5 and future releases are not supported on Red Hat 4\. Red Hat dropped support for this release in February 2012.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.guide)  | [Up](p.guide.php) |  [Next](install.requirements.php) |
 | Part I. Configuration Guide  | [Table of Contents](index) |  1.1. System Requirements |

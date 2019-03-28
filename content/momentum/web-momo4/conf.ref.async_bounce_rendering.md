@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_trailing_whitespace_in_commands)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.authorization) |
 
 <a name="conf.ref.async_bounce_rendering"></a>
@@ -21,6 +23,8 @@ The default value is `true`.
 
 async_bounce_rendering is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_trailing_whitespace_in_commands)  | [Up](config.options.ref) |  [Next](conf.ref.authorization) |
 | allow_trailing_whitespace_in_commands  | [Table of Contents](index) |  authorization |
 

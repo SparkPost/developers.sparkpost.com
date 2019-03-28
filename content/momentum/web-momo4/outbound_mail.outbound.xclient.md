@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](tls_option)  | Chapter 25. Configuring Outbound Mail Delivery |  [Next](outbound_mail.relay_hosts) |
 
 ## 25.6. Outbound XCLIENT support
@@ -22,6 +24,8 @@ binding "customer-1" {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](tls_option)  | [Up](outbound_mail) |  [Next](outbound_mail.relay_hosts) |
 | 25.5. Outbound TLS  | [Table of Contents](index) |  25.7. Outbound Email Relay |
 

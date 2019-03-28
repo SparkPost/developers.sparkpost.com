@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_retry_interval)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.mdn_failures_notify) |
 
 <a name="conf.ref.max_timed_events_per_iter"></a>
@@ -21,6 +23,8 @@ The default value is `1024`.
 
 max_timed_events_per_iter is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_retry_interval)  | [Up](config.options.ref) |  [Next](conf.ref.mdn_failures_notify) |
 | max_retry_interval  | [Table of Contents](index) |  mdn_failures_notify |
 

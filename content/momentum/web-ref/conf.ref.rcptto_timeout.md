@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.prohibited_hosts)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.relay_domains.php) |
 
 <a name="conf.ref.rcptto_timeout"></a>
@@ -19,5 +21,7 @@ The amount of time in seconds to wait for a response to the `RCPT TO` command. T
 
 rcptto_timeout is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.prohibited_hosts)  | [Up](conf.ref.files.php) |  [Next](conf.ref.relay_domains.php) |
 | prohibited_hosts  | [Table of Contents](index) |  relay_domains |

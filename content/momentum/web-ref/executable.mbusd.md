@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbuscfg)  | 11.2. Executable Commands |  [Next](executable.mbusd_monitor.php) |
 
 <a name="executable.mbusd"></a>
@@ -21,5 +23,7 @@ mbusd — Momentum cluster messaging bus
 
 [mbusd_monitor](executable.mbusd_monitor "mbusd_monitor")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbuscfg)  | [Up](exe.commands.details.php) |  [Next](executable.mbusd_monitor.php) |
 | mbuscfg  | [Table of Contents](index) |  mbusd_monitor |

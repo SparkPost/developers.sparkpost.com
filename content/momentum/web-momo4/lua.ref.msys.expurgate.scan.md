@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dumper.Dumper)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.gauge_cache.dec) |
 
 <a name="lua.ref.msys.expurgate.scan"></a>
@@ -205,6 +207,8 @@ end
 msys.registerModule("test_scan", mod);
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dumper.Dumper)  | [Up](lua.function.details) |  [Next](lua.ref.msys.gauge_cache.dec) |
 | msys.dumper.Dumper  | [Table of Contents](index) |  msys.gauge_cache.dec |
 

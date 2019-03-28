@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.match_cache_size)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_dns_ttl.php) |
 
 <a name="conf.ref.max_deliveries_per_connection"></a>
@@ -24,5 +26,7 @@ max_deliveries_per_connection is valid in the binding, binding_group, domain and
 
 [max_recipients_per_connection](conf.ref.max_recipients_per_connection "max_recipients_per_connection")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.match_cache_size)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_dns_ttl.php) |
 | match_cache_size  | [Table of Contents](index) |  max_dns_ttl |

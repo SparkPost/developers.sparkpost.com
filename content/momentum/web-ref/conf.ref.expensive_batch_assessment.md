@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.exclude_vctx)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.force_fsync.php) |
 
 <a name="conf.ref.expensive_batch_assessment"></a>
@@ -21,5 +23,7 @@ The default value for this option is `false`.
 
 expensive_batch_assessment is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.exclude_vctx)  | [Up](conf.ref.files.php) |  [Next](conf.ref.force_fsync.php) |
 | exclude_vctx  | [Table of Contents](index) |  force_fsync |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alerting)  | Chapter 14. Modules Reference |  [Next](modules.antivirus.php) |
 
 ## 14.4. alias – Alias Expansion Module
@@ -38,5 +40,7 @@ Within the desired domain, the `Alias_Schemes` option is set to the Scheme name 
 
 [alias_schemes](conf.ref.alias_schemes "alias_schemes") and [Section 14.30, “ds_core – Datasource Query Core”](modules.ds_core.php "14.30. ds_core – Datasource Query Core").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alerting)  | [Up](modules.php) |  [Next](modules.antivirus.php) |
 | 14.3. alerting – alerting  | [Table of Contents](index) |  14.5. antivirus – Antivirus Modules |

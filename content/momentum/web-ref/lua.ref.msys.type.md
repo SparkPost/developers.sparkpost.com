@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.snmpTrap)  | 15.2. Lua Functions |  [Next](lua.ref.msys.unlock.php) |
 
 <a name="lua.ref.msys.type"></a>
@@ -17,5 +19,7 @@ Returns the type name of the supplied parameter, just like the built-in Lua `typ
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.snmpTrap)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.unlock.php) |
 | msys.snmpTrap  | [Table of Contents](index) |  msys.unlock |

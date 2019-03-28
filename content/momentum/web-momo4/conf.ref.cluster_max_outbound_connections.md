@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.click_tracking_scheme)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.cluster_outbound_throttle_connections) |
 
 <a name="conf.ref.cluster_max_outbound_connections"></a>
@@ -66,6 +68,8 @@ Host edge.omniti.com {
 
 [max_outbound_connections](conf.ref.max_outbound_connections "max_outbound_connections"), [host](conf.ref.host "host")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.click_tracking_scheme)  | [Up](config.options.ref) |  [Next](conf.ref.cluster_outbound_throttle_connections) |
 | click_tracking_scheme  | [Table of Contents](index) |  cluster_outbound_throttle_connections |
 

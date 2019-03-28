@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.getClassMetaTable)  | 15.2. Lua Functions |  [Next](lua.ref.msys.idn_utf8.php) |
 
 <a name="lua.ref.msys.idn"></a>
@@ -43,5 +45,7 @@ This function wil help facilitate the translation of international characters to
 
 [msys.idn.to_utf8](lua.ref.msys.idn_utf8 "msys.idn.to_utf8")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.getClassMetaTable)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.idn_utf8.php) |
 | msys.getClassMetaTable  | [Table of Contents](index) |  msys.idn.to_utf8 |

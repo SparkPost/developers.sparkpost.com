@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.require_ehlo)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.resolv_conf) |
 
 <a name="conf.ref.reserve_maintenance_interval"></a>
@@ -30,6 +32,8 @@ reserve_maintenance_interval is valid in the global scope.
 
 [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.require_ehlo)  | [Up](config.options.ref) |  [Next](conf.ref.resolv_conf) |
 | require_ehlo  | [Table of Contents](index) |  resolv_conf |
 

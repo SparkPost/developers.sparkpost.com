@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_header_postfix)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_host_fingerprint) |
 
 <a name="sieve.ref.ec_header_prefix"></a>
@@ -18,5 +20,8 @@ This will find the header named ```<field-name>``` and should it exist, prepend 
 
 You should not use this function in the set_binding phases (regardless of version), and, as of Momentum 2.2.2.37, it will not work in these phases.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_header_postfix)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_host_fingerprint) |
 | ec_header_postfix  | [Table of Contents](index) |  ec_host_fingerprint |

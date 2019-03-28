@@ -30,6 +30,8 @@ All domains purged.  62415 messages failed.
 
 [binding fail domain](console_commands.binding_fail_domain "binding fail domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_fail_domain)  | [Up](console.cmds.ref) |  [Next](console_commands.binding_flush_domain) |
 | binding fail domain  | [Table of Contents](index) |  binding flush domain |
 

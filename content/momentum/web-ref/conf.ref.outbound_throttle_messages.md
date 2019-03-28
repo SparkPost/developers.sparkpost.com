@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.pathway.php) |
 
 <a name="conf.ref.outbound_throttle_messages"></a>
@@ -112,5 +114,7 @@ outbound_throttle_messages is valid in the binding, binding_group, domain and gl
 
 [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback "2.6. Configuration Scopes and Fallback")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.pathway.php) |
 | outbound_throttle_connections  | [Table of Contents](index) |  pathway |

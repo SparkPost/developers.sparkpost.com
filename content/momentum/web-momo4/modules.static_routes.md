@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.spf)  | Chapter 71. Modules Reference |  [Next](modules.suppress_spool) |
 
 ## 71.69. static-routes - Static Routes
@@ -25,6 +27,8 @@ static_routes
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.spf)  | [Up](modules) |  [Next](modules.suppress_spool) |
 | 71.68. spf Modules – spf_macros, spf_v1, and senderid (SPF v2)  | [Table of Contents](index) |  71.70. suppress_spool – Deferred Message Spooling |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecstream_port)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.ehlo_hostname.php) |
 
 <a name="conf.ref.ecstream_timeout"></a>
@@ -26,5 +28,7 @@ ecstream_timeout is valid in the binding, binding_group, domain and global scope
 
 [ecstream_port](conf.ref.ecstream_port "ecstream_port")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecstream_port)  | [Up](conf.ref.files.php) |  [Next](conf.ref.ehlo_hostname.php) |
 | ecstream_port  | [Table of Contents](index) |  ehlo_hostname |

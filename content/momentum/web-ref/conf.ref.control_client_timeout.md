@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connection_allocation_aggressiveness)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.crypto_engine.php) |
 
 <a name="conf.ref.control_client_timeout"></a>
@@ -19,5 +21,7 @@ Specifies the timeout in seconds that will be used for control client connection
 
 control_client_timeout is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connection_allocation_aggressiveness)  | [Up](conf.ref.files.php) |  [Next](conf.ref.crypto_engine.php) |
 | connection_allocation_aggressiveness  | [Table of Contents](index) |  crypto_engine |

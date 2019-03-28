@@ -8,7 +8,7 @@
 **Introduction**
 As consumer behaviors and preferences continue to change rapidly, it’s critical that you send the right message to the right customer at the right time and place. Creating different recipient lists based on various demographic information enables you to personalize messages and to provide relevant content to your customers. Momentum's message generation supports creating stored recipient lists, to reuse in future campaigns, using the REST API . The REST API also supports associating tags, metadata, and substitution data with a recipient, providing further insight into your customer engagement.
 As in the case of an "inline" recipient list, the recipient list must be in JSON format and can use the substitution engine's powerful features. Note that recipient substitution data takes precedence over transmission substitution data.
-**Creating a Stored Recipient List** 
+**Creating a Stored Recipient List**
 This section provides instructions to create a stored recipient list using the REST API. It introduces you to the Recipient Lists API, which provides the means to create and manage your recipient lists.
 ### Note
 This tutorial assumes that you have completed the tutorial in [Chapter 45, *Generating a Transmission*](message_gen "Chapter 45. Generating a Transmission") . A general knowledge of command line tools, JSON, HTTP protocol, and templating languages is required.
@@ -17,17 +17,17 @@ Follow these steps to create a stored recipient list:
 1.  Specify your recipient information.
     You create a stored recipient list by first specifying all recipient data in a JSON blob that will be included in the Recipient Lists API call. The recipient data includes required and optional attributes. At a minimum, you must specify the recipient's email address.
     Using your text editor, create the following JSON file named `simple_list.json`. Be sure to use your information for recipient addresses and recipient names.
-    {  
+    {
        "id":"simple_list",
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`recipient1@their_address.com`*",
                 "name":"*`recipient1`*"
              }
           },
-          {  
-             "address":{  
+          {
+             "address":{
                 "email":"*`recipient2@their_address.com`*",
                 "name":"*`recipient2`*"
              }
@@ -46,8 +46,8 @@ Follow these steps to create a stored recipient list:
     where `simple_list.json` is the name of your JSON file, `application/json` specifies the format as JSON, and *`your_api_key`* is your valid API key.
     If successful, the following response will be displayed at the command line:
     ```
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":2,
           "name":"simple_list",
@@ -63,22 +63,22 @@ Follow these steps to create a stored recipient list:
     -H "Authorization: *`your_api_key`*"
     where *`your_api_key`* is your valid API key.
     If successful, a response similar to the following will be displayed at the command line:
-    {  
-       "results":{  
+    {
+       "results":{
           "id":"simple_list",
           "name":"simple_list",
           "description":"",
           "total_accepted_recipients":2,
-          "recipients":[  
-             {  
-                "address":{  
+          "recipients":[
+             {
+                "address":{
                    "email":"*`recipient1@their_address.com`*",
                    "name":"*`recipient1`*"
                 },
                 "return_path":""
              },
-             {  
-                "address":{  
+             {
+                "address":{
                    "email":"*`recipient2@their_address.com`*",
                    "name":"*`recipient2`*"
                 },
@@ -92,5 +92,7 @@ Congratulations! You have created your first stored recipient list using Momentu
 **Configuration Change. ** Version 4.2 and later support managing your recipient lists using the UI.
 You can also create and manage your recipient lists using the web-based UI. For detailed instructions, see [Section 55.1, “Recipient Lists”](web-ui#web-ui.recipients "55.1. Recipient Lists").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](using_template)  | [Up](p.http_rest) |  [Next](using_list) |
 | Chapter 49. Using Stored Templates  | [Table of Contents](index) |  Chapter 51. Using Stored Recipient Lists |

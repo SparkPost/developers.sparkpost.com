@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_version)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.inbound_throttle_messages.php) |
 
 <a name="conf.ref.idle_timeout"></a>
@@ -36,16 +38,16 @@ domain "gcm.example.com" {
   idle_timeout = 10
   delivery_response_timeout = 1000
 }
-domain "mm7.example.com" { 
+domain "mm7.example.com" {
   ...
   delivery_method = "mm7"
-  http_basic_auth = "admin:admin" 
-  mm7_vasid = "test_domain_vas_id" 
-  mm7_vaspid = "test_global_vasp_id" 
-  mm7_message_class="personal" 
+  http_basic_auth = "admin:admin"
+  mm7_vasid = "test_domain_vas_id"
+  mm7_vaspid = "test_global_vasp_id"
+  mm7_message_class="personal"
   mm7_delivery_report="true"
   idle_timeout = 300
-  ..." 
+  ..."
 }
 ```
 
@@ -56,5 +58,7 @@ For a detailed description of configuring Momentum for push notifications see [M
 
 `idle_timeout` is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_version)  | [Up](conf.ref.files.php) |  [Next](conf.ref.inbound_throttle_messages.php) |
 | http_version  | [Table of Contents](index) |  inbound_throttle_messages |

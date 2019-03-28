@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.console)  | Chapter 4. Operations |  [Next](operations.postgresql) |
 
 ## 4.2. Console Commands
@@ -158,5 +160,8 @@ msys.registerControl("delay_domain", delay_domain);
 
 This code creates the ec_console command: **delay_domain *`domain`***           . For instructions on inplementing Lua scripts see [Section 14.60, “scriptlet – Module”](modules.scriptlet "14.60. scriptlet – Module").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.console)  | [Up](operations) |  [Next](operations.postgresql) |
 | 4.1. The Momentum System Console  | [Table of Contents](index) |  4.3. PostgreSQL |

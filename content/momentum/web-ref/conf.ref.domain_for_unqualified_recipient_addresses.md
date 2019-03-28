@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.domain_for_unqualified_sender_address.php) |
 
 <a name="conf.ref.domain_for_unqualified_recipient_addresses"></a>
@@ -29,5 +31,7 @@ which would rewrite any message sent to "RCPT TO:&lt;postmaster>" as if it had o
 
 Domain_for_unqualified_recipient_addresses is valid in pathway, pathway_group, global and listener scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain)  | [Up](conf.ref.files.php) |  [Next](conf.ref.domain_for_unqualified_sender_address.php) |
 | domain  | [Table of Contents](index) |  domain_for_unqualified_sender_address |

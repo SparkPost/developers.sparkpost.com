@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.commtouch)  | Chapter 71. Modules Reference |  [Next](modules.conntrol) |
 
 ## 71.21. compress_spool – Dynamic Spool Compression
@@ -66,6 +68,8 @@ bzip2 compression is also available. The "bzip2io {}" stanza is not necessary as
 
 This module compresses the spool messages in place. If you enable this module, you MUST be certain that the queue is empty before you disable it, or else you risk sending compressed messages without decompressing them.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.commtouch)  | [Up](modules) |  [Next](modules.conntrol) |
 | 71.20. commtouch_ctasd – Commtouch Spam Protection  | [Table of Contents](index) |  71.22. conntrol – Fine-Grained Connection Control |
 

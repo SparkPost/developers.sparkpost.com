@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](preface)  |   |  [Next](components) |
 ## Part I. Introduction to Momentum
 **Table of Contents**
@@ -8,5 +10,7 @@
 	* [4.1\. Message Generation](licensed_features#licensed_features.message.generation)
 	* [4.2\. Adaptive Delivery](licensed_features.adaptive.delivery)
 	* [4.3\. Supercharger](licensed_features.supercharger)
+|     |     |     |
+| --- | --- | --- |
 | [Prev](preface)  |   |  [Next](components) |
 | Preface  | [Table of Contents](index) |  Chapter 1. Components |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context.variables)  | Chapter 63. Validation Context Variables |  [Next](p.reference) |
 
 ## 63.2. Message Context Variables
@@ -16,27 +18,27 @@ This table lists all message context variables that are predefined globally by M
 
 | Message Context Variable | Description |
 | --- | --- |
-| #8bitmime – For internal use | 
+| #8bitmime – For internal use |
 
 This variable is set during message parsing if the message contains 8-bit content. It is used at send time to determine whether to negotiate 8-bit MIME support with the recipient or to transform the message as per the Send_8BitMime and Transform_8BitMime configuration options. For more information about these options, see [send_8bitmime](conf.ref.send_8bitmime "send_8bitmime") and [transform_8bitmime_content](conf.ref.transform_8bitmime_content "transform_8bitmime_content").
 
  |
-| #batch_ids – For internal use | 
+| #batch_ids – For internal use |
 
 The sibling message-ids in a batch. This is not determined until after reception is complete.
 
  |
-| mailfrom_domain – Domain part of mailfrom address | 
+| mailfrom_domain – Domain part of mailfrom address |
 
 Available as of the `validate_mailfrom` callout.
 
  |
-| mailfrom_localpart – Local part of mailfrom address | 
+| mailfrom_localpart – Local part of mailfrom address |
 
 Available as of the `validate_mailfrom` callout.
 
  |
-| mailfrom_string – Entire mailfrom line | 
+| mailfrom_string – Entire mailfrom line |
 
 Available as of the `validate_mailfrom` callout.
 
@@ -72,59 +74,61 @@ In some modules, it is possible to define context variables using configuration 
 
 | Module | Configuration Option | Default Value |
 | --- | --- | --- |
-| 
+|
 
 [antivirus](modules.antivirus "71.6. antivirus – Antivirus")
 
- | 
+ |
 
 `context_variable`
 
- | 
+ |
 
 *`engine name`*      _status
 
  |
-| 
+|
 
 [antivirus](modules.antivirus "71.6. antivirus – Antivirus")
 
- | 
+ |
 
 `skip_context_variable`
 
- | 
+ |
 
 skip_virus_check
 
  |
-| 
+|
 
 [spf](modules.spf "71.68. spf Modules – spf_macros, spf_v1, and senderid (SPF v2)")
 
- | 
+ |
 
 `context_variable`
 
- | 
+ |
 
 spf_status
 
  |
-| 
+|
 
 [spf](modules.spf "71.68. spf Modules – spf_macros, spf_v1, and senderid (SPF v2)")
 
- | 
+ |
 
 `context_pra_variable`
 
- | 
+ |
 
 senderid_pra_status
 
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context.variables)  | [Up](policy.context.variables) |  [Next](p.reference) |
 | Chapter 63. Validation Context Variables  | [Table of Contents](index) |  Part X. Reference |
 

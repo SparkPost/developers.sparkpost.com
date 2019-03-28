@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_admigrate)  | 11.2. Executable Commands |  [Next](executable.ec_cmd.php) |
 
 <a name="executable.ec_adtool"></a>
@@ -136,5 +138,7 @@ Move parameters from a global to a local scope by reversing the positions of the
 
 [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery"), [ec_admigrate](executable.ec_admigrate.php "ec_admigrate"), [Section 4.4, “Riak”](operations.riak.php "4.4. Riak")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_admigrate)  | [Up](exe.commands.details.php) |  [Next](executable.ec_cmd.php) |
 | ec_admigrate  | [Table of Contents](index) |  ec_cmd |

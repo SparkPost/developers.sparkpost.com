@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_mime)  | 15.2. Lua Functions |  [Next](lua.ref.msg_raw_match.php) |
 
 <a name="lua.ref.msg_raw"></a>
@@ -17,5 +19,7 @@ If a value is provided, set the content of the message to that value. Otherwise 
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_mime)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_raw_match.php) |
 | msg:mime  | [Table of Contents](index) |  msg:raw_match |

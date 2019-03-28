@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.resolv_conf)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.response_transcode_replace.php) |
 
 <a name="conf.ref.response_transcode_pattern"></a>
@@ -41,5 +43,7 @@ This option is valid in the binding, binding_group, domain and global scopes.
 
 [response_transcode_replace](conf.ref.response_transcode_replace "response_transcode_replace")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.resolv_conf)  | [Up](conf.ref.files.php) |  [Next](conf.ref.response_transcode_replace.php) |
 | resolv_conf  | [Table of Contents](index) |  response_transcode_replace |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](preface)  | Preface |  [Next](p.guide) |
 
 ## 1. Typographical Conventions Used in This Document
@@ -39,5 +41,8 @@ Where possible, Unix command-line commands are broken using the ‘`\`’ charac
 
 To provide feedback regarding this document, send email to `<[documentation@messagesystems.com](mailto:documentation@messagesystems.com)>`.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](preface)  | [Up](preface) |  [Next](p.guide) |
 | Preface  | [Table of Contents](index) |  Part I. Configuration Guide |

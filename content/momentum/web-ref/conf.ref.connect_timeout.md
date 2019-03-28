@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_server_max_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.connect_timeout_to_delay.php) |
 
 <a name="conf.ref.connect_timeout"></a>
@@ -19,5 +21,7 @@ The amount of time in seconds to spend waiting for the `connect` system call to 
 
 connect_timeout is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_server_max_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.connect_timeout_to_delay.php) |
 | cluster_server_max_outbound_connections  | [Table of Contents](index) |  connect_timeout_to_delay |

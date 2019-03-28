@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier_override)  | Chapter 14. Modules Reference |  [Next](modules.brightmail.php) |
 
 ## 14.13. bounce_logger – Momentum-Style Bounce Logging
@@ -80,5 +82,7 @@ If you move a log, use the ec_console command **reopen logs**      to close and 
 
 [Table 9.7, “logging options”](options-summary#logging-options-table "Table 9.7. logging options")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier_override)  | [Up](modules.php) |  [Next](modules.brightmail.php) |
 | 14.12. bounce_classifier_override – The Bounce Classifier Override Module  | [Table of Contents](index) |  14.14. brightmail – Brightmail Module |

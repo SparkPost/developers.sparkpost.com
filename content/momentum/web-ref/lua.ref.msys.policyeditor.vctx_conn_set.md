@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_mess_get)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.vctx_conn_get.php) |
 
 <a name="lua.ref.msys.policyeditor.vctx_conn_set"></a>
@@ -34,5 +36,7 @@ The `ctx` parameter is the context containing objects from the callout, `vars` i
 
 [msys.policyeditor.vctx_conn_get](lua.ref.msys.policyeditor.vctx_conn_get "msys.policyeditor.vctx_conn_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_mess_get)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.vctx_conn_get.php) |
 | msys.policyeditor.vctx_mess_get  | [Table of Contents](index) |  msys.policyeditor.vctx_conn_get |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.csapi)  | Chapter 14. Modules Reference |  [Next](modules.custom_logger.php) |
 
 ## 14.23. custom_bounce_logger – Custom Bounce Logging
@@ -31,5 +33,7 @@ The user string uses Sieve++-style macros and expands them, while most other cus
 
 [Section 14.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger "14.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.csapi)  | [Up](modules.php) |  [Next](modules.custom_logger.php) |
 | 14.22. csapi – The Content Scanning API Module  | [Table of Contents](index) |  14.24. custom_logger – Customizable Logging |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_host)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.http_uri) |
 
 <a name="conf.ref.http_method"></a>
@@ -34,6 +36,8 @@ The default value for this option is `"POST"`.
 
 [http_basic_auth](conf.ref.http_basic_auth "http_basic_auth"), [delivery_method](conf.ref.delivery_method "delivery_method"), [http_uri](conf.ref.http_uri "http_uri"), [http_host](conf.ref.http_host "http_host"), [http_version](conf.ref.http_version "http_version"), and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_host)  | [Up](config.options.ref) |  [Next](conf.ref.http_uri) |
 | http_host  | [Table of Contents](index) |  http_uri |
 

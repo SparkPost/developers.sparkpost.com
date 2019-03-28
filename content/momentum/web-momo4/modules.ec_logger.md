@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ds_core)  | Chapter 71. Modules Reference |  [Next](modules.eleven) |
 
 ## 71.30. EC_logger – Momentum-Style Logging
@@ -175,6 +177,8 @@ Closes and reopens the logs.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ds_core)  | [Up](modules) |  [Next](modules.eleven) |
 | 71.29. ds_core - Datasource Query Core  | [Table of Contents](index) |  71.31. eleven – Eleven eXpurgate Content Scanning |
 

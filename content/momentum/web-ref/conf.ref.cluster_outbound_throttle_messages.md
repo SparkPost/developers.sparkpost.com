@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_outbound_throttle_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.cluster_scope_max_outbound_connections.php) |
 
 <a name="conf.ref.cluster_outbound_throttle_messages"></a>
@@ -29,5 +31,7 @@ The cluster module must be configured with the outbound throttle parameters as d
 
 `cluster_outbound_throttle_messages` is valid in the binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_outbound_throttle_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.cluster_scope_max_outbound_connections.php) |
 | cluster_outbound_throttle_connections  | [Table of Contents](index) |  cluster_scope_max_outbound_connections |

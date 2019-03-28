@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.domainkeys)  | Chapter 71. Modules Reference |  [Next](modules.ec_logger) |
 
 ## 71.29. ds_core - Datasource Query Core
@@ -522,6 +524,8 @@ ecdb
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.domainkeys)  | [Up](modules) |  [Next](modules.ec_logger) |
 | 71.28. domainkeys – Yahoo! DomainKeys  | [Table of Contents](index) |  71.30. EC_logger – Momentum-Style Logging |
 

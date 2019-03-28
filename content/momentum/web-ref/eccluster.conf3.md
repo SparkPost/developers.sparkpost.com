@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.ref)  | Chapter 10. Cluster Configuration Reference |  [Next](ecelerity-cluster.conf.php) |
 
 <a name="eccluster.conf3"></a>
@@ -166,5 +168,7 @@ This ec_logger module is for logging the cluster manager only. The ec_logger mod
 
 [eccmgr](executable.eccmgr "eccmgr"), [mbus.conf](mbus.conf.php "mbus.conf"), [Section 14.31, “ec_logger – Momentum-Style Logging”](modules.ec_logger.php "14.31. ec_logger – Momentum-Style Logging").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.ref)  | [Up](cluster.ref.php) |  [Next](ecelerity-cluster.conf.php) |
 | Chapter 10. Cluster Configuration Reference  | [Table of Contents](index) |  ecelerity-cluster.conf |

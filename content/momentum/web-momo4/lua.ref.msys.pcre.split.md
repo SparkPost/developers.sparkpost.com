@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.replace)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.os.statvfs_read) |
 
 <a name="lua.ref.msys.pcre.split"></a>
@@ -52,6 +54,8 @@ Enable this function with the statement `require('msys.pcre')`.
 
 [msys.pcre.match](lua.ref.msys.pcre.match "msys.pcre.match"), [msys.pcre.replace](lua.ref.msys.pcre.replace "msys.pcre.replace")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.replace)  | [Up](lua.function.details) |  [Next](lua.ref.msys.os.statvfs_read) |
 | msys.pcre.replace  | [Table of Contents](index) |  msys.os.statvfs_read |
 

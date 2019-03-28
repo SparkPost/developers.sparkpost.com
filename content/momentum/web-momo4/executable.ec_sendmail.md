@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rotate)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_show) |
 
 <a name="executable.ec_sendmail"></a>
@@ -60,6 +62,8 @@ Scanning the message for recipient(s). Lines starting with To:, Cc: or Bcc: will
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rotate)  | [Up](exec.cmds.ref) |  [Next](executable.ec_show) |
 | ec_rotate  | [Table of Contents](index) |  ec_show |
 

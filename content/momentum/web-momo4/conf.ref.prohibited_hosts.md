@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pidfile)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.rcptto_timeout) |
 
 <a name="conf.ref.prohibited_hosts"></a>
@@ -33,6 +35,8 @@ prohibited_hosts is valid in the global scope.
 
 [skip_hosts](conf.ref.skip_hosts "skip_hosts")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pidfile)  | [Up](config.options.ref) |  [Next](conf.ref.rcptto_timeout) |
 | pidfile  | [Table of Contents](index) |  rcptto_timeout |
 

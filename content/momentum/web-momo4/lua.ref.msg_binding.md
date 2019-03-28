@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_address_header)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_binding_group) |
 
 <a name="lua.ref.msg_binding"></a>
@@ -53,6 +55,8 @@ msys.registerModule("validate_set_binding", mod);
 
 [msg:binding_group](lua.ref.msg_binding_group "msg:binding_group")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_address_header)  | [Up](lua.function.details) |  [Next](lua.ref.msg_binding_group) |
 | msg:address_header  | [Table of Contents](index) |  msg:binding_group |
 

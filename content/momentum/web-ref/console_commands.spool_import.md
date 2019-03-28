@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.sp_async)  | 12.2. System Console Commands |  [Next](console_commands.spool_import_poll.php) |
 
 <a name="console_commands.spool_import"></a>
@@ -7,7 +9,7 @@ spool import — import an alternative spool
 
 ## Synopsis
 
-spool import *`/path/to/spoolbase [concurrency] [suppress_trace_headers]`* 
+spool import *`/path/to/spoolbase [concurrency] [suppress_trace_headers]`*
 
 <a name="idp16388464"></a>
 ## Description
@@ -31,5 +33,7 @@ You can configure the ec_logger module to log import events as described in [Sec
 
 [spool import_poll](console_commands.spool_import_poll "spool import_poll")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.sp_async)  | [Up](console.commands.non-module.php) |  [Next](console_commands.spool_import_poll.php) |
 | sp_async  | [Table of Contents](index) |  spool import_poll |

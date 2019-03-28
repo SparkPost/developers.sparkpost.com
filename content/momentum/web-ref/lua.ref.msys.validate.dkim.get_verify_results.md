@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_conn_get)  | 15.2. Lua Functions |  [Next](lua.ref.json.decode.php) |
 
 <a name="lua.ref.msys.validate.dkim.get_verify_results"></a>
@@ -82,5 +84,7 @@ This function is valid in the validate_data_spool, data and data_spool_each_rcpt
 
 [msys.validate.dkim.verify_results_get_count](lua.ref.msys.validate.dkim.verify_results_get_count "msys.validate.dkim.verify_results_get_count"), [msys.validate.dkim.verify_results_get_item](lua.ref.msys.validate.dkim.verify_results_get_item.php "msys.validate.dkim.verify_results_get_item") [msys.validate.dkim.verify_status_to_string](lua.ref.msys.validate.dkim.verify_status_to_string.php "msys.validate.dkim.verify_status_to_string")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_conn_get)  | [Up](lua.function.details.php) |  [Next](lua.ref.json.decode.php) |
 | msys.policyeditor.vctx_conn_get  | [Table of Contents](index) |  json.decode |

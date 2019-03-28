@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.decommissioning)  | Part III. Configuring Momentum |  [Next](cluster.config.mmove) |
 ## Chapter 27. DuraVIP™: IP Fail over
 **Table of Contents**
@@ -102,5 +104,7 @@ binding "example" {
 ```
 If you want a listener to follow a binding, give the listener and the binding different IP addresses. Additionally, you should **not** use `duravip_preference` when using `duravip_follow`. If a listener has `enable_duravip` set to true, do not set a `duravip_preference` for this listener.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.decommissioning)  | [Up](p.configuration) |  [Next](cluster.config.mmove) |
 | 26.5. Decommissioning a Log Aggregator  | [Table of Contents](index) |  27.2. `duravip_follow` and the #mmove Binding |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](smtp-response-codes)  | Part XI. Appendix |  [Next](libedit.extended) |
 ## Key Binding Reference for ec_console
 **Table of Contents**
@@ -101,5 +103,7 @@
 |  | vi-undo | Vi undo last change. |
 |  | vi-zero | Vi move to the beginning of line. |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](smtp-response-codes)  | [Up](p.appendix) |  [Next](libedit.extended) |
 | Appendix C. SMTP Response Codes  | [Table of Contents](index) |  D.2. Extended Commands |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_discard)  | 15.2. Lua Functions |  [Next](lua.ref.msg_get_delivery_method.php) |
 
 <a name="lua.ref.msg_forward"></a>
@@ -34,5 +36,7 @@ Forward the current message to recipients other than the original recipients. A 
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_discard)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_get_delivery_method.php) |
 | msg:discard  | [Table of Contents](index) |  msg:get_delivery_method |

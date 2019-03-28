@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.idn)  | 15.2. Lua Functions |  [Next](lua.ref.msys.lock.php) |
 
 <a name="lua.ref.msys.idn_utf8"></a>
@@ -43,5 +45,7 @@ This function wil help facilitate the translation of international characters to
 
 [msys.idn.to_idn](lua.ref.msys.idn "msys.idn.to_idn")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.idn)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.lock.php) |
 | msys.idn.to_idn  | [Table of Contents](index) |  msys.lock |

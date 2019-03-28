@@ -44,6 +44,8 @@ The msgcserver_listener mediates between msgc_servers and between msgc_servers a
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecelerity_cluster.conf)  | [Up](cluster) |  [Next](cluster.listeners) |
 | 16.3. `ecelerity-cluster.conf` File  | [Table of Contents](index) |  16.5. Cluster-specific Listeners |
 

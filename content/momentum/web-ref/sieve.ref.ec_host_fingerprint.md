@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_header_prefix)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_inc_counter) |
 
 <a name="sieve.ref.ec_host_fingerprint"></a>
@@ -31,5 +33,8 @@ ec_header_add "X-Host-Fingerprint" "%{i} %{p} ${genre} ${detail}";
 
 Passive operating system fingerprinting runs as a daemon that Momentum communicates with over a socket, `/tmp/p0fd`. This daemon is started using the command: **/etc/init.d/msys-p0f start** . The fingerprints are all included in the msys-p0f package and are located here: `/opt/msys/3rdParty/etc/p0f/`. These fingerprints do not need to be modified.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_header_prefix)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_inc_counter) |
 | ec_header_prefix  | [Table of Contents](index) |  ec_inc_counter |

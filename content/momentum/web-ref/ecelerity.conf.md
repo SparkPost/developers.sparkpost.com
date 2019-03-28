@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.files)  | 9.2. Configuration Files and Option Details |  [Next](webui-common.conf.php) |
 
 <a name="ecelerity.conf"></a>
@@ -1016,5 +1018,7 @@ The various configuration options can be broken out into specific types. All the
 
 *   **Virtual Hosting**         – For a listing of virtual hosting related options see [Table 9.20, “virtual options”](options-summary#virtual-options-table "Table 9.20. virtual options").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.files)  | [Up](conf.ref.files.php) |  [Next](webui-common.conf.php) |
 | 9.2. Configuration Files and Option Details  | [Table of Contents](index) |  webui-common.conf |

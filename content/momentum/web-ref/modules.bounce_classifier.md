@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.beik)  | Chapter 14. Modules Reference |  [Next](modules.bounce_classifier_override.php) |
 
 ## 14.11. bounce_classifier – Bounce Classifier
@@ -127,5 +129,7 @@ Using this command, a manual reload of the bounce classification overrides can b
 
 [Table 9.7, “logging options”](options-summary#logging-options-table "Table 9.7. logging options") , [Section 14.44, “Live Bounce Updates – Module”](modules.live.bounce.updates.php "14.44. Live Bounce Updates – Module") and [Table 9.3, “bounce options”](options-summary.php#bounce-options-table "Table 9.3. bounce options")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.beik)  | [Up](modules.php) |  [Next](modules.bounce_classifier_override.php) |
 | 14.10. beik – BEIK Module  | [Table of Contents](index) |  14.12. bounce_classifier_override – The Bounce Classifier Override Module |

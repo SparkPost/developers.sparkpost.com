@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context-mess)  | Part I. Configuration Guide |  [Next](subclusters.php) |
 ## Chapter 7. Clustering
 **Table of Contents**
@@ -22,5 +24,7 @@ The clustering capabilities of the product enable the following features:
 Clustering is based on the concept of having a cluster of machines that communicate using a group communication message bus. Ideally, a cluster will have a dedicated gigabit network for transmission of replicated data and internal message moves.
 The product assumes that the cluster network is a trusted network, meaning that it leaves host based authentication to be implemented by the network administrator at an appropriate firewall on the network.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context-mess)  | [Up](p.guide.php) |  [Next](subclusters.php) |
 | 6.2. Message Context Variables  | [Table of Contents](index) |  7.1. Subclusters |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.count)  | 12.2. System Console Commands |  [Next](console_commands.delayed.php) |
 
 <a name="console_commands.counter"></a>
@@ -81,5 +83,7 @@ Counters may be opened with either `msys.counter.STRICT` or `msys.counter.RELAXE
 
 [Section 14.64.3, “sieve Management Using Console Commands”](modules.sieve#modules.sieve.console "14.64.3. sieve Management Using Console Commands"), [ec_inc_counter](sieve.ref.ec_inc_counter.php "ec_inc_counter")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.count)  | [Up](console.commands.non-module.php) |  [Next](console_commands.delayed.php) |
 | count  | [Table of Contents](index) |  delayed |

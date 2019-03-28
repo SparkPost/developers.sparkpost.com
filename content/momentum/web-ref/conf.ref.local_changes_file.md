@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.lmtp_port)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.local_changes_only.php) |
 
 <a name="conf.ref.local_changes_file"></a>
@@ -26,5 +28,7 @@ Local_Changes_File is valid in the global scope.
 
 [local_changes_only](conf.ref.local_changes_only "local_changes_only")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.lmtp_port)  | [Up](conf.ref.files.php) |  [Next](conf.ref.local_changes_only.php) |
 | lmtp_port  | [Table of Contents](index) |  local_changes_only |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.signing_stats.php) |
 
 <a name="conf.ref.server_reserve_outbound_connections"></a>
@@ -30,5 +32,7 @@ server_reserve_outbound_connections is valid in the global scope.
 
 [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.signing_stats.php) |
 | server_max_outbound_connections  | [Table of Contents](index) |  signing_stats |

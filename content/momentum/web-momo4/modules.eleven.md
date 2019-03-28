@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ec_logger)  | Chapter 71. Modules Reference |  [Next](modules.engage_tracker) |
 
 ## 71.31. eleven – Eleven eXpurgate Content Scanning
@@ -141,6 +143,8 @@ The minor score is set to the numeric minor classification, and the minor result
 
 *Note*: The minor results `virus` and `outbreak` are only returned if the `enable_antivir` option is set to `true`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ec_logger)  | [Up](modules) |  [Next](modules.engage_tracker) |
 | 71.30. EC_logger – Momentum-Style Logging  | [Table of Contents](index) |  71.32. engagement_tracker – HTTP Engagement Tracking |
 

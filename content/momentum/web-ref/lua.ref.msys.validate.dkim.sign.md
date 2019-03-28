@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.reflect)  | 15.2. Lua Functions |  [Next](lua.ref.msys.validate.dkim.verify_results_get_count.php) |
 
 <a name="lua.ref.msys.validate.dkim.sign"></a>
@@ -71,5 +73,7 @@ Enable this function with the statement `require('msys.validate.dkim');`.
 
 [msys.validate.dkim.get_responsible_domain](lua.ref.msys.validate.dkim.get_responsible_domain "msys.validate.dkim.get_responsible_domain"), [msys.validate.dkim.get_domains](lua.ref.msys.validate.dkim.get_domains.php "msys.validate.dkim.get_domains"), [msys.validate.dkim.reflect](lua.ref.msys.validate.dkim.reflect.php "msys.validate.dkim.reflect"), [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim.php "14.27. dkim – DomainKeys Identified Mail Signatures")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.reflect)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.validate.dkim.verify_results_get_count.php) |
 | msys.validate.dkim.reflect  | [Table of Contents](index) |  msys.validate.dkim.verify_results_get_count |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.reconfig_message)  | Chapter 19. Configuring Inbound Mail Service Using SMTP |  [Next](inbound_smtp) |
 
 ## 19.4. SMTP Extensions
@@ -49,6 +51,8 @@ Set a name/value pair in the following way:
 
 If present, the connection will succeed and will automatically be authenticated as the `anonymous` user.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.reconfig_message)  | [Up](esmtp_listener) |  [Next](inbound_smtp) |
 | 19.3. `Reconfig_Message` Option  | [Table of Contents](index) |  19.5. ESMTP_Listener Authentication |
 

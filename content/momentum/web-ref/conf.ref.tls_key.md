@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ifavailable_fallback)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_protocols.php) |
 
 <a name="conf.ref.tls_key"></a>
@@ -19,5 +21,7 @@ TLS_Key specifies the location of the PEM encoded key associated with the certif
 
 `tls_key` is valid in the ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_ifavailable_fallback)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_protocols.php) |
 | tls_ifavailable_fallback  | [Table of Contents](index) |  tls_protocols |

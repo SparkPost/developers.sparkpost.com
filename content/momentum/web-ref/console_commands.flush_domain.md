@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_rejection_summary)  | 12.2. System Console Commands |  [Next](console_commands.help.php) |
 
 <a name="console_commands.flush_domain"></a>
@@ -25,5 +27,7 @@ just-revived.com flushed.  12521 messages requeued.
 
 You may substitute `all` for the domain name to apply to all domains.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_rejection_summary)  | [Up](console.commands.non-module.php) |  [Next](console_commands.help.php) |
 | fingerprint rejection summary  | [Table of Contents](index) |  help |

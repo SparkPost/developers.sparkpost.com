@@ -52,6 +52,8 @@ In the webhooks-api version, a Cassandra stanza follows the Application stanza, 
       }
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.flyway)  | [Up](upgrade.single_node) |  [Next](upgrade.single_node.configuration.software_upgrade) |
 | 10.3. Prepare and Run Flyway  | [Table of Contents](index) |  10.5. Software Upgrade |
 

@@ -34,7 +34,7 @@
               "analytics1.yourdomain.com",
               "analytics2.yourdomain.com",
               ...
-              "analyticsN.yourdomain.com"      
+              "analyticsN.yourdomain.com"
             ]
           }
         }
@@ -102,7 +102,7 @@
               "analytics1.yourdomain.com",
               "analytics2.yourdomain.com",
               ...
-              "analyticsN.yourdomain.com"      
+              "analyticsN.yourdomain.com"
             ]
           }
         }
@@ -130,7 +130,7 @@
            "vertica": {
              "hosts": [
                 "analytics1.yourdomain.com",
-                "analytics2.yourdomain.com", 
+                "analytics2.yourdomain.com",
                  ...
                 "analyticsN.yourdomain.com"
              ]
@@ -156,7 +156,7 @@
               "analytics1.yourdomain.com",
               "analytics2.yourdomain.com",
               ...
-              "analyticsN.yourdomain.com"      
+              "analyticsN.yourdomain.com"
             ]
           }
         }
@@ -173,7 +173,7 @@
               "analytics1.yourdomain.com",
               "analytics2.yourdomain.com",
               ...
-              "analyticsN.yourdomain.com"      
+              "analyticsN.yourdomain.com"
             ]
           }
         }
@@ -183,6 +183,8 @@
 
 Be sure to read the [Release Notes](https://support.messagesystems.com/start) for the version of Momentum that you are installing.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.start_services_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](post_installation) |
 | 11.16. Start Services  | [Table of Contents](index) |  Chapter 12. Post-Installation |
 

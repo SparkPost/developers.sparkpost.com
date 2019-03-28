@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disable_nagle_algorithm)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.dkim.php) |
 
 <a name="conf.ref.disk_queue_drain_rate"></a>
@@ -23,5 +25,7 @@ This is an advanced option. Setting this value too high could saturate a server'
 
 disk_queue_drain_rate is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disable_nagle_algorithm)  | [Up](conf.ref.files.php) |  [Next](conf.ref.dkim.php) |
 | disable_nagle_algorithm  | [Table of Contents](index) |  dkim |

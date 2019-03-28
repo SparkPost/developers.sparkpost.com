@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.templates.publish)  | Chapter 48. Managing Your Templates in the UI |  [Next](using_template) |
 
 ## 48.6. Deleting a Template
@@ -16,5 +18,7 @@ The `Delete` option is a "hard delete". ALL versions of the template will be del
 
 If you delete a template DURING the build of a transmission that is currently using that template, you will get an error in the response. You must retry the delete when the template is no longer being used.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.templates.publish)  | [Up](web-ui.templates) |  [Next](using_template) |
 | 48.5. Publishing Your Template  | [Table of Contents](index) |  Chapter 49. Using Stored Templates |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.tls)  | 12.2. System Console Commands |  [Next](console_commands.unlink_stats.php) |
 
 <a name="console_commands.trace_smtp"></a>
@@ -49,5 +51,7 @@ Removed smtp tracer #1
 
 To set the permissions of smtp trace files see [trace_smtp_mode](conf.ref.trace_smtp_mode "trace_smtp_mode").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.tls)  | [Up](console.commands.non-module.php) |  [Next](console_commands.unlink_stats.php) |
 | tls  | [Table of Contents](index) |  unlink stats |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.fully_resolve_before_smtp)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.generate_bounces.php) |
 
 <a name="conf.ref.gateway"></a>
@@ -44,5 +46,7 @@ gateway is valid in the binding, binding_group, domain and global scopes.
 
 [routes](conf.ref.routes "routes")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.fully_resolve_before_smtp)  | [Up](conf.ref.files.php) |  [Next](conf.ref.generate_bounces.php) |
 | fully_resolve_before_smtp  | [Table of Contents](index) |  generate_bounces |

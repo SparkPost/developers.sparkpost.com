@@ -156,6 +156,8 @@ If account logging is configured, an attempt to execute an unauthorized command 
 
 The last three fields indicate a failed execution of the summary command by the user `john`. For a description of the meaning of all the fields, see [Section 35.1, “`acctlog`”](log_formats#log_formats.acctlog "35.1. acctlog").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_acct)  | [Up](control_listener) |  [Next](ecstream_listener) |
 | 17.3. Control_Listener Accounting  | [Table of Contents](index) |  Chapter 18. Configuring Inbound Mail Service Using ECStream |
 

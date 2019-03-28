@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_rcptto)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.pcre_match.php) |
 
 <a name="lua.ref.msys.policyeditor.get_variable"></a>
@@ -36,5 +38,7 @@ Defined parameters for params are:
 
 [msys.policyeditor.set_variable](lua.ref.msys.policyeditor.set_variable "msys.policyeditor.set_variable") [Section 3.10.3, “Using Variables”](web3.policy.editor.php#web3.policy.editor.variables "3.10.3. Using Variables")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_rcptto)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.pcre_match.php) |
 | msys.policyeditor.get_rcptto  | [Table of Contents](index) |  msys.policyeditor.pcre_match |

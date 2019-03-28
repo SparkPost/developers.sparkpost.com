@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.configuration)  | Part III. Configuring Momentum |  [Next](conf.options) |
 ## Chapter 15. Configuration Overview
 **Table of Contents**
@@ -144,5 +146,7 @@ As discussed in [Section 15.1.2, “Using the `include` and `readonly_include` 
         Some configuration changes require restarting the ecelerity process, as documented throughout this guide. Running the **`config reload`**         command will not suffice.
     *   For a node-specific configuration, use the [ec_ctl](executable.ec_ctl "ec_ctl") command to restart the ecelerity process. The **`config reload`**         command will not load configuration changes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.configuration)  | [Up](p.configuration) |  [Next](conf.options) |
 | Part III. Configuring Momentum  | [Table of Contents](index) |  15.2. Configuration Options |

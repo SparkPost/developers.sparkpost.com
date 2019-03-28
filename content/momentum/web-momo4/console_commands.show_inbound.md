@@ -24,6 +24,8 @@ This command shows all inbound connections. In the following example, the output
 
 [show outbound](console_commands.show_outbound "show outbound")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reroute_queue)  | [Up](console.cmds.ref) |  [Next](console_commands.show_outbound) |
 | reroute queue  | [Table of Contents](index) |  show outbound |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.async_bounce_rendering)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.bind_address) |
 
 <a name="conf.ref.authorization"></a>
@@ -41,6 +43,8 @@ authorization is valid in the global scope.
 
 [msys.registerAuth](lua.ref.msys.registerAuth "msys.registerAuth"), [Section 71.8, “auth_ds – Datasource based SMTP Authentication”](modules.auth_ds "71.8. auth_ds – Datasource based SMTP Authentication") and [Section 17.4, “Control_Listener Authorization”](control_authz "17.4. Control_Listener Authorization")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.async_bounce_rendering)  | [Up](config.options.ref) |  [Next](conf.ref.bind_address) |
 | async_bounce_rendering  | [Table of Contents](index) |  bind_address |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.batch_id)  | 15.2. Lua Functions |  [Next](lua.ref.msg.id.php) |
 
 <a name="lua.ref.msg.conn_id"></a>
@@ -17,5 +19,7 @@ When used in a string context, or explicitly forced into a string via `tostring(
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.batch_id)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg.id.php) |
 | msg.batch_id  | [Table of Contents](index) |  msg.id |

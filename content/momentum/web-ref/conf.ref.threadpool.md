@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tcp_buffer_size)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.timestampformat.php) |
 
 <a name="conf.ref.threadpool"></a>
@@ -111,5 +113,7 @@ ThreadPool is valid in the global scope.
 
 [domain](conf.ref.domain "domain"), [host](conf.ref.host.php "host"), [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback.php "2.6. Configuration Scopes and Fallback"), [threads](console_commands.threads.php "threads")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tcp_buffer_size)  | [Up](conf.ref.files.php) |  [Next](conf.ref.timestampformat.php) |
 | tcp_buffer_size  | [Table of Contents](index) |  timestampformat |

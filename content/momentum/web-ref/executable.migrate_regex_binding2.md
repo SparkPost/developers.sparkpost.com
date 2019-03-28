@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbusd_monitor)  | 11.2. Executable Commands |  [Next](executable.validate_config.php) |
 
 <a name="executable.migrate_regex_binding2"></a>
@@ -45,5 +47,7 @@ Optional path to the configuration checkout. The default value is `/opt/msys/ece
 
 [ec_migrate_conf](executable.ec_migrate_conf "ec_migrate_conf"), [Section 14.60, “scriptlet – Module”](modules.scriptlet.php "14.60. scriptlet – Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.mbusd_monitor)  | [Up](exe.commands.details.php) |  [Next](executable.validate_config.php) |
 | mbusd_monitor  | [Table of Contents](index) |  validate_config |

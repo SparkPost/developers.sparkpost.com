@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.min_dns_ttl)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.mx_failures_to_delay.php) |
 
 <a name="conf.ref.mx_failures_fallback_to_a"></a>
@@ -24,5 +26,7 @@ mx_failures_fallback_to_a is valid in the domain and global scopes.
 
 [dns_failures_to_purge](conf.ref.dns_failures_to_purge "dns_failures_to_purge")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.min_dns_ttl)  | [Up](conf.ref.files.php) |  [Next](conf.ref.mx_failures_to_delay.php) |
 | min_dns_ttl  | [Table of Contents](index) |  mx_failures_to_delay |

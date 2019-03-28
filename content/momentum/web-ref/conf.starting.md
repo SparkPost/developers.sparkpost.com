@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.adding.configuration.files)  | Chapter 2. Configuration |  [Next](conf.testing.installation.php) |
 
 ## 2.10. Starting Momentum
@@ -8,7 +10,7 @@ If your `Max_Outbound_Connections` setting is larger than 1000, you will need to
 
 1.  Assume root privileges
 
-2.  Run **/etc/init.d/ecelerity start** 
+2.  Run **/etc/init.d/ecelerity start**
 
 All errors from the program are placed in `/var/log/ecelerity/paniclog.ec`.
 
@@ -36,7 +38,7 @@ The unbound resolver is a modern DNS resolver that is replacing Momentum’s old
 The unbound server is turned off by default, but can be enabled by entering the following lines into `/opt/msys/ecelerity/etc/environment`:
 
 ```
-ECELERITY_DNS_BACKEND='unbound' 
+ECELERITY_DNS_BACKEND='unbound'
 export ECELERITY_DNS_BACKEND
 ```
 
@@ -47,5 +49,7 @@ To confirm the resolver's status, look for the following line in the summary com
 
 The only other valid value is "ares".
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.adding.configuration.files)  | [Up](conf.php) |  [Next](conf.testing.installation.php) |
 | 2.9. Best Practices for Adding Configuration Files  | [Table of Contents](index) |  2.11. Testing Your Installation |

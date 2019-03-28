@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules)  | Chapter 14. Modules Reference |  [Next](modules.adaptive.php) |
 
 ## 14.1. ac_auth – Authentication Handler
@@ -96,5 +98,7 @@ if mc then
 end
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules)  | [Up](modules.php) |  [Next](modules.adaptive.php) |
 | Chapter 14. Modules Reference  | [Table of Contents](index) |  14.2. adaptive – Adaptive Delivery |

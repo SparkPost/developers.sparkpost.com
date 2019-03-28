@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install)  | Chapter 1. Installation |  [Next](install.ports.php) |
 
 ## 1.1. System Requirements
@@ -106,5 +108,7 @@ To summarize, the erlang.log's size and number can be configured via the environ
 
 Total max size = 550.5MB for the riak logs with at least an addition of the resident memory size of the Riak process to hold an erlang_crash.dump
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install)  | [Up](install.php) |  [Next](install.ports.php) |
 | Chapter 1. Installation  | [Table of Contents](index) |  1.2. Ports Used by Momentum |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](loam)  | Part I. Introduction to Momentum |  [Next](licensed_features) |
 
 ## Chapter 3. Roles and Behaviors
@@ -22,6 +24,8 @@ Certain roles and behaviors are set up during installation. An overview of each 
 
 *   **Cluster log aggregation**                 applies only if you require aggregation of log files in a cluster configuration. The Manager node functions as the log aggregator. When you choose log aggregation during installation, the required ec_logger module is created in the `ecelerity-cluster.conf` file on the Manager.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](loam)  | [Up](p.intro) |  [Next](licensed_features) |
 | Chapter 2. Life of A Message  | [Table of Contents](index) |  Chapter 4. Licensed Features |
 

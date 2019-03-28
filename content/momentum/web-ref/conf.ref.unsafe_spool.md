@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unlink_on_spool_in_failure)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.use_iflist_cache.php) |
 
 <a name="conf.ref.unsafe_spool"></a>
@@ -19,5 +21,7 @@ Use of this option is not recommended unless you have complete control over the 
 
 `_unsafe_spool` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unlink_on_spool_in_failure)  | [Up](conf.ref.files.php) |  [Next](conf.ref.use_iflist_cache.php) |
 | unlink_on_spool_in_failure  | [Table of Contents](index) |  use_iflist_cache |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ad_summary)  | 11.2. Executable Commands |  [Next](executable.adaptivedb.php) |
 
 <a name="executable.adaptive_loader"></a>
@@ -165,5 +167,7 @@ Output in verbose mode. In the `ec_rotate.conf` file this is equivalent to setti
 
 [ec_rotate](executable.ec_rotate "ec_rotate"), [Section 3.6.10, “Adaptive Reports”](web3.reports.php#web3.reports.adaptive "3.6.10. Adaptive Reports"), [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive.php "14.2. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ad_summary)  | [Up](exe.commands.details.php) |  [Next](executable.adaptivedb.php) |
 | ad_summary  | [Table of Contents](index) |  adaptivedb |

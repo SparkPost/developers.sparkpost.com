@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disk_queue_drain_rate)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.dns_cache_purge_interval.php) |
 
 <a name="conf.ref.dkim"></a>
@@ -33,5 +35,7 @@ dkim is also valid in the binding_group scope.
 
 [domainkeys](conf.ref.domainkeys "domainkeys") and [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim.php "14.27. dkim – DomainKeys Identified Mail Signatures")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disk_queue_drain_rate)  | [Up](conf.ref.files.php) |  [Next](conf.ref.dns_cache_purge_interval.php) |
 | disk_queue_drain_rate  | [Table of Contents](index) |  dns_cache_purge_interval |

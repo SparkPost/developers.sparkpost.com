@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ds_core)  | Chapter 14. Modules Reference |  [Next](modules.eleven.php) |
 
 ## 14.31. ec_logger – Momentum-Style Logging
@@ -121,5 +123,7 @@ reopen logs
 
 This command closes and reopens the logs.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ds_core)  | [Up](modules.php) |  [Next](modules.eleven.php) |
 | 14.30. ds_core – Datasource Query Core  | [Table of Contents](index) |  14.32. eleven – Module |

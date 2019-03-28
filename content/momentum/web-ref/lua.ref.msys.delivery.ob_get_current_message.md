@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.query)  | 15.2. Lua Functions |  [Next](lua.ref.msys.dumper.Dumper.php) |
 
 <a name="lua.ref.msys.delivery.ob_get_current_message"></a>
@@ -30,10 +32,10 @@ function mod:generic_delivery_http_response_eval(sess)
   if(msg:get_delivery_method() == "gcm") then
     -- do something with a GCM message
     ...
-  else 
+  else
     -- not our protocol get out
     return msys.delivery.DELIVERY_CONTINUE
-  end  
+  end
 end
 
 msys.registerModule("http_delivery", mod);
@@ -46,5 +48,7 @@ Enable this function with the statement `require('msys.delivery');`.
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.query)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.dumper.Dumper.php) |
 | msys.db.query  | [Table of Contents](index) |  msys.dumper.Dumper |

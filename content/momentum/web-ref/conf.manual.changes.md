@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ecconfigd)  | Chapter 2. Configuration |  [Next](conf.adding.configuration.files.php) |
 
 ## 2.8. Best Practices for Manually Changing Configuration Files
@@ -53,5 +55,7 @@ Additionally, the subcluster that a specific node belongs to is not readily appa
 
 To manually change the configuration of a subcluster you can modify the configuration file on any node in the target subcluster. For instance, if you want to make configuration changes to the `east` subcluster, log into any `east` node and then perform the steps described in [Section 2.8, “Best Practices for Manually Changing Configuration Files”](conf.manual.changes "2.8. Best Practices for Manually Changing Configuration Files") if you are altering an existing file or [Section 2.9, “Best Practices for Adding Configuration Files”](conf.adding.configuration.files.php "2.9. Best Practices for Adding Configuration Files") if you are adding a configuration file.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ecconfigd)  | [Up](conf.php) |  [Next](conf.adding.configuration.files.php) |
 | 2.7. The Momentum Configuration Server: ecconfigd  | [Table of Contents](index) |  2.9. Best Practices for Adding Configuration Files |

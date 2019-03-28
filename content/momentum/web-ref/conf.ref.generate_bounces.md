@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.gateway)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.generate_bounces_for_multi_recipient_policy_rejections.php) |
 
 <a name="conf.ref.generate_bounces"></a>
@@ -28,5 +30,7 @@ generate_bounces is valid in the binding, binding_group, domain and global scope
 
 [bounce_behavior](conf.ref.bounce_behavior "bounce_behavior")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.gateway)  | [Up](conf.ref.files.php) |  [Next](conf.ref.generate_bounces_for_multi_recipient_policy_rejections.php) |
 | gateway  | [Table of Contents](index) |  generate_bounces_for_multi_recipient_policy_rejections |

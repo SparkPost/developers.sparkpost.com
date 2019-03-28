@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_binding)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.delay_dsn_max_retry_interval) |
 
 <a name="conf.ref.default_charset"></a>
@@ -21,6 +23,8 @@ The default value is `"us-ascii"`
 
 default_binding is valid in the global, pathway_group, and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_binding)  | [Up](config.options.ref) |  [Next](conf.ref.delay_dsn_max_retry_interval) |
 | default_binding  | [Table of Contents](index) |  delay_dsn_max_retry_interval |
 

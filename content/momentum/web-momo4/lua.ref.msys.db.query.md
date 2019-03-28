@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.fetch_row)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.delivery.ob_get_current_message) |
 
 <a name="lua.ref.msys.db.query"></a>
@@ -90,6 +92,8 @@ Each iteration over the returned rowset yields a table with string keys correspo
 
 [msys.db.fetch_row](lua.ref.msys.db.fetch_row "msys.db.fetch_row"), [msys.db.execute](lua.ref.msys.db.execute "msys.db.execute"), [Section 62.2, “Policy Scriptlets”](implementing.policy.scriptlets "62.2. Policy Scriptlets")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.fetch_row)  | [Up](lua.function.details) |  [Next](lua.ref.msys.delivery.ob_get_current_message) |
 | msys.db.fetch_row  | [Table of Contents](index) |  msys.delivery.ob_get_current_message |
 

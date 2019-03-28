@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_esmtp_capability_remove)  | 15.2. Lua Functions |  [Next](lua.ref.msys.cloudmark.analyze.php) |
 
 <a name="lua.ref.ac_inbound_session_count"></a>
@@ -64,5 +66,7 @@ Service type names are case sensitive. If no type is specified, the default is `
 
 [Section 14.41, “inbound_audit – Inbound traffic analytics”](modules.inbound_audit "14.41. inbound_audit – Inbound traffic analytics")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_esmtp_capability_remove)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.cloudmark.analyze.php) |
 | ac:esmtp_capability_remove  | [Table of Contents](index) |  msys.cloudmark.analyze |

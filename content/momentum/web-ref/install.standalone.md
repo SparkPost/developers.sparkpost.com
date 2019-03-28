@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.riak)  | Chapter 1. Installation |  [Next](install.cluster.php) |
 
 ## 1.11. Performing a Stand-alone Installation
@@ -26,5 +28,7 @@ To perform a stand-alone installation:
 
 7.  Confirm the success of your installation by logging in to the web console supplying `admin` as the username and the password created during installation.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.riak)  | [Up](install.php) |  [Next](install.cluster.php) |
 | 1.10. Riak Server  | [Table of Contents](index) |  1.12. Installing a Cluster |

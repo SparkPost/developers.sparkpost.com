@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.starting)  | Part V. Using the System Console |  [Next](operations.console-commands) |
 ## Chapter 37. Using the System Console (ec_console)
 **Table of Contents**
@@ -63,5 +65,7 @@ You will be asked for admin's password before the **module list**      command e
 ### Exiting the Console
 To exit the console, enter the **quit** command.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.starting)  | [Up](p.operations) |  [Next](operations.console-commands) |
 | Chapter 36. Starting Momentum (**ecelerity**)  | [Table of Contents](index) |  37.2. Console Commands |

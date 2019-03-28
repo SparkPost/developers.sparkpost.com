@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.security)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.server_max_file_descriptors.php) |
 
 <a name="conf.ref.send_8bitmime"></a>
@@ -36,5 +38,7 @@ For RFC 1652 compliance you should set `Send_8BitMime` to `ifavailable` and `Tra
 
 [transform_8bitmime_content](conf.ref.transform_8bitmime_content "transform_8bitmime_content")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.security)  | [Up](conf.ref.files.php) |  [Next](conf.ref.server_max_file_descriptors.php) |
 | security  | [Table of Contents](index) |  server_max_file_descriptors |

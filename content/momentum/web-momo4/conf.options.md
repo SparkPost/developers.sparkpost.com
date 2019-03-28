@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.overview)  | Chapter 15. Configuration Overview |  [Next](ecelerity.conf.fallback) |
 
 ## 15.2. Configuration Options
@@ -26,6 +28,8 @@ Modules and their configuration options are discussed in the [Chapter 71, *Modu
 
 Modify the configuration options in the specific configuration file or use the **config** command for online configuration tuning. For details about this command, see [config](console_commands.config "config").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.overview)  | [Up](conf.overview) |  [Next](ecelerity.conf.fallback) |
 | Chapter 15. Configuration Overview  | [Table of Contents](index) |  15.3. Configuration Scopes and Fallback |
 

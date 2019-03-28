@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_forward)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_get_message_size) |
 
 <a name="lua.ref.msg_get_delivery_method"></a>
@@ -30,7 +32,7 @@ function mod:http_request_eval(sess)
   -- check protocol
   if( msg:get_delivery_method() == "gcm") then
     -- do something with a GCM message
-  else 
+  else
     -- not our protocol get out
     return msys.delivery.DELIVERY_CONTINUE
   end
@@ -46,6 +48,8 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_forward)  | [Up](lua.function.details) |  [Next](lua.ref.msg_get_message_size) |
 | msg:forward  | [Table of Contents](index) |  msg:get_message_size |
 

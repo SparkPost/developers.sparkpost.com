@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.environmental)  | Chapter 5. Hardware Considerations |  [Next](production.config) |
 
 ## 5.5. Hardware Deployment Configuration
@@ -21,14 +23,14 @@ The Single Node Lab system is designed to support multiple functions in your env
 | Array | Configuration | Mount Points and Notes |
 | --- | --- | --- |
 | All Storage | 4 x 150 GB 15k RPM HDD |   |
-| Message Spools | 2 x 150 GB in RAID1 | 
+| Message Spools | 2 x 150 GB in RAID1 |
 
 /var/spool/ecelerity
 
 Note: This array should be dedicated to the spools.
 
  |
-| OS, App Binaries, Logs, Platform DB, Analytics DB | 2 x 150 GB in RAID1 | 
+| OS, App Binaries, Logs, Platform DB, Analytics DB | 2 x 150 GB in RAID1 |
 
 *   OS - / (root)
 
@@ -42,6 +44,8 @@ Note: This array should be dedicated to the spools.
 
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.environmental)  | [Up](hardware.requirements) |  [Next](production.config) |
 | 5.4. Environmental Considerations  | [Table of Contents](index) |  5.6. Production Environment Configurations |
 

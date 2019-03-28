@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.reserve_maintenance_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.response_transcode_pattern.php) |
 
 <a name="conf.ref.resolv_conf"></a>
@@ -68,5 +70,7 @@ Alias for `options attempts:2`
 
 resolve_conf is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.reserve_maintenance_interval)  | [Up](conf.ref.files.php) |  [Next](conf.ref.response_transcode_pattern.php) |
 | reserve_maintenance_interval  | [Table of Contents](index) |  response_transcode_pattern |

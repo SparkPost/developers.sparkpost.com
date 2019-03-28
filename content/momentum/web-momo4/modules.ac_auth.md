@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules)  | Chapter 71. Modules Reference |  [Next](modules.adaptive) |
 
 ## 71.2. ac_auth – Authentication Handler
@@ -96,6 +98,8 @@ if mc then
 end
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules)  | [Up](modules) |  [Next](modules.adaptive) |
 | Chapter 71. Modules Reference  | [Table of Contents](index) |  71.3. adaptive – Adaptive Delivery |
 

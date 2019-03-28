@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_ifavailable_fallback)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_protocols) |
 
 <a name="config.tls_key"></a>
@@ -19,6 +21,8 @@ TLS_Key specifies the location of the PEM encoded key associated with the certif
 
 `tls_key` is valid in the ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_ifavailable_fallback)  | [Up](config.options.ref) |  [Next](config.tls_protocols) |
 | tls_ifavailable_fallback  | [Table of Contents](index) |  tls_protocols |
 

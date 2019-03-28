@@ -63,6 +63,8 @@ Jobs in the CPU pool
 
 [threadpool](conf.ref.threadpool "threadpool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.sysinfo)  | [Up](console.cmds.ref) |  [Next](console_commands.tls) |
 | sysinfo  | [Table of Contents](index) |  tls |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_esmtp_capability_remove)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cloudmark.analyze) |
 
 <a name="lua.ref.ac_inbound_session_count"></a>
@@ -57,6 +59,8 @@ The second argument returns the count for the specified service type. Service ty
 
 Service type names are case sensitive. If no type is specified, the default is `SMTP`. If you wish to specify the second parameter only, call this function in the following way: `local count = ac:inbound_session_count(nil, "Control");`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_esmtp_capability_remove)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cloudmark.analyze) |
 | ac:esmtp_capability_remove  | [Table of Contents](index) |  msys.cloudmark.analyze |
 

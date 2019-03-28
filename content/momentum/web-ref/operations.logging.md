@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.riak)  | Chapter 4. Operations |  [Next](operations.multivip) |
 
 ## 4.5. Logging
@@ -216,5 +218,8 @@ If your logfiles are in `/var/log/email/` and you only want to keep 3 days, you 
 
 Using the custom_logger module, Momentum can write logs for every stage of a message's life cycle in user-defined formats. custom_logger lets you log each phase to its own logfile, or use a combined logfile for all stages. Logging stages can be enabled or disabled individually. For more information see [Section 14.24, “custom_logger – Customizable Logging”](modules.custom_logger "14.24. custom_logger – Customizable Logging").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.riak)  | [Up](operations) |  [Next](operations.multivip) |
 | 4.4. Riak  | [Table of Contents](index) |  4.6. MultiVIP© Interfaces |

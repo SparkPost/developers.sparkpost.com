@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.config)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.expandMacro) |
 
 <a name="lua.ref.msys.dnslookup"></a>
@@ -83,6 +85,8 @@ end
 
 Results of `msys.dnsLookup()` invocations in your policy scripts can also be queried from the system console by using [dns_cache stats](console_commands.dns_cache "dns_cache").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.config)  | [Up](lua.function.details) |  [Next](lua.ref.msys.expandMacro) |
 | msys.config  | [Table of Contents](index) |  msys.expandMacro |
 

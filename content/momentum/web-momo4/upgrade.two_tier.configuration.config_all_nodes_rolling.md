@@ -66,6 +66,8 @@ Multiple stanzas in the root must be separated by commas. For example, in the we
 
     `scp –p /opt/msys/app/metrics-etl/config/production.json {nodename or IP}:/opt/msys/app/metrics-etl/config/production.json`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.rpms_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.configuration.software_upgrade_rolling) |
 | 11.12. Upgrade Remaining RPMs on Analytics Nodes  | [Table of Contents](index) |  11.14. Install the Adaptive Delivery API |
 

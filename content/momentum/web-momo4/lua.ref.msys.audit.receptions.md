@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit.inbound_session_count)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.audit.rejections) |
 
 <a name="lua.ref.msys.audit.receptions"></a>
@@ -42,6 +44,8 @@ Enable this function with the statement `require('msys.audit');`.
 
 [Section 71.41, “inbound_audit – Inbound traffic analytics”](modules.inbound_audit "71.41. inbound_audit – Inbound traffic analytics"), [Section 71.16, “cidrdb – CIDRDB”](modules.cidrdb "71.16. cidrdb – CIDRDB"), [msys.audit.connections](lua.ref.msys.audit.connections "msys.audit.connections"), [msys.audit.rejections](lua.ref.msys.audit.rejections "msys.audit.rejections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit.inbound_session_count)  | [Up](lua.function.details) |  [Next](lua.ref.msys.audit.rejections) |
 | msys.audit.inbound_session_count  | [Table of Contents](index) |  msys.audit.rejections |
 

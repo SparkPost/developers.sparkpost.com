@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_tarpit)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_thread_pool_get_queue_size) |
 
 <a name="sieve.ref.ec_test"></a>
@@ -29,5 +31,8 @@ if ec_test :regex "${txt}" "v=spf1\\s+-all" {
 
 For a description of the types of comparisons you can perform using `ec_test` see [Section 8.2.3, “Comparisons”](sieve.syntax.basic#sieve.syntax.basic.comparisons "8.2.3. Comparisons").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_tarpit)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_thread_pool_get_queue_size) |
 | ec_tarpit  | [Table of Contents](index) |  ec_thread_pool_get_queue_size |

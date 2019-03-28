@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua)  | Chapter 15. Lua Function Reference |  [Next](lua.function.details.php) |
 
 ## 15.1. Lua Functions List
@@ -638,5 +640,7 @@ The Mobile-specific Lua functions are listed here but link to external documents
 | [vctx:set_code](lua.ref.vctx_set_code "vctx:set_code") – Sets the inbound disposition and response message | codenum, message | msys.core | 3.1 | any |
 | [vctx:tarpit](lua.ref.vctx_tarpit "vctx:tarpit") – Issues a time cost on the inbound session, if supported by the listener (currently only SMTP supports this) | interval | msys.extended.vctx | 3.1 | connect |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua)  | [Up](lua.php) |  [Next](lua.function.details.php) |
 | Chapter 15. Lua Function Reference  | [Table of Contents](index) |  15.2. Lua Functions |

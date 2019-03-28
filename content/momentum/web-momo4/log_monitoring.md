@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](logging.configuration)  | Part IV. Logging |  [Next](log_rotating) |
 
 ## Chapter 33. Log Monitoring
@@ -21,6 +23,8 @@ This chapter lists and describes the logs associated with Momentum 4.
 | /var/log/ecelerity/gencp_* | Platform | Internal logging ** **** Note**      that the content of this log must not be altered or truncated - listed here for informational purposes only. These files show if you are getting a backup of transmission requests. |
 | /var/log/ecelerity/traces/* | All | These files show if Ecelerity is having a problem. |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](logging.configuration)  | [Up](p.logs) |  [Next](log_rotating) |
 | 32.2. Logging Configuration  | [Table of Contents](index) |  Chapter 34. Rotating Logs **ec_rotate** |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.traffic.shaping)  | Chapter 25. Configuring Outbound Mail Delivery |  [Next](outbound_mail.outbound.xclient) |
 
 ## 25.5. Outbound TLS
@@ -69,6 +71,8 @@ binding "customer-1" {
 
 A number of macros are available to enable logging of details about the TLS session used for a delivery attempt. To use these macros, you must load the tls_macros module. See [Section 71.72, “tls_macros – TLS-related Logging”](tls_macros "71.72. tls_macros – TLS-related Logging").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.traffic.shaping)  | [Up](outbound_mail) |  [Next](outbound_mail.outbound.xclient) |
 | 25.4. Throttling and Traffic Shaping  | [Table of Contents](index) |  25.6. Outbound XCLIENT support |
 

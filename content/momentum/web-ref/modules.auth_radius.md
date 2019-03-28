@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.auth_ds)  | Chapter 14. Modules Reference |  [Next](modules.bind_address_secondary.php) |
 
 ## 14.8. auth_radius – RADIUS based SMTP Authentication
@@ -181,5 +183,7 @@ If the token to the left of the `||` is the empty string, then the value to the 
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.auth_ds)  | [Up](modules.php) |  [Next](modules.bind_address_secondary.php) |
 | 14.7. auth_ds – Datasource based SMTP Authentication  | [Table of Contents](index) |  14.9. bind_address_secondary – Dual-stack IPv4/IPv6 Support |

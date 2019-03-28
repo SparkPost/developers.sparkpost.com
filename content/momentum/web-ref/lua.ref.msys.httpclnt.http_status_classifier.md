@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_set_body)  | 15.2. Lua Functions |  [Next](lua.ref.msys.http.client.new.php) |
 
 <a name="lua.ref.msys.httpclnt.http_status_classifier"></a>
@@ -33,5 +35,7 @@ Use this function in the `http_response_eval` callout.
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/), [msys.gcm.gcm_classify_error](lua.ref.msys.gcm.gcm_classify_error "msys.gcm.gcm_classify_error") and [msys.apn.apn_status_classifier](lua.ref.msys.apn.apn_status_classifier.php "msys.apn.apn_status_classifier").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_set_body)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.http.client.new.php) |
 | sess:request_set_body  | [Table of Contents](index) |  msys.http.client.new |

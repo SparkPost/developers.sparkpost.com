@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_log_file)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_mem_usage) |
 
 <a name="sieve.ref.ec_maildir"></a>
@@ -46,5 +48,8 @@ if envelope :domain :is "to" ["localdomain.com", "otherdomain.com"] {
 
 [envelope](sieve.ref.envelope "envelope").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_log_file)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_mem_usage) |
 | ec_log_file  | [Table of Contents](index) |  ec_mem_usage |

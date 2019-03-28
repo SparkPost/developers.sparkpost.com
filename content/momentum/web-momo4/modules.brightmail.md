@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_logger)  | Chapter 71. Modules Reference |  [Next](modules.chunk_logger) |
 
 ## 71.14. brightmail – Symantec Brightmail™ Content Scanning Support
@@ -127,6 +129,8 @@ This variable, if it exists, contains information pertaining to the error that o
 
 This module makes the Lua function `msys.brightmail.scan` available. For a description of how this function is used, see [msys.brightmail.scan](lua.ref.msys.brightmail.scan "msys.brightmail.scan").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_logger)  | [Up](modules) |  [Next](modules.chunk_logger) |
 | 71.13. bounce_logger – Momentum-Style Bounce Logging  | [Table of Contents](index) |  71.15. chunk_logger Module |
 

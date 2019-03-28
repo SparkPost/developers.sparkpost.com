@@ -79,11 +79,16 @@ async function createMomentumDocs({ actions, graphql }) {
       toPath: path
     })
 
-    if (base === 'index.md')
+    if (base === 'index.md') {
       createRedirect({
         fromPath: `/momentum/${path}index`,
         toPath: path
       })
+      createRedirect({
+        fromPath: `/momentum/${path}index.md`,
+        toPath: path
+      })
+    }
 
     createPage({
       path: path,

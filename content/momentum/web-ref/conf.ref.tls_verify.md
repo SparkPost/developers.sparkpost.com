@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_protocols)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_verify_mode.php) |
 
 <a name="conf.ref.tls_verify"></a>
@@ -25,5 +27,7 @@ The default value is `no`.
 
 `tls_verify` is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_protocols)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_verify_mode.php) |
 | tls_protocols  | [Table of Contents](index) |  tls_verify_mode |

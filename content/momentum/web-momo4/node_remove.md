@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](add_remove_platform_nodes)  | Chapter 13. Adding and Removing Platform Nodes |  [Next](add_remove_analytics_nodes) |
 
 ## 13.2. Removing a Platform Node
@@ -57,7 +59,7 @@ These instructions apply to Momentum 4.2.1.*`x`*, where `x` > or = `11`
 
     ```
     $ /opt/msys/ecelerity/bin/ec_console
-    16:26:02 /tmp/2025> msg_gen joblist    
+    16:26:02 /tmp/2025> msg_gen joblist
     Job: 84158406797069455 jctl: 4 Restarts: 0 resync: 0 complete: 0 del_pend: 0
           inprog: 1 Recips:    100  LastStart:      1 worker(count: 1 complete: 0)
 
@@ -68,7 +70,7 @@ These instructions apply to Momentum 4.2.1.*`x`*, where `x` > or = `11`
 
           own  start count s_recip s_count s_total complete fail status state restart seqno finish
             4      1   100       1     100       0        0    0      0     0       0     1      0
-    16:26:06 /tmp/2025> msg_gen joblist                                                                                          
+    16:26:06 /tmp/2025> msg_gen joblist
     Ok
     ```
 
@@ -114,7 +116,7 @@ You can perform the following steps on any remaining Platform node.
     *   msg_gen - remove the node that specifies the node that you are removing from Message Generation.
 
     ```
-    # Edit /opt/msys/ecelerity/etc/conf/default/msg_gen.conf 
+    # Edit /opt/msys/ecelerity/etc/conf/default/msg_gen.conf
     # Example.  Assumes 4 nodes in current cluster.  Removing node4.int.messagesystems.com
 
     cassandra_client {
@@ -223,11 +225,11 @@ These instructions are based on the assumption that you are reducing the size of
     UN  10.77.0.227  203.12 KB  256     27.3%  5525b410-3f3e-49ec-a176-0efa2383f3f4  rack1
     ```
 
-2.  Confirm that the node you are removing is marked `UN`. If it is, decommission the node using the `nodetool decommission` command, **executed on the node that is being removed.** 
+2.  Confirm that the node you are removing is marked `UN`. If it is, decommission the node using the `nodetool decommission` command, **executed on the node that is being removed.**
 
     `/opt/msys/3rdParty/cassandra/bin/nodetool decommission`
 
-    If the node is down (`DN`), then use the `nodetool removenode` command, **executed on the node that is being removed.** 
+    If the node is down (`DN`), then use the `nodetool removenode` command, **executed on the node that is being removed.**
 
     `/opt/msys/3rdParty/cassandra/bin/nodetool removenode`
 3.  Monitor the progress and wait for the node to be decommissioned.
@@ -280,6 +282,8 @@ Move the spool files to a functional Platform node. For more information, see [s
 
     `service msys-cassandra status`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](add_remove_platform_nodes)  | [Up](add_remove_platform_nodes) |  [Next](add_remove_analytics_nodes) |
 | Chapter 13. Adding and Removing Platform Nodes  | [Table of Contents](index) |  Chapter 14. Adding and Removing Analytics Nodes |
 

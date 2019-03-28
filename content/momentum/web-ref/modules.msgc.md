@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.maildir)  | Chapter 14. Modules Reference |  [Next](modules.mxip) |
 
 ## 14.47. msgc – Modules
@@ -263,5 +265,8 @@ The loopback address is used because msgc_server is run on all managers and node
 
 </dl>
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.maildir)  | [Up](modules) |  [Next](modules.mxip) |
 | 14.46. maildir – Maildir Delivery Support  | [Table of Contents](index) |  14.48. mxip - IP Addresses In MX Records |

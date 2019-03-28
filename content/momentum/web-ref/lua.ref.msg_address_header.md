@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.id)  | 15.2. Lua Functions |  [Next](lua.ref.msg_binding.php) |
 
 <a name="lua.ref.msg_address_header"></a>
@@ -24,5 +26,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msys.parseRFC2822Addresses](lua.ref.msys.parseRFC2822Addresses "msys.parseRFC2822Addresses")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.id)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_binding.php) |
 | msg.id  | [Table of Contents](index) |  msg:binding |

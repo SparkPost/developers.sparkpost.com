@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_cache_purge_interval)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.dns_failures_to_purge) |
 
 <a name="conf.ref.dns_expire_interval"></a>
@@ -21,6 +23,8 @@ The default is `10` seconds.
 
 `dns_expire_interval` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_cache_purge_interval)  | [Up](config.options.ref) |  [Next](conf.ref.dns_failures_to_purge) |
 | dns_cache_purge_interval  | [Table of Contents](index) |  dns_failures_to_purge |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_cluster_cache_set)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_disconnect) |
 
 <a name="sieve.ref.ec_config"></a>
@@ -30,5 +32,8 @@ if type :is $opt "stringlist" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_cluster_cache_set)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_disconnect) |
 | ec_cluster_cache_set  | [Table of Contents](index) |  ec_disconnect |

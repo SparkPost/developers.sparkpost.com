@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sched)  | Chapter 14. Modules Reference |  [Next](modules.securecreds) |
 
 ## 14.60. scriptlet – Module
@@ -144,5 +146,8 @@ Restarting an MTA that uses Lua policy scripts can result in duplicate deliverie
 
 5.  Restart the ecelerity process. See [ec_ctl](executable.ec_ctl "ec_ctl"). Note that on restart any options set from ec_console will revert to their default values.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sched)  | [Up](modules) |  [Next](modules.securecreds) |
 | 14.59. sched – The Schedule Module  | [Table of Contents](index) |  14.61. securecreds – Module |

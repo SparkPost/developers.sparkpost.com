@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.suspend_delivery)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.threadpool) |
 
 <a name="conf.ref.tcp_buffer_size"></a>
@@ -30,6 +32,8 @@ tcp_buffer_size is valid in the global scope.
 
 [use_mmap](conf.ref.use_mmap "use_mmap")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.suspend_delivery)  | [Up](config.options.ref) |  [Next](conf.ref.threadpool) |
 | suspend_delivery  | [Table of Contents](index) |  threadpool |
 

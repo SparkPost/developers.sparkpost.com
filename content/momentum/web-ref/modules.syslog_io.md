@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.suppress_spool)  | Chapter 14. Modules Reference |  [Next](tls_macros) |
 
 ## 14.73. syslog_io – The syslog_io Module
@@ -55,5 +57,8 @@ The facilities and priorities are the standard syslog values. Not all facilities
 
 Be careful using this wrapper for the mainlog or rejectlog; the volume is likely to swamp the system logger.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.suppress_spool)  | [Up](modules) |  [Next](tls_macros) |
 | 14.72. suppress_spool – Deferred Message Spooling  | [Table of Contents](index) |  14.74. tls_macros Module |

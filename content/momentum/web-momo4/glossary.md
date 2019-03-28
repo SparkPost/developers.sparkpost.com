@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.extended)  |   |  [Next](copyrights) |
 
 ## Glossary
@@ -332,6 +334,8 @@ This technique specifies a different return path for every message making it pos
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.extended)  |   |  [Next](copyrights) |
 | D.2. Extended Commands  | [Table of Contents](index) |  Appendix E. Copyright Notices |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_deliveries_per_connection)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_outbound_connections.php) |
 
 <a name="conf.ref.max_dns_ttl"></a>
@@ -26,5 +28,7 @@ max_dns_ttl is valid in the global scope.
 
 [min_dns_ttl](conf.ref.min_dns_ttl "min_dns_ttl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_deliveries_per_connection)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_outbound_connections.php) |
 | max_deliveries_per_connection  | [Table of Contents](index) |  max_outbound_connections |

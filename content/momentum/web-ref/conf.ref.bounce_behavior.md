@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.body_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bounce_cache_size.php) |
 
 <a name="conf.ref.bounce_behavior"></a>
@@ -44,5 +46,7 @@ Bounces for Domain "bounces.xyz.com" will be blackholed because `bounce_behavior
 
 [blackhole](conf.ref.blackhole "blackhole"), [bounce_domains](conf.ref.bounce_domains.php "bounce_domains"), [bounce_pattern](conf.ref.bounce_pattern.php "bounce_pattern"), [generate_bounces](conf.ref.generate_bounces.php "generate_bounces") and [Section 14.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger.php "14.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.body_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bounce_cache_size.php) |
 | body_timeout  | [Table of Contents](index) |  bounce_cache_size |

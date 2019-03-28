@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier_override)  | Chapter 71. Modules Reference |  [Next](modules.brightmail) |
 
 ## 71.13. bounce_logger – Momentum-Style Bounce Logging
@@ -89,6 +91,8 @@ If you move a log, use the ec_console command **reopen logs**      to close and 
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier_override)  | [Up](modules) |  [Next](modules.brightmail) |
 | 71.12. bounce_classifier_override – Override/Augment Bounce Classifications  | [Table of Contents](index) |  71.14. brightmail – Symantec Brightmail™ Content Scanning Support |
 

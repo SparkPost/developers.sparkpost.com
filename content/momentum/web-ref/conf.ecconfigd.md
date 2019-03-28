@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf.fallback)  | Chapter 2. Configuration |  [Next](conf.manual.changes.php) |
 
 ## 2.7. The Momentum Configuration Server: ecconfigd
@@ -51,5 +53,7 @@ Conversion will render this as:
 
 If you add any scripts using the policy editor in the web UI your changes will be stored in the repository working directory `/opt/msys/ecelerity/etc/default/policy`. If you plan to create your own policy scripts outside of the web UI, follow the procedures described in [Section 5.6, “Best Practices for Manually Created Policy Scripts”](policy.best.practices "5.6. Best Practices for Manually Created Policy Scripts").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf.fallback)  | [Up](conf.php) |  [Next](conf.manual.changes.php) |
 | 2.6. Configuration Scopes and Fallback  | [Table of Contents](index) |  2.8. Best Practices for Manually Changing Configuration Files |

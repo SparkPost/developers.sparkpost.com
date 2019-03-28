@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.os-specific)  | Chapter 1. Installation |  [Next](install.solaris.php) |
 
 ## 1.6. Installation on Linux
@@ -10,9 +12,9 @@ The installation package for Linux is distributed as a single compressed tar fil
 
 To unpack and install after downloading the file, perform the following commands:
 
-**tar xzf momentum-*`type`*-bundle-*`version-platform.arch`*.tar.gz.tar.gz** 
+**tar xzf momentum-*`type`*-bundle-*`version-platform.arch`*.tar.gz.tar.gz**
 
-**cd momentum-*`type-version`*** 
+**cd momentum-*`type-version`***
 
 **./installer**
 ### Note
@@ -37,5 +39,7 @@ During installation a service account and an admin account are created. Be sure 
 
 At the end of the installation you will be told how to start the Momentum server. Before you do this you should read the [configuration guide](conf "Chapter 2. Configuration") and modify your `/opt/msys/ecelerity/etc/conf/default/ecelerity.conf` file appropriately.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.os-specific)  | [Up](install.php) |  [Next](install.solaris.php) |
 | 1.5. Operating System Specific Preparation  | [Table of Contents](index) |  1.7. Installation on Solaris |

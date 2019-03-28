@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.parseRFC2822Addresses)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.registerAuth) |
 
 <a name="lua.ref.msys.readfile"></a>
@@ -17,6 +19,8 @@ Reads the entire contents of the specified file or URI and returns it as a strin
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.parseRFC2822Addresses)  | [Up](lua.function.details) |  [Next](lua.ref.msys.registerAuth) |
 | msys.parseRFC2822Addresses  | [Table of Contents](index) |  msys.registerAuth |
 

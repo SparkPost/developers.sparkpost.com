@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addLastChild)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_body_match) |
 
 <a name="lua.ref.msgpart_address_header"></a>
@@ -33,6 +35,8 @@ Where the address header is made up of `user+detail@domain`, the possible compon
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addLastChild)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_body_match) |
 | msgpart:addLastChild  | [Table of Contents](index) |  msgpart:body_match |
 

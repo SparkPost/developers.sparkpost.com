@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_binding)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.delay_dsn_max_retry_interval.php) |
 
 <a name="conf.ref.default_charset"></a>
@@ -21,5 +23,7 @@ The default value for this option is `"us-ascii"`
 
 default_binding is valid in the global, pathway_group and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_binding)  | [Up](conf.ref.files.php) |  [Next](conf.ref.delay_dsn_max_retry_interval.php) |
 | default_binding  | [Table of Contents](index) |  delay_dsn_max_retry_interval |

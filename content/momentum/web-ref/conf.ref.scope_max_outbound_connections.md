@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scheduler)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.security.php) |
 
 <a name="conf.ref.scope_max_outbound_connections"></a>
@@ -74,5 +76,7 @@ scope_max_outbound_connections is valid in the global, binding, binding_group, d
 
 [max_outbound_connections](conf.ref.max_outbound_connections "max_outbound_connections"), [server_max_outbound_connections](conf.ref.server_max_outbound_connections.php "server_max_outbound_connections"), [server_reserve_outbound_connections](conf.ref.server_reserve_outbound_connections.php "server_reserve_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scheduler)  | [Up](conf.ref.files.php) |  [Next](conf.ref.security.php) |
 | scheduler  | [Table of Contents](index) |  security |

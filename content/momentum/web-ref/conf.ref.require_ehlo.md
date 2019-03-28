@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.remote_smtp_port)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.reserve_maintenance_interval.php) |
 
 <a name="conf.ref.require_ehlo"></a>
@@ -25,5 +27,7 @@ The default value for this option is `false`.
 
 require_ehlo is valid in the global, listener, listen and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.remote_smtp_port)  | [Up](conf.ref.files.php) |  [Next](conf.ref.reserve_maintenance_interval.php) |
 | remote_smtp_port  | [Table of Contents](index) |  reserve_maintenance_interval |

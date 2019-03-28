@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.httpclnt.http_status_classifier)  | 15.2. Lua Functions |  [Next](lua.ref.client_parse_headers.php) |
 
 <a name="lua.ref.msys.http.client.new"></a>
@@ -22,5 +24,7 @@ Create an HTTP client. This function returns an HTTP client object with the meth
 
 [client:set_timeout](lua.ref.client_set_timeout "client:set_timeout"), [client:set_header](lua.ref.client_set_header.php "client:set_header"), [client:do_request](lua.ref.client_do_request.php "client:do_request"), [client:get_status](lua.ref.client_get_status.php "client:get_status"), [client:get_body](lua.ref.client_get_body.php "client:get_body"), [client:parse_headers](lua.ref.client_parse_headers.php "client:parse_headers"), [client:get_headers](lua.ref.client_get_headers.php "client:get_headers")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.httpclnt.http_status_classifier)  | [Up](lua.function.details.php) |  [Next](lua.ref.client_parse_headers.php) |
 | msys.httpclnt.http_status_classifier  | [Table of Contents](index) |  client:parse_headers |

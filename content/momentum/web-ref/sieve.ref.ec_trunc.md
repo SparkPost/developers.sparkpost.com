@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_trace_context)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_url_ripper) |
 
 <a name="sieve.ref.ec_trunc"></a>
@@ -30,5 +32,8 @@ $truncc = ec_trunc $c;
 #truncc is 43.000000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_trace_context)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_url_ripper) |
 | ec_trace_context  | [Table of Contents](index) |  ec_url_ripper |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.base64.decode) |
 
 <a name="lua.ref.msys.av.scan_part"></a>
@@ -113,6 +115,8 @@ require("msys.av");
 
 [msys.av.scan](lua.ref.msys.av.scan "msys.av.scan")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan)  | [Up](lua.function.details) |  [Next](lua.ref.msys.base64.decode) |
 | msys.av.scan  | [Table of Contents](index) |  msys.base64.decode |
 

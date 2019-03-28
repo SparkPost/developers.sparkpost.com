@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.unlink)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.db.query) |
 
 <a name="lua.ref.msys.db.fetch_row"></a>
@@ -85,6 +87,8 @@ The data cache used in the preceding example must be defined in your configurati
 
 [msys.db.query](lua.ref.msys.db.query "msys.db.query"), [msys.db.execute](lua.ref.msys.db.execute "msys.db.execute"), [Section 62.2, “Policy Scriptlets”](implementing.policy.scriptlets "62.2. Policy Scriptlets")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.unlink)  | [Up](lua.function.details) |  [Next](lua.ref.msys.db.query) |
 | msys.counter.unlink  | [Table of Contents](index) |  msys.db.query |
 

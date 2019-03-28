@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.get_verify_results)  | 15.2. Lua Functions |  [Next](lua.ref.json.encode.php) |
 
 <a name="lua.ref.json.decode"></a>
@@ -41,5 +43,7 @@ You can directly assign a primitive to the field of a JSON object. Lua tables, w
 
 [json.encode](lua.ref.json.encode "json.encode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.get_verify_results)  | [Up](lua.function.details.php) |  [Next](lua.ref.json.encode.php) |
 | msys.validate.dkim.get_verify_results  | [Table of Contents](index) |  json.encode |

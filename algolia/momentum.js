@@ -21,20 +21,27 @@ module.exports = {
   }`,
   transformer(results) {
     return flatten(results.data.allMarkdownRemark.edges.map(({ node: { fields: { path }, headings, rawMarkdownBody } }) => {
-      const chunks = headings.map(({ value, depth}) => {
-        const pattern = new RegExp(`(?:\\n|^)${repeat('#', depth)} ?${escapeRegExp(value)}\\n`)
-        // grab content from this header to the next
-        const description = first(last(rawMarkdownBody.split(pattern)).split(/\n#/)).trim()
+      return {
+        sectionName: first(headings).value,
+        rawMarkdownBody,
+        momentum: true,
+        objectID: `${path}`
+      }
 
-        return {
-          sectionName: value,
-          description,
-          momentum: true,
-          objectID: `${path}#${slugify.markdown({ heading: value })}`
-        }
-      })
+      // const chunks = headings.map(({ value, depth}) => {
+      //   const pattern = new RegExp(`(?:\\n|^)${repeat('#', depth)} ?${escapeRegExp(value)}\\n`)
+      //   // grab content from this header to the next
+      //   const description = first(last(rawMarkdownBody.split(pattern)).split(/\n#/)).trim()
 
-      return chunks
+      //   return {
+      //     sectionName: value,
+      //     description,
+      //     momentum: true,
+      //     objectID: `${path}#${slugify.markdown({ heading: value })}`
+      //   }
+      // })
+
+      // return chunks
     }))
   },
 }

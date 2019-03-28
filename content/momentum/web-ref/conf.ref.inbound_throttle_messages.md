@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.idle_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.initial_hash_buckets.php) |
 
 <a name="conf.ref.inbound_throttle_messages"></a>
@@ -25,5 +27,7 @@ For a discussion of throttles and fallback see [the section called “Throttles 
 
 inbound_throttle_messages is valid in the global, pathway_group and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.idle_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.initial_hash_buckets.php) |
 | idle_timeout  | [Table of Contents](index) |  initial_hash_buckets |

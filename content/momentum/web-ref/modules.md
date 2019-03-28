@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_specific_console_commands.using)  | Part II. Command Reference |  [Next](modules.ac_auth) |
 ## Chapter 14. Modules Reference
 **Table of Contents**
@@ -78,5 +80,8 @@
 * [14.74\. tls_macros Module](tls_macros)
 * [14.75\. url_ripper – URL Extraction](modules.url_ripper)
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_specific_console_commands.using)  | [Up](p.command.ref) |  [Next](modules.ac_auth) |
 | 13.4. Using Module-Specific Console Commands  | [Table of Contents](index) |  14.1. ac_auth – Authentication Handler |

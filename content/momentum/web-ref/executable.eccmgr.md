@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccfg)  | 11.2. Executable Commands |  [Next](executable.eccmgr_ctl.php) |
 
 <a name="executable.eccmgr"></a>
@@ -113,5 +115,7 @@ With the introduction of MSGC in version 3.4, this option was removed.
 
 [eccmgr_ctl](executable.eccmgr_ctl "eccmgr_ctl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccfg)  | [Up](exe.commands.details.php) |  [Next](executable.eccmgr_ctl.php) |
 | eccfg  | [Table of Contents](index) |  eccmgr_ctl |

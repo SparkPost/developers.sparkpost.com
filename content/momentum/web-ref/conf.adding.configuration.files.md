@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.manual.changes)  | Chapter 2. Configuration |  [Next](conf.starting.php) |
 
 ## 2.9. Best Practices for Adding Configuration Files
@@ -73,5 +75,7 @@ In most circumstances you will only need to use a limited number of the **eccfg*
 
     It is also important to remember what this command doesn't do: *Committing changes does not automatically load them into the running ecelerity process.*                                                                              To implement your changes, open the system console and issue the command **`config reload`**        .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.manual.changes)  | [Up](conf.php) |  [Next](conf.starting.php) |
 | 2.8. Best Practices for Manually Changing Configuration Files  | [Table of Contents](index) |  2.10. Starting Momentum |

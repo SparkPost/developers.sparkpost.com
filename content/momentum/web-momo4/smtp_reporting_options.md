@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](engagement_tracking_smtp.escaping)  | Part VI. SMTP Injection |  [Next](p.http_rest) |
 
 ## Chapter 42. Reporting Options
@@ -12,6 +14,8 @@ For every message injected, Momentum reports data tracking its full disposition 
 
 *   jlog files – Using the configuration options in the event_hydrant module, you can direct event data to jlog files. See [Section 71.33, “event_hydrant – Message Tracking”](modules.event_hydrant "71.33. event_hydrant – Message Tracking").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](engagement_tracking_smtp.escaping)  | [Up](p.smtp_injections) |  [Next](p.http_rest) |
 | 41.4. Escaping {{ and }} in SMTP Message Body  | [Table of Contents](index) |  Part VII. Message Generation (HTTP) |
 

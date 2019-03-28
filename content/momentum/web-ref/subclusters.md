@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster)  | Chapter 7. Clustering |  [Next](cluster.config.management) |
 
 ## 7.1. Subclusters
@@ -41,5 +43,8 @@ Last Changed Date: 2009-11-23 12:09:41 -0700 (Mon, 23 Nov 2009)
 
 The subcluster name can be determined by looking at the `Repository Root` line. In this particular case, the name is `west`.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster)  | [Up](cluster) |  [Next](cluster.config.management) |
 | Chapter 7. Clustering  | [Table of Contents](index) |  7.2. Configuration Management |

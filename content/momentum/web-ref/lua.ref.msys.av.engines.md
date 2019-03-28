@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit_series.remove_item)  | 15.2. Lua Functions |  [Next](lua.ref.msys.av.scan.php) |
 
 <a name="lua.ref.msys.av.engines"></a>
@@ -22,5 +24,7 @@ Enable this function with the statement `require('msys.av');`.
 
 [Section 14.5, “antivirus – Antivirus Modules”](modules.antivirus "14.5. antivirus – Antivirus Modules")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit_series.remove_item)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.av.scan.php) |
 | msys.audit_series.remove_item  | [Table of Contents](index) |  msys.av.scan |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_mime_parts)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_mul) |
 
 <a name="sieve.ref.ec_mod"></a>
@@ -26,5 +28,8 @@ ec_log "${a} mod by ${b} is ${mod}";
 #mod is 1
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_mime_parts)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_mul) |
 | ec_mime_parts  | [Table of Contents](index) |  ec_mul |

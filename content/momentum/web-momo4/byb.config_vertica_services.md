@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.redefine_ephemeral_ports)  | Chapter 6. Before You Begin |  [Next](byb.config_SSH_and_SSHD) |
 
 ## 6.12. Configuring Locale
@@ -14,6 +16,8 @@ If set, `LC_ALL` supersedes `LANG`. If neither is set, Vertica will use `en_US`.
 
 For examples of how to set `LANG`, see [Implement Locales for International Data Sets](https://my.vertica.com/docs/7.1.x/HTML/Content/Authoring/AdministratorsGuide/ConfiguringTheDB/ImplementLocalesForInternationalDataSets.htm).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.redefine_ephemeral_ports)  | [Up](before_you_begin) |  [Next](byb.config_SSH_and_SSHD) |
 | 6.11. Redefining Ephemeral Ports  | [Table of Contents](index) |  6.13. Configuring SSH and SSHD |
 

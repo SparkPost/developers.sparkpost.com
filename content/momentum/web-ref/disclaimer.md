@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.extended)  | Part III. Appendices |  [Next](copyrights.php) |
 
 ## Disclaimer
@@ -14,5 +16,7 @@ Message Systems, Inc. does not warrant that Momentum or any part thereof will be
 
 No warranty is made regarding the results of Momentum usage, that Momentum will operate uninterrupted or error-free or that Momentum's functionality will meet licensee's requirements.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.extended)  | [Up](p.appendices.php) |  [Next](copyrights.php) |
 | G.3. Extended Commands  | [Table of Contents](index) |  Appendix I. Copyrights |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_pcre_match)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_rewrite_mailfrom) |
 
 <a name="sieve.ref.ec_rand"></a>
@@ -35,5 +37,8 @@ $r = ec_rand $reason;
 ec_log "${r}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_pcre_match)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_rewrite_mailfrom) |
 | ec_pcre_match  | [Table of Contents](index) |  ec_rewrite_mailfrom |

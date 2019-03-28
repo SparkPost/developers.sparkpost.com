@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.update.template)  | Chapter 48. Managing Your Templates in the UI |  [Next](web-ui.templates.delete) |
 
 ## 48.5. Publishing Your Template
@@ -14,5 +16,7 @@ To publish your template, click the arrow on the right-hand side of the `Save Dr
 
 A published template can still be edited, either by editing the published version or by creating a new draft.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.update.template)  | [Up](web-ui.templates) |  [Next](web-ui.templates.delete) |
 | 48.4. Updating Your Template  | [Table of Contents](index) |  48.6. Deleting a Template |

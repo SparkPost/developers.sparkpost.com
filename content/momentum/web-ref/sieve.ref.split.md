@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.snmp_trap)  | 16.2. Sieve Function Details |  [Next](sieve.ref.stop) |
 
 <a name="sieve.ref.split"></a>
@@ -28,5 +30,8 @@ For example, to split an IP address into its component octets, we might do somet
 ec_log "the IP address is ${a}.${b}.${c}.${d}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.snmp_trap)  | [Up](sieve.ref.files) |  [Next](sieve.ref.stop) |
 | snmp_trap  | [Table of Contents](index) |  stop |

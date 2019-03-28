@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.scaling)  | Chapter 5. Hardware Considerations |  [Next](hardware.config) |
 
 ## 5.4. Environmental Considerations
@@ -16,6 +18,8 @@ Momentum’s queuing architecture allows delivery over hundreds or even thousand
 
 When sending transactional or SMTP traffic into Momentum, the injection network must match the bandwidth of the external network.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](hardware.scaling)  | [Up](hardware.requirements) |  [Next](hardware.config) |
 | 5.3. Hardware Scaling Approach  | [Table of Contents](index) |  5.5. Hardware Deployment Configuration |
 

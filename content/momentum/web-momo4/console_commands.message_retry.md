@@ -19,6 +19,8 @@ This command takes a message ID as an argument and forces an immediate delivery 
 Message requeued for delivery
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail_quiet)  | [Up](console.cmds.ref) |  [Next](console_commands.module) |
 | message fail quiet  | [Table of Contents](index) |  module |
 

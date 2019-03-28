@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.syslog_io)  | Chapter 71. Modules Reference |  [Next](modules.url_ripper) |
 
 ## 71.72. tls_macros – TLS-related Logging
@@ -21,7 +23,7 @@ The tls_macros module must be loaded in a configuration file, as follows:
 
 | Macro | Description | Examples |
 | --- | --- | --- |
-| outbound_tls:outbound_tls | Whether TLS was used or not | 
+| outbound_tls:outbound_tls | Whether TLS was used or not |
 
 *   SMTP ("SMTP" = no TLS)
 
@@ -30,7 +32,7 @@ The tls_macros module must be loaded in a configuration file, as follows:
 *   unknown
 
  |
-| outbound_tls:outbound_tls_type | TLS type of connection | 
+| outbound_tls:outbound_tls_type | TLS type of connection |
 
 When TLS is being used, this matches the value of the TLS configuration variable.
 
@@ -42,7 +44,7 @@ When TLS is being used, this matches the value of the TLS configuration variable
 
  |
 | outbound_tls:local_ip | IP address to which the message was sent | 1.2.3.4 |
-| outbound_tls:outbound_tls_cipher | Cipher suite for TLS session | 
+| outbound_tls:outbound_tls_cipher | Cipher suite for TLS session |
 
 Currently, the cipher suite names are specific to the TLS library used and are different between OpenSSL and GNUTLS.
 
@@ -51,28 +53,28 @@ Currently, the cipher suite names are specific to the TLS library used and are d
 *   For GNUTLS: AES256-GCM-SHA384
 
  |
-| outbound_tls:outbound_tls_cipher_algbits | 
+| outbound_tls:outbound_tls_cipher_algbits |
 
 *   For OpenSSL: outbound_tls_cipher_algbits returns the bits processed by chosen algorithm.
 
 *   For GNUTLS: outbound_tls_cipher_algbits returns the key size.
 
  |   |
-| outbound_tls:outbound_tls_cipher_usebits | 
+| outbound_tls:outbound_tls_cipher_usebits |
 
 *   For OpenSSL: outbound_tls_cipher_usebits returns the secret bits used by chosen cipher.
 
 *   For GNUTLS: outbound_tls_cipher_usebits returns the key size.
 
  |   |
-| outbound_tls:outbound_tls_protocol | TLS/SSL protocol version string | 
+| outbound_tls:outbound_tls_protocol | TLS/SSL protocol version string |
 
 *   For OpenSSL: TLSv1.2
 
 *   For GNUTLS: TLS1.2
 
  |
-| outbound_tls:outbound_tls_verified | Whether the certificate passed verification (including subject verification) | 
+| outbound_tls:outbound_tls_verified | Whether the certificate passed verification (including subject verification) |
 
 *   verified
 
@@ -124,6 +126,8 @@ custom_logger custom_logger1 {
 {% endraw %}
 For more information on the custom_logger, see [Section 71.25, “custom_logger – User-defined Logging”](modules.custom_logger "71.25. custom_logger – User-defined Logging").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.syslog_io)  | [Up](modules) |  [Next](modules.url_ripper) |
 | 71.71. syslog_io – The syslog_io Module  | [Table of Contents](index) |  71.73. url_ripper – URL Extraction |
 

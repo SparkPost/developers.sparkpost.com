@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_migrate_conf)  | 11.2. Executable Commands |  [Next](executable.ec_rt_stats2.php) |
 
 <a name="executable.ec_rotate"></a>
@@ -419,5 +421,7 @@ webui:
 
 Reducing the retention values reduces database consumption but also means that you have less fine-grained data. In some cases, changing rollup retention values may break graphing.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_migrate_conf)  | [Up](exe.commands.details.php) |  [Next](executable.ec_rt_stats2.php) |
 | ec_migrate_conf  | [Table of Contents](index) |  ec_rt_stats2 |

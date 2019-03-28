@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_tostring)  | 15.2. Lua Functions |  [Next](lua.ref.xml.parsexml.php) |
 
 <a name="lua.ref.xml.node_unlink"></a>
@@ -32,5 +34,7 @@ local node = node:unlink();
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_tostring)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.parsexml.php) |
 | node:tostring  | [Table of Contents](index) |  xml.parsexml |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain)  | 12.2. System Console Commands |  [Next](console_commands.fingerprint_cache_summary.php) |
 
 <a name="console_commands.fail_domain_quiet"></a>
@@ -23,5 +25,7 @@ unresolvableproblems.com purged, 62415 messages failed.
 
 [fail domain](console_commands.fail_domain "fail domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain)  | [Up](console.commands.non-module.php) |  [Next](console_commands.fingerprint_cache_summary.php) |
 | fail domain  | [Table of Contents](index) |  fingerprint cache summary |

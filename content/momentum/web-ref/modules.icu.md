@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.httpio)  | Chapter 14. Modules Reference |  [Next](modules.ilf_logger.php) |
 
 ## 14.38. icu – ICU
@@ -16,5 +18,7 @@ ICU configuration is very simple. It takes no configuration parameters and enabl
 
 If you are deploying on the GA release of Solaris 10, and icu fails to load because libicuuc.so.3 or liblcudata.so.3 is not found, you need to apply Sun patch #119810 to resolve this issue.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.httpio)  | [Up](modules.php) |  [Next](modules.ilf_logger.php) |
 | 14.37. http_io – HTTP I/O Provider  | [Table of Contents](index) |  14.39. ilf_logger Module |

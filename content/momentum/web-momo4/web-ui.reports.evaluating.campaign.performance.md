@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports.adaptive.delivery)  | Chapter 57. Reports and Engagement Tracking in the UI |  [Next](reporting_metrics) |
 
 ## 57.4. Evaluating Your Campaign Performance
@@ -54,6 +56,8 @@ The following are the columns in the table:
 
 You can sort the data by any column to show different arrangements. For example, sorting by **`Clicks`** in descending order shows the links that had the most clicks.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports.adaptive.delivery)  | [Up](web-ui.reports) |  [Next](reporting_metrics) |
 | 57.3. Adaptive Delivery Report  | [Table of Contents](index) |  Chapter 58. Using the Metrics API for Reporting |
 

@@ -19,6 +19,8 @@ The **reroute queue**       command requires two domain names as its arguments. 
 Moved 100 messages from 'relay.com' to 'newrelay.com'
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reopen_logs)  | [Up](console.cmds.ref) |  [Next](console_commands.show_inbound) |
 | reopen logs  | [Table of Contents](index) |  show inbound |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mxip)  | Chapter 14. Modules Reference |  [Next](modules.outbound_audit) |
 
 ## 14.49. opendkim – OpenDKIM module
@@ -342,5 +344,8 @@ The following OpenDKIM objects are passed in to or returned by these functions:
 
 For more information about these data types see [OpenDKIM Library](http://www.opendkim.org/libopendkim/index.html).
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mxip)  | [Up](modules) |  [Next](modules.outbound_audit) |
 | 14.48. mxip - IP Addresses In MX Records  | [Table of Contents](index) |  14.50. outbound_audit – Outbound traffic analytics |

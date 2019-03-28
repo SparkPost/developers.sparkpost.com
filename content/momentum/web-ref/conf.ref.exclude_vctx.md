@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.eventloop)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.expensive_batch_assessment.php) |
 
 <a name="conf.ref.exclude_vctx"></a>
@@ -31,7 +33,9 @@ Exclude_VCTX_Mess and Exclude_VCTX_Conn are valid in the global, binding, bindin
 <a name="idp9591680"></a>
 ## See Also
 
-[keep_message_dicts_in_memory](conf.ref.keep_message_dicts_in_memory "keep_message_dicts_in_memory") and [Chapter 6, *Validation Context Variables*](policy.context.variables.php "Chapter 6. Validation Context Variables") 
+[keep_message_dicts_in_memory](conf.ref.keep_message_dicts_in_memory "keep_message_dicts_in_memory") and [Chapter 6, *Validation Context Variables*](policy.context.variables.php "Chapter 6. Validation Context Variables")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.eventloop)  | [Up](conf.ref.files.php) |  [Next](conf.ref.expensive_batch_assessment.php) |
 | eventloop  | [Table of Contents](index) |  expensive_batch_assessment |

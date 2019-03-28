@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_mem_usage)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_mime_parts) |
 
 <a name="sieve.ref.ec_mime_boundary_create"></a>
@@ -16,5 +18,8 @@ ec_mime_boundary_create — return a string to be used as a boundary when creati
 
 Please see [ec_rfc3464_delivery_status](sieve.ref.ec_rfc3464_delivery_status "ec_rfc3464_delivery_status") for an usage example.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_mem_usage)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_mime_parts) |
 | ec_mem_usage  | [Table of Contents](index) |  ec_mime_parts |

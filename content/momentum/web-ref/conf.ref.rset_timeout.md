@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.routes)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.scheduler.php) |
 
 <a name="conf.ref.rset_timeout"></a>
@@ -19,5 +21,7 @@ The amount of time in seconds to wait for a response to a `RSET` command. `RSET`
 
 rset_timeout is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.routes)  | [Up](conf.ref.files.php) |  [Next](conf.ref.scheduler.php) |
 | routes  | [Table of Contents](index) |  scheduler |

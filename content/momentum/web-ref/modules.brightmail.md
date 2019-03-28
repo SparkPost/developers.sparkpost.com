@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_logger)  | Chapter 14. Modules Reference |  [Next](modules.chunk_logger.php) |
 
 ## 14.14. brightmail – Brightmail Module
@@ -152,5 +154,7 @@ if not ec_test :is $err "" {
 
 Note that the prefix for this variable is determined by the `sieve_prefix` setting. For example, if this module is loaded with `sieve_prefix` set to `bm`, you would access the error message using the code `$err = vctx_mess_get "bm::error";`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_logger)  | [Up](modules.php) |  [Next](modules.chunk_logger.php) |
 | 14.13. bounce_logger – Momentum-Style Bounce Logging  | [Table of Contents](index) |  14.15. chunk_logger – Asynchronous Logging |

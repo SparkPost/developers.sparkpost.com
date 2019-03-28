@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_inbound)  | 12.2. System Console Commands |  [Next](console_commands.showqueue.php) |
 
 <a name="console_commands.show_outbound"></a>
@@ -38,5 +40,7 @@ As of version 3.5.6, this command will also display Google Push notification con
 
 [show inbound](console_commands.show_inbound "show inbound") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_inbound)  | [Up](console.commands.non-module.php) |  [Next](console_commands.showqueue.php) |
 | show inbound  | [Table of Contents](index) |  showqueue |

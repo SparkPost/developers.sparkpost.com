@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_binding_group)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.vctx_mess_set.php) |
 
 <a name="lua.ref.msys.policyeditor.set_variable"></a>
@@ -36,5 +38,7 @@ Defined parameters for params are:
 
 [msys.policyeditor.get_variable](lua.ref.msys.policyeditor.get_variable "msys.policyeditor.get_variable"), [Section 3.10.3, “Using Variables”](web3.policy.editor.php#web3.policy.editor.variables "3.10.3. Using Variables")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_binding_group)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.vctx_mess_set.php) |
 | msys.policyeditor.set_binding_group  | [Table of Contents](index) |  msys.policyeditor.vctx_mess_set |

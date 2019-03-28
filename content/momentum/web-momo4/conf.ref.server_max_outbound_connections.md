@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_file_descriptors)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.server_reserve_outbound_connections) |
 
 <a name="conf.ref.server_max_outbound_connections"></a>
@@ -30,6 +32,8 @@ server_max_outbound_connections is valid in the binding, binding_group and globa
 
 [server_reserve_outbound_connections](conf.ref.server_reserve_outbound_connections "server_reserve_outbound_connections"), [server_max_file_descriptors](conf.ref.server_max_file_descriptors "server_max_file_descriptors")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_file_descriptors)  | [Up](config.options.ref) |  [Next](conf.ref.server_reserve_outbound_connections) |
 | server_max_file_descriptors  | [Table of Contents](index) |  server_reserve_outbound_connections |
 

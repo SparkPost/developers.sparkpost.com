@@ -39,6 +39,8 @@ SUSE Linux Enterprise Server 10 (x86_64)
 Linux sel10bare 2.6.16.21-0.8-default #1 Mon Jul 3 18:25:39 UTC 2006 x86_64
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary_reset)  | [Up](console.cmds.ref) |  [Next](console_commands.threads) |
 | summary reset  | [Table of Contents](index) |  threads |
 

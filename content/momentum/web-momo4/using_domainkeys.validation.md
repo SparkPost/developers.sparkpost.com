@@ -8,6 +8,8 @@ When a message is received, it is inspected to determine the responsible sending
 
 Subsequent to processing the email, any preexisting "DomainKey-Status" headers are removed from the email and the dk_validate module will prepend a "DomainKey-Status" header to the email with the results of the signature verification process. Valid results are "good," "bad," and "error".
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](using_domainkeys)  | [Up](using_domainkeys) |  [Next](using_dkim) |
 | Chapter 22. Using Yahoo! DomainKeys  | [Table of Contents](index) |  Chapter 23. Using DomainKeys Identified Mail (DKIM) Signatures |
 

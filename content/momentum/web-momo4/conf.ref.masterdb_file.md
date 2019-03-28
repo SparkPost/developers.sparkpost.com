@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.malloc2mmap_threshold)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.match_cache_life) |
 
 <a name="conf.ref.masterdb_file"></a>
@@ -19,6 +21,8 @@ The master db file is used to persistently store statistical information between
 
 masterdb_file is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.malloc2mmap_threshold)  | [Up](config.options.ref) |  [Next](conf.ref.match_cache_life) |
 | malloc2mmap_threshold  | [Table of Contents](index) |  match_cache_life |
 

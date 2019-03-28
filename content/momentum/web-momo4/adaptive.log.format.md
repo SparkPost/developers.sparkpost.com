@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats)  | Chapter 35. Log Formats |  [Next](log_formats.bouncelog) |
 
 ## 35.2. `adaptive` Log
@@ -22,5 +24,7 @@ The following is a description of the fields:
 | 5 | NOTICE | Log level name, only included in ˜`G` record types (see [debug_flags](conf.ref.debug_flags "debug_flags") for a list of valid names.) |
 | 6 | retry_interval *`from`* -> *`to`* | Free-form string, only included in ˜`G` record types (this string may include additional ˜`@` signs; typically, it will show how an option has changed.) |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats)  | [Up](log_formats) |  [Next](log_formats.bouncelog) |
 | Chapter 35. Log Formats  | [Table of Contents](index) |  35.3. `bouncelog` |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_md5passwd)  | 11.2. Executable Commands |  [Next](executable.ec_rotate.php) |
 
 <a name="executable.ec_migrate_conf"></a>
@@ -119,5 +121,7 @@ The migration script returns a message to the user telling what was converted. R
 
 [migrate_regex_binding2](executable.migrate_regex_binding2 "migrate_regex_binding2") and [ec_dump_config](executable.ec_dump_config.php "ec_dump_config")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_md5passwd)  | [Up](exe.commands.details.php) |  [Next](executable.ec_rotate.php) |
 | ec_md5passwd  | [Table of Contents](index) |  ec_rotate |

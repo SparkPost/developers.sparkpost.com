@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.deployment)  | Chapter 7. Clustering |  [Next](cluster.config.logging.php) |
 
 ## 7.5. DuraVIP™: IP Fail over
@@ -199,5 +201,7 @@ The group membership and election processes that drive the DuraVIP™ subsystem 
 
 While this is certainly possible, it can be hard to understand the expected behavior of the system in such complicated configurations. As such, it is highly recommended that the global set of bindings and listeners managed under DuraVIP™ are identical on each system.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.deployment)  | [Up](cluster.php) |  [Next](cluster.config.logging.php) |
 | 7.4. Cluster Deployment  | [Table of Contents](index) |  7.6. Log Aggregation |

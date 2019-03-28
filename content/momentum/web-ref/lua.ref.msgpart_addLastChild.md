@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addFirstChild)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_address_header.php) |
 
 <a name="lua.ref.msgpart_addLastChild"></a>
@@ -71,5 +73,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msgpart:addFirstChild](lua.ref.msgpart_addFirstChild "msgpart:addFirstChild")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addFirstChild)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_address_header.php) |
 | msgpart:addFirstChild  | [Table of Contents](index) |  msgpart:address_header |

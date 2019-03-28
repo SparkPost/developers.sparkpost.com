@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.chunk_logger)  | Chapter 14. Modules Reference |  [Next](modules.clamav.php) |
 
 ## 14.16. cidrdb – CIDRDB
@@ -53,5 +55,7 @@ List configured CIDR databases. This command outputs:
 
 To list configured CIDR databases in XML format use **`xml cidrdb list`**             . This command outputs the cidr_name, the refresh interval and the number of seconds until the next refresh.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.chunk_logger)  | [Up](modules.php) |  [Next](modules.clamav.php) |
 | 14.15. chunk_logger – Asynchronous Logging  | [Table of Contents](index) |  14.17. clamav – ClamAV |

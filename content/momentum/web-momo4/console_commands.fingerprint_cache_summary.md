@@ -23,6 +23,8 @@ Passive operating system fingerprinting runs as a daemon that Momentum communica
 
 [fingerprint rejection summary](console_commands.fingerprint_rejection_summary "fingerprint rejection summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain_quiet)  | [Up](console.cmds.ref) |  [Next](console_commands.fingerprint_rejection_summary) |
 | fail domain quiet  | [Table of Contents](index) |  fingerprint rejection summary |
 

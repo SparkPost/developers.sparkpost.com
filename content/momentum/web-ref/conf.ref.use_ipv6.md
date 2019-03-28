@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_iflist_cache)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.use_mmap.php) |
 
 <a name="conf.ref.use_ipv6"></a>
@@ -23,5 +25,7 @@ For a discussion of using IPv6 addresses with listeners, see [the section called
 
 use_ipv6 is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_iflist_cache)  | [Up](conf.ref.files.php) |  [Next](conf.ref.use_mmap.php) |
 | use_iflist_cache  | [Table of Contents](index) |  Use_MMAP |

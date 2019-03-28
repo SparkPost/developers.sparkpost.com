@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_bounce_logger)  | Chapter 71. Modules Reference |  [Next](modules.delay_dsn) |
 
 ## 71.25. custom_logger – User-defined Logging
@@ -826,6 +828,8 @@ Value of entry "key" in the message context dictionary
 
 It is possible to aggregate logs in a cluster configuration. For an sample configuration, see [Section 26.2, “Centralized Logging Example”](cluster.config.logging.centalized.logging "26.2. Centralized Logging Example").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_bounce_logger)  | [Up](modules) |  [Next](modules.delay_dsn) |
 | 71.24. custom_bounce_logger – Custom Bounce Logging  | [Table of Contents](index) |  71.26. delay_dsn – Delay DSN Generation |
 

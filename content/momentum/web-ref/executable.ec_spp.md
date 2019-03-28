@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_show)  | 11.2. Executable Commands |  [Next](executable.ec_uipasswd.php) |
 
 <a name="executable.ec_spp"></a>
@@ -44,5 +46,7 @@ Use this option for verbose output.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_show)  | [Up](exe.commands.details.php) |  [Next](executable.ec_uipasswd.php) |
 | ec_show  | [Table of Contents](index) |  ec_uipasswd |

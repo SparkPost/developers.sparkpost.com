@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.mailq)  | 12.2. System Console Commands |  [Next](console_commands.message_details.php) |
 
 <a name="console_commands.memory"></a>
@@ -154,5 +156,7 @@ The System RSS represents the current resident set size as seen by the underlyin
 
 For more information about memory as it relates to the C API see [Memory Functions](https://support.messagesystems.com/docs/web-c-api/memory).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.mailq)  | [Up](console.commands.non-module.php) |  [Next](console_commands.message_details.php) |
 | mailq  | [Table of Contents](index) |  message details |

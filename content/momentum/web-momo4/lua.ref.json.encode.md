@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.decode)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.json.new) |
 
 <a name="lua.ref.json.encode"></a>
@@ -93,6 +95,8 @@ When mapping from a Lua value to a JSON object representation, the following rul
 
 [json.decode](lua.ref.json.decode "json.decode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.decode)  | [Up](lua.function.details) |  [Next](lua.ref.json.new) |
 | json.decode  | [Table of Contents](index) |  json.new |
 

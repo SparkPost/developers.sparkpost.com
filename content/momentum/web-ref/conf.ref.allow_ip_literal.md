@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.alias_schemes)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.allow_null_envelope_sender.php) |
 
 <a name="conf.ref.allow_ip_literal"></a>
@@ -28,5 +30,7 @@ allow_ip_literal is valid in the global, listener, listen, peer, pathway and pat
 
 [allow_null_envelope_sender](conf.ref.allow_null_envelope_sender "allow_null_envelope_sender")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.alias_schemes)  | [Up](conf.ref.files.php) |  [Next](conf.ref.allow_null_envelope_sender.php) |
 | alias_schemes  | [Table of Contents](index) |  allow_null_envelope_sender |

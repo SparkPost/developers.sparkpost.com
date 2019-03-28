@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.async_bounce_rendering)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bind_address.php) |
 
 <a name="conf.ref.authorization"></a>
@@ -60,5 +62,7 @@ authorization is valid in the global scope.
 
 [msys.registerAuth](lua.ref.msys.registerAuth "msys.registerAuth"), [Section 14.7, “auth_ds – Datasource based SMTP Authentication”](modules.auth_ds.php "14.7. auth_ds – Datasource based SMTP Authentication") and [Section 2.2.3, “Control Listener Authorization”](conf.aaa.php#conf.control_authz "2.2.3. Control Listener Authorization")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.async_bounce_rendering)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bind_address.php) |
 | async_bounce_rendering  | [Table of Contents](index) |  bind_address |

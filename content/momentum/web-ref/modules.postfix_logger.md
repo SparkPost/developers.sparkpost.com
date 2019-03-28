@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.pipe_transport)  | Chapter 14. Modules Reference |  [Next](modules.reception_timing) |
 
 ## 14.56. postfix_logger – Postfix-Compatible Logging
@@ -28,5 +30,8 @@ You must manually create the `postfix` directory and it must be writable by the 
 
 Additionally, you can toggle the logging of transient failures using the `log_transient_failures` option.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.pipe_transport)  | [Up](modules) |  [Next](modules.reception_timing) |
 | 14.55. pipe_transport – Module  | [Table of Contents](index) |  14.57. reception_timing - Reception Timing Modules |

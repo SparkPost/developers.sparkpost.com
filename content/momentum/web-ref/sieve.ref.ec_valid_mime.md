@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_valid_binding)  | 16.2. Sieve Function Details |  [Next](sieve.ref.eleven_scan) |
 
 <a name="sieve.ref.ec_valid_mime"></a>
@@ -24,5 +26,8 @@ if not ec_valid_mime {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_valid_binding)  | [Up](sieve.ref.files) |  [Next](sieve.ref.eleven_scan) |
 | ec_valid_binding  | [Table of Contents](index) |  eleven_scan |

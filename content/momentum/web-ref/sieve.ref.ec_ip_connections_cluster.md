@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ip_connections)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_ip_receptions) |
 
 <a name="sieve.ref.ec_ip_connections_cluster"></a>
@@ -100,5 +102,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric" "${count}" "10000" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ip_connections)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_ip_receptions) |
 | ec_ip_connections  | [Table of Contents](index) |  ec_ip_receptions |

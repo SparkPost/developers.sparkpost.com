@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ipv6_lookup)  | Chapter 14. Modules Reference |  [Next](modules.live.bounce.updates.php) |
 
 ## 14.43. jlog – The jlog Module
@@ -73,5 +75,7 @@ This code opens a jlog and reads each line in that jlog. The `$path` variable sh
 
 For more information about JLog::Reader issue the command **`/opt/msys/3rdParty/bin/perldoc JLog::Reader`**              .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ipv6_lookup)  | [Up](modules.php) |  [Next](modules.live.bounce.updates.php) |
 | 14.42. ipv6_lookup – Multi-address-family MX Records  | [Table of Contents](index) |  14.44. Live Bounce Updates – Module |

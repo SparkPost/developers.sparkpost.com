@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stat)  | 12.2. System Console Commands |  [Next](console_commands.config.php) |
 
 <a name="console_commands.cache_stats"></a>
@@ -29,5 +31,7 @@ For each cache, this command prints statistics including the number of elements 
 
 [match_cache_life](conf.ref.match_cache_life "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stat)  | [Up](console.commands.non-module.php) |  [Next](console_commands.config.php) |
 | cache stat  | [Table of Contents](index) |  config |

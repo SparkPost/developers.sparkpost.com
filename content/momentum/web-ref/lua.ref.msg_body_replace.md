@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_body_match)  | 15.2. Lua Functions |  [Next](lua.ref.msg_build.php) |
 
 <a name="lua.ref.msg_body_replace"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:body_match](lua.ref.msg_body_match "msg:body_match")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_body_match)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_build.php) |
 | msg:body_match  | [Table of Contents](index) |  msg:build |

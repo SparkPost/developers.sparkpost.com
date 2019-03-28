@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bind_address_secondary)  | Chapter 71. Modules Reference |  [Next](modules.bounce_logger) |
 
 ## 71.12. bounce_classifier_override – Override/Augment Bounce Classifications
@@ -166,6 +168,8 @@ You can also use Lua to classify bounces at runtime. For more information see [m
 
 [Section 71.44, “Live Bounce Updates – Live Bounce Updates Service”](modules.live.bounce.updates "71.44. Live Bounce Updates – Live Bounce Updates Service")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bind_address_secondary)  | [Up](modules) |  [Next](modules.bounce_logger) |
 | 71.11. bind_address_secondary – Dual-stack IPv4/IPv6 Support  | [Table of Contents](index) |  71.13. bounce_logger – Momentum-Style Bounce Logging |
 

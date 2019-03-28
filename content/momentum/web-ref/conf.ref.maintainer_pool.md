@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mailfrom_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.malloc2mmap_threshold.php) |
 
 <a name="conf.ref.maintainer_pool"></a>
@@ -48,5 +50,7 @@ There is no default value for this option.
 
 [Section 2.4, “Configuring for Multiple Event Loops in Momentum 3.6”](conf.multi-core "2.4. Configuring for Multiple Event Loops in Momentum 3.6") and [eventloop](conf.ref.eventloop.php "eventloop")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mailfrom_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.malloc2mmap_threshold.php) |
 | mailfrom_timeout  | [Table of Contents](index) |  malloc2mmap_threshold |

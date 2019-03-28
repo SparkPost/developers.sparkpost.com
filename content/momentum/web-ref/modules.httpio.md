@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.host_fingerprint)  | Chapter 14. Modules Reference |  [Next](modules.icu.php) |
 
 ## 14.37. http_io – HTTP I/O Provider
@@ -14,5 +16,7 @@ This module is designed so that Sieve scripts can include web-accessible files o
 
 **Configuration Change. ** In version 3.0, this module is loaded automatically as required and does not need to be explicitly included.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.host_fingerprint)  | [Up](modules.php) |  [Next](modules.icu.php) |
 | 14.36. fingerprint – Host Fingerprinting  | [Table of Contents](index) |  14.38. icu – ICU |

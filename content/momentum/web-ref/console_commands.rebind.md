@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pid)  | 12.2. System Console Commands |  [Next](console_commands.refresh_domain.php) |
 
 <a name="console_commands.rebind"></a>
@@ -37,5 +39,7 @@ Rebound 952 messages.
 
 This command can take a long time to complete if you have a large number of messages eligible for rebinding. Please use with prudence on production systems.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pid)  | [Up](console.commands.non-module.php) |  [Next](console_commands.refresh_domain.php) |
 | pid  | [Table of Contents](index) |  refresh domain |

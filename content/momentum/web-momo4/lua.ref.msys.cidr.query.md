@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.define)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cidr.reload) |
 
 <a name="lua.ref.msys.cidr.query"></a>
@@ -26,6 +28,8 @@ Enable this function with the statement `require('msys.cidr');`.
 
 [Section 71.16, “cidrdb – CIDRDB”](modules.cidrdb "71.16. cidrdb – CIDRDB"), [msys.cidr.define](lua.ref.msys.cidr.define "msys.cidr.define"), [msys.cidr.reload](lua.ref.msys.cidr.reload "msys.cidr.reload")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.define)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cidr.reload) |
 | msys.cidr.define  | [Table of Contents](index) |  msys.cidr.reload |
 

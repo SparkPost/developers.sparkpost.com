@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_round)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_set_routing_gateway) |
 
 <a name="sieve.ref.ec_set_binding"></a>
@@ -95,5 +97,8 @@ if envelope :domain :is "to" "example.com" {
 
 [Section 4.6, “MultiVIP© Interfaces”](operations.multivip "4.6. MultiVIP© Interfaces"), .
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_round)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_set_routing_gateway) |
 | ec_round  | [Table of Contents](index) |  ec_set_routing_gateway |

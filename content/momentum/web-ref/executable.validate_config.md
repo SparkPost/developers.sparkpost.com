@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.migrate_regex_binding2)  | 11.2. Executable Commands |  [Next](console_commands.php) |
 
 <a name="executable.validate_config"></a>
@@ -23,5 +25,7 @@ This script is especially useful for confirming the validity of manual changes t
 
 [Section 2.8, “Best Practices for Manually Changing Configuration Files”](conf.manual.changes "2.8. Best Practices for Manually Changing Configuration Files"), [ec_dump_config](executable.ec_dump_config.php "ec_dump_config")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.migrate_regex_binding2)  | [Up](exe.commands.details.php) |  [Next](console_commands.php) |
 | migrate_regex_binding2  | [Table of Contents](index) |  Chapter 12. Momentum System Console Commands Reference |

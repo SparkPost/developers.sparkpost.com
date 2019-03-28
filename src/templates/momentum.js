@@ -5,24 +5,67 @@ import { graphql } from 'gatsby'
 // import { MDXRenderer } from 'gatsby-mdx'
 // import { MDXProvider } from '@mdx-js/tag'
 import { first } from 'lodash'
+import { grayscale } from 'utils/colors'
 import Heading from 'components/api/components/Heading'
+import Markdown from 'components/Markdown'
 import Layout from 'components/Layout'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import tableOfContents from '../../content/momentum/table-of-contents.json'
+
+const TableOverflow = styled.div`
+  overflow: scroll;
+`
 
 const Wrapper = styled.div`
   width: 100%;
   max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  > div > div {
+    > ${TableOverflow}:first-child, > ${TableOverflow}:last-child {
+      background: #f5f5f8;
+      border: 1px solid ${grayscale(8)};
+      border-radius: 3px;
+
+      table {
+        margin: 0 0 0 0;
+        width: 100%;
+
+        td,
+        th {
+          border: 0;
+          text-align: center;
+          vertical-align: middle;
+          font-size: 0.8125rem;
+        }
+
+        tr + tr {
+          td,
+          th {
+            border-top: 1px solid ${grayscale(8)};
+          }
+        }
+      }
+    }
+
+    > ${TableOverflow}:first-child {
+      td,
+      th {
+        &:first-child,
+        &:last-child {
+          width: 1px;
+          padding: 0 2rem;
+        }
+      }
+    }
+  }
 `
 
 const EmptyHeader = styled.th`
   padding: 0;
-`
-
-const TableOverflow = styled.div`
-  overflow: scroll;
 `
 
 let components = {
@@ -58,8 +101,15 @@ let components = {
       <EmptyHeader />
     )
   },
-  a({ href, ...props }) {
-    return <a href={href.startsWith('/') ? href : `../${href}`} {...props} />
+  a({ href = '', ...props }) {
+    return (
+      <a
+        href={
+          href.startsWith('/') || href.startsWith('.') ? href : `../${href}`
+        }
+        {...props}
+      />
+    )
   },
 }
 
@@ -71,23 +121,6 @@ export default class MomentumTemplate extends Component {
       markdownRemark.headings.length > 0
         ? `${first(markdownRemark.headings).value} - Momentum`
         : 'Momentum'
-
-    // const decoratedTableOfContents = tableOfContents.map(category => {
-    // return {
-    // ...category,
-    // pages: category.pages.map(file => {
-    //   const pageNode = props.data.allApiBlueprint.edges.find(
-    //     ({ node }) => node.fields.file === file
-    //   ).node
-    //   return {
-    //     file,
-    //     title: pageNode.meta.title,
-    //     path: pageNode.fields.path,
-    //     label: pageNode.meta.label,
-    //   }
-    // }),
-    // }
-    // })
 
     return (
       <Layout {...props}>
@@ -104,10 +137,9 @@ export default class MomentumTemplate extends Component {
         </Sidebar>
         <Content>
           <Wrapper>
-            <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
-            {/*             <MDXProvider components={components}> */}
-            {/*               <MDXRenderer>{markdownRemark.html}</MDXRenderer> */}
-            {/*             </MDXProvider> */}
+            <Markdown components={components}>
+              {markdownRemark.rawMarkdownBody}
+            </Markdown>
           </Wrapper>
         </Content>
       </Layout>
@@ -120,23 +152,10 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      rawMarkdownBody
       headings {
         value
       }
     }
   }
 `
-
-// export const pageQuery = graphql`
-//   query MDXQuery($id: String!) {
-//     mdx(id: { eq: $id }) {
-//       id
-//       headings {
-//         value
-//       }
-//       code {
-//         body
-//       }
-//     }
-//   }
-// `

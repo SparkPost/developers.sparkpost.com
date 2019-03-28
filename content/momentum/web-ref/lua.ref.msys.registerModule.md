@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerControl)  | 15.2. Lua Functions |  [Next](lua.ref.msys.runinpool.php) |
 
 <a name="lua.ref.msys.registerModule"></a>
@@ -89,5 +91,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets "5.2. Implementing Policy Using Scriptlets"), [Section 14.60, “scriptlet – Module”](modules.scriptlet.php "14.60. scriptlet – Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerControl)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.runinpool.php) |
 | msys.registerControl  | [Table of Contents](index) |  msys.runInPool |

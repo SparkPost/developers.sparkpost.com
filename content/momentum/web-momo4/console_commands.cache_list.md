@@ -170,6 +170,8 @@ CAPACITY    ENTRIES     USED    HT/TL   RD/WR CACHE
 
 [cache stat](console_commands.cache_stat "cache stat"), [cache stats](console_commands.cache_stats "cache stats"), [match_cache_life](conf.ref.match_cache_life "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_summary)  | [Up](console.cmds.ref) |  [Next](console_commands.cache_stat) |
 | binding summary  | [Table of Contents](index) |  cache stat |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail_quiet)  | 12.2. System Console Commands |  [Next](console_commands.module.php) |
 
 <a name="console_commands.message_retry"></a>
@@ -19,5 +21,7 @@ This command takes a message ID as an argument and forces an immediate delivery 
 Message requeued for delivery
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail_quiet)  | [Up](console.commands.non-module.php) |  [Next](console_commands.module.php) |
 | message fail quiet  | [Table of Contents](index) |  module |

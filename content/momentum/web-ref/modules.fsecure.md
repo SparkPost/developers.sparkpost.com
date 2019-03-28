@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fbl)  | Chapter 14. Modules Reference |  [Next](modules.host_fingerprint.php) |
 
 ## 14.35. fsecure – F-Secure
@@ -40,5 +42,7 @@ This module supports the **f_secure_avscan** Sieve command. For more information
 
 For more information about F-Secure see [http://www.f-secure.com/](http://www.f-secure.com/).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fbl)  | [Up](modules.php) |  [Next](modules.host_fingerprint.php) |
 | 14.34. fbl – Feedback Loop Module  | [Table of Contents](index) |  14.36. fingerprint – Host Fingerprinting |

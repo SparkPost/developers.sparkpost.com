@@ -23,6 +23,8 @@ Passive operating system fingerprinting runs as a daemon that Momentum communica
 
 [fingerprint cache summary](console_commands.fingerprint_cache_summary "fingerprint cache summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_cache_summary)  | [Up](console.cmds.ref) |  [Next](console_commands.flush_domain) |
 | fingerprint cache summary  | [Table of Contents](index) |  flush domain |
 

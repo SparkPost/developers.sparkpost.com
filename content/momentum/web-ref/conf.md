@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.cluster)  | Part I. Configuration Guide |  [Next](conf.ecelerity.conf.php) |
 ## Chapter 2. Configuration
 **Table of Contents**
@@ -16,5 +18,7 @@
 
 This chapter gives an overview of Momentum configuration options. The installer creates a sample configuration for you, based on the answers you provided to it during installation. The initial configuration is based on the sample configuration files found in the `/opt/msys/ecelerity/etc/sample-configs` directory.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.cluster)  | [Up](p.guide.php) |  [Next](conf.ecelerity.conf.php) |
 | 1.12. Installing a Cluster  | [Table of Contents](index) |  2.1. The `ecelerity.conf` File |

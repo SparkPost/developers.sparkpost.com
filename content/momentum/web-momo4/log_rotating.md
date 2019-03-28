@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_monitoring)  | Part IV. Logging |  [Next](log_formats) |
 ## Chapter 34. Rotating Logs ec_rotate
 **Table of Contents**
@@ -72,5 +74,7 @@ Retention period in days
 </dd>
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_monitoring)  | [Up](p.logs) |  [Next](log_formats) |
 | Chapter 33. Log Monitoring  | [Table of Contents](index) |  Chapter 35. Log Formats |

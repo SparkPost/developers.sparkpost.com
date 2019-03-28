@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.lmtp_port)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.local_changes_only) |
 
 <a name="conf.ref.local_changes_file"></a>
@@ -26,6 +28,8 @@ local_changes_file is valid in the global scope.
 
 [local_changes_only](conf.ref.local_changes_only "local_changes_only")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.lmtp_port)  | [Up](config.options.ref) |  [Next](conf.ref.local_changes_only) |
 | lmtp_port  | [Table of Contents](index) |  local_changes_only |
 

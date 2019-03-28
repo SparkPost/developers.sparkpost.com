@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.cloudmark)  | Chapter 14. Modules Reference |  [Next](modules.compress_spool.php) |
 
 ## 14.19. commtouch_ctasd – Commtouch_ctasd Module
@@ -108,5 +110,7 @@ The commtouch_ctasd module can be controlled through the `ec_console`; the follo
 
 This command outputs the number of pending jobs.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.cloudmark)  | [Up](modules.php) |  [Next](modules.compress_spool.php) |
 | 14.18. cloudmark – Cloudmark Authority Module  | [Table of Contents](index) |  14.20. compress_spool – Dynamic Spool Compression |

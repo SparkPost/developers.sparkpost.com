@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.large_message_threshold)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.license.php) |
 
 <a name="conf.ref.legacy_message_threshold"></a>
@@ -32,5 +34,7 @@ legacy_message_threshold is valid in the global scope.
 
 [growbuf_size](conf.ref.growbuf_size "growbuf_size"), [large_message_threshold](conf.ref.large_message_threshold.php "large_message_threshold")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.large_message_threshold)  | [Up](conf.ref.files.php) |  [Next](conf.ref.license.php) |
 | large_message_threshold  | [Table of Contents](index) |  license |

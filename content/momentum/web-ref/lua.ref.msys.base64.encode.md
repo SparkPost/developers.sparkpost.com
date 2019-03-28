@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.decode)  | 15.2. Lua Functions |  [Next](lua.ref.msys.bounce.classify.php) |
 
 <a name="lua.ref.msys.base64.encode"></a>
@@ -27,5 +29,7 @@ Enable this function with the statement `require('msys.base64');`.
 
 [msys.base64.decode](lua.ref.msys.base64.decode "msys.base64.decode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.decode)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.bounce.classify.php) |
 | msys.base64.decode  | [Table of Contents](index) |  msys.bounce.classify |

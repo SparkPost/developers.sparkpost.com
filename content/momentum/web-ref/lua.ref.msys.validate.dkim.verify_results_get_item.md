@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.verify_results_get_count)  | 15.2. Lua Functions |  [Next](lua.ref.msys.validate.dkim.verify_status_to_string.php) |
 
 <a name="lua.ref.msys.validate.dkim.verify_results_get_item"></a>
@@ -30,5 +32,7 @@ This function is valid in the validate_data_spool, data and data_spool_each_rcpt
 
 [msys.validate.dkim.get_verify_results](lua.ref.msys.validate.dkim.get_verify_results "msys.validate.dkim.get_verify_results"), [msys.validate.dkim.verify_results_get_count](lua.ref.msys.validate.dkim.verify_results_get_count.php "msys.validate.dkim.verify_results_get_count"), [msys.validate.dkim.verify_status_to_string](lua.ref.msys.validate.dkim.verify_status_to_string.php "msys.validate.dkim.verify_status_to_string")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.validate.dkim.verify_results_get_count)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.validate.dkim.verify_status_to_string.php) |
 | msys.validate.dkim.verify_results_get_count  | [Table of Contents](index) |  msys.validate.dkim.verify_status_to_string |

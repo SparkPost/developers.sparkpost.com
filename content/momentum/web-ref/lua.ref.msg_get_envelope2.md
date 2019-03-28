@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_code)  | 15.2. Lua Functions |  [Next](lua.ref.header.php) |
 
 <a name="lua.ref.msg_get_envelope2"></a>
@@ -85,5 +87,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [ec_message_get_envelope2](https://support.messagesystems.com/docs/web-c-api/apis.ec_message_get_envelope2)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_code)  | [Up](lua.function.details.php) |  [Next](lua.ref.header.php) |
 | msg:code  | [Table of Contents](index) |  msg:header |

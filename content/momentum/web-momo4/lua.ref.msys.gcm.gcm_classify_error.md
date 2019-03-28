@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gauge_cache.remove_item)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.gcm.gcm_get_result_error_code) |
 
 <a name="lua.ref.msys.gcm.gcm_classify_error"></a>
@@ -46,7 +48,7 @@ function mod:generic_delivery_msg_dispose(msg)
     msg:context_delete(msys.core.ECMESS_CTX_MESS, "DLV_Response_Status")
     msg:inject(msg:mailfrom(), "defaultNumber@deliverSMPP")
     return msys.delivery.DELIVERY_DONE
-  else 
+  else
     print(status, " unknown disposition!\n")
   end
 end
@@ -65,6 +67,8 @@ Enable this function with the statement `require('msys.gcm');`.
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/) and [msys.apn.apn_status_classifier](lua.ref.msys.apn.apn_status_classifier "msys.apn.apn_status_classifier")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gauge_cache.remove_item)  | [Up](lua.function.details) |  [Next](lua.ref.msys.gcm.gcm_get_result_error_code) |
 | msys.gauge_cache.remove_item  | [Table of Contents](index) |  msys.gcm.gcm_get_result_error_code |
 

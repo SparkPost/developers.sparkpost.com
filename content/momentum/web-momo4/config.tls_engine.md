@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_enable_dhe_ciphers)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_ifavailable_fallback) |
 
 <a name="config.tls_engine"></a>
@@ -37,6 +39,8 @@ The default value is `openssl`.
 
 `tls_engine` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_enable_dhe_ciphers)  | [Up](config.options.ref) |  [Next](config.tls_ifavailable_fallback) |
 | tls_enable_dhe_ciphers  | [Table of Contents](index) |  tls_ifavailable_fallback |
 

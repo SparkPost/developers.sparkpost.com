@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_message_size)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_is_mcmt) |
 
 <a name="lua.ref.msg_inject"></a>
@@ -26,6 +28,8 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:build](lua.ref.msg_build "msg:build")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_message_size)  | [Up](lua.function.details) |  [Next](lua.ref.msg_is_mcmt) |
 | msg:get_message_size  | [Table of Contents](index) |  msg:is_mcmt |
 

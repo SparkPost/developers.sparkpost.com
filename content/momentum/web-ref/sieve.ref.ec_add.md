@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_action)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_base64_decode) |
 
 <a name="sieve.ref.ec_add"></a>
@@ -26,5 +28,8 @@ ec_log "${a} + ${b} is ${sum}";
 #sum is 55.540000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_action)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_base64_decode) |
 | ec_action  | [Table of Contents](index) |  ec_base64_decode |

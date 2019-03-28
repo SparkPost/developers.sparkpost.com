@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](subclusters)  | Chapter 7. Clustering |  [Next](cluster.config.mbus.php) |
 
 ## 7.2. Configuration Management
@@ -100,5 +102,7 @@ If there are minor differences between nodes, you can include a local node confi
 
 If there are major differences between node configurations, it is probably simpler to create a separate configuration file for each node as described in [Section 7.2.4, “Node-specific Configuration”](cluster.config.management#cluster.configmgmt.node.specific "7.2.4. Node-specific Configuration").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](subclusters)  | [Up](cluster.php) |  [Next](cluster.config.mbus.php) |
 | 7.1. Subclusters  | [Table of Contents](index) |  7.3. Message Bus |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.generate_delay_dsn)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.host) |
 
 <a name="conf.ref.growbuf_size"></a>
@@ -30,6 +32,8 @@ growbuf_size is valid in the global scope.
 
 [large_message_threshold](conf.ref.large_message_threshold "large_message_threshold")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.generate_delay_dsn)  | [Up](config.options.ref) |  [Next](conf.ref.host) |
 | generate_delay_dsn  | [Table of Contents](index) |  host |
 

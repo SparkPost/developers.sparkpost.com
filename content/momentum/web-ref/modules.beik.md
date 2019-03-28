@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bind_address_secondary)  | Chapter 14. Modules Reference |  [Next](modules.bounce_classifier.php) |
 
 ## 14.10. beik – BEIK Module
@@ -148,5 +150,7 @@ The beik module can be controlled through the `ec_console`; the following comman
 
 Use this command to reload the beik module. You do not need to manually invoke this command; it is triggered by the updates service, msys-beik.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bind_address_secondary)  | [Up](modules.php) |  [Next](modules.bounce_classifier.php) |
 | 14.9. bind_address_secondary – Dual-stack IPv4/IPv6 Support  | [Table of Contents](index) |  14.11. bounce_classifier – Bounce Classifier |

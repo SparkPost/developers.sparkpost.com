@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ac_auth)  | Chapter 71. Modules Reference |  [Next](modules.alerting) |
 
 ## 71.3. adaptive – Adaptive Delivery
@@ -1025,6 +1027,8 @@ Log retention is enabled by default and uses the existing ec_rotate log rotation
 
 For the format of the adaptive log, see [Section 35.2, “`adaptive` Log”](adaptive.log.format "35.2. adaptive Log").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ac_auth)  | [Up](modules) |  [Next](modules.alerting) |
 | 71.2. ac_auth – Authentication Handler  | [Table of Contents](index) |  71.4. alerting – Send Alerting Emails |
 

@@ -91,6 +91,8 @@ You can also display and manipulate counters through the following Lua functions
 
 *   [msys.counter.unlink](lua.ref.msys.counter.unlink "msys.counter.unlink")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.count)  | [Up](console.cmds.ref) |  [Next](console_commands.delayed) |
 | count  | [Table of Contents](index) |  delayed |
 

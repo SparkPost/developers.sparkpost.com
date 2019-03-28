@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.importlog)  | Chapter 35. Log Formats |  [Next](log_formats.paniclog) |
 
 ## 35.7. `mainlog`
@@ -154,6 +156,8 @@ The following is a description of the fields:
 | 3 |   | Unused |
 | 4 | M | `M` indicating a heartbeat (Having three unused fields ensures that, like other logs, the fifth field is the log entry type. This makes parsing easier.) |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.importlog)  | [Up](log_formats) |  [Next](log_formats.paniclog) |
 | 35.6. `importlog`  | [Table of Contents](index) |  35.8. `paniclog` |
 

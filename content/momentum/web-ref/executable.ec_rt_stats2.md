@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rotate)  | 11.2. Executable Commands |  [Next](executable.ec_sendmail.php) |
 
 <a name="executable.ec_rt_stats2"></a>
@@ -259,5 +261,7 @@ Set the time window to be considered at one time. In the `ec_rotate.conf` file t
 
 [the section called “The `ec_rotate.conf` File”](executable.ec_rotate#ec_rotate.conf "The ec_rotate.conf File")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rotate)  | [Up](exe.commands.details.php) |  [Next](executable.ec_sendmail.php) |
 | ec_rotate  | [Table of Contents](index) |  ec_sendmail |

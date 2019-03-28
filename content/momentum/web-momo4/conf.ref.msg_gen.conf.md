@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](http_listener)  | Chapter 20. Configuring Inbound Mail Service Using HTTP |  [Next](auth) |
 
 ## 20.2. `msg_gen.conf` File
@@ -120,6 +122,8 @@ This module handles substitution in the templates. It has no configuration optio
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](http_listener)  | [Up](http_listener) |  [Next](auth) |
 | Chapter 20. Configuring Inbound Mail Service Using HTTP  | [Table of Contents](index) |  Chapter 21. Enforcing REST API/UI User Authentication |
 

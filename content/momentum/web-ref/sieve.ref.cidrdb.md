@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.brightmail)  | 16.2. Sieve Function Details |  [Next](sieve.ref.cloudmark_score) |
 
 <a name="sieve.ref.cidrdb"></a>
@@ -203,5 +205,8 @@ $q = query_cidr "${cidrname}";
 ec_log "Query result:${q}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.brightmail)  | [Up](sieve.ref.files) |  [Next](sieve.ref.cloudmark_score) |
 | brightmail  | [Table of Contents](index) |  cloudmark_score |

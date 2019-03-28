@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.session_response_status_set_std)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.json.encode) |
 
 <a name="lua.ref.json.decode"></a>
@@ -41,6 +43,8 @@ You can directly assign a primitive to the field of a JSON object. Lua tables, w
 
 [json.encode](lua.ref.json.encode "json.encode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.session_response_status_set_std)  | [Up](lua.function.details) |  [Next](lua.ref.json.encode) |
 | session:response_status_set_std  | [Table of Contents](index) |  json.encode |
 

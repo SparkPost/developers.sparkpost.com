@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mail_queue_check_vm_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.mailfrom_timeout.php) |
 
 <a name="conf.ref.mailerdaemon"></a>
@@ -19,5 +21,7 @@ When sending bounce messages upon a permanent delivery failure of a message, the
 
 mailerdaemon is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mail_queue_check_vm_interval)  | [Up](conf.ref.files.php) |  [Next](conf.ref.mailfrom_timeout.php) |
 | mail_queue_check_vm_interval  | [Table of Contents](index) |  mailfrom_timeout |

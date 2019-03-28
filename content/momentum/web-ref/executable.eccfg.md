@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_uipasswd)  | 11.2. Executable Commands |  [Next](executable.eccmgr.php) |
 
 <a name="executable.eccfg"></a>
@@ -366,5 +368,7 @@ Request that the cluster’s nominal MASTER attempt to resolve the CONFLICT stat
 
 [mbusd_monitor](executable.mbusd_monitor "mbusd_monitor"), [ecconfigd](executable.ecconfigd.php "ecconfigd")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_uipasswd)  | [Up](exe.commands.details.php) |  [Next](executable.eccmgr.php) |
 | ec_uipasswd  | [Table of Contents](index) |  eccmgr |

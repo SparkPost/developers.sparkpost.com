@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.chunk_logger)  | Chapter 71. Modules Reference |  [Next](modules.clamav) |
 
 ## 71.16. cidrdb – CIDRDB
@@ -65,6 +67,8 @@ To list configured CIDR databases in XML format use **`xml cidrdb list`**       
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.chunk_logger)  | [Up](modules) |  [Next](modules.clamav) |
 | 71.15. chunk_logger Module  | [Table of Contents](index) |  71.17. clamav – ClamAV |
 

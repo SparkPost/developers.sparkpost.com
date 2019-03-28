@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](engagement_tracking_smtp)  | Chapter 41. Tracking Engagement for SMTP |  [Next](engagement_tracking_smtp.policy) |
 
 ## 41.2. Using the X-MSYS-API Header for Engagement Tracking
@@ -120,6 +122,8 @@ If the X-MSYS-API header includes invalid JSON values, the SMTP message will be 
 | 421 | 4.3.3 [internal] smtpapi unable to generate unique transmission id |
 
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](engagement_tracking_smtp)  | [Up](engagement_tracking_smtp) |  [Next](engagement_tracking_smtp.policy) |
 | Chapter 41. Tracking Engagement for SMTP  | [Table of Contents](index) |  41.3. Using Policy for Engagement Tracking |
 

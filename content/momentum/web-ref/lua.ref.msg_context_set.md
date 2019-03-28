@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_get)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_unlink.php) |
 
 <a name="lua.ref.msg_context_set"></a>
@@ -36,5 +38,7 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [msg:context_get](lua.ref.msg_context_get "msg:context_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_get)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_unlink.php) |
 | msg:context_get  | [Table of Contents](index) |  msgpart:unlink |

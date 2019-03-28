@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_envelope2)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_listener_addr) |
 
 <a name="lua.ref.header"></a>
@@ -74,6 +76,8 @@ In this case the return value of the `msg:header` function is also a boolean.
 
 [msg:body](lua.ref.msg_body "msg:body") and [msgpart:header](lua.ref.msgpart_header "msgpart:header").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_envelope2)  | [Up](lua.function.details) |  [Next](lua.ref.msg_listener_addr) |
 | msg:get_envelope2  | [Table of Contents](index) |  msg:listener_addr |
 

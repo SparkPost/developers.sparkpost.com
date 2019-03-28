@@ -26,6 +26,8 @@ msys.registerControl("delay_domain", delay_domain);
 
 This code creates the ec_console command: **delay_domain *`domain`***           .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.options.console)  | [Up](operations) |  [Next](cluster.config.operations) |
 | 37.4. Setting and Getting Module Options from the Console  | [Table of Contents](index) |  Chapter 38. Using the Cluster Manager (**eccmgr**) |
 

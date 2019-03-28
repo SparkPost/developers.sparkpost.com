@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.doc_root)  | 15.2. Lua Functions |  [Next](lua.ref.xml.doc_xpath.php) |
 
 <a name="lua.ref.xml.doc_tostring"></a>
@@ -48,5 +50,7 @@ The `print` function will automatically convert a document to string so the use 
 
 [node:doc](lua.ref.xml.node_doc "node:doc") and [xml.parsexml](lua.ref.xml.parsexml.php "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.doc_root)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.doc_xpath.php) |
 | doc:root  | [Table of Contents](index) |  doc:xpath |

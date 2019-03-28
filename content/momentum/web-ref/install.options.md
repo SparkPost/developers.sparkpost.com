@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.solaris)  | Chapter 1. Installation |  [Next](install.additional.packages.php) |
 
 ## 1.8. Installer Options
@@ -38,5 +40,7 @@ Reinstalling over top of an existing installation is not supported. You must man
 
 If the installer detects that you are reinstalling the database, you can choose to overwrite the existing database if you wish.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.solaris)  | [Up](install.php) |  [Next](install.additional.packages.php) |
 | 1.7. Installation on Solaris  | [Table of Contents](index) |  1.9. Installing Additional Packages |

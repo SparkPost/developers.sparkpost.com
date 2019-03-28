@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ds_fetch)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ds_fetch_hash) |
 
 <a name="sieve.ref.ds_fetch_flat"></a>
@@ -47,5 +49,8 @@ ec_forward "sender@mailfrom.com" $aliases "forwarded via sieve";
 
 [ds_execute](sieve.ref.ds_execute "ds_execute"), [ds_fetch](sieve.ref.ds_fetch "ds_fetch"), [ds_fetch_hash](sieve.ref.ds_fetch_hash "ds_fetch_hash")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ds_fetch)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ds_fetch_hash) |
 | ds_fetch  | [Table of Contents](index) |  ds_fetch_hash |

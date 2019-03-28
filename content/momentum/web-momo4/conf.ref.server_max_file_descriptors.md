@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.send_8bitmime)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.server_max_outbound_connections) |
 
 <a name="conf.ref.server_max_file_descriptors"></a>
@@ -26,6 +28,8 @@ server_max_file_descriptors is valid in the global scope only.
 
 [server_reserve_outbound_connections](conf.ref.server_reserve_outbound_connections "server_reserve_outbound_connections"), [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.send_8bitmime)  | [Up](config.options.ref) |  [Next](conf.ref.server_max_outbound_connections) |
 | send_8bitmime  | [Table of Contents](index) |  server_max_outbound_connections |
 

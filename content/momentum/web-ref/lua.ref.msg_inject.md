@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_message_size)  | 15.2. Lua Functions |  [Next](lua.ref.msg_is_mcmt.php) |
 
 <a name="lua.ref.msg_inject"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:build](lua.ref.msg_build "msg:build")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_get_message_size)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_is_mcmt.php) |
 | msg:get_message_size  | [Table of Contents](index) |  msg:is_mcmt |

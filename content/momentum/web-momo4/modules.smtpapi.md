@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_rcptto_proxy)  | Chapter 71. Modules Reference |  [Next](modules.spf) |
 
 ## 71.67. smtpapi – SMTP Engagement Tracking
@@ -89,6 +91,8 @@ ESMTP_Listener {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_rcptto_proxy)  | [Up](modules) |  [Next](modules.spf) |
 | 71.66. smtp_rcptto_proxy - SMTP Recipient-To Proxy  | [Table of Contents](index) |  71.68. spf Modules – spf_macros, spf_v1, and senderid (SPF v2) |
 

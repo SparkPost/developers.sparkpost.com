@@ -37,6 +37,8 @@ Rebound 952 messages.
 
 This command can take a long time to complete if you have a large number of messages eligible for rebinding. Please use with prudence on production systems.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pid)  | [Up](console.cmds.ref) |  [Next](console_commands.refresh_domain) |
 | pid  | [Table of Contents](index) |  refresh domain |
 

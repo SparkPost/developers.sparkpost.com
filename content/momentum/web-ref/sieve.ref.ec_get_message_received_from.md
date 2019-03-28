@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_rcptto)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_received_from_port) |
 
 <a name="sieve.ref.ec_get_message_received_from"></a>
@@ -27,5 +29,8 @@ if not ec_test :is "${ip}" "127.0.0.1" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_rcptto)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_received_from_port) |
 | ec_get_message_rcptto  | [Table of Contents](index) |  ec_get_message_received_from_port |

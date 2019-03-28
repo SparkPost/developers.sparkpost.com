@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_throttle)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_trace_context) |
 
 <a name="sieve.ref.ec_tolower"></a>
@@ -24,5 +26,8 @@ $a = "%{vctx_mess:mailfrom_localpart}";
   ec_log "${a} lower to ${b}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_throttle)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_trace_context) |
 | ec_throttle  | [Table of Contents](index) |  ec_trace_context |

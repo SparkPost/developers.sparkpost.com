@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_replace)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.rfc2821_allow_whitespace_in_envelope.php) |
 
 <a name="conf.ref.retry_interval"></a>
@@ -26,5 +28,7 @@ retry_interval is valid in the binding, binding_group, domain and global scopes.
 
 [message_expiration](conf.ref.message_expiration "message_expiration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_replace)  | [Up](conf.ref.files.php) |  [Next](conf.ref.rfc2821_allow_whitespace_in_envelope.php) |
 | response_transcode_replace  | [Table of Contents](index) |  rfc2821_allow_whitespace_in_envelope |

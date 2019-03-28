@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_config)  | Chapter 15. Configuration Overview |  [Next](cluster) |
 
 ## 15.6. `ecelerity.conf` File
@@ -71,6 +73,8 @@ Momentum provides a variety of options that allows you to control its outbound m
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_config)  | [Up](conf.overview) |  [Next](cluster) |
 | 15.5. Modules  | [Table of Contents](index) |  Chapter 16. Cluster-specific Configuration |
 

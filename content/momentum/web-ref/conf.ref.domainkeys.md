@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_sender_address)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.drop_body_after_trans_fail.php) |
 
 <a name="conf.ref.domainkeys"></a>
@@ -31,5 +33,7 @@ domainkeys is also valid in the binding group scope.
 
 [dkim](conf.ref.dkim "dkim")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_sender_address)  | [Up](conf.ref.files.php) |  [Next](conf.ref.drop_body_after_trans_fail.php) |
 | domain_for_unqualified_sender_address  | [Table of Contents](index) |  drop_body_after_trans_fail |

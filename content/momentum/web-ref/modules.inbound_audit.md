@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.imageanalyzer)  | Chapter 14. Modules Reference |  [Next](modules.ipv6_lookup.php) |
 
 ## 14.41. inbound_audit – Inbound traffic analytics
@@ -210,5 +212,7 @@ inbound_audit load *`series`* *`filename`*
 
 Load a series from a file. The filename can be omitted if the file has the same name as the series.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.imageanalyzer)  | [Up](modules.php) |  [Next](modules.ipv6_lookup.php) |
 | 14.40. imageanalyzer – Module  | [Table of Contents](index) |  14.42. ipv6_lookup – Multi-address-family MX Records |

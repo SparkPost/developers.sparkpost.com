@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_certificate)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_client_ca) |
 
 <a name="config.tls_ciphers"></a>
@@ -45,6 +47,8 @@ This option can be set to `NORMAL`.
 
 `tls_ciphers` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_certificate)  | [Up](config.options.ref) |  [Next](config.tls_client_ca) |
 | tls_certificate  | [Table of Contents](index) |  tls_client_ca |
 

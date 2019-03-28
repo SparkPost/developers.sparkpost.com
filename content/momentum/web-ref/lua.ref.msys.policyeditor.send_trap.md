@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.send_email)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.set_binding.php) |
 
 <a name="lua.ref.msys.policyeditor.send_trap"></a>
@@ -48,5 +50,7 @@ Defined parameters for `params` are:
 
 [Section 3.11, “Automated Alerting Configuration”](web3.automated.alerting "3.11. Automated Alerting Configuration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.send_email)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.set_binding.php) |
 | msys.policyeditor.send_email  | [Table of Contents](index) |  msys.policyeditor.set_binding |

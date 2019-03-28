@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.chroot)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.cluster_max_outbound_connections.php) |
 
 <a name="conf.ref.clear_mail_queue_maintainers"></a>
@@ -23,5 +25,7 @@ In some circumstances you may wish to set this option to `true`. Suppose that yo
 
 This option is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.chroot)  | [Up](conf.ref.files.php) |  [Next](conf.ref.cluster_max_outbound_connections.php) |
 | chroot  | [Table of Contents](index) |  cluster_max_outbound_connections |

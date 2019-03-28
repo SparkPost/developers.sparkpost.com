@@ -45,6 +45,8 @@ This command shows much more detail than the [cache stats](console_commands.cach
 
 [cache list](console_commands.cache_list "cache list"), [cache stats](console_commands.cache_stats "cache stats"), [match_cache_life](conf.ref.match_cache_life "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_list)  | [Up](console.cmds.ref) |  [Next](console_commands.cache_stats) |
 | cache list  | [Table of Contents](index) |  cache stats |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_add)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_base64_encode) |
 
 <a name="sieve.ref.ec_base64_decode"></a>
@@ -26,5 +28,8 @@ Sieve scripts using `base64_decode` can be used in any phase.
 
 [ec_base64_encode](sieve.ref.ec_base64_encode "ec_base64_encode")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_add)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_base64_encode) |
 | ec_add  | [Table of Contents](index) |  ec_base64_encode |

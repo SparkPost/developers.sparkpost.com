@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr)  | Chapter 74. Executable Commands Reference |  [Next](executable.ecconfigd) |
 
 <a name="executable.eccmgr_ctl"></a>
@@ -19,6 +21,8 @@ eccmgr_ctl — start, stop, or restart the Momentum Cluster Manager
 
 [eccmgr](executable.eccmgr "eccmgr")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr)  | [Up](exec.cmds.ref) |  [Next](executable.ecconfigd) |
 | eccmgr  | [Table of Contents](index) |  ecconfigd |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_fail_domain_quiet)  | 12.2. System Console Commands |  [Next](console_commands.binding_summary.php) |
 
 <a name="console_commands.binding_flush_domain"></a>
@@ -30,5 +32,7 @@ You may substitute `all` for the domain name to apply to all domains.
 
 [message_expiration](conf.ref.message_expiration "message_expiration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_fail_domain_quiet)  | [Up](console.commands.non-module.php) |  [Next](console_commands.binding_summary.php) |
 | binding fail domain quiet  | [Table of Contents](index) |  binding summary |

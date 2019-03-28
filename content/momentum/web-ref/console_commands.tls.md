@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.threads)  | 12.2. System Console Commands |  [Next](console_commands.trace_smtp.php) |
 
 <a name="console_commands.tls"></a>
@@ -49,5 +51,7 @@ Cache flush request submitted.
 Rekey request submitted.
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.threads)  | [Up](console.commands.non-module.php) |  [Next](console_commands.trace_smtp.php) |
 | threads  | [Table of Contents](index) |  trace smtp |

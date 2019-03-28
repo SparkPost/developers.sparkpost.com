@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.readfile)  | 15.2. Lua Functions |  [Next](lua.ref.msys.registerControl.php) |
 
 <a name="lua.ref.msys.registerAuth"></a>
@@ -72,5 +74,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [authorization](conf.ref.authorization "authorization")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.readfile)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.registerControl.php) |
 | msys.readfile  | [Table of Contents](index) |  msys.registerControl |

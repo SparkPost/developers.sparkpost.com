@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.templates.create)  | Chapter 48. Managing Your Templates in the UI |  [Next](web-ui.update.template) |
 
 ## 48.3. Previewing and Testing Your Template
@@ -52,6 +54,8 @@ In the **`Sent Test form`**, enter your recipient's address and click `Send`.
 
 If successful, a message will briefly appear indicating that your message was successfully queued. Your recipient should receive an email with your test data included in the message body.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.templates.create)  | [Up](web-ui.templates) |  [Next](web-ui.update.template) |
 | 48.2. Creating a Template  | [Table of Contents](index) |  48.4. Updating Your Template |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_code)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_id) |
 
 <a name="sieve.ref.ec_get_message_creation_time"></a>
@@ -32,5 +34,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric" $t $nearfuture {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_code)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_id) |
 | ec_get_message_code  | [Table of Contents](index) |  ec_get_message_id |

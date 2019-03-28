@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.encode)  | 15.2. Lua Functions |  [Next](lua.ref.msys.bounce.classify_smtp_response.php) |
 
 <a name="lua.ref.msys.bounce.classify"></a>
@@ -22,5 +24,7 @@ Enable this function with the statement `require('msys.bounce');`.
 
 [Section 14.12, “bounce_classifier_override – The Bounce Classifier Override Module”](modules.bounce_classifier_override "14.12. bounce_classifier_override – The Bounce Classifier Override Module"), [msys.bounce.classify_smtp_response](lua.ref.msys.bounce.classify_smtp_response.php "msys.bounce.classify_smtp_response")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.encode)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.bounce.classify_smtp_response.php) |
 | msys.base64.encode  | [Table of Contents](index) |  msys.bounce.classify_smtp_response |

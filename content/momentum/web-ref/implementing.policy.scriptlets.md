@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.validation)  | Chapter 5. Implementing Policy with Momentum |  [Next](default.policy.scriptlets.php) |
 
 ## 5.2. Implementing Policy Using Scriptlets
@@ -818,5 +820,7 @@ scriptlet "scriptlet" {
 
 For detailed information about how Lua is implemented in Momentum see [Section 14.60, “scriptlet – Module”](modules.scriptlet "14.60. scriptlet – Module") and [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets.php "5.2. Implementing Policy Using Scriptlets").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.validation)  | [Up](policy.php) |  [Next](default.policy.scriptlets.php) |
 | 5.1. Validation and the Validation Context  | [Table of Contents](index) |  5.3. Default Policy Scriptlets |

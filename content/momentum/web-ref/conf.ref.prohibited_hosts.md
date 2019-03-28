@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.privileges)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.rcptto_timeout.php) |
 
 <a name="conf.ref.prohibited_hosts"></a>
@@ -28,5 +30,7 @@ Note: This setting does not in any way affect where you can receive mail from, o
 
 prohibited_hosts is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.privileges)  | [Up](conf.ref.files.php) |  [Next](conf.ref.rcptto_timeout.php) |
 | privileges  | [Table of Contents](index) |  rcptto_timeout |

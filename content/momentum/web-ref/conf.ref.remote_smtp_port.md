@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_hosts)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.require_ehlo.php) |
 
 <a name="conf.ref.remote_smtp_port"></a>
@@ -19,5 +21,7 @@ This will set the port to which outbound SMTP connections are attempted. It can 
 
 remote_smtp_port is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_hosts)  | [Up](conf.ref.files.php) |  [Next](conf.ref.require_ehlo.php) |
 | relay_hosts  | [Table of Contents](index) |  require_ehlo |

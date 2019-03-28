@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_allow_renegotiation)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_certificate) |
 
 <a name="config.tls_ca"></a>
@@ -19,6 +21,8 @@ TLS_Ca specifies a file containing a trusted certificate authority list. These c
 
 `tls_ca` is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_allow_renegotiation)  | [Up](config.options.ref) |  [Next](config.tls_certificate) |
 | tls_allow_renegotiation  | [Table of Contents](index) |  tls_certificate |
 

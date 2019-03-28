@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_host_fingerprint)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_include) |
 
 <a name="sieve.ref.ec_inc_counter"></a>
@@ -28,5 +30,8 @@ if envelope :domain :is "from" "good-guy.com" {
 
 See also [ec_gauge_cache](sieve.ref.ec_gauge_cache "ec_gauge_cache") for a more general-purpose counter mechanism supporting increment, decrement and get operations in Sieve.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_host_fingerprint)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_include) |
 | ec_host_fingerprint  | [Table of Contents](index) |  ec_include |

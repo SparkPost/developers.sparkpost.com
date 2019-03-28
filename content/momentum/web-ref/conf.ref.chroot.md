@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.capabilities)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.clear_mail_queue_maintainers.php) |
 
 <a name="conf.ref.chroot"></a>
@@ -28,5 +30,7 @@ chroot is valid in the security scope.
 
 [chroot](conf.ref.chroot "chroot"), [supplemental_groups](conf.ref.supplemental_groups.php "supplemental_groups"), [capabilities](conf.ref.capabilities.php "capabilities")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.capabilities)  | [Up](conf.ref.files.php) |  [Next](conf.ref.clear_mail_queue_maintainers.php) |
 | capabilities  | [Table of Contents](index) |  clear_mail_queue_maintainers |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mxip)  | Chapter 71. Modules Reference |  [Next](modules.outbound_audit) |
 
 ## 71.50. opendkim – Open Source DKIM
@@ -296,6 +298,8 @@ The following OpenDKIM objects are passed in to or returned by these functions:
 
 For more information about these data types, see [OpenDKIM Library](http://www.opendkim.org/libopendkim/index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mxip)  | [Up](modules) |  [Next](modules.outbound_audit) |
 | 71.49. mxip - IP Addresses In MX Records  | [Table of Contents](index) |  71.51. outbound_audit – Outbound traffic analytics |
 

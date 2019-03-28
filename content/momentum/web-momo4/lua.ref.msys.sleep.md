@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.runinpool)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.snmpTrap) |
 
 <a name="lua.ref.msys.sleep"></a>
@@ -23,6 +25,8 @@ When called in the scheduler thread, this function suspends the current session 
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.runinpool)  | [Up](lua.function.details) |  [Next](lua.ref.msys.snmpTrap) |
 | msys.runInPool  | [Table of Contents](index) |  msys.snmpTrap |
 

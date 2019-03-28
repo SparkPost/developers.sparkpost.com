@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](tls_macros)  | Chapter 14. Modules Reference |  [Next](lua) |
 
 ## 14.75. url_ripper – URL Extraction
@@ -163,5 +165,8 @@ In the example above, if `forward` was set to `false` the EHLO hostname (sender.
 
 When the sieve module is loaded passively, the **ec_url_ripper** Sieve command can be used at runtime. For more information see [ec_url_ripper](sieve.ref.ec_url_ripper "ec_url_ripper").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](tls_macros)  | [Up](modules) |  [Next](lua) |
 | 14.74. tls_macros Module  | [Table of Contents](index) |  Chapter 15. Lua Function Reference |

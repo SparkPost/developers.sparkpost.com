@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.function.details)  | 15.2. Lua Functions |  [Next](lua.ref.ac_esmtp_capability_add.php) |
 
 <a name="lua.ref.msys.db.execute"></a>
@@ -86,5 +88,7 @@ The data cache used in the preceding example must be defined in your configurati
 
 [msys.db.query](lua.ref.msys.db.query "msys.db.query"), [msys.db.fetch_row](lua.ref.msys.db.fetch_row.php "msys.db.fetch_row"), [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets.php "5.2. Implementing Policy Using Scriptlets")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.function.details)  | [Up](lua.function.details.php) |  [Next](lua.ref.ac_esmtp_capability_add.php) |
 | 15.2. Lua Functions  | [Table of Contents](index) |  ac:esmtp_capability_add |

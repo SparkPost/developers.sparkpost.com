@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.boot)  | Chapter 10. Cluster Configuration Reference |  [Next](exe.php) |
 
 <a name="mbus.conf"></a>
@@ -111,5 +113,7 @@ For more information about subclusters see [Section 7.1, “Subclusters”](sub
 
 [eccmgr](executable.eccmgr "eccmgr"), [mbusd](executable.mbusd.php "mbusd"), [mbusd_monitor](executable.mbusd_monitor.php "mbusd_monitor"),
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.boot)  | [Up](cluster.ref.php) |  [Next](exe.php) |
 | cluster.boot  | [Table of Contents](index) |  Chapter 11. Momentum Command Line Reference |

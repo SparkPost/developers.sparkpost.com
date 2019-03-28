@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd)  | Chapter 74. Executable Commands Reference |  [Next](executable.ecelerity) |
 
 <a name="executable.ecconfigd_ctl"></a>
@@ -21,8 +23,10 @@ If the `EXTRA_ARGS` environment variable is set, its contents will be passed as 
 <a name="idp11881392"></a>
 ## See Also
 
-[ecconfigd](executable.ecconfigd "ecconfigd"), [Chapter 31, *Configuring the Environment File*](environment_file "Chapter 31. Configuring the Environment File") 
+[ecconfigd](executable.ecconfigd "ecconfigd"), [Chapter 31, *Configuring the Environment File*](environment_file "Chapter 31. Configuring the Environment File")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd)  | [Up](exec.cmds.ref) |  [Next](executable.ecelerity) |
 | ecconfigd  | [Table of Contents](index) |  ecelerity |
 

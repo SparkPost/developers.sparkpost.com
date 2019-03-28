@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.hostname)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.http_basic_auth) |
 
 <a name="conf.ref.host_failure_retry"></a>
@@ -19,6 +21,8 @@ The amount of time in seconds to wait after a connect or protocol failure on a c
 
 host_failure_retry is valid in the domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.hostname)  | [Up](config.options.ref) |  [Next](conf.ref.http_basic_auth) |
 | hostname  | [Table of Contents](index) |  http_basic_auth |
 

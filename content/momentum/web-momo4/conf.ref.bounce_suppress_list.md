@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_pattern)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.bounces_inline_original) |
 
 <a name="conf.ref.bounce_suppress_list"></a>
@@ -39,6 +41,8 @@ bounce_suppress_list = "bounces@bounces.example.com,@bounces.example.org"
 
 [bounce_domains](conf.ref.bounce_domains "bounce_domains"), [bounce_pattern](conf.ref.bounce_pattern "bounce_pattern"), [bounce_behavior](conf.ref.bounce_behavior "bounce_behavior"), and [Section 71.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger "71.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_pattern)  | [Up](config.options.ref) |  [Next](conf.ref.bounces_inline_original) |
 | bounce_pattern  | [Table of Contents](index) |  bounces_inline_original |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](bounce_logger.classification.codes)  | Appendix E. Log Formats |  [Next](responses.php) |
 
 ## E.3. Connection Stages
@@ -36,5 +38,7 @@ The connection stages are identical for all versions of Momentum. Find below a l
 
 Code `21` is the only message disposition notification (MDN). With the exception of `22`, which is unknown, all other stages occur during the SMTP transaction. In other words, they are in-band bounces.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](bounce_logger.classification.codes)  | [Up](log_formats.php) |  [Next](responses.php) |
 | E.2. Bounce Classification Codes  | [Table of Contents](index) |  Appendix F. Message Responses |

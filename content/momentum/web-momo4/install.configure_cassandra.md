@@ -87,7 +87,7 @@ Follow all steps below on the first Cassandra node until reaching the final numb
     UN  10.77.0.158  45.89 KB   256     100.0%            a5732aca-b808-417b-a83b-ac97b4693694  rack1
     ```
 
-7.  Apply the initial Cassandra schema. **Do this only on the first Cassandra node in the cluster.** 
+7.  Apply the initial Cassandra schema. **Do this only on the first Cassandra node in the cluster.**
 
     ### Note
 
@@ -163,6 +163,8 @@ Follow all steps below on the first Cassandra node until reaching the final numb
         UN  10.77.0.235  111.41 KB  256     33.3%  88a7616c-36b9-4aa0-9ddc-db24ad76115c  rack1
         ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](new_installation)  | [Up](new_installation) |  [Next](install.analytics_nodes) |
 | Chapter 9. New Installation - All Configurations  | [Table of Contents](index) |  9.3. Configure the Analytics Nodes |
 

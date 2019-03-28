@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](environment_file)  |   |  [Next](logging.overview) |
 ## Part IV. Logging
 **Table of Contents**
@@ -20,5 +22,7 @@
     * [35.10\. Bounce Classification Codes](bounce_logger.classification.codes)
     * [35.11\. Connection Stages](log_formats.connection.stages)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](environment_file)  |   |  [Next](logging.overview) |
 | Chapter 31. Configuring the Environment File  | [Table of Contents](index) |  Chapter 32. Logging Overview |

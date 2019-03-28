@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.ref.eventloop)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.exclude_vctx_conn) |
 
 <a name="conf.ref.events_per_iter"></a>
@@ -26,6 +28,8 @@ events_per_iter is valid in the control_listener, eccluster_listener, ecstream_l
 
 [pool_name](esmtp_listener#esmtp_listener.config "19.1. ESMTP_Listener Configuration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.ref.eventloop)  | [Up](config.options.ref) |  [Next](conf.ref.exclude_vctx_conn) |
 | eventloop  | [Table of Contents](index) |  exclude_vctx_conn |
 

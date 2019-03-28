@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.persistio)  | Chapter 14. Modules Reference |  [Next](modules.pipe_transport) |
 
 ## 14.54. pipe_io – Pipe IO Wrapper
@@ -161,5 +163,8 @@ To use `pipe_io` on Linux, you need to add the following to `/opt/msys/ecelerity
 
 [Section 2.1.5.1, “The `environment` File”](conf.ecelerity.conf#conf.environment.file "2.1.5.1. The environment File")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.persistio)  | [Up](modules) |  [Next](modules.pipe_transport) |
 | 14.53. persist_io – Persistent IO Wrapper  | [Table of Contents](index) |  14.55. pipe_transport – Module |

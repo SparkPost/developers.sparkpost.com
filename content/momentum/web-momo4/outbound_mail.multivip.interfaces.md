@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.prohibited.hosts)  | Chapter 25. Configuring Outbound Mail Delivery |  [Next](outbound_mail.traffic.shaping) |
 
 ## 25.3. MultiVIP© Interfaces
@@ -38,6 +40,8 @@ When you are removing a binding that is in use, do the following:
 
 4.  Once all reassigned messages are out of the queue, restart ecelerity to fully remove the binding from the configuration.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.prohibited.hosts)  | [Up](outbound_mail) |  [Next](outbound_mail.traffic.shaping) |
 | 25.2. Prohibited_Hosts  | [Table of Contents](index) |  25.4. Throttling and Traffic Shaping |
 

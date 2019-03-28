@@ -86,6 +86,8 @@ Without other arguments, setty lists the modes in the chosen set that are fixed 
 
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit)  | [Up](libedit) |  [Next](glossary) |
 | Appendix D. Key Binding Reference for ec_console  | [Table of Contents](index) |  Glossary |
 

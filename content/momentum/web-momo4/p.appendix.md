@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.validate_config)  |   |  [Next](message_responses) |
 ## Part XI. Appendix
 **Table of Contents**
@@ -12,5 +14,7 @@
     * [D.1\. Editor Commands](libedit#libedit.emacs.editor)
     * [D.2\. Extended Commands](libedit.extended)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.validate_config)  |   |  [Next](message_responses) |
 | validate_config  | [Table of Contents](index) |  Appendix A. Message Responses |

@@ -28,6 +28,8 @@ Usually, the command is immediately proceded or followed by "blackholing" the do
 
 [fail domain quiet](console_commands.fail_domain_quiet "fail domain quiet")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain_all)  | [Up](console.cmds.ref) |  [Next](console_commands.fail_domain_quiet) |
 | domain all  | [Table of Contents](index) |  fail domain quiet |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.exim_logger)  | Chapter 71. Modules Reference |  [Next](modules.host_fingerprint) |
 
 ## 71.35. fbl - Feedback Loop
@@ -156,6 +158,8 @@ Binding "foo" {
 
 With Lua, FBL scripting is typically implemented by the adaptive module. For more information see [Sweep Rules – Configuring Bounce and FBL Behavior](https://support.messagesystems.com/docs/web-ad/ad.rules.sweep.rules).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.exim_logger)  | [Up](modules) |  [Next](modules.host_fingerprint) |
 | 71.34. exim_logger – Exim Logging  | [Table of Contents](index) |  71.36. fingerprint – Host Fingerprinting |
 

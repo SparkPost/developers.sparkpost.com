@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecelerity.conf)  | Part III. Configuring Momentum |  [Next](conf.ref.eccluster.conf) |
 ## Chapter 16. Cluster-specific Configuration
 **Table of Contents**
@@ -67,5 +69,7 @@ Set `OPTION` in a `node-local.conf` file in all the /opt/msys/ecelerity/etc/conf
 Add an "include node-local.conf" statement to `/opt/msys/ecelerity/etc/default/ecelerity.conf`.
 If there are major differences between node configurations, it is probably simpler to create a separate configuration file for each node as described in [Section 16.1.1.1, “Repository Working Copy for Cluster”](cluster#cluster.config_files.mgmt.cluster "16.1.1.1. Repository Working Copy for Cluster").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ecelerity.conf)  | [Up](p.configuration) |  [Next](conf.ref.eccluster.conf) |
 | 15.6. `ecelerity.conf` File  | [Table of Contents](index) |  16.2. `eccluster.conf` File |

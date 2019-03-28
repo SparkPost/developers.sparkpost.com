@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.analytics_reqs)  | Part II. Installing Momentum |  [Next](install_upgrade_packages) |
 
 ## Chapter 7. Download the Software Bundle and Prepare
@@ -25,6 +27,8 @@ Whether you intend to perform a **new install**         or an **upgrade** you ne
 
     If your node does not have public internet access during installation, you will need to add your valid Momentum `license` files manually.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.analytics_reqs)  | [Up](p.installing) |  [Next](install_upgrade_packages) |
 | 6.18. Verifying Analytics Node Requirements  | [Table of Contents](index) |  Chapter 8. Install / Upgrade the Packages |
 

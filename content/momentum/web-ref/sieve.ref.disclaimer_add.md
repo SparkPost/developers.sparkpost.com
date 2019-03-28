@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.discard)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ds_execute) |
 
 <a name="sieve.ref.disclaimer_add"></a>
@@ -43,5 +45,8 @@ $h = hash_create;
 
 When using `html` as a key, the module will look for all text/html parts that are not attachments and append the HTML disclaimer. When using `plain` as a key, the module will look for all text/plain parts that are not attachments and append the plain disclaimer. If using both, it will look for both, adding the html disclaimer to the html parts, and the plain disclaimer to the plain parts.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.discard)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ds_execute) |
 | discard  | [Table of Contents](index) |  ds_execute |

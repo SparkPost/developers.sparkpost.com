@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_trailing_whitespace_in_commands)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.authorization.php) |
 
 <a name="conf.ref.async_bounce_rendering"></a>
@@ -26,5 +28,7 @@ Async_Bounce_Rendering is valid in the global scope.
 
 [reject](sieve.ref.reject "reject")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_trailing_whitespace_in_commands)  | [Up](conf.ref.files.php) |  [Next](conf.ref.authorization.php) |
 | allow_trailing_whitespace_in_commands  | [Table of Contents](index) |  authorization |

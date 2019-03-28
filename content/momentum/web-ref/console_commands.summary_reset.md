@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary)  | 12.2. System Console Commands |  [Next](console_commands.sysinfo.php) |
 
 <a name="console_commands.summary_reset"></a>
@@ -24,5 +26,7 @@ The **summary reset**       command resets the statistics counters of the runnin
 
 [binding summary](console_commands.binding_summary "binding summary"), [summary](console_commands.summary.php "summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary)  | [Up](console.commands.non-module.php) |  [Next](console_commands.sysinfo.php) |
 | summary  | [Table of Contents](index) |  sysinfo |

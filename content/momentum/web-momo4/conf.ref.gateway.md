@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.fully_resolve_before_smtp)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.generate_bounces) |
 
 <a name="conf.ref.gateway"></a>
@@ -42,6 +44,8 @@ gateway is valid in the binding, binding_group, domain and global scopes.
 
 [routes](conf.ref.routes "routes")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.fully_resolve_before_smtp)  | [Up](config.options.ref) |  [Next](conf.ref.generate_bounces) |
 | fully_resolve_before_smtp  | [Table of Contents](index) |  generate_bounces |
 

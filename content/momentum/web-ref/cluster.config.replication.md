@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging)  | Chapter 7. Clustering |  [Next](cluster.config.operations.php) |
 
 ## 7.7. Data Replication
@@ -518,5 +520,8 @@ bouncealllog
 	[on disk: 0 bytes]
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging)  | [Up](cluster.php) |  [Next](cluster.config.operations.php) |
 | 7.6. Log Aggregation  | [Table of Contents](index) |  7.8. Using the Cluster Manager |

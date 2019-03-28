@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](apis.ec_httpsrv_request_local_address)  | Chapter 69. Hook Points and C Functions Reference |  [Next](lua.function.details) |
 
 <a name="apis.ec_httpsrv_request_peer_address"></a>
@@ -38,6 +40,8 @@ address in ec_sockaddr * format
 
 The remote peer IP address will be valid for the lifetime of the session.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](apis.ec_httpsrv_request_local_address)  | [Up](hooks) |  [Next](lua.function.details) |
 | ec_httpsrv_request_local_address  | [Table of Contents](index) |  Chapter 70. Lua Functions Reference |
 

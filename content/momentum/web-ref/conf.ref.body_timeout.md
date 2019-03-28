@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.blackhole)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bounce_behavior.php) |
 
 <a name="conf.ref.body_timeout"></a>
@@ -19,5 +21,7 @@ The amount of time in seconds to wait for a response once the `DATA` phase has b
 
 body_timeout is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.blackhole)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bounce_behavior.php) |
 | blackhole  | [Table of Contents](index) |  bounce_behavior |

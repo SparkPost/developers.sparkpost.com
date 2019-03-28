@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.conn_id)  | 15.2. Lua Functions |  [Next](lua.ref.msg_address_header.php) |
 
 <a name="lua.ref.msg.id"></a>
@@ -22,5 +24,7 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg.batch_id](lua.ref.msg.batch_id "msg.batch_id")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg.conn_id)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_address_header.php) |
 | msg.conn_id  | [Table of Contents](index) |  msg:address_header |

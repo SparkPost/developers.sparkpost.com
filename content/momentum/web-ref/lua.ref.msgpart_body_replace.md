@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_match)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_content_type.php) |
 
 <a name="lua.ref.msgpart_body_replace"></a>
@@ -21,5 +23,7 @@ Streaming interface to a PCRE replacement of a message body part (minus headers)
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_match)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_content_type.php) |
 | msgpart:body_match  | [Table of Contents](index) |  msgpart:content_type |

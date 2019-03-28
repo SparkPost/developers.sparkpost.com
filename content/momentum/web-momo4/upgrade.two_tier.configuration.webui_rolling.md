@@ -38,6 +38,8 @@ We recommend you make these changes on one Analytics node and then use the scp c
 
     Attempts to scp between nodes may trigger the message "Error reading response length from authentication socket" before the password is requested. Enter your password to continue. You can clear the errors by logging out and back in to each of the nodes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.software_upgrade_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.configuration.start_services_rolling) |
 | 11.14. Install the Adaptive Delivery API  | [Table of Contents](index) |  11.16. Start Services |
 

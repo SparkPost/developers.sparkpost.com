@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](faq)  | Part III. Appendices |  [Next](snmp-mib-per-domain-metrics) |
 ## MIB Files
 **Table of Contents**
@@ -16,5 +18,8 @@ Within Momentum (ecelerity), `1.3.6.1.4.1.19552.1.1` is defined as product infor
 *   `1.3.6.1.4.1.19552.1.1.2` – string, version (_EC_VER)
 *   `1.3.6.1.4.1.19552.1.1.3` – string, build date (__DATE__)
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](faq)  | [Up](p.appendices) |  [Next](snmp-mib-per-domain-metrics) |
 | Appendix A. Frequently Asked Questions  | [Table of Contents](index) |  B.1. 1.3.6.1.4.1.19552.1.2 – Per-domain Metrics |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_verify)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.trace_smtp_mode) |
 
 <a name="config.tls_verify_mode"></a>
@@ -31,6 +33,8 @@ By default, this option is not specified.
 
 `tls_verify_mode` is valid in the listener, listen, peer and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_verify)  | [Up](config.options.ref) |  [Next](conf.ref.trace_smtp_mode) |
 | tls_verify  | [Table of Contents](index) |  trace_smtp_mode |
 

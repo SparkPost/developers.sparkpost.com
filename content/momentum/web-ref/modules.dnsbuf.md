@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dkim)  | Chapter 14. Modules Reference |  [Next](modules.domainkeys.php) |
 
 ## 14.28. dnsbuf – Dynamically Set the DNS UDP Buffer Size
@@ -151,5 +153,7 @@ The following is an example in which Momentum started with ~30,000 unresolvable 
   Pending DNS Queries: 311
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dkim)  | [Up](modules.php) |  [Next](modules.domainkeys.php) |
 | 14.27. dkim – DomainKeys Identified Mail Signatures  | [Table of Contents](index) |  14.29. domainkeys – Yahoo! DomainKeys |

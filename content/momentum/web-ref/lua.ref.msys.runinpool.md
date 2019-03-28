@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerModule)  | 15.2. Lua Functions |  [Next](lua.ref.msys.runSieveScript.php) |
 
 <a name="lua.ref.msys.runinpool"></a>
@@ -131,5 +133,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [thread.mutex](lua.ref.thread.mutex "thread.mutex"), [msys.sleep](lua.ref.msys.sleep.php "msys.sleep"), [msys.lock](lua.ref.msys.lock.php "msys.lock"), [msys.unlock](lua.ref.msys.unlock.php "msys.unlock"), [threadpool](conf.ref.threadpool.php "threadpool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerModule)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.runSieveScript.php) |
 | msys.registerModule  | [Table of Contents](index) |  msys.runSieveScript |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.inbound_throttle_messages)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.inline_transfail_processing.php) |
 
 <a name="conf.ref.initial_hash_buckets"></a>
@@ -25,5 +27,7 @@ The default value for this option is `32`.
 
 `initial_hash_buckets` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.inbound_throttle_messages)  | [Up](conf.ref.files.php) |  [Next](conf.ref.inline_transfail_processing.php) |
 | inbound_throttle_messages  | [Table of Contents](index) |  inline_transfail_processing |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.max_request_size)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.max_resident_messages) |
 
 <a name="conf.ref.max_resident_active_queue"></a>
@@ -23,6 +25,8 @@ This is an advanced option. Setting this option to small non-zero values can hav
 
 max_resident_active_queue is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.max_request_size)  | [Up](config.options.ref) |  [Next](conf.ref.max_resident_messages) |
 | max_request_size  | [Table of Contents](index) |  max_resident_messages |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_outbound_throttle_messages)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.cluster_server_max_outbound_connections.php) |
 
 <a name="conf.ref.cluster_scope_max_outbound_connections"></a>
@@ -40,5 +42,7 @@ cluster_scope_max_outbound_connections is valid in the global, binding, binding_
 
 [scope_max_outbound_connections](conf.ref.scope_max_outbound_connections "scope_max_outbound_connections"), [cluster_max_outbound_connections](conf.ref.cluster_max_outbound_connections.php "cluster_max_outbound_connections"), [cluster_server_max_outbound_connections](conf.ref.cluster_server_max_outbound_connections.php "cluster_server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_outbound_throttle_messages)  | [Up](conf.ref.files.php) |  [Next](conf.ref.cluster_server_max_outbound_connections.php) |
 | cluster_outbound_throttle_messages  | [Table of Contents](index) |  cluster_server_max_outbound_connections |

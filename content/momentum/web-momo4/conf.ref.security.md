@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scheduler)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.send_8bitmime) |
 
 <a name="conf.ref.security"></a>
@@ -75,6 +77,8 @@ Changing the value of options in the `security` scope at runtime requires restar
 
 [capabilities](conf.ref.capabilities "capabilities"), [chroot](conf.ref.chroot "chroot"), [supplemental_groups](conf.ref.supplemental_groups "supplemental_groups"), [user](conf.ref.user "user"), and [Section 16.3, “`ecelerity-cluster.conf` File”](conf.ref.ecelerity_cluster.conf "16.3. ecelerity-cluster.conf File")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.scheduler)  | [Up](config.options.ref) |  [Next](conf.ref.send_8bitmime) |
 | scheduler  | [Table of Contents](index) |  send_8bitmime |
 

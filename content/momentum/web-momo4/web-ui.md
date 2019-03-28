@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](http_reporting_options)  | Part VIII. Reporting and Engagement Tracking |  [Next](reporting_ui) |
 ## Chapter 55. Getting Started with the Web-based User Interface
 **Table of Contents**
@@ -5,8 +7,8 @@
 * [55.1\. Recipient Lists](web-ui#web-ui.recipients)
 
 ### Warning
-**The Momentum Web-based User Interface has been deprecated and is no longer available, as of the new MTA-only architecture introduced in release 4.2.28, and in all subsequent new releases. This section, and all other support site content pertaining to the Web-based User Interface, is only applicable for releases prior to 4.2.28\. An exception to this is when established customers upgrade from releases where the Web-based User Interface was supported, using release bundles provided to them specifically for that purpose.** 
-**User Interface** 
+**The Momentum Web-based User Interface has been deprecated and is no longer available, as of the new MTA-only architecture introduced in release 4.2.28, and in all subsequent new releases. This section, and all other support site content pertaining to the Web-based User Interface, is only applicable for releases prior to 4.2.28\. An exception to this is when established customers upgrade from releases where the Web-based User Interface was supported, using release bundles provided to them specifically for that purpose.**
+**User Interface**
 Open the UI by pointing your web browser at the appropriate IP address and log in using your credentials. Administrators can log in using the admin username/password chosen during installation.
 ### Note
 The UI is configured to start automatically as a service on the server where it is installed. Immediately prior to installation, information about the services is displayed. The IP address for the UI is identified during installation as Reporting UI: http://*`example IP address`* .
@@ -144,5 +146,7 @@ In the Delete Recipient List window, click Delete to confirm your request, as sh
 ![Confirm Delete](images/confirm_list_delete.png)
 The system will stop sending to the recipients after transmissions currently queued to be delivered using that recipients list are sent.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](http_reporting_options)  | [Up](p.analytics) |  [Next](reporting_ui) |
 | Chapter 54. Reporting Options  | [Table of Contents](index) |  Chapter 56. Using the UI for Reporting |

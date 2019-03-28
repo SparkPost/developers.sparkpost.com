@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.expandMacro)  | 15.2. Lua Functions |  [Next](lua.ref.msys.idn.php) |
 
 <a name="lua.ref.msys.getClassMetaTable"></a>
@@ -17,5 +19,7 @@ Returns the metatable for the named class. See [http://www.lua.org/pil/13.html](
 
 Because this function is in the `msys` namespace, an explicit `require('msys')` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.expandMacro)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.idn.php) |
 | msys.expandMacro  | [Table of Contents](index) |  msys.idn.to_idn |

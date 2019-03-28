@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.adaptive)  | Chapter 71. Modules Reference |  [Next](modules.alias) |
 
 ## 71.4. alerting – Send Alerting Emails
@@ -46,6 +48,8 @@ Alerting cache size. Default value is `1048576` bytes.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.adaptive)  | [Up](modules) |  [Next](modules.alias) |
 | 71.3. adaptive – Adaptive Delivery  | [Table of Contents](index) |  71.5. alias – Alias Expansion |
 

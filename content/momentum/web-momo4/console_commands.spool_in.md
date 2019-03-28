@@ -18,6 +18,8 @@ This command takes a message id and tries to read the message specified by the m
 
 This is an advanced command. Please consult with our support team before making use of this command in a production enviroment.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_import_poll)  | [Up](console.cmds.ref) |  [Next](console_commands.summary) |
 | spool import_poll  | [Table of Contents](index) |  summary |
 

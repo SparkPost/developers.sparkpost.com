@@ -67,6 +67,8 @@ total messages sent during the life of the domain record
 
 The row detailing the totals represents the totals across *all* domains, not just those listed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console.cmds.ref)  | [Up](console.cmds.ref) |  [Next](console_commands.authz_id) |
 | Chapter 73. Non-Module-Specific Console Commands  | [Table of Contents](index) |  authz id |
 

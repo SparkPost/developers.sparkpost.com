@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.join)  | 16.2. Sieve Function Details |  [Next](sieve.ref.pe2_mark_bounced) |
 
 <a name="sieve.ref.keep"></a>
@@ -34,5 +36,8 @@ if envelope :domain :is "from" "good-guy.com" {
 
 For an overview of Sieve actions see [Section 8.2.2, “Actions”](sieve.syntax.basic#sieve.syntax.basic.actions "8.2.2. Actions").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.join)  | [Up](sieve.ref.files) |  [Next](sieve.ref.pe2_mark_bounced) |
 | join  | [Table of Contents](index) |  pe2_mark_bounced |

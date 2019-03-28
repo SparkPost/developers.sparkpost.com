@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib.omniti)  | Part XI. Appendix |  [Next](libedit) |
 
 ## SMTP Response Codes
@@ -32,6 +34,8 @@ The SMTP response codes and their meanings are shown in the following table.
 | 553 | Requested action not taken: mailbox name not allowed |
 | 554 | Transaction failed |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib.omniti)  | [Up](p.appendix) |  [Next](libedit) |
 | B.3. The `OMNITI-SNMP-MIB.txt` file  | [Table of Contents](index) |  Appendix D. Key Binding Reference for ec_console |
 

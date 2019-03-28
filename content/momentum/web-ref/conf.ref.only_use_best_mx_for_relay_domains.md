@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_retry)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.opendkim_sign.php) |
 
 <a name="conf.ref.only_use_best_mx_for_relay_domains"></a>
@@ -28,5 +30,7 @@ only_use_best_mx_for_relay_domains is valid in the global scope.
 
 [routes](conf.ref.routes "routes"), [bounce_domains](conf.ref.bounce_domains.php "bounce_domains"), [relay_domains](conf.ref.relay_domains.php "relay_domains")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_retry)  | [Up](conf.ref.files.php) |  [Next](conf.ref.opendkim_sign.php) |
 | never_retry  | [Table of Contents](index) |  opendkim_sign |

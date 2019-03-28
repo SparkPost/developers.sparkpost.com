@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.appendices)  | Part III. Appendices |  [Next](snmp-mib.php) |
 
 ## Frequently Asked Questions
@@ -209,5 +211,7 @@ if ec_test :is "${local}" ["foo1", "foo2"] {
 ```
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.appendices)  | [Up](p.appendices.php) |  [Next](snmp-mib.php) |
 | Part III. Appendices  | [Table of Contents](index) |  Appendix B. MIB Files |

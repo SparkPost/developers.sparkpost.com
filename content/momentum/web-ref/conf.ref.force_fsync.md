@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.expensive_batch_assessment)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.fully_resolve_before_smtp.php) |
 
 <a name="conf.ref.force_fsync"></a>
@@ -27,5 +29,7 @@ The default is `false`.
 
 force_fsync is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.expensive_batch_assessment)  | [Up](conf.ref.files.php) |  [Next](conf.ref.fully_resolve_before_smtp.php) |
 | expensive_batch_assessment  | [Table of Contents](index) |  fully_resolve_before_smtp |

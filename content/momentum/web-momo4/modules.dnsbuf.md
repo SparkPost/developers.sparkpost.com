@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.delay_dsn)  | Chapter 71. Modules Reference |  [Next](modules.domainkeys) |
 
 ## 71.27. dnsbuf – Dynamically Set the DNS UDP Buffer Size
@@ -151,6 +153,8 @@ The following is an example in which Momentum started with ~30,000 unresolvable 
   Pending DNS Queries: 311
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.delay_dsn)  | [Up](modules) |  [Next](modules.domainkeys) |
 | 71.26. delay_dsn – Delay DSN Generation  | [Table of Contents](index) |  71.28. domainkeys – Yahoo! DomainKeys |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_pattern)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.retry_interval.php) |
 
 <a name="conf.ref.response_transcode_replace"></a>
@@ -41,5 +43,7 @@ This option is valid in the binding, binding_group, domain and global scopes.
 
 [response_transcode_pattern](conf.ref.response_transcode_pattern "response_transcode_pattern")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_pattern)  | [Up](conf.ref.files.php) |  [Next](conf.ref.retry_interval.php) |
 | response_transcode_pattern  | [Table of Contents](index) |  retry_interval |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.siv_throttle_cache_size)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.soft_bounce_drain_rate.php) |
 
 <a name="conf.ref.snmp"></a>
@@ -218,5 +220,7 @@ Changing the value of SNMP options at runtime requires restarting the ecelerity 
 
 SNMP directives are valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.siv_throttle_cache_size)  | [Up](conf.ref.files.php) |  [Next](conf.ref.soft_bounce_drain_rate.php) |
 | siv_throttle_cache_size  | [Table of Contents](index) |  soft_bounce_drain_rate |

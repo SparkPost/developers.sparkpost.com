@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.add_af_data)  | 15.2. Lua Functions |  [Next](lua.ref.msys.cloudmark.score_af.php) |
 
 <a name="lua.ref.msys.cloudmark.score"></a>
@@ -69,5 +71,7 @@ msys.registerModule("test_cm", mod);
 
 [msys.cloudmark.analyze](lua.ref.msys.cloudmark.analyze "msys.cloudmark.analyze"), [Section 14.18, “cloudmark – Cloudmark Authority Module”](modules.cloudmark.php "14.18. cloudmark – Cloudmark Authority Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.add_af_data)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.cloudmark.score_af.php) |
 | msys.cloudmark.add_af_data  | [Table of Contents](index) |  msys.cloudmark.score_af |

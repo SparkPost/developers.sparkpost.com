@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.split)  | 15.2. Lua Functions |  [Next](lua.ref.msys.os.statvfs_subscribe.php) |
 
 <a name="lua.ref.msys.os.statvfs_read"></a>
@@ -120,5 +122,7 @@ The function that performs the registered action, in the examples above, accepts
 
 [msys.os.statvfs_subscribe](lua.ref.msys.os.statvfs_subscribe "msys.os.statvfs_subscribe"), [ec_statvfs](https://support.messagesystems.com/docs/web-c-api/structs.ec_statvfs.php), [command_construct](https://support.messagesystems.com/docs/web-c-api/structs.command_construct.php) and [msys.registerControl](lua.ref.msys.registerControl.php "msys.registerControl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.split)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.os.statvfs_subscribe.php) |
 | msys.pcre.split  | [Table of Contents](index) |  msys.os.statvfs_subscribe |

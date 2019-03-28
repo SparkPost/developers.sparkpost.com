@@ -165,5 +165,8 @@ This table lists all Sieve functions alphabetically giving a brief description. 
 | **[vctx_mess_get](sieve.ref.vctx_mess_get "vctx_mess_get")**  | Obtain the value of a message context key | vctx | both | any |
 | **[vctx_mess_set](sieve.ref.vctx_mess_set "vctx_mess_set")**  | Set a value in the message context | vctx | both | any |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref3)  | [Up](sieve.ref3) |  [Next](sieve.ref.files) |
 | Chapter 16. Sieve++ Function Reference  | [Table of Contents](index) |  16.2. Sieve Function Details |

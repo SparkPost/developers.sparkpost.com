@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan_part)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.base64.encode) |
 
 <a name="lua.ref.msys.base64.decode"></a>
@@ -26,6 +28,8 @@ Enable this function with the statement `require('msys.base64');`.
 
 [msys.base64.encode](lua.ref.msys.base64.encode "msys.base64.encode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.av.scan_part)  | [Up](lua.function.details) |  [Next](lua.ref.msys.base64.encode) |
 | msys.av.scan_part  | [Table of Contents](index) |  msys.base64.encode |
 

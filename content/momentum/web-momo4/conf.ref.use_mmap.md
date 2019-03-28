@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_ipv6)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.use_sendfile) |
 
 <a name="conf.ref.use_mmap"></a>
@@ -32,6 +34,8 @@ use_mmap is valid in the global scope.
 
 [malloc2mmap_threshold](conf.ref.malloc2mmap_threshold "malloc2mmap_threshold") and [use_sendfile](conf.ref.use_sendfile "use_sendfile")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_ipv6)  | [Up](config.options.ref) |  [Next](conf.ref.use_sendfile) |
 | use_ipv6  | [Table of Contents](index) |  use_sendfile |
 
