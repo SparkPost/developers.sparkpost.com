@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.listeners)  | Chapter 16. Cluster-specific Configuration |  [Next](cluster.riak.configuration) |
 
 ## 16.6. Configuring Momentum for High Availability and Failover

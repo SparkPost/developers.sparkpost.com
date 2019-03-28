@@ -24,22 +24,22 @@ module.exports = {
   },
   plugins: flatten([
     process.env.GATSBY_ACTIVE_ENV !== 'docs' ? [
-      {
-        resolve: `gatsby-plugin-page-creator`,
-        options: {
-          path: `${__dirname}/content/pages`,
-        },
-      },
-      {
-        resolve: `gatsby-source-wordpress`,
-        options: {
-          baseUrl: 'sparkpost.com',
-          protocol: 'https',
-          hostingWPCOM: false,
-          useACF: false,
-          excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
-        }
-      }
+      // {
+      //   resolve: `gatsby-plugin-page-creator`,
+      //   options: {
+      //     path: `${__dirname}/content/pages`,
+      //   },
+      // },
+      // {
+      //   resolve: `gatsby-source-wordpress`,
+      //   options: {
+      //     baseUrl: 'sparkpost.com',
+      //     protocol: 'https',
+      //     hostingWPCOM: false,
+      //     useACF: false,
+      //     excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
+      //   }
+      // }
     ] : [],
     process.env.GATSBY_ACTIVE_ENV === 'publish' ? [
       {
@@ -48,7 +48,7 @@ module.exports = {
           appId: 'SFXAWCYDV8',
           apiKey: process.env.ALGOLIA_TOKEN,
           queries: [
-            require('./algolia/apiReference'),
+            // require('./algolia/apiReference'),
             require('./algolia/momentum')
           ]
         }

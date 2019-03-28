@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.duravip)  | Chapter 27. DuraVIP™: IP Fail over |  [Next](cluster.config.arp_all_hosts) |
 
 ## 27.2. `duravip_follow` and the #mmove Binding
