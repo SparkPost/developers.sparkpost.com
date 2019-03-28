@@ -57,6 +57,8 @@ Configure the tables for running the Flyway data migration tool.
 
     This command may take a while to complete, but it must be finished before you can proceed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.vertica_updates)  | [Up](upgrade.single_node) |  [Next](upgrade.single_node.configuration.config_all__nodes) |
 | 10.2. Vertica Updates  | [Table of Contents](index) |  10.4. Configuration Changes |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_list)  | 12.2. System Console Commands |  [Next](console_commands.cache_stats.php) |
 
 <a name="console_commands.cache_stat"></a>
@@ -47,5 +49,7 @@ This command shows much more detail than the [cache stats](console_commands.cach
 
 [cache list](console_commands.cache_list "cache list"), [cache stats](console_commands.cache_stats.php "cache stats"), [match_cache_life](conf.ref.match_cache_life.php "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_list)  | [Up](console.commands.non-module.php) |  [Next](console_commands.cache_stats.php) |
 | cache list  | [Table of Contents](index) |  cache stats |

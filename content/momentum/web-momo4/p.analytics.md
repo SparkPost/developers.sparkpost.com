@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](complex_template)  |   |  [Next](http_reporting_options) |
 ## Part VIII. Reporting and Engagement Tracking
 **Table of Contents**
@@ -20,5 +22,7 @@
     * [60.5\. Deleting a Webhook](web-ui.webhooks.delete)
 * [61\. Tracking Engagement for HTTP](engagement_tracking_http)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](complex_template)  |   |  [Next](http_reporting_options) |
 | Chapter 53. Using Complex Templates  | [Table of Contents](index) |  Chapter 54. Reporting Options |

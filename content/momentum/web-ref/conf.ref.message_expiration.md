@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.memory_hwm)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.migrate_connections_between_sibling_domains.php) |
 
 <a name="conf.ref.message_expiration"></a>
@@ -24,5 +26,7 @@ The maximum amount of time in seconds a message will remain undelivered in the s
 
 [never_attempt_expired_messages](conf.ref.never_attempt_expired_messages "never_attempt_expired_messages"), [retry_interval](conf.ref.retry_interval.php "retry_interval") and [max_retries](conf.ref.max_retries.php "max_retries")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.memory_hwm)  | [Up](conf.ref.files.php) |  [Next](conf.ref.migrate_connections_between_sibling_domains.php) |
 | memory_hwm  | [Table of Contents](index) |  migrate_connections_between_sibling_domains |

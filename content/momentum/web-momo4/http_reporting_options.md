@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.analytics)  | Part VIII. Reporting and Engagement Tracking |  [Next](web-ui) |
 
 ## Chapter 54. Reporting Options
@@ -12,6 +14,8 @@ For every message injected, Momentum reports data tracking its full disposition 
 
 *   jlog files – Using the configuration options in the event_hydrant module, you can direct event data to jlog files. See [Section 71.33, “event_hydrant – Message Tracking”](modules.event_hydrant "71.33. event_hydrant – Message Tracking").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.analytics)  | [Up](p.analytics) |  [Next](web-ui) |
 | Part VIII. Reporting and Engagement Tracking  | [Table of Contents](index) |  Chapter 55. Getting Started with the Web-based User Interface |
 

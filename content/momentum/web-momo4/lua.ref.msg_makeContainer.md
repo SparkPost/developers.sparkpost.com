@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makeBoundary)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_makePart) |
 
 <a name="lua.ref.msg_makeContainer"></a>
@@ -29,6 +31,8 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:makeBoundary](lua.ref.msg_makeBoundary "msg:makeBoundary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makeBoundary)  | [Up](lua.function.details) |  [Next](lua.ref.msg_makePart) |
 | msg:makeBoundary  | [Table of Contents](index) |  msg:makePart |
 

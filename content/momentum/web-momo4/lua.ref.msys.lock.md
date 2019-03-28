@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.idn_utf8)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.parseRFC2822Addresses) |
 
 <a name="lua.ref.msys.lock"></a>
@@ -24,6 +26,8 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [msys.unlock](lua.ref.msys.unlock "msys.unlock")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.idn_utf8)  | [Up](lua.function.details) |  [Next](lua.ref.msys.parseRFC2822Addresses) |
 | msys.idn.to_utf8  | [Table of Contents](index) |  msys.parseRFC2822Addresses |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.fetch_row)  | 15.2. Lua Functions |  [Next](lua.ref.msys.delivery.ob_get_current_message.php) |
 
 <a name="lua.ref.msys.db.query"></a>
@@ -94,5 +96,7 @@ When using this function you must also include `require('msys.datasource');`.
 
 [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets "5.2. Implementing Policy Using Scriptlets"), [msys.db.fetch_row](lua.ref.msys.db.fetch_row.php "msys.db.fetch_row"), [msys.db.execute](lua.ref.msys.db.execute.php "msys.db.execute")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.db.fetch_row)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.delivery.ob_get_current_message.php) |
 | msys.db.fetch_row  | [Table of Contents](index) |  msys.delivery.ob_get_current_message |

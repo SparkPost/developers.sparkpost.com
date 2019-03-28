@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.address_metrics_lifetime)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.allow_ip_literal.php) |
 
 <a name="conf.ref.alias_schemes"></a>
@@ -77,5 +79,7 @@ alias_schemes is valid in the domain, global, pathway and pathway_group scopes.
 
 [Section 14.4, “alias – Alias Expansion Module”](modules.alias "14.4. alias – Alias Expansion Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.address_metrics_lifetime)  | [Up](conf.ref.files.php) |  [Next](conf.ref.allow_ip_literal.php) |
 | address_metrics_lifetime  | [Table of Contents](index) |  allow_ip_literal |

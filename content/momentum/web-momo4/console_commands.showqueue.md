@@ -36,6 +36,8 @@ you can also list the messages in the queue for a particular domain on a particu
   From: <sender@example.com> To: <rcpt1@example.com>
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_outbound)  | [Up](console.cmds.ref) |  [Next](console_commands.shutdown) |
 | show outbound  | [Table of Contents](index) |  shutdown |
 

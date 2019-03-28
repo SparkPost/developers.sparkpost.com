@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.paths_page)  | Chapter 3. Using the Web Console |  [Next](web3.users) |
 
 ## 3.8. Administration
@@ -306,5 +308,8 @@ To add a snippet, select the snippet that you wish to add and click the ADD butt
 
 Use the snippet management frame to remove a snippet from your configuration. To remove a snippet click the X beside the desired snippet. *Note*: Doing this removes the snippet from your configuration but does not remove it from the Configuration Snippet library.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.paths_page)  | [Up](web3) |  [Next](web3.users) |
 | 3.7. The Paths Page  | [Table of Contents](index) |  3.9. Administering Users From the Web Console |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.redirect)  | 16.2. Sieve Function Details |  [Next](sieve.ref.reverse) |
 
 <a name="sieve.ref.reject"></a>
@@ -50,5 +52,8 @@ For an overview of Sieve actions see [Section 8.2.2, “Actions”](sieve.synta
 
 [generate_bounces_for_multi_recipient_policy_rejections](conf.ref.generate_bounces_for_multi_recipient_policy_rejections "generate_bounces_for_multi_recipient_policy_rejections")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.redirect)  | [Up](sieve.ref.files) |  [Next](sieve.ref.reverse) |
 | redirect  | [Table of Contents](index) |  reverse |

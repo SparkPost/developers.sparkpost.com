@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reroute_queue)  | 12.2. System Console Commands |  [Next](console_commands.show_outbound.php) |
 
 <a name="console_commands.show_inbound"></a>
@@ -24,5 +26,7 @@ This command shows all inbound connections. In the following example, the output
 
 [show outbound](console_commands.show_outbound "show outbound")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reroute_queue)  | [Up](console.commands.non-module.php) |  [Next](console_commands.show_outbound.php) |
 | reroute queue  | [Table of Contents](index) |  show outbound |

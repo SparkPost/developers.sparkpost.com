@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.administration)  | Chapter 3. Using the Web Console |  [Next](web3.policy.editor) |
 
 ## 3.9. Administering Users From the Web Console
@@ -68,5 +70,8 @@ Set up an LDAP environment that defines a reporting user role. Substitute the na
 
 There is an additional configuration option in `/opt/msys/ecwebui/config/webui-receiving.conf` called `REPORT_ROLE_OVERRIDE`. When this option is set to `true` if a user has the "reporting role" and one or more other roles (except the admin role), the reporting role overrides the other roles. This has the affect of stripping the user of privileges associated with other roles.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.administration)  | [Up](web3) |  [Next](web3.policy.editor) |
 | 3.8. Administration  | [Table of Contents](index) |  3.10. The Policy Configuration Editor |

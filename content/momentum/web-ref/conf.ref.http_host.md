@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_basic_auth)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.http_method.php) |
 
 <a name="conf.ref.http_host"></a>
@@ -28,5 +30,7 @@ There is no default value for this option.
 
 [delivery_method](conf.ref.delivery_method "delivery_method"), [http_basic_auth](conf.ref.http_basic_auth.php "http_basic_auth"), [http_method](conf.ref.http_method.php "http_method"), [http_version](conf.ref.http_version.php "http_version") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_basic_auth)  | [Up](conf.ref.files.php) |  [Next](conf.ref.http_method.php) |
 | http_basic_auth  | [Table of Contents](index) |  http_method |

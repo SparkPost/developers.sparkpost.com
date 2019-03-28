@@ -10,6 +10,8 @@ If you are performing an upgrade on a Combined Node, skip this section.
 
     `yum upgrade --disablerepo=* --config momentum.repo --enablerepo=momentum --exclude=msys-vertica`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.flyway_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.configuration.config_all_nodes_rolling) |
 | 11.11. Prepare and Run Flyway  | [Table of Contents](index) |  11.13. Configuration Changes |
 

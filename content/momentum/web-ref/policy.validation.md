@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy)  | Chapter 5. Implementing Policy with Momentum |  [Next](implementing.policy.scriptlets) |
 
 ## 5.1. Validation and the Validation Context
@@ -8,5 +10,8 @@ The validation context contains two dictionaries of information, referred to as 
 
 A number of context variables are pre-defined by Momentum, depending on how the connection was made, and what modules are loaded. A complete list of pre-defined context variables can be found in [Chapter 6, *Validation Context Variables*](policy.context.variables "Chapter 6. Validation Context Variables") .
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy)  | [Up](policy) |  [Next](implementing.policy.scriptlets) |
 | Chapter 5. Implementing Policy with Momentum  | [Table of Contents](index) |  5.2. Implementing Policy Using Scriptlets |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_delete)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_context_exists_and_get) |
 
 <a name="lua.ref.msg_context_exists"></a>
@@ -45,6 +47,8 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [msg:context_exists_and_get](lua.ref.msg_context_exists_and_get "msg:context_exists_and_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_delete)  | [Up](lua.function.details) |  [Next](lua.ref.msg_context_exists_and_get) |
 | msg:context_delete  | [Table of Contents](index) |  msg:context_exists_and_get |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_hosts)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.require_ehlo) |
 
 <a name="conf.ref.remote_smtp_port"></a>
@@ -19,6 +21,8 @@ This will set the port to which outbound SMTP connections are attempted. It can 
 
 remote_smtp_port is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_hosts)  | [Up](config.options.ref) |  [Next](conf.ref.require_ehlo) |
 | relay_hosts  | [Table of Contents](index) |  require_ehlo |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_sendfile)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.xclient) |
 
 <a name="conf.ref.user"></a>
@@ -46,6 +48,8 @@ user and group are valid in the security scope.
 
 [security](conf.ref.security "security"), [capabilities](conf.ref.capabilities "capabilities"), [chroot](conf.ref.chroot "chroot"), and [supplemental_groups](conf.ref.supplemental_groups "supplemental_groups")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_sendfile)  | [Up](config.options.ref) |  [Next](conf.ref.xclient) |
 | use_sendfile  | [Table of Contents](index) |  xclient |
 

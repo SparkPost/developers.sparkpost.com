@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mail_loop)  | Chapter 14. Modules Reference |  [Next](modules.msgc) |
 
 ## 14.46. maildir – Maildir Delivery Support
@@ -91,5 +93,8 @@ The file permission mode to use on files created by the module.
 
 In addition to the `domain` configuration, you can use [ec_maildir](sieve.ref.ec_maildir "ec_maildir") to selectively store messages in the maildir store.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.mail_loop)  | [Up](modules) |  [Next](modules.msgc) |
 | 14.45. mail_loop – Mail Loop Detection  | [Table of Contents](index) |  14.47. msgc – Modules |

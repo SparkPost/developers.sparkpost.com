@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_aggregation)  | Chapter 26. Log Aggregation |  [Next](cluster.config.logging.complex) |
 
 ## 26.2. Centralized Logging Example
@@ -54,6 +56,8 @@ cluster {
 
 If the `logfile` option in the `Logs` scope is configured as shown in [Section 16.2, “`eccluster.conf` File”](conf.ref.eccluster.conf "16.2. eccluster.conf File"), you will have access to the fbl logs of `node1` belonging to subcluster `mysubcluster` in the /var/log/eccluster/*`year/mon/day`*/fbllog/mycluster/node1 directory on the log aggregator.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_aggregation)  | [Up](log_aggregation) |  [Next](cluster.config.logging.complex) |
 | Chapter 26. Log Aggregation  | [Table of Contents](index) |  26.3. Complex Centralized Logging Deployments |
 

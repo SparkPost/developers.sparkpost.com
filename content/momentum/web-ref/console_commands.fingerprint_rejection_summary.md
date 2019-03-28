@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_cache_summary)  | 12.2. System Console Commands |  [Next](console_commands.flush_domain.php) |
 
 <a name="console_commands.fingerprint_rejection_summary"></a>
@@ -25,5 +27,7 @@ Passive operating system fingerprinting runs as a daemon that Momentum communica
 
 [fingerprint cache summary](console_commands.fingerprint_cache_summary "fingerprint cache summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_cache_summary)  | [Up](console.commands.non-module.php) |  [Next](console_commands.flush_domain.php) |
 | fingerprint cache summary  | [Table of Contents](index) |  flush domain |

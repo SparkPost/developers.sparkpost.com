@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_error_mode)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_forward) |
 
 <a name="sieve.ref.ec_floor"></a>
@@ -30,5 +32,8 @@ $floorc = ec_floor $c;
 #floorc is 43.000000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_error_mode)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_forward) |
 | ec_error_mode  | [Table of Contents](index) |  ec_forward |

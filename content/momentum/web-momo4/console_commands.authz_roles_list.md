@@ -29,6 +29,8 @@ Execute this command and you should see output similar to the following:
 
 [authz id](console_commands.authz_id "authz id")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_id)  | [Up](console.cmds.ref) |  [Next](console_commands.binding_active) |
 | authz id  | [Table of Contents](index) |  binding active |
 

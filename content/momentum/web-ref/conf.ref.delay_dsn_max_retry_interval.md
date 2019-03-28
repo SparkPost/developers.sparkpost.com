@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_charset)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.delay_dsn_retry_interval.php) |
 
 <a name="conf.ref.delay_dsn_max_retry_interval"></a>
@@ -30,5 +32,7 @@ The default value for this option is `0`.
 
 [generate_delay_dsn](conf.ref.generate_delay_dsn "generate_delay_dsn"), [delay_dsn_max_retry_interval](conf.ref.delay_dsn_max_retry_interval.php "delay_dsn_max_retry_interval") and [delay_dsn_retry_interval](conf.ref.delay_dsn_retry_interval.php "delay_dsn_retry_interval")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.default_charset)  | [Up](conf.ref.files.php) |  [Next](conf.ref.delay_dsn_retry_interval.php) |
 | default_charset  | [Table of Contents](index) |  delay_dsn_retry_interval |

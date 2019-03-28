@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.is_true)  | 16.2. Sieve Function Details |  [Next](sieve.ref.keep) |
 
 <a name="sieve.ref.join"></a>
@@ -27,5 +29,8 @@ $res = join "," $mxs;
 ec_log "Message Systems MX records ${res}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.is_true)  | [Up](sieve.ref.files) |  [Next](sieve.ref.keep) |
 | is_true  | [Table of Contents](index) |  keep |

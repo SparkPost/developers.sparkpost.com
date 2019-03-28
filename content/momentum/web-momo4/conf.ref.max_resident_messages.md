@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_resident_active_queue)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.max_resident_transfails) |
 
 <a name="conf.ref.max_resident_messages"></a>
@@ -30,6 +32,8 @@ This is an advanced option. Setting this option to small non-zero values can hav
 
 [growbuf_size](conf.ref.growbuf_size "growbuf_size")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_resident_active_queue)  | [Up](config.options.ref) |  [Next](conf.ref.max_resident_transfails) |
 | max_resident_active_queue  | [Table of Contents](index) |  max_resident_transfails |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.standalone)  | Chapter 1. Installation |  [Next](conf.php) |
 
 ## 1.12. Installing a Cluster
@@ -117,5 +119,7 @@ Clustered MTA nodes must be installed after you have brought the Manager node on
 
     Copy your license to the `/opt/msys/ecelerity/etc` directory before starting the services if you are not connected to the Internet.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.standalone)  | [Up](install.php) |  [Next](conf.php) |
 | 1.11. Performing a Stand-alone Installation  | [Table of Contents](index) |  Chapter 2. Configuration |

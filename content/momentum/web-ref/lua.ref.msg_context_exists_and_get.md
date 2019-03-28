@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_exists)  | 15.2. Lua Functions |  [Next](lua.ref.msg_context_get.php) |
 
 <a name="lua.ref.msg_context_exists_and_get"></a>
@@ -47,5 +49,7 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [msg:context_get](lua.ref.msg_context_get "msg:context_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_context_exists)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_context_get.php) |
 | msg:context_exists  | [Table of Contents](index) |  msg:context_get |

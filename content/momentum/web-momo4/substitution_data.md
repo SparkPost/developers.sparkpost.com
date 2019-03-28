@@ -8,7 +8,7 @@ With the ever-increasing demand for their attention, your customers are bombarde
 
 Momentum applies substitutions per message using data provided as part of the JSON structures in the transmission's template and/or recipient list. Messages are generated for transmission for all specified recipients using the template and performing substitution of data as necessary. The substitutions can be applied in the top-level header of the message or in the message body. Substitution data can be a JSON object of key/value pairs of recipient-specific data, nested JSON objects, or even arrays of objects. In the simplest case, substitution is applied directly, while more complex cases can use conditional statements, looping over JSON arrays, or execution of built-in macros. You can also create your own custom macros.
 
-**Sending Email Using Substitution Data** 
+**Sending Email Using Substitution Data**
 
 In this section, you will build on your knowledge of the Transmissions API by using simple key/value pair substitution in your inline template. The example in this section generates two personalized emails in one transmission using substitution data in the transmission and recipient JSON structures.
 
@@ -26,30 +26,30 @@ Follow these steps to use substitution data in a simple transmission:
 
     Using your text editor, create the following JSON file named `subdata_template.json`. Be sure to use your information for sender address, recipient addresses, and recipient names.
 
-    {  
+    {
        "return_path":"*`sender@your_address.com`*",
-       "substitution_data":{  
+       "substitution_data":{
           "sender":"Momentum"
        },
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`recipient1@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "firstname":"*`recipient1 first name`*            "
              }
           },
-          {  
-             "address":{  
+          {
+             "address":{
                 "email":"*`recipient2@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "firstname":"*`recipient2 first name`*            "
              }
           }
        ],
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using Substitution Data",
           "text":"Hi {{firstname}},\r\nWelcome to {{sender}}!\r\nThis email was sent using substitution data."
@@ -71,8 +71,8 @@ Follow these steps to use substitution data in a simple transmission:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":2,
           "id":"*`11668787484950529`*"
@@ -87,6 +87,8 @@ Follow these steps to use substitution data in a simple transmission:
 
 Congratulations! You have taken the first step to using Momentum's powerful substitution capability. This tutorial demonstrates simple substitution, yet Momentum supports many advanced features. To learn more about using substitution data including details about syntax, see the Substitution Reference available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](message_gen)  | [Up](p.http_rest) |  [Next](stored_template) |
 | Chapter 45. Generating a Transmission  | [Table of Contents](index) |  Chapter 47. Creating Stored Templates |
 

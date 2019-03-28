@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pcre_cache_ttl)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.pidfile.php) |
 
 <a name="conf.ref.permastore_interval"></a>
@@ -23,5 +25,7 @@ The default value for this option is `300`.
 
 permastore_interval is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pcre_cache_ttl)  | [Up](conf.ref.files.php) |  [Next](conf.ref.pidfile.php) |
 | pcre_cache_ttl  | [Table of Contents](index) |  pidfile |

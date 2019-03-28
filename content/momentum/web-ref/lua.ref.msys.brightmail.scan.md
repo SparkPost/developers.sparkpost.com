@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.bounce.classify_smtp_response)  | 15.2. Lua Functions |  [Next](lua.ref.msys.cidr.define.php) |
 
 <a name="lua.ref.msys.brightmail.scan"></a>
@@ -61,5 +63,7 @@ Enable this function with the statement `require('msys.brightmail');`.
 
 [Section 14.14, “brightmail – Brightmail Module”](modules.brightmail "14.14. brightmail – Brightmail Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.bounce.classify_smtp_response)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.cidr.define.php) |
 | msys.bounce.classify_smtp_response  | [Table of Contents](index) |  msys.cidr.define |

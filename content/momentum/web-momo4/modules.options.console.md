@@ -16,6 +16,8 @@ If the command is successful, then `Set` is output to the screen.
 
 For a complete discussion of the **config** command, see [config](console_commands.config "config").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_specific_console_commands.using)  | [Up](operations) |  [Next](operations.console.lua) |
 | 37.3. Using Module-Specific Console Commands  | [Table of Contents](index) |  37.5. Creating Custom Console Commands |
 

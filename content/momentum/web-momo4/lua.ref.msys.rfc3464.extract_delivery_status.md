@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.create_mdn)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.rfc3464.send_mdn) |
 
 <a name="lua.ref.msys.rfc3464.extract_delivery_status"></a>
@@ -17,6 +19,8 @@ This function parses the headers of the mail and returns a table of successfully
 
 Enable this function with the statement `require('msys.rfc3464');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.create_mdn)  | [Up](lua.function.details) |  [Next](lua.ref.msys.rfc3464.send_mdn) |
 | msys.rfc3464.create_mdn  | [Table of Contents](index) |  msys.rfc3464.send_mdn |
 

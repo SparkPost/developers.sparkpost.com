@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rcptto_timeout)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.relay_domains) |
 
 <a name="conf.ref.relay_for_sending_domains"></a>
@@ -26,6 +28,8 @@ relay_for_sending_domains is valid in the esmtp_listener, listen, pathway, pathw
 
 [relay_hosts](conf.ref.relay_hosts "relay_hosts")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rcptto_timeout)  | [Up](config.options.ref) |  [Next](conf.ref.relay_domains) |
 | rcptto_timeout  | [Table of Contents](index) |  relay_domains |
 

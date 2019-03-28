@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ssl_lock_method)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.supplemental_groups.php) |
 
 <a name="conf.ref.starttls_injection_policy"></a>
@@ -25,5 +27,7 @@ If the value is `ignore`, then any commands after STARTTLS are ignored and comma
 
 This option is valid in the ESMTP_Listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.ssl_lock_method)  | [Up](conf.ref.files.php) |  [Next](conf.ref.supplemental_groups.php) |
 | ssl_lock_method  | [Table of Contents](index) |  supplemental_groups |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_ip_literal)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.allow_trailing_whitespace_in_commands) |
 
 <a name="conf.ref.allow_null_envelope_sender"></a>
@@ -24,6 +26,8 @@ allow_null_envelope_sender is valid in the global, listener, listen, peer, pathw
 
 [allow_ip_literal](conf.ref.allow_ip_literal "allow_ip_literal")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_ip_literal)  | [Up](config.options.ref) |  [Next](conf.ref.allow_trailing_whitespace_in_commands) |
 | allow_ip_literal  | [Table of Contents](index) |  allow_trailing_whitespace_in_commands |
 

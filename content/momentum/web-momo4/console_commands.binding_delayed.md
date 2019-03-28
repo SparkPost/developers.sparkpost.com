@@ -65,6 +65,8 @@ The row detailing the totals represents the totals across *all* domains on the g
 
 [binding active](console_commands.binding_active "binding active")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_active)  | [Up](console.cmds.ref) |  [Next](console_commands.binding_fail_domain) |
 | binding active  | [Table of Contents](index) |  binding fail domain |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tracking_domain)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.transfail_drain_rate) |
 
 <a name="config.tracking_link_expiry"></a>
@@ -27,6 +29,8 @@ The corresponding context variable is `smtpapi_tracking_link_expiry`. There is n
 
 `tracking_link_expiry` is valid in the esmtp_listener, listen, pathway, pathway_group, and peer scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tracking_domain)  | [Up](config.options.ref) |  [Next](conf.ref.transfail_drain_rate) |
 | tracking_domain  | [Table of Contents](index) |  transfail_drain_rate |
 

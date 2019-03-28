@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.strerror)  | 15.2. Lua Functions |  [Next](lua.ref.msg.conn_id.php) |
 
 <a name="lua.ref.msg.batch_id"></a>
@@ -35,5 +37,7 @@ msys.registerModule("validate_data", mod);
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.strerror)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg.conn_id.php) |
 | json.strerror  | [Table of Contents](index) |  msg.conn_id |

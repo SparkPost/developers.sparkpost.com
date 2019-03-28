@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_received_from)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_received_via) |
 
 <a name="sieve.ref.ec_get_message_received_from_port"></a>
@@ -27,5 +29,8 @@ if not ec_test :is "${p}" "$port" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_received_from)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_received_via) |
 | ec_get_message_received_from  | [Table of Contents](index) |  ec_get_message_received_via |

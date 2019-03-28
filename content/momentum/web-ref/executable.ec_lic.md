@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_jre_setup)  | 11.2. Executable Commands |  [Next](executable.ec_log_trace.php) |
 
 <a name="executable.ec_lic"></a>
@@ -132,5 +134,7 @@ Proxy type (HTTP, SOCKS4, SOCKS5).
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_jre_setup)  | [Up](exe.commands.details.php) |  [Next](executable.ec_log_trace.php) |
 | ec_jre_setup  | [Table of Contents](index) |  ec_log_trace |

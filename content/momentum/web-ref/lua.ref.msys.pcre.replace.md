@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.match)  | 15.2. Lua Functions |  [Next](lua.ref.msys.pcre.split.php) |
 
 <a name="lua.ref.msys.pcre.replace"></a>
@@ -40,5 +42,7 @@ Enable this function with the statement `require('msys.pcre')`.
 
 [msys.pcre.match](lua.ref.msys.pcre.match "msys.pcre.match"), [msys.pcre.split](lua.ref.msys.pcre.split.php "msys.pcre.split")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.pcre.match)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.pcre.split.php) |
 | msys.pcre.match  | [Table of Contents](index) |  msys.pcre.split |

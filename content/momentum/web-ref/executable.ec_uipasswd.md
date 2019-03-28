@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_spp)  | 11.2. Executable Commands |  [Next](executable.eccfg.php) |
 
 <a name="executable.ec_uipasswd"></a>
@@ -139,5 +141,7 @@ Display version information.
 
 [Section 3.9, “Administering Users From the Web Console”](web3.users "3.9. Administering Users From the Web Console").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_spp)  | [Up](exe.commands.details.php) |  [Next](executable.eccfg.php) |
 | ec_spp  | [Table of Contents](index) |  eccfg |

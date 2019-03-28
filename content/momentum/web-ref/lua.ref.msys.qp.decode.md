@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.os.statvfs_subscribe)  | 15.2. Lua Functions |  [Next](lua.ref.msys.qp.encode.php) |
 
 <a name="lua.ref.msys.qp.decode"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.qp');`.
 
 [msys.qp.encode](lua.ref.msys.qp.encode "msys.qp.encode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.os.statvfs_subscribe)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.qp.encode.php) |
 | msys.os.statvfs_subscribe  | [Table of Contents](index) |  msys.qp.encode |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.create_ssl_cert)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_adtool) |
 
 <a name="executable.credmgr"></a>
@@ -194,6 +196,8 @@ Examples of usage follow:
 
 [Section 71.61, “securecreds – Password Encryption/Credential Retrieval”](modules.securecreds "71.61. securecreds – Password Encryption/Credential Retrieval")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.create_ssl_cert)  | [Up](exec.cmds.ref) |  [Next](executable.ec_adtool) |
 | create_ssl_cert  | [Table of Contents](index) |  ec_adtool |
 

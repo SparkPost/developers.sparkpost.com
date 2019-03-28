@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_messages)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.pathway_group.php) |
 
 <a name="conf.ref.pathway"></a>
@@ -45,7 +47,7 @@ Pathway "example1" {
 ESMTP_Listener {
   Listen ":25" {
     ...
-    **Pathway = "example1"** 
+    **Pathway = "example1"**
   }
 }
 ```
@@ -135,5 +137,7 @@ Options valid within the Pathway scope are listed in the following section.
 
 [pathway_group](conf.ref.pathway_group "pathway_group")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.outbound_throttle_messages)  | [Up](conf.ref.files.php) |  [Next](conf.ref.pathway_group.php) |
 | outbound_throttle_messages  | [Table of Contents](index) |  pathway_group |

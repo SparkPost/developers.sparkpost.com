@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.as_logger)  | Chapter 71. Modules Reference |  [Next](modules.auth_radius) |
 
 ## 71.8. auth_ds – Datasource based SMTP Authentication
@@ -357,6 +359,8 @@ auth_ds {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.as_logger)  | [Up](modules) |  [Next](modules.auth_radius) |
 | 71.7. as_logger – Audit Series Logger  | [Table of Contents](index) |  71.9. auth_radius – RADIUS based SMTP Authentication |
 

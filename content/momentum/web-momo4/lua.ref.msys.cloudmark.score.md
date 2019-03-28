@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.add_af_data)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cloudmark.score_af) |
 
 <a name="lua.ref.msys.cloudmark.score"></a>
@@ -77,6 +79,8 @@ Do not use `pcall` with this function.
 
 [msys.cloudmark.analyze](lua.ref.msys.cloudmark.analyze "msys.cloudmark.analyze")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.add_af_data)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cloudmark.score_af) |
 | msys.cloudmark.add_af_data  | [Table of Contents](index) |  msys.cloudmark.score_af |
 

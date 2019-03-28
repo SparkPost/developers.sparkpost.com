@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.send_mdn)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.threadpool.count) |
 
 <a name="lua.ref.msys.symantec_beik.scan"></a>
@@ -70,6 +72,8 @@ msys.registerModule("test_beik", mod);
 
 *Note*: When the first returned value is `0`, an error has occurred. The second return value contains the error message.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.send_mdn)  | [Up](lua.function.details) |  [Next](lua.ref.msys.threadpool.count) |
 | msys.rfc3464.send_mdn  | [Table of Contents](index) |  msys.threadpool.count |
 

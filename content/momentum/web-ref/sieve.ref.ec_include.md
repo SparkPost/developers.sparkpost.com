@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_inc_counter)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_interfaces) |
 
 <a name="sieve.ref.ec_include"></a>
@@ -42,5 +44,8 @@ require "ec_include";
 ec_include ":datasource:sievecache:select script from scripts where id = ?" [$id];
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_inc_counter)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_interfaces) |
 | ec_inc_counter  | [Table of Contents](index) |  ec_interfaces |

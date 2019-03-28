@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.escape)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.curl.unescape) |
 
 <a name="lua.ref.curl.new"></a>
@@ -32,6 +34,8 @@ c:perform();
 
 [c:close](lua.ref.curl.c_close "c:close")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.escape)  | [Up](lua.function.details) |  [Next](lua.ref.curl.unescape) |
 | curl.escape  | [Table of Contents](index) |  curl.unescape |
 

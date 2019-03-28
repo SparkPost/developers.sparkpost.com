@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.memory_goal)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.message_expiration.php) |
 
 <a name="conf.ref.memory_hwm"></a>
@@ -24,5 +26,7 @@ memory_hwm is valid in the global scope.
 
 [memory_goal](conf.ref.memory_goal "memory_goal")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.memory_goal)  | [Up](conf.ref.files.php) |  [Next](conf.ref.message_expiration.php) |
 | memory_goal  | [Table of Contents](index) |  message_expiration |

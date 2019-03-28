@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ipv6_lookup)  | Chapter 71. Modules Reference |  [Next](modules.live.bounce.updates) |
 
 ## 71.43. jlog – jlog-Formatted Logging
@@ -83,6 +85,8 @@ This code opens a jlog and reads each line in that jlog. The `$path` and `$subsc
 
 For more information about JLog::Reader, issue the command **`/opt/msys/3rdParty/bin/perldoc JLog::Reader`**              .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ipv6_lookup)  | [Up](modules) |  [Next](modules.live.bounce.updates) |
 | 71.42. ipv6_lookup – Multi-address-family MX Records  | [Table of Contents](index) |  71.44. Live Bounce Updates – Live Bounce Updates Service |
 

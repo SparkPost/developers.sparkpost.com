@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.predefined-context-conn)  | Chapter 6. Validation Context Variables |  [Next](cluster) |
 
 ## 6.2. Message Context Variables
@@ -158,5 +160,8 @@ In the spf modules it is possible to define context variables using configuratio
 
 For more information see [Section 14.69, “spf Modules – spf_macros, spf_v1 and senderid (SPF v2)”](modules.spf "14.69. spf Modules – spf_macros, spf_v1 and senderid (SPF v2)").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.predefined-context-conn)  | [Up](policy.context.variables) |  [Next](cluster) |
 | 6.1. Connection Context Variables  | [Table of Contents](index) |  Chapter 7. Clustering |

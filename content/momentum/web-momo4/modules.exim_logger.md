@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.event_hydrant)  | Chapter 71. Modules Reference |  [Next](modules.fbl) |
 
 ## 71.34. exim_logger – Exim Logging
@@ -26,6 +28,8 @@ exim_logger "exim_logger1" {
 
 You can toggle the logging of transient failures using the `log_transient_failures` option.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.event_hydrant)  | [Up](modules) |  [Next](modules.fbl) |
 | 71.33. event_hydrant – Message Tracking  | [Table of Contents](index) |  71.35. fbl - Feedback Loop |
 

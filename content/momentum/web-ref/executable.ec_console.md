@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_cmd)  | 11.2. Executable Commands |  [Next](executable.ec_ctl.php) |
 
 <a name="executable.ec_console"></a>
@@ -40,5 +42,7 @@ Show the man page for the ec_console command
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_cmd)  | [Up](exe.commands.details.php) |  [Next](executable.ec_ctl.php) |
 | ec_cmd  | [Table of Contents](index) |  ec_ctl |

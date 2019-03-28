@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_resident_active_queue)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_resident_transfails.php) |
 
 <a name="conf.ref.max_resident_messages"></a>
@@ -30,5 +32,7 @@ This is an advanced option. Setting this option to small non-zero values can hav
 
 [growbuf_size](conf.ref.growbuf_size "growbuf_size")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_resident_active_queue)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_resident_transfails.php) |
 | max_resident_active_queue  | [Table of Contents](index) |  max_resident_transfails |

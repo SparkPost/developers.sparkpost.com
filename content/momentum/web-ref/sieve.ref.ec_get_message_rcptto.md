@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_protocol)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_received_from) |
 
 <a name="sieve.ref.ec_get_message_rcptto"></a>
@@ -27,5 +29,8 @@ if not ec_test :contains "${rcpt}" "RCPT TO:<bar@bar.com>" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_protocol)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_received_from) |
 | ec_get_message_protocol  | [Table of Contents](index) |  ec_get_message_received_from |

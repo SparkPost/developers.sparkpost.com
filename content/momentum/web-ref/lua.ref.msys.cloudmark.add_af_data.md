@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.analyze)  | 15.2. Lua Functions |  [Next](lua.ref.msys.cloudmark.score.php) |
 
 <a name="lua.ref.msys.cloudmark.add_af_data"></a>
@@ -52,5 +54,7 @@ msys.registerModule("af_test", mod);
 
 [msys.cloudmark.score_af](lua.ref.msys.cloudmark.score_af "msys.cloudmark.score_af"), [msys.cloudmark.set_af_mode_discard](lua.ref.msys.cloudmark.set_af_mode_discard.php "msys.cloudmark.set_af_mode_discard"), [msys.cloudmark.set_af_mode_keep](lua.ref.msys.cloudmark.set_af_mode_keep.php "msys.cloudmark.set_af_mode_keep"), [msys.cloudmark.set_af_mode_movemsg](lua.ref.msys.cloudmark.set_af_mode_movemsg.php "msys.cloudmark.set_af_mode_movemsg"), [msys.cloudmark.set_af_msi_address](lua.ref.msys.cloudmark.set_af_msi_address.php "msys.cloudmark.set_af_msi_address"), [msys.cloudmark.analyze](lua.ref.msys.cloudmark.analyze.php "msys.cloudmark.analyze"), [msys.cloudmark.score](lua.ref.msys.cloudmark.score.php "msys.cloudmark.score"), [Section 14.18, “cloudmark – Cloudmark Authority Module”](modules.cloudmark.php "14.18. cloudmark – Cloudmark Authority Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.analyze)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.cloudmark.score.php) |
 | msys.cloudmark.analyze  | [Table of Contents](index) |  msys.cloudmark.score |

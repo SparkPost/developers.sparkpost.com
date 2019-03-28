@@ -358,5 +358,7 @@ Move up one line.
 
 Move down one line.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.keys.emacs)  | [Up](libedit.php) |  [Next](libedit.extended.php) |
 | G.1. Default emacs key bindings  | [Table of Contents](index) |  G.3. Extended Commands |

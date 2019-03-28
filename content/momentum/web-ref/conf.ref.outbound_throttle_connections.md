@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.opendkim_sign)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.outbound_throttle_messages.php) |
 
 <a name="conf.ref.outbound_throttle_connections"></a>
@@ -27,5 +29,7 @@ Where throttles are concerned, Momentum's fallback behavior differs. For more in
 
 outbound_throttle_connections is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.opendkim_sign)  | [Up](conf.ref.files.php) |  [Next](conf.ref.outbound_throttle_messages.php) |
 | opendkim_sign  | [Table of Contents](index) |  outbound_throttle_messages |

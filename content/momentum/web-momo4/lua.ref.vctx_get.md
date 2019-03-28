@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_disconnect)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.vctx_recipient_list) |
 
 <a name="lua.ref.vctx_get"></a>
@@ -26,6 +28,8 @@ Because this function is in the `msys.core` namespace, an explicit `require('msy
 
 [vctx:set](lua.ref.vctx_set "vctx:set")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_disconnect)  | [Up](lua.function.details) |  [Next](lua.ref.vctx_recipient_list) |
 | vctx:disconnect  | [Table of Contents](index) |  vctx:recipient_list |
 

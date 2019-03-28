@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stats)  | 12.2. System Console Commands |  [Next](console_commands.count.php) |
 
 <a name="console_commands.config"></a>
@@ -326,5 +328,7 @@ Like global debugging, module level debugging is also set using the **config** c
 10:47:35 /tmp/2025> config set smtp_cbv foo Debug_Level DEBUG
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stats)  | [Up](console.commands.non-module.php) |  [Next](console_commands.count.php) |
 | cache stats  | [Table of Contents](index) |  count |

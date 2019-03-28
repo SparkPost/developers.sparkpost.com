@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.scriptlet)  | Chapter 14. Modules Reference |  [Next](modules.seedlist) |
 
 ## 14.61. securecreds – Module
@@ -69,5 +71,8 @@ The location of the credentials key file. The default value for this option is `
 
 We strongly recommend that you not change the default values of these options. If you absolutely must change the location of these files please create symlinks to the default locations. Also note that the credentials database and key are local to each node in a cluster.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.scriptlet)  | [Up](modules) |  [Next](modules.seedlist) |
 | 14.60. scriptlet – Module  | [Table of Contents](index) |  14.62. seedlist – Seedlist Integration |

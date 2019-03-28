@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rcptto_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.relay_hosts.php) |
 
 <a name="conf.ref.relay_domains"></a>
@@ -34,5 +36,7 @@ To accept mail for the domain example.com and all subdomains under it, one would
 
 [relay_hosts](conf.ref.relay_hosts "relay_hosts"), [only_use_best_mx_for_relay_domains](conf.ref.only_use_best_mx_for_relay_domains.php "only_use_best_mx_for_relay_domains")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rcptto_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.relay_hosts.php) |
 | rcptto_timeout  | [Table of Contents](index) |  relay_hosts |

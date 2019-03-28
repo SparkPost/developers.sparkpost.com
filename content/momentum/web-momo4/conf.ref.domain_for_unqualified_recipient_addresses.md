@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_fallback_to_tcp)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.domain_for_unqualified_sender_address) |
 
 <a name="conf.ref.domain_for_unqualified_recipient_addresses"></a>
@@ -29,6 +31,8 @@ which would rewrite any message sent to "RCPT TO:&lt;postmaster>" as if it had o
 
 domain_for_unqualified_recipient_addresses is valid in pathway, pathway_group, global, and listener scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_fallback_to_tcp)  | [Up](config.options.ref) |  [Next](conf.ref.domain_for_unqualified_sender_address) |
 | dns_fallback_to_tcp  | [Table of Contents](index) |  domain_for_unqualified_sender_address |
 

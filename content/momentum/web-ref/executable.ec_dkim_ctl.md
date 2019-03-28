@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_ctl)  | 11.2. Executable Commands |  [Next](executable.ec_dump_config.php) |
 
 <a name="executable.ec_dkim_ctl"></a>
@@ -137,5 +139,7 @@ For the Sieve functions specific to Domain Keys and DKIM see [ec_dk_responsible_
 
 [Section 14.29, “domainkeys – Yahoo! DomainKeys”](modules.domainkeys "14.29. domainkeys – Yahoo! DomainKeys") and [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim.php "14.27. dkim – DomainKeys Identified Mail Signatures")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_ctl)  | [Up](exe.commands.details.php) |  [Next](executable.ec_dump_config.php) |
 | ec_ctl  | [Table of Contents](index) |  ec_dump_config |

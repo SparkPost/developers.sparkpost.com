@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.antivirus)  | Chapter 14. Modules Reference |  [Next](modules.auth_ds.php) |
 
 ## 14.6. as_logger – Audit series logger
@@ -132,5 +134,7 @@ condense = 30
 retention = 60
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.antivirus)  | [Up](modules.php) |  [Next](modules.auth_ds.php) |
 | 14.5. antivirus – Antivirus Modules  | [Table of Contents](index) |  14.7. auth_ds – Datasource based SMTP Authentication |

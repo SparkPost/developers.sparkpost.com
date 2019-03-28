@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](addl.config.notes)  | Part II. Installing Momentum |  [Next](byb.os) |
 ## Chapter 6. Before You Begin
 **Table of Contents**
@@ -28,5 +30,7 @@ You will need to provide Message Systems with a MAC address for each MTA node in
 ### Note
 The [Momentum REST Injector](https://support.messagesystems.com/docs/web-rest-injector/) introduced in Momentum 3.14 continues to work in Momentum 4 and does not require a license. You can still use this injector to inject messages with simple template substitutions, but it has a very limited feature set compared to the Momentum 4 REST APIs.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](addl.config.notes)  | [Up](p.installing) |  [Next](byb.os) |
 | 5.7. Additional Configuration Notes  | [Table of Contents](index) |  6.2. Operating System |

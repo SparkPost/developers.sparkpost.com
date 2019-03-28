@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sievelib)  | Chapter 14. Modules Reference |  [Next](modules.smtp_cbv) |
 
 ## 14.66. smtp_auth_proxy - SMTP Authentication Proxy
@@ -41,5 +43,8 @@ Esmtp_Listener {
 
 Any hosts specified by the `relay_hosts` option are not subject to any SMTP authentication that you may have implemented. Likewise when `open_relay` is set to `true`. For more information see [relay_hosts](conf.ref.relay_hosts "relay_hosts").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sievelib)  | [Up](modules) |  [Next](modules.smtp_cbv) |
 | 14.65. sievelib – The sievelib Module  | [Table of Contents](index) |  14.67. smtp_cbv – SMTP Callback Verification |

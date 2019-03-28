@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.encode)  | 15.2. Lua Functions |  [Next](lua.ref.json.strerror.php) |
 
 <a name="lua.ref.json.new"></a>
@@ -32,5 +34,7 @@ print(o); -- { "name": "value" }
 
 [json.strerror](lua.ref.json.strerror "json.strerror") and [json.decode](lua.ref.json.decode.php "json.decode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.json.encode)  | [Up](lua.function.details.php) |  [Next](lua.ref.json.strerror.php) |
 | json.encode  | [Table of Contents](index) |  json.strerror |

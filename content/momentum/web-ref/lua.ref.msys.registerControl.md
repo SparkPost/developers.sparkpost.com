@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerAuth)  | 15.2. Lua Functions |  [Next](lua.ref.msys.registerModule.php) |
 
 <a name="lua.ref.msys.registerControl"></a>
@@ -66,5 +68,7 @@ The function that performs the registered action, in [Example 15.32, “registe
 
 [msys.core.dns_get_domain](lua.ref.msys.core.dns_get_domain "msys.core.dns_get_domain") and [command_construct](https://support.messagesystems.com/docs/web-c-api/structs.command_construct.php)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.registerAuth)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.registerModule.php) |
 | msys.registerAuth  | [Table of Contents](index) |  msys.registerModule |

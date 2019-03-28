@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](responses)  | Appendix F. Message Responses |  [Next](responses-by-message) |
 
 ## F.1. Responses Sorted By Codes
@@ -115,5 +117,8 @@ Responses are sorted by SMTP code and then enhanced code.
 | 554 | 5.7.0 | [internal] Blackholed | "Blackhole" option is set to "internal" |
 | 554 | 5.7.0 | [internal] Message manually purged | Purged messages from the system console |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](responses)  | [Up](responses) |  [Next](responses-by-message) |
 | Appendix F. Message Responses  | [Table of Contents](index) |  F.2. Responses Sorted by Message |

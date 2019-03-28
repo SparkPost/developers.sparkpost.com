@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.eleven)  | Chapter 14. Modules Reference |  [Next](modules.fbl.php) |
 
 ## 14.33. exim_logger – Exim-Compatible Logging
@@ -24,5 +26,7 @@ exim_logger "exim_logger1" {
 
 Additionally, you can toggle the logging of transient failures.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.eleven)  | [Up](modules.php) |  [Next](modules.fbl.php) |
 | 14.32. eleven – Module  | [Table of Contents](index) |  14.34. fbl – Feedback Loop Module |

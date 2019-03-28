@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.qp.encode)  | 15.2. Lua Functions |  [Next](lua.ref.msys.rfc3464.compute_delivery_status_string.php) |
 
 <a name="lua.ref.msys.rfc3464.compute_delivery_status"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.rfc3464');`.
 
 [msys.rfc3464.compute_delivery_status_string](lua.ref.msys.rfc3464.compute_delivery_status_string "msys.rfc3464.compute_delivery_status_string")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.qp.encode)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.rfc3464.compute_delivery_status_string.php) |
 | msys.qp.encode  | [Table of Contents](index) |  msys.rfc3464.compute_delivery_status_string |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.user)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.xclient.php) |
 
 <a name="conf.ref.watchdog_interval"></a>
@@ -21,5 +23,7 @@ Momentum starts as the child process of a parent watchdog process. The watchdog 
 
 watchdog_interval is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.user)  | [Up](conf.ref.files.php) |  [Next](conf.ref.xclient.php) |
 | user  | [Table of Contents](index) |  xclient |

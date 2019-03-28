@@ -40,7 +40,7 @@
           "analytics1.yourdomain.com",
           "analytics2.yourdomain.com",
           ...
-          "analyticsN.yourdomain.com"      
+          "analyticsN.yourdomain.com"
         ]
       }
     }
@@ -55,7 +55,7 @@
           "analytics1.yourdomain.com",
           "analytics2.yourdomain.com",
           ...
-          "analyticsN.yourdomain.com"      
+          "analyticsN.yourdomain.com"
         ]
       },
       "cql": {
@@ -294,6 +294,8 @@ Follow the steps below to create the Vertica database on the first Analytics nod
 
     `exit`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.configure_cassandra)  | [Up](new_installation) |  [Next](install.start_remaining_services) |
 | 9.2. Configure the Cassandra Nodes  | [Table of Contents](index) |  9.4. Start Remaining Services |
 

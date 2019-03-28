@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.bouncelog)  | Chapter 35. Log Formats |  [Next](log_formats.httplog) |
 
 ## 35.4. `fbllog`
@@ -29,6 +31,8 @@ The following is a description of the fields:
 | 8 | yahoo.com | Domain to which the FBL message was sent |
 | 9 | true | User-defined string |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.bouncelog)  | [Up](log_formats) |  [Next](log_formats.httplog) |
 | 35.3. `bouncelog`  | [Table of Contents](index) |  35.5. `httplog` |
 

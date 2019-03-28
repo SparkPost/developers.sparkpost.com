@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.seedlist)  | Chapter 71. Modules Reference |  [Next](modules.smtp_auth_proxy) |
 
 ## 71.63. sendmail_logger – Sendmail Logging
@@ -23,6 +25,8 @@ sendmail_logger "sendmail_logger1" {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.seedlist)  | [Up](modules) |  [Next](modules.smtp_auth_proxy) |
 | 71.62. seedlist – Seedlist Integration  | [Table of Contents](index) |  71.64. smtp_auth_proxy - SMTP Authentication Proxy |
 

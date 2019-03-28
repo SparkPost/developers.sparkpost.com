@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_attempt_expired_messages)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.only_use_best_mx_for_relay_domains) |
 
 <a name="conf.ref.never_retry"></a>
@@ -26,6 +28,8 @@ never_retry is valid in the global, domain, binding, and binding_group scopes.
 
 [retry_interval](conf.ref.retry_interval "retry_interval")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_attempt_expired_messages)  | [Up](config.options.ref) |  [Next](conf.ref.only_use_best_mx_for_relay_domains) |
 | never_attempt_expired_messages  | [Table of Contents](index) |  only_use_best_mx_for_relay_domains |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.reload)  | 15.2. Lua Functions |  [Next](lua.ref.msys.counter.add.php) |
 
 <a name="lua.ref.msys.commtouch.diagnose"></a>
@@ -41,5 +43,7 @@ Enable this function with the statement `require('msys.commtouch');`.
 
 [Section 14.19, “commtouch_ctasd – Commtouch_ctasd Module”](modules.commtouch "14.19. commtouch_ctasd – Commtouch_ctasd Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.reload)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.counter.add.php) |
 | msys.cidr.reload  | [Table of Contents](index) |  msys.counter.add |

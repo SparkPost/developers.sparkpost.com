@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_binding_group)  | 15.2. Lua Functions |  [Next](lua.ref.msg_body_match.php) |
 
 <a name="lua.ref.msg_body"></a>
@@ -23,5 +25,7 @@ If you are modifying content be sure set readonly to `false` using the [msg:mime
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_binding_group)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_body_match.php) |
 | msg:binding_group  | [Table of Contents](index) |  msg:body_match |

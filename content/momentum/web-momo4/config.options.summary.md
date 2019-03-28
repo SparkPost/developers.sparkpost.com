@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.summary.all.modules)  | Part X. Reference |  [Next](console_commands) |
 
 ## Chapter 66. Configuration Options Summary
@@ -326,14 +328,14 @@ The `Version` column indicated the version(s) of Momentum that support the optio
 | [sysdescription](conf.ref.snmp "SNMP") – Set the SNMP SysDescription option value | na | (*non-dynamic*) | 4.0 and later | snmp |
 | [syslocation](conf.ref.snmp "SNMP") – Set the SNMP SysLocation option value | na | (*non-dynamic*) | 4.0 and later | snmp |
 | [tcp_buffer_size](conf.ref.tcp_buffer_size "tcp_buffer_size") – Maximum tcp buffer size for outbound connections | sending | 32768 | 4.0 and later | cluster, global |
-| **tcp_recv_buffer_size** – Sets the TCP receive buffer size. When set to 0, the operating system automatically manages the buffer size. | receiving | 
+| **tcp_recv_buffer_size** – Sets the TCP receive buffer size. When set to 0, the operating system automatically manages the buffer size. | receiving |
 
 4096 (ESMTP_Listener)
 
 32768 (HTTP_Listener)
 
  | 4.0 and later | control_listener, eccluster_listener, ecstream_listener, esmtp_listener, http_listener, listen, xmpp_listener |
-| **tcp_send_buffer_size** – Sets the TCP send buffer size. When set to 0, the operating system automatically manages the buffer size. | receiving | 
+| **tcp_send_buffer_size** – Sets the TCP send buffer size. When set to 0, the operating system automatically manages the buffer size. | receiving |
 
 4096 (ESMTP_Listener)
 
@@ -387,6 +389,8 @@ The `Version` column indicated the version(s) of Momentum that support the optio
 | [xmpp_listener](https://support.messagesystems.com/docs/web-mobility/mobility.xmpp.modules#modules.xmpp.xmpp_listener) *(scope)* – The listener for incoming XMPP connections (Mobile Momentum) | receiving |   | 4.0 and later | global |
 | [xmpp_role](https://support.messagesystems.com/docs/web-mobility/mobility.xmpp.modules#mobility.xmpp.modules.xmpp_role) – Define whether a domain is an XMPP server or client (Mobile Momentum) | both |   | 4.0 and later | domain |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.summary.all.modules)  | [Up](p.reference) |  [Next](console_commands) |
 | Chapter 65. Modules Summary  | [Table of Contents](index) |  Chapter 67. Console Commands Summary |
 

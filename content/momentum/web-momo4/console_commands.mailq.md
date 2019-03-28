@@ -26,6 +26,8 @@ The `Group/Binding` column shows the group and the binding that a domain belongs
 
 Use this command with the `--domain` *`domain_name`* argument to show the statistics for a specific domain. Any number of domains may be specified. The `--binding` option is used in the same way. Limit the output by using the --limit *`number`* option. The default value for `--limit` is `20`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.help)  | [Up](console.cmds.ref) |  [Next](console_commands.memory) |
 | help  | [Table of Contents](index) |  memory |
 

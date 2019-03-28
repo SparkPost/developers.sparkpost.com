@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_connections_on_service)  | 16.2. Sieve Function Details |  [Next](sieve.ref.audit_series_add) |
 
 <a name="sieve.ref.audit_series"></a>
@@ -123,5 +125,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric" "${count}" "1000" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_connections_on_service)  | [Up](sieve.ref.files) |  [Next](sieve.ref.audit_series_add) |
 | audit_connections_on_service  | [Table of Contents](index) |  audit_series_add |

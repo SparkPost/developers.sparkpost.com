@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.multivip.interfaces)  | Chapter 25. Configuring Outbound Mail Delivery |  [Next](tls_option) |
 
 ## 25.4. Throttling and Traffic Shaping
@@ -24,6 +26,8 @@ binding "customer-2" {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](outbound_mail.multivip.interfaces)  | [Up](outbound_mail) |  [Next](tls_option) |
 | 25.3. MultiVIP© Interfaces  | [Table of Contents](index) |  25.5. Outbound TLS |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_failures_to_purge)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.domain_for_unqualified_recipient_addresses) |
 
 <a name="conf.ref.dns_fallback_to_tcp"></a>
@@ -21,6 +23,8 @@ The default value is `false`.
 
 `dns_fallback_to_tcp` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_failures_to_purge)  | [Up](config.options.ref) |  [Next](conf.ref.domain_for_unqualified_recipient_addresses) |
 | dns_failures_to_purge  | [Table of Contents](index) |  domain_for_unqualified_recipient_addresses |
 

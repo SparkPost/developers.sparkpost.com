@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.httplog)  | Chapter 35. Log Formats |  [Next](log_formats.mainlog) |
 
 ## 35.6. `importlog`
@@ -23,5 +25,7 @@ The following is a description of the fields:
 |	5	 |/var/spool/my-alternative-spool| Base directory containing the spool being imported
 
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.httplog)  | [Up](log_formats) |  [Next](log_formats.mainlog) |
 | 35.5. `httplog`  | [Table of Contents](index) |  35.7. `mainlog` |

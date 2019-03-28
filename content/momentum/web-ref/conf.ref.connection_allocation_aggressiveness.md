@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout_to_delay)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.control_client_timeout.php) |
 
 <a name="conf.ref.connection_allocation_aggressiveness"></a>
@@ -33,5 +35,7 @@ The default value for this option is `normal`.
 
 connection_allocation_aggressiveness is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout_to_delay)  | [Up](conf.ref.files.php) |  [Next](conf.ref.control_client_timeout.php) |
 | connect_timeout_to_delay  | [Table of Contents](index) |  control_client_timeout |

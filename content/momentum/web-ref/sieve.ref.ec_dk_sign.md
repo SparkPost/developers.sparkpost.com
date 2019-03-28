@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dk_responsible_domain)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_dkim_domains) |
 
 <a name="sieve.ref.ec_dk_sign"></a>
@@ -77,5 +79,8 @@ hash_set $params "base_domain" "my.signing.domain.com";
 ec_dk_sign $params;
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dk_responsible_domain)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_dkim_domains) |
 | ec_dk_responsible_domain  | [Table of Contents](index) |  ec_dkim_domains |

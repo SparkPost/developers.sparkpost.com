@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transform_8bitmime_content)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.unlink_on_spool_in_failure.php) |
 
 <a name="conf.ref.umem_reap_interval"></a>
@@ -21,5 +23,7 @@ The default value for this option is `1800`.
 
 umem_reap_interval is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transform_8bitmime_content)  | [Up](conf.ref.files.php) |  [Next](conf.ref.unlink_on_spool_in_failure.php) |
 | transform_8bitmime_content  | [Table of Contents](index) |  unlink_on_spool_in_failure |

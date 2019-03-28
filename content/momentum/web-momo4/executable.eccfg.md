@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_show)  | Chapter 74. Executable Commands Reference |  [Next](executable.eccmgr) |
 
 <a name="executable.eccfg"></a>
@@ -387,6 +389,8 @@ Request that the cluster's nominal MASTER attempt to resolve the CONFLICT state.
 
 [ecconfigd](executable.ecconfigd "ecconfigd"), [Section 15.1.3, “Configuration Management (**ecconfigd**)”](conf.overview#conf.ecconfigd "15.1.3. Configuration Management (ecconfigd)")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_show)  | [Up](exec.cmds.ref) |  [Next](executable.eccmgr) |
 | ec_show  | [Table of Contents](index) |  eccmgr |
 

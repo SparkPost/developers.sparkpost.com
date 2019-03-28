@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.operations)  | Part V. Using the System Console |  [Next](operations) |
 ## Chapter 36. Starting Momentum (ecelerity)
 **Table of Contents**
@@ -23,5 +25,7 @@ if [ $? != 0 ]; then
 fi
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.operations)  | [Up](p.operations) |  [Next](operations) |
 | Part V. Using the System Console  | [Table of Contents](index) |  Chapter 37. Using the System Console (**ec_console**) |

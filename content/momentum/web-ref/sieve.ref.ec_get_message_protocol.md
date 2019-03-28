@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_num_retries)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_rcptto) |
 
 <a name="sieve.ref.ec_get_message_protocol"></a>
@@ -27,5 +29,8 @@ if not ec_test :is "${p}" "ESMTP" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_num_retries)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_rcptto) |
 | ec_get_message_num_retries  | [Table of Contents](index) |  ec_get_message_rcptto |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.delay_dsn)  | Chapter 14. Modules Reference |  [Next](modules.dkim.php) |
 
 ## 14.26. disclaimer – Module
@@ -20,5 +22,7 @@ When using `html` as a key, the module will look for all text/html parts that ar
 
 [disclaimer_add](sieve.ref.disclaimer_add "disclaimer_add")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.delay_dsn)  | [Up](modules.php) |  [Next](modules.dkim.php) |
 | 14.25. delay_dsn – Delay DSN Generation  | [Table of Contents](index) |  14.27. dkim – DomainKeys Identified Mail Signatures |

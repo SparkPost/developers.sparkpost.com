@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.doc_tostring)  | 15.2. Lua Functions |  [Next](lua.ref.xml.node_addchild.php) |
 
 <a name="lua.ref.xml.doc_xpath"></a>
@@ -37,5 +39,7 @@ end
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.doc_tostring)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.node_addchild.php) |
 | doc:tostring  | [Table of Contents](index) |  node:addchild |

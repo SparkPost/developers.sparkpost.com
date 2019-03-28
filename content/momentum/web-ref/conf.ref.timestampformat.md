@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.threadpool)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls.php) |
 
 <a name="conf.ref.timestampformat"></a>
@@ -19,5 +21,7 @@ Sets the timestamp format used by Momentum when logging to `stderr`. This output
 
 timestampformat is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.threadpool)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls.php) |
 | threadpool  | [Table of Contents](index) |  tls |

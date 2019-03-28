@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.crypto_lock_method)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.default_binding) |
 
 <a name="conf.ref.debug_flags"></a>
@@ -69,6 +71,8 @@ Use ‘`ALL`’ instead of listing each service debug flag.
 
 debug_flags is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.crypto_lock_method)  | [Up](config.options.ref) |  [Next](conf.ref.default_binding) |
 | crypto_lock_method  | [Table of Contents](index) |  default_binding |
 

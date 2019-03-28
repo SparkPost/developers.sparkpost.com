@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr_ctl)  | 11.2. Executable Commands |  [Next](executable.ecconfigd_ctl.php) |
 
 <a name="executable.ecconfigd"></a>
@@ -55,5 +57,7 @@ Set the log file verbosity. The log level is a number from 0 to 7, where higher 
 
 [ecconfigd_ctl](executable.ecconfigd_ctl "ecconfigd_ctl"), [eccfg](executable.eccfg.php "eccfg")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr_ctl)  | [Up](exe.commands.details.php) |  [Next](executable.ecconfigd_ctl.php) |
 | eccmgr_ctl  | [Table of Contents](index) |  ecconfigd_ctl |

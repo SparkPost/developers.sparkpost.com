@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context-based-on-ip)  | Chapter 5. Implementing Policy with Momentum |  [Next](policy.conclusion) |
 
 ## 5.6. Best Practices for Manually Created Policy Scripts
@@ -51,5 +53,8 @@ In a cluster, if you commit before you test on the local node, you risk pushing 
 
 Once you are satisfied that your scripts function correctly, if you are adding a new script, issue the command **eccfg commit ––username *`admin_user`* ––password *`passwd`* ––add-all --message *`message here`***                                                                                             . If you are editing a script you need not use the `––add-all` option. Doing this updates the repository. In all cases, edits made to the local configuration will need to be manually applied to the node via **config reload** ; the **eccfg commit**        command will not do it for you. Reload the configuration by issuing the system console command **`/opt/msys/ecelerity/bin/ec_console /tmp/2025 config reload`**                         . Reloading the configuration also takes care of flushing the Sieve cache. If your changes affect more than one node, each node will check for an updated configuration each minute and automatically check out your changes and issue a **config reload** .
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context-based-on-ip)  | [Up](policy) |  [Next](policy.conclusion) |
 | 5.5. Setting Context Based on Connecting IP  | [Table of Contents](index) |  5.7. Conclusion |

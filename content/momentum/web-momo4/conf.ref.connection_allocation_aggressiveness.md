@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout_to_delay)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.context) |
 
 <a name="conf.ref.connection_allocation_aggressiveness"></a>
@@ -31,6 +33,8 @@ The default value is `normal`.
 
 connection_allocation_aggressiveness is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.connect_timeout_to_delay)  | [Up](config.options.ref) |  [Next](conf.ref.context) |
 | connect_timeout_to_delay  | [Table of Contents](index) |  context |
 

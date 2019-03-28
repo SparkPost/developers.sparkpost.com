@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mx_failures_to_delay)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.never_retry) |
 
 <a name="conf.ref.never_attempt_expired_messages"></a>
@@ -23,6 +25,8 @@ Under certain circumstances, using this feature can cause some messages to never
 
 never_attempt_expired_messages is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mx_failures_to_delay)  | [Up](config.options.ref) |  [Next](conf.ref.never_retry) |
 | mx_failures_to_delay  | [Table of Contents](index) |  never_retry |
 

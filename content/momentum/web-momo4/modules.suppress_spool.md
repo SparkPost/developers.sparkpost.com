@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.static_routes)  | Chapter 71. Modules Reference |  [Next](modules.syslog_io) |
 
 ## 71.70. suppress_spool – Deferred Message Spooling
@@ -35,6 +37,8 @@ The `_unsafe_spool` line disables Momentum's internal protections to guarantee t
 
 This module is loaded automatically as required and does not need to be explicitly included. However, it is dangerous and can result in data loss if you experience a crash.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.static_routes)  | [Up](modules) |  [Next](modules.syslog_io) |
 | 71.69. static-routes - Static Routes  | [Table of Contents](index) |  71.71. syslog_io – The syslog_io Module |
 

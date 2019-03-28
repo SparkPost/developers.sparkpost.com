@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecelerity)  | 11.2. Executable Commands |  [Next](executable.jlog_sanity_check.php) |
 
 <a name="executable.jlog_change_endian"></a>
@@ -20,5 +22,7 @@ The second argument indicates the endianness of the destination jlog (and implic
 
 The third argument is the path where you want the converted jlog to be written; it must not exist, but its parent directory must exist before you run `jlog_change_endian.pl`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecelerity)  | [Up](exe.commands.details.php) |  [Next](executable.jlog_sanity_check.php) |
 | ecelerity  | [Table of Contents](index) |  jlog_sanity_check |

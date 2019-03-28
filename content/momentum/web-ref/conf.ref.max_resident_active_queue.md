@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_recipients_per_connection)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_resident_messages.php) |
 
 <a name="conf.ref.max_resident_active_queue"></a>
@@ -23,5 +25,7 @@ This is an advanced option. Setting this option to small non-zero values can hav
 
 max_resident_active_queue is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_recipients_per_connection)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_resident_messages.php) |
 | max_recipients_per_connection  | [Table of Contents](index) |  max_resident_messages |

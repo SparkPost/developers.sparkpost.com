@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_tarpit)  | 15.2. Lua Functions |  [Next](lua.ref.xml.doc_tostring.php) |
 
 <a name="lua.ref.xml.doc_root"></a>
@@ -34,5 +36,7 @@ print(node:tostring());
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_tarpit)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.doc_tostring.php) |
 | vctx:tarpit  | [Table of Contents](index) |  doc:tostring |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.rejectlog)  | Chapter 35. Log Formats |  [Next](log_formats.connection.stages) |
 
 ## 35.10. Bounce Classification Codes
@@ -31,6 +33,8 @@ The following is a list of bounce classification codes and their meanings.
 | 90 | Unsubscribe | The message is an unsubscribe request. | Hard |
 | 100 | Challenge-Response | The message is a challenge-response probe. | Soft |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](log_formats.rejectlog)  | [Up](log_formats) |  [Next](log_formats.connection.stages) |
 | 35.9. `rejectlog`  | [Table of Contents](index) |  35.11. Connection Stages |
 

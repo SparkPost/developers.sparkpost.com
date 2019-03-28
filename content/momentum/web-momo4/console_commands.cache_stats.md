@@ -29,6 +29,8 @@ For each cache, this command prints statistics including the number of elements 
 
 [match_cache_life](conf.ref.match_cache_life "match_cache_life")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stat)  | [Up](console.cmds.ref) |  [Next](console_commands.config) |
 | cache stat  | [Table of Contents](index) |  config |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.prepare)  | Chapter 1. Installation |  [Next](install.linux.php) |
 
 ## 1.5. Operating System Specific Preparation
@@ -162,5 +164,7 @@ Given the variety of different hardware combinations, disabling hardware IP chec
 
 If you find that your controller returns an invalid checksum, it would also be prudent to look at other network parameters such as jumbo frame support, switch port speeds, etc. to ensure that the checksum issue is not a symptom of a larger issue.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.prepare)  | [Up](install.php) |  [Next](install.linux.php) |
 | 1.4. Preparing the System  | [Table of Contents](index) |  1.6. Installation on Linux |

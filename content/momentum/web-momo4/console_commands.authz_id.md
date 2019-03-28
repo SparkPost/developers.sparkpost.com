@@ -28,6 +28,8 @@ If you are logged in as a user named `tom` who belongs to the group `users`, you
 
 [authz roles list](console_commands.authz_roles_list "authz roles list")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.active)  | [Up](console.cmds.ref) |  [Next](console_commands.authz_roles_list) |
 | active  | [Table of Contents](index) |  authz roles list |
 

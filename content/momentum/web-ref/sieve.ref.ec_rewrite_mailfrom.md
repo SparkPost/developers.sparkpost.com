@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rand)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_rfc2047_encode_addresses) |
 
 <a name="sieve.ref.ec_rewrite_mailfrom"></a>
@@ -29,5 +31,8 @@ if envelope :domain :is "from" "bar.com" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rand)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_rfc2047_encode_addresses) |
 | ec_rand  | [Table of Contents](index) |  ec_rfc2047_encode_addresses |

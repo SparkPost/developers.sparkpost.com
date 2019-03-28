@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addFirstChild)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_address_header) |
 
 <a name="lua.ref.msgpart_addLastChild"></a>
@@ -71,6 +73,8 @@ msys.registerModule("myValid", mod);
 
 [msgpart:addFirstChild](lua.ref.msgpart_addFirstChild "msgpart:addFirstChild")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_addFirstChild)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_address_header) |
 | msgpart:addFirstChild  | [Table of Contents](index) |  msgpart:address_header |
 

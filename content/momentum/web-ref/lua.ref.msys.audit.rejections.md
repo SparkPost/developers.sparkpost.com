@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit.receptions)  | 15.2. Lua Functions |  [Next](lua.ref.msys.audit_series.add.php) |
 
 <a name="lua.ref.msys.audit.rejections"></a>
@@ -42,5 +44,7 @@ Enable this function with the statement `require('msys.audit');`.
 
 [msys.audit.receptions](lua.ref.msys.audit.receptions "msys.audit.receptions"), [msys.audit.connections](lua.ref.msys.audit.connections.php "msys.audit.connections"), [Section 14.41, “inbound_audit – Inbound traffic analytics”](modules.inbound_audit.php "14.41. inbound_audit – Inbound traffic analytics")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit.receptions)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.audit_series.add.php) |
 | msys.audit.receptions  | [Table of Contents](index) |  msys.audit_series.add |

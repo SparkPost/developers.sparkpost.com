@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.create_ssl_cert)  | 11.2. Executable Commands |  [Next](executable.ec_admigrate.php) |
 
 <a name="executable.credmgr"></a>
@@ -198,5 +200,7 @@ Examples of usage follow:
 
 [Section 14.61, “securecreds – Module”](modules.securecreds "14.61. securecreds – Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.create_ssl_cert)  | [Up](exe.commands.details.php) |  [Next](executable.ec_admigrate.php) |
 | create_ssl_cert  | [Table of Contents](index) |  ec_admigrate |

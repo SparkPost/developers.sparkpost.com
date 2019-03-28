@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.lock)  | 15.2. Lua Functions |  [Next](lua.ref.msys.readfile.php) |
 
 <a name="lua.ref.msys.parseRFC2822Addresses"></a>
@@ -42,5 +44,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [msg:address_header](lua.ref.msg_address_header "msg:address_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.lock)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.readfile.php) |
 | msys.lock  | [Table of Contents](index) |  msys.readfile |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_max_line_length)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.rfc2822_messageid_header) |
 
 <a name="conf.ref.rfc2822_max_line_length_policy"></a>
@@ -28,6 +30,8 @@ The default value for this option is `none`.
 
 [rfc2822_max_line_length](conf.ref.rfc2822_max_line_length "rfc2822_max_line_length")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_max_line_length)  | [Up](config.options.ref) |  [Next](conf.ref.rfc2822_messageid_header) |
 | rfc2822_max_line_length  | [Table of Contents](index) |  rfc2822_messageid_header |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_dkim_ctl)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_lic) |
 
 <a name="executable.ec_dump_config"></a>
@@ -58,6 +60,8 @@ Global configuration error.
 
 [validate_config](executable.validate_config "validate_config")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_dkim_ctl)  | [Up](exec.cmds.ref) |  [Next](executable.ec_lic) |
 | ec_dkim_ctl  | [Table of Contents](index) |  ec_lic |
 

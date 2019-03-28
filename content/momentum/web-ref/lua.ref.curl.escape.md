@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_setopt)  | 15.2. Lua Functions |  [Next](lua.ref.curl.new.php) |
 
 <a name="lua.ref.curl.escape"></a>
@@ -30,5 +32,7 @@ URL encode a string; useful when building an URL.
 
 [curl.unescape](lua.ref.curl.unescape "curl.unescape")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_setopt)  | [Up](lua.function.details.php) |  [Next](lua.ref.curl.new.php) |
 | c:setopt  | [Table of Contents](index) |  curl.new |

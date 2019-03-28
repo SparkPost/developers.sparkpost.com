@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.memory)  | 12.2. System Console Commands |  [Next](console_commands.message_fail.php) |
 
 <a name="console_commands.message_details"></a>
@@ -43,5 +45,7 @@ If both the metadata and the body are desired, the "full" option should be used:
 
 `message details` cannot show details for a message that is in the process of being delivered.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.memory)  | [Up](console.commands.non-module.php) |  [Next](console_commands.message_fail.php) |
 | memory  | [Table of Contents](index) |  message fail |

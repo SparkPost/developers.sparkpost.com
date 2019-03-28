@@ -156,6 +156,8 @@ View all options that affect the cluster manager. This command displays options 
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.operations)  | [Up](cluster.config.operations) |  [Next](cluster.cidr_server) |
 | Chapter 38. Using the Cluster Manager (**eccmgr**)  | [Table of Contents](index) |  Chapter 39. CIDR Server |
 

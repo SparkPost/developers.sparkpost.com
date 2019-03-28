@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlogctl)  | 11.2. Executable Commands |  [Next](executable.mbuscfg.php) |
 
 <a name="executable.lu_pull"></a>
@@ -123,5 +125,7 @@ Override the product version of the installation. For example, if you would like
 
 [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery"), [Section 14.44, “Live Bounce Updates – Module”](modules.live.bounce.updates.php "14.44. Live Bounce Updates – Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlogctl)  | [Up](exe.commands.details.php) |  [Next](executable.mbuscfg.php) |
 | jlogctl  | [Table of Contents](index) |  mbuscfg |

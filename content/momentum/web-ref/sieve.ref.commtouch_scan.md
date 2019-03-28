@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.cloudmark_score)  | 16.2. Sieve Function Details |  [Next](sieve.ref.disable_esmtp_capability) |
 
 <a name="sieve.ref.commtouch_scan"></a>
@@ -47,5 +49,8 @@ Use of this function requires that the commtouch module be loaded.
 
 [Section 14.19, “commtouch_ctasd – Commtouch_ctasd Module”](modules.commtouch "14.19. commtouch_ctasd – Commtouch_ctasd Module")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.cloudmark_score)  | [Up](sieve.ref.files) |  [Next](sieve.ref.disable_esmtp_capability) |
 | cloudmark_score  | [Table of Contents](index) |  disable_esmtp_capability |

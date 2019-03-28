@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_sendmail)  | 11.2. Executable Commands |  [Next](executable.ec_spp.php) |
 
 <a name="executable.ec_show"></a>
@@ -148,5 +150,7 @@ Message: 00/00-02001-C6DD1CA4
             .
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_sendmail)  | [Up](exe.commands.details.php) |  [Next](executable.ec_spp.php) |
 | ec_sendmail  | [Table of Contents](index) |  ec_spp |

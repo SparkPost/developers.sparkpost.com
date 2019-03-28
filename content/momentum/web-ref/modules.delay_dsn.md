@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_logger)  | Chapter 14. Modules Reference |  [Next](modules.disclaimer.php) |
 
 ## 14.25. delay_dsn – Delay DSN Generation
@@ -93,5 +95,7 @@ As of version 3.0, all module-specific commands related to setting or getting mo
 
 This command lists all pending events.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_logger)  | [Up](modules.php) |  [Next](modules.disclaimer.php) |
 | 14.24. custom_logger – Customizable Logging  | [Table of Contents](index) |  14.26. disclaimer – Module |

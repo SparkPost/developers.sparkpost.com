@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.opendkim)  | Chapter 71. Modules Reference |  [Next](modules.outbound_smtp_auth) |
 
 ## 71.51. outbound_audit – Outbound traffic analytics
@@ -203,6 +205,8 @@ The number of permanent failures (5xx response codes) for delivery attempts to t
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.opendkim)  | [Up](modules) |  [Next](modules.outbound_smtp_auth) |
 | 71.50. opendkim – Open Source DKIM  | [Table of Contents](index) |  71.52. outbound_smtp_auth |
 

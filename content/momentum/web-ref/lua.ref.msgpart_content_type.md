@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_replace)  | 15.2. Lua Functions |  [Next](lua.ref.msgpart_header.php) |
 
 <a name="lua.ref.msgpart_content_type"></a>
@@ -56,5 +58,7 @@ msys.registerModule('validate_data_spool_each_rcpt', mod);
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_body_replace)  | [Up](lua.function.details.php) |  [Next](lua.ref.msgpart_header.php) |
 | msgpart:body_replace  | [Table of Contents](index) |  msgpart:header |

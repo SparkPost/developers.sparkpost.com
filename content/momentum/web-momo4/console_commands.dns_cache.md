@@ -74,6 +74,8 @@ DNS cache:
 
 These console commands manipulate the *DNS cache* . The [dig](console_commands.dig "dig"), [refresh domain](console_commands.refresh_domain "refresh domain") and [domain](console_commands.domain "domain") commands manipulate the *route cache* .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.dig)  | [Up](console.cmds.ref) |  [Next](console_commands.domain) |
 | dig  | [Table of Contents](index) |  domain |
 

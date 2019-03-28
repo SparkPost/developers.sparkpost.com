@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.pe2_mark_unsubscribed)  | 16.2. Sieve Function Details |  [Next](sieve.ref.redirect) |
 
 <a name="sieve.ref.qp_encode"></a>
@@ -25,5 +27,8 @@ $encoded = qp_encode "Postal Engine ®";
   ec_log "encoded2: ${encoded2}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.pe2_mark_unsubscribed)  | [Up](sieve.ref.files) |  [Next](sieve.ref.redirect) |
 | pe2_mark_unsubscribed  | [Table of Contents](index) |  redirect |

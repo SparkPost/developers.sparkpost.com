@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.delivery.ob_get_current_message)  | 15.2. Lua Functions |  [Next](lua.ref.msys.expurgate.scan.php) |
 
 <a name="lua.ref.msys.dumper.Dumper"></a>
@@ -43,5 +45,7 @@ msys.registerModule("dns-test", mod);
 
 Enable this function with the statement `require('msys.dumper')`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.delivery.ob_get_current_message)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.expurgate.scan.php) |
 | msys.delivery.ob_get_current_message  | [Table of Contents](index) |  msys.expurgate.scan |

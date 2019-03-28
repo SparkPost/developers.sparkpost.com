@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_retry)  | 12.2. System Console Commands |  [Next](console_commands.pager.php) |
 
 <a name="console_commands.module"></a>
@@ -73,5 +75,7 @@ All module-specific commands related to setting or getting module options have b
 
 In version 3.0, modules no longer have id numbers, so you can not enable or disable them using the command **module disable *`module_number`*** . Instead use the "config set" syntax, for example, **config set bounce_classifier *`bounce_classifier1`* enabled 1** .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_retry)  | [Up](console.commands.non-module.php) |  [Next](console_commands.pager.php) |
 | message retry  | [Table of Contents](index) |  \pager |

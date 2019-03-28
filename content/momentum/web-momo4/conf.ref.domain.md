@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_sender_address)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.domainkeys) |
 
 <a name="conf.ref.domain"></a>
@@ -74,6 +76,8 @@ For a complete list of options valid in the domain scope, refer to [Chapter 66,
 
 [binding](conf.ref.binding "binding"), [host](conf.ref.host "host"), [match_cache_life](conf.ref.match_cache_life "match_cache_life"), [match_cache_size](conf.ref.match_cache_size "match_cache_size")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_sender_address)  | [Up](config.options.ref) |  [Next](conf.ref.domainkeys) |
 | domain_for_unqualified_sender_address  | [Table of Contents](index) |  domainkeys |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dkim)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.dns_expire_interval.php) |
 
 <a name="conf.ref.dns_cache_purge_interval"></a>
@@ -21,5 +23,7 @@ The default value for this option is `60` (seconds).
 
 `dns_cache_purge_interval` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dkim)  | [Up](conf.ref.files.php) |  [Next](conf.ref.dns_expire_interval.php) |
 | dkim  | [Table of Contents](index) |  dns_expire_interval |

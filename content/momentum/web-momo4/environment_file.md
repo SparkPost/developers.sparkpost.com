@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.riak.backups)  | Part III. Configuring Momentum |  [Next](p.logs) |
 
 ## Chapter 31. Configuring the Environment File
@@ -27,7 +29,7 @@ Environment variables can be set in the `/opt/msys/ecelerity/etc/environment` fi
     The unbound server is turned off by default, but can be enabled by entering the following lines into `/opt/msys/ecelerity/etc/environment`:
 
     ```
-    ECELERITY_DNS_BACKEND='unbound' 
+    ECELERITY_DNS_BACKEND='unbound'
     export ECELERITY_DNS_BACKEND
     ```
 
@@ -64,6 +66,8 @@ Environment variables can be set in the `/opt/msys/ecelerity/etc/environment` fi
 
 The `GIMLI_WATCHDOG_INTERVAL`, `GIMLI_WATCHDOG_START_INTERVAL`, and `GIMLI_WATCHDOG_STOP_INTERVAL` variables set the interval for restarting Momentum when it has been unresponsive. For more details execute **`man -M /opt/msys/gimli/man monitor`**                                .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.riak.backups)  | [Up](p.configuration) |  [Next](p.logs) |
 | 30.4. Backups  | [Table of Contents](index) |  Part IV. Logging |
 

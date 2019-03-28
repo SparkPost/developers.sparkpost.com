@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.del_header)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.get_header.php) |
 
 <a name="lua.ref.msys.policyeditor.get_binding_domain_failure_rate"></a>
@@ -32,5 +34,7 @@ Defined parameters for `params` are:
 
 Returns true if the assignment was successful, or false otherwise. A false return value usually indicates that there are no suitable bindings on this node.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.del_header)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.get_header.php) |
 | msys.policyeditor.del_header  | [Table of Contents](index) |  msys.policyeditor.get_header |

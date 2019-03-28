@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_fallback_to_tcp)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.domain_for_unqualified_recipient_addresses.php) |
 
 <a name="conf.ref.domain"></a>
@@ -195,5 +197,7 @@ The options valid in the `domain` scope are as follows:
 
 [binding](conf.ref.binding "binding"), [host](conf.ref.host.php "host"), [match_cache_life](conf.ref.match_cache_life.php "match_cache_life"), [match_cache_size](conf.ref.match_cache_size.php "match_cache_size"), [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback.php "2.6. Configuration Scopes and Fallback")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_fallback_to_tcp)  | [Up](conf.ref.files.php) |  [Next](conf.ref.domain_for_unqualified_recipient_addresses.php) |
 | dns_fallback_to_tcp  | [Table of Contents](index) |  domain_for_unqualified_recipient_addresses |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.string_new)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_get_envelope2) |
 
 <a name="lua.ref.msg_code"></a>
@@ -47,6 +49,8 @@ During reception, you will likely want to set the code by using [vctx:set_code](
 
 [vctx:set_code](lua.ref.vctx_set_code "vctx:set_code")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.core.string_new)  | [Up](lua.function.details) |  [Next](lua.ref.msg_get_envelope2) |
 | msys.core.string_new  | [Table of Contents](index) |  msg:get_envelope2 |
 

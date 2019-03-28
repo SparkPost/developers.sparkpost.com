@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_bounce_logger)  | Chapter 14. Modules Reference |  [Next](modules.delay_dsn.php) |
 
 ## 14.24. custom_logger – Customizable Logging
@@ -824,5 +826,7 @@ The value of entry "key" in the message context dictionary.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.custom_bounce_logger)  | [Up](modules.php) |  [Next](modules.delay_dsn.php) |
 | 14.23. custom_bounce_logger – Custom Bounce Logging  | [Table of Contents](index) |  14.25. delay_dsn – Delay DSN Generation |

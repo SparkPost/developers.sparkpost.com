@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.exim_logger)  | Chapter 14. Modules Reference |  [Next](modules.fsecure.php) |
 
 ## 14.34. fbl – Feedback Loop Module
@@ -190,5 +192,7 @@ if not header :is "to" "abuse@domain.com" {
 }
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.exim_logger)  | [Up](modules.php) |  [Next](modules.fsecure.php) |
 | 14.33. exim_logger – Exim-Compatible Logging  | [Table of Contents](index) |  14.35. fsecure – F-Secure |

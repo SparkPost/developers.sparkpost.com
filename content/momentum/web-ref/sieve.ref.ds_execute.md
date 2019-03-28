@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.disclaimer_add)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ds_fetch) |
 
 <a name="sieve.ref.ds_execute"></a>
@@ -54,5 +56,8 @@ if size :over 1M {
 
 [ds_fetch](sieve.ref.ds_fetch "ds_fetch"). [ds_fetch_flat](sieve.ref.ds_fetch_flat "ds_fetch_flat"). [ds_fetch_hash](sieve.ref.ds_fetch_hash "ds_fetch_hash").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.disclaimer_add)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ds_fetch) |
 | disclaimer_add  | [Table of Contents](index) |  ds_fetch |

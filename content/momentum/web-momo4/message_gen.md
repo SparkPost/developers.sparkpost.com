@@ -12,7 +12,7 @@ The REST API integrates with Momentum using the HTTP protocol and conforms to RE
 
 Message Generation requires a separate license.
 
-**Sending Email Using the REST API** 
+**Sending Email Using the REST API**
 
 This section provides instructions to send a simple email using the REST API. It introduces you to the Transmissions API, which provides the means for creating and managing transmissions. In this simple case, the template and recipient list for the transmission are included "inline".
 
@@ -32,16 +32,16 @@ Follow these steps to create a simple transmission:
 
     Using your text editor, create the following JSON file named `inline_template.json`. Be sure to use your sender address and recipient address.
 
-    {  
+    {
        "return_path":"*`sender@your_address.com`*",
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`recipient@their_address.com`*"
              }
           }
        ],
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using HTTP",
           "text":"Welcome to Momentum!\r\nThis email was sent using an inline template."
@@ -65,8 +65,8 @@ Follow these steps to create a simple transmission:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":1,
           "id":"*`11668787484950529`*"
@@ -81,6 +81,8 @@ Follow these steps to create a simple transmission:
 
 Congratulations! You have sent your first email using Momentum's Transmissions API and a simple inline template. In addition to the POST method used in this example, the Transmissions API supports the GET method to retrieve or list details about your transmissions. You can find more information in the Transmissions API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.delete)  | [Up](p.http_rest) |  [Next](substitution_data) |
 | 44.4. Deleting an API Key  | [Table of Contents](index) |  Chapter 46. Using Substitution Data |
 

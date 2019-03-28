@@ -8,7 +8,7 @@ A key component of a successful campaign is managing your message templates. Bei
 
 As in the case of an "inline" template, the template content must be in JSON format and can use the substitution engine's powerful features, such as key/value substitutions, conditional statements, and looping. By default, templates are created as drafts. Once created, you can perform actions such as update, publish, and delete.
 
-**Creating a Stored Template Using the REST API** 
+**Creating a Stored Template Using the REST API**
 
 This section provides instructions to create a simple stored template using the REST API. It introduces you to the Templates API, which provides the means to manage your templates. In this simple case, the template will include a plain-text message only.
 
@@ -26,10 +26,10 @@ Follow these steps to create a stored template:
 
     Using your text editor, create the following JSON file named `simple_template.json`. Be sure to use your information for sender address.
 
-    {  
+    {
        "id":"simple_template",
        "published":false,
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using a Stored Template",
           "text":"Hi {{firstName}},\r\nWelcome to {{sender}}!"
@@ -56,8 +56,8 @@ Follow these steps to create a stored template:
     If successful, the following response will be displayed at the command line:
 
     ```
-    {  
-       "results":{  
+    {
+       "results":{
           "id":"simple_template"
        }
     }
@@ -71,8 +71,8 @@ Follow these steps to create a stored template:
 
     Using your text editor, create the following JSON file named `data_for_template.json`. Be sure to use your recipient name.
 
-    {  
-       "substitution_data":{  
+    {
+       "substitution_data":{
           "firstName":"*`recipient first name`*            ",
           "sender":"Momentum"
        }
@@ -91,8 +91,8 @@ Follow these steps to create a stored template:
 
     If successful, the response will include the "content" with the data substituted, such as the following:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using a Stored Template",
           "text":"Hi *`recipient first name`*            ,\r\nWelcome to Momentum!"
@@ -104,10 +104,10 @@ Follow these steps to create a stored template:
 
     Using your text editor, create the following JSON file named `update_template.json`. This file includes updates to the content of "content" and changes the "published" attribute. Be sure to use your information for sender address.
 
-    {  
+    {
        "id":"simple_template",
        "published":true,
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using a Stored Template",
           "text":"Hi {{firstName}},\r\nWelcome to {{sender}}!\r\nThis is your first stored template."
@@ -146,16 +146,16 @@ Follow these steps to create a stored template:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "id":"simple_template",
           "name":"simple_template",
           "description":"",
           "published":true,
-          "options":{  
+          "options":{
 
           },
-          "content":{  
+          "content":{
              "from":"*`sender@your_address.com`*",
              "subject":"Sending Email Using a Stored Template",
              "text":"Hi {{firstName}},\r\nWelcome to {{sender}}!\r\nThis is your first stored template."
@@ -167,12 +167,14 @@ Follow these steps to create a stored template:
 
 Congratulations! You have created your first stored template using Momentum's Templates API. To learn more about managing templates, see the Templates API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
-**Managing Templates using the UI** 
+**Managing Templates using the UI**
 
 **Configuration Change. ** Version 4.1 and later support managing your templates using the UI.
 
 You can also create and manage your templates using the web-based UI. For detailed instructions, see [Chapter 48, *Managing Your Templates in the UI*](web-ui.templates "Chapter 48. Managing Your Templates in the UI") .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](substitution_data)  | [Up](p.http_rest) |  [Next](web-ui.templates) |
 | Chapter 46. Using Substitution Data  | [Table of Contents](index) |  Chapter 48. Managing Your Templates in the UI |
 

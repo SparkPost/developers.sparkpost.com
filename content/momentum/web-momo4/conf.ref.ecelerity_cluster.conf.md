@@ -117,6 +117,8 @@ For details about the cluster module, see [Section 71.19, “cluster – Cluste
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.eccluster.conf)  | [Up](cluster) |  [Next](conf.ref.msgc_server.conf) |
 | 16.2. `eccluster.conf` File  | [Table of Contents](index) |  16.4. `msgc_server.conf` File |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_engine)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_key) |
 
 <a name="config.tls_ifavailable_fallback"></a>
@@ -29,6 +31,8 @@ The default value is `true`.
 
 `tls_ifavailable_fallback` is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_engine)  | [Up](config.options.ref) |  [Next](config.tls_key) |
 | tls_engine  | [Table of Contents](index) |  tls_key |
 

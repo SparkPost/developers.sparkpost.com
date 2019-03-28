@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text_replace)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_addLastChild) |
 
 <a name="lua.ref.msgpart_addFirstChild"></a>
@@ -22,6 +24,8 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msgpart:addLastChild](lua.ref.msgpart_addLastChild "msgpart:addLastChild")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text_replace)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_addLastChild) |
 | msg:text_replace  | [Table of Contents](index) |  msgpart:addLastChild |
 

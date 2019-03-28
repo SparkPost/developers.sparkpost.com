@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.jlog)  | Chapter 14. Modules Reference |  [Next](modules.mail_loop.php) |
 
 ## 14.44. Live Bounce Updates – Module
@@ -53,5 +55,7 @@ This setting enables automatic updating of the adaptive rules using port `443`. 
 
 [Section 14.11, “bounce_classifier – Bounce Classifier”](modules.bounce_classifier "14.11. bounce_classifier – Bounce Classifier"), [Section 14.12, “bounce_classifier_override – The Bounce Classifier Override Module”](modules.bounce_classifier_override.php "14.12. bounce_classifier_override – The Bounce Classifier Override Module"), [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive.php "14.2. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.jlog)  | [Up](modules.php) |  [Next](modules.mail_loop.php) |
 | 14.43. jlog – The jlog Module  | [Table of Contents](index) |  14.45. mail_loop – Mail Loop Detection |

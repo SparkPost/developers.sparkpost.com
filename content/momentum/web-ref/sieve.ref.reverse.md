@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.reject)  | 16.2. Sieve Function Details |  [Next](sieve.ref.reverse_delim) |
 
 <a name="sieve.ref.reverse"></a>
@@ -23,5 +25,8 @@ $string = reverse "hello";
 ec_log "hello backwards is ${string}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.reject)  | [Up](sieve.ref.files) |  [Next](sieve.ref.reverse_delim) |
 | reject  | [Table of Contents](index) |  reverse_delim |

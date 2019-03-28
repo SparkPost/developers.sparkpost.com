@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.unlink)  | 15.2. Lua Functions |  [Next](lua.ref.msys.db.query.php) |
 
 <a name="lua.ref.msys.db.fetch_row"></a>
@@ -81,5 +83,7 @@ Enable this function with the statement `require('msys.db');`.
 
 [Section 5.2, “Implementing Policy Using Scriptlets”](implementing.policy.scriptlets "5.2. Implementing Policy Using Scriptlets"), [msys.db.query](lua.ref.msys.db.query.php "msys.db.query"), [msys.db.execute](lua.ref.msys.db.execute.php "msys.db.execute")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.counter.unlink)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.db.query.php) |
 | msys.counter.unlink  | [Table of Contents](index) |  msys.db.query |

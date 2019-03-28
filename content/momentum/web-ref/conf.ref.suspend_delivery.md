@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.supplemental_groups)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tcp_buffer_size.php) |
 
 <a name="conf.ref.suspend_delivery"></a>
@@ -49,5 +51,7 @@ Note that using this option in the global scope also suspends the `#mmove` funct
 
 [binding](conf.ref.binding "binding"), [Section 7.5.2, “`duravip_follow` and the #mmove Binding”](cluster.config.duravip.php#cluster.config.mmove "7.5.2. duravip_follow and the #mmove Binding"), [default_binding](conf.ref.default_binding.php "default_binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.supplemental_groups)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tcp_buffer_size.php) |
 | supplemental_groups  | [Table of Contents](index) |  tcp_buffer_size |

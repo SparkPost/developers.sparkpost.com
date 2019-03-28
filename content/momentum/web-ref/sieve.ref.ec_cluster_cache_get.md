@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ceil)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_cluster_cache_set) |
 
 <a name="sieve.ref.ec_cluster_cache_get"></a>
@@ -27,5 +29,8 @@ $value = ec_cluster_cache_get "mycache" "mykey";
 ec_log "mykey: ${value}";
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ceil)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_cluster_cache_set) |
 | ec_ceil  | [Table of Contents](index) |  ec_cluster_cache_set |

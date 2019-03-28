@@ -22,6 +22,8 @@ Components that support high availability and fault tolerance include the follow
 
     The **cidr_server** queries the data created by an as_logger module and displays the result in the cluster console. The **cidr_server** and as_logger can be configured to log data to a SAN. Locking semantics must be checked.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.listeners)  | [Up](cluster) |  [Next](cluster.riak.configuration) |
 | 16.5. Cluster-specific Listeners  | [Table of Contents](index) |  16.7. Configuring Riak in a Cluster |
 

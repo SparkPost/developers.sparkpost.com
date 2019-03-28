@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.filters)  | Chapter 3. Using the Web Console |  [Next](web3.paths_page) |
 
 ## 3.6. The Reporting Page
@@ -354,5 +356,8 @@ The Adaptive Delivery summary statistics report is as follows:
 
 ![Summary statistics](images/web3/ad_report_summary.jpg)
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.filters)  | [Up](web3) |  [Next](web3.paths_page) |
 | 3.5. Filtering  | [Table of Contents](index) |  3.7. The Paths Page |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.snmpTrap)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.unlock) |
 
 <a name="lua.ref.msys.type"></a>
@@ -17,6 +19,8 @@ Returns the type name of the supplied parameter, just like the built-in Lua `typ
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.snmpTrap)  | [Up](lua.function.details) |  [Next](lua.ref.msys.unlock) |
 | msys.snmpTrap  | [Table of Contents](index) |  msys.unlock |
 

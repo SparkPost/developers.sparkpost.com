@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.ports)  | Chapter 1. Installation |  [Next](install.prepare.php) |
 
 ## 1.3. Security Considerations
@@ -79,5 +81,7 @@ binding "bindingTLS" {
 
 If you are required to implement Perfect Forward Secrecy within the context of SMTPTLS, you can do so by forcing the use of the Diffie Hellman (DHE) ciphers using ephemeral key exchange. Momentum 3.6.6 has two options for enabling these ciphers: [tls_dhparams_file](conf.ref.tls_dhparams_file "tls_dhparams_file") and [tls_enable_dhe_ciphers](conf.ref.tls_enable_dhe_ciphers.php "tls_enable_dhe_ciphers").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.ports)  | [Up](install.php) |  [Next](install.prepare.php) |
 | 1.2. Ports Used by Momentum  | [Table of Contents](index) |  1.4. Preparing the System |

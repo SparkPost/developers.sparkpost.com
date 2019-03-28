@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](disclaimer)  | Part III. Appendices |  [Next](copyright.ack.php) |
 ## Copyrights
 **Table of Contents**
@@ -32,5 +34,7 @@ Copyright © 1994-2008 Lua.org, PUC-Rio.
 Copyright © 2001-2008 Kannel Group. Copyright © 1998-2001 WapIT Ltd. All rights reserved.
 Copyright © 2000 - 2006 by Michal Zalewski <lcamtuf@coredump.cx>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](disclaimer)  | [Up](p.appendices.php) |  [Next](copyright.ack.php) |
 | Appendix H. Disclaimer  | [Table of Contents](index) |  I.1. Acknowledgements |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mime_parse_large_messages_during_reception)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.mx_failures_fallback_to_a.php) |
 
 <a name="conf.ref.min_dns_ttl"></a>
@@ -24,5 +26,7 @@ min_dns_ttl is valid in the global scope.
 
 [max_dns_ttl](conf.ref.max_dns_ttl "max_dns_ttl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mime_parse_large_messages_during_reception)  | [Up](conf.ref.files.php) |  [Next](conf.ref.mx_failures_fallback_to_a.php) |
 | mime_parse_large_messages_during_reception  | [Table of Contents](index) |  mx_failures_fallback_to_a |

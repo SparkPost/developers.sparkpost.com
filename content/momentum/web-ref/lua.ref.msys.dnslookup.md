@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.config)  | 15.2. Lua Functions |  [Next](lua.ref.msys.expandMacro.php) |
 
 <a name="lua.ref.msys.dnslookup"></a>
@@ -80,5 +82,7 @@ Because this function is in the `msys` namespace, an explicit `require('msys')` 
 
 [dns_cache](console_commands.dns_cache "dns_cache").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.config)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.expandMacro.php) |
 | msys.config  | [Table of Contents](index) |  msys.expandMacro |

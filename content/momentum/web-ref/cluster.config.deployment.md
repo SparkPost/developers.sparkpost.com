@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.mbus)  | Chapter 7. Clustering |  [Next](cluster.config.duravip.php) |
 
 ## 7.4. Cluster Deployment
@@ -12,5 +14,7 @@ Once you are happy with your configuration, you will commit it to the ecconfigd 
 
 Bringing the MTA node online is then a simple matter of specifying the name of the subcluster that you'd like the MTA node to belong to and the installer will bootstrap that node, pull the configuration files and start services for you.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.mbus)  | [Up](cluster.php) |  [Next](cluster.config.duravip.php) |
 | 7.3. Message Bus  | [Table of Contents](index) |  7.5. DuraVIP™: IP Fail over |

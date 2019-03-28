@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_certificate)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_dhparams_file.php) |
 
 <a name="conf.ref.tls_ciphers"></a>
@@ -29,5 +31,7 @@ To specify a number of different ciphers, use the following syntax: `TLS_Ciphers
 
 `tls_ciphers` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_certificate)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_dhparams_file.php) |
 | tls_certificate  | [Table of Contents](index) |  tls_dhparams_file |

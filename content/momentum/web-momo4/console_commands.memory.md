@@ -150,6 +150,8 @@ The System RSS represents the current resident set size as seen by the underlyin
 
 For more information about memory as it relates to the C API see [Memory Functions](https://support.messagesystems.com/docs/web-c-api/memory).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.mailq)  | [Up](console.cmds.ref) |  [Next](console_commands.message_details) |
 | mailq  | [Table of Contents](index) |  message details |
 

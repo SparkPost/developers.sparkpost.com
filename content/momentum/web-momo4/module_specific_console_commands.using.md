@@ -34,6 +34,8 @@ Singleton module commands are executed by using the module scope name followed b
 
 For a list of module-specific console commands, see [Chapter 67, *Console Commands Summary*](console_commands "Chapter 67. Console Commands Summary") .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.console-commands)  | [Up](operations) |  [Next](modules.options.console) |
 | 37.2. Console Commands  | [Table of Contents](index) |  37.4. Setting and Getting Module Options from the Console |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_domains)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.remote_smtp_port.php) |
 
 <a name="conf.ref.relay_hosts"></a>
@@ -66,5 +68,7 @@ Note that as of version 3.0, the Relay_Hosts option in the global scope follows 
 
 [Open_Relay](ecelerity.conf#ecelerity.conf3.listener.options.open_relay)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_domains)  | [Up](conf.ref.files.php) |  [Next](conf.ref.remote_smtp_port.php) |
 | relay_domains  | [Table of Contents](index) |  remote_smtp_port |

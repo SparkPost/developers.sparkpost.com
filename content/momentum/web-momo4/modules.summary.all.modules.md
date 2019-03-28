@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.summary_table)  | Part X. Reference |  [Next](config.options.summary) |
 
 ## Chapter 65. Modules Summary
@@ -98,6 +100,8 @@ All modules are listed alphabetically with a brief description. Singleton module
 | [Section 71.72, “tls_macros – TLS-related Logging”](tls_macros "71.72. tls_macros – TLS-related Logging") | 4.0 | Provide several macros supporting custom logging of TLS-related data |   |   |   |   |
 | [Section 71.73, “url_ripper – URL Extraction”](modules.url_ripper "71.73. url_ripper – URL Extraction") | 4.0 | A toolkit for DNS-based content correlation |   |   |  ✓ |   |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.summary_table)  | [Up](p.reference) |  [Next](config.options.summary) |
 | Chapter 64. Lua Functions Summary  | [Table of Contents](index) |  Chapter 66. Configuration Options Summary |
 

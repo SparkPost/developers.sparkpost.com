@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.root_and_vertica_dba)  | Chapter 6. Before You Begin |  [Next](byb.config_vertica_services) |
 
 ## 6.11. Redefining Ephemeral Ports
@@ -13,6 +15,8 @@ Confirm the new port range:
 
 If you are installing Momentum in AWS, do not use ephemeral disks in your production environment as this can potentially cause a loss of messages.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.root_and_vertica_dba)  | [Up](before_you_begin) |  [Next](byb.config_vertica_services) |
 | 6.10. Creating `root` and `vertica_dba` Accounts  | [Table of Contents](index) |  6.12. Configuring Locale |
 

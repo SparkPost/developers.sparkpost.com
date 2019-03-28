@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_binding)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.set_variable.php) |
 
 <a name="lua.ref.msys.policyeditor.set_binding_group"></a>
@@ -34,5 +36,7 @@ The defined parameter for `params` is:
 
 [msys.policyeditor.set_binding](lua.ref.msys.policyeditor.set_binding "msys.policyeditor.set_binding")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.set_binding)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.set_variable.php) |
 | msys.policyeditor.set_binding  | [Table of Contents](index) |  msys.policyeditor.set_variable |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sendmail_logger)  | Chapter 14. Modules Reference |  [Next](modules.sievelib) |
 
 ## 14.64. sieve – The Sieve Module
@@ -242,5 +244,8 @@ Changes made here do not automatically purge the cache; and existing cached item
 
 Use the syntax shown above to replace the **sieve set *`option`***                and **sieve unset *`option`***                  commands that were available in version 2.2.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sendmail_logger)  | [Up](modules) |  [Next](modules.sievelib) |
 | 14.63. sendmail_logger – Sendmail-Compatible Logging  | [Table of Contents](index) |  14.65. sievelib – The sievelib Module |

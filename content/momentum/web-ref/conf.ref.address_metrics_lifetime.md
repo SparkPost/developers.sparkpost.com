@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.address_metrics_cleanse_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.alias_schemes.php) |
 
 <a name="conf.ref.address_metrics_lifetime"></a>
@@ -26,5 +28,7 @@ Address_Metrics_Lifetime is valid in the global scope.
 
 [address_metrics_cleanse_interval](conf.ref.address_metrics_cleanse_interval "address_metrics_cleanse_interval")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.address_metrics_cleanse_interval)  | [Up](conf.ref.files.php) |  [Next](conf.ref.alias_schemes.php) |
 | address_metrics_cleanse_interval  | [Table of Contents](index) |  alias_schemes |

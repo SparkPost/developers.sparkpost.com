@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.conntrol)  | Chapter 14. Modules Reference |  [Next](modules.custom_bounce_logger.php) |
 
 ## 14.22. csapi – The Content Scanning API Module
@@ -499,5 +501,7 @@ LiveUpdate will log its progress to `/opt/Symantec/LiveUpdate/liveupdt.log`. Mon
 
 LiveUpdate will download updates and unpack them under `/tmp`. Note that `/tmp` must have at least 3 GB of free space. Otherwise, LiveUpdate will fail and not be able to download and apply new updates. `/opt/Symantec/LiveUpdate/liveupdt.log` will contain an error when there is not enough disk space to download and unpack the updates.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.conntrol)  | [Up](modules.php) |  [Next](modules.custom_bounce_logger.php) |
 | 14.21. conntrol – Fine-Grained Connection Control  | [Table of Contents](index) |  14.23. custom_bounce_logger – Custom Bounce Logging |

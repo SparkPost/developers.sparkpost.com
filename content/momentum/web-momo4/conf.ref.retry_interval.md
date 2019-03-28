@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_replace)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.rfc2821_allow_whitespace_in_envelope) |
 
 <a name="conf.ref.retry_interval"></a>
@@ -26,6 +28,8 @@ retry_interval is valid in the binding, binding_group, domain and global scopes.
 
 [message_expiration](conf.ref.message_expiration "message_expiration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.response_transcode_replace)  | [Up](config.options.ref) |  [Next](conf.ref.rfc2821_allow_whitespace_in_envelope) |
 | response_transcode_replace  | [Table of Contents](index) |  rfc2821_allow_whitespace_in_envelope |
 

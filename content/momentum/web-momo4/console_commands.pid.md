@@ -19,6 +19,8 @@ This command shows the process id of the running Momentum instance.
 481
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.paniclog)  | [Up](console.cmds.ref) |  [Next](console_commands.rebind) |
 | paniclog  | [Table of Contents](index) |  rebind |
 

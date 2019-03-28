@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.complete_setup_rolling)  | Part II. Installing Momentum |  [Next](install.post-install.config) |
 ## Chapter 12. Post-Installation
 **Table of Contents**
@@ -26,5 +28,7 @@ See the specific module documentation for more information.
 *   Symantec Brightmail™ content scanning support – This package checks inbound content against a Symantec Brightmail AntiSpam content server. Only install this module if you have a license from Symantec. For more information, see [Section 71.14, “brightmail – Symantec Brightmail™ Content Scanning Support”](modules.brightmail "71.14. brightmail – Symantec Brightmail™ Content Scanning Support").
 *   Ecelerity Developer Tools – You only need to install these tools if you are compiling your own extensions on the machine on which it is installed. Files related to this package are found under the `/opt/msys/ecelerity` directory.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.complete_setup_rolling)  | [Up](p.installing) |  [Next](install.post-install.config) |
 | 11.17. Complete the Software Set Up  | [Table of Contents](index) |  12.2. Reviewing Configuration Files |

@@ -7,7 +7,7 @@ spool import — import an alternative spool
 
 ## Synopsis
 
-spool import *`/path/to/spoolbase [concurrency] [suppress_trace_headers]`* 
+spool import *`/path/to/spoolbase [concurrency] [suppress_trace_headers]`*
 
 <a name="idp12936112"></a>
 ## Description
@@ -31,6 +31,8 @@ You can configure the ec_logger module to log import events as described in [Sec
 
 [spool import_poll](console_commands.spool_import_poll "spool import_poll")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.sp_async)  | [Up](console.cmds.ref) |  [Next](console_commands.spool_import_poll) |
 | sp_async  | [Table of Contents](index) |  spool import_poll |
 

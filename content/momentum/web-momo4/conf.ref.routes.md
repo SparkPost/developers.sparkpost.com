@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_trace_headers)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.rset_timeout) |
 
 <a name="conf.ref.routes"></a>
@@ -49,7 +51,7 @@ A fourth option is a protocol string of the form "smtp://ip?pref=P&ttl=T&port=O&
 When a new connection is opened several factors are considered when deciding which MX to connect to. Momentum never uses a higher preference MX if a lower preference MX is below its connection limit and is considered reachable. If there are several MXs of the same (lowest available) preference, Momentum attempts to open connections to all of them evenly, but when it hits a limit with a specific MX, it will stop opening connections to that MX. Momentum does not try to balance connections proportional to an MX's limit. Also, this does not guarantee that traffic will be equal through all equal preference MXs, since individual MX performance and network performance to each MX will affect how fast messages are able to go out to it. Given these caveats, load balancing can be achieved using a configuration such as the following:
 
 ```
-Routes = ( 
+Routes = (
            "smtp://10.0.11.7?pref=10" "smtp://10.0.11.8?pref=10"
            "smtp://10.0.11.10?pref=10" "smtp://10.0.11.13?pref=10"
            "smtp://10.0.11.56?pref=10"
@@ -101,6 +103,8 @@ The accepted convention is to require (in circumstances where a configuration pa
 
 [gateway](conf.ref.gateway "gateway")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rfc2822_trace_headers)  | [Up](config.options.ref) |  [Next](conf.ref.rset_timeout) |
 | rfc2822_trace_headers  | [Table of Contents](index) |  rset_timeout |
 

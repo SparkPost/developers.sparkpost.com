@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_variable)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.send_email.php) |
 
 <a name="lua.ref.msys.policyeditor.pcre_match"></a>
@@ -38,5 +40,7 @@ Defined parameters for `params` are:
 
 [Section 3.10.5, “Using Regular Expressions with the Policy Editor”](web3.policy.editor#web3.policy.editor.regex "3.10.5. Using Regular Expressions with the Policy Editor")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_variable)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.send_email.php) |
 | msys.policyeditor.get_variable  | [Table of Contents](index) |  msys.policyeditor.send_email |

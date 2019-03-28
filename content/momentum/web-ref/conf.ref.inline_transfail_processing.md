@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.initial_hash_buckets)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.keep_message_dicts_in_memory.php) |
 
 <a name="conf.ref.inline_transfail_processing"></a>
@@ -32,5 +34,7 @@ inline_transfail_processing is valid in the global scope.
 
 [transfail_drain_rate](conf.ref.transfail_drain_rate "transfail_drain_rate") and [max_resident_transfails](conf.ref.max_resident_transfails.php "max_resident_transfails")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.initial_hash_buckets)  | [Up](conf.ref.files.php) |  [Next](conf.ref.keep_message_dicts_in_memory.php) |
 | initial_hash_buckets  | [Table of Contents](index) |  keep_message_dicts_in_memory |

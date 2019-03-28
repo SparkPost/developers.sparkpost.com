@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.commtouch)  | Chapter 14. Modules Reference |  [Next](modules.conntrol.php) |
 
 ## 14.20. compress_spool – Dynamic Spool Compression
@@ -50,5 +52,7 @@ compress_spool {
 
 bzip2 compression is also available. The "bzip2io {}" stanza is not necessary as it loads on demand when the compress spool module attempts to use the "bzip2" io wrapper.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.commtouch)  | [Up](modules.php) |  [Next](modules.conntrol.php) |
 | 14.19. commtouch_ctasd – Commtouch_ctasd Module  | [Table of Contents](index) |  14.21. conntrol – Fine-Grained Connection Control |

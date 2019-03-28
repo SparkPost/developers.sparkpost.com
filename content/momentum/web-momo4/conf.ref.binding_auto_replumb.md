@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.binding_auto_replumb_interval) |
 
 <a name="conf.ref.binding_auto_replumb"></a>
@@ -27,6 +29,8 @@ The default value is `disabled`.
 
 [binding_auto_replumb_interval](conf.ref.binding_auto_replumb_interval "binding_auto_replumb_interval")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding)  | [Up](config.options.ref) |  [Next](conf.ref.binding_auto_replumb_interval) |
 | binding  | [Table of Contents](index) |  binding_auto_replumb_interval |
 

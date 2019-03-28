@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.license)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.local_changes_file) |
 
 <a name="conf.ref.lmtp_port"></a>
@@ -24,6 +26,8 @@ lmtp_port is valid in the binding, binding_group, domain and global scopes.
 
 [delivery_method](conf.ref.delivery_method "delivery_method")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.license)  | [Up](config.options.ref) |  [Next](conf.ref.local_changes_file) |
 | license  | [Table of Contents](index) |  local_changes_file |
 

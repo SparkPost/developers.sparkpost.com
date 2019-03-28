@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.compute_delivery_status_string)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.rfc3464.extract_delivery_status) |
 
 <a name="lua.ref.msys.rfc3464.create_mdn"></a>
@@ -21,6 +23,8 @@ Generates an MDN from the input `msg`. `action` can be one of msys.core.FAILED, 
 
 Enable this function with the statement `require('msys.rfc3464');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.compute_delivery_status_string)  | [Up](lua.function.details) |  [Next](lua.ref.msys.rfc3464.extract_delivery_status) |
 | msys.rfc3464.compute_delivery_status_string  | [Table of Contents](index) |  msys.rfc3464.extract_delivery_status |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.msg_gen.conf)  | Part III. Configuring Momentum |  [Next](using_domainkeys) |
 
 ## Chapter 21. Enforcing REST API/UI User Authentication
@@ -60,6 +62,8 @@ To disable user authentication, do the following:
 
     Once Nginx has been turned back on, your users should be able to access all of the REST API and web-based UI without having to supply credentials or API keys.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.msg_gen.conf)  | [Up](p.configuration) |  [Next](using_domainkeys) |
 | 20.2. `msg_gen.conf` File  | [Table of Contents](index) |  Chapter 22. Using Yahoo! DomainKeys |
 

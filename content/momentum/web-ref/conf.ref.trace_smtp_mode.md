@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_verify_mode)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.transfail_drain_rate.php) |
 
 <a name="conf.ref.trace_smtp_mode"></a>
@@ -28,5 +30,7 @@ trace_smtp_mode is valid in the global scope.
 
 [trace smtp](console_commands.trace_smtp "trace smtp")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_verify_mode)  | [Up](conf.ref.files.php) |  [Next](conf.ref.transfail_drain_rate.php) |
 | tls_verify_mode  | [Table of Contents](index) |  transfail_drain_rate |

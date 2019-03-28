@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_file_descriptors)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.server_reserve_outbound_connections.php) |
 
 <a name="conf.ref.server_max_outbound_connections"></a>
@@ -36,5 +38,7 @@ server_max_outbound_connections is valid in the binding, binding_group and globa
 
 [Section 1.5, “Operating System Specific Preparation”](install.os-specific "1.5. Operating System Specific Preparation")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_file_descriptors)  | [Up](conf.ref.files.php) |  [Next](conf.ref.server_reserve_outbound_connections.php) |
 | server_max_file_descriptors  | [Table of Contents](index) |  server_reserve_outbound_connections |

@@ -60,6 +60,8 @@ total messages sent during the life of the domain record
 
 The row detailing the totals represents the totals across *all* domains, not just those listed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.counter)  | [Up](console.cmds.ref) |  [Next](console_commands.dig) |
 | counter  | [Table of Contents](index) |  dig |
 

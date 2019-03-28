@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier)  | Chapter 14. Modules Reference |  [Next](modules.bounce_logger.php) |
 
 ## 14.12. bounce_classifier_override – The Bounce Classifier Override Module
@@ -142,5 +144,7 @@ You can also use Lua to classify bounces at runtime. For more information see [m
 
 [Table 9.7, “logging options”](options-summary#logging-options-table "Table 9.7. logging options"), [Section 14.44, “Live Bounce Updates – Module”](modules.live.bounce.updates.php "14.44. Live Bounce Updates – Module") and [Table 9.3, “bounce options”](options-summary.php#bounce-options-table "Table 9.3. bounce options")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.bounce_classifier)  | [Up](modules.php) |  [Next](modules.bounce_logger.php) |
 | 14.11. bounce_classifier – Bounce Classifier  | [Table of Contents](index) |  14.13. bounce_logger – Momentum-Style Bounce Logging |

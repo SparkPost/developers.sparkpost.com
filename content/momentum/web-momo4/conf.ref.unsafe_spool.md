@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unlink_on_spool_in_failure)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.use_iflist_cache) |
 
 <a name="conf.ref.unsafe_spool"></a>
@@ -21,6 +23,8 @@ The default value is `false`.
 
 `_unsafe_spool` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.unlink_on_spool_in_failure)  | [Up](config.options.ref) |  [Next](conf.ref.use_iflist_cache) |
 | unlink_on_spool_in_failure  | [Table of Contents](index) |  use_iflist_cache |
 

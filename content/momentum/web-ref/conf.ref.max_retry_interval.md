@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_retries)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_timed_events_per_iter.php) |
 
 <a name="conf.ref.max_retry_interval"></a>
@@ -47,5 +49,7 @@ max_retry_interval is valid in the binding, binding_group, domain and global sco
 
 [retry_interval](conf.ref.retry_interval "retry_interval"), [max_retries](conf.ref.max_retries.php "max_retries")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_retries)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_timed_events_per_iter.php) |
 | max_retries  | [Table of Contents](index) |  max_timed_events_per_iter |

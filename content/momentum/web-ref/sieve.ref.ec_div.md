@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_disconnect)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_dk_responsible_domain) |
 
 <a name="sieve.ref.ec_div"></a>
@@ -26,5 +28,8 @@ ec_log "${a} / ${b} is ${div}";
 #div is -2.000000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_disconnect)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_dk_responsible_domain) |
 | ec_disconnect  | [Table of Contents](index) |  ec_dk_responsible_domain |

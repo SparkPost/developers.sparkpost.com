@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.only_use_best_mx_for_relay_domains)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.outbound_throttle_connections.php) |
 
 <a name="conf.ref.opendkim_sign"></a>
@@ -32,5 +34,7 @@ You cannot sign using both OpenDKIM and DKIM; you must use one or the other.
 
 [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim "14.27. dkim – DomainKeys Identified Mail Signatures") and [Section 14.49, “opendkim – OpenDKIM module”](modules.opendkim.php "14.49. opendkim – OpenDKIM module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.only_use_best_mx_for_relay_domains)  | [Up](conf.ref.files.php) |  [Next](conf.ref.outbound_throttle_connections.php) |
 | only_use_best_mx_for_relay_domains  | [Table of Contents](index) |  outbound_throttle_connections |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_change_endian)  | 11.2. Executable Commands |  [Next](executable.jlogctl.php) |
 
 <a name="executable.jlog_sanity_check"></a>
@@ -20,5 +22,7 @@ The second argument is the path to the jlog you want to check.
 
 This command should be run as `ecuser`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_change_endian)  | [Up](exe.commands.details.php) |  [Next](executable.jlogctl.php) |
 | jlog_change_endian  | [Table of Contents](index) |  jlogctl |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.skip_hosts)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.soft_bounce_drain_rate) |
 
 <a name="conf.ref.snmp"></a>
@@ -216,6 +218,8 @@ Changing the value of SNMP options at runtime requires restarting the ecelerity 
 
 SNMP directives are valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.skip_hosts)  | [Up](config.options.ref) |  [Next](conf.ref.soft_bounce_drain_rate) |
 | skip_hosts  | [Table of Contents](index) |  soft_bounce_drain_rate |
 

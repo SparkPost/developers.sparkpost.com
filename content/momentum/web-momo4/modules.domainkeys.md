@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dnsbuf)  | Chapter 71. Modules Reference |  [Next](modules.ds_core) |
 
 ## 71.28. domainkeys – Yahoo! DomainKeys
@@ -211,6 +213,8 @@ This command flushes all entries from the keycache. If you alter the private key
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dnsbuf)  | [Up](modules) |  [Next](modules.ds_core) |
 | 71.27. dnsbuf – Dynamically Set the DNS UDP Buffer Size  | [Table of Contents](index) |  71.29. ds_core - Datasource Query Core |
 

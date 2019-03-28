@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ecelerity.conf)  | Chapter 2. Configuration |  [Next](conf.ldaps.php) |
 
 ## 2.2. Authentication, Authorization and Accounting
@@ -495,5 +497,7 @@ Authorization {
 
 Different Control_listener authorization or authentication configurations on the nodes and the manager can result in erratic behavior.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ecelerity.conf)  | [Up](conf.php) |  [Next](conf.ldaps.php) |
 | 2.1. The `ecelerity.conf` File  | [Table of Contents](index) |  2.3. Setting Up Active Directory Authentication With Momentum 3.2.2 |

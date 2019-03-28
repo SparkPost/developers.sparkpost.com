@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_spool_space)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_tarpit) |
 
 <a name="sieve.ref.ec_sub"></a>
@@ -26,5 +28,8 @@ ec_log " ${a} - ${b} is ${sub}";
 #sub is -12.540000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_spool_space)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_tarpit) |
 | ec_spool_space  | [Table of Contents](index) |  ec_tarpit |

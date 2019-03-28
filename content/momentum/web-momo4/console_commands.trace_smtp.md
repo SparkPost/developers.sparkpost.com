@@ -49,6 +49,8 @@ Removed smtp tracer #1
 
 To set the permissions of smtp trace files see [trace_smtp_mode](conf.ref.trace_smtp_mode "trace_smtp_mode").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.tls)  | [Up](console.cmds.ref) |  [Next](console_commands.unlink_stats) |
 | tls  | [Table of Contents](index) |  unlink stats |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_file)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.mail_queue_check_vm_interval) |
 
 <a name="conf.ref.local_changes_only"></a>
@@ -28,6 +30,8 @@ local_changes_only is valid in the global scope.
 
 [local_changes_file](conf.ref.local_changes_file "local_changes_file")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_file)  | [Up](config.options.ref) |  [Next](conf.ref.mail_queue_check_vm_interval) |
 | local_changes_file  | [Table of Contents](index) |  mail_queue_check_vm_interval |
 

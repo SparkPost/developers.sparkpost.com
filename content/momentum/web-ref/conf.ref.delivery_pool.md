@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delivery_method)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.delivery_response_timeout.php) |
 
 <a name="conf.ref.delivery_pool"></a>
@@ -51,5 +53,7 @@ Note that the `event_loop` option within the listener scope ensures that *recept
 
 [eventloop](conf.ref.eventloop "eventloop") and [Section 2.4, “Configuring for Multiple Event Loops in Momentum 3.6”](conf.multi-core.php "2.4. Configuring for Multiple Event Loops in Momentum 3.6")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delivery_method)  | [Up](conf.ref.files.php) |  [Next](conf.ref.delivery_response_timeout.php) |
 | delivery_method  | [Table of Contents](index) |  delivery_response_timeout |

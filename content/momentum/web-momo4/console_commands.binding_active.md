@@ -72,6 +72,8 @@ The row detailing the totals represents the totals across *all* domains on the g
 
 [binding delayed](console_commands.binding_delayed "binding delayed")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_roles_list)  | [Up](console.cmds.ref) |  [Next](console_commands.binding_delayed) |
 | authz roles list  | [Table of Contents](index) |  binding delayed |
 

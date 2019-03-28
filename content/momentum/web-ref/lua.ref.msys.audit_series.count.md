@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit_series.add)  | 15.2. Lua Functions |  [Next](lua.ref.msys.audit_series.define.php) |
 
 <a name="lua.ref.msys.audit_series.count"></a>
@@ -46,5 +48,7 @@ Enable this function with the statement `require('msys.audit_series');`.
 
 [msys.audit_series.define](lua.ref.msys.audit_series.define "msys.audit_series.define"), [msys.audit_series.add](lua.ref.msys.audit_series.add.php "msys.audit_series.add"), [msys.audit_series.remove_item](lua.ref.msys.audit_series.remove_item.php "msys.audit_series.remove_item"), [Use_IPv6](conf.ref.use_ipv6.php "Use_IPv6"), [Section 14.41, “inbound_audit – Inbound traffic analytics”](modules.inbound_audit.php "14.41. inbound_audit – Inbound traffic analytics")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.audit_series.add)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.audit_series.define.php) |
 | msys.audit_series.add  | [Table of Contents](index) |  msys.audit_series.define |

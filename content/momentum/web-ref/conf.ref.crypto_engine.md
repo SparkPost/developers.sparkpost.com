@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.control_client_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.crypto_lock_method.php) |
 
 <a name="conf.ref.crypto_engine"></a>
@@ -26,5 +28,7 @@ The example below shows how to configure Momentum to use the pkcs12 engine.
 
 crypto_engine is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.control_client_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.crypto_lock_method.php) |
 | control_client_timeout  | [Table of Contents](index) |  crypto_lock_method |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_recipients_per_batch)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_resident_active_queue.php) |
 
 <a name="conf.ref.max_recipients_per_connection"></a>
@@ -24,5 +26,7 @@ max_recipients_per_connection is valid in the binding, binding_group, domain, li
 
 [max_deliveries_per_connection](conf.ref.max_deliveries_per_connection "max_deliveries_per_connection")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_recipients_per_batch)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_resident_active_queue.php) |
 | max_recipients_per_batch  | [Table of Contents](index) |  max_resident_active_queue |

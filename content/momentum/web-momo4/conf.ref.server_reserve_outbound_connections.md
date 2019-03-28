@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_outbound_connections)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.signing_stats) |
 
 <a name="conf.ref.server_reserve_outbound_connections"></a>
@@ -30,6 +32,8 @@ server_reserve_outbound_connections is valid in the global scope.
 
 [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_max_outbound_connections)  | [Up](config.options.ref) |  [Next](conf.ref.signing_stats) |
 | server_max_outbound_connections  | [Table of Contents](index) |  signing_stats |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_id)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_num_retries) |
 
 <a name="sieve.ref.ec_get_message_mailfrom"></a>
@@ -27,5 +29,8 @@ if not ec_test :contains "${mfrom}" "MAIL FROM:<bar@bar.com>" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_id)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_num_retries) |
 | ec_get_message_id  | [Table of Contents](index) |  ec_get_message_num_retries |

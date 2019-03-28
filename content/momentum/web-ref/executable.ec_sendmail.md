@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rt_stats2)  | 11.2. Executable Commands |  [Next](executable.ec_show.php) |
 
 <a name="executable.ec_sendmail"></a>
@@ -60,5 +62,7 @@ Scanning the message for recipient(s). Lines starting with To:, Cc: or Bcc: will
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_rt_stats2)  | [Up](exe.commands.details.php) |  [Next](executable.ec_show.php) |
 | ec_rt_stats2  | [Table of Contents](index) |  ec_show |

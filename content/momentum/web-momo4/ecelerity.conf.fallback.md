@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.options)  | Chapter 15. Configuration Overview |  [Next](listeners) |
 
 ## 15.3. Configuration Scopes and Fallback
@@ -18,7 +20,7 @@ From within the console, you can determine the value of an option within a speci
 
 For example, to determine the value of `Enable_Authentication` within the scope of a TCP/IP Listen stanza within a Control_Listener, issue the command:
 
-**`config eval Control_Listener Listen 127.0.0.1:2025 Enable_Authentication`**                                                                   
+**`config eval Control_Listener Listen 127.0.0.1:2025 Enable_Authentication`**
 
 If `Enable_Authentication` is set to `true` within the Control_Listener scope and not overridden in the TCP/IP Listen stanza, its value will be the fallback value of `true`.
 
@@ -137,6 +139,8 @@ In summary, the value that a configuration option assumes, in order of decreasin
 
 *   Global setting
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.options)  | [Up](conf.overview) |  [Next](listeners) |
 | 15.2. Configuration Options  | [Table of Contents](index) |  15.4. Listeners |
 

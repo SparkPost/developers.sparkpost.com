@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_unlink)  | 15.2. Lua Functions |  [Next](sieve.ref3.php) |
 
 <a name="lua.ref.xml.parsexml"></a>
@@ -36,5 +38,7 @@ local child = node:addchild("item")
 
 [doc:root](lua.ref.xml.doc_root "doc:root")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_unlink)  | [Up](lua.function.details.php) |  [Next](sieve.ref3.php) |
 | node:unlink  | [Table of Contents](index) |  Chapter 16. Sieve++ Function Reference |

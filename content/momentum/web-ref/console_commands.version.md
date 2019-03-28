@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.unlink_stats)  | 12.2. System Console Commands |  [Next](console_commands.write_config.php) |
 
 <a name="console_commands.version"></a>
@@ -34,5 +36,7 @@ As of version 3.0.23, this command also displays the product type:
 ##############################################
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.unlink_stats)  | [Up](console.commands.non-module.php) |  [Next](console_commands.write_config.php) |
 | unlink stats  | [Table of Contents](index) |  write config |

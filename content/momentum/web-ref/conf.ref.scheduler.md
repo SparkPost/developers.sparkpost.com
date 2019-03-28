@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rset_timeout)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.scope_max_outbound_connections.php) |
 
 <a name="conf.ref.scheduler"></a>
@@ -21,5 +23,7 @@ Changing the value of this option at runtime requires restarting the ecelerity p
 
 `scheduler` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rset_timeout)  | [Up](conf.ref.files.php) |  [Next](conf.ref.scope_max_outbound_connections.php) |
 | rset_timeout  | [Table of Contents](index) |  scope_max_outbound_connections |

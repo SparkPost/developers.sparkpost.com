@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ldaps)  | Chapter 2. Configuration |  [Next](conf.initial.conf.php) |
 
 ## 2.4. Configuring for Multiple Event Loops in Momentum 3.6
@@ -33,7 +35,7 @@ delivery_pool = "pool"
 maintainer_pool = "pool"
 
 esmtp_listener {
-  # associate this listener with the eventloop 
+  # associate this listener with the eventloop
   event_loop = "pool"
   ...
 
@@ -58,5 +60,7 @@ The new options introduced in version 3.6 to support multiple event loops config
 
 For more information follow the preceding links.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ldaps)  | [Up](conf.php) |  [Next](conf.initial.conf.php) |
 | 2.3. Setting Up Active Directory Authentication With Momentum 3.2.2  | [Table of Contents](index) |  2.5. Options that Must Change |

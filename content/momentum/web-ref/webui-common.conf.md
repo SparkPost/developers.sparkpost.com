@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.adaptive_backstore_leveldb) |
 
 <a name="webui-common.conf"></a>
@@ -175,5 +177,8 @@ If you want to plug into an external authentication system that is defined in an
 
 [Section 14.30, “ds_core – Datasource Query Core”](modules.ds_core "14.30. ds_core – Datasource Query Core")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf)  | [Up](conf.ref.files) |  [Next](conf.ref.adaptive_backstore_leveldb) |
 | ecelerity.conf  | [Table of Contents](index) |  adaptive_backstore_leveldb |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_id)  | 12.2. System Console Commands |  [Next](console_commands.binding_active.php) |
 
 <a name="console_commands.authz_roles_list"></a>
@@ -29,5 +31,7 @@ Execute this command and you should see output similar to the following:
 
 [authz id](console_commands.authz_id "authz id")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_id)  | [Up](console.commands.non-module.php) |  [Next](console_commands.binding_active.php) |
 | authz id  | [Table of Contents](index) |  binding active |

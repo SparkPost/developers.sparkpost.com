@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.stats_producer)  | Chapter 14. Modules Reference |  [Next](modules.syslog_io) |
 
 ## 14.72. suppress_spool – Deferred Message Spooling
@@ -35,5 +37,8 @@ The `_unsafe_spool` line disables Momentum's internal protections to guarantee t
 
 This module is dangerous and can result in data loss if you experience a crash.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.stats_producer)  | [Up](modules) |  [Next](modules.syslog_io) |
 | 14.71. statp – Stats Producer Module  | [Table of Contents](index) |  14.73. syslog_io – The syslog_io Module |

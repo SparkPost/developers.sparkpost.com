@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.aaa)  | Chapter 2. Configuration |  [Next](conf.multi-core.php) |
 
 ## 2.3. Setting Up Active Directory Authentication With Momentum 3.2.2
@@ -103,7 +105,7 @@ Configuring Momentum's LDAP client needs to be carried out on all nodes in the c
       ...
     ```
 
-2.  Add an identical Control_Listener stanza to the `eccluster.conf` file. *If the `ecelerity.conf` file uses LOGIN authentication then `eccluster.conf` must also use LOGIN authentication.* 
+2.  Add an identical Control_Listener stanza to the `eccluster.conf` file. *If the `ecelerity.conf` file uses LOGIN authentication then `eccluster.conf` must also use LOGIN authentication.*
 
 3.  Back-up `webui-common.conf`:
 
@@ -238,5 +240,7 @@ See [Section 2.3.4, “Debugging Active Directory Authentication”](conf.ldaps
 
 3.  LDAP queries relating to ec_console failures are logged to `/var/log/ecelerity/paniclog.ec`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.aaa)  | [Up](conf.php) |  [Next](conf.multi-core.php) |
 | 2.2. Authentication, Authorization and Accounting  | [Table of Contents](index) |  2.4. Configuring for Multiple Event Loops in Momentum 3.6 |

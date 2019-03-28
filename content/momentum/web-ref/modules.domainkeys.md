@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dnsbuf)  | Chapter 14. Modules Reference |  [Next](modules.ds_core.php) |
 
 ## 14.29. domainkeys – Yahoo! DomainKeys
@@ -324,5 +326,7 @@ This command flushes all entries from the keycache. If you alter the private key
 
 [signing_stats](conf.ref.signing_stats "signing_stats"), [signing_stats](console_commands.signing_stats.php "signing_stats"), [signing_stats reset](console_commands.signing_stats_reset.php "signing_stats reset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.dnsbuf)  | [Up](modules.php) |  [Next](modules.ds_core.php) |
 | 14.28. dnsbuf – Dynamically Set the DNS UDP Buffer Size  | [Table of Contents](index) |  14.30. ds_core – Datasource Query Core |

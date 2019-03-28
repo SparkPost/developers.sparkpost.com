@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding_group)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.body_timeout) |
 
 <a name="conf.ref.blackhole"></a>
@@ -36,6 +38,8 @@ Blackhole is valid in the binding, binding_group, domain and global scopes.
 
 [bounce_behavior](conf.ref.bounce_behavior "bounce_behavior"), [generate_bounces](conf.ref.generate_bounces "generate_bounces")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding_group)  | [Up](config.options.ref) |  [Next](conf.ref.body_timeout) |
 | binding_group  | [Table of Contents](index) |  body_timeout |
 

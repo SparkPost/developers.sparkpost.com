@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_name)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.xml.node_unlink) |
 
 <a name="lua.ref.xml.node_tostring"></a>
@@ -46,6 +48,8 @@ The **`print`** function will automatically convert a node to string so the use 
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_name)  | [Up](lua.function.details) |  [Next](lua.ref.xml.node_unlink) |
 | node:name  | [Table of Contents](index) |  node:unlink |
 

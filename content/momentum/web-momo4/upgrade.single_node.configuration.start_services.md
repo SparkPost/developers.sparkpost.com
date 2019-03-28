@@ -22,6 +22,8 @@
     /etc/init.d/msys-app-metrics-etl start
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.webui)  | [Up](upgrade.single_node) |  [Next](upgrade.single_node.complete_setup) |
 | 10.6. Update Web UI Configuration  | [Table of Contents](index) |  10.8. Complete the Software Set Up |
 

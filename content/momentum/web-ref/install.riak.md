@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.additional.packages)  | Chapter 1. Installation |  [Next](install.standalone.php) |
 
 ## 1.10. Riak Server
@@ -33,5 +35,7 @@ If you answer "no", you will then be asked to join the Riak cluster:
 
 `Type an existing riak node (name or IP) or 'no' to not join at this time.`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.additional.packages)  | [Up](install.php) |  [Next](install.standalone.php) |
 | 1.9. Installing Additional Packages  | [Table of Contents](index) |  1.11. Performing a Stand-alone Installation |

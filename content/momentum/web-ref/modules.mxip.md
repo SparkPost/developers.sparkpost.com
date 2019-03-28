@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.msgc)  | Chapter 14. Modules Reference |  [Next](modules.opendkim) |
 
 ## 14.48. mxip - IP Addresses In MX Records
@@ -99,5 +101,8 @@ mxip
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.msgc)  | [Up](modules) |  [Next](modules.opendkim) |
 | 14.47. msgc – Modules  | [Table of Contents](index) |  14.49. opendkim – OpenDKIM module |

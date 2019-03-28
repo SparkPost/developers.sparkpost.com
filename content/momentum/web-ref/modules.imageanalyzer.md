@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ilf_logger)  | Chapter 14. Modules Reference |  [Next](modules.inbound_audit.php) |
 
 ## 14.40. imageanalyzer – Module
@@ -66,5 +68,7 @@ To determine the results of a scan you need to look at the `image_analyzer_resul
 
 If no suspect images are detected, this context variable is not set.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ilf_logger)  | [Up](modules.php) |  [Next](modules.inbound_audit.php) |
 | 14.39. ilf_logger Module  | [Table of Contents](index) |  14.41. inbound_audit – Inbound traffic analytics |

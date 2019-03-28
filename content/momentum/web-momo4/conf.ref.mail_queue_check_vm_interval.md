@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_only)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.mailerdaemon) |
 
 <a name="conf.ref.mail_queue_check_vm_interval"></a>
@@ -23,6 +25,8 @@ The default value is `60`.
 
 mail_queue_check_vm_interval is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.local_changes_only)  | [Up](config.options.ref) |  [Next](conf.ref.mailerdaemon) |
 | local_changes_only  | [Table of Contents](index) |  mailerdaemon |
 

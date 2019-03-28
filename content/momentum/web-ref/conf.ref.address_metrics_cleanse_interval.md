@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_scope)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.address_metrics_lifetime.php) |
 
 <a name="conf.ref.address_metrics_cleanse_interval"></a>
@@ -26,5 +28,7 @@ Address_Metrics_Cleanse_Interval is valid in the global scope.
 
 [address_metrics_lifetime](conf.ref.address_metrics_lifetime "address_metrics_lifetime")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_scope)  | [Up](conf.ref.files.php) |  [Next](conf.ref.address_metrics_lifetime.php) |
 | adaptive_scope  | [Table of Contents](index) |  address_metrics_lifetime |

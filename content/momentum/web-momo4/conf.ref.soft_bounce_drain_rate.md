@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.snmp)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.spool_mode) |
 
 <a name="conf.ref.soft_bounce_drain_rate"></a>
@@ -26,6 +28,8 @@ The default value is `100`.
 
 [async_bounce_rendering](conf.ref.async_bounce_rendering "async_bounce_rendering")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.snmp)  | [Up](config.options.ref) |  [Next](conf.ref.spool_mode) |
 | SNMP  | [Table of Contents](index) |  spool_mode |
 

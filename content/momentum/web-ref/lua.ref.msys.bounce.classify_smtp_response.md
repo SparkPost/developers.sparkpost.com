@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.bounce.classify)  | 15.2. Lua Functions |  [Next](lua.ref.msys.brightmail.scan.php) |
 
 <a name="lua.ref.msys.bounce.classify_smtp_response"></a>
@@ -46,5 +48,7 @@ Enable this function with the statement `require('msys.bounce');`.
 
 [Section 14.12, “bounce_classifier_override – The Bounce Classifier Override Module”](modules.bounce_classifier_override "14.12. bounce_classifier_override – The Bounce Classifier Override Module"), [msys.bounce.classify](lua.ref.msys.bounce.classify.php "msys.bounce.classify")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.bounce.classify)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.brightmail.scan.php) |
 | msys.bounce.classify  | [Table of Contents](index) |  msys.brightmail.scan |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fbl)  | Chapter 71. Modules Reference |  [Next](modules.http_logger) |
 
 ## 71.36. fingerprint – Host Fingerprinting
@@ -36,6 +38,8 @@ The `max_cache_size` option specifies the maximum size of the cache of common ho
 
 Passive operating system fingerprinting runs as a daemon that Momentum communicates with over a socket, `/tmp/p0fd`. This daemon is started using the command: **/etc/init.d/msys-p0f start** . The fingerprints are all included in the msys-p0f package and are located in `/opt/msys/3rdParty/etc/p0f/`. These fingerprints do not need to be modified.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fbl)  | [Up](modules) |  [Next](modules.http_logger) |
 | 71.35. fbl - Feedback Loop  | [Table of Contents](index) |  71.37. http_logger – HTTP Requests and Responses |
 

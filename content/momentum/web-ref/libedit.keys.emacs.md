@@ -318,5 +318,7 @@
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit)  | [Up](libedit.php) |  [Next](libedit.editor.commands.php) |
 | Appendix G. Key Binding Reference for ec_console  | [Table of Contents](index) |  G.2. Editor Commands |

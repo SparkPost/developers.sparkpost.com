@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transfail_drain_rate)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.umem_reap_interval) |
 
 <a name="conf.ref.transform_8bitmime_content"></a>
@@ -42,6 +44,8 @@ transform_8bitmime_content is valid in the global, binding_group, binding, and d
 
 [send_8bitmime](conf.ref.send_8bitmime "send_8bitmime")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transfail_drain_rate)  | [Up](config.options.ref) |  [Next](conf.ref.umem_reap_interval) |
 | transfail_drain_rate  | [Table of Contents](index) |  umem_reap_interval |
 

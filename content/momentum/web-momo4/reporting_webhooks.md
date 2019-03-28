@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](reporting_metrics)  | Part VIII. Reporting and Engagement Tracking |  [Next](web-ui.webhooks) |
 
 ## Chapter 59. Using Webhooks for Event Data
@@ -12,7 +14,7 @@ You can create webhooks to push data for various types of events. When an event 
 
 To respond quickly to a batch of events, defer any processing until after the 2xx response is made to the webhooks system. Non-2xx errors will be eventually retried. (Avoid retries by listening to http close events. These events will notify when Momentum webhooks timeout. Stopping executing code on the batch that timed out will help overall performance because that batch will be retried.)
 
-**Receiving Event Data Using Webhooks** 
+**Receiving Event Data Using Webhooks**
 
 This section provides instructions to create a webhook using the REST API. It introduces you to the Webhooks API. You will create a webhook for tracking engagement data and generate this data by sending the email that you created in the tutorial on tracking engagement.
 
@@ -66,14 +68,14 @@ Follow these steps to receive event data using webhooks:
 
     If the test POST is successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "id":"*`1cc94ef0-ab17-11e4-b135-0ff9de159aa7`*",
-          "links":[  
-             {  
+          "links":[
+             {
                 "href":"*`http://your.server.domain/api/v1/webhooks/1cc94ef0-ab17-11e4-b135-0ff9de159aa7`*",
                 "rel":"urn.msys.webhooks.webhook",
-                "method":[  
+                "method":[
                    "GET",
                    "PUT"
                 ]
@@ -118,10 +120,12 @@ Follow these steps to receive event data using webhooks:
 
 Congratulations! You have successfully created a webhook using the Webhooks API. In addition to the POST method used in this example, the Webhooks API supports several other methods. You can find more information in the Webhooks API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
-**Managing Webhooks using the UI** 
+**Managing Webhooks using the UI**
 
 You can alos create and manage your webhooks in the web-based UI. For detailed instructions, see [Chapter 60, *Managing Your Webhooks in the UI*](web-ui.webhooks "Chapter 60. Managing Your Webhooks in the UI") .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](reporting_metrics)  | [Up](p.analytics) |  [Next](web-ui.webhooks) |
 | Chapter 58. Using the Metrics API for Reporting  | [Table of Contents](index) |  Chapter 60. Managing Your Webhooks in the UI |
 

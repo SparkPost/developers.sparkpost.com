@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_mmap)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.user.php) |
 
 <a name="conf.ref.use_sendfile"></a>
@@ -28,5 +30,7 @@ use_sendfile is valid in the global scope.
 
 [Use_MMAP](conf.ref.use_mmap "Use_MMAP")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_mmap)  | [Up](conf.ref.files.php) |  [Next](conf.ref.user.php) |
 | Use_MMAP  | [Table of Contents](index) |  user |

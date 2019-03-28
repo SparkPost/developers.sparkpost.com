@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_engine)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.debug_flags.php) |
 
 <a name="conf.ref.crypto_lock_method"></a>
@@ -23,5 +25,7 @@ This option affects how thread-safe locking is performed. You should not need to
 
 crypto_lock_method is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.crypto_engine)  | [Up](conf.ref.files.php) |  [Next](conf.ref.debug_flags.php) |
 | crypto_engine  | [Table of Contents](index) |  debug_flags |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.operations)  | Chapter 7. Clustering |  [Next](cluster.cidr_server.php) |
 
 ## 7.9. Configuring Momentum for High Availability and Failover
@@ -66,5 +68,7 @@ The CIDR Server queries the data created by an as_logger module and displays the
 
 For more information see [Section 14.6, “as_logger – Audit series logger”](modules.as_logger "14.6. as_logger – Audit series logger") and [Section 7.10, “The `cidr_server`”](cluster.cidr_server.php "7.10. The cidr_server").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.operations)  | [Up](cluster.php) |  [Next](cluster.cidr_server.php) |
 | 7.8. Using the Cluster Manager  | [Table of Contents](index) |  7.10. The `cidr_server` |

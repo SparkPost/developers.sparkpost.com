@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.getClassMetaTable)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.idn) |
 
 <a name="lua.ref.msys.httpsrv.register"></a>
@@ -85,6 +87,8 @@ The `rsrc_setup` hook provides a safer way to register resources against new [co
 
 [session:request_url_get](lua.ref.session_request_url_get "session:request_url_get") and [session:response_status_set_std](lua.ref.session_response_status_set_std "session:response_status_set_std")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.getClassMetaTable)  | [Up](lua.function.details) |  [Next](lua.ref.msys.idn) |
 | msys.getClassMetaTable  | [Table of Contents](index) |  msys.idn.to_idn |
 

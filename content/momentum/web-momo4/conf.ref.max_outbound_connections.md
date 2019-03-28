@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_dns_ttl)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.max_recipients_per_batch) |
 
 <a name="conf.ref.max_outbound_connections"></a>
@@ -98,6 +100,8 @@ max_outbound_connections is valid in the binding, binding_group, domain, global,
 
 [host](conf.ref.host "host"), [Section 25.3, “MultiVIP© Interfaces”](outbound_mail.multivip.interfaces "25.3. MultiVIP© Interfaces"), [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections"), [Section 15.3, “Configuration Scopes and Fallback”](ecelerity.conf.fallback "15.3. Configuration Scopes and Fallback"), [scope_max_outbound_connections](conf.ref.scope_max_outbound_connections "scope_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_dns_ttl)  | [Up](config.options.ref) |  [Next](conf.ref.max_recipients_per_batch) |
 | max_dns_ttl  | [Table of Contents](index) |  max_recipients_per_batch |
 

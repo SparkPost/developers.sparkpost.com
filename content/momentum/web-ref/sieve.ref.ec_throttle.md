@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_thread_pool_get_queue_size)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_tolower) |
 
 <a name="sieve.ref.ec_throttle"></a>
@@ -57,5 +59,8 @@ ec_throttle_tarpit "foo";
 ...
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_thread_pool_get_queue_size)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_tolower) |
 | ec_thread_pool_get_queue_size  | [Table of Contents](index) |  ec_tolower |

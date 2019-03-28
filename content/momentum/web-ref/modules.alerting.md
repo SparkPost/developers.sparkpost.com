@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.adaptive)  | Chapter 14. Modules Reference |  [Next](modules.alias.php) |
 
 ## 14.3. alerting – alerting
@@ -42,5 +44,7 @@ The alerting cache size. The default value for this option is `1048576` bytes.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.adaptive)  | [Up](modules.php) |  [Next](modules.alias.php) |
 | 14.2. adaptive – Adaptive Delivery  | [Table of Contents](index) |  14.4. alias – Alias Expansion Module |

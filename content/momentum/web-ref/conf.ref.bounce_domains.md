@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_cache_ttl)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bounce_pattern.php) |
 
 <a name="conf.ref.bounce_domains"></a>
@@ -28,5 +30,7 @@ bounce_domains is valid in the global, pathway_group and pathway scopes.
 
 [bounce_pattern](conf.ref.bounce_pattern "bounce_pattern") [bounce_behavior](conf.ref.bounce_behavior.php "bounce_behavior") [bounce_suppress_list](conf.ref.bounce_suppress_list.php "bounce_suppress_list") [Section 14.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger.php "14.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_cache_ttl)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bounce_pattern.php) |
 | bounce_cache_ttl  | [Table of Contents](index) |  bounce_pattern |

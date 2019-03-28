@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_config)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_div) |
 
 <a name="sieve.ref.ec_disconnect"></a>
@@ -18,5 +20,8 @@ The optional counter string is used to count the number of hits for this particu
 
 This is a terminal action; no further Sieve rules will be run for the current message in the current phase.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_config)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_div) |
 | ec_config  | [Table of Contents](index) |  ec_div |

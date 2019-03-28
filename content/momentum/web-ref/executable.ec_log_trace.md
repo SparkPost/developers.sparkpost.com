@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_lic)  | 11.2. Executable Commands |  [Next](executable.ec_md5passwd.php) |
 
 <a name="executable.ec_log_trace"></a>
@@ -405,5 +407,7 @@ Show all reject log entries where "somehdr" begins with "failed" in the connecti
 
 `shell> ec_log_trace --vctx-mess-regex='somehdr=^failed ' /var/log/ecelerity/rejectlog.ec*`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_lic)  | [Up](exe.commands.details.php) |  [Next](executable.ec_md5passwd.php) |
 | ec_lic  | [Table of Contents](index) |  ec_md5passwd |

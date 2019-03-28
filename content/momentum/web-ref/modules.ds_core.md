@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.domainkeys)  | Chapter 14. Modules Reference |  [Next](modules.ec_logger.php) |
 
 ## 14.30. ds_core – Datasource Query Core
@@ -616,5 +618,7 @@ For scripting examples that use Lua see:
 
 For licensing reasons the MySQL module does not ship with Momentum and must be downloaded separately.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.domainkeys)  | [Up](modules.php) |  [Next](modules.ec_logger.php) |
 | 14.29. domainkeys – Yahoo! DomainKeys  | [Table of Contents](index) |  14.31. ec_logger – Momentum-Style Logging |

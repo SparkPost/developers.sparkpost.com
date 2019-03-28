@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fsecure)  | Chapter 14. Modules Reference |  [Next](modules.httpio.php) |
 
 ## 14.36. fingerprint – Host Fingerprinting
@@ -42,5 +44,7 @@ Passive operating system fingerprinting runs as a daemon that Momentum communica
 
 The Host Fingerprint module exposes Sieve functionality. This functionality is explained in: [ec_host_fingerprint](sieve.ref.ec_host_fingerprint "ec_host_fingerprint").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.fsecure)  | [Up](modules.php) |  [Next](modules.httpio.php) |
 | 14.35. fsecure – F-Secure  | [Table of Contents](index) |  14.37. http_io – HTTP I/O Provider |

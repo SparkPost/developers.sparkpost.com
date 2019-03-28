@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dkim_domains)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_dkim_sign) |
 
 <a name="sieve.ref.ec_dkim_responsible_domain"></a>
@@ -33,5 +35,8 @@ else {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dkim_domains)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_dkim_sign) |
 | ec_dkim_domains  | [Table of Contents](index) |  ec_dkim_sign |

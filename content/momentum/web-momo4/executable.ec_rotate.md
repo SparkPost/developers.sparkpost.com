@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_md5passwd)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_sendmail) |
 
 <a name="executable.ec_rotate"></a>
@@ -141,6 +143,8 @@ The following is an example in which the logfiles are in `/var/log/email/` and 3
   -l /var/log/email/paniclog.ec -r 3
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_md5passwd)  | [Up](exec.cmds.ref) |  [Next](executable.ec_sendmail) |
 | ec_md5passwd  | [Table of Contents](index) |  ec_sendmail |
 

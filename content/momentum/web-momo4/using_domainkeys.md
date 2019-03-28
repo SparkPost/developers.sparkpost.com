@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](auth)  | Part III. Configuring Momentum |  [Next](using_domainkeys.validation) |
 ## Chapter 22. Using Yahoo! DomainKeys
 **Table of Contents**
@@ -81,5 +83,7 @@ Used to indicate that a domain is currently testing DomainKeys. `y` will indicat
 A sample DNS text record would look like:
 `_domainkey IN TXT "t=y; o=~"`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](auth)  | [Up](p.configuration) |  [Next](using_domainkeys.validation) |
 | Chapter 21. Enforcing REST API/UI User Authentication  | [Table of Contents](index) |  22.2. DomainKeys Validation |

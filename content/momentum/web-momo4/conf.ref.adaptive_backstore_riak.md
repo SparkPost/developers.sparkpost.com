@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_leveldb)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.adaptive_enabled) |
 
 <a name="conf.ref.adaptive_backstore_riak"></a>
@@ -33,6 +35,8 @@ The options in this scope replace the `backing_store_connect_timeout` and the `b
 
 [Section 71.3, “adaptive – Adaptive Delivery”](modules.adaptive "71.3. adaptive – Adaptive Delivery") and [adaptive_backstore_leveldb](conf.ref.adaptive_backstore_leveldb "adaptive_backstore_leveldb")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_leveldb)  | [Up](config.options.ref) |  [Next](conf.ref.adaptive_enabled) |
 | adaptive_backstore_leveldb  | [Table of Contents](index) |  adaptive_enabled |
 

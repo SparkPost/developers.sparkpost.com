@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_reserve_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.siv_throttle_cache_size.php) |
 
 <a name="conf.ref.signing_stats"></a>
@@ -32,5 +34,7 @@ Signing_Stats is valid in the global scope.
 
 [Section 14.27, “dkim – DomainKeys Identified Mail Signatures”](modules.dkim "14.27. dkim – DomainKeys Identified Mail Signatures"), [Section 14.29, “domainkeys – Yahoo! DomainKeys”](modules.domainkeys.php "14.29. domainkeys – Yahoo! DomainKeys") , [signing_stats](console_commands.signing_stats.php "signing_stats"), [Section 14.49, “opendkim – OpenDKIM module”](modules.opendkim.php "14.49. opendkim – OpenDKIM module") and [signing_stats reset](console_commands.signing_stats_reset.php "signing_stats reset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.server_reserve_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.siv_throttle_cache_size.php) |
 | server_reserve_outbound_connections  | [Table of Contents](index) |  siv_throttle_cache_size |

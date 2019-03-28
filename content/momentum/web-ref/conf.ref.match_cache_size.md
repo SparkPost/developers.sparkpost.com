@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.match_cache_life)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_deliveries_per_connection.php) |
 
 <a name="conf.ref.match_cache_size"></a>
@@ -60,5 +62,7 @@ match_cache_size is valid in the global scope.
 
 [match_cache_life](conf.ref.match_cache_life "match_cache_life") and [domain](conf.ref.domain.php "domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.match_cache_life)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_deliveries_per_connection.php) |
 | match_cache_life  | [Table of Contents](index) |  max_deliveries_per_connection |

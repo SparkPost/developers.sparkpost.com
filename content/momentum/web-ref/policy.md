@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.multivip)  | Part I. Configuration Guide |  [Next](policy.validation) |
 ## Chapter 5. Implementing Policy with Momentum
 **Table of Contents**
@@ -18,5 +20,8 @@ Momentum waits for connections to be made to its ESMTP Listener. Once a connecti
 Once a message has passed all the validation checks, it is sent to the IO layer, which attempts to journal the message to the spool. Once the message is successfully stored in the spool, an acknowledgment is returned to the sender, and the message is enqueued to the delivery subsystem.
 The delivery subsystem looks at each message to decide which MultiVIP© binding will be used for outbound delivery. It then determines the domain for the recipient and attempts to connect to the domain's mail exchange and deliver the mail onwards.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.multivip)  | [Up](p.guide) |  [Next](policy.validation) |
 | 4.6. MultiVIP© Interfaces  | [Table of Contents](index) |  5.1. Validation and the Validation Context |

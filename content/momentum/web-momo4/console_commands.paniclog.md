@@ -23,6 +23,8 @@ Momentum maintains, in memory, the last several messages that were written to th
 [Sun 30 Nov 2003 10:31:37] [serious] ndbm_cache initialized
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pager)  | [Up](console.cmds.ref) |  [Next](console_commands.pid) |
 | \pager  | [Table of Contents](index) |  pid |
 

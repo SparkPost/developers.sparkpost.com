@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_pattern)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bounces_inline_original.php) |
 
 <a name="conf.ref.bounce_suppress_list"></a>
@@ -39,5 +41,7 @@ bounce_suppress_list = "bounces@bounces.example.com,@bounces.example.org"
 
 [bounce_domains](conf.ref.bounce_domains "bounce_domains"), [bounce_pattern](conf.ref.bounce_pattern.php "bounce_pattern"), [bounce_behavior](conf.ref.bounce_behavior.php "bounce_behavior"), [Section 14.13, “bounce_logger – Momentum-Style Bounce Logging”](modules.bounce_logger.php "14.13. bounce_logger – Momentum-Style Bounce Logging")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_pattern)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bounces_inline_original.php) |
 | bounce_pattern  | [Table of Contents](index) |  bounces_inline_original |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alias)  | Chapter 71. Modules Reference |  [Next](modules.as_logger) |
 
 ## 71.6. antivirus – Antivirus
@@ -234,6 +236,8 @@ Up to date
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.alias)  | [Up](modules) |  [Next](modules.as_logger) |
 | 71.5. alias – Alias Expansion  | [Table of Contents](index) |  71.7. as_logger – Audit Series Logger |
 

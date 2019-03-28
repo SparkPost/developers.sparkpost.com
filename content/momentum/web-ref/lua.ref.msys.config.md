@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cast)  | 15.2. Lua Functions |  [Next](lua.ref.msys.dnslookup.php) |
 
 <a name="lua.ref.msys.config"></a>
@@ -37,5 +39,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [config](console_commands.config "config")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cast)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.dnslookup.php) |
 | msys.cast  | [Table of Contents](index) |  msys.dnsLookup |

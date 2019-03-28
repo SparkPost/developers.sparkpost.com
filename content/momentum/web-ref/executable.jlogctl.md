@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_sanity_check)  | 11.2. Executable Commands |  [Next](executable.lu_pull.php) |
 
 <a name="executable.jlogctl"></a>
@@ -143,5 +145,7 @@ When used along with another option or options this option provides verbose outp
 
 [Section 14.43, “jlog – The jlog Module”](modules.jlog "14.43. jlog – The jlog Module"), [Section 7.6.6, “Decommissioning a Manager”](cluster.config.logging.php#cluster.config.logging.decommissioning "7.6.6. Decommissioning a Manager")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_sanity_check)  | [Up](exe.commands.details.php) |  [Next](executable.lu_pull.php) |
 | jlog_sanity_check  | [Table of Contents](index) |  lu_pull |

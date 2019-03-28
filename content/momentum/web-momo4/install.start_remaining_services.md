@@ -27,10 +27,10 @@
     netstat -tulpn | grep 208
 
     # Should see something like this, with a row for each API/port:
-    tcp        0      0 0.0.0.0:2082                0.0.0.0:*                   LISTEN      21416/nginx         
-    tcp        0      0 0.0.0.0:2083                0.0.0.0:*                   LISTEN      21686/node          
-    tcp        0      0 0.0.0.0:2084                0.0.0.0:*                   LISTEN      21856/node          
-    tcp        0      0 0.0.0.0:2085                0.0.0.0:*                   LISTEN      21812/node          
+    tcp        0      0 0.0.0.0:2082                0.0.0.0:*                   LISTEN      21416/nginx
+    tcp        0      0 0.0.0.0:2083                0.0.0.0:*                   LISTEN      21686/node
+    tcp        0      0 0.0.0.0:2084                0.0.0.0:*                   LISTEN      21856/node
+    tcp        0      0 0.0.0.0:2085                0.0.0.0:*                   LISTEN      21812/node
     tcp        0      0 0.0.0.0:2086                0.0.0.0:*                   LISTEN      21756/node
     ```
 
@@ -91,6 +91,8 @@
 
 3.  You should now be able to login to the UI by placing the IP address of the first Analytics node into a browser's address bar.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.analytics_nodes)  | [Up](new_installation) |  [Next](upgrade.single_node) |
 | 9.3. Configure the Analytics Nodes  | [Table of Contents](index) |  Chapter 10. Upgrade - Single Node |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rset_timeout)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.scheduler) |
 
 <a name="conf.ref.scope_max_outbound_connections"></a>
@@ -72,6 +74,8 @@ scope_max_outbound_connections is valid in the global, binding, binding_group, d
 
 [max_outbound_connections](conf.ref.max_outbound_connections "max_outbound_connections"), [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections"), [server_reserve_outbound_connections](conf.ref.server_reserve_outbound_connections "server_reserve_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.rset_timeout)  | [Up](config.options.ref) |  [Next](conf.ref.scheduler) |
 | rset_timeout  | [Table of Contents](index) |  scheduler |
 

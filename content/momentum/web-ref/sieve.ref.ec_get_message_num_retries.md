@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_mailfrom)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_protocol) |
 
 <a name="sieve.ref.ec_get_message_num_retries"></a>
@@ -27,5 +29,8 @@ if not ec_test :is "${n}" "0" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_get_message_mailfrom)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_protocol) |
 | ec_get_message_mailfrom  | [Table of Contents](index) |  ec_get_message_protocol |

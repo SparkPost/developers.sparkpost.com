@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_inbound_session_count)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cloudmark.add_af_data) |
 
 <a name="lua.ref.msys.cloudmark.analyze"></a>
@@ -51,6 +53,8 @@ Do not use `pcall` with this function.
 
 [msys.cloudmark.score](lua.ref.msys.cloudmark.score "msys.cloudmark.score")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_inbound_session_count)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cloudmark.add_af_data) |
 | ac:inbound_session_count  | [Table of Contents](index) |  msys.cloudmark.add_af_data |
 

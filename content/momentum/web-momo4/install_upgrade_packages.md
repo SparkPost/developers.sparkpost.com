@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](download_bundle)  | Part II. Installing Momentum |  [Next](new_installation) |
 
 ## Chapter 8. Install / Upgrade the Packages
@@ -124,6 +126,8 @@ Ensure that you are in the `/var/tmp/momentum-4.2.1.50062` directory, then insta
         fi
         ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](download_bundle)  | [Up](p.installing) |  [Next](new_installation) |
 | Chapter 7. Download the Software Bundle and Prepare  | [Table of Contents](index) |  Chapter 9. New Installation - All Configurations |
 

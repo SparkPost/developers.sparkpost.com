@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rfc3464_delivery_status)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_set_binding) |
 
 <a name="sieve.ref.ec_round"></a>
@@ -30,5 +32,8 @@ $roundc = ec_round $c;
 #roundc is 43.000000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rfc3464_delivery_status)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_set_binding) |
 | ec_rfc3464_delivery_status  | [Table of Contents](index) |  ec_set_binding |

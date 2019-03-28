@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.conntrol)  | Chapter 71. Modules Reference |  [Next](modules.custom_bounce_logger) |
 
 ## 71.23. csapi – Symantec CSAPI Antivirus Support
@@ -396,6 +398,8 @@ LiveUpdate will log its progress to `/opt/Symantec/LiveUpdate/liveupdt.log`. Mon
 
 LiveUpdate will download updates and unpack them under `/tmp`. Note that `/tmp` must have at least 3 GB of free space. Otherwise, LiveUpdate will fail and not be able to download and apply new updates. `/opt/Symantec/LiveUpdate/liveupdt.log` will contain an error when there is not enough disk space to download and unpack the updates.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.conntrol)  | [Up](modules) |  [Next](modules.custom_bounce_logger) |
 | 71.22. conntrol – Fine-Grained Connection Control  | [Table of Contents](index) |  71.24. custom_bounce_logger – Custom Bounce Logging |
 

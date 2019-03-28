@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.policy.editor)  | Chapter 3. Using the Web Console |  [Next](operations) |
 
 ## 3.11. Automated Alerting Configuration
@@ -146,5 +148,8 @@ A description of the fields follows:
 
 Also choose the desired operator and value. You can access the log entry using the `logline` variable which contains the entire text of the log entry.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.policy.editor)  | [Up](web3) |  [Next](operations) |
 | 3.10. The Policy Configuration Editor  | [Table of Contents](index) |  Chapter 4. Operations |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context.variables)  | Chapter 6. Validation Context Variables |  [Next](policy.context-mess) |
 
 ## 6.1. Connection Context Variables
@@ -196,5 +198,8 @@ The variables are as follows:
 
 For more information see [Section 14.45.2, “mail_loop Runtime Usage”](modules.mail_loop#modules.mail_loop.runtime.usage "14.45.2. mail_loop Runtime Usage")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.context.variables)  | [Up](policy.context.variables) |  [Next](policy.context-mess) |
 | Chapter 6. Validation Context Variables  | [Table of Contents](index) |  6.2. Message Context Variables |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](copyrights)  | Appendix I. Copyrights |  [Next](copyright.3rdparty-disclaimer.php) |
 
 ## I.1. Acknowledgements
@@ -44,5 +46,7 @@ This product includes software developed by Michal Zalewski <lcamtuf@coredump.cx
 
 This product includes software developed by Michael A. Davis <mike@datanerds.net>, Kirby Kuehl <kkuehl@cisco.com> and Kevin Currie <kcurrie@cisco.com>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](copyrights)  | [Up](copyrights.php) |  [Next](copyright.3rdparty-disclaimer.php) |
 | Appendix I. Copyrights  | [Table of Contents](index) |  I.2. Disclaimers for Redistributed Third-Party Software |

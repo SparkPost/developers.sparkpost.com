@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delayed_binding_domain_fuzz)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.delivery_method.php) |
 
 <a name="conf.ref.delayed_queue_scan_interval"></a>
@@ -23,5 +25,7 @@ The default value for this option is `15`.
 
 delayed_queue_scan_interval is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delayed_binding_domain_fuzz)  | [Up](conf.ref.files.php) |  [Next](conf.ref.delivery_method.php) |
 | delayed_binding_domain_fuzz  | [Table of Contents](index) |  delivery_method |

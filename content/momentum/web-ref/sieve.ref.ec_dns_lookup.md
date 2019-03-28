@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dkim_sign)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_error_mode) |
 
 <a name="sieve.ref.ec_dns_lookup"></a>
@@ -67,5 +69,8 @@ if not ec_test :is "${dns_error}" "" {
 
 The optional *`server`* argument can be used to specify the hostname or IP address of an alternate DNS server to query.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dkim_sign)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_error_mode) |
 | ec_dkim_sign  | [Table of Contents](index) |  ec_error_mode |

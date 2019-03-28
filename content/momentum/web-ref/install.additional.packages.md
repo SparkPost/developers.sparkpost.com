@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.options)  | Chapter 1. Installation |  [Next](install.riak.php) |
 
 ## 1.9. Installing Additional Packages
@@ -91,5 +93,7 @@ You can also update Adaptive rules manually. To do this see [Automated Updates f
 
 To find out more about the adaptive module see [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive "14.2. adaptive – Adaptive Delivery"). To disable updates after installation see [Section 14.44.1.2, “Adaptive Rule Updates”](modules.live.bounce.updates.php#modules.live.updates.adaptive "14.44.1.2. Adaptive Rule Updates").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.options)  | [Up](install.php) |  [Next](install.riak.php) |
 | 1.8. Installer Options  | [Table of Contents](index) |  1.10. Riak Server |

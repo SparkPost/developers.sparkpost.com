@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.timer.every)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.validate.dk.sign) |
 
 <a name="lua.ref.msys.validate.dk.get_responsible_domain"></a>
@@ -32,6 +34,8 @@ It takes the following parameters:
 
 [msys.validate.dk.sign](lua.ref.msys.validate.dk.sign "msys.validate.dk.sign")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.timer.every)  | [Up](lua.function.details) |  [Next](lua.ref.msys.validate.dk.sign) |
 | msys.timer.every  | [Table of Contents](index) |  msys.validate.dk.sign |
 

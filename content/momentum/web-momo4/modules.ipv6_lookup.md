@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.inbound_audit)  | Chapter 71. Modules Reference |  [Next](modules.jlog) |
 
 ## 71.42. ipv6_lookup – Multi-address-family MX Records
@@ -18,6 +20,8 @@ The ipv6_lookup module is enabled as follows:
 
 `ipv6_lookup {}`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.inbound_audit)  | [Up](modules) |  [Next](modules.jlog) |
 | 71.41. inbound_audit – Inbound traffic analytics  | [Table of Contents](index) |  71.43. jlog – jlog-Formatted Logging |
 

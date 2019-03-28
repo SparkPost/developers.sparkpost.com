@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.commtouch.diagnose)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.counter.inc) |
 
 <a name="lua.ref.msys.counter.add"></a>
@@ -28,6 +30,8 @@ You can also use the [counter](console_commands.counter "counter") console comma
 
 [msys.counter.reset](lua.ref.msys.counter.reset "msys.counter.reset"), [msys.counter.inc](lua.ref.msys.counter.inc "msys.counter.inc"), [msys.counter.open](lua.ref.msys.counter.open "msys.counter.open"), [msys.counter.unlink](lua.ref.msys.counter.unlink "msys.counter.unlink")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.commtouch.diagnose)  | [Up](lua.function.details) |  [Next](lua.ref.msys.counter.inc) |
 | msys.commtouch.diagnose  | [Table of Contents](index) |  msys.counter.inc |
 

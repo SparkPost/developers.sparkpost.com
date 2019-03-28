@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_connections_on_listener)  | 16.2. Sieve Function Details |  [Next](sieve.ref.audit_series) |
 
 <a name="sieve.ref.audit_connections_on_service"></a>
@@ -42,5 +44,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric" "${c_connections}" "10000" 
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_connections_on_listener)  | [Up](sieve.ref.files) |  [Next](sieve.ref.audit_series) |
 | audit_connections_on_listener  | [Table of Contents](index) |  audit_series |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_conn_set)  | 15.2. Lua Functions |  [Next](lua.ref.msys.validate.dkim.get_verify_results.php) |
 
 <a name="lua.ref.msys.policyeditor.vctx_conn_get"></a>
@@ -34,5 +36,7 @@ The defined parameter for `params` is:
 
 [msys.policyeditor.vctx_conn_set](lua.ref.msys.policyeditor.vctx_conn_set "msys.policyeditor.vctx_conn_set")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.vctx_conn_set)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.validate.dkim.get_verify_results.php) |
 | msys.policyeditor.vctx_conn_set  | [Table of Contents](index) |  msys.validate.dkim.get_verify_results |

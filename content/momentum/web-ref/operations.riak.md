@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.postgresql)  | Chapter 4. Operations |  [Next](operations.logging) |
 
 ## 4.4. Riak
@@ -67,7 +69,7 @@ The Riak wiki at [Network Security and Firewall Configurations](http://wiki.bash
 Also see:
 
 > "For ease of firewall configuration, Riak can be configured via app.config to instruct the Erlang interpreter to use a limited range of ports. For example, to restrict the range of ports that Erlang will use for inter-Erlang node communication to 6000-7999, add the following lines to the app.config file on each Riak node:
-> 
+>
 > ```
 > {
 >   kernel,
@@ -83,7 +85,7 @@ Also see:
 >   ]
 > },
 > ```
-> 
+>
 > The above lines should be added into the top level list in `app.config`, at the same level as all the other applications (eg. riak_core). Then configure your firewall to allow incoming access to TCP ports 6000 through 7999 from whichever network(s) contain your Riak nodes."
 
 ### 4.4.3. Provisioning Considerations
@@ -239,5 +241,8 @@ Consult the Riak Wiki for the riak-admin "backup" and "restore" commands to lear
 
 Note that some of the Message Systems use cases may result in a large volume of data being retained in Riak. Expect the backup files to be equally large.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.postgresql)  | [Up](operations) |  [Next](operations.logging) |
 | 4.3. PostgreSQL  | [Table of Contents](index) |  4.5. Logging |

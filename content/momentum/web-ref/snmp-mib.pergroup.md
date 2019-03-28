@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib-per-domain-metrics)  | Appendix B. MIB Files |  [Next](snmp-mib.omniti) |
 
 ## B.2. Per-group (binding) Metrics, 1.3.6.1.4.1.19552.1.3
@@ -12,5 +14,8 @@ These act as a supplement to the MTA-MIB defined group statistics, so that the s
 
 *   1.3.6.1.4.1.19552.1.3.4.G+1: string, binding name (matches MTA MIB)
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib-per-domain-metrics)  | [Up](snmp-mib) |  [Next](snmp-mib.omniti) |
 | B.1. 1.3.6.1.4.1.19552.1.2 – Per-domain Metrics  | [Table of Contents](index) |  B.3. The `OMNITI-SNMP-MIB.txt` file |

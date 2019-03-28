@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mx_failures_fallback_to_a)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.never_attempt_expired_messages.php) |
 
 <a name="conf.ref.mx_failures_to_delay"></a>
@@ -23,5 +25,7 @@ This is an advanced option. Making Momentum too sensitive to transient network c
 
 mx_failures_to_delay is valid in the domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mx_failures_fallback_to_a)  | [Up](conf.ref.files.php) |  [Next](conf.ref.never_attempt_expired_messages.php) |
 | mx_failures_fallback_to_a  | [Table of Contents](index) |  never_attempt_expired_messages |

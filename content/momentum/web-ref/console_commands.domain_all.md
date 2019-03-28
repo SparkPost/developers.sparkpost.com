@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain)  | 12.2. System Console Commands |  [Next](console_commands.fail_domain.php) |
 
 <a name="console_commands.domain_all"></a>
@@ -26,5 +28,7 @@ The output shows a summary for each domain stanza defined in your configuration 
 
 You can use the command **domains** as an alias for **domain all** . See also [domain](console_commands.domain "domain").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain)  | [Up](console.commands.non-module.php) |  [Next](console_commands.fail_domain.php) |
 | domain  | [Table of Contents](index) |  fail domain |

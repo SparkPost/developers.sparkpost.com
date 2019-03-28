@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.sysctl.conf)  | Chapter 6. Before You Begin |  [Next](byb.jre) |
 
 ## 6.8. Setting Hostnames
@@ -36,6 +38,8 @@ The following solution is run using basic tools, but you may want to use advance
     `dig +short $HOSTNAME`
 5.  Either edit the `/etc/hosts` file on **all systems in the cluster**                        to match this convention or configure your Domain Name Server accordingly.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.sysctl.conf)  | [Up](before_you_begin) |  [Next](byb.jre) |
 | 6.7. Adjusting `/etc/sysctl.conf`  | [Table of Contents](index) |  6.9. Java Runtime Environment (JRE) |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.scriptlet)  | Chapter 71. Modules Reference |  [Next](modules.seedlist) |
 
 ## 71.61. securecreds – Password Encryption/Credential Retrieval
@@ -73,6 +75,8 @@ The location of the credentials key file. The default value is `/opt/msys/etc/cr
 
 We strongly recommend you not change the default values. If you absolutely must change the location of these files, please create symlinks to the default locations. Also note that the credentials database and key are local to each node in a cluster.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.scriptlet)  | [Up](modules) |  [Next](modules.seedlist) |
 | 71.60. scriptlet - Lua Policy Scripts  | [Table of Contents](index) |  71.62. seedlist – Seedlist Integration |
 

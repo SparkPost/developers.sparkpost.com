@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr_ctl)  | Chapter 74. Executable Commands Reference |  [Next](executable.ecconfigd_ctl) |
 
 <a name="executable.ecconfigd"></a>
@@ -53,6 +55,8 @@ Set the log file verbosity. The log level is a number from 0 to 7, where higher 
 
 [ecconfigd_ctl](executable.ecconfigd_ctl "ecconfigd_ctl"), [eccfg](executable.eccfg "eccfg"), [Section 15.1.3, “Configuration Management (**ecconfigd**)”](conf.overview#conf.ecconfigd "15.1.3. Configuration Management (ecconfigd)"), [create_ssl_cert](executable.create_ssl_cert "create_ssl_cert")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr_ctl)  | [Up](exec.cmds.ref) |  [Next](executable.ecconfigd_ctl) |
 | eccmgr_ctl  | [Table of Contents](index) |  ecconfigd_ctl |
 

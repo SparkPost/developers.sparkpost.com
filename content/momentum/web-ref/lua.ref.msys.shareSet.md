@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareGet)  | 15.2. Lua Functions |  [Next](lua.ref.msys.shareUnset.php) |
 
 <a name="lua.ref.msys.shareSet"></a>
@@ -46,5 +48,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [msys.shareGet](lua.ref.msys.shareGet "msys.shareGet"), [msys.shareUnset](lua.ref.msys.shareUnset.php "msys.shareUnset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareGet)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.shareUnset.php) |
 | msys.shareGet  | [Table of Contents](index) |  msys.shareUnset |

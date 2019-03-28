@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands)  | Chapter 12. Momentum System Console Commands Reference |  [Next](console.commands.non-module.php) |
 
 ## 12.1. System Console Command Summary
@@ -161,5 +163,7 @@ This table lists all system console commands alphabetically giving a brief descr
 | [version](console_commands.version "version") – Show version information of Momentum | 3.0 |   | misc |
 | [write config](console_commands.write_config "write config") – Display current running configuration | 3.0 |   | config |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands)  | [Up](console_commands.php) |  [Next](console.commands.non-module.php) |
 | Chapter 12. Momentum System Console Commands Reference  | [Table of Contents](index) |  12.2. System Console Commands |

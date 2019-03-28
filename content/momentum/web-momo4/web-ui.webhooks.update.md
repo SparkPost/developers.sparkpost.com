@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.test)  | Chapter 60. Managing Your Webhooks in the UI |  [Next](web-ui.webhooks.delete) |
 
 ## 60.4. Updating Your Webhook
@@ -22,6 +24,8 @@ If the webhook successfully updates, a message will briefly display upon return 
 
 Also if you update the target URL, a test POST will be sent to the URL for validation, as described in [Section 60.2, “Creating a Webhook”](web-ui.webhooks.create "60.2. Creating a Webhook").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.test)  | [Up](web-ui.webhooks) |  [Next](web-ui.webhooks.delete) |
 | 60.3. Testing Your Webhook  | [Table of Contents](index) |  60.5. Deleting a Webhook |
 

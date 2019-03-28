@@ -25,6 +25,8 @@ just-revived.com flushed.  12521 messages requeued.
 
 You may substitute `all` for the domain name to apply to all domains.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_rejection_summary)  | [Up](console.cmds.ref) |  [Next](console_commands.help) |
 | fingerprint rejection summary  | [Table of Contents](index) |  help |
 

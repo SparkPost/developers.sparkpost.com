@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_verified_peer_is_authorized)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_verify_mode) |
 
 <a name="config.tls_verify"></a>
@@ -37,6 +39,8 @@ The default value is `no`.
 
 `tls_verify` is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_verified_peer_is_authorized)  | [Up](config.options.ref) |  [Next](config.tls_verify_mode) |
 | tls_verified_peer_is_authorized  | [Table of Contents](index) |  tls_verify_mode |
 

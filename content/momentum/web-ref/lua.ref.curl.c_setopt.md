@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_perform)  | 15.2. Lua Functions |  [Next](lua.ref.curl.escape.php) |
 
 <a name="lua.ref.curl.c_setopt"></a>
@@ -66,7 +68,7 @@ Sets the `READFUNCTION` option, which is used to override the source of data use
 ```
 function(userdata, size)
   -- return a string of no more than "size" bytes, or nil when
-  -- EOF is reached 
+  -- EOF is reached
 end
 ```
 
@@ -378,5 +380,7 @@ The following options are set to boolean, `true` or `false` only. (`0` and `1` a
 
 [curl.new](lua.ref.curl.new "curl.new")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.curl.c_perform)  | [Up](lua.function.details.php) |  [Next](lua.ref.curl.escape.php) |
 | c:perform  | [Table of Contents](index) |  curl.escape |

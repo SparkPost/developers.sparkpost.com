@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](eccluster.conf3)  | Chapter 10. Cluster Configuration Reference |  [Next](cluster.boot.php) |
 
 <a name="ecelerity-cluster.conf"></a>
@@ -337,5 +339,7 @@ When non-zero, how often to speculatively broadcast a view announcement to the c
 
 [mbusd](executable.mbusd "mbusd"), [mbus.conf](mbus.conf.php "mbus.conf").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](eccluster.conf3)  | [Up](cluster.ref.php) |  [Next](cluster.boot.php) |
 | eccluster.conf  | [Table of Contents](index) |  cluster.boot |

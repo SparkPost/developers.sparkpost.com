@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain_all)  | 12.2. System Console Commands |  [Next](console_commands.fail_domain_quiet.php) |
 
 <a name="console_commands.fail_domain"></a>
@@ -28,5 +30,7 @@ Usually, the command is immediately proceded or followed by "blackholing" the do
 
 [fail domain quiet](console_commands.fail_domain_quiet "fail domain quiet")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain_all)  | [Up](console.commands.non-module.php) |  [Next](console_commands.fail_domain_quiet.php) |
 | domain all  | [Table of Contents](index) |  fail domain quiet |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_scope_max_outbound_connections)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.connect_timeout) |
 
 <a name="conf.ref.cluster_server_max_outbound_connections"></a>
@@ -30,6 +32,8 @@ cluster_server_max_outbound_connections is valid in the binding, binding_group, 
 
 [server_max_outbound_connections](conf.ref.server_max_outbound_connections "server_max_outbound_connections")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_scope_max_outbound_connections)  | [Up](config.options.ref) |  [Next](conf.ref.connect_timeout) |
 | cluster_scope_max_outbound_connections  | [Table of Contents](index) |  connect_timeout |
 

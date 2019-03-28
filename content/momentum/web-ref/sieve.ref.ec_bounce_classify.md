@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_base64_encode)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_ceil) |
 
 <a name="sieve.ref.ec_bounce_classify"></a>
@@ -37,5 +39,8 @@ if envelope :all :regex "to" "^bounces-.+@mydomain.com$") {
 
 [Table 9.7, “logging options”](options-summary#logging-options-table "Table 9.7. logging options")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_base64_encode)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_ceil) |
 | ec_base64_encode  | [Table of Contents](index) |  ec_ceil |

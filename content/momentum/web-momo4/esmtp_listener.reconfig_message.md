@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.relay_domains)  | Chapter 19. Configuring Inbound Mail Service Using SMTP |  [Next](esmtp_listener.extensions) |
 
 ## 19.3. `Reconfig_Message` Option
@@ -8,6 +10,8 @@ Inbound SMTP connections check if the configuration has changed between messages
 
 Issuing the console command **config reload**        while receiving email will trigger this message.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](esmtp_listener.relay_domains)  | [Up](esmtp_listener) |  [Next](esmtp_listener.extensions) |
 | 19.2. Inbound Email Relay or Gateway  | [Table of Contents](index) |  19.4. SMTP Extensions |
 

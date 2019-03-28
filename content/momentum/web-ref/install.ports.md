@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.requirements)  | Chapter 1. Installation |  [Next](install.security.php) |
 
 ## 1.2. Ports Used by Momentum
@@ -32,5 +34,7 @@ Depending upon the options you choose during installation and how you configure 
 | Spread (mbus_daemon) | 4803, 4804 | Used for cluster communication prior to version 3.4 |   | See [mbus.conf](mbus.conf "mbus.conf") |
 | Subversion | 2027 | Used for version control of configuration files |  ✓ | See [Section 2.7, “The Momentum Configuration Server: ecconfigd”](conf.ecconfigd "2.7. The Momentum Configuration Server: ecconfigd") |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.requirements)  | [Up](install.php) |  [Next](install.security.php) |
 | 1.1. System Requirements  | [Table of Contents](index) |  1.3. Security Considerations |

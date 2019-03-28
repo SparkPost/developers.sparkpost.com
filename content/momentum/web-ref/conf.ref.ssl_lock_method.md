@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spoolbase)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.starttls_injection_policy.php) |
 
 <a name="conf.ref.ssl_lock_method"></a>
@@ -23,5 +25,7 @@ As of version 3.0.17, the default value for this option is `mutex`.
 
 `ssl_lock_method` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spoolbase)  | [Up](conf.ref.files.php) |  [Next](conf.ref.starttls_injection_policy.php) |
 | spoolbase  | [Table of Contents](index) |  starttls_injection_policy |

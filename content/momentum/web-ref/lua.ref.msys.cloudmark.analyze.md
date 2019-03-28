@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_inbound_session_count)  | 15.2. Lua Functions |  [Next](lua.ref.msys.cloudmark.add_af_data.php) |
 
 <a name="lua.ref.msys.cloudmark.analyze"></a>
@@ -51,5 +53,7 @@ Do not use `pcall` with this function.
 
 [msys.cloudmark.score](lua.ref.msys.cloudmark.score "msys.cloudmark.score"), [Section 14.18, “cloudmark – Cloudmark Authority Module”](modules.cloudmark.php "14.18. cloudmark – Cloudmark Authority Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.ac_inbound_session_count)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.cloudmark.add_af_data.php) |
 | ac:inbound_session_count  | [Table of Contents](index) |  msys.cloudmark.add_af_data |

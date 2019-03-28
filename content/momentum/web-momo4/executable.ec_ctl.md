@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_console)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_dkim_ctl) |
 
 <a name="executable.ec_ctl"></a>
@@ -29,6 +31,8 @@ The `CONFFILE` and the `CONTROL` variables also have a bearing on **ec_ctl**.
 
 [ecelerity](executable.ecelerity "ecelerity"), [Chapter 31, *Configuring the Environment File*](environment_file "Chapter 31. Configuring the Environment File") , [Section 36.1, “Startup Scripts”](conf.starting#startup.scripts "36.1. Startup Scripts")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_console)  | [Up](exec.cmds.ref) |  [Next](executable.ec_dkim_ctl) |
 | ec_console  | [Table of Contents](index) |  ec_dkim_ctl |
 

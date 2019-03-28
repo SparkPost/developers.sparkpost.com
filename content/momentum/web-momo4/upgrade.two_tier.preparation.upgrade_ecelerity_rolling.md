@@ -19,6 +19,8 @@ Upgrade the packages on the **remaining Platform Nodes** .
 
     If Ecelerity fails to start due to a licensing issue, copy your license to the `/opt/msys/ecelerity/etc/license` file **on all nodes** .
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.stop_transmissions_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.restore_tranmissions_rolling) |
 | 11.7. Restore Transmissions to the First Platform Node and Stop Transmissions to all other Platform Nodes  | [Table of Contents](index) |  11.9. Restore Transmissions to the Remaining Platform Nodes |
 

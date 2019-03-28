@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_binding_domain_failure_rate)  | 15.2. Lua Functions |  [Next](lua.ref.msys.policyeditor.get_mailfrom.php) |
 
 <a name="lua.ref.msys.policyeditor.get_header"></a>
@@ -34,5 +36,7 @@ Defined parameters for `params` are:
 
 [msys.policyeditor.del_header](lua.ref.msys.policyeditor.del_header "msys.policyeditor.del_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.policyeditor.get_binding_domain_failure_rate)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.policyeditor.get_mailfrom.php) |
 | msys.policyeditor.get_binding_domain_failure_rate  | [Table of Contents](index) |  msys.policyeditor.get_mailfrom |

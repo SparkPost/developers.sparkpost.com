@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.credmgr)  | 11.2. Executable Commands |  [Next](executable.ec_adtool.php) |
 
 <a name="executable.ec_admigrate"></a>
@@ -111,5 +113,7 @@ Display more information than usual.
 
 [adaptivedb](executable.adaptivedb "adaptivedb"), [Section 14.2, “adaptive – Adaptive Delivery”](modules.adaptive.php "14.2. adaptive – Adaptive Delivery"), [Section 4.4, “Riak”](operations.riak.php "4.4. Riak"), [ec_adtool](executable.ec_adtool.php "ec_adtool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.credmgr)  | [Up](exe.commands.details.php) |  [Next](executable.ec_adtool.php) |
 | credmgr  | [Table of Contents](index) |  ec_adtool |

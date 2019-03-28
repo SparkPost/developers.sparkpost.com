@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareSet)  | 15.2. Lua Functions |  [Next](lua.ref.msys.sleep.php) |
 
 <a name="lua.ref.msys.shareUnset"></a>
@@ -26,5 +28,7 @@ Because this function is in the `msys` namespace, an explicit `require` is not n
 
 [msys.shareSet](lua.ref.msys.shareSet "msys.shareSet"), [msys.shareGet](lua.ref.msys.shareGet.php "msys.shareGet")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareSet)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.sleep.php) |
 | msys.shareSet  | [Table of Contents](index) |  msys.sleep |

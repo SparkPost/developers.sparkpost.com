@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.trace_smtp_mode)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.transform_8bitmime_content.php) |
 
 <a name="conf.ref.transfail_drain_rate"></a>
@@ -26,5 +28,7 @@ transfail_drain_rate is valid in the global scope.
 
 [inline_transfail_processing](conf.ref.inline_transfail_processing "inline_transfail_processing") and [max_resident_transfails](conf.ref.max_resident_transfails.php "max_resident_transfails")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.trace_smtp_mode)  | [Up](conf.ref.files.php) |  [Next](conf.ref.transform_8bitmime_content.php) |
 | trace_smtp_mode  | [Table of Contents](index) |  transform_8bitmime_content |

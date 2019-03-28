@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui)  | Part VIII. Reporting and Engagement Tracking |  [Next](web-ui.reports) |
 
 ## Chapter 56. Using the UI for Reporting
@@ -8,7 +10,7 @@
 
 Reporting data is available in a web-based User Interface (UI) or using the REST API. The UI provides a flexible, easy-to-use interface to evaluate your message deliverability and campaign performance. Using the UI, you can select metrics, filter the metric data, and view detailed reports based on your specific needs. Its drill-down capabilities enable you to focus your reporting on the message events and data that are most important to you.
 
-**Reporting Data Using the UI** 
+**Reporting Data Using the UI**
 
 This section provides instructions to view delivery data in the UI. Later tutorials will discuss tracking engagement data and retrieving reporting data using the REST API.
 
@@ -42,6 +44,8 @@ See [Chapter 57, *Reports and Engagement Tracking in the UI*                   
 
 Congratulations! You have successfully logged into Momentum's UI. You can create custom reports in the UI by selecting the metrics and filters for your specific reporting needs. Become familiar with the UI and explore its capabilities.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui)  | [Up](p.analytics) |  [Next](web-ui.reports) |
 | Chapter 55. Getting Started with the Web-based User Interface  | [Table of Contents](index) |  Chapter 57. Reports and Engagement Tracking in the UI |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.generate_mail_raw)  | 16.2. Sieve Function Details |  [Next](sieve.ref.hash_dump) |
 
 <a name="sieve.ref.hash_create"></a>
@@ -31,5 +33,8 @@ ec_log "The value is ${value}";
 
 [hash_set](sieve.ref.hash_set "hash_set"), [hash_dump](sieve.ref.hash_dump "hash_dump") and [hash_get](sieve.ref.hash_get "hash_get").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.generate_mail_raw)  | [Up](sieve.ref.files) |  [Next](sieve.ref.hash_dump) |
 | generate_mail_raw  | [Table of Contents](index) |  hash_dump |

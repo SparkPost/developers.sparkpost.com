@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_unlink)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.cast) |
 
 <a name="lua.ref.msys.core.io_wrapper_open"></a>
@@ -80,6 +82,8 @@ To make it easier to work with libraries that use bitmasks as part of their API,
 
 [msys.runInPool](lua.ref.msys.runinpool "msys.runInPool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_unlink)  | [Up](lua.function.details) |  [Next](lua.ref.msys.cast) |
 | msgpart:unlink  | [Table of Contents](index) |  msys.cast |
 

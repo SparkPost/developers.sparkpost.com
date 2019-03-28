@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_attribute)  | 15.2. Lua Functions |  [Next](lua.ref.xml.node_contents.php) |
 
 <a name="lua.ref.xml.node_children"></a>
@@ -32,5 +34,7 @@ end
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_attribute)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.node_contents.php) |
 | node:attribute  | [Table of Contents](index) |  node:contents |

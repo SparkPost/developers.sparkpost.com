@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.umem_reap_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.unsafe_spool) |
 
 <a name="conf.ref.unlink_on_spool_in_failure"></a>
@@ -21,5 +23,7 @@ The default value for this option is `true`.
 
 unlink_on_spool_in_failure is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.umem_reap_interval)  | [Up](conf.ref.files) |  [Next](conf.ref.unsafe_spool) |
 | umem_reap_interval  | [Table of Contents](index) |  _unsafe_spool |

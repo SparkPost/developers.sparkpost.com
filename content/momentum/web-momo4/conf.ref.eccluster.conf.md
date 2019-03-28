@@ -281,6 +281,8 @@ The [as_logger](modules.as_logger "71.7. as_logger – Audit Series Logger") mo
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster)  | [Up](cluster) |  [Next](conf.ref.ecelerity_cluster.conf) |
 | Chapter 16. Cluster-specific Configuration  | [Table of Contents](index) |  16.3. `ecelerity-cluster.conf` File |
 

@@ -12,7 +12,7 @@ Carbon Copy or "CC" indicates that the recipient received a "copy" of an email t
 
 When you create your transmission using the REST API, you can include *CC* and *BCC* recipients by using optional fields available in the Template and Recipient Lists API. You must specify separate data for your "To", "CC", and "BCC" recipients. Ensure that this data is, in fact, a carbon copy of each other. When "CC" and "BCC" are specified, your recipients will then receive emails with the appropriate header.
 
-**Sending Email with *CC* and *BCC* Recipients** 
+**Sending Email with *CC* and *BCC* Recipients**
 
 In this tutorial, you will learn how to send an email as a *CC* and *BCC* using the REST API. It will build on your knowledge of the Template and Recipient Lists API by using optional fields to specify the *CC* and *BCC* recipients. The example in this tutorial specifies the recipients inline and uses a simple inline template with a plain-text message, but the transmission can also reference a stored template and recipient list.
 
@@ -38,39 +38,39 @@ Follow these steps to send a simple transmission with *CC* and *BCC* recipients:
 
     Using your text editor, create the following JSON file named `cc_bcc_example.json`. Be sure to use your sender address and recipient addresses. Note that the "header_to" fields are a carbon copy of the "To" recipient's email address.
 
-    {  
+    {
        "return_path":"*`sender@return_path.com`*",
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`to_recipient@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "some_sub_data":"Momentum"
              }
           },
-          {  
-             "address":{  
+          {
+             "address":{
                 "email":"*`cc_recipient@their_address.com`*",
                 "header_to":"*`to_recipient@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "some_sub_data":"Momentum"
              }
           },
-          {  
-             "address":{  
+          {
+             "address":{
                 "email":"*`bcc_recipient@their_address.com`*",
                 "header_to":"*`to_recipient@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "some_sub_data":"Momentum"
              }
           }
        ],
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
-          "headers":{  
+          "headers":{
              "CC":"*`cc_recipient@their_address.com`*"
           },
           "subject":"Sending Email with CC and BCC Recipients",
@@ -99,8 +99,8 @@ Follow these steps to send a simple transmission with *CC* and *BCC* recipients:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":3,
           "id":"*`11977354662379529`*"
@@ -117,6 +117,8 @@ Follow these steps to send a simple transmission with *CC* and *BCC* recipients:
 
 Congratulations! You have used your knowledge of the REST API to send an email as a *CC* and *BCC*. You can find more information about the attributes used in the Templates and Recipient Lists API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](using_list)  | [Up](p.http_rest) |  [Next](complex_template) |
 | Chapter 51. Using Stored Recipient Lists  | [Table of Contents](index) |  Chapter 53. Using Complex Templates |
 

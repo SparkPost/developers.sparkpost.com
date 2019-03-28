@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_sendmail)  | Chapter 74. Executable Commands Reference |  [Next](executable.eccfg) |
 
 <a name="executable.ec_show"></a>
@@ -148,6 +150,8 @@ Message: 00/00-02001-C6DD1CA4
             .
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_sendmail)  | [Up](exec.cmds.ref) |  [Next](executable.eccfg) |
 | ec_sendmail  | [Table of Contents](index) |  eccfg |
 

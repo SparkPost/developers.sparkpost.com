@@ -1,4 +1,7 @@
+|     |     |     |
+| --- | --- | --- |
 |   |   |  [Next](preface) |
+
 ## Momentum Reference Manual (3.x)
 ## Reference for Version 3.x
 ### Message Systems, Inc.
@@ -20,5 +23,7 @@ Document revision 0
 
 [List of Figures](figure-toc)[List of Tables](table-toc.php)[List of Examples](example-toc.php)
 
+|     |     |     |
+| --- | --- | --- |
 |   |   |  [Next](preface) |
 |   |   |  Preface |

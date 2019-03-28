@@ -11,8 +11,8 @@ import Footer from 'components/Footer'
 import ConsentBar from 'components/ConsentBar'
 import zIndex from 'utils/zIndex'
 
-function onApiPage(location) {
-  return location.pathname.startsWith('/api')
+function onDocsPage(location) {
+  return location.pathname.startsWith('/api') || location.pathname.startsWith('/momentum')
 }
 
 const Layout = ({ data, children, location }) => (
@@ -40,7 +40,7 @@ const Layout = ({ data, children, location }) => (
                   isSticky={
                     true ||
                     (isSticky && distanceFromTop !== 0) ||
-                    onApiPage(location) ||
+                    onDocsPage(location) ||
                     location.pathname === '/integraion'
                   }
                 />
@@ -102,7 +102,7 @@ const Layout = ({ data, children, location }) => (
             <meta name="theme-color" content="#ffffff" />
           </Helmet>
           {children}
-          {!onApiPage(location) && <Footer />}
+          {!onDocsPage(location) && <Footer />}
         </StickyContainer>
         <ConsentBar />
       </CookiesProvider>

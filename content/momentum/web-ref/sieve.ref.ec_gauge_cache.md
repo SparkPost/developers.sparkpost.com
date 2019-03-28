@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_forward)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_get_message_code) |
 
 <a name="sieve.ref.ec_gauge_cache"></a>
@@ -40,5 +42,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric""${test}" "10" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_forward)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_get_message_code) |
 | ec_forward  | [Table of Contents](index) |  ec_get_message_code |

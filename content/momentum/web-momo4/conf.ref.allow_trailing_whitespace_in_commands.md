@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_null_envelope_sender)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.async_bounce_rendering) |
 
 <a name="conf.ref.allow_trailing_whitespace_in_commands"></a>
@@ -21,6 +23,8 @@ The default value is `false`.
 
 `allow_trailing_whitespace_in_commands` is valid in the global, listener, listen, peer, pathway_group, and pathway scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.allow_null_envelope_sender)  | [Up](config.options.ref) |  [Next](conf.ref.async_bounce_rendering) |
 | allow_null_envelope_sender  | [Table of Contents](index) |  async_bounce_rendering |
 

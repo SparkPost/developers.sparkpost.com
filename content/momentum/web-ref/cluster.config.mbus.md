@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.management)  | Chapter 7. Clustering |  [Next](cluster.config.deployment.php) |
 
 ## 7.3. Message Bus
@@ -22,5 +24,7 @@ When adding new nodes to the cluster, we recommend adding the node to the `mbus.
 
 For a description of the `mbus.conf` file see [mbus.conf](mbus.conf "mbus.conf").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.management)  | [Up](cluster.php) |  [Next](cluster.config.deployment.php) |
 | 7.2. Configuration Management  | [Table of Contents](index) |  7.4. Cluster Deployment |

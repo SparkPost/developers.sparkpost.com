@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_failures_to_purge)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.domain.php) |
 
 <a name="conf.ref.dns_fallback_to_tcp"></a>
@@ -21,5 +23,7 @@ The default value for this option is `false`.
 
 `dns_fallback_to_tcp` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_failures_to_purge)  | [Up](conf.ref.files.php) |  [Next](conf.ref.domain.php) |
 | dns_failures_to_purge  | [Table of Contents](index) |  domain |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.disclaimer)  | Chapter 14. Modules Reference |  [Next](modules.dnsbuf.php) |
 
 ## 14.27. dkim – DomainKeys Identified Mail Signatures
@@ -428,5 +430,7 @@ The following dkim Sieve functions are available:
 
 [signing_stats](conf.ref.signing_stats "signing_stats"), [signing_stats](console_commands.signing_stats.php "signing_stats"), [signing_stats reset](console_commands.signing_stats_reset.php "signing_stats reset"), [dkim](conf.ref.dkim.php "dkim")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.disclaimer)  | [Up](modules.php) |  [Next](modules.dnsbuf.php) |
 | 14.26. disclaimer – Module  | [Table of Contents](index) |  14.28. dnsbuf – Dynamically Set the DNS UDP Buffer Size |

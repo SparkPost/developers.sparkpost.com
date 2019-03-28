@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pager)  | 12.2. System Console Commands |  [Next](console_commands.pid.php) |
 
 <a name="console_commands.paniclog"></a>
@@ -23,5 +25,7 @@ Momentum maintains, in memory, the last several messages that were written to th
 [Sun 30 Nov 2003 10:31:37] [serious] ndbm_cache initialized
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pager)  | [Up](console.commands.non-module.php) |  [Next](console_commands.pid.php) |
 | \pager  | [Table of Contents](index) |  pid |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.initial.conf)  | Chapter 2. Configuration |  [Next](conf.ecconfigd.php) |
 
 ## 2.6. Configuration Scopes and Fallback
@@ -133,5 +135,7 @@ In sum, the value that a configuration option assumes, in order of decreasing pr
 
 *   The global setting
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.initial.conf)  | [Up](conf.php) |  [Next](conf.ecconfigd.php) |
 | 2.5. Options that Must Change  | [Table of Contents](index) |  2.7. The Momentum Configuration Server: ecconfigd |

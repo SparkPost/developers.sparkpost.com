@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](listeners)  | Chapter 15. Configuration Overview |  [Next](conf.ref.ecelerity.conf) |
 
 ## 15.5. Modules
@@ -47,7 +49,7 @@ Some modules (typically antivirus modules) must be loaded in "passive" mode. To 
 ```
 symbolname "name" {
   enabled = false
-  debug_level = DEBUG 
+  debug_level = DEBUG
   ...
 }
 ```
@@ -137,6 +139,8 @@ scriptlet "scriptlet" {
 
 For detailed information about how Lua is implemented in Momentum, see [Section 71.60, “scriptlet - Lua Policy Scripts”](modules.scriptlet "71.60. scriptlet - Lua Policy Scripts") and [Section 62.2, “Policy Scriptlets”](implementing.policy.scriptlets "62.2. Policy Scriptlets").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](listeners)  | [Up](conf.overview) |  [Next](conf.ref.ecelerity.conf) |
 | 15.4. Listeners  | [Table of Contents](index) |  15.6. `ecelerity.conf` File |
 

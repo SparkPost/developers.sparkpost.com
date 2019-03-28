@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations)  | Chapter 4. Operations |  [Next](operations.console-commands) |
 
 ## 4.1. The Momentum System Console
@@ -113,5 +115,8 @@ The configuration options valid in the Control_Listener scope are as follows:
 | **[tcp_send_buffer_size](ecelerity.conf#ecelerity.conf3.listener.options.tcp_send_buffer_size)** – The size of the TCP send buffer | 4096 | control_listener, eccluster_listener, ecstream_listener, esmtp_listener, http_listener, listen, xmpp_listener |
 | **[timeout](ecelerity.conf#ecelerity.conf3.timeout "Timeout Option")** – The timeout for idle control connections on Control_Listeners | 60 | control_listener |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations)  | [Up](operations) |  [Next](operations.console-commands) |
 | Chapter 4. Operations  | [Table of Contents](index) |  4.2. Console Commands |

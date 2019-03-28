@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](inbound_tls)  | Part III. Configuring Momentum |  [Next](conf.ref.msg_gen.conf) |
 ## Chapter 20. Configuring Inbound Mail Service Using HTTP
 **Table of Contents**
@@ -20,5 +22,7 @@ For details about the non-module specific configuration options that are valid i
 Modules and their configuration options are discussed in the [Chapter 71, *Modules Reference*](modules "Chapter 71. Modules Reference") .
 For general information regarding listeners, see [Section 15.4, “Listeners”](listeners "15.4. Listeners").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](inbound_tls)  | [Up](p.configuration) |  [Next](conf.ref.msg_gen.conf) |
 | 19.7. Inbound TLS  | [Table of Contents](index) |  20.2. `msg_gen.conf` File |

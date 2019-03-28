@@ -192,5 +192,7 @@ Control which tty modes that editrc won’t allow the user to change. -d, -q or 
 
 Without other arguments, setty lists the modes in the chosen set which are fixed on (‘+mode’) or off (‘-mode’). -a lists all tty modes in the chosen set regardless of the setting. With +mode, -mode or mode, fixes mode on or off or removes control of mode in the chosen set.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit.editor.commands)  | [Up](libedit.php) |  [Next](disclaimer.php) |
 | G.2. Editor Commands  | [Table of Contents](index) |  Appendix H. Disclaimer |

@@ -14,6 +14,8 @@
 
 \pager turns the pager on and off. Frequently the output from console commands may span more than the size of a window, If the pager is on, it uses the pager specified in $PAGER to page the output of any console command with more lines of output than the height of its terminal window.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.module)  | [Up](console.cmds.ref) |  [Next](console_commands.paniclog) |
 | module  | [Table of Contents](index) |  paniclog |
 

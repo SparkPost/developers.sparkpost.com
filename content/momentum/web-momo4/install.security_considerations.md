@@ -43,6 +43,8 @@ To fix this vulnerability in OpenSSL, make sure you are running Momentum 4.1.0.2
 
 `TLS_Protocols = "+ALL:-SSLv3"`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.vertica.license)  | [Up](post_installation) |  [Next](add_remove_platform_nodes) |
 | 12.5. Upgrading the Vertica License  | [Table of Contents](index) |  Chapter 13. Adding and Removing Platform Nodes |
 

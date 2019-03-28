@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.reload)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.counter.add) |
 
 <a name="lua.ref.msys.commtouch.diagnose"></a>
@@ -46,6 +48,8 @@ The above name value pairs are also set within the validation context with each 
 
 Do not use `pcall` with this function.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cidr.reload)  | [Up](lua.function.details) |  [Next](lua.ref.msys.counter.add) |
 | msys.cidr.reload  | [Table of Contents](index) |  msys.counter.add |
 

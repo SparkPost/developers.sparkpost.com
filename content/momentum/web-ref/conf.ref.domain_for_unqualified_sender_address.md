@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_recipient_addresses)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.domainkeys.php) |
 
 <a name="conf.ref.domain_for_unqualified_sender_address"></a>
@@ -21,5 +23,7 @@ When set, `Domain_for_unqualified_sender_address` will rewrite the envelope addr
 
 Domain_for_unqualified_sender_address is valid in a pathway, pathway_group, listener and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain_for_unqualified_recipient_addresses)  | [Up](conf.ref.files.php) |  [Next](conf.ref.domainkeys.php) |
 | domain_for_unqualified_recipient_addresses  | [Table of Contents](index) |  domainkeys |

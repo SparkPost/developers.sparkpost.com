@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.capabilities)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.clear_mail_queue_maintainers) |
 
 <a name="conf.ref.chroot"></a>
@@ -30,6 +32,8 @@ chroot is valid in the security scope.
 
 [security](conf.ref.security "security"), [capabilities](conf.ref.capabilities "capabilities"), [user](conf.ref.user "user"), and [supplemental_groups](conf.ref.supplemental_groups "supplemental_groups")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.capabilities)  | [Up](config.options.ref) |  [Next](conf.ref.clear_mail_queue_maintainers) |
 | capabilities  | [Table of Contents](index) |  clear_mail_queue_maintainers |
 

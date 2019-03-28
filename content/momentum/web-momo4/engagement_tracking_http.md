@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.delete)  | Part VIII. Reporting and Engagement Tracking |  [Next](p.policy) |
 
 ## Chapter 61. Tracking Engagement for HTTP
@@ -24,7 +26,7 @@ Tracked links include an expiry time of 1 year. After that time, engagement even
 
 With click and open tracking enabled, you can track engagement using the REST API or a specially designed report in the UI. The Engagement report enables you to drill down to the level of a link within your message. Using this report, you can quickly view the number of messages that were accepted, were opened, and had a link selected and view how many times a link within your message was clicked.
 
-**Including a Link in the Message Body** 
+**Including a Link in the Message Body**
 
 This section provides instructions to send an email using an inline template with a link in the message body and track engagement in the UI. The template will show how to override the configuration option, in the event you have globally disabled this feature. Later sections will discuss tracking engagement data and retrieving reporting data using the REST API.
 
@@ -44,20 +46,20 @@ Follow these steps to create a transmission with a link in the message body:
 
     Using your text editor, create the following JSON file named `sample_link.json`. Be sure to use your sender and recipient addresses.
 
-    {  
-       "options":{  
+    {
+       "options":{
           "open_tracking":true,
           "click_tracking":true
        },
        "return_path":"*`sender@your_address.com`*",
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`recipient@their_address.com`*"
              }
           }
        ],
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Tracking Engagement",
           "text":"Welcome to Momentum!\r\nClick http://www.messagesystems.com to learn more about Momentum."
@@ -106,8 +108,8 @@ Follow these steps to create a transmission with a link in the message body:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":1,
           "id":"*`11668787484950529`*"
@@ -116,7 +118,7 @@ Follow these steps to create a transmission with a link in the message body:
 
     This response shows that one email was accepted and none were rejected.
 
-**View Engagement Data** 
+**View Engagement Data**
 
 Follow these steps to view your engagement data:
 
@@ -134,6 +136,8 @@ Follow these steps to view your engagement data:
 
 Congratulations! You have successfully sent an email with a link and tracked the engagement of your message in the UI. To learn more about using the Engagement report, see [Section 57.4, “Evaluating Your Campaign Performance”](web-ui.reports.evaluating.campaign.performance "57.4. Evaluating Your Campaign Performance").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.delete)  | [Up](p.analytics) |  [Next](p.policy) |
 | 60.5. Deleting a Webhook  | [Table of Contents](index) |  Part IX. Writing Policy |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.overview)  | Chapter 13. Modules |  [Next](modules.summary) |
 
 ## 13.1. Module Overview
@@ -55,5 +57,8 @@ Be sure to turn off debugging when you are finished otherwise log files can beco
 
 If the module that you wish to debug is not explicitly loaded, then you must add it to your configuration file.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.overview)  | [Up](modules.overview) |  [Next](modules.summary) |
 | Chapter 13. Modules  | [Table of Contents](index) |  13.2. Summary Module Information |

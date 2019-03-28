@@ -26,6 +26,8 @@ Current Backlog:      0
 Batch Backlog  :      0
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.trace_smtp)  | [Up](console.cmds.ref) |  [Next](console_commands.version) |
 | trace smtp  | [Table of Contents](index) |  version |
 

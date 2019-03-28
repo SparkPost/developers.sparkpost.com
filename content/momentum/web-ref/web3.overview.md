@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.starting.web.console)  | Chapter 3. Using the Web Console |  [Next](web3.dashboard) |
 
 ## 3.2. Web Console Overview
@@ -18,5 +20,8 @@ The reporting page offers a more specific view of the data presented on the dash
 
 As of version 3.4, domain information is available under the REPORTING menu only.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web3.starting.web.console)  | [Up](web3) |  [Next](web3.dashboard) |
 | 3.1. Starting the Web Console  | [Table of Contents](index) |  3.3. The Dashboard |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.centalized.logging)  | Chapter 26. Log Aggregation |  [Next](cluster.config.logging.redundancy) |
 
 ## 26.3. Complex Centralized Logging Deployments
@@ -82,6 +84,8 @@ Repeat this change for each log file that you want to export in this way.
 
 Note that each subscriber that you declare will maintain a checkpoint for the log data in the jlog. If a subscriber never consumes data from the jlog, the jlog will continue to grow and occupy an increasing amount of disk space. For this reason, ensure that you only provision subscribers that will be actively consuming data from the jlog.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.centalized.logging)  | [Up](log_aggregation) |  [Next](cluster.config.logging.redundancy) |
 | 26.2. Centralized Logging Example  | [Table of Contents](index) |  26.4. Redundant Logs |
 

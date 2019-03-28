@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd_ctl)  | 11.2. Executable Commands |  [Next](executable.jlog_change_endian.php) |
 
 <a name="executable.ecelerity"></a>
@@ -71,5 +73,7 @@ use an alternate config file.
 
 [ec_ctl](executable.ec_ctl "ec_ctl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ecconfigd_ctl)  | [Up](exe.commands.details.php) |  [Next](executable.jlog_change_endian.php) |
 | ecconfigd_ctl  | [Table of Contents](index) |  jlog_change_endian |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.commtouch.diagnose)  | 15.2. Lua Functions |  [Next](lua.ref.msys.counter.inc.php) |
 
 <a name="lua.ref.msys.counter.add"></a>
@@ -28,5 +30,7 @@ For a code example see [Example 15.55, “msys.counter.read example”](lua.ref
 
 [msys.counter.reset](lua.ref.msys.counter.reset "msys.counter.reset"), [msys.counter.inc](lua.ref.msys.counter.inc.php "msys.counter.inc"), [msys.counter.open](lua.ref.msys.counter.open.php "msys.counter.open"), [msys.counter.unlink](lua.ref.msys.counter.unlink.php "msys.counter.unlink"), [counter](console_commands.counter.php "counter")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.commtouch.diagnose)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.counter.inc.php) |
 | msys.commtouch.diagnose  | [Table of Contents](index) |  msys.counter.inc |

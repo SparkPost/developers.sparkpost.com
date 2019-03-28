@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref)  | Chapter 9. Ecelerity.conf Configuration Reference |  [Next](conf.ref.files) |
 
 ## 9.1. Options Summary
@@ -944,5 +946,8 @@ This section displays all options of the specified type sorted alphabetically.
 | [xmpp_listener](https://support.messagesystems.com/docs/web-mobility/mobility.xmpp.modules#modules.xmpp.xmpp_listener) *(scope)* – The listener for incoming XMPP connections (Mobile Momentum) | receiving |   | 3.4 | global |
 | [xmpp_role](https://support.messagesystems.com/docs/web-mobility/mobility.xmpp.modules#mobility.xmpp.modules.xmpp_role) – Define whether a domain is an XMPP server or client (Mobile Momentum) | both |   | 3.4 | domain |
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref)  | [Up](conf.ref) |  [Next](conf.ref.files) |
 | Chapter 9. Ecelerity.conf Configuration Reference  | [Table of Contents](index) |  9.2. Configuration Files and Option Details |

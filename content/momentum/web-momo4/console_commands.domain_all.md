@@ -26,6 +26,8 @@ The output shows a summary for each domain stanza defined in your configuration 
 
 You can use the command **domains** as an alias for **domain all** . See also [domain](console_commands.domain "domain").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.domain)  | [Up](console.cmds.ref) |  [Next](console_commands.fail_domain) |
 | domain  | [Table of Contents](index) |  fail domain |
 

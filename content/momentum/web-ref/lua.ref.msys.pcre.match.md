@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_get_result_error_code)  | 15.2. Lua Functions |  [Next](lua.ref.msys.pcre.replace.php) |
 
 <a name="lua.ref.msys.pcre.match"></a>
@@ -48,5 +50,7 @@ Enable this function with the statement `require('msys.pcre')`.
 
 [Section 3.10.5, “Using Regular Expressions with the Policy Editor”](web3.policy.editor#web3.policy.editor.regex "3.10.5. Using Regular Expressions with the Policy Editor"), [msys.pcre.split](lua.ref.msys.pcre.split.php "msys.pcre.split"), [msys.pcre.replace](lua.ref.msys.pcre.replace.php "msys.pcre.replace")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_get_result_error_code)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.pcre.replace.php) |
 | msys.gcm.gcm_get_result_error_code  | [Table of Contents](index) |  msys.pcre.replace |

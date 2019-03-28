@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.client)  | Chapter 29. PostgreSQL |  [Next](riak) |
 
 ## 29.4. Dumping and Restoring the Database
@@ -19,6 +21,8 @@ Database dumps are plain-text files that contain the SQL commands and data requi
     `shell> /opt/msys/3rdParty/bin/pg_restore -c -U msyspg -d ecelerity /path/to/db.dump`
 3.  Examine any warnings that are output. You will get errors trying to drop and create some of the schemas, but they are harmless.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.client)  | [Up](postgresql) |  [Next](riak) |
 | 29.3. Using the PostgreSQL Client Program  | [Table of Contents](index) |  Chapter 30. Riak |
 

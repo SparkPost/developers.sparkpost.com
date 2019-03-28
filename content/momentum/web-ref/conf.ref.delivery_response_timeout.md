@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delivery_pool)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.disable_nagle_algorithm.php) |
 
 <a name="conf.ref.delivery_response_timeout"></a>
@@ -46,5 +48,7 @@ domain "gcm.example.com" {
 
 [idle_timeout](conf.ref.idle_timeout "idle_timeout"), [delivery_method](conf.ref.delivery_method.php "delivery_method") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.delivery_pool)  | [Up](conf.ref.files.php) |  [Next](conf.ref.disable_nagle_algorithm.php) |
 | delivery_pool  | [Table of Contents](index) |  disable_nagle_algorithm |

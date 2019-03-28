@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.update)  | Chapter 44. Managing Your API Keys |  [Next](message_gen) |
 
 ## 44.4. Deleting an API Key
@@ -22,6 +24,8 @@ Deleting an API key revokes all future actions that requests with that API key w
 
 If the API key is successfully deleted, a message will display upon return to the Settings section. Click the x to close the message.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.update)  | [Up](web-ui.apikeys) |  [Next](message_gen) |
 | 44.3. Updating an API Key  | [Table of Contents](index) |  Chapter 45. Generating a Transmission |
 

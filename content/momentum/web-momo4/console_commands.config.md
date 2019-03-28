@@ -356,6 +356,8 @@ Relay_Hosts = (
   )
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stats)  | [Up](console.cmds.ref) |  [Next](console_commands.count) |
 | cache stats  | [Table of Contents](index) |  count |
 

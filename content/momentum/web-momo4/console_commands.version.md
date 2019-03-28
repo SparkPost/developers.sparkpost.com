@@ -14,6 +14,8 @@ version — show version information of Momentum
 
 This command displays version information and the product type of the running Momentum instance.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.unlink_stats)  | [Up](console.cmds.ref) |  [Next](console_commands.write_config) |
 | unlink stats  | [Table of Contents](index) |  write config |
 

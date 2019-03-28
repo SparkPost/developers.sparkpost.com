@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_log_trace)  | 11.2. Executable Commands |  [Next](executable.ec_migrate_conf.php) |
 
 <a name="executable.ec_md5passwd"></a>
@@ -97,5 +99,7 @@ You do not need to restart the MTA after adding a new user.
 
 [webui-common.conf](webui-common.conf "webui-common.conf")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_log_trace)  | [Up](exe.commands.details.php) |  [Next](executable.ec_migrate_conf.php) |
 | ec_log_trace  | [Table of Contents](index) |  ec_migrate_conf |

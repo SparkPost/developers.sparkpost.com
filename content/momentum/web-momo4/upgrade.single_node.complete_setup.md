@@ -110,7 +110,7 @@
                     //host names
                     ]
                 }
-            , 
+            ,
             //if this exists, remove it
             "cassandra": {
                 "hosts": [
@@ -125,6 +125,8 @@
     }
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.start_services)  | [Up](upgrade.single_node) |  [Next](upgrade.single_node.configuration.next_steps) |
 | 10.7. Start Services  | [Table of Contents](index) |  10.9. Next Steps |
 

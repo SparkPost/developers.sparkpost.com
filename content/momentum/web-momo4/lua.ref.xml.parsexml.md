@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_unlink)  | Chapter 70. Lua Functions Reference |  [Next](modules) |
 
 <a name="lua.ref.xml.parsexml"></a>
@@ -36,6 +38,8 @@ local child = node:addchild("item")
 
 [doc:root](lua.ref.xml.doc_root "doc:root")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_unlink)  | [Up](lua.function.details) |  [Next](modules) |
 | node:unlink  | [Table of Contents](index) |  Chapter 71. Modules Reference |
 

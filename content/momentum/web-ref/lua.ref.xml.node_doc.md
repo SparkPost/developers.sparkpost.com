@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_contents)  | 15.2. Lua Functions |  [Next](lua.ref.xml.node_name.php) |
 
 <a name="lua.ref.xml.node_doc"></a>
@@ -31,5 +33,7 @@ print(doc:tostring());
 
 [doc:tostring](lua.ref.xml.doc_tostring "doc:tostring") and [xml.parsexml](lua.ref.xml.parsexml.php "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_contents)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.node_name.php) |
 | node:contents  | [Table of Contents](index) |  node:name |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys)  | Chapter 44. Managing Your API Keys |  [Next](web-ui.apikeys.update) |
 
 ## 44.2. Creating an API Key
@@ -26,6 +28,8 @@ If the API key is successfully created, a message will display upon return to th
 
 Be sure to copy and paste the API key when it is displayed. Following the creation of an API key, you can modify its grants and associated label, but the UI will no longer expose the original value. Please take care to record and safeguard your API keys at all times.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys)  | [Up](web-ui.apikeys) |  [Next](web-ui.apikeys.update) |
 | Chapter 44. Managing Your API Keys  | [Table of Contents](index) |  44.3. Updating an API Key |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_domains)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.remote_smtp_port) |
 
 <a name="conf.ref.relay_hosts"></a>
@@ -42,6 +44,8 @@ The `relay_hosts` option in the global scope follows the same semantics as the r
 
 [open_relay](conf.ref.open_relay "open_relay")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_domains)  | [Up](config.options.ref) |  [Next](conf.ref.remote_smtp_port) |
 | relay_domains  | [Table of Contents](index) |  remote_smtp_port |
 

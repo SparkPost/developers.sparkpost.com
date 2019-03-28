@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.cidrdb)  | Chapter 14. Modules Reference |  [Next](modules.cloudmark.php) |
 
 ## 14.17. clamav – ClamAV
@@ -89,5 +91,7 @@ For more information see [msys.av.scan](lua.ref.msys.av.scan "msys.av.scan") and
 
 This module supports the **clamav_avscan** Sieve command. For more information see [antivirus](sieve.ref.antivirus "antivirus").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.cidrdb)  | [Up](modules.php) |  [Next](modules.cloudmark.php) |
 | 14.16. cidrdb – CIDRDB  | [Table of Contents](index) |  14.18. cloudmark – Cloudmark Authority Module |

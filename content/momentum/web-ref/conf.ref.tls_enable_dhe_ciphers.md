@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_dhparams_file)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_client_ca.php) |
 
 <a name="conf.ref.tls_enable_dhe_ciphers"></a>
@@ -21,5 +23,7 @@ The default value is `true`.
 
 tls_enable_dhe_ciphers is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_dhparams_file)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_client_ca.php) |
 | tls_dhparams_file  | [Table of Contents](index) |  tls_client_ca |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.credmgr)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_console) |
 
 <a name="executable.ec_adtool"></a>
@@ -109,6 +111,8 @@ Move parameters from a global to a local scope by reversing the positions of the
 
 [Section 71.3, “adaptive – Adaptive Delivery”](modules.adaptive "71.3. adaptive – Adaptive Delivery"), [Chapter 30, *Riak*](riak "Chapter 30. Riak")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.credmgr)  | [Up](exec.cmds.ref) |  [Next](executable.ec_console) |
 | credmgr  | [Table of Contents](index) |  ec_console |
 

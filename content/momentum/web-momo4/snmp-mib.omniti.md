@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib.pergroup)  | Appendix B. MIB Files |  [Next](smtp-response-codes) |
 
 ## B.3. The `OMNITI-SNMP-MIB.txt` file
@@ -272,6 +274,8 @@ OMNITI-SNMP-MIB DEFINITIONS ::= BEGIN
   END
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](snmp-mib.pergroup)  | [Up](snmp-mib) |  [Next](smtp-response-codes) |
 | B.2. Per-group (binding) Metrics, 1.3.6.1.4.1.19552.1.3  | [Table of Contents](index) |  Appendix C. SMTP Response Codes |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.license)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.local_changes_file.php) |
 
 <a name="conf.ref.lmtp_port"></a>
@@ -24,5 +26,7 @@ lmtp_port is valid in the binding, binding_group, domain and global scopes.
 
 [delivery_method](conf.ref.delivery_method "delivery_method")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.license)  | [Up](conf.ref.files.php) |  [Next](conf.ref.local_changes_file.php) |
 | license  | [Table of Contents](index) |  local_changes_file |

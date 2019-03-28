@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text1)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_text_replace) |
 
 <a name="lua.ref.msg_text_match"></a>
@@ -17,6 +19,8 @@ Streaming PCRE search across the transfer-decoded, UTF-8 text version of the mes
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text1)  | [Up](lua.function.details) |  [Next](lua.ref.msg_text_replace) |
 | msg:text  | [Table of Contents](index) |  msg:text_replace |
 

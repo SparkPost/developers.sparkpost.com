@@ -205,6 +205,8 @@ Use the `with-mobile` option to display the status of SMPP and MM7 message queue
 
 [binding summary](console_commands.binding_summary "binding summary"), [summary reset](console_commands.summary_reset "summary reset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_in)  | [Up](console.cmds.ref) |  [Next](console_commands.summary_reset) |
 | spool_in  | [Table of Contents](index) |  summary reset |
 

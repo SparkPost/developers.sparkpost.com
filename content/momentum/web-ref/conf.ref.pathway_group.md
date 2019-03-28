@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pathway)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.pcre_cache_size.php) |
 
 <a name="conf.ref.pathway_group"></a>
@@ -110,5 +112,7 @@ Options valid within the Pathway_Group scope are listed in the following section
 
 [pathway](conf.ref.pathway "pathway")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pathway)  | [Up](conf.ref.files.php) |  [Next](conf.ref.pcre_cache_size.php) |
 | pathway  | [Table of Contents](index) |  pcre_cache_size |

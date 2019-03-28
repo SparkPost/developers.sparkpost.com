@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.duravip)  | Chapter 7. Clustering |  [Next](cluster.config.replication.php) |
 
 ## 7.6. Log Aggregation
@@ -318,5 +320,7 @@ If you decide to decommission a manager, the suggested operational procedure is:
 
 *   on each of the nodes that was journalling data for that manager, use the [jlogctl](executable.jlogctl "jlogctl") tool to erase the now redundant subscriber checkpoint information from each of the jlog files.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.duravip)  | [Up](cluster.php) |  [Next](cluster.config.replication.php) |
 | 7.5. DuraVIP™: IP Fail over  | [Table of Contents](index) |  7.7. Data Replication |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.soft_bounce_drain_rate)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.spoolbase.php) |
 
 <a name="conf.ref.spool_mode"></a>
@@ -26,5 +28,7 @@ Changing the value of this option at runtime requires restarting the ecelerity p
 
 [spoolbase](conf.ref.spoolbase "spoolbase")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.soft_bounce_drain_rate)  | [Up](conf.ref.files.php) |  [Next](conf.ref.spoolbase.php) |
 | soft_bounce_drain_rate  | [Table of Contents](index) |  spoolbase |

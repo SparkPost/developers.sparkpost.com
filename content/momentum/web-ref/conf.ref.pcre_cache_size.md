@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pathway_group)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.pcre_cache_ttl.php) |
 
 <a name="conf.ref.pcre_cache_size"></a>
@@ -26,5 +28,7 @@ pcre_cache_size is valid in the global scope.
 
 [pcre_cache_ttl](conf.ref.pcre_cache_ttl "pcre_cache_ttl")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.pathway_group)  | [Up](conf.ref.files.php) |  [Next](conf.ref.pcre_cache_ttl.php) |
 | pathway_group  | [Table of Contents](index) |  pcre_cache_ttl |

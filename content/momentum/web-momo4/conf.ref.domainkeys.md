@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.drop_body_after_trans_fail) |
 
 <a name="conf.ref.domainkeys"></a>
@@ -20,6 +22,8 @@ This directive instructs Momentum to enable (or disable) signing messages with a
 
 domainkeys is valid in the binding, binding_group, domain, and global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.domain)  | [Up](config.options.ref) |  [Next](conf.ref.drop_body_after_trans_fail) |
 | domain  | [Table of Contents](index) |  drop_body_after_trans_fail |
 

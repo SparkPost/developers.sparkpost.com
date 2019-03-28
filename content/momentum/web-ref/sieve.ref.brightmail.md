@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_service)  | 16.2. Sieve Function Details |  [Next](sieve.ref.cidrdb) |
 
 <a name="sieve.ref.brightmail"></a>
@@ -78,5 +80,8 @@ vctx_mess_set "bm_rules" $rules;
 
 For more information about Brightmail see [http://www.symantec.com/business/products/family.jsp?familyid=brightmail](http://www.symantec.com/business/products/family.jsp?familyid=brightmail) .
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.audit_service)  | [Up](sieve.ref.files) |  [Next](sieve.ref.cidrdb) |
 | audit_service  | [Table of Contents](index) |  cidrdb |

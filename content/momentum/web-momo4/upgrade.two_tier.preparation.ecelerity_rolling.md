@@ -47,6 +47,8 @@
     $CQLSH -k authentication -f $UPG/V2015.06.22_00.00.00__add_last_login_column.cql 2>&1 >> cassandra_schema.log
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.stop_generations_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.stop_transmissions_rolling) |
 | 11.5. Stop Transmissions to the First Platform Node  | [Table of Contents](index) |  11.7. Restore Transmissions to the First Platform Node and Stop Transmissions to all other Platform Nodes |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports.evaluating.campaign.performance)  | Part VIII. Reporting and Engagement Tracking |  [Next](reporting_webhooks) |
 
 ## Chapter 58. Using the Metrics API for Reporting
@@ -8,7 +10,7 @@ Throughout the previous sections, you have used the UI to provide insight into y
 
 The Metrics API enables you to retrieve a wide variety of reporting data using the HTTP protocol. You can retrieve a high-level summary of the aggregate metrics; group the metrics by various parameters; or order them by various conditions. The UI’s powerful drill-down capability is mirrored in the Metrics API by applying various filters to each of these reports. The reports included in the HTTP response are in JSON format.
 
-**Reporting Data Using the Metrics API** 
+**Reporting Data Using the Metrics API**
 
 This section provides instructions to view the engagement data generated in the tutorial in [Chapter 61, *Tracking Engagement for HTTP*                    ](engagement_tracking_http "Chapter 61. Tracking Engagement for HTTP") using the REST API, instead of the UI. It introduces the Metrics API, which provides the means for retrieving the statistical, real-time data captured by Momentum.
 
@@ -40,8 +42,8 @@ Follow these steps to report data using the Metrics API:
     Confirm that you received the following response at the command line:
 
     ```
-    {  
-       "results":{  
+    {
+       "results":{
           "link_name":"http://www.messagesystems.com",
           "count_clicked":1
        }
@@ -52,6 +54,8 @@ Follow these steps to report data using the Metrics API:
 
 Congratulations! You have successfully retrieved reporting data using the Metrics API. This tutorial demonstrated retrieving data for only one event type. The Metrics API supports many different reports. For detailed information about all the reporting options, see the Metrics API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.reports.evaluating.campaign.performance)  | [Up](p.analytics) |  [Next](reporting_webhooks) |
 | 57.4. Evaluating Your Campaign Performance  | [Table of Contents](index) |  Chapter 59. Using Webhooks for Event Data |
 

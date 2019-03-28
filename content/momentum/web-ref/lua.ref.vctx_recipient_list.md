@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_get)  | 15.2. Lua Functions |  [Next](lua.ref.vctx_remove_recipient.php) |
 
 <a name="lua.ref.vctx_recipient_list"></a>
@@ -26,5 +28,7 @@ Enable this function with the statement `require('msys.extended.vctx');`.
 
 [Example 15.71, “vctx_add_recipient example”](lua.ref.vctx_add_recipient#lua.ref.vctx_add_recipient.example "Example 15.71. vctx_add_recipient example")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_get)  | [Up](lua.function.details.php) |  [Next](lua.ref.vctx_remove_recipient.php) |
 | vctx:get  | [Table of Contents](index) |  vctx:remove_recipient |

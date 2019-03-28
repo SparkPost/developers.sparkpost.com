@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.symantec_beik.scan)  | 15.2. Lua Functions |  [Next](lua.ref.msys.threadpool.find.php) |
 
 <a name="lua.ref.msys.threadpool.count"></a>
@@ -24,5 +26,7 @@ Enable this function with the statement `require('msys.threadpool');`.
 
 [msys.threadpool.find](lua.ref.msys.threadpool.find "msys.threadpool.find"), [msys.threadpool.stat](lua.ref.msys.threadpool.stat.php "msys.threadpool.stat"), [threadpool](conf.ref.threadpool.php "threadpool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.symantec_beik.scan)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.threadpool.find.php) |
 | msys.symantec_beik.scan  | [Table of Contents](index) |  msys.threadpool.find |

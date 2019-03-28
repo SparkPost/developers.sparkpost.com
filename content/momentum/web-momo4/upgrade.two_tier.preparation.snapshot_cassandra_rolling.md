@@ -28,6 +28,8 @@
 
     `/opt/msys/3rdParty/cassandra/bin/nodetool clearsnapshot -t snapshot_name`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.prepare_all_nodes_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.upgrade_cassandra_rolling) |
 | 11.2. Before You Begin the Upgrade  | [Table of Contents](index) |  11.4. Upgrade Cassandra on the Platform Nodes |
 

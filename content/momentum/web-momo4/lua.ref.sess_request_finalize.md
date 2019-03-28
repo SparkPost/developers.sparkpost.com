@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_delete_header)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.sess_request_set_body) |
 
 <a name="lua.ref.sess_request_finalize"></a>
@@ -24,6 +26,8 @@ For a code example see [http_request_eval](https://support.messagesystems.com/do
 
 [sess:request_set_body](lua.ref.sess_request_set_body "sess:request_set_body") and [sess:request_add_header](lua.ref.sess_request_add_header "sess:request_add_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_delete_header)  | [Up](lua.function.details) |  [Next](lua.ref.sess_request_set_body) |
 | sess:request_delete_header  | [Table of Contents](index) |  sess:request_set_body |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dnslookup)  | 15.2. Lua Functions |  [Next](lua.ref.msys.getClassMetaTable.php) |
 
 <a name="lua.ref.msys.expandMacro"></a>
@@ -32,5 +34,7 @@ The parameter passed to `msys.expandMacro` expands the built-in validation conte
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dnslookup)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.getClassMetaTable.php) |
 | msys.dnsLookup  | [Table of Contents](index) |  msys.getClassMetaTable |

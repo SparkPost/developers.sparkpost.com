@@ -25,6 +25,8 @@ The log is only rotated if it is over 10M.
 
 For more information, see [ HP Vertica Analytics Platform Version 7.1.x Documentation](https://my.vertica.com/docs/7.1.x/HTML/index.htm#Authoring/AdministratorsGuide/Monitoring/Vertica/RotatingLogFiles.htm)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.post-install.config)  | [Up](post_installation) |  [Next](install.post-install.vertica_mgmt_console) |
 | 12.2. Reviewing Configuration Files  | [Table of Contents](index) |  12.4. Download and Install the Vertica Management Console |
 

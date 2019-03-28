@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.permastore_interval)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.privileges.php) |
 
 <a name="conf.ref.pidfile"></a>
@@ -24,5 +26,7 @@ pidfile is valid in the global scope.
 
 [Q: A.2](faq#faq.running.multiple.instances "A.2.")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.permastore_interval)  | [Up](conf.ref.files.php) |  [Next](conf.ref.privileges.php) |
 | permastore_interval  | [Table of Contents](index) |  privileges |

@@ -30,6 +30,8 @@ You may substitute `all` for the domain name to apply to all domains.
 
 [message_expiration](conf.ref.message_expiration "message_expiration")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_fail_domain_quiet)  | [Up](console.cmds.ref) |  [Next](console_commands.binding_summary) |
 | binding fail domain quiet  | [Table of Contents](index) |  binding summary |
 

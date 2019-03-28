@@ -10,7 +10,7 @@ In the tutorial in [Chapter 45, *Generating a Transmission*](message_gen "Chapt
 
 When you send a transmission using a stored recipient list, you reference the identifier of the list and provide the dynamic content for that specific transmission. Momentum performs any substitution required to create personalized messages for each recipient.
 
-**Sending Email Using a Stored Recipient List** 
+**Sending Email Using a Stored Recipient List**
 
 In this tutorial, you will learn how to send an email using the simple stored recipient list that you created in the previous tutorial. It builds on your knowledge of the Transmissions API, expanding its use to both inline and stored recipient lists.
 
@@ -28,12 +28,12 @@ Follow these steps to send an email using a stored recipient list:
 
     Using your text editor, create the following JSON file named `using_list.json`. Be sure to use your information for sender address.
 
-    {  
+    {
        "return_path":"*`sender@your_address.com`*",
-       "recipients":{  
+       "recipients":{
           "list_id":"simple_list"
        },
-       "content":{  
+       "content":{
           "from":"*`sender@your_address.com`*",
           "subject":"Sending Email Using a Stored Recipient List",
           "text":"Welcome to Momentum!\r\nThis email uses your first stored recipient list."
@@ -58,8 +58,8 @@ Follow these steps to send an email using a stored recipient list:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":2,
           "id":"*`11933912318083076`*"
@@ -74,6 +74,8 @@ Follow these steps to send an email using a stored recipient list:
 
 Congratulations! You have successfully sent an email using a stored recipient list. To learn more about using the Recipient Lists API, see the Recipient Lists API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](stored_list)  | [Up](p.http_rest) |  [Next](sending_cc_bcc) |
 | Chapter 50. Creating Stored Recipient Lists  | [Table of Contents](index) |  Chapter 52. Sending Emails as CC and BCC |
 

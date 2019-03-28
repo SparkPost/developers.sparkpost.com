@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_key)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_verify.php) |
 
 <a name="conf.ref.tls_protocols"></a>
@@ -29,5 +31,7 @@ In Centos/RHEL 5, which are typically shipped with OpenSSL 0.98, TLSv1.1 and TLS
 
 `tls_ciphers` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_key)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_verify.php) |
 | tls_key  | [Table of Contents](index) |  tls_verify |

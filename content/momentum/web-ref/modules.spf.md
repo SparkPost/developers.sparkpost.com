@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_rcptto_proxy)  | Chapter 14. Modules Reference |  [Next](modules.static_routes) |
 
 ## 14.69. spf Modules – spf_macros, spf_v1 and senderid (SPF v2)
@@ -355,5 +357,8 @@ The ```<sender>``` is strong-bad@email.example.com.
    0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.B.D.0.1.0.0.2.ip6._spf.example.com
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.smtp_rcptto_proxy)  | [Up](modules) |  [Next](modules.static_routes) |
 | 14.68. smtp_rcptto_proxy - SMTP Recipient-To Proxy  | [Table of Contents](index) |  14.70. static-routes - Static Routes |

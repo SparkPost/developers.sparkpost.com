@@ -14,6 +14,8 @@ help — show help information for console commands
 
 This command shows help information for available console commands. If a command name is specified, help message for that particular command will be displayed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.flush_domain)  | [Up](console.cmds.ref) |  [Next](console_commands.mailq) |
 | flush domain  | [Table of Contents](index) |  mailq |
 

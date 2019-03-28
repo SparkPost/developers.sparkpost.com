@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.shutdown)  | 12.2. System Console Commands |  [Next](console_commands.signing_stats_reset.php) |
 
 <a name="console_commands.signing_stats"></a>
@@ -148,5 +150,7 @@ The total number of messages processed including messages that the signing algor
 
 [Section 14.29, “domainkeys – Yahoo! DomainKeys”](modules.domainkeys "14.29. domainkeys – Yahoo! DomainKeys"), [Section 14.49, “opendkim – OpenDKIM module”](modules.opendkim.php "14.49. opendkim – OpenDKIM module") and [signing_stats reset](console_commands.signing_stats_reset.php "signing_stats reset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.shutdown)  | [Up](console.commands.non-module.php) |  [Next](console_commands.signing_stats_reset.php) |
 | shutdown  | [Table of Contents](index) |  signing_stats reset |

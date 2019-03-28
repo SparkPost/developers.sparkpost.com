@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mdn_failures_notify)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.memory_hwm.php) |
 
 <a name="conf.ref.memory_goal"></a>
@@ -26,5 +28,7 @@ memory_goal is valid in the global scope.
 
 [memory_hwm](conf.ref.memory_hwm "memory_hwm")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.mdn_failures_notify)  | [Up](conf.ref.files.php) |  [Next](conf.ref.memory_hwm.php) |
 | mdn_failures_notify  | [Table of Contents](index) |  memory_hwm |

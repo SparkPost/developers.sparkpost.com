@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.smtp_injections)  | Part VI. SMTP Injection |  [Next](engagement_tracking_smtp) |
 
 ## Chapter 40. Adjusting your Client Mail Application
@@ -14,13 +16,13 @@ To inject messages using SMTP, you will need existing generation or mail merge s
 
 The following examples provide instructions to transition from your existing Postfix or Sendmail MTA to Momentum.
 
-**Example 1:** 
+**Example 1:**
 
 If your application is already using SMTP to send messages directly to your existing MTA, simply adjust your application to send the messages to your Momentum server.
 
 Common SMTP libraries include JavaMail (Java), Net::SMTP (Perl and Ruby), smtplib (Python), and OpenSmtp.net (C#).
 
-**Example 2:** 
+**Example 2:**
 
 If you have some management code that needs to use the local server's "Mail" function:
 
@@ -30,7 +32,7 @@ If you have some management code that needs to use the local server's "Mail" fun
 
 *   If you are using Postfix, edit the **/etc/postfix/transport** file to add an smtp relay definition.
 
-    **`* smtp:MyMomentumServer.com`**                           
+    **`* smtp:MyMomentumServer.com`**
 
 *   Apply the changes and restart the local mail services.
 
@@ -38,6 +40,8 @@ If you have some management code that needs to use the local server's "Mail" fun
 
 The mail will route to Momentum for delivery.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.smtp_injections)  | [Up](p.smtp_injections) |  [Next](engagement_tracking_smtp) |
 | Part VI. SMTP Injection  | [Table of Contents](index) |  Chapter 41. Tracking Engagement for SMTP |
 

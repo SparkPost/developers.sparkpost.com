@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.apn.apn_status_classifier)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.client_get_body) |
 
 <a name="lua.ref.client_do_request"></a>
@@ -50,6 +52,8 @@ end
 
 [msys.http.client.new](lua.ref.msys.http.client.new "msys.http.client.new"), [client:set_timeout](lua.ref.client_set_timeout "client:set_timeout"), [client:set_header](lua.ref.client_set_header "client:set_header"), [client:get_status](lua.ref.client_get_status "client:get_status"), [client:get_body](lua.ref.client_get_body "client:get_body"), [client:parse_headers](lua.ref.client_parse_headers "client:parse_headers") [client:get_headers](lua.ref.client_get_headers "client:get_headers")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.apn.apn_status_classifier)  | [Up](lua.function.details) |  [Next](lua.ref.client_get_body) |
 | msys.apn.apn_status_classifier  | [Table of Contents](index) |  client:get_body |
 

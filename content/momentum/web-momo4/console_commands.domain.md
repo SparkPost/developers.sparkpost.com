@@ -123,6 +123,8 @@ The current number of established outbound SMTP sessions.
 
 Below the count is a list that details the system file descriptor and IP address that each SMTP session is using. The state reflects the current point in the SMTP transaction and the length of time since entering that state.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.dns_cache)  | [Up](console.cmds.ref) |  [Next](console_commands.domain_all) |
 | dns_cache  | [Table of Contents](index) |  domain all |
 

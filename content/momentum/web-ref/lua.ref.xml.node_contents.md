@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_children)  | 15.2. Lua Functions |  [Next](lua.ref.xml.node_doc.php) |
 
 <a name="lua.ref.xml.node_contents"></a>
@@ -36,5 +38,7 @@ In the preceding example, the element node &lt;item>, holds a child text node wi
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_children)  | [Up](lua.function.details.php) |  [Next](lua.ref.xml.node_doc.php) |
 | node:children  | [Table of Contents](index) |  node:doc |

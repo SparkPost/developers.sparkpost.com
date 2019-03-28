@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_inject)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_mailfrom) |
 
 <a name="lua.ref.msg_is_mcmt"></a>
@@ -17,6 +19,8 @@ Determine whether a message is a Multi-Channel Message Type (MCMT) message. For 
 
 Because this function is in the `msys.core` namespace, an explicit `require('msys.core')` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_inject)  | [Up](lua.function.details) |  [Next](lua.ref.msg_mailfrom) |
 | msg:inject  | [Table of Contents](index) |  msg:mailfrom |
 

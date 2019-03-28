@@ -53,6 +53,8 @@ core_config_get_reserve_maintenance_interval_data
 ...
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_retry)  | [Up](console.cmds.ref) |  [Next](console_commands.pager) |
 | message retry  | [Table of Contents](index) |  \pager |
 

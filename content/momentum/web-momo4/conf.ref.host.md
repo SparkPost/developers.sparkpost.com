@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.growbuf_size)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.hostname) |
 
 <a name="conf.ref.host"></a>
@@ -99,6 +101,8 @@ To be effective, you would do this for each of the MX hosts that service Google 
 
 [binding](conf.ref.binding "binding"), [domain](conf.ref.domain "domain")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.growbuf_size)  | [Up](config.options.ref) |  [Next](conf.ref.hostname) |
 | growbuf_size  | [Table of Contents](index) |  hostname |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.session_request_url_get)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.json.decode) |
 
 <a name="lua.ref.session_response_status_set_std"></a>
@@ -30,6 +32,8 @@ Enable this function with the statement `require("msys.extended.httpsrv");`.
 
 [msys.httpsrv.register](lua.ref.msys.httpsrv.register "msys.httpsrv.register") and [session:request_url_get](lua.ref.session_request_url_get "session:request_url_get")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.session_request_url_get)  | [Up](lua.function.details) |  [Next](lua.ref.json.decode) |
 | session:request_url_get  | [Table of Contents](index) |  json.decode |
 

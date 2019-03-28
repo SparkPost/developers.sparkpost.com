@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](default.policy.scriptlets)  | Chapter 5. Implementing Policy with Momentum |  [Next](policy.context-based-on-ip) |
 
 ## 5.4. Implementing Policy Using Sieve
@@ -94,5 +96,8 @@ This example makes use of the Sieve counter mechanism to keep track of how you'r
 
 The convention for naming counters is to use a short category name, followed by a colon character, followed by a more descriptive name.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](default.policy.scriptlets)  | [Up](policy) |  [Next](policy.context-based-on-ip) |
 | 5.3. Default Policy Scriptlets  | [Table of Contents](index) |  5.5. Setting Context Based on Connecting IP |

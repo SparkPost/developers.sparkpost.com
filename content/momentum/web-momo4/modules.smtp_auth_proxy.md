@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sendmail_logger)  | Chapter 71. Modules Reference |  [Next](modules.smtp_cbv) |
 
 ## 71.64. smtp_auth_proxy - SMTP Authentication Proxy
@@ -41,6 +43,8 @@ Esmtp_Listener {
 
 Hosts specified by the `relay_hosts` option are not subject to any SMTP authentication you may have implemented. Likewise when `open_relay` is set to `true`. For more information, see [relay_hosts](conf.ref.relay_hosts "relay_hosts").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.sendmail_logger)  | [Up](modules) |  [Next](modules.smtp_cbv) |
 | 71.63. sendmail_logger – Sendmail Logging  | [Table of Contents](index) |  71.65. smtp_cbv – SMTP Callback Verification |
 

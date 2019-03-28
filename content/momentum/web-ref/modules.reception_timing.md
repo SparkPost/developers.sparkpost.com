@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.postfix_logger)  | Chapter 14. Modules Reference |  [Next](modules.response_transcode) |
 
 ## 14.57. reception_timing - Reception Timing Modules
@@ -35,7 +37,7 @@ The `chunk_logger` module must be loaded and configured. This module is used to 
     ```
     chunk_logger "chunk_logger" {
        timestamp_format = "%m:%d:%H:%M:%S"
-       destination = "/var/log/ecelerity/policylog.cl" 
+       destination = "/var/log/ecelerity/policylog.cl"
     }
     ```
 {% endraw %}
@@ -52,9 +54,9 @@ The logger will attempt to include the Message-ID header contents in the timing 
 *   Sample Lua code to retrieve the Message-ID header and store it in the message context:
 
     ```
-    hdrs = msg:header("Message-ID"); 
+    hdrs = msg:header("Message-ID");
     if hdrs ~= nil and hdrs[1] ~= nil then
-       msg:context_set(msys.core.ECMESS_CTX_MESS, "cl_MID", hdrs[1]); 
+       msg:context_set(msys.core.ECMESS_CTX_MESS, "cl_MID", hdrs[1]);
     end
     ```
 
@@ -83,10 +85,10 @@ Reception records will only be logged after the entire message has been received
     ```
     1356769421: received after 0.041026 s (scanned in 0.000625 s) size=1078 src=127.0.0.1:37658 \
        dst=127.0.0.1:8710 pathway=default ID=10/00-10012-D88AED05 batch-ID=10/00-10012-D88AED05 \
-       Message-ID="" 
+       Message-ID=""
     1356769421: received after 0.041026 s (scanned in 0.000625 s) size=1078 src=127.0.0.1:37658 \
        dst=127.0.0.1:8710 pathway=default ID=20/00-10012-D88AED05 batch-ID=10/00-10012-D88AED05 \
-       Message-ID="" 
+       Message-ID=""
     1356769421: received after 0.041026 s (scanned in 0.000625 s) size=1078 src=127.0.0.1:37658 \
        dst=127.0.0.1:8710 pathway=default ID=30/00-10012-D88AED05 batch-ID=10/00-10012-D88AED05 \
        Message-ID=""
@@ -119,10 +121,10 @@ Rejections can occur at many points during SMTP reception, including MAIL FROM, 
     ```
     1356769441: rejected after 0.000576 s (scanned in 0.000000 s) size=0??? src=127.0.0.1:41932 \
        dst=127.0.0.1:8992 pathway=default ID=10/00-11022-1A8AED05 batch-ID=10/00-11022-1A8AED05 \
-       Message-ID="" phase=6 (awaiting rcptto) 
+       Message-ID="" phase=6 (awaiting rcptto)
     1356769441: rejected after 0.001893 s (scanned in 0.000000 s) size=0??? src=127.0.0.1:41932 \
        dst=127.0.0.1:8992 pathway=default ID=10/00-11022-1A8AED05 batch-ID=10/00-11022-1A8AED05 \
-       Message-ID="" phase=6 (awaiting rcptto) 
+       Message-ID="" phase=6 (awaiting rcptto)
     1356769441: rejected after 0.002541 s (scanned in 0.000000 s) size=0??? src=127.0.0.1:41932 \
        dst=127.0.0.1:8992 pathway=default ID=10/00-11022-1A8AED05 batch-ID=10/00-11022-1A8AED05 \
        Message-ID="" phase=6 (awaiting rcptto)
@@ -141,7 +143,7 @@ Rejections can occur at many points during SMTP reception, including MAIL FROM, 
     ```
     1356769446: rejected after 1.040390 s (scanned in 1.000000 s) size=1075 src=127.0.0.1:57890 \
        dst=127.0.0.1:8702 pathway=default ID=10/00-11224-5A8AED05 batch-ID=10/00-11224-5A8AED05 \
-       Message-ID="" phase=9 (reading body) 
+       Message-ID="" phase=9 (reading body)
     1356769446: rejected after 1.040390 s (scanned in 1.000000 s) size=1075 src=127.0.0.1:57890 \
        dst=127.0.0.1:8702 pathway=default ID=10/00-11224-5A8AED05 batch-ID=10/00-11224-5A8AED05 \
        Message-ID="" phase=9 (reading body)
@@ -155,10 +157,10 @@ Rejections can occur at many points during SMTP reception, including MAIL FROM, 
     ```
     1356769460: rejected after 3.043582 s (scanned in 3.003623 s) size=1123 src=127.0.0.1:49148 \
        dst=127.0.0.1:8956 pathway=default ID=10/00-11629-1B8AED05 batch-ID=10/00-11629-1B8AED05 \
-       Message-ID="" phase=12 (async body response) 
+       Message-ID="" phase=12 (async body response)
     1356769460: rejected after 3.043582 s (scanned in 3.003623 s) size=1123 src=127.0.0.1:49148 \
        dst=127.0.0.1:8956 pathway=default ID=10/00-11629-1B8AED05 batch-ID=10/00-11629-1B8AED05 \
-       Message-ID="" phase=12 (async body response) 
+       Message-ID="" phase=12 (async body response)
     1356769460: rejected after 3.043582 s (scanned in 3.003623 s) size=1123 src=127.0.0.1:49148 \
        dst=127.0.0.1:8956 pathway=default ID=10/00-11629-1B8AED05 batch-ID=10/00-11629-1B8AED05 \
        Message-ID="" phase=12 (async body response)
@@ -238,14 +240,17 @@ SMTP stage numbers, reception states, and descriptions are listed below:
 There are no configuration options. Load the timing module as shown below:
 
 ```
-reception_timing reception_timing1 { 
-} 
+reception_timing reception_timing1 {
+}
 
-reception_timing_logger reception_timing_logger1 { 
+reception_timing_logger reception_timing_logger1 {
 }
 ```
 
 Both parts need to be loaded; otherwise, the timing data will not be collected or logged correctly.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.postfix_logger)  | [Up](modules) |  [Next](modules.response_transcode) |
 | 14.56. postfix_logger – Postfix-Compatible Logging  | [Table of Contents](index) |  14.58. response_transcode – Module |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exe)  | Chapter 11. Momentum Command Line Reference |  [Next](exe.commands.details.php) |
 
 ## 11.1. Executable Command Summary
@@ -47,5 +49,7 @@ This table lists all executable commands alphabetically giving a brief descripti
 | [migrate_regex_binding2](executable.migrate_regex_binding2 "migrate_regex_binding2") – Migrate regex_binding2 bindings from version 2.2 to version 3.0 | config |
 | [validate_config](executable.validate_config "validate_config") – Check the validity of the configuration files | config |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](exe)  | [Up](exe.php) |  [Next](exe.commands.details.php) |
 | Chapter 11. Momentum Command Line Reference  | [Table of Contents](index) |  11.2. Executable Commands |

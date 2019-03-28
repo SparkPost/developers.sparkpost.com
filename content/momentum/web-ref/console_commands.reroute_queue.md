@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reopen_logs)  | 12.2. System Console Commands |  [Next](console_commands.show_inbound.php) |
 
 <a name="console_commands.reroute_queue"></a>
@@ -19,5 +21,7 @@ The **reroute queue**       command requires two domain names as its arguments. 
 Moved 100 messages from 'relay.com' to 'newrelay.com'
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.reopen_logs)  | [Up](console.commands.non-module.php) |  [Next](console_commands.show_inbound.php) |
 | reopen logs  | [Table of Contents](index) |  show inbound |

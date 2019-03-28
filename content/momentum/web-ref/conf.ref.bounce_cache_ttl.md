@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_cache_size)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.bounce_domains.php) |
 
 <a name="conf.ref.bounce_cache_ttl"></a>
@@ -28,5 +30,7 @@ bounce_cache_ttl is valid in the global scope.
 
 [bounce_cache_size](conf.ref.bounce_cache_size "bounce_cache_size")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_cache_size)  | [Up](conf.ref.files.php) |  [Next](conf.ref.bounce_domains.php) |
 | bounce_cache_size  | [Table of Contents](index) |  bounce_domains |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.outbound_smtp_auth)  | Chapter 14. Modules Reference |  [Next](modules.persistio) |
 
 ## 14.52. pe2_logger – Module
@@ -102,5 +104,8 @@ Note that unsubscribe in this context is equivalent to marking the recipient as 
 
 When used in passive mode, you must make sure that the MTA is not one being injected into directly by the Message Central generator, as there is no way for that MTA to log deliveries.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.outbound_smtp_auth)  | [Up](modules) |  [Next](modules.persistio) |
 | 14.51. outbound_smtp_auth – Module  | [Table of Contents](index) |  14.53. persist_io – Persistent IO Wrapper |

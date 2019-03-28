@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr)  | 11.2. Executable Commands |  [Next](executable.ecconfigd.php) |
 
 <a name="executable.eccmgr_ctl"></a>
@@ -19,5 +21,7 @@ eccmgr_ctl — start, stop or restart the Momentum cluster manager
 
 [eccluster.conf](eccluster.conf3 "eccluster.conf")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.eccmgr)  | [Up](exe.commands.details.php) |  [Next](executable.ecconfigd.php) |
 | eccmgr  | [Table of Contents](index) |  ecconfigd |

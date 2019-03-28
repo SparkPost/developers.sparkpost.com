@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.enable_fbl_header_insertion)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.exclude_vctx.php) |
 
 <a name="conf.ref.eventloop"></a>
@@ -63,5 +65,7 @@ An eventloop cannot be defined at runtime and its `concurrency` cannot be change
 
 [delivery_pool](conf.ref.delivery_pool "delivery_pool") and [maintainer_pool](conf.ref.maintainer_pool.php "maintainer_pool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.enable_fbl_header_insertion)  | [Up](conf.ref.files.php) |  [Next](conf.ref.exclude_vctx.php) |
 | enable_fbl_header_insertion  | [Table of Contents](index) |  exclude_vctx |

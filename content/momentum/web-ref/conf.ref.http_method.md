@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_host)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.http_uri.php) |
 
 <a name="conf.ref.http_method"></a>
@@ -36,5 +38,7 @@ The default value for this option is `"POST"`.
 
 [http_basic_auth](conf.ref.http_basic_auth "http_basic_auth"), [delivery_method](conf.ref.delivery_method.php "delivery_method"), [http_uri](conf.ref.http_uri.php "http_uri"), [http_host](conf.ref.http_host.php "http_host"), [http_version](conf.ref.http_version.php "http_version") and [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/)
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.http_host)  | [Up](conf.ref.files.php) |  [Next](conf.ref.http_uri.php) |
 | http_host  | [Table of Contents](index) |  http_uri |

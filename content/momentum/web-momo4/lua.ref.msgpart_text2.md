@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_raw_replace)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msgpart_text) |
 
 <a name="lua.ref.msgpart_text2"></a>
@@ -28,6 +30,8 @@ In the current design, this function applies encoding and MIME headers but **doe
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msgpart_raw_replace)  | [Up](lua.function.details) |  [Next](lua.ref.msgpart_text) |
 | msgpart:raw_replace  | [Table of Contents](index) |  msgpart:text |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](add_remove_analytics_nodes)  | Chapter 14. Adding and Removing Analytics Nodes |  [Next](p.configuration) |
 
 ## 14.2. Removing an Analytics Node
@@ -81,8 +83,8 @@ These instructions apply to Momentum 4.2.1.*`x`*, where `x` > or = `11`
 2.  Set the node variable to the FQDN of the application node being removed. Do the same for the other application nodes in the cluster. (This example assumes there are currently four application nodes in the cluster, but all should be provided here.)
 
     ```
-    export NODE=remove.app.node.fully.qualified.name; 
-    export NODE2=app2.fully.qualified.name; 
+    export NODE=remove.app.node.fully.qualified.name;
+    export NODE2=app2.fully.qualified.name;
     export NODE3=app3.fully.qualified.name;
     ```
 
@@ -141,6 +143,8 @@ These instructions apply to Momentum 4.2.1.*`x`*, where `x` > or = `11`
 
 2.  Perform backups as necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](add_remove_analytics_nodes)  | [Up](add_remove_analytics_nodes) |  [Next](p.configuration) |
 | Chapter 14. Adding and Removing Analytics Nodes  | [Table of Contents](index) |  Part III. Configuring Momentum |
 

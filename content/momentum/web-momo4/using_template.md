@@ -8,7 +8,7 @@ In the tutorial in [Chapter 45, *Generating a Transmission*](message_gen "Chapt
 
 When you send a transmission using a stored template, you reference the identifier of the template and provide the dynamic content for that specific transmission. Momentum performs the substitution to create personalized messages for each recipient. By default, the published version of the template is used. However, you can submit a transmission that uses a draft template by setting the appropriate field in the transmission.
 
-**Sending Email Using a Stored Template** 
+**Sending Email Using a Stored Template**
 
 In this section, you will learn how to send an email using the simple stored template that you created in the previous tutorial. It builds on your knowledge of the Transmissions API, expanding its use to both inline and stored templates.
 
@@ -26,30 +26,30 @@ Follow these steps to send an email using a stored template:
 
     Using your text editor, create the following JSON file named `simple_subdata.json`. Be sure to use your information for sender address, recipient addresses, and recipient names.
 
-    {  
+    {
        "return_path":"*`sender@your_address.com`*",
-       "substitution_data":{  
+       "substitution_data":{
           "sender":"Momentum"
        },
-       "recipients":[  
-          {  
-             "address":{  
+       "recipients":[
+          {
+             "address":{
                 "email":"*`recipient1@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "firstName":"*`recipient1 first name`*            "
              }
           },
-          {  
-             "address":{  
+          {
+             "address":{
                 "email":"*`recipient2@their_address.com`*"
              },
-             "substitution_data":{  
+             "substitution_data":{
                 "firstName":"*`recipient2 first name`*            "
              }
           }
        ],
-       "content":{  
+       "content":{
           "template_id":"simple_template",
           "use_draft_template":false
        }
@@ -76,8 +76,8 @@ Follow these steps to send an email using a stored template:
 
     If successful, a response similar to the following will be displayed at the command line:
 
-    {  
-       "results":{  
+    {
+       "results":{
           "total_rejected_recipients":0,
           "total_accepted_recipients":2,
           "id":"*`11933912318083075`*"
@@ -92,6 +92,8 @@ Follow these steps to send an email using a stored template:
 
 Congratulations! You have successfully sent an email using a stored template. To learn more about using the Transmissions API, see the Transmission API documentation available at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.templates.delete)  | [Up](p.http_rest) |  [Next](stored_list) |
 | 48.6. Deleting a Template  | [Table of Contents](index) |  Chapter 50. Creating Stored Recipient Lists |
 

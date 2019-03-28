@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.blackhole.php) |
 
 <a name="conf.ref.binding_group"></a>
@@ -212,5 +214,7 @@ The options valid in the binding scope are as follows:
 
 [Section 4.6, “MultiVIP© Interfaces”](operations.multivip "4.6. MultiVIP© Interfaces"), [binding](conf.ref.binding.php "binding"),
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.binding)  | [Up](conf.ref.files.php) |  [Next](conf.ref.blackhole.php) |
 | binding  | [Table of Contents](index) |  blackhole |

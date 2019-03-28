@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.blackhole)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.bounce_behavior) |
 
 <a name="conf.ref.body_timeout"></a>
@@ -21,6 +23,8 @@ The default value is `600`.
 
 body_timeout is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.blackhole)  | [Up](config.options.ref) |  [Next](conf.ref.bounce_behavior) |
 | blackhole  | [Table of Contents](index) |  bounce_behavior |
 

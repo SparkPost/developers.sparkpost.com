@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ilf_logger)  | Chapter 71. Modules Reference |  [Next](modules.ipv6_lookup) |
 
 ## 71.41. inbound_audit – Inbound traffic analytics
@@ -205,6 +207,8 @@ Subtract a value from a CIDR in a named series.
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.ilf_logger)  | [Up](modules) |  [Next](modules.ipv6_lookup) |
 | 71.40. ilf_logger – Incremental License Fee Logging  | [Table of Contents](index) |  71.42. ipv6_lookup – Multi-address-family MX Records |
 

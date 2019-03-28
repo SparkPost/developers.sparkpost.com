@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tcp_buffer_size)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.timestampformat) |
 
 <a name="conf.ref.threadpool"></a>
@@ -111,6 +113,8 @@ ThreadPool is valid in the global scope.
 
 [domain](conf.ref.domain "domain"), [host](conf.ref.host "host"), [threads](console_commands.threads "threads")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tcp_buffer_size)  | [Up](config.options.ref) |  [Next](conf.ref.timestampformat) |
 | tcp_buffer_size  | [Table of Contents](index) |  timestampformat |
 

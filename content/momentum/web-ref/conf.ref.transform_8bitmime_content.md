@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transfail_drain_rate)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.umem_reap_interval.php) |
 
 <a name="conf.ref.transform_8bitmime_content"></a>
@@ -42,5 +44,7 @@ Transform_8BitMime_Content is valid in the global, binding_group, binding and do
 
 [send_8bitmime](conf.ref.send_8bitmime "send_8bitmime")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.transfail_drain_rate)  | [Up](conf.ref.files.php) |  [Next](conf.ref.umem_reap_interval.php) |
 | transfail_drain_rate  | [Table of Contents](index) |  umem_reap_interval |

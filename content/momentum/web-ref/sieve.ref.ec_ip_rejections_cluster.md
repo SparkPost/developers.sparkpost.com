@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ip_rejections)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_log) |
 
 <a name="sieve.ref.ec_ip_rejections_cluster"></a>
@@ -101,5 +103,8 @@ if ec_test :value "gt" :comparator "i;ascii-numeric" "${count}" "10000" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_ip_rejections)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_log) |
 | ec_ip_rejections  | [Table of Contents](index) |  ec_log |

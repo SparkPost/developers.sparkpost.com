@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msg_text_match) |
 
 <a name="lua.ref.msg_text1"></a>
@@ -27,6 +29,8 @@ Enable this function with the statement `require('msys.extended.message');`.
 
 [msg:text](lua.ref.msg_text "msg:text")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_text)  | [Up](lua.function.details) |  [Next](lua.ref.msg_text_match) |
 | msg:text  | [Table of Contents](index) |  msg:text_match |
 

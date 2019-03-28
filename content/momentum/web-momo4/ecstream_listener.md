@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_authz)  | Part III. Configuring Momentum |  [Next](esmtp_listener) |
 ## Chapter 18. Configuring Inbound Mail Service Using ECStream
 **Table of Contents**
@@ -22,5 +24,7 @@ Not all listener options are valid within the ECStream_Listener or the Listen sc
 Note that the `ecstream_idle_time` and `ecstream_max_batch_size` options are only valid within the ECStream scope or a listen scope within this scope. They are also the only options valid in the ECStream::Peer scope or ECStream_Listener::Listen::Peer scopes.
 For general information regarding listeners, see [Section 15.4, “Listeners”](listeners "15.4. Listeners").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_authz)  | [Up](p.configuration) |  [Next](esmtp_listener) |
 | 17.4. Control_Listener Authorization  | [Table of Contents](index) |  Chapter 19. Configuring Inbound Mail Service Using SMTP |

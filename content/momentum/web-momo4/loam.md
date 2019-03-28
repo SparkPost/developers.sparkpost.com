@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](components)  | Part I. Introduction to Momentum |  [Next](roles_behaviors) |
 
 ## Chapter 2. Life of A Message
@@ -6,7 +8,7 @@
 
 Messages are injected into Momentum 4.x either through SMTP or HTTP. SMTP injection requires you to have a fully-formed message available for injection. HTTP injection uses a transmission JSON object submitted through Momentum via the Transmissions API. Transmissions specify a content template and a list of recipients, both of which may be previously stored or explicitly included in the transmission.
 
-## 
+##
 
 <a name="life_of_a_message.image"></a>
 
@@ -52,6 +54,8 @@ Momentum uses Engagement Tracking to track opens and clicks. This activity occur
 
 The event hose reports all aspects of the message disposition to the Analytics database, including any messages generated via HTTP injection.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](components)  | [Up](p.intro) |  [Next](roles_behaviors) |
 | Chapter 1. Components  | [Table of Contents](index) |  Chapter 3. Roles and Behaviors |
 

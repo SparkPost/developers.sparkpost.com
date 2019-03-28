@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.options.summary)  | Part X. Reference |  [Next](exe) |
 
 ## Chapter 67. Console Commands Summary
@@ -161,6 +163,8 @@ This table lists all console commands alphabetically giving a brief description.
 | [version](console_commands.version "version") – Show version information of Momentum | 4.0 |   | misc |
 | [write config](console_commands.write_config "write config") – Display current running configuration | 4.0 |   | config |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.options.summary)  | [Up](p.reference) |  [Next](exe) |
 | Chapter 66. Configuration Options Summary  | [Table of Contents](index) |  Chapter 68. Executable Command Summary |
 

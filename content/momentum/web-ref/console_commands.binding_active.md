@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_roles_list)  | 12.2. System Console Commands |  [Next](console_commands.binding_delayed.php) |
 
 <a name="console_commands.binding_active"></a>
@@ -72,5 +74,7 @@ The row detailing the totals represents the totals across *all* domains on the g
 
 [binding delayed](console_commands.binding_delayed "binding delayed")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.authz_roles_list)  | [Up](console.commands.non-module.php) |  [Next](console_commands.binding_delayed.php) |
 | authz roles list  | [Table of Contents](index) |  binding delayed |

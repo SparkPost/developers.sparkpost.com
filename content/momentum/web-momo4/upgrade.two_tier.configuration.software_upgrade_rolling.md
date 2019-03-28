@@ -13,6 +13,8 @@ You must upgrade the Analytics node first.
 
     `yum install --disablerepo=* --config momentum.repo --enablerepo=momentum msys-app-adaptive-delivery-etl`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.config_all_nodes_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.configuration.webui_rolling) |
 | 11.13. Configuration Changes  | [Table of Contents](index) |  11.15. Update the Web UI Configuration |
 

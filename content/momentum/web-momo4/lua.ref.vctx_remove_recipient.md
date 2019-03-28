@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_recipient_list)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.vctx_set) |
 
 <a name="lua.ref.vctx_remove_recipient"></a>
@@ -17,6 +19,8 @@ Removes an address (which may be a table representing multiple addresses) from t
 
 Enable this function with the statement `require('msys.extended.vctx');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.vctx_recipient_list)  | [Up](lua.function.details) |  [Next](lua.ref.vctx_set) |
 | vctx:recipient_list  | [Table of Contents](index) |  vctx:set |
 

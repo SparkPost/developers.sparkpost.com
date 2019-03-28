@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.send_mdn)  | 15.2. Lua Functions |  [Next](lua.ref.msys.threadpool.count.php) |
 
 <a name="lua.ref.msys.symantec_beik.scan"></a>
@@ -67,5 +69,7 @@ Enable this function with the statement `require('msys.symantec_beik');`.
 
 [Section 14.10, “beik – BEIK Module”](modules.beik "14.10. beik – BEIK Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.send_mdn)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.threadpool.count.php) |
 | msys.rfc3464.send_mdn  | [Table of Contents](index) |  msys.threadpool.count |

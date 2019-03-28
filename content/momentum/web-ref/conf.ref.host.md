@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.growbuf_size)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.host_failure_retry.php) |
 
 <a name="conf.ref.host"></a>
@@ -99,5 +101,7 @@ host is valid in the binding, binding_group and global scopes.
 
 [binding](conf.ref.binding "binding"), [domain](conf.ref.domain.php "domain"), [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback.php "2.6. Configuration Scopes and Fallback")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.growbuf_size)  | [Up](conf.ref.files.php) |  [Next](conf.ref.host_failure_retry.php) |
 | growbuf_size  | [Table of Contents](index) |  host_failure_retry |

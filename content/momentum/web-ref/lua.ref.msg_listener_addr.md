@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.header)  | 15.2. Lua Functions |  [Next](lua.ref.msg_reception_peer.php) |
 
 <a name="lua.ref.msg_listener_addr"></a>
@@ -46,5 +48,7 @@ msys.registerModule("myMod", mod);
 
 [msg:reception_peer](lua.ref.msg_reception_peer "msg:reception_peer")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.header)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_reception_peer.php) |
 | msg:header  | [Table of Contents](index) |  msg:reception_peer |

@@ -8,6 +8,8 @@ During installation, configuration files with reasonable defaults are added to t
 
 In a cluster environment, you can make configuration changes on any Platform node. Once changes have been added to the repository, Momentum will update all nodes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](post_installation)  | [Up](post_installation) |  [Next](install.post-install.rotate) |
 | Chapter 12. Post-Installation  | [Table of Contents](index) |  12.3. Rotating Logfiles |
 

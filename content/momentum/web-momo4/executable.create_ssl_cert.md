@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ad_summary)  | Chapter 74. Executable Commands Reference |  [Next](executable.credmgr) |
 
 <a name="executable.create_ssl_cert"></a>
@@ -83,6 +85,8 @@ For the **ecconfigd** service, use `ecuser`. For the **msyspg** service, use `ms
 
 [ecconfigd](executable.ecconfigd "ecconfigd"), [Section 29.2, “Running the PostgreSQL Server”](postgresql.server "29.2. Running the PostgreSQL Server")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ad_summary)  | [Up](exec.cmds.ref) |  [Next](executable.credmgr) |
 | ad_summary  | [Table of Contents](index) |  credmgr |
 

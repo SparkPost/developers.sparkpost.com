@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.inline_transfail_processing)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.large_message_threshold.php) |
 
 <a name="conf.ref.keep_message_dicts_in_memory"></a>
@@ -38,5 +40,7 @@ keep_message_dicts_in_memory is valid in the global scope.
 
 [exclude_vctx](conf.ref.exclude_vctx "exclude_vctx")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.inline_transfail_processing)  | [Up](conf.ref.files.php) |  [Next](conf.ref.large_message_threshold.php) |
 | inline_transfail_processing  | [Table of Contents](index) |  large_message_threshold |

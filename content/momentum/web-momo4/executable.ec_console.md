@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_adtool)  | Chapter 74. Executable Commands Reference |  [Next](executable.ec_ctl) |
 
 <a name="executable.ec_console"></a>
@@ -41,6 +43,8 @@ Show the man page for the **ec_console** command.
 
 [Chapter 67, *Console Commands Summary*](console_commands "Chapter 67. Console Commands Summary") , [Chapter 17, *Configuring Momentum's System Console*](control_listener "Chapter 17. Configuring Momentum's System Console") , [Chapter 37, *Using the System Console (**ec_console**)*](operations "Chapter 37. Using the System Console (ec_console)")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_adtool)  | [Up](exec.cmds.ref) |  [Next](executable.ec_ctl) |
 | ec_adtool  | [Table of Contents](index) |  ec_ctl |
 

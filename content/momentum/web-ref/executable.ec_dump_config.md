@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_dkim_ctl)  | 11.2. Executable Commands |  [Next](executable.ec_jre_setup.php) |
 
 <a name="executable.ec_dump_config"></a>
@@ -58,5 +60,7 @@ Global configuration error.
 
 [migrate_regex_binding2](executable.migrate_regex_binding2 "migrate_regex_binding2"), [ec_migrate_conf](executable.ec_migrate_conf.php "ec_migrate_conf") and [validate_config](executable.validate_config.php "validate_config")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_dkim_ctl)  | [Up](exe.commands.details.php) |  [Next](executable.ec_jre_setup.php) |
 | ec_dkim_ctl  | [Table of Contents](index) |  ec_jre_setup |

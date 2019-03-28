@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.set_af_msi_address)  | 15.2. Lua Functions |  [Next](lua.ref.client_do_request.php) |
 
 <a name="lua.ref.msys.apn.apn_status_classifier"></a>
@@ -51,7 +53,7 @@ function mod:generic_delivery_msg_dispose(msg)
     -- reset context variable for DLV_Response_Status
     msg:context_delete(msys.core.ECMESS_CTX_MESS, "DLV_Response_Status")
     return msys.delivery.DELIVERY_DONE
-  else 
+  else
     print(status, " unknown disposition!\n")
   end
 end
@@ -64,5 +66,7 @@ msys.registerModule("convert", mod);
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/) and [msys.gcm.gcm_classify_error](lua.ref.msys.gcm.gcm_classify_error "msys.gcm.gcm_classify_error")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.cloudmark.set_af_msi_address)  | [Up](lua.function.details.php) |  [Next](lua.ref.client_do_request.php) |
 | msys.cloudmark.set_af_msi_address  | [Table of Contents](index) |  client:do_request |

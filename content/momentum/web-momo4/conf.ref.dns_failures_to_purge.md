@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_expire_interval)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.dns_fallback_to_tcp) |
 
 <a name="conf.ref.dns_failures_to_purge"></a>
@@ -24,6 +26,8 @@ After the specified number of failed DNS lookups, a message will be failed perma
 
 [mx_failures_fallback_to_a](conf.ref.mx_failures_fallback_to_a "mx_failures_fallback_to_a")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.dns_expire_interval)  | [Up](config.options.ref) |  [Next](conf.ref.dns_fallback_to_tcp) |
 | dns_expire_interval  | [Table of Contents](index) |  dns_fallback_to_tcp |
 

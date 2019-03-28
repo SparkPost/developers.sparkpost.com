@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_get_result_error_code)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.pcre.replace) |
 
 <a name="lua.ref.msys.pcre.match"></a>
@@ -48,6 +50,8 @@ The return values are as follows:
 
 [msys.pcre.split](lua.ref.msys.pcre.split "msys.pcre.split"), [msys.pcre.replace](lua.ref.msys.pcre.replace "msys.pcre.replace")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_get_result_error_code)  | [Up](lua.function.details) |  [Next](lua.ref.msys.pcre.replace) |
 | msys.gcm.gcm_get_result_error_code  | [Table of Contents](index) |  msys.pcre.replace |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_riak)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.adaptive_scope) |
 
 <a name="conf.ref.adaptive_enabled"></a>
@@ -29,6 +31,8 @@ adaptive_enabled is valid in the binding, binding_group, domain and global scope
 
 [Section 71.3, “adaptive – Adaptive Delivery”](modules.adaptive "71.3. adaptive – Adaptive Delivery")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.adaptive_backstore_riak)  | [Up](config.options.ref) |  [Next](conf.ref.adaptive_scope) |
 | adaptive_backstore_riak  | [Table of Contents](index) |  adaptive_scope |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_in)  | 12.2. System Console Commands |  [Next](console_commands.summary_reset.php) |
 
 <a name="console_commands.summary"></a>
@@ -205,5 +207,7 @@ Use the `with-mobile` option to display the status of SMPP and MM7 message queue
 
 [binding summary](console_commands.binding_summary "binding summary"), [summary reset](console_commands.summary_reset.php "summary reset")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_in)  | [Up](console.commands.non-module.php) |  [Next](console_commands.summary_reset.php) |
 | spool_in  | [Table of Contents](index) |  summary reset |

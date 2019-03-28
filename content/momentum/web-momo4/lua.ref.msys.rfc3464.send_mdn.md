@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.extract_delivery_status)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.symantec_beik.scan) |
 
 <a name="lua.ref.msys.rfc3464.send_mdn"></a>
@@ -21,6 +23,8 @@ Generate and enqueue an MDN from the input `msg`. `action` can be one of msys.co
 
 Enable this function with the statement `require('msys.rfc3464');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.rfc3464.extract_delivery_status)  | [Up](lua.function.details) |  [Next](lua.ref.msys.symantec_beik.scan) |
 | msys.rfc3464.extract_delivery_status  | [Table of Contents](index) |  msys.symantec_beik.scan |
 

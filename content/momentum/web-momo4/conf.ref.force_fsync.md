@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.expensive_batch_assessment)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.fully_resolve_before_smtp) |
 
 <a name="conf.ref.force_fsync"></a>
@@ -27,6 +29,8 @@ The default is `false`.
 
 force_fsync is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.expensive_batch_assessment)  | [Up](config.options.ref) |  [Next](conf.ref.fully_resolve_before_smtp) |
 | expensive_batch_assessment  | [Table of Contents](index) |  fully_resolve_before_smtp |
 

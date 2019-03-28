@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_body_replace)  | 15.2. Lua Functions |  [Next](lua.ref.msg_discard.php) |
 
 <a name="lua.ref.msg_build"></a>
@@ -89,5 +91,7 @@ Content-Transfer-Encoding: base64
 
 [msg:inject](lua.ref.msg_inject "msg:inject")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_body_replace)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_discard.php) |
 | msg:body_replace  | [Table of Contents](index) |  msg:discard |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dns_lookup)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_floor) |
 
 <a name="sieve.ref.ec_error_mode"></a>
@@ -16,5 +18,8 @@ ec_error_mode — set the error mode to "fail" or "continue"
 
 The ability to change this behavior was introduced in 2.2, and the default was changed to `fail`. In prior releases, the default was effectively `continue` and this could not be altered.
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_dns_lookup)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_floor) |
 | ec_dns_lookup  | [Table of Contents](index) |  ec_floor |

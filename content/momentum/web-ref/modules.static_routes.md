@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.spf)  | Chapter 14. Modules Reference |  [Next](modules.stats_producer) |
 
 ## 14.70. static-routes - Static Routes
@@ -25,5 +27,8 @@ static_routes
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.spf)  | [Up](modules) |  [Next](modules.stats_producer) |
 | 14.69. spf Modules – spf_macros, spf_v1 and senderid (SPF v2)  | [Table of Contents](index) |  14.71. statp – Stats Producer Module |

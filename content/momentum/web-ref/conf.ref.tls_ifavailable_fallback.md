@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_client_ca)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.tls_key.php) |
 
 <a name="conf.ref.tls_ifavailable_fallback"></a>
@@ -29,5 +31,7 @@ The default value is `true`.
 
 tls_ifavailable_fallback is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.tls_client_ca)  | [Up](conf.ref.files.php) |  [Next](conf.ref.tls_key.php) |
 | tls_client_ca  | [Table of Contents](index) |  tls_key |

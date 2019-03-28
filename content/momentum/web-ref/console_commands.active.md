@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console.commands.non-module)  | 12.2. System Console Commands |  [Next](console_commands.authz_id.php) |
 
 <a name="console_commands.active"></a>
@@ -67,5 +69,7 @@ total messages sent during the life of the domain record
 
 The row detailing the totals represents the totals across *all* domains, not just those listed.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console.commands.non-module)  | [Up](console.commands.non-module.php) |  [Next](console_commands.authz_id.php) |
 | 12.2. System Console Commands  | [Table of Contents](index) |  authz id |

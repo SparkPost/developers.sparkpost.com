@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disk_queue_drain_rate)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.dns_expire_interval) |
 
 <a name="conf.ref.dns_cache_purge_interval"></a>
@@ -21,6 +23,8 @@ The default value is `60` (seconds).
 
 `dns_cache_purge_interval` is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.disk_queue_drain_rate)  | [Up](config.options.ref) |  [Next](conf.ref.dns_expire_interval) |
 | disk_queue_drain_rate  | [Table of Contents](index) |  dns_expire_interval |
 

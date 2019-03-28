@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareUnset)  | 15.2. Lua Functions |  [Next](lua.ref.msys.snmpTrap.php) |
 
 <a name="lua.ref.msys.sleep"></a>
@@ -23,5 +25,7 @@ When called in the scheduler thread, this function suspends the current session 
 
 Because this function is in the `msys` namespace, an explicit `require` is not necessary.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.shareUnset)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.snmpTrap.php) |
 | msys.shareUnset  | [Table of Contents](index) |  msys.snmpTrap |

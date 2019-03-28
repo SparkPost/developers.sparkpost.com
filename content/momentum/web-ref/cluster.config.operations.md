@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.replication)  | Chapter 7. Clustering |  [Next](cluster.config.failover.php) |
 
 ## 7.8. Using the Cluster Manager
@@ -128,5 +130,7 @@ Display version and copyright information of eccmgr.
 
 Use the **config** command to set, get or eval any of the options in the `eccluster.conf` or `webui-common.conf` files. You can also use other **config** commands such as **config locate**        or **config showrecurse** . For information on using the **config** command see [config](console_commands.config "config").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.replication)  | [Up](cluster.php) |  [Next](cluster.config.failover.php) |
 | 7.7. Data Replication  | [Table of Contents](index) |  7.9. Configuring Momentum for High Availability and Failover |

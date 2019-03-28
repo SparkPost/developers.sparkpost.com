@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makePart)  | 15.2. Lua Functions |  [Next](lua.ref.msg_raw.php) |
 
 <a name="lua.ref.msg_mime"></a>
@@ -17,5 +19,7 @@ Returns the top of the MIME tree for the message, a message part. Setting `reado
 
 Enable this function with the statement `require('msys.extended.message');`.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_makePart)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_raw.php) |
 | msg:makePart  | [Table of Contents](index) |  msg:raw |

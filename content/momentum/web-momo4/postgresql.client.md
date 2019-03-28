@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.server)  | Chapter 29. PostgreSQL |  [Next](postgresql.migrating) |
 
 ## 29.3. Using the PostgreSQL Client Program
@@ -22,6 +24,8 @@ We strongly advise against building applications to interface with our database 
 
 Additionally, applications that interface directly may be incompatible with future upgrades to the version of PostgreSQL used with Momentum.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](postgresql.server)  | [Up](postgresql) |  [Next](postgresql.migrating) |
 | 29.2. Running the PostgreSQL Server  | [Table of Contents](index) |  29.4. Dumping and Restoring the Database |
 

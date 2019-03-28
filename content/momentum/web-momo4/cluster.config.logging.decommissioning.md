@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.redundancy)  | Chapter 26. Log Aggregation |  [Next](cluster.config.duravip) |
 
 ## 26.5. Decommissioning a Log Aggregator
@@ -14,6 +16,8 @@ To decommission a log aggregator, complete the following operational procedure:
 
 5.  On each of the nodes that was journalling data for that log aggregator, use the [jlogctl](executable.jlogctl "jlogctl") tool to erase the now redundant subscriber checkpoint information from each of the jlog files.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](cluster.config.logging.redundancy)  | [Up](log_aggregation) |  [Next](cluster.config.duravip) |
 | 26.4. Redundant Logs  | [Table of Contents](index) |  Chapter 27. DuraVIP™: IP Fail over |
 

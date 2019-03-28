@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.clear_mail_queue_maintainers)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.cluster_outbound_throttle_connections.php) |
 
 <a name="conf.ref.cluster_max_outbound_connections"></a>
@@ -64,5 +66,7 @@ Host edge.omniti.com {
 
 [max_outbound_connections](conf.ref.max_outbound_connections "max_outbound_connections") [host](conf.ref.host.php "host") [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback.php "2.6. Configuration Scopes and Fallback")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.clear_mail_queue_maintainers)  | [Up](conf.ref.files.php) |  [Next](conf.ref.cluster_outbound_throttle_connections.php) |
 | clear_mail_queue_maintainers  | [Table of Contents](index) |  cluster_outbound_throttle_connections |

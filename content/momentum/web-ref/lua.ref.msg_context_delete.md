@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_reception_peer)  | 15.2. Lua Functions |  [Next](lua.ref.msg_context_exists.php) |
 
 <a name="lua.ref.msg_context_delete"></a>
@@ -32,5 +34,7 @@ This function returns `1` if the key is deleted and `0` if the key does not exis
 
 [msg:context_set](lua.ref.msg_context_set "msg:context_set")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_reception_peer)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_context_exists.php) |
 | msg:reception_peer  | [Table of Contents](index) |  msg:context_exists |

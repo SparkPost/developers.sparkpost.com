@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_addchild)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.xml.node_children) |
 
 <a name="lua.ref.xml.node_attribute"></a>
@@ -36,6 +38,8 @@ print(node:attr("name")) -- prints the value of the "name" attribute
 
 [xml.parsexml](lua.ref.xml.parsexml "xml.parsexml")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.xml.node_addchild)  | [Up](lua.function.details) |  [Next](lua.ref.xml.node_children) |
 | node:addchild  | [Table of Contents](index) |  node:children |
 

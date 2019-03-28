@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.logging)  | Chapter 4. Operations |  [Next](policy) |
 
 ## 4.6. MultiVIP© Interfaces
@@ -31,5 +33,8 @@ You should also be aware that binding names are case-sensitive.
 
 For more information about bindings, see [binding](conf.ref.binding "binding").
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations.logging)  | [Up](operations) |  [Next](policy) |
 | 4.5. Logging  | [Table of Contents](index) |  Chapter 5. Implementing Policy with Momentum |

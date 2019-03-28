@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install_upgrade_packages)  | Part II. Installing Momentum |  [Next](install.configure_cassandra) |
 ## Chapter 9. New Installation - All Configurations
 **Table of Contents**
@@ -277,7 +279,7 @@ There are several agents on the MTA nodes that transfer data to the Analytics no
           "analytics1.yourdomain.com",
           "analytics2.yourdomain.com",
           ...
-          "analyticsN.yourdomain.com"      
+          "analyticsN.yourdomain.com"
         ]
       }
     }
@@ -322,5 +324,7 @@ Be sure to repeat the steps in this section on **all** remaining platform nodes.
 3.  For each remaining MTA node, test Ecelerity configuration exactly as you did on the first MTA node as described in Step #7 of section [Section 9.1.2, “Configure Ecelerity”](new_installation#install.two_tier.configuration.ecelerity "9.1.2. Configure Ecelerity").
 4.  If not already done so in section [Section 9.1.3, “Configure RabbitMQ”](new_installation#install.two_tier.configuration.rabbitmq "9.1.3. Configure RabbitMQ"), log onto each remaining MTA node and configure RabbitMQ exactly as you did on the first MTA node as described in that section.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install_upgrade_packages)  | [Up](p.installing) |  [Next](install.configure_cassandra) |
 | Chapter 8. Install / Upgrade the Packages  | [Table of Contents](index) |  9.2. Configure the Cassandra Nodes |

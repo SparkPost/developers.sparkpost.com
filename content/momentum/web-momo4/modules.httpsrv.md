@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.http_logger)  | Chapter 71. Modules Reference |  [Next](modules.icu) |
 
 ## 71.38. httpsrv – HTTP Server
@@ -14,6 +16,8 @@ This module only supports the two options common to all modules, namely `enabled
 
 For more information about the `debug_level` option, see [Section 15.5.2, “Module Debugging”](module_config#module_config.debugging "15.5.2. Module Debugging").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.http_logger)  | [Up](modules) |  [Next](modules.icu) |
 | 71.37. http_logger – HTTP Requests and Responses  | [Table of Contents](index) |  71.39. icu – ICU |
 

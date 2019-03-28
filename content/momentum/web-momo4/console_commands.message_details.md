@@ -43,6 +43,8 @@ If both the metadata and the body are desired, the "full" option should be used:
 
 `message details` cannot show details for a message that is in the process of being delivered.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.memory)  | [Up](console.cmds.ref) |  [Next](console_commands.message_fail) |
 | memory  | [Table of Contents](index) |  message fail |
 

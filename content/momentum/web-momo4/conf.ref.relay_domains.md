@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_for_sending_domains)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.relay_hosts) |
 
 <a name="conf.ref.relay_domains"></a>
@@ -35,6 +37,8 @@ Any addresses set in the `addresses` option of the [Section 71.35, “fbl - Fee
 
 [relay_hosts](conf.ref.relay_hosts "relay_hosts"), [only_use_best_mx_for_relay_domains](conf.ref.only_use_best_mx_for_relay_domains "only_use_best_mx_for_relay_domains")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.relay_for_sending_domains)  | [Up](config.options.ref) |  [Next](conf.ref.relay_hosts) |
 | relay_for_sending_domains  | [Table of Contents](index) |  relay_hosts |
 

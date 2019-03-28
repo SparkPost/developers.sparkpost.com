@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.max_recipients_per_connection.php) |
 
 <a name="conf.ref.max_recipients_per_batch"></a>
@@ -21,5 +23,7 @@ If a message has `200` recipients and `Max_Recipients_Per_Batch` is set to `100`
 
 max_recipients_per_batch is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.max_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.max_recipients_per_connection.php) |
 | max_outbound_connections  | [Table of Contents](index) |  max_recipients_per_connection |

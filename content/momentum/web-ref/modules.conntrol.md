@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.compress_spool)  | Chapter 14. Modules Reference |  [Next](modules.csapi.php) |
 
 ## 14.21. conntrol – Fine-Grained Connection Control
@@ -56,5 +58,7 @@ This variable holds the literal string `yes` if the peer started issuing command
 
 </dl>
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.compress_spool)  | [Up](modules.php) |  [Next](modules.csapi.php) |
 | 14.20. compress_spool – Dynamic Spool Compression  | [Table of Contents](index) |  14.22. csapi – The Content Scanning API Module |

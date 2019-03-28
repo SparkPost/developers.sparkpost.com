@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf.fallback)  | Chapter 15. Configuration Overview |  [Next](module_config) |
 
 ## 15.4. Listeners
@@ -181,6 +183,8 @@ IPv6 addresses are much more flexible than IPv4 addresses in terms of their form
 
 In circumstances where a configuration parameter can also contain something other than an IP address, the accepted convention is to require that an IPv6 address be enclosed in square brackets. In practical terms, this means that things like the `Gateway`, `Routes` and `Listen` options must have IPv6 addresses enclosed in brackets. Others, such as `Peer`, `Relay_Hosts` and `Prohibited_Hosts` do not require the IPv6 address in brackets.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](ecelerity.conf.fallback)  | [Up](conf.overview) |  [Next](module_config) |
 | 15.3. Configuration Scopes and Fallback  | [Table of Contents](index) |  15.5. Modules |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ds_fetch_flat)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_action) |
 
 <a name="sieve.ref.ds_fetch_hash"></a>
@@ -68,5 +70,8 @@ For an explanation of the context variables used in the preceding example see [S
 
 [ds_execute](sieve.ref.ds_execute "ds_execute"), [ds_fetch](sieve.ref.ds_fetch "ds_fetch"), [ds_fetch_flat](sieve.ref.ds_fetch_flat "ds_fetch_flat")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ds_fetch_flat)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_action) |
 | ds_fetch_flat  | [Table of Contents](index) |  ec_action |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.set_hostnames)  | Chapter 6. Before You Begin |  [Next](byb.root_and_vertica_dba) |
 
 ## 6.9. Java Runtime Environment (JRE)
@@ -25,7 +27,7 @@ If you use OpenJDK, you will receive the following installation error:
 ```
 Unable to install packages due to:
 No package matched to upgrade: msys-cassandra
-Error: msys-cassandra conflicts with 
+Error: msys-cassandra conflicts with
 1:java-1.7.0-openjdk-1.7.0.51-2.4.4.1.el6_5.x86_64
 ```
 
@@ -44,7 +46,7 @@ If you need to install Java 7, follow the steps below.
 
 3.  Ensure that Cassandra can locate the installed version of Java. Be sure to adjust the pathnames based upon the version of Java you are using and where you have installed it.
 
-    alternatives --install *`/usr/bin/java java /usr/java/jre1.7.0_51/bin/java 2`*                                       
+    alternatives --install *`/usr/bin/java java /usr/java/jre1.7.0_51/bin/java 2`*
     alternatives --config java
     ### Note
 
@@ -72,6 +74,8 @@ If you need to install Java 7, follow the steps below.
 
 For more information, contact Message Systems Professional Services.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](byb.set_hostnames)  | [Up](before_you_begin) |  [Next](byb.root_and_vertica_dba) |
 | 6.8. Setting Hostnames  | [Table of Contents](index) |  6.10. Creating `root` and `vertica_dba` Accounts |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.timestampformat)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_allow_renegotiation) |
 
 <a name="config.ref.tls"></a>
@@ -35,6 +37,8 @@ The default value is `no`.
 
 `tls` is valid in the binding, binding_group, domain, and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.timestampformat)  | [Up](config.options.ref) |  [Next](config.tls_allow_renegotiation) |
 | timestampformat  | [Table of Contents](index) |  tls_allow_renegotiation |
 

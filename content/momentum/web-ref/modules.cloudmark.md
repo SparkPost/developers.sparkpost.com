@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.clamav)  | Chapter 14. Modules Reference |  [Next](modules.commtouch.php) |
 
 ## 14.18. cloudmark – Cloudmark Authority Module
@@ -341,5 +343,7 @@ Set the ActiveFilter score threshold as part of the fourth argument in this func
 
  |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.clamav)  | [Up](modules.php) |  [Next](modules.commtouch.php) |
 | 14.17. clamav – ClamAV  | [Table of Contents](index) |  14.19. commtouch_ctasd – Commtouch_ctasd Module |

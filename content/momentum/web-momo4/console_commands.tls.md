@@ -49,6 +49,8 @@ Cache flush request submitted.
 Rekey request submitted.
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.threads)  | [Up](console.cmds.ref) |  [Next](console_commands.trace_smtp) |
 | threads  | [Table of Contents](index) |  trace smtp |
 

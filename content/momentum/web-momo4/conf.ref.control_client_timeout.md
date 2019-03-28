@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.context)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.crypto_engine) |
 
 <a name="conf.ref.control_client_timeout"></a>
@@ -19,6 +21,8 @@ Specifies the timeout in seconds that will be used for control client connection
 
 control_client_timeout is valid in the global scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.context)  | [Up](config.options.ref) |  [Next](conf.ref.crypto_engine) |
 | context  | [Table of Contents](index) |  crypto_engine |
 

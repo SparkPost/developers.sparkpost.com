@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.pipeio)  | Chapter 14. Modules Reference |  [Next](modules.postfix_logger) |
 
 ## 14.55. pipe_transport – Module
@@ -77,5 +79,8 @@ This option configures the program that will be used.
 
 </dl>
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.pipeio)  | [Up](modules) |  [Next](modules.postfix_logger) |
 | 14.54. pipe_io – Pipe IO Wrapper  | [Table of Contents](index) |  14.56. postfix_logger – Postfix-Compatible Logging |

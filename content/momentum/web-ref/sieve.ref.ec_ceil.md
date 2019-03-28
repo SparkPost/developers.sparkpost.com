@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_bounce_classify)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_cluster_cache_get) |
 
 <a name="sieve.ref.ec_ceil"></a>
@@ -30,5 +32,8 @@ $ceilc = ec_ceil $c;
 #ceilc is 43.000000
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_bounce_classify)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_cluster_cache_get) |
 | ec_bounce_classify  | [Table of Contents](index) |  ec_cluster_cache_get |

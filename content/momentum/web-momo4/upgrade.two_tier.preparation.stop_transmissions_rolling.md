@@ -16,7 +16,7 @@
 
     ```
     $ /opt/msys/ecelerity/bin/ec_console
-    16:26:02 /tmp/2025> msg_gen joblist   
+    16:26:02 /tmp/2025> msg_gen joblist
     Job: 84158406797069455 jctl: 4 Restarts: 0 resync: 0 complete: 0 del_pend: 0
           inprog: 1 Recips:    100  LastStart:      1 worker(count: 1 complete: 0)
 
@@ -28,10 +28,12 @@
           own  start count s_recip s_count s_total complete fail status state restart seqno finish
             4      1   100       1     100       0        0    0      0     0       0     1      0
 
-    16:26:06 /tmp/2025> msg_gen joblist                                                                                          
+    16:26:06 /tmp/2025> msg_gen joblist
     Ok
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.ecelerity_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.upgrade_ecelerity_rolling) |
 | 11.6. Upgrade Ecelerity and the Cassandra Schema on the First Platform Node  | [Table of Contents](index) |  11.8. Upgrade Ecelerity on the Remaining Platform Nodes |
 

@@ -26,6 +26,8 @@
     }
     ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.software_upgrade)  | [Up](upgrade.single_node) |  [Next](upgrade.single_node.configuration.start_services) |
 | 10.5. Software Upgrade  | [Table of Contents](index) |  10.7. Start Services |
 

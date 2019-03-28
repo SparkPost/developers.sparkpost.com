@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy)  | Chapter 62. Implementing Policy with Momentum |  [Next](policy.context.variables) |
 
 ## 62.2. Policy Scriptlets
@@ -223,7 +225,7 @@ To create a policy script, perform the following:
 
     Since a malformed configuration file will not reload, using **config reload**        is one way of validating your scriptlet syntax. After your configuration has been changed, issue the command:
 
-    **`/opt/msys/ecelerity/bin/ec_console /tmp/2025 config reload`**                         
+    **`/opt/msys/ecelerity/bin/ec_console /tmp/2025 config reload`**
 
     If there are errors in your script, the reload may fail and display a message such as the following:
 
@@ -302,7 +304,7 @@ To create a policy script, perform the following:
 
     In all cases, edits made to the local configuration will need to be manually applied to the node via **config reload** . The **eccfg commit**        command will not do it for you. If you have not reloaded your configuration, issue the console command:
 
-    **`/opt/msys/ecelerity/bin/ec_console /tmp/2025 config reload`**                         
+    **`/opt/msys/ecelerity/bin/ec_console /tmp/2025 config reload`**
 
     If your changes affect more than one node, each node will check for an updated configuration each minute and automatically check out your changes and issue a **config reload** .
 
@@ -338,6 +340,8 @@ Use `msg.priority` to read the priority of a message.
 
 It is important not to overuse the priority setting. High priority messages should be reserved for messages that need to go out immediately, before other messages. Keeping high priority messages to a low percentage of the total message volume is important so the high priority messages do not cause delays for normal priority messages. A common use case for high priority messages is sending out password resets in the midst of a major mail campaign.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy)  | [Up](policy) |  [Next](policy.context.variables) |
 | Chapter 62. Implementing Policy with Momentum  | [Table of Contents](index) |  Chapter 63. Validation Context Variables |
 

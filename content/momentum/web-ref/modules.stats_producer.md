@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.static_routes)  | Chapter 14. Modules Reference |  [Next](modules.suppress_spool) |
 
 ## 14.71. statp – Stats Producer Module
@@ -35,5 +37,8 @@ Apart from these three options, all other options have been removed in version 3
 
 [ec_rt_stats2](executable.ec_rt_stats2 "ec_rt_stats2")
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.static_routes)  | [Up](modules) |  [Next](modules.suppress_spool) |
 | 14.70. static-routes - Static Routes  | [Table of Contents](index) |  14.72. suppress_spool – Deferred Message Spooling |

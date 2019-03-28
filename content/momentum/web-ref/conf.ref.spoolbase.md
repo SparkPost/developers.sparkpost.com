@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spool_mode)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.ssl_lock_method.php) |
 
 <a name="conf.ref.spoolbase"></a>
@@ -24,5 +26,7 @@ spoolbase is valid in the global scope.
 
 [spool_mode](conf.ref.spool_mode "spool_mode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.spool_mode)  | [Up](conf.ref.files.php) |  [Next](conf.ref.ssl_lock_method.php) |
 | spool_mode  | [Table of Contents](index) |  ssl_lock_method |

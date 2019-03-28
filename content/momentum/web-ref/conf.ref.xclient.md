@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.watchdog_interval)  | 9.2. Configuration Files and Option Details |  [Next](cluster.ref.php) |
 
 <a name="conf.ref.xclient"></a>
@@ -32,5 +34,7 @@ The default value for this directive is `no`.
 
 xclient is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.watchdog_interval)  | [Up](conf.ref.files.php) |  [Next](cluster.ref.php) |
 | watchdog_interval  | [Table of Contents](index) |  Chapter 10. Cluster Configuration Reference |

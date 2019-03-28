@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.create)  | Chapter 60. Managing Your Webhooks in the UI |  [Next](web-ui.webhooks.update) |
 
 ## 60.3. Testing Your Webhook
@@ -30,6 +32,8 @@ The test returns a detailed information response, as shown in [Figure 60.6, “T
 
 The **`Response`** shows the full content of the HTTP response sent by the client endpoint after receiving the test request. It includes a standard HTTP status. In the example response, the "OK" **(HTTP/1.1 200)** indicates that the example message event batch was successfully posted to the target URL. Any other response code indicates some type of error.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.webhooks.create)  | [Up](web-ui.webhooks) |  [Next](web-ui.webhooks.update) |
 | 60.2. Creating a Webhook  | [Table of Contents](index) |  60.4. Updating Your Webhook |
 

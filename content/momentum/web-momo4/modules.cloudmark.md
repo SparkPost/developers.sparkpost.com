@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.clamav)  | Chapter 71. Modules Reference |  [Next](modules.cluster) |
 
 ## 71.18. cloudmark – Cloudmark Authority® Content Scanning
@@ -277,6 +279,8 @@ This describes how you can configure Momentum to communicate with the Cloudmark 
 
     The latter case is only significant in the MOVEMSG ActiveFilter mode. If you are discarding messages then there is no action to take in the false positive case.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.clamav)  | [Up](modules) |  [Next](modules.cluster) |
 | 71.17. clamav – ClamAV  | [Table of Contents](index) |  71.19. cluster – Cluster |
 

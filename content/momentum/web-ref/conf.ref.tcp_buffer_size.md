@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.suspend_delivery)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.threadpool.php) |
 
 <a name="conf.ref.tcp_buffer_size"></a>
@@ -30,5 +32,7 @@ tcp_buffer_size is valid in the global scope.
 
 [Use_MMAP](conf.ref.use_mmap "Use_MMAP")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.suspend_delivery)  | [Up](conf.ref.files.php) |  [Next](conf.ref.threadpool.php) |
 | suspend_delivery  | [Table of Contents](index) |  threadpool |

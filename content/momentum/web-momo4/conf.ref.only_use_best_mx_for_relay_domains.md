@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_retry)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.open_relay) |
 
 <a name="conf.ref.only_use_best_mx_for_relay_domains"></a>
@@ -28,6 +30,8 @@ only_use_best_mx_for_relay_domains is valid in the global scope.
 
 [routes](conf.ref.routes "routes"), [bounce_domains](conf.ref.bounce_domains "bounce_domains"), [relay_domains](conf.ref.relay_domains "relay_domains")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.never_retry)  | [Up](config.options.ref) |  [Next](conf.ref.open_relay) |
 | never_retry  | [Table of Contents](index) |  open_relay |
 

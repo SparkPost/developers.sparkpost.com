@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_ca)  | Chapter 72. Configuration Options Reference |  [Next](config.tls_ciphers) |
 
 <a name="config.tls_certificate"></a>
@@ -21,6 +23,8 @@ The special value `none` can be used to indicate that no certificate file should
 
 `tls_certificate` is valid in the binding, binding_group, domain, ecstream_listener, esmtp_listener, global, http_listener, listen, pathway, pathway_group and peer scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](config.tls_ca)  | [Up](config.options.ref) |  [Next](config.tls_ciphers) |
 | tls_ca  | [Table of Contents](index) |  tls_ciphers |
 

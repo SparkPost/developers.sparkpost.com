@@ -5,25 +5,63 @@ import { graphql } from 'gatsby'
 // import { MDXRenderer } from 'gatsby-mdx'
 // import { MDXProvider } from '@mdx-js/tag'
 import { first } from 'lodash'
+import { grayscale } from 'utils/colors'
 import Heading from 'components/api/components/Heading'
 import Markdown from 'components/Markdown'
 import Layout from 'components/Layout'
 import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import tableOfContents from '../../content/momentum/table-of-contents.json'
 
+const TableOverflow = styled.div`
+  overflow: scroll;
+`
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  > div > div {
+    > ${TableOverflow}:first-child, > ${TableOverflow}:last-child {
+      background: #F5F5F8;
+      border: 1px solid ${grayscale(8)};
+      border-radius: 3px;
+
+      table {
+        margin: 0 0 0 0;
+        width: 100%;
+
+        td, th {
+          border: 0;
+          text-align: center;
+          vertical-align: middle;
+          font-size: .8125rem;
+        }
+
+        tr + tr {
+          td, th {
+            border-top: 1px solid ${grayscale(8)};
+          }
+        }
+      }
+    }
+
+    > ${TableOverflow}:first-child {
+      td, th {
+        &:first-child, &:last-child {
+           width: 1px;
+            padding: 0 2rem;
+        }
+      }
+    }
+  }
 `
 
 const EmptyHeader = styled.th`
   padding: 0;
-`
-
-const TableOverflow = styled.div`
-  overflow: scroll;
 `
 
 let components = {
@@ -60,7 +98,7 @@ let components = {
     )
   },
   a({ href = '', ...props }) {
-    return <a href={href.startsWith('/') ? href : `../${href}`} {...props} />
+    return <a href={href.startsWith('/') || href.startsWith('.') ? href : `../${href}`} {...props} />
   },
 }
 
@@ -88,7 +126,9 @@ export default class MomentumTemplate extends Component {
         </Sidebar>
         <Content>
           <Wrapper>
-            <Markdown components={components}>{markdownRemark.rawMarkdownBody}</Markdown>
+            <Markdown components={components}>
+              {markdownRemark.rawMarkdownBody}
+            </Markdown>
           </Wrapper>
         </Content>
       </Layout>

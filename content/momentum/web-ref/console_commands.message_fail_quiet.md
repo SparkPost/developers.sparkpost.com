@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail)  | 12.2. System Console Commands |  [Next](console_commands.message_retry.php) |
 
 <a name="console_commands.message_fail_quiet"></a>
@@ -19,5 +21,7 @@ This command takes a single argument in the form of a message id and will immedi
 
 [message fail](console_commands.message_fail "message fail")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail)  | [Up](console.commands.non-module.php) |  [Next](console_commands.message_retry.php) |
 | message fail  | [Table of Contents](index) |  message retry |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_classify_error)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.pcre.match) |
 
 <a name="lua.ref.msys.gcm.gcm_get_result_error_code"></a>
@@ -46,6 +48,8 @@ Get the error code from the response results error. The error code should be one
 
 [Momentum for Mobile Push Notifications](https://support.messagesystems.com/docs/web-push/) and [msys.apn.apn_status_classifier](lua.ref.msys.apn.apn_status_classifier "msys.apn.apn_status_classifier").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.gcm.gcm_classify_error)  | [Up](lua.function.details) |  [Next](lua.ref.msys.pcre.match) |
 | msys.gcm.gcm_classify_error  | [Table of Contents](index) |  msys.pcre.match |
 

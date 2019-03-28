@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.snmp)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.spool_mode.php) |
 
 <a name="conf.ref.soft_bounce_drain_rate"></a>
@@ -26,5 +28,7 @@ soft_bounce_drain_rate is valid in the global scope.
 
 [async_bounce_rendering](conf.ref.async_bounce_rendering "async_bounce_rendering")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.snmp)  | [Up](conf.ref.files.php) |  [Next](conf.ref.spool_mode.php) |
 | SNMP  | [Table of Contents](index) |  spool_mode |

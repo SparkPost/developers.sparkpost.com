@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.appendix)  | Part XI. Appendix |  [Next](snmp-mib) |
 ## Message Responses
 **Table of Contents**
@@ -9,6 +11,7 @@ This appendix lists the various responses that may be returned by the MTA when a
 Responses are sorted by SMTP code and then enhanced code.
 <a name="table-code"></a>
 **Table A.1. Responses sorted by code**
+
 | SMTP Code | Enhanced Code | Message | Comment |
 | --- | --- | --- | --- |
 |   | 4.3.0 | Resource limitations, please try later | See message. |
@@ -116,5 +119,7 @@ Responses are sorted by SMTP code and then enhanced code.
 | 554 | 5.7.0 | [internal] Blackholed | "Blackhole" option is set to "internal" |
 | 554 | 5.7.0 | [internal] Message manually purged | Purged messages from the system console |
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](p.appendix)  | [Up](p.appendix) |  [Next](snmp-mib) |
 | Part XI. Appendix  | [Table of Contents](index) |  Appendix B. MIB Files |

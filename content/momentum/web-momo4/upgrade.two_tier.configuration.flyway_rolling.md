@@ -61,6 +61,8 @@ Configure the tables for running the Flyway data migration tool on the **first A
 
         `\q`
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.upgrade_vertica_rolling)  | [Up](upgrade.two_tier_configuration_rolling) |  [Next](upgrade.two_tier.preparation.rpms_rolling) |
 | 11.10. Upgrade Vertica on the Analytics Nodes  | [Table of Contents](index) |  11.12. Upgrade Remaining RPMs on Analytics Nodes |
 

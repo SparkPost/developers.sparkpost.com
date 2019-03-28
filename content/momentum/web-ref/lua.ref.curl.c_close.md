@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.client_set_timeout)  | 15.2. Lua Functions |  [Next](lua.ref.curl.c_perform.php) |
 
 <a name="lua.ref.curl.c_close"></a>
@@ -35,5 +37,7 @@ c:close();
 
 [curl.new](lua.ref.curl.new "curl.new")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.client_set_timeout)  | [Up](lua.function.details.php) |  [Next](lua.ref.curl.c_perform.php) |
 | client:set_timeout  | [Table of Contents](index) |  c:perform |

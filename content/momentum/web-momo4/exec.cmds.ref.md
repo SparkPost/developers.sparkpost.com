@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.write_config)  | Part X. Reference |  [Next](executable.ad_summary) |
 ## Chapter 74. Executable Commands Reference
 **Table of Contents**
@@ -30,5 +32,7 @@
 
 This chapter provides the definitions of the executable commands that are referenced in this document.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.write_config)  | [Up](p.reference) |  [Next](executable.ad_summary) |
 | write config  | [Table of Contents](index) |  ad_summary |

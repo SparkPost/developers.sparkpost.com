@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.open_relay)  | Chapter 72. Configuration Options Reference |  [Next](config.open_tracking_scheme) |
 
 <a name="config.open_tracking_enabled"></a>
@@ -31,6 +33,8 @@ The corresponding context variable is `smtpapi_open_tracking`, and the correspon
 
 `open_tracking_enabled` is valid in the esmtp_listener, listen, pathway, pathway_group, and peer scope.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.open_relay)  | [Up](config.options.ref) |  [Next](config.open_tracking_scheme) |
 | open_relay  | [Table of Contents](index) |  open_tracking_scheme |
 

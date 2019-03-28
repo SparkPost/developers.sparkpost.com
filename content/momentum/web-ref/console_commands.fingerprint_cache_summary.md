@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain_quiet)  | 12.2. System Console Commands |  [Next](console_commands.fingerprint_rejection_summary.php) |
 
 <a name="console_commands.fingerprint_cache_summary"></a>
@@ -25,5 +27,7 @@ Passive operating system fingerprinting runs as a daemon that Momentum communica
 
 [fingerprint rejection summary](console_commands.fingerprint_rejection_summary "fingerprint rejection summary")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fail_domain_quiet)  | [Up](console.commands.non-module.php) |  [Next](console_commands.fingerprint_rejection_summary.php) |
 | fail domain quiet  | [Table of Contents](index) |  fingerprint rejection summary |

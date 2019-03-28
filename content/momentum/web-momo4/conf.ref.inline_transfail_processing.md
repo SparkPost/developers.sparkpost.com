@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.initial_hash_buckets)  | Chapter 72. Configuration Options Reference |  [Next](conf.ref.keep_message_dicts_in_memory) |
 
 <a name="conf.ref.inline_transfail_processing"></a>
@@ -32,6 +34,8 @@ inline_transfail_processing is valid in the global scope.
 
 [transfail_drain_rate](conf.ref.transfail_drain_rate "transfail_drain_rate") and [max_resident_transfails](conf.ref.max_resident_transfails "max_resident_transfails")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.initial_hash_buckets)  | [Up](config.options.ref) |  [Next](conf.ref.keep_message_dicts_in_memory) |
 | initial_hash_buckets  | [Table of Contents](index) |  keep_message_dicts_in_memory |
 

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bind_address)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.binding_group.php) |
 
 <a name="conf.ref.binding"></a>
@@ -217,5 +219,7 @@ The options valid in the binding scope are as follows:
 
 [binding_group](conf.ref.binding_group "binding_group") [domain](conf.ref.domain.php "domain"), [host](conf.ref.host.php "host"), [Section 2.6, “Configuration Scopes and Fallback”](ecelerity.conf.fallback.php "2.6. Configuration Scopes and Fallback"), [ec_set_binding](sieve.ref.ec_set_binding.php "ec_set_binding"), [Example 5.4, “Set binding example”](implementing.policy.scriptlets.php#policy.scriptlets.binding.example "Example 5.4. Set binding example")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bind_address)  | [Up](conf.ref.files.php) |  [Next](conf.ref.binding_group.php) |
 | bind_address  | [Table of Contents](index) |  binding_group |

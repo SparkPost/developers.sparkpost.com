@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_finalize)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.httpclnt.http_status_classifier) |
 
 <a name="lua.ref.sess_request_set_body"></a>
@@ -24,6 +26,8 @@ For a code example see [http_request_eval](https://support.messagesystems.com/do
 
 [sess:request_finalize](lua.ref.sess_request_finalize "sess:request_finalize") and [sess:request_add_header](lua.ref.sess_request_add_header "sess:request_add_header")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.sess_request_finalize)  | [Up](lua.function.details) |  [Next](lua.ref.msys.httpclnt.http_status_classifier) |
 | sess:request_finalize  | [Table of Contents](index) |  msys.httpclnt.http_status_classifier |
 

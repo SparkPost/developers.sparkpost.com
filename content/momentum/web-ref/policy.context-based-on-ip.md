@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.implementing)  | Chapter 5. Implementing Policy with Momentum |  [Next](policy.best.practices) |
 
 ## 5.5. Setting Context Based on Connecting IP
@@ -39,5 +41,8 @@ if not vctx_conn :is "trusted_mx" "yes" {
 }
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](policy.implementing)  | [Up](policy) |  [Next](policy.best.practices) |
 | 5.4. Implementing Policy Using Sieve  | [Table of Contents](index) |  5.6. Best Practices for Manually Created Policy Scripts |

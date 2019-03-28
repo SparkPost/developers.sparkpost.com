@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_ipv6)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.use_sendfile.php) |
 
 <a name="conf.ref.use_mmap"></a>
@@ -32,5 +34,7 @@ use_mmap is valid in the global scope.
 
 [malloc2mmap_threshold](conf.ref.malloc2mmap_threshold "malloc2mmap_threshold") and [Use_SendFile](conf.ref.use_sendfile.php "Use_SendFile")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.use_ipv6)  | [Up](conf.ref.files.php) |  [Next](conf.ref.use_sendfile.php) |
 | Use_IPv6  | [Table of Contents](index) |  Use_SendFile |

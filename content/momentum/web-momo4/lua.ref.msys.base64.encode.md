@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.decode)  | Chapter 70. Lua Functions Reference |  [Next](lua.ref.msys.bounce.classify) |
 
 <a name="lua.ref.msys.base64.encode"></a>
@@ -27,6 +29,8 @@ Enable this function with the statement `require('msys.base64');`.
 
 [msys.base64.decode](lua.ref.msys.base64.decode "msys.base64.decode")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.base64.decode)  | [Up](lua.function.details) |  [Next](lua.ref.msys.bounce.classify) |
 | msys.base64.decode  | [Table of Contents](index) |  msys.bounce.classify |
 

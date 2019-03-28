@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.threadpool.count)  | 15.2. Lua Functions |  [Next](lua.ref.msys.threadpool.stat.php) |
 
 <a name="lua.ref.msys.threadpool.find"></a>
@@ -24,5 +26,7 @@ Enable this function with the statement `require('msys.threadpool');`.
 
 [msys.threadpool.count](lua.ref.msys.threadpool.count "msys.threadpool.count") [msys.threadpool.stat](lua.ref.msys.threadpool.stat.php "msys.threadpool.stat"), [threadpool](conf.ref.threadpool.php "threadpool")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.threadpool.count)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.threadpool.stat.php) |
 | msys.threadpool.count  | [Table of Contents](index) |  msys.threadpool.stat |

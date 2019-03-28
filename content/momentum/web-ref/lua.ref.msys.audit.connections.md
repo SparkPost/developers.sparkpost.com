@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.asyncOk)  | 15.2. Lua Functions |  [Next](lua.ref.msys.audit.inbound_session_count.php) |
 
 <a name="lua.ref.msys.audit.connections"></a>
@@ -67,5 +69,7 @@ Enable this function with the statement `require('msys.audit');`.
 
 [msys.audit.inbound_session_count](lua.ref.msys.audit.inbound_session_count "msys.audit.inbound_session_count"), [msys.audit.rejections](lua.ref.msys.audit.rejections.php "msys.audit.rejections"), [msys.audit.receptions](lua.ref.msys.audit.receptions.php "msys.audit.receptions")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.asyncOk)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.audit.inbound_session_count.php) |
 | msys.asyncOk  | [Table of Contents](index) |  msys.audit.inbound_session_count |

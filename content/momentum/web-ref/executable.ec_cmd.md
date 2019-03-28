@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_adtool)  | 11.2. Executable Commands |  [Next](executable.ec_console.php) |
 
 <a name="executable.ec_cmd"></a>
@@ -25,5 +27,7 @@ Access to the ec_cmd service is not authenticated. Anyone with telnet access to 
 
 [eccmgr](executable.eccmgr "eccmgr"), [ecelerity](executable.ecelerity.php "ecelerity")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.ec_adtool)  | [Up](exe.commands.details.php) |  [Next](executable.ec_console.php) |
 | ec_adtool  | [Table of Contents](index) |  ec_console |

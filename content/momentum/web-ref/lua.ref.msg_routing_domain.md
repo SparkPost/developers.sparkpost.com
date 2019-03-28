@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_rcptto)  | 15.2. Lua Functions |  [Next](lua.ref.msg_text.php) |
 
 <a name="lua.ref.msg_routing_domain"></a>
@@ -40,5 +42,7 @@ In the validate_data_spool_each_rcpt phase you can take action on each message, 
 
 In the validate_rcptto phase you can validate that a provided recipient string is valid. Actions taken in this phase affect the current batch.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msg_rcptto)  | [Up](lua.function.details.php) |  [Next](lua.ref.msg_text.php) |
 | msg:rcptto  | [Table of Contents](index) |  msg:text |

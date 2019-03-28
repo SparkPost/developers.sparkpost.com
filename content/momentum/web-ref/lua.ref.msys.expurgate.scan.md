@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dumper.Dumper)  | 15.2. Lua Functions |  [Next](lua.ref.msys.gauge_cache.dec.php) |
 
 <a name="lua.ref.msys.expurgate.scan"></a>
@@ -194,5 +196,7 @@ Enable this function with the statement `require('msys.expurgate');`.
 
 [Section 14.32, “eleven – Module”](modules.eleven "14.32. eleven – Module")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](lua.ref.msys.dumper.Dumper)  | [Up](lua.function.details.php) |  [Next](lua.ref.msys.gauge_cache.dec.php) |
 | msys.dumper.Dumper  | [Table of Contents](index) |  msys.gauge_cache.dec |

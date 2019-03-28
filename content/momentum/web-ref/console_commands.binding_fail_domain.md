@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_delayed)  | 12.2. System Console Commands |  [Next](console_commands.binding_fail_domain_quiet.php) |
 
 <a name="console_commands.binding_fail_domain"></a>
@@ -39,5 +41,7 @@ unresolvableproblems.com purged, 62415 messages failed.
 
 [binding fail domain quiet](console_commands.binding_fail_domain_quiet "binding fail domain quiet")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.binding_delayed)  | [Up](console.commands.non-module.php) |  [Next](console_commands.binding_fail_domain_quiet.php) |
 | binding delayed  | [Table of Contents](index) |  binding fail domain quiet |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_outbound)  | 12.2. System Console Commands |  [Next](console_commands.shutdown.php) |
 
 <a name="console_commands.showqueue"></a>
@@ -36,5 +38,7 @@ you can also list the messages in the queue for a particular domain on a particu
   From: <sender@example.com> To: <rcpt1@example.com>
 ```
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_outbound)  | [Up](console.commands.non-module.php) |  [Next](console_commands.shutdown.php) |
 | show outbound  | [Table of Contents](index) |  shutdown |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_suppress_list)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.capabilities.php) |
 
 <a name="conf.ref.bounces_inline_original"></a>
@@ -55,5 +57,7 @@ The default value for this option is `headers`.
 
 bounces_inline_original is valid in the binding, binding_group, domain and global scopes.
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.bounce_suppress_list)  | [Up](conf.ref.files.php) |  [Next](conf.ref.capabilities.php) |
 | bounce_suppress_list  | [Table of Contents](index) |  capabilities |

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_sanity_check)  | Chapter 74. Executable Commands Reference |  [Next](executable.lu_pull) |
 
 <a name="executable.jlogctl"></a>
@@ -145,6 +147,8 @@ When used along with another option or options this option provides verbose outp
 
 [Section 71.43, “jlog – jlog-Formatted Logging”](modules.jlog "71.43. jlog – jlog-Formatted Logging"), [Section 26.5, “Decommissioning a Log Aggregator”](cluster.config.logging.decommissioning "26.5. Decommissioning a Log Aggregator")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](executable.jlog_sanity_check)  | [Up](exec.cmds.ref) |  [Next](executable.lu_pull) |
 | jlog_sanity_check  | [Table of Contents](index) |  lu_pull |
 

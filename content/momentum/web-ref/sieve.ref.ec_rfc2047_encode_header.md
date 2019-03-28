@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rfc2047_encode_addresses)  | 16.2. Sieve Function Details |  [Next](sieve.ref.ec_rfc3464_delivery_status) |
 
 <a name="sieve.ref.ec_rfc2047_encode_header"></a>
@@ -28,5 +30,8 @@ hello
 ;
 ```
 
+
+|     |     |     |
+| --- | --- | --- |
 | [Prev](sieve.ref.ec_rfc2047_encode_addresses)  | [Up](sieve.ref.files) |  [Next](sieve.ref.ec_rfc3464_delivery_status) |
 | ec_rfc2047_encode_addresses  | [Table of Contents](index) |  ec_rfc3464_delivery_status |

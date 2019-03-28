@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_max_outbound_connections)  | 9.2. Configuration Files and Option Details |  [Next](conf.ref.cluster_outbound_throttle_messages.php) |
 
 <a name="conf.ref.cluster_outbound_throttle_connections"></a>
@@ -32,5 +34,7 @@ The cluster module must be configured with the outbound throttle parameters as d
 
 [cluster_outbound_throttle_messages](conf.ref.cluster_outbound_throttle_messages "cluster_outbound_throttle_messages")
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](conf.ref.cluster_max_outbound_connections)  | [Up](conf.ref.files.php) |  [Next](conf.ref.cluster_outbound_throttle_messages.php) |
 | cluster_max_outbound_connections  | [Table of Contents](index) |  cluster_outbound_throttle_messages |

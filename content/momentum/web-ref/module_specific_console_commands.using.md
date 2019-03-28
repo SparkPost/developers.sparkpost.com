@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_specific_console_commands)  | Chapter 13. Modules |  [Next](modules) |
 
 ## 13.4. Using Module-Specific Console Commands
@@ -41,5 +43,7 @@ In version 3.0, you set and get module-level debugging using the **config** comm
 
 For a list of all the debug levels see [Table 9.28, “Debug levels”](conf.ref.debug_flags#conf.ref.debug.levels "Table 9.28. Debug levels").
 
+|     |     |     |
+| --- | --- | --- |
 | [Prev](module_specific_console_commands)  | [Up](modules.overview) |  [Next](modules.php) |
 | 13.3. Module-Specific Console Commands  | [Table of Contents](index) |  Chapter 14. Modules Reference |
