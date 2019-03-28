@@ -95,13 +95,11 @@ Follow these steps to receive event data using webhooks:
 
     Confirm that the event data posted to your target URL. Your click event data should be similar to the following:
 
+    ```
     {
      "msys": {
       "track_event": {
-          "user_agent":"                                                                                                                                     *```
-    Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) »
-            Version/7.0.5 Safari/537.77.4
-    ```*                                                                                                                                     ",
+          "user_agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) » Version/7.0.5 Safari/537.77.4",
           "message_id":"*`0000632c8b54d53f0a00`*",
           "customer_id":"*`1`*",
           "delv_method":"rest",
@@ -114,6 +112,8 @@ Follow these steps to receive event data using webhooks:
         }
       }
     }
+    ```
+
     ### Note
 
     The response shown is an example. For the latest mapping of the fields that constitute a payload for a given event type, see the Webhooks API documentation at [Momentum 4 REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
