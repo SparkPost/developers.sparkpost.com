@@ -1,6 +1,6 @@
 |     |     |     |
 | --- | --- | --- |
-|   |   |  [Next](preface) |
+|   |   |  [Next](./preface) |
 
 ## Momentum Reference Manual (3.x)
 ## Reference for Version 3.x
@@ -15,15 +15,15 @@ Document revision 0
 * * *
 **Table of Contents**
 
-* [Preface](preface)
-* [I. Configuration Guide](p.guide)
-* [II. Command Reference](p.command.ref)
-* [III. Appendices](p.appendices)
-* [Glossary](glossary)
+* [Preface](./preface)
+* [I. Configuration Guide](./p.guide)
+* [II. Command Reference](./p.command.ref)
+* [III. Appendices](./p.appendices)
+* [Glossary](./glossary)
 
-[List of Figures](figure-toc)[List of Tables](table-toc.php)[List of Examples](example-toc.php)
+[List of Figures](./figure-toc)[List of Tables](./table-toc.php)[List of Examples](./example-toc.php)
 
 |     |     |     |
 | --- | --- | --- |
-|   |   |  [Next](preface) |
+|   |   |  [Next](./preface) |
 |   |   |  Preface |

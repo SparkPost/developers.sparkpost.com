@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 
   > div > div {
     > ${TableOverflow}:first-child, > ${TableOverflow}:last-child {
-      background: #F5F5F8;
+      background: #f5f5f8;
       border: 1px solid ${grayscale(8)};
       border-radius: 3px;
 
@@ -34,15 +34,17 @@ const Wrapper = styled.div`
         margin: 0 0 0 0;
         width: 100%;
 
-        td, th {
+        td,
+        th {
           border: 0;
           text-align: center;
           vertical-align: middle;
-          font-size: .8125rem;
+          font-size: 0.8125rem;
         }
 
         tr + tr {
-          td, th {
+          td,
+          th {
             border-top: 1px solid ${grayscale(8)};
           }
         }
@@ -50,10 +52,12 @@ const Wrapper = styled.div`
     }
 
     > ${TableOverflow}:first-child {
-      td, th {
-        &:first-child, &:last-child {
-           width: 1px;
-            padding: 0 2rem;
+      td,
+      th {
+        &:first-child,
+        &:last-child {
+          width: 1px;
+          padding: 0 2rem;
         }
       }
     }
@@ -98,7 +102,14 @@ let components = {
     )
   },
   a({ href = '', ...props }) {
-    return <a href={href.startsWith('/') || href.startsWith('.') ? href : `../${href}`} {...props} />
+    return (
+      <a
+        href={
+          href.startsWith('/') || href.startsWith('.') ? href : `../${href}`
+        }
+        {...props}
+      />
+    )
   },
 }
 

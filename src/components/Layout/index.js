@@ -12,7 +12,10 @@ import ConsentBar from 'components/ConsentBar'
 import zIndex from 'utils/zIndex'
 
 function onDocsPage(location) {
-  return location.pathname.startsWith('/api') || location.pathname.startsWith('/momentum')
+  return (
+    location.pathname.startsWith('/api') ||
+    location.pathname.startsWith('/momentum')
+  )
 }
 
 const Layout = ({ data, children, location }) => (
