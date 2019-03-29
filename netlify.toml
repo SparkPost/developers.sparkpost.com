@@ -4,5 +4,5 @@
   functions = "./functions"
 
 # Run `npm run publish` to re-index in algolia
-[context.production]
-  command = "npm run bootstrap && npx netlify-lambda build lambda/ && npm run publish"
+# [context.production]
+#   command = "npm run bootstrap && npx netlify-lambda build lambda/ && npm run publish"
