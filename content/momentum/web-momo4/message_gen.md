@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](web-ui.apikeys.delete)  | Part VII. Message Generation (HTTP) |  [Next](substitution_data) |
 
 ## Chapter 45. Generating a Transmission
