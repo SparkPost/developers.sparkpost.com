@@ -37,7 +37,7 @@ If a counter value is updated mostly in a single thread on one processor then th
 
 **Figure 70.1. Counter semantics**
 
-![Counter semantics](images/counter.png)
+![Counter semantics](/momentum/web-momo4/images/counter.png)
 
 **Note about [Figure 70.1, “Counter semantics”](lua.ref.msys.counter.open#fig.console_command.counter "Figure 70.1. Counter semantics"). ** In this figure `update` refers to increment and add operations. The sample machine used two Intel® Xeon® CPU E5530 at 2.4GHz with four cores each.
 

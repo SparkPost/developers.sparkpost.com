@@ -12,7 +12,7 @@ To determine subsequent handling of incoming email messages, service providers m
 [Figure 23.1, “DKIM schematic”](using_dkim#figure_dkim_schematic "Figure 23.1. DKIM schematic") gives a graphical view of how DKIM works.
 <a name="figure_dkim_schematic"></a>
 **Figure 23.1. DKIM schematic**
-![](images/gr_dkeys_1.gif)
+![](/momentum/web-momo4/images/gr_dkeys_1.gif)
 ## For Sending Servers
 1.  Set up
     The domain owner (typically the team running the email systems within a company or service provider) generates a public/private key pair to use for signing all outgoing messages (multiple key pairs are allowed). The public key is published in DNS, and the private key is made available to their DKIM-enabled outbound email servers. This is step "A" in the diagram to the right.

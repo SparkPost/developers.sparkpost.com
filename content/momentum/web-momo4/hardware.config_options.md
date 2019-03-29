@@ -12,7 +12,7 @@ Momentum enables you to create standardized cluster configurations with hardware
 
 **Figure 5.1. Configuration Options**
 
-![Configuration Options](images/config_options.png)
+![Configuration Options](/momentum/web-momo4/images/config_options.png)
 
 |     |     |     |
 | --- | --- | --- |

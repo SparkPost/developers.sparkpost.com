@@ -20,7 +20,7 @@ Navigating to the **`Engagement`**  section removes all filters except time peri
 
 **Figure 57.21. Engagement Report**
 
-![Engagement Report](https://support.messagesystems.com/docs/web-momo4/images/engagement_report.png)
+![Engagement Report](/momentum/web-momo4/images/engagement_report.png)
 
 **57.4.1.1. Viewing Performance**
 

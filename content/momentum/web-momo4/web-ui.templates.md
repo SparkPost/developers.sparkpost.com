@@ -25,7 +25,7 @@ The **`Templates`** tab provides a tabular view of your existing templates, as s
 <a name="figure_templates_list"></a>
 
 **Figure 48.1. Templates Table**
-![Templates Table](https://support.messagesystems.com/docs/web-momo4/images/templates_list.png)
+![Templates Table](/momentum/web-momo4/images/templates_list.png)
 
 Use the controls located above and below the table to select the number of items per page. You can sort by any column in ascending or descending order by clicking the sorting icon in the column header. This icon is visible in the header of the currently sorted column. If the icon is not visible, hover over the name in the header, and the icon will appear. You can also filter the templates by **`Draft`** or **`Published`** to display only the templates in each category. Click the filter icon in the header of the Status column to select a filter from the drop-down list.
 

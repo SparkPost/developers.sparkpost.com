@@ -199,7 +199,7 @@ Follow these steps to view your engagement data:
 
     **Figure 53.1. Engagement Report**
 
-    ![Engagement Report](images/engagement_weather.png)
+    ![Engagement Report](/momentum/web-momo4/images/engagement_weather.png)
 
 Congratulations! You have used your knowledge of the REST API to create and use a complex template. For additional information, see [Momentum REST API](https://support.messagesystems.com/docs/web-rest/v1_index.html).
 

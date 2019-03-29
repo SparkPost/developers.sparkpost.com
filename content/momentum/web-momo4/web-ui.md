@@ -19,7 +19,7 @@ It supports the current and previous major releases of these browsers on a rolli
 The UI opens in the Summary section under Reports, as shown in [Figure 55.1, “User Interface”](web-ui#figure_summary_report "Figure 55.1. User Interface"). It supports your native language by setting the rules for date format, number format, and sorting based on the language set in your browser.
 <a name="figure_summary_report"></a>
 **Figure 55.1. User Interface**
-![User Interface](images/summary_report.png)
+![User Interface](/momentum/web-momo4/images/summary_report.png)
 Using the UI, you can perform the following:
 *   API Keys:
     **Configuration Change. ** Version 4.1 and later support managing your API keys using the UI. Version 4.2 and later add View Adaptive Delivery Data grant type.-->
@@ -67,7 +67,7 @@ The Recipients tab provides a tabular view of your existing recipient lists, as 
 *   Actions - Enables you to update or delete the recipient list
 <a name="figure_recipient_list"></a>
 **Figure 55.2. Recipient Lists Table**
-![Recipient Lists Table](images/recipient_list.png)
+![Recipient Lists Table](/momentum/web-momo4/images/recipient_list.png)
 You can sort by column in ascending or descending order by clicking the sorting icon in the column header. This icon is visible in the header of the currently sorted column. If the icon is not visible, hover over the name in the header, and the icon will appear. You can also filter your recipient lists using the Search function. Enter the label of the list that you want in the Search box. The entry will pre-fill after three letters. The table is updated displaying only lists for that label.
 You can export your recipient list information to a CSV file. Click the Save as CSV button to export the data.
 ### Note
@@ -116,7 +116,7 @@ You can also download a CSV template has all the appropriate headers as well as 
 To upload your recipient list, click the New Recipient List icon in the upper-right corner of the Recipient Lists tab to open the Upload New Recipient List form, as shown in [Figure 55.3, “Upload New Recipient List”](web-ui#figure_list_upload "Figure 55.3. Upload New Recipient List").
 <a name="figure_list_upload"></a>
 **Figure 55.3. Upload New Recipient List**
-![Upload New Recipient List](images/list_upload.png)
+![Upload New Recipient List](/momentum/web-momo4/images/list_upload.png)
 Enter the following information in the Upload New Recipient List form:
 *   Label - User-friendly label for the recipient list
 *   ID - Short, unique, alphanumeric ID used to reference the recipient list
@@ -125,7 +125,7 @@ Enter the following information in the Upload New Recipient List form:
 The example shown in [Figure 55.4, “Example Recipient List Details”](web-ui#figure_list_details "Figure 55.4. Example Recipient List Details") uploads the recipient list specified in the file `simple_list.csv`.
 <a name="figure_list_details"></a>
 **Figure 55.4. Example Recipient List Details**
-![Example Recipient List Details](images/list_details.png)
+![Example Recipient List Details](/momentum/web-momo4/images/list_details.png)
 Click Upload to upload your recipient list. There are three possible outcomes:
 *   If all content in the CSV file passed validation, a green message will briefly display on the Recipients tab above the Recipient table. This message will indicate that the recipient list was created successfully and will also display the number of recipients accepted. The number of recipients accepted will also be displayed in the Recipient column of the in Recipient Lists Table.
 *   If some content in the CSV file did not pass validation, a yellow message will briefly display on the Recipients tab above the Recipient table. This message will indicate that the recipient list was created and will also display the number of recipients accepted and the number rejected. The number of recipients accepted will also be displayed in the Recipient column of the in Recipient Lists Table.
@@ -135,7 +135,7 @@ You can update either the list content or the recipient list metadata (label, ID
 To update recipient list content, edit the previously uploaded CSV file as needed. Be sure to follow all formatting requirements. Click the New Recipient List icon in the upper-right corner of the Recipient Lists tab to open the Upload New Recipient List form, as shown in [Figure 55.5, “Update Recipient List”](web-ui#figure_list_update "Figure 55.5. Update Recipient List").
 <a name="figure_list_update"></a>
 **Figure 55.5. Update Recipient List**
-![Update Recipient List](images/list_update.png)
+![Update Recipient List](/momentum/web-momo4/images/list_update.png)
 Enter the same label, ID, and description information as before. Click Upload to upload your recipient list. The updated list is subject to the same three outcomes described above.
 To update the metadata only, do not change the recipient list content. Click the New Recipient List icon to open the Upload New Recipient List form, and enter a new label, ID, and/or description. Click Upload. A a green message will briefly display on the Recipients tab above the Recipient table. This message will indicate that the recipient list was updated successfully.
 ### 55.1.5. Deleting a Recipient List
@@ -143,7 +143,7 @@ To delete a recipient list, click Delete in the Actions column of the recipient 
 In the Delete Recipient List window, click Delete to confirm your request, as shown in [Figure 55.6, “Confirm Delete”](web-ui#figure_confirm_list_delete "Figure 55.6. Confirm Delete").
 <a name="figure_confirm_list_delete"></a>
 **Figure 55.6. Confirm Delete**
-![Confirm Delete](images/confirm_list_delete.png)
+![Confirm Delete](/momentum/web-momo4/images/confirm_list_delete.png)
 The system will stop sending to the recipients after transmissions currently queued to be delivered using that recipients list are sent.
 
 |     |     |     |

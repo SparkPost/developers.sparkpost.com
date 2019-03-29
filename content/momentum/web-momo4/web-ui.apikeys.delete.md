@@ -10,7 +10,7 @@ From the Settings section, you can delete an API key. Click the icon to the righ
 
 **Figure 44.6. Delete API Key**
 
-![Delete API Key](images/delete_apikey.png)
+![Delete API Key](/momentum/web-momo4/images/delete_apikey.png)
 
 In the Delete API Key window, click Delete API Key to confirm your request, as shown in [Figure 44.7, “Confirm Delete”](web-ui.apikeys.delete#figure_confirm_delete_apikey "Figure 44.7. Confirm Delete").
 
@@ -18,7 +18,7 @@ In the Delete API Key window, click Delete API Key to confirm your request, as s
 
 **Figure 44.7. Confirm Delete**
 
-![Confirm Delete](images/confirm_delete_apikey.png)
+![Confirm Delete](/momentum/web-momo4/images/confirm_delete_apikey.png)
 
 Deleting an API key revokes all future actions that requests with that API key will take. This is irreversible.
 

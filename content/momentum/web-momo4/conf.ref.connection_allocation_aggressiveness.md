@@ -24,7 +24,7 @@ The following figure illustrates a typical scenario, with an active queue of 400
 
 **Figure 72.1. Connection Allocation Aggressiveness**
 
-![](images/connagg.png)
+![](/momentum/web-momo4/images/connagg.png)
 
 The default value is `normal`.
 

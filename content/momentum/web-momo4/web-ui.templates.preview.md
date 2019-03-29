@@ -12,7 +12,7 @@ You can preview and test your template by specifying test data in the **`New Tem
 
 **Figure 48.6. Test Data**
 
-![Test Data](https://support.messagesystems.com/docs/web-momo4/images/test_data.png)
+![Test Data](/momentum/web-momo4/images/test_data.png)
 
 ### 48.3.1. Previewing Your Email
 
@@ -24,7 +24,7 @@ You can preview the HTML content, plain text content, and top-level header subst
 
 **Figure 48.7. Preview Template**
 
-![Preview Template](https://support.messagesystems.com/docs/web-momo4/images/test_data.png)
+![Preview Template](/momentum/web-momo4/images/test_data.png)
 
 [Figure 48.8, “Preview Template Details”](web-ui.templates.preview#figure_preview_details "Figure 48.8. Preview Template Details") shows a preview of the Template Details for the Simple Template. Notice the substitution for *{{name}}* and *{{company}}*.
 
@@ -32,7 +32,7 @@ You can preview the HTML content, plain text content, and top-level header subst
 
 **Figure 48.8. Preview Template Details**
 
-![Preview Template Details](https://support.messagesystems.com/docs/web-momo4/images/preview_details.png)
+![Preview Template Details](/momentum/web-momo4/images/preview_details.png)
 
 ### 48.3.2. Sending a Test Email
 
@@ -42,7 +42,7 @@ In addition to the preview function, you can send a test email from the UI, usin
 
 **Figure 48.9. Send Test**
 
-![Send Test](https://support.messagesystems.com/docs/web-momo4/images/select_test.png)
+![Send Test](/momentum/web-momo4/images/select_test.png)
 
 In the **`Sent Test form`**, enter your recipient's address and click `Send`.
 
@@ -50,7 +50,7 @@ In the **`Sent Test form`**, enter your recipient's address and click `Send`.
 
 **Figure 48.10. Send Test Form**
 
-![Send Test Form](https://support.messagesystems.com/docs/web-momo4/images/send_test.png)
+![Send Test Form](/momentum/web-momo4/images/send_test.png)
 
 If successful, a message will briefly appear indicating that your message was successfully queued. Your recipient should receive an email with your test data included in the message body.
 

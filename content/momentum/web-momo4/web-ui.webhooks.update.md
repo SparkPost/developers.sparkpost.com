@@ -10,7 +10,7 @@ You can edit any configuration option of an existing webhook. From the **`Webhoo
 
 **Figure 60.7. Update Webhook**
 
-![Update Webhook](https://support.messagesystems.com/docs/web-momo4/images/update_webhook.png)
+![Update Webhook](/momentum/web-momo4/images/update_webhook.png)
 
 Make your changes in the **`Edit Webhook`** form, as shown in [Figure 60.8, “Edit Webhook”](web-ui.webhooks.update#figure_edit_webhook "Figure 60.8. Edit Webhook"), and then click `Update`.
 
@@ -18,7 +18,7 @@ Make your changes in the **`Edit Webhook`** form, as shown in [Figure 60.8, “E
 
 **Figure 60.8. Edit Webhook**
 
-![Edit Webhook](https://support.messagesystems.com/docs/web-momo4/images/edit_webhook.png)
+![Edit Webhook](/momentum/web-momo4/images/edit_webhook.png)
 
 If the webhook successfully updates, a message will briefly display upon return to the **`Webhooks`** tab. Batches currently queued for delivery to this webhook will not be affected by these modifications. For example: If you change the webhook’s target URL, batches already queued for delivery will still be posted to the previous URL.
 

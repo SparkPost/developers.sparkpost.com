@@ -26,7 +26,7 @@ Open the UI by pointing your web browser at the appropriate IP address and log i
 
 **Figure 56.1. User Interface**
 
-![User Interface](images/summary_report.png)
+![User Interface](/momentum/web-momo4/images/summary_report.png)
 
 In the METRICS area of the Summary section, the UI reports how many of your messages were successfully injected into Momentum (Targeted) and accepted by the ISP (Accepted). This data is displayed based on time in the corresponding graph.
 
@@ -36,7 +36,7 @@ The Reports tab consists of six sections. Use the drop-down list shown in [Figur
 
 **Figure 56.2. Navigating the UI**
 
-![Navigating the UI](images/navigation_menu.png)
+![Navigating the UI](/momentum/web-momo4/images/navigation_menu.png)
 
 To create your custom reports, begin in theSummary section by selecting your metrics and filters. Next, view the summary report provided in the Summary section and the detailed reports provided in the Bounces, Rejections, Accepted, and Delayed sections to evaluate your deliverability and performance. The Engagement section includes a specialized report enabling you to drill down to the level of a link within your campaign.
 

@@ -4,7 +4,7 @@
 
 ## 25.3. MultiVIP© Interfaces
 
-<a className="indexterm" name="idp3618464"></a>![](images/multivip.png)
+<a className="indexterm" name="idp3618464"></a>![](/momentum/web-momo4/images/multivip.png)
 
 MultiVIP© technology allows Momentum to transparently deliver different messages from different IP addresses. This is most commonly used when two or more customers are sending mail through a single Momentum instance, and it is desirable (for quality of service reasons) for messages from each client to originate from unique IP addresses that have been assigned to them.
 

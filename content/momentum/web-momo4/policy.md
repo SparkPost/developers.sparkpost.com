@@ -11,7 +11,7 @@
 In order to effectively implement your site policy, it is important to understand how mail transits through Momentum and when the policy is applied. [Figure 62.1, “Momentum Policy Phases”](policy#policy.flow-diagram "Figure 62.1. Momentum Policy Phases") provides visual representations of mail injected via HTTP and SMTP. Additional policy information is provided after the diagram. For more information about the other mail transmission stages, see [Chapter 2, *Life of A Message*](loam "Chapter 2. Life of A Message") .
 <a name="policy.flow-diagram"></a>
 **Figure 62.1. Momentum Policy Phases**
-![](images/policy_phases.png)
+![](/momentum/web-momo4/images/policy_phases.png)
 All messages go through validation checks, which can be active (such as terminating the connection) or passive (such as collecting information).
 Messages pass through policy phases (or hook points), which enable you to define actions that will be executed at various points during validation. These actions can be related to decisions around message acceptance, modifying the message, or applying logic based on a property of the message. Policy can be defined to act on the connection or message associated with the phase of an SMTP session. All policy is applied to each message entering Momentum, and all policy decisions are made before Momentum accepts the message for downstream delivery.
 The policy phases differ for each type of injection. For example, messages injected via HTTP pass through:

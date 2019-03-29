@@ -132,7 +132,7 @@ Follow these steps to view your engagement data:
 
     **Figure 61.1. Engagement Report**
 
-    ![Engagement Report](images/engagement.png)
+    ![Engagement Report](/momentum/web-momo4/images/engagement.png)
 
 Congratulations! You have successfully sent an email with a link and tracked the engagement of your message in the UI. To learn more about using the Engagement report, see [Section 57.4, “Evaluating Your Campaign Performance”](web-ui.reports.evaluating.campaign.performance "57.4. Evaluating Your Campaign Performance").
 

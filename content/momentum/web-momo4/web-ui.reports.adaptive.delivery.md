@@ -16,7 +16,7 @@ Navigating to the **`Adaptive Delivery`** report removes all filters except time
 
 **Figure 57.16. Adaptive Delivery Report**
 
-![Adaptive Delivery Report](https://support.messagesystems.com/docs/web-momo4/images/adaptive_report.png)
+![Adaptive Delivery Report](/momentum/web-momo4/images/adaptive_report.png)
 
 The following are the metrics displayed in the upper area of this report:
 
@@ -40,7 +40,7 @@ If you need to capture adaptive delivery data over time ranges longer than one w
 
 **Figure 57.17. Time Period Drop-down List**
 
-![Time Period Drop-down List](https://support.messagesystems.com/docs/web-momo4/images/adaptive_time.png)
+![Time Period Drop-down List](/momentum/web-momo4/images/adaptive_time.png)
 
 For information about selecting the time period filter, see [Section 57.1.3.1, “Time Period”](web-ui.reports#web-ui.reports.select.time "57.1.3.1. Time Period").
 
@@ -56,7 +56,7 @@ Suspensions are displayed by Gantt Bars representing the timespan of the event. 
 
 **Figure 57.18. Adaptive Delivery Graph**
 
-![Adaptive Delivery Graph](https://support.messagesystems.com/docs/web-momo4/images/suspension_detail.png)
+![Adaptive Delivery Graph](/momentum/web-momo4/images/suspension_detail.png)
 
 To view an expanded graph for a given suspension timespan, click the Gantt Bar for the suspension. [Figure 57.19, “Expanded View”](web-ui.reports.adaptive.delivery#figure_suspension_detailed "Figure 57.19. Expanded View") shows an expanded view of the timespan for the example suspension on hotmail.com/binding-86\. Note that the x-axis of the graph spans the time of the selected suspension, allowing you to view a finer precision of the other metrics during the duration of the suspension.
 
@@ -64,7 +64,7 @@ To view an expanded graph for a given suspension timespan, click the Gantt Bar f
 
 **Figure 57.19. Expanded View**
 
-![Expanded View](https://support.messagesystems.com/docs/web-momo4/images/suspension_detailed.png)
+![Expanded View](/momentum/web-momo4/images/suspension_detailed.png)
 
 ### 57.3.3. Viewing Adaptive Delivery Event Details
 
@@ -74,7 +74,7 @@ The table provided in the lower area of the **`Adaptive Report`** lists details 
 
 **Figure 57.20. Adaptive Delivery Table**
 
-![Adaptive Delivery Table](https://support.messagesystems.com/docs/web-momo4/images/adaptive_details.png)
+![Adaptive Delivery Table](/momentum/web-momo4/images/adaptive_details.png)
 
 The following are the columns in the table:
 

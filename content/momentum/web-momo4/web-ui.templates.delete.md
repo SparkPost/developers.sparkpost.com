@@ -12,7 +12,7 @@ To delete your template, click the arrow on the right-hand side of the `Save Dra
 
 **Figure 48.12. Delete Template**
 
-![Delete Template](https://support.messagesystems.com/docs/web-momo4/images/templates_list.png)
+![Delete Template](/momentum/web-momo4/images/templates_list.png)
 
 The `Delete` option is a "hard delete". ALL versions of the template will be deleted from the system, both published AND draft versions.
 

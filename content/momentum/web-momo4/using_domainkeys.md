@@ -11,7 +11,7 @@ DomainKeys is a technology proposal that can bring "yes or no" back to the decis
 [Figure 22.1, “DomainKeys schematic”](using_domainkeys#figure_domainkeys_schematic "Figure 22.1. DomainKeys schematic") gives a graphical view of how DKIM works.
 <a name="figure_domainkeys_schematic"></a>
 **Figure 22.1. DomainKeys schematic**
-![](images/gr_dkeys_1.gif)
+![](/momentum/web-momo4/images/gr_dkeys_1.gif)
 ## For Sending Servers
 1.  Set up
     The domain owner (typically the team running the email systems within a company or service provider) generates a public/private key pair to use for signing all outgoing messages (multiple key pairs are allowed). The policy and the public key is published in DNS, and the private key is made available to their DomainKey-enabled outbound email servers. This is step "A" in the diagram to the right.

@@ -15,14 +15,14 @@ When API authentication is enabled, all APIs require that you authenticate with 
 Click *`admin`* in the upper-right corner, as shown in [Figure 44.1, “admin Username”](web-ui.apikeys#figure_username_icon "Figure 44.1. admin Username"), to open the Settings section.
 <a name="figure_username_icon"></a>
 **Figure 44.1. admin Username**
-![admin Username](images/username_icon.png)
+![admin Username](/momentum/web-momo4/images/username_icon.png)
 ## 44.1. Viewing Your API Keys
 The Settings section provides a tabular view of your existing API keys, as shown in [Figure 44.2, “API Keys Table”](web-ui.apikeys#figure_apikeys_list "Figure 44.2. API Keys Table"). The following information is displayed in the table for each API key:
 *   Key - Label specified when you created the API key
 *   Permissions - Valid grant types for which the API key will have access
 <a name="figure_apikeys_list"></a>
 **Figure 44.2. API Keys Table**
-![API Keys Table](images/apikeys_list.png)
+![API Keys Table](/momentum/web-momo4/images/apikeys_list.png)
 API keys can access any resource you give them access to except for the user resources. This restriction is for security reasons. An API key should not be able to modify users. If your key gets loose, this restriction prevents it from being used to gain unfettered access to your system accounts. In [Figure 44.2, “API Keys Table”](web-ui.apikeys#figure_apikeys_list "Figure 44.2. API Keys Table"), example_api_key has access to metrics, webhooks, and transmissions.
 To create an API key that meets your specific requirements, you must understand the permissions required by each API. [Table 44.1, “Grant Types”](web-ui.apikeys#table_grant_types "Table 44.1. Grant Types") gives a mapping of the permissions for a given grant type.
 <a name="table_grant_types"></a>

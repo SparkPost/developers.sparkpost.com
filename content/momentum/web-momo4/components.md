@@ -14,7 +14,7 @@ The principle components that make up Momentum 4 are Platform nodes and Analytic
 
 **Figure 1.1. Momentum 4 Components**
 
-![Momentum 4 Components](images/components.png)
+![Momentum 4 Components](/momentum/web-momo4/images/components.png)
 
 |     |     |     |
 | --- | --- | --- |

@@ -29,7 +29,7 @@ The **`Webhooks`** tab displays details about your existing webhooks. The follow
 <a name="figure_webhooks_list"></a>
 
 **Figure 60.1. Webhooks List**
-![Webhooks List](https://support.messagesystems.com/docs/web-momo4/images/webhooks_list.png)
+![Webhooks List](/momentum/web-momo4/images/webhooks_list.png)
 To create a webhook that meets your specific requirements, you must understand the events being posted to the webhook. Events are categorized as message, generation, or engagement.
 Message events describe the life cycle of a message including injection, delivery, and disposition. The following are the available message events:
 *   Delivery - Remote mail transfer agent (MTA) acknowledged receipt of a message.

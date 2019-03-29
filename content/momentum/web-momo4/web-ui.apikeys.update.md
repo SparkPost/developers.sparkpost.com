@@ -10,7 +10,7 @@ You can edit the label and grants of an existing API key. From the Settings sect
 
 **Figure 44.4. Update API Key**
 
-![Update API Key](images/update_apikey.png)
+![Update API Key](/momentum/web-momo4/images/update_apikey.png)
 
 Make your changes in the Edit API Key form, as shown in [Figure 44.5, “Edit API Key”](web-ui.apikeys.update#figure_edit_apikey "Figure 44.5. Edit API Key"), and then click Update.
 
@@ -18,7 +18,7 @@ Make your changes in the Edit API Key form, as shown in [Figure 44.5, “Edit A
 
 **Figure 44.5. Edit API Key**
 
-![Edit API Key](images/edit_apikey.png)
+![Edit API Key](/momentum/web-momo4/images/edit_apikey.png)
 
 If the API key successfully updates, a message will display upon return to the Settings section. Click the x to close the message.
 

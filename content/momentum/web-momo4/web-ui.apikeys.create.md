@@ -10,7 +10,7 @@ In the Settings section, click the New API Key icon in the upper-right corner to
 
 **Figure 44.3. Create New API Key**
 
-![Create New API Key](images/create_apikey.png)
+![Create New API Key](/momentum/web-momo4/images/create_apikey.png)
 
 Enter the following information:
 

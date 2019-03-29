@@ -10,7 +10,7 @@ In the **`Webhooks`** tab, click the **`New Webhooks`** icon in the upper-right 
 
 **Figure 60.2. Create New Webhook**
 
-![Create New Webhook](https://support.messagesystems.com/docs/web-momo4/images/create_webhook.png)
+![Create New Webhook](/momentum/web-momo4/images/create_webhook.png)
 
 Enter the following information:
 
@@ -28,7 +28,7 @@ To receive all event types on the webhook, click the `Send all event types` opti
 
 **Figure 60.3. Event Types**
 
-![Event Types](https://support.messagesystems.com/docs/web-momo4/images/event_types.png)
+![Event Types](/momentum/web-momo4/images/event_types.png)
 
 When complete, click `Create` to create your new webhook.
 

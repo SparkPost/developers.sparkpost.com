@@ -12,7 +12,7 @@ To publish your template, click the arrow on the right-hand side of the `Save Dr
 
 **Figure 48.11. Publish Template**
 
-![Publish Template](https://support.messagesystems.com/docs/web-momo4/images/publish_template.png)
+![Publish Template](/momentum/web-momo4/images/publish_template.png)
 
 A published template can still be edited, either by editing the published version or by creating a new draft.
 

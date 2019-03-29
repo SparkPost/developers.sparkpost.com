@@ -14,7 +14,7 @@ Messages are injected into Momentum 4.x either through SMTP or HTTP. SMTP inject
 
 **Figure 2.1. Life of A Message**
 
-![Life of A Message](images/life_of_a_message.png)
+![Life of A Message](/momentum/web-momo4/images/life_of_a_message.png)
 
 ## Generate Message
 

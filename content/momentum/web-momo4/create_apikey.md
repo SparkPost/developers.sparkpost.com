@@ -32,7 +32,7 @@ Follow these steps to create an API key:
 
     **Figure 43.1. Login**
 
-    ![Login](images/username_icon.png)
+    ![Login](/momentum/web-momo4/images/username_icon.png)
 
 3.  In the Settings section, click the New API Key icon in the upper-right corner to open the Create New API Key form, as shown in [Figure 43.2, “Create New API Key”](create_apikey#figure_create_api_key "Figure 43.2. Create New API Key").
 
@@ -40,7 +40,7 @@ Follow these steps to create an API key:
 
     **Figure 43.2. Create New API Key**
 
-    ![Create New API Key](images/create_apikey.png)
+    ![Create New API Key](/momentum/web-momo4/images/create_apikey.png)
 
 4.  Enter the following information:
 

@@ -28,7 +28,7 @@ Messages can bounce due to a wide variety of reasons. Some messages are not acce
 
 **Figure 57.10. Bounces Report**
 
-![Bounces Report](https://support.messagesystems.com/docs/web-momo4/images/bounces_report.png)
+![Bounces Report](/momentum/web-momo4/images/bounces_report.png)
 
 The following are the metrics displayed in the upper area of this report:
 
@@ -78,7 +78,7 @@ These classifications correspond to Momentum's [Table 35.16, “Bounce Classifi
 
 **Figure 57.11. Bounce Rates By Type and By Category**
 
-![Bounce Rates By Type and By Category](https://support.messagesystems.com/docs/web-momo4/images/bounces_by_category.png)
+![Bounce Rates By Type and By Category](/momentum/web-momo4/images/bounces_by_category.png)
 
 Click the arrow next to the category name to show the following:
 
@@ -98,7 +98,7 @@ The UI has the capability to drill down to the reasons why your messages bounced
 
 **Figure 57.12. Bounce Messages Table**
 
-![Bounce Messages Table](https://support.messagesystems.com/docs/web-momo4/images/bounce_messages.png)
+![Bounce Messages Table](/momentum/web-momo4/images/bounce_messages.png)
 
 The following are the columns in the table:
 
@@ -126,7 +126,7 @@ Messages injected into Momentum can be rejected due to policy or technical reaso
 
 **Figure 57.13. Rejections Report**
 
-![Rejections Report](https://support.messagesystems.com/docs/web-momo4/images/rejections_report.png)
+![Rejections Report](/momentum/web-momo4/images/rejections_report.png)
 
 The following are the metrics displayed in the upper area of this report:
 
@@ -170,7 +170,7 @@ In any messaging campaign, you want your messages delivered and delivered quickl
 
 **Figure 57.14. Accepted Report**
 
-![Accepted Report](https://support.messagesystems.com/docs/web-momo4/images/accepted_report.png)
+![Accepted Report](/momentum/web-momo4/images/accepted_report.png)
 
 The following are the metrics displayed in the upper area of this report:
 
@@ -208,7 +208,7 @@ Temporary failures can cause your messages to be delayed. The report provided in
 
 **Figure 57.15. Delayed Report**
 
-![Delayed Report](https://support.messagesystems.com/docs/web-momo4/images/delayed_report.png)
+![Delayed Report](/momentum/web-momo4/images/delayed_report.png)
 
 The following metrics are displayed in the upper area of this report:
 

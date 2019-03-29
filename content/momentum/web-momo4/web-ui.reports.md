@@ -18,7 +18,7 @@ The **`Reports`** tab consists of six sections. To create your custom reports, b
 <a name="figure_navigation_menu"></a>
 
 **Figure 57.1. Navigating Reports**
-![Navigating Reports](https://support.messagesystems.com/docs/web-momo4/images/navigation_menu.png)
+![Navigating Reports](/momentum/web-momo4/images/navigation_menu.png)
 ### Note
 In order to view any generation or engagement data, you must be licensed for Message Generation Support. If you are not licensed, the UI displays a *0* entry for metrics in these categories.
 
@@ -35,7 +35,7 @@ Hover over any metric to display tool-tips providing a description. Then, select
 <a name="figure_metrics_list"></a>
 
 **Figure 57.2. Metrics Drop-down List**
-![Metrics Drop-down List](https://support.messagesystems.com/docs/web-momo4/images/metrics_list.png)
+![Metrics Drop-down List](/momentum/web-momo4/images/metrics_list.png)
 Five of the metrics are approximations (+/- 5%) of the real, distinct counts. Note that the approximation includes **`(APPROX.)`** in the name. Using these approximations enables your UI to load faster.
 
 ### Note
@@ -60,7 +60,7 @@ Each measurement is displayed separately, if an applicable metric is selected.
 
 <a name="figure_summary_graph"></a>
 **Figure 57.3. Summary Graph**
-![Summary Graph](https://support.messagesystems.com/docs/web-momo4/images/summary_graph.png)
+![Summary Graph](/momentum/web-momo4/images/summary_graph.png)
 
 To view the values of the metrics at a specific time, hover over the graph. The values are displayed in the legend above the graph. This feature enables you to see the relationship of the selected metrics as a function of time.
 
@@ -82,7 +82,7 @@ Having more than 3000 each of bindings, binding groups, campaigns, and templates
 
 <a name="figure_summary_table"></a>
 **Figure 57.4. Summary Table**
-![Summary Table](https://support.messagesystems.com/docs/web-momo4/images/summary_table.png)
+![Summary Table](/momentum/web-momo4/images/summary_table.png)
 
 To navigate through the table, click the tabs. Use the controls located below the tabs to select the page to display and the number of items per page. You can sort by any column in ascending or descending order by clicking the sorting icon in the column header. This icon is visible in the header of the currently sorted column. If the icon is not visible, hover over the name in the header, and the icon will appear.
 
@@ -103,7 +103,7 @@ By default, the UI displays data for the `Last Hour` pre-set. You can select oth
 <a name="figure_time"></a>
 **Figure 57.5. Time Period Drop-down List**
 
-![Time Period Drop-down List](https://support.messagesystems.com/docs/web-momo4/images/time.png)
+![Time Period Drop-down List](/momentum/web-momo4/images/time.png)
 
 In the graph on the **`Summary`** report, the precision of the data is based on the time period selected. A data point can represent the total for a minute, five minutes, fifteen minutes, an hour, twelve hours, or a day. As an example of a five minute precision, a data point at 9:00 AM represents data for the time span of 9:00:00 AM - 9:04:59 AM. The x-axis of the graph changes based on the precision. See [Figure 57.3, “Summary Graph”](web-ui.reports#figure_summary_graph "Figure 57.3. Summary Graph") for an example of a day precision.
 
@@ -113,7 +113,7 @@ Reports created with a custom range display data from the beginning of the selec
 
 <a name="figure_custom_range"></a>
 **Figure 57.6. Custom Range**
-![Custom Range](https://support.messagesystems.com/docs/web-momo4/images/custom_range.png)
+![Custom Range](/momentum/web-momo4/images/custom_range.png)
 
 **57.1.3.2. Node**
 
@@ -121,7 +121,7 @@ To list your node names, click the arrow as shown in [Figure 57.7, “Node Drop
 
 <a name="figure_node"></a>
 **Figure 57.7. Node Drop-down List**
-![Node Drop-down List](https://support.messagesystems.com/docs/web-momo4/images/nodes.png)
+![Node Drop-down List](/momentum/web-momo4/images/nodes.png)
 
 ### 57.1.4. Filtering Metric Data
 The UI is designed to provide maximum flexibility enabling you to drill down to the events and engagement data that are most important to you. You can filter your selected metrics by any domain, binding, binding group, campaigns, and templates using one of two methods: by the **`Search`** function or by table entry.
@@ -132,7 +132,7 @@ To filter by the **`Search`** function, enter the domain, binding, binding group
 <a name="figure_filter_by_search"></a>
 
 **Figure 57.8. Filter by Search**
-![Filter by Search](https://support.messagesystems.com/docs/web-momo4/images/filter_by_search.png)
+![Filter by Search](/momentum/web-momo4/images/filter_by_search.png)
 
 ### Note
 Campaign names are submitted when the message is injected into Momentum using the REST API. If you want to filter by campaign, you must know the name that was submitted.
@@ -145,7 +145,7 @@ To filter by table entry, select a tab in the table and click the domain, bindin
 
 <a name="figure_filter_by_entry"></a>
 **Figure 57.9. Filter by Table Entry**
-![Filter by Table Entry](https://support.messagesystems.com/docs/web-momo4/images/filter_by_entry.png
+![Filter by Table Entry](images/filter_by_entry.png
 )
 **57.1.4.3. Removing Filters**
 

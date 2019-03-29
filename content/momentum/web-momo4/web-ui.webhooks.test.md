@@ -12,7 +12,7 @@ From the Webhooks tab, click the icon in the upper-right corner of the webhook y
 
 **Figure 60.4. Test Webhook**
 
-![Test Webhook](https://support.messagesystems.com/docs/web-momo4/images/test_webhook.png)
+![Test Webhook](/momentum/web-momo4/images/test_webhook.png)
 
 The **`Test Webhook`** window displays the example message event batch that will be posted to your target webhook, as shown in [Figure 60.5, “Test Request”](web-ui.webhooks.test#figure_test_request "Figure 60.5. Test Request"). The **`Request`** shows the full content of the HTTP request, which is exactly the same as what the batch transmitter would send to the client endpoint. To continue with the test, click **`Submit Test`**
 
@@ -20,7 +20,7 @@ The **`Test Webhook`** window displays the example message event batch that will
 
 **Figure 60.5. Test Request**
 
-![Test Request](https://support.messagesystems.com/docs/web-momo4/images/test_request.png)
+![Test Request](/momentum/web-momo4/images/test_request.png)
 
 The test returns a detailed information response, as shown in [Figure 60.6, “Test Response”](web-ui.webhooks.test#figure_test_response "Figure 60.6. Test Response").
 
@@ -28,7 +28,7 @@ The test returns a detailed information response, as shown in [Figure 60.6, “T
 
 **Figure 60.6. Test Response**
 
-![Test Response](https://support.messagesystems.com/docs/web-momo4/images/test_response.png)
+![Test Response](/momentum/web-momo4/images/test_response.png)
 
 The **`Response`** shows the full content of the HTTP response sent by the client endpoint after receiving the test request. It includes a standard HTTP status. In the example response, the "OK" **(HTTP/1.1 200)** indicates that the example message event batch was successfully posted to the target URL. Any other response code indicates some type of error.
 

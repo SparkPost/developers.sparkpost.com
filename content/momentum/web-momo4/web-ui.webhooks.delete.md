@@ -10,7 +10,7 @@ From the **`Webhooks`** tab, you can delete a webhook. Click the icon in the upp
 
 **Figure 60.9. Delete Webhook**
 
-![Delete Webhook](https://support.messagesystems.com/docs/web-momo4/images/delete_webhook.png)
+![Delete Webhook](/momentum/web-momo4/images/delete_webhook.png)
 
 In the **`Delete Webhooks`** window, click `Delete` to confirm your request, as shown in [Figure 60.10, “Confirm Delete”](web-ui.webhooks.delete#figure_confirm_delete "Figure 60.10. Confirm Delete").
 
@@ -18,7 +18,7 @@ In the **`Delete Webhooks`** window, click `Delete` to confirm your request, as 
 
 **Figure 60.10. Confirm Delete**
 
-![Confirm Delete](https://support.messagesystems.com/docs/web-momo4/images/confirm_delete.png)
+![Confirm Delete](/momentum/web-momo4/images/confirm_delete.png)
 
 The system will stop posting data to the target URL after the batches currently queued to be delivered are drained.
 

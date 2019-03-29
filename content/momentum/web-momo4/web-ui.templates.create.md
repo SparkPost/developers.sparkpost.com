@@ -14,7 +14,7 @@ To open the  **`New Template`** form, click the **`New Template`** icon in the u
 
 **Figure 48.2. New Template**
 
-![New Template](https://support.messagesystems.com/docs/web-momo4/images/new_template.png)
+![New Template](/momentum/web-momo4/images/new_template.png)
 
 Enter the following information under  **`Template Details`**:
 
@@ -54,7 +54,7 @@ You can use substitution in the top-level header of your template (i.e. "Subject
 
 **Figure 48.3. Template Details**
 
-![Template Details](https://support.messagesystems.com/docs/web-momo4/images/template_details.png)
+![Template Details](/momentum/web-momo4/images/template_details.png)
 
 ### 48.2.2. Entering Your Template Content
 
@@ -66,7 +66,7 @@ An example of HTML content is shown in [Figure 48.4, “HTML Content”](web-ui
 
 **Figure 48.4. HTML Content**
 
-![HTML Content](https://support.messagesystems.com/docs/web-momo4/images/html_content.png)
+![HTML Content](/momentum/web-momo4/images/html_content.png)
 
 An example of plain text content is shown in [Figure 48.5, “Text Content”](web-ui.templates.create#figure_text_content "Figure 48.5. Text Content").
 
@@ -74,7 +74,7 @@ An example of plain text content is shown in [Figure 48.5, “Text Content”](
 
 **Figure 48.5. Text Content**
 
-![Text Content](https://support.messagesystems.com/docs/web-momo4/images/text_content.png)
+![Text Content](/momentum/web-momo4/images/text_content.png)
 
 Click `Save Draft` in the **`New Template`** form to save your template as a draft. If successfully, a message indicating that your template was saved will be displayed briefly.
 
