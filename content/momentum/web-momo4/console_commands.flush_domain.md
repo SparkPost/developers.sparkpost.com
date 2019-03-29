@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.fingerprint_rejection_summary)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.help) |
 
 <a name="console_commands.flush_domain"></a>

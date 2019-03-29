@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.memory)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.message_fail) |
 
 <a name="console_commands.message_details"></a>

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.start_services_rolling)  | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node |  [Next](post_installation) |
 
 ## 11.17. Complete the Software Set Up

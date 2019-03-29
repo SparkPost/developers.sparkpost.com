@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.software_upgrade_rolling)  | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node |  [Next](upgrade.two_tier.configuration.start_services_rolling) |
 
 ## 11.15. Update the Web UI Configuration

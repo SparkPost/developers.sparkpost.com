@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.signing_stats_reset)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.spool_import) |
 
 <a name="console_commands.sp_async"></a>

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.rebind)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.reopen_logs) |
 
 <a name="console_commands.refresh_domain"></a>

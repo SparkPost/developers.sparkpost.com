@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.active)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.authz_roles_list) |
 
 <a name="console_commands.authz_id"></a>

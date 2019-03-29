@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.post-install.rotate)  | Chapter 12. Post-Installation |  [Next](install.vertica.license) |
 
 ## 12.4. Download and Install the Vertica Management Console

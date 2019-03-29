@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.start_services)  | Chapter 10. Upgrade - Single Node |  [Next](upgrade.single_node.configuration.next_steps) |
 
 ## 10.8. Complete the Software Set Up

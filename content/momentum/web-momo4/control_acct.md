@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_auth)  | Chapter 17. Configuring Momentum's System Console |  [Next](control_authz) |
 
 ## 17.3. Control_Listener Accounting

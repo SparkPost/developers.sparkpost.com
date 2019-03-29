@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](operations)  | Chapter 37. Using the System Console (**ec_console**) |  [Next](module_specific_console_commands.using) |
 
 ## 37.2. Console Commands

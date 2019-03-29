@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](substitution_data)  | Part VII. Message Generation (HTTP) |  [Next](web-ui.templates) |
 
 ## Chapter 47. Creating Stored Templates

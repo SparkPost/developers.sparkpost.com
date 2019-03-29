@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.mailq)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.message_details) |
 
 <a name="console_commands.memory"></a>

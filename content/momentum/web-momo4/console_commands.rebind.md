@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.pid)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.refresh_domain) |
 
 <a name="console_commands.rebind"></a>

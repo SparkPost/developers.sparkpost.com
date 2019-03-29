@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.paniclog)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.rebind) |
 
 <a name="console_commands.pid"></a>

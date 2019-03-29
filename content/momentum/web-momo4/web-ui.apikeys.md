@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](create_apikey)  | Part VII. Message Generation (HTTP) |  [Next](web-ui.apikeys.create) |
 ## Chapter 44. Managing Your API Keys
 **Table of Contents**

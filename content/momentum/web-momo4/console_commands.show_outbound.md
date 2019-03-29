@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.show_inbound)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.showqueue) |
 
 <a name="console_commands.show_outbound"></a>

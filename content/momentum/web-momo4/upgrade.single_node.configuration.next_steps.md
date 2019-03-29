@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.complete_setup)  | Chapter 10. Upgrade - Single Node |  [Next](upgrade.two_tier_configuration_rolling) |
 
 ## 10.9. Next Steps

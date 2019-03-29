@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.prepare_all_nodes_rolling)  | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node |  [Next](upgrade.two_tier.preparation.upgrade_cassandra_rolling) |
 
 ## 11.3. Perform a Cassandra Snapshot

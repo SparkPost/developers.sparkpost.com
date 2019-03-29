@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node)  | Chapter 10. Upgrade - Single Node |  [Next](upgrade.single_node.configuration.flyway) |
 
 ## 10.2. Vertica Updates

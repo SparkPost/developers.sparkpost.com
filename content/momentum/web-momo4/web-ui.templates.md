@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](stored_template)  | Part VII. Message Generation (HTTP) |  [Next](web-ui.templates.create) |
 ## Chapter 48. Managing Your Templates in the UI
 **Table of Contents**

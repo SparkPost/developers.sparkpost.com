@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.message_fail)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.message_retry) |
 
 <a name="console_commands.message_fail_quiet"></a>

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](modules.options.console)  | Chapter 37. Using the System Console (**ec_console**) |  [Next](cluster.config.operations) |
 
 ## 37.5. Creating Custom Console Commands

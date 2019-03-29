@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](libedit)  | Appendix D. Key Binding Reference for ec_console |  [Next](glossary) |
 
 ## D.2. Extended Commands

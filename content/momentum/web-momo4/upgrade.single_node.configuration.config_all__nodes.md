@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.flyway)  | Chapter 10. Upgrade - Single Node |  [Next](upgrade.single_node.configuration.software_upgrade) |
 
 ## 10.4. Configuration Changes

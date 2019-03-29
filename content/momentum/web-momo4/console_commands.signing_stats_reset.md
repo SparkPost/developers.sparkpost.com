@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.signing_stats)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.sp_async) |
 
 <a name="console_commands.signing_stats_reset"></a>

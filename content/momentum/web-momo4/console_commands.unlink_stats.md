@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.trace_smtp)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.version) |
 
 <a name="console_commands.unlink_stats"></a>

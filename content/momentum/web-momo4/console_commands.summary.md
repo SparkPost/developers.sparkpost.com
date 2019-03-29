@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_in)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.summary_reset) |
 
 <a name="console_commands.summary"></a>

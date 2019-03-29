@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.threads)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.trace_smtp) |
 
 <a name="console_commands.tls"></a>

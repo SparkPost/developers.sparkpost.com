@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.count)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.delayed) |
 
 <a name="console_commands.counter"></a>

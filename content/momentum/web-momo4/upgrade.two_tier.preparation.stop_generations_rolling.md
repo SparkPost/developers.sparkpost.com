@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.preparation.upgrade_cassandra_rolling)  | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node |  [Next](upgrade.two_tier.preparation.ecelerity_rolling) |
 
 ## 11.5. Stop Transmissions to the First Platform Node

@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.two_tier.configuration.flyway_rolling)  | Chapter 11. Rolling Upgrade - Two-Tier Configuration and Combined Node |  [Next](upgrade.two_tier.configuration.config_all_nodes_rolling) |
 
 ## 11.12. Upgrade Remaining RPMs on Analytics Nodes

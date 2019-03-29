@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.analytics_nodes)  | Chapter 9. New Installation - All Configurations |  [Next](upgrade.single_node) |
 
 ## 9.4. Start Remaining Services

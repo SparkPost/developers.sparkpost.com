@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.spool_import)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.spool_in) |
 
 <a name="console_commands.spool_import_poll"></a>

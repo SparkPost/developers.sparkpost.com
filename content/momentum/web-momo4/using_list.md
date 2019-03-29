@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](stored_list)  | Part VII. Message Generation (HTTP) |  [Next](sending_cc_bcc) |
 
 ## Chapter 51. Using Stored Recipient Lists

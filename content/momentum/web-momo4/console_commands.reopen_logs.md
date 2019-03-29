@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.refresh_domain)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.reroute_queue) |
 
 <a name="console_commands.reopen_logs"></a>

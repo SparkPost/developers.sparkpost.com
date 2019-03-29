@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.summary_reset)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.threads) |
 
 <a name="console_commands.sysinfo"></a>

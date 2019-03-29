@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](upgrade.single_node.configuration.config_all__nodes)  | Chapter 10. Upgrade - Single Node |  [Next](upgrade.single_node.configuration.webui) |
 
 ## 10.5. Software Upgrade

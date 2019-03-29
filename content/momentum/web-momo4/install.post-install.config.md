@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](post_installation)  | Chapter 12. Post-Installation |  [Next](install.post-install.rotate) |
 
 ## 12.2. Reviewing Configuration Files

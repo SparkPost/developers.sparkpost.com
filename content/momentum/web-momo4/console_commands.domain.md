@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.dns_cache)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.domain_all) |
 
 <a name="console_commands.domain"></a>

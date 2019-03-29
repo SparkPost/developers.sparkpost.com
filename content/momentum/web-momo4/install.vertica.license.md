@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](install.post-install.vertica_mgmt_console)  | Chapter 12. Post-Installation |  [Next](install.security_considerations) |
 
 ## 12.5. Upgrading the Vertica License

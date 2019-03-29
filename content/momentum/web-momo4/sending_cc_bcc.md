@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](using_list)  | Part VII. Message Generation (HTTP) |  [Next](complex_template) |
 
 ## Chapter 52. Sending Emails as CC and BCC

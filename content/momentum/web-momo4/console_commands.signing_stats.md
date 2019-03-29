@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.shutdown)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.signing_stats_reset) |
 
 <a name="console_commands.signing_stats"></a>

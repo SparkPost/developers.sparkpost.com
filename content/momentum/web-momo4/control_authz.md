@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](control_acct)  | Chapter 17. Configuring Momentum's System Console |  [Next](ecstream_listener) |
 
 ## 17.4. Control_Listener Authorization

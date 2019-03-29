@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](using_domainkeys)  | Chapter 22. Using Yahoo! DomainKeys |  [Next](using_dkim) |
 
 ## 22.2. DomainKeys Validation

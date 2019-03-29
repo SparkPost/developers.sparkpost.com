@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.cache_stats)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.count) |
 
 <a name="console_commands.config"></a>

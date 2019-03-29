@@ -1,3 +1,5 @@
+|     |     |     |
+| --- | --- | --- |
 | [Prev](console_commands.flush_domain)  | Chapter 73. Non-Module-Specific Console Commands |  [Next](console_commands.mailq) |
 
 <a name="console_commands.help"></a>
