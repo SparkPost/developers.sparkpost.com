@@ -111,7 +111,7 @@ If your result set is less than one page of data, then the `links` object will n
 
 ## Search [/v1/events]
 
-### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_versions,bounce_classes,campaigns,cursor,delimiter,events,from,from_addresses,ip_pools,messages,per_page,reasons,recipients,recipient_domains,subjects,sending_domains,sending_ips,subaccounts,templates,to,transmissions}]
+### Search for Message Events [GET /v1/events/message{?ab_tests,ab_test_versions,bounce_classes,campaigns,cursor,delimiter,event_ids,events,from,from_addresses,ip_pools,messages,per_page,reasons,recipients,recipient_domains,subjects,sending_domains,sending_ips,subaccounts,templates,to,transmissions}]
 
 Returns a list of message events that matched the filtered search.
 
@@ -126,6 +126,7 @@ Returns a list of message events that matched the filtered search.
         + Default: `1000`
     + delimiter (string, optional) ... Specifies the delimiter for query parameter lists.
         + Default: `,`
+    + event_ids (string, optional) - Comma delimited list of event IDs to search.
     + events (string, optional) - Comma delimited list of event types to search.
         + Default: `all event types`
     + recipients (string, optional, `recipient@example.com`) ... Comma delimited list of recipients to search.
