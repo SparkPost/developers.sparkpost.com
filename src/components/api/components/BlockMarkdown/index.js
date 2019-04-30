@@ -19,19 +19,19 @@ const TableOverflow = styled.div`
 
 let components = {
   h2(props) {
-    return <Heading level={2} {...props} />
+    return <Heading level={2} className="block" {...props} />
   },
   h3(props) {
-    return <Heading level={3} {...props} />
+    return <Heading level={3} className="block" {...props} />
   },
   h4(props) {
-    return <Heading level={4} {...props} />
+    return <Heading level={4} className="block" {...props} />
   },
   h5(props) {
-    return <Heading level={5} {...props} />
+    return <Heading level={5} className="block" {...props} />
   },
   h6(props) {
-    return <Heading level={6} {...props} />
+    return <Heading level={6} className="block" {...props} />
   },
   ul(props) {
     return (

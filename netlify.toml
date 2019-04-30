@@ -1,8 +1,10 @@
 [build]
   publish = "./public"
-  command = "npm run bootstrap && netlify-lambda build lambda/ && npm run build"
+  command = "npm run bootstrap && npx netlify-lambda build lambda/ && npm run build"
   functions = "./functions"
 
 # Run `npm run publish` to re-index in algolia
-[context.production]
-  command = "npm run bootstrap && netlify-lambda build lambda/ && npm run publish"
+# [context.production]
+#   publish = "./public"
+#   command = "npm run bootstrap && npx netlify-lambda build lambda/ && npm run publish"
+#   functions = "./functions"

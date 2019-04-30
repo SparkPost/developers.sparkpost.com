@@ -1,7 +1,6 @@
 'use strict'
 
 const { flatten } = require('lodash')
-const queries = require('./algolia-queries.js')
 const proxy = require('http-proxy-middleware')
 
 // Environment variables prefixed by "GATSBY" are accessible in src/ files
@@ -48,7 +47,10 @@ module.exports = {
         options: {
           appId: 'SFXAWCYDV8',
           apiKey: process.env.ALGOLIA_TOKEN,
-          queries
+          queries: [
+            require('./algolia/apiReference'),
+            require('./algolia/momentum')
+          ]
         }
       }
     ] : [],
@@ -83,7 +85,8 @@ module.exports = {
         showSpinner: false,
       }
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
+    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
     {
@@ -95,6 +98,29 @@ module.exports = {
           "/sw.js": [ "Cache-Control: no-cache" ]
         },
       }
+    },
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1000,
+            },
+          },
+        ],
+      },
     }
+    // {
+    //   resolve: `gatsby-mdx`,
+    //   options: {
+    //     extensions: [".mdx", ".md"]
+    //   }
+    // }
   ])
 }

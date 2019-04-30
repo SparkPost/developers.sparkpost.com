@@ -26,7 +26,7 @@ const Tag = styled(({ level, ...props }) => {
   `}
 `
 
-const Heading = ({ level = 3, id, className, children, ...props }) => {
+const Heading = ({ level = 3, id, children, ...props }) => {
   const slug =
     id ||
     slugify.markdown({
@@ -34,7 +34,7 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
     })
 
   return (
-    <Tag level={level} className={`${className} block`} {...props}>
+    <Tag level={level} {...props}>
       <Id id={slug} />
       <Link.Unstyled to={`#${slug}`}>{children}</Link.Unstyled>
     </Tag>
@@ -42,6 +42,18 @@ const Heading = ({ level = 3, id, className, children, ...props }) => {
 }
 
 function stringifyChildren(children) {
+  if (!children) {
+    return ''
+  }
+
+  if (isString(children)) {
+    return children
+  }
+
+  if (!children.map) {
+    return children.children
+  }
+
   return children
     .map(child => {
       return isString(child) ? child : stringifyChildren(child.props.children)

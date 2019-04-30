@@ -58,7 +58,11 @@ export default function ResourceGroup({ resourceGroup }) {
     <Debug title="Resource Group">
       {title && (
         <TitleWrapper>
-          <Heading level={1} id={slugify.resourceGroup({ resourceGroup })}>
+          <Heading
+            className="block"
+            level={1}
+            id={slugify.resourceGroup({ resourceGroup })}
+          >
             {title}
           </Heading>
           <PostmanLink />

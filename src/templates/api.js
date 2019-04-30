@@ -122,7 +122,7 @@ class Template extends Component {
         />
         <ApiaryRedirects />
         <Sidebar>
-          <Search />
+          <Search index="api_reference" placeholder="Search API reference" />
           <Navigation
             navigation={fullTableOfContents}
             location={props.location}

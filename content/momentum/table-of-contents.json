@@ -1,0 +1,33 @@
+[
+  {
+    "category": "Documentation",
+    "pages": [
+      { "title": "Typographical Conventions", "path": "/momentum/web-momo4/preface/" },
+      { "title": "Introduction", "path": "/momentum/web-momo4/p.intro/" },
+      { "title": "Installing", "path": "/momentum/web-momo4/p.installing/" },
+      { "title": "Configuring", "path": "/momentum/web-momo4/p.configuration/" },
+      { "title": "Logging", "path": "/momentum/web-momo4/p.logs/" },
+      { "title": "Using the System Console", "path": "/momentum/web-momo4/p.operations/" },
+      { "title": "SMTP Injection", "path": "/momentum/web-momo4/p.smtp_injections/" },
+      { "title": "Message Generation HTTP", "path": "/momentum/web-momo4/p.http_rest/" },
+      { "title": "Reporting and Engagement Tracking", "path": "/momentum/web-momo4/p.analytics/" },
+      { "title": "Writing Policy", "path": "/momentum/web-momo4/p.policy/" },
+      { "title": "Reference", "path": "/momentum/web-momo4/p.reference/" },
+      { "title": "Lua Functions", "path": "/momentum/web-momo4/lua.function.details/" },
+      { "title": "Modules Reference", "path": "/momentum/web-momo4/modules/" },
+      { "title": "Configurations Options", "path": "/momentum/web-momo4/config.options.ref/" },
+      { "title": "Non-Module-Specific Console Commands", "path": "/momentum/web-momo4/console.cmds.ref/" },
+      { "title": "Executable Commands Reference", "path": "/momentum/web-momo4/exec.cmds.ref/" },
+      { "title": "Appendix", "path": "/momentum/web-momo4/p.appendix/" },
+      { "title": "Glossary", "path": "/momentum/web-momo4/glossary/" },
+      { "title": "Copyright and Acknowledgements", "path": "/momentum/web-momo4/copyrights/" }
+    ]
+  },
+  {
+    "category": "Information",
+    "pages": [
+      { "title": "Momentum Release Notes", "path": "/momentum/web-momo4/" },
+      { "title": "Momentum Changelog", "path": "/momentum/changelogs/m4changelog/" }
+    ]
+  }
+]

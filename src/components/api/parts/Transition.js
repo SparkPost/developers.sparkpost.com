@@ -91,6 +91,7 @@ export default function Transition({
         </Right>
         {title && (
           <TransitionHeading
+            className="block"
             level={3}
             id={slugify.transition({ resourceGroup, resource, transition })}
           >
