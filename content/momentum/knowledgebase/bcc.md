@@ -1,3 +1,5 @@
+# How Do I Create a BCC Message?
+
 When adding the "bcc" functionality to the messages, the impact or the load on the nodes would be directly proportional to the number of messages and the average number of "bcc" recipients in each message. For example, if the expected sending rate is 1M/hour and there is just one recipient in "bcc", the Momentum MTA nodes would be effectively handling 2M/hour traffic (2X load). Basically these messages injected from "bcc" are like any normal message injections and multiple "bcc" recipients can be added.
 
 The following is a lua sample which depicts basic functionality of adding bcc:
