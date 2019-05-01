@@ -9,8 +9,11 @@ description: Manage webhooks, which enable you to receive push updates of the ra
 ### Batch Information
 
 * Any webhook batch that does not receive an HTTP 200 response will be retried for a total of 8 hours before the data is discarded.
-* Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for auditing and prevention of processing duplicate batches.
+* Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for detecting and prevention of processing duplicate batches. Additionally within each event the `event_id` is unique and can also be used in duplicate detection and prevention.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
+* Webhook batch status is available for 24 hours via the UI or the API.
+* See [Best Practices for Managing Webhook Data Streams](https://www.sparkpost.com/docs/tech-resources/webhook-data-streams/) for more information on how best to consume webhooks.
+* For further information on our event types see the [Webhook Event Reference Guide] (https://www.sparkpost.com/docs/tech-resources/webhook-event-reference/)
 
 ### Webhook Event Types
 
@@ -261,7 +264,7 @@ and returns information on the response received from the target.
 
 ### Retrieve Batch Status Information [GET /v1/webhooks/{id}/batch-status{?limit}]
 
-Returns the status information for the batches that have been generated. Status information includes the successes of batches that previously failed to reach the webhook's target URL and batches that are currently in a failed state.
+When SparkPost does not get a 200 response from your webhook consumer endpoint then the batch is failed and SparkPost will retry the batch multiple times for a period of 8 hours. Status information is provided on any failed batches and those that successed on retry.  Batch status is available in the UI and API for 24 hours.
 
 + Parameters
     + id (required, uuid, `12affc24-f183-11e3-9234-3c15c2c818c2`)
