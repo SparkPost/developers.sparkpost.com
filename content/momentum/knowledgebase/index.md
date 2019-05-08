@@ -16,4 +16,4 @@
 
 [How do I backup and restore the PostgreSQL database?](./backup-postgres.md)
 
-[How do I sign twice with DKIM?] (./sign-twice-DKIM.md)
+[How do I sign twice with DKIM?](./sign-twice-DKIM.md)
