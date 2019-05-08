@@ -1,5 +1,11 @@
 [
   {
+    "category": "Knowledge Base",
+    "pages": [
+      { "title": "Articles", "path": "/momentum/knowledgebase/" }
+    ]
+  },
+  {
     "category": "Documentation",
     "pages": [
       { "title": "Typographical Conventions", "path": "/momentum/web-momo4/preface/" },
