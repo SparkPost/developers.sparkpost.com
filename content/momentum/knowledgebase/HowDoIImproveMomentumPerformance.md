@@ -1,4 +1,4 @@
-#How do I improve Momentum performance:
+# How do I improve Momentum performance:
 
 1. Try increasing the sysctl parameters to double the existing values. You can try increasing that gradually to 3 or 4 times the current values. Make sure to monitor the CPU and the memory usage on the instance. The current settings can be viewed by running `sysctl -a`.
 
@@ -41,7 +41,7 @@ EventLoop "mpool" {
 }
 ```
 
-####NOTE: DO NOT go beyond the 75% thread pool allocation rule as mentioned here:
+#### NOTE: DO NOT go beyond the 75% thread pool allocation rule as mentioned here:
 
 <https://support.messagesystems.com/docs/web-momo4/multi_event_loops.php>
 One other important setting to try on the customer's end is to tear down and re-establish the injection connections after some time, or set "Max_Receptions_Per_Connection" and "idle_time" in the "esmtp_listener" to avoid a listener connection stay up for long time. This would also cause issues with lua GC.
