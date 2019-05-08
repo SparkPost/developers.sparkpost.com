@@ -4,8 +4,13 @@
 
 [How Do I Enable Outbound SMTP Authentication](./HowDoIEnableOutboundSMTPAuthentication.md)
 
-<<<<<<< HEAD
 [How do I implement DMARC (Domain-based Message Authentication, Reporting and Conformance) with Momentum?](./HowDoIImplementDMARCMomentum.md)
-=======
+
 [How Do I change an Adaptive Suspension default configuration using the adaptive_override.lua](./HowDoIchangeanAdaptiveSuspensiondefaultconfigurationusingtheadaptive_override.md)
->>>>>>> 8ab051a79922ae65ad25aaf737b8f211d4e5eb8d
+
+[How do I run Momentum in debug mode?](./enable-debug.md)
+
+[How Do I change an Adaptive Suspension default configuration using the adaptive_override.lua](./HowDoIchangeanAdaptiveSuspensiondefaultconfigurationusingtheadaptive_override.md)
+
+[How Do I Improve Momentum Performance](./HowDoIImproveMomentumPerformance.md)
+
