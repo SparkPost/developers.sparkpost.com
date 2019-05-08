@@ -1,4 +1,4 @@
-# How I send ec_console commands to multiple nodes simultaneously?
+# How do I send ec_console commands to multiple nodes simultaneously?
 
 You can use the "**broadcast**" and "**retrieve**" console commands on the cluster manager. This is helpful when needing to gather information from the MTA nodes simultaneously. Run this from the ec_console: 
 
