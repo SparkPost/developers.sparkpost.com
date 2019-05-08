@@ -21,3 +21,5 @@
 [How do I send ec_console commands to multiple nodes simultaneously?](./cluster_commands.md)
 
 [How do I use the priority message flag?](./priority-message-flag.md)
+
+[How to disable version control or eccfg/ecconfigd in Momentum?](./disable_versioncontrol.md)
