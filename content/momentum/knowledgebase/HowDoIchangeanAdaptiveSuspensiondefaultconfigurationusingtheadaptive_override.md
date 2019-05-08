@@ -1,4 +1,4 @@
-#How do I change an Adaptive Suspension defaulf configuration using the adaptive_override.lua?
+# How do I change an Adaptive Suspension defaulf configuration using the adaptive_override.lua?
 
 You can change the duration for the AD suspension from the default configuration.Let's take yahoo.com as an example: according to the adaptive_rules.lua file, it is a 2 hours suspension and you want to change it to 45 minutes.
 
