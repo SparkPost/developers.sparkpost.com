@@ -57,10 +57,9 @@ Retrieve information regarding your SparkPost account and set account options.
         + phone (boolean) - Whether account is entitled to phone support
         + online (boolean) - Whether account is entitled to online support
     + pending_cancellation (object) - Pending cancellation details.
-        + effectiveDate (string) - ISO date of when account cancellation will take effect
-        + creationDate (string) - ISO date of when account cancellation was requested
-        + autoCancelSubscription (boolean) - Whether or not this cancellation was automatic
-        + requestingUser (string) - User who requested the account cancellation
+        + effective_date (string) - ISO date of when account cancellation will take effect
+        + creation_date (string) - ISO date of when account cancellation was requested
+        + requesting_user (string) - User who requested the account cancellation
 + Sample
 
     ```json
@@ -106,10 +105,9 @@ Retrieve information regarding your SparkPost account and set account options.
             "online": true
         },
         "pending_cancellation": {
-            "effectiveDate": "2019-05-22T08:00:00.000Z",
-            "creationDate": "2019-05-01T21:57:42.662Z",
-            "autoCancelSubscription": false,
-            "requestingUser": "example-user-1234"
+            "effective_date": "2019-05-22T08:00:00.000Z",
+            "creation_date": "2019-05-01T21:57:42.662Z",
+            "requesting_user": "example-user-1234"
         }
     }
     ```
