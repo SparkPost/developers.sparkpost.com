@@ -56,6 +56,10 @@ Retrieve information regarding your SparkPost account and set account options.
     + support (object) - Support entitlement details.
         + phone (boolean) - Whether account is entitled to phone support
         + online (boolean) - Whether account is entitled to online support
+    + pending_cancellation (object) - Pending cancellation details.
+        + effective_date (string) - ISO date of when account cancellation will take effect
+        + creation_date (string) - ISO date of when account cancellation was requested
+        + requesting_user (string) - User who requested the account cancellation
 + Sample
 
     ```json
