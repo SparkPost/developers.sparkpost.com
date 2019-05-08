@@ -1,12 +1,13 @@
 # How do I improve Momentum performance:
 
 1. Try increasing the following sysctl parameters to double the existing values. You can try increasing that gradually to 3 or 4 times the current values. Make sure to monitor the CPU and the memory usage on the instance. The current settings can be viewed by running `sysctl -a`. The idea is to have the **net.core.rmem_default** and **net.core.wmem_default** values equal to maximum values i.e. **net.core.rmem_max** and **net.core.wmem_max**.
-```net.core.rmem_default
+```
+net.core.rmem_default
 net.core.rmem_max
 net.core.somaxconn
 net.core.wmem_default
-net.core.wmem_max```
-
+net.core.wmem_max
+```
 
 2. Configure the following in the global scope of the config file: `match_cache_size = 2048`
 This option determines the maximum number of elements in a cache that holds the results of looking up matching scopes. It applies to regex domains, Peer scopes in listeners, and any user-defined scopes that use matching.
