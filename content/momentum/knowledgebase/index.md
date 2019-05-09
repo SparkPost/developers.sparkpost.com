@@ -8,7 +8,7 @@
 
 [How do I run Momentum in debug mode?](./enable-debug.md)
 
-[How Do I improve Momentum performance?](./HowDoIImproveMomentumPerformance.md)
+[How do I improve Momentum performance?](./HowDoIImproveMomentumPerformance.md)
 
 [How to write entire message body/content into jlog?](./write-bodycontent-jlog.md)
 
@@ -21,3 +21,9 @@
 [How do I use the priority message flag?](./priority-message-flag.md)
 
 [How to disable version control or eccfg/ecconfigd in Momentum?](./disable_versioncontrol.md)
+
+[How do I add a node specific configuration?](./node-specific-configuration.md)
+
+[How do I enforce or auto fix 998 character length limit for headers](./enforce-998-character-limit.md)
+
+
