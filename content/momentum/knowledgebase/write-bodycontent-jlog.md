@@ -1,5 +1,6 @@
 
 # How to write entire message body/content into Jlog
+
 You can view contents of an individual message by using the message details command in ec\_console. 
 
 Please note that message details cannot show details for a message that is in the process of being delivered. For more info go here:
