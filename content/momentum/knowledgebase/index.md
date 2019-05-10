@@ -26,4 +26,6 @@
 
 [How do I enforce or auto fix 998 character length limit for headers](./enforce-998-character-limit.md)
 
+[How can I troubleshoot DNS and network connectivity issues?](./troubleshoot-dns-network-connectivity.md)
 
+[How do I add a recipient on a message to a specific email address?](./add-recipient-specific-email.md)
