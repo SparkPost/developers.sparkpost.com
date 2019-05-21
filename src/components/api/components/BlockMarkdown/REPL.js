@@ -55,7 +55,6 @@ const Textarea = styled.textarea`
   box-sizing: content-box;
   padding: .5rem;
   min-height: 100px;
-  white-space: nowrap;
   overflow: auto;
 `
 
