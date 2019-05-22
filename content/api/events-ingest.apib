@@ -31,6 +31,11 @@ Please see [Processing Out of Band Errors](#header-processing-out-of-band-errors
 
 Post a new-line delimited list of JSON events.
 
++ Data Structure: Headers
+    + Content-Encoding: gzip
+    + Content-Type: application/x-ndjson
+
+
 + Data Structure
     + msys (object, required) - The event wrapper
         + *event grouping* (object, required) - Designates the event grouping <br />One of: `message_event`, `track_event`, `gen_event`, `adaptive_event`, `unsubscribe_event`, `relay_event`, `ab_test_event`
@@ -55,9 +60,9 @@ Post a new-line delimited list of JSON events.
 
     + Headers
 
-        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-        Content-Encoding:gzip
-        Content-Type:application/x-ndjson
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Content-Encoding: gzip
+            Content-Type: application/x-ndjson
 
 + Response
     
