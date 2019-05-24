@@ -1,0 +1,314 @@
+FORMAT: 1A
+title: Customer-Alerts
+description: Configure real-time alerts for your SparkPost account.
+
+# Group Alerts
+Alerts can be used to get notifications regarding various activities and metrics on your SparkPost account.
+
+Alerts can be configured to send notifications via email to up to 10 email addresses, and supports the following metrics:
+* Real-Time
+    + Monthly Sending limit
+* Signals
+    + Health Score
+
+Alerts are configured to be account-wide for Monthly Sending Limit.
+
+## Metric Limitations
+
+For each metric group, some configuration options simply don't make sense. The following metrics have restrictions:
+
+* Real-Time
+    + interval - Must be '15 Minutes'
+    + filters - filter_type can be 'Sending Domain', 'Sending IP', or 'Mailbox Provider'
+    + threshold_evaluator - source must be 'Raw'
+* Signals
+    + interval - Must be '24 Hours'
+    + filters - filter_type can be 'Sending Domain', 'IP Pool', or 'Mailbox Provider'. Only one filter type can be selected,
+        though multiple values are allowed.
+
+* Monthly Sending Limit (Real-Time)
+  + filters - must be an empty array. No filters may be applied to this metric.
+
+## Filter Object
+
++ Data Structure: Attributes
+  + filter_type (enum) - Type of filter to apply to the alert.
+    + `"Sending Domain", "Mailbox Provider", "Sending IP", "IP Pool"`
+  + `filter_values` (array) - Set of all filter values associated with the given filter_type.
+
++ Sample
+
+  ```
+  {
+    "filter_type": "Sending Domain",
+    "filter_values": [
+      "sparkpost.com",
+      "test.com"
+    ]
+  }
+  ```
+
+## Alert Object
+
++ Data Structure: Attributes
+    + id (number) - Unique identifier of the alert.
+    + name (string) - Display name of the alert.
+    + sid (number) - Subaccount filter applied to the alert.
+    + any_sid (boolean) - Flag indicating all subaccounts should be evaluated for this alert.
+    + metric (enum) - Metric that the alert is configured to track.
+        + `"Monthly Sending Limit", "Health Score"`
+    + interval (enum) - Interval at which the alert is evaluated.
+        + `"24 Hours", "15 Minutes"`
+    + evaluation_enabled (boolean) - Flag indicating whether the alert should be evaluated.
+    + filters (array) - Filter objects to apply to the alert.
+    + threshold_evaluator (object) - Evaluator object for an alert with a trigger threshold.
+      + operator (enum) - Operator for alert evaluation to use.
+        + `"GT", "LT"`
+      + source (enum) - Source of value to compare against.
+        + `"Raw", "Day Over Day", "Week Over Week"`
+      + value (number) - Target value to compare against.
+    + email_channels (array) - Email addresses to send alert notifications to.
+
++ Sample
+
+  ```
+  {
+    "id": 117,
+    "name": "Alert Name Here",
+    "sid": 0,
+    "any_sid": false,
+    "metric": "Health Score",
+    "interval": "24 Hours",
+    "evaluation_enabled": true,
+    "filters": [
+      {
+        "filter_type": "Sending Domain", 
+        "filter_values": ["test.com"]
+      }
+    ],
+    "threshold_evaluator": {
+      "operator": "GT",
+      "source": "Raw",
+      "value": 0
+    },
+    "email_channels": [
+      "test@sparkpost.com",
+      "bigwig@test.com"
+    ]
+  }
+  ```
+
+### Create an Alert [POST /v1/customer-alerts]
+Creates a new alert
+
++ Data Structure
+  + name (string, required) - Display name of the alert.
+  + sid (number) - (Optional) Subaccount filter applied to the alert. This field must be set, or any_sid set to true.
+  + any_sid (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If sid is not set, this must be true.
+  + metric (enum, required) - Metric that the alert is configured to track.
+      + `"Monthly Sending Limit", "Health Score"`
+  + interval (enum, required) - Interval at which the alert is evaluated.
+      + `"24 Hours", "15 Minutes"`
+  + evaluation_enabled (boolean, required) - Flag indicating whether the alert should be evaluated.
+  + filters (array, required) - Filter objects to apply to the alert.
+  + threshold_evaluator (object, required) - Evaluator object for an alert with a trigger threshold.
+    + operator (enum, required) - Operator for alert evaluation to use.
+      + `"GT", "LT"`
+    + source (enum, required) - Source of value to compare against.
+      + `"Raw", "Day Over Day", "Week Over Week"`
+    + value (number, required) - Target value to compare against.
+  + email_channels (array, required) - Email addresses to send alert notifications to.
+
+
++ Request (application/json)
+  + Body
+    {
+      "name": "Alert Name Here",
+      "sid": 0,
+      "any_sid": false,
+      "metric": "Health Score",
+      "interval": "24 Hours",
+      "evaluation_enabled": true,
+      "filters": [
+        {
+          "filter_type": "Sending Domain", 
+          "filter_values": ["test.com"]
+        }
+      ],
+      "threshold_evaluator": {
+        "operator": "GT",
+        "source": "Raw",
+        "value": 0
+      },
+      "email_channels": [
+        "test@sparkpost.com",
+        "bigwig@test.com"
+      ]
+    }
+
++ Response 200 (application/json)
+  {
+    "results": {
+      "id": 117,
+    }
+  }
+
+### Retrieve an Alert [GET /v1/customer-alerts/{id}]
+Retrieve full information about a single alert.
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  {
+    "name": "Alert Name Here",
+    "sid": 0,
+    "any_sid": false,
+    "metric": "Health Score",
+    "interval": "24 Hours",
+    "evaluation_enabled": true,
+    "filters": [
+      {
+        "filter_type": "Sending Domain", 
+        "filter_values": ["test.com"]
+      }
+    ],
+    "threshold_evaluator": {
+      "operator": "GT",
+      "source": "Raw",
+      "value": 0
+    },
+    "email_channels": [
+      "test@sparkpost.com",
+      "bigwig@test.com"
+    ]
+  }
+
+### Retrieve Alerts [GET /v1/customer-alerts/]
+Retrieve full information about all of your alerts.
+
++ Response 200 (application/json)
+  [
+    {
+      "id": 117
+      "name": "Alert Name Here",
+      "sid": 0,
+      "any_sid": false,
+      "metric": "Health Score",
+      "interval": "24 Hours",
+      "evaluation_enabled": true,
+      "filters": [
+        {
+          "filter_type": "Sending Domain", 
+          "filter_values": ["test.com"]
+        }
+      ],
+      "threshold_evaluator": {
+        "operator": "GT",
+        "source": "Raw",
+        "value": 0
+      },
+      "email_channels": [
+        "test@sparkpost.com",
+        "bigwig@test.com"
+      ] 
+    },
+    {
+      "id": 343
+      "name": "Other Alert Name Here",
+      "sid": 10,
+      "any_sid": false,
+      "metric": "Monthly Sending Limit",
+      "interval": "15 Minutes",
+      "evaluation_enabled": false,
+      "filters": [],
+      "threshold_evaluator": {
+        "operator": "GT",
+        "source": "Raw",
+        "value": 90
+      },
+      "email_channels": [
+        "test@sparkpost.com"
+      ] 
+    }
+  ]
+
+### Delete an Alert [DELETE /v1/customer-alerts/{id}]
+Delete a single alert.
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  {
+    "results": {
+      "id": 117
+    }
+  }
+
+### Update an Alert [PUT /v1/customer-alerts/{id}]
+Updates an existing alert by ID. All fields are optional, but if an updated value conflicts with an existing one an error will be thrown.
+
++ Data Structure
+  + name (string) - Display name of the alert.
+  + sid (number) - (Optional) Subaccount filter applied to the alert. This field must be set, or any_sid set to true.
+  + any_sid (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If sid is not set, this must be true.
+  + metric (enum) - Metric that the alert is configured to track.
+      + `"Monthly Sending Limit", "Health Score"`
+  + interval (enum) - Interval at which the alert is evaluated.
+      + `"24 Hours", "15 Minutes"`
+  + evaluation_enabled (boolean) - Flag indicating whether the alert should be evaluated.
+  + filters (array) - Filter objects to apply to the alert.
+  + threshold_evaluator (object) - Evaluator object for an alert with a trigger threshold.
+    + operator (enum) - Operator for alert evaluation to use.
+      + `"GT", "LT"`
+    + source (enum) - Source of value to compare against.
+      + `"Raw", "Day Over Day", "Week Over Week"`
+    + value (number) - Target value to compare against.
+  + email_channels (array) - Email addresses to send alert notifications to.
+
+
++ Request (application/json)
+  + Body
+    {
+      "name": "Totally different name",
+      "sid": 19,
+      "evaluation_enabled": false,
+      "filters": [
+        {
+          "filter_type": "Mailbox Provider", 
+          "filter_values": ["gmail.com"]
+        }
+      ],
+      "threshold_evaluator": {
+        "value": 75
+      }
+    }
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  {
+    "name": "Totally different name",
+    "sid": 19,
+    "any_sid": false,
+    "metric": "Health Score",
+    "interval": "24 Hours",
+    "evaluation_enabled": false,
+    "filters": [
+      {
+        "filter_type": "Mailbox Provider", 
+        "filter_values": ["gmail.com"]
+      }
+    ],
+    "threshold_evaluator": {
+      "operator": "GT",
+      "source": "Raw",
+      "value": 75
+    },
+    "email_channels": [
+      "test@sparkpost.com",
+      "bigwig@test.com"
+    ]
+  }
