@@ -1,0 +1,205 @@
+FORMAT: 1A
+title: Alerts-Old
+description: Configure alerts for your SparkPost account.
+label: Labs
+
+# Group Alerts
+Alerts can be used to get notifications regarding various activities on your SparkPost account.
+
+Alerts can be configured to send notifications via email to up to 10 email addresses, and supports the following activity:
+* Approaching monthly sending limit
+
+Alerts are configured to be account-wide. Currently, subaccount level alerts are not supported. 
+
+## Alert Object
+
++ Data Structure: Attributes
+    + name (string) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + id (string) - Unique alphanumeric id.
+    + email_addresses (array) - List of email addresses to send alert notifications.
+    + alert_metric (enum) - Metric that the alert is configured to track.
+        + `"monthly_sending_limit"`
+    + threshold (object) - Configuration for level and threshold at which an alert is generated.
+        + error (object) - Error level alert configuration.
+            + target (number) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
+                + `"gt"`
+    + enabled (boolean) - Whether or not the alert is active.
+
++ Sample
+        
+    ```
+    {
+        "name": "Sparky's Monthly Alert",
+        "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
+        "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+        "email_addresses": [
+            "sparky@sparkpost.com"
+        ],
+        "alert_metric": "monthly_sending_limit",
+        "threshold": {
+            "error": {
+                "target": 90,
+                "comparator": "gt"
+            }
+        },
+        "enabled": true
+    }
+    ```
+
+### Create an Alert [POST /labs/alerts]
+Creates a new alert
+
++ Data Structure
+    + name (string, required) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + email_addresses (array, required) - List of up to 10 email addresses to send alert notifications
+    + alert_metric (enum, required) - Metric that the alert is configured to track
+        + `"monthly_sending_limit"`
+    + threshold (object, required) - Configuration for level and threshold at which an alert is generated.
+        + error (object, required) - Error level alert configuration.
+            + target (number, required) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
+                + Default: `"gt"`
+    + enabled (boolean) - Whether or not the alert is active.
+        + Default: true
+
+
++ Request (application/json)
+
+    + Body
+   
+        {
+            "name": "Sparky's Monthly Alert",
+            "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
+            "email_addresses": [
+                "sparky@sparkpost.com"
+            ],
+            "alert_metric": "monthly_sending_limit",
+            "threshold": {
+                "error": {
+                    "target": 90
+                }
+            }
+        }
+
++ Response 200 (application/json)
+
+    
+    {
+        "results": {
+            "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+            "name": "Sparky's Monthly Alert",
+            "enabled": true,
+            "alert_metric": "monthly_sending_limit"
+        }
+    }
+
+### Retrieve an Alert [GET /labs/alerts/{id}]
+Retrieve full information about a single alert.
+
++ Parameters
+    + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
+
++ Response 200 (application/json)
+
+    {
+        "name": "Sparky's Monthly Alert",
+        "description": "Example alert that will send a notification when 90% of monthly sending limit is used",
+        "email_addresses": [
+            "sparky@sparkpost.com"
+        ],
+        "alert_metric": "monthly_sending_limit",
+        "threshold": {
+            "error": {
+                "target": 90,
+                "comparator": "gt"
+            }
+        },
+        "enabled": true
+    }
+
+
+### Updates an Alert [PUT /labs/alerts/{id}]
+Updates an existing alert. Updating `email_addresses` replaces the the existing array with the new array. 
+
++ Data Structure
+    + name (string) - Display name of the alert.
+    + description (string) - Description of the alert.
+    + email_addresses (array) - List of up to 10 email addresses to send alert notifications.
+    + threshold (object) - Configuration for level and threshold at which an alert is generated.
+        + error (object) - Error level alert configuration.
+            + target (number) - Percentage value at which an alert will be generated.
+            + comparator (enum) - Conditional comparison operator used by alerts service to compare actual value of `alert_metric` to the `target` value.
+                + Default: `"gt"`
+    + enabled (boolean) - Whether or not the alert is active.
+
+
++ Parameters
+    + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
+
++ Request (application/json)
+
+    + Body
+   
+        {
+            "name": "Sparky's Updated Monthly Alert",
+            "description": "Updated example alert that will send a notification when 80% of monthly sending limit is used",
+            "email_addresses": [
+                "sparky@sparkpost.com"
+            ],
+            "threshold": {
+                "error": {
+                    "target": 80
+                }
+            }
+        }
+
++ Response 200 (application/json)
+    
+    {
+        "results": {
+            "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+            "name": "Sparky's Updated Monthly Alert",
+            "enabled": true,
+            "alert_metric": "monthly_sending_limit"
+        }
+    }
+    
+    
+### Delete an Alert [DELETE /labs/alerts/{id}]
+
+Deletes the alert with the matching id. 
+
++ Parameters
+    + id (required, uuid, `cbe0faf0-9051-11e8-ad04-490e82764b23`)
+
++ Request
+
++ Response 204
+
+
+### List all Alerts [GET /labs/alerts]
+Returns an array of all your Alerts. Each Alert isn't returned as a full Alert Object, and is abbreviated to the following attributes:
+
++ Data Structure: Attributes
+    + name (string) - Display name of the alert.
+    + id (string) - Unique alphanumeric id.
+    + enabled (boolean) - Whether or not the alert is active.
+    + alert_metric (enum) - Metric that the alert is configured to track.
+
+
++ Response 200 (application/json)
+
+    {
+        "results": [
+            {
+                "id": "cbe0faf0-9051-11e8-ad04-490e82764b23",
+                "name": "Sparky's Monthly Alert",
+                "enabled": true,
+                "alert_metric": "monthly_sending_limit"
+            }
+        ]
+   }
+
