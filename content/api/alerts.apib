@@ -26,7 +26,7 @@ Each metric group has a specific set of filters and some other values allowed.
 
 * monthly_sending_limit
   + filters - must be an empty array. No filters may be applied to this metric.
-  + subaccount - must be 0.
+  + subaccounts - must be [0].
   + any_subaccount - must be unset or set to false.
 
 ## Channels
@@ -58,7 +58,7 @@ Alerts can have a number of different notification channel types associated with
 + Data Structure: Attributes
     + id (number) - Unique identifier of the alert.
     + name (string) - Display name of the alert.
-    + subaccount (number) - Subaccount filter applied to the alert.
+    + subaccounts (array) - Subaccount filters applied to the alert.
     + any_subaccount (boolean) - Flag indicating all subaccounts should be evaluated for this alert.
     + metric (enum) - Metric that the alert is configured to track.
         + `"monthly_sending_limit", "health_score"`
@@ -79,7 +79,7 @@ Alerts can have a number of different notification channel types associated with
   {
     "id": 117,
     "name": "Alert Name Here",
-    "subaccount": 0,
+    "subaccounts": [0, 2],
     "any_subaccount": false,
     "metric": "health_score",
     "muted": false,
@@ -103,12 +103,12 @@ Alerts can have a number of different notification channel types associated with
   }
   ```
 
-### Create an Alert [POST /v1/customer-alerts]
+### Create an Alert [POST /v1/alerts]
 Creates a new alert
 
 + Data Structure
   + name (string, required) - Display name of the alert.
-  + subaccount (number) - (Optional) Subaccount filter applied to the alert. This field must be set, or any_subaccount set to true.
+  + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
   + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
   + metric (enum, required) - Metric that the alert is configured to track.
       + `"monthly_sending_limit", "health_score"`
@@ -128,7 +128,7 @@ Creates a new alert
   + Body
   {
     "name": "Alert Name Here",
-      "subaccount": 0,
+      "subaccounts": [1],
       "any_subaccount": false,
       "metric": "health_score",
       "muted": false,
@@ -158,7 +158,7 @@ Creates a new alert
     }
   }
 
-### Retrieve an Alert [GET /v1/customer-alerts/{id}]
+### Retrieve an Alert [GET /v1/alerts/{id}]
 Retrieve full information about a single alert.
 
 + Parameters
@@ -167,7 +167,7 @@ Retrieve full information about a single alert.
 + Response 200 (application/json)
   {
     "name": "Alert Name Here",
-    "subaccount": 0,
+    "subaccounts": [0],
     "any_subaccount": false,
     "metric": "health_score",
     "muted": false,
@@ -190,7 +190,7 @@ Retrieve full information about a single alert.
     }
   }
 
-### Retrieve Alerts [GET /v1/customer-alerts/]
+### Retrieve Alerts [GET /v1/alerts/]
 Retrieve full information about all of your alerts.
 
 + Response 200 (application/json)
@@ -198,7 +198,7 @@ Retrieve full information about all of your alerts.
     {
       "id": 117
       "name": "Alert Name Here",
-      "subaccount": 0,
+      "subaccounts": [5],
       "any_subaccount": false,
       "metric": "health_score",
       "muted": false,
@@ -223,7 +223,7 @@ Retrieve full information about all of your alerts.
     {
       "id": 343
       "name": "Other Alert Name Here",
-      "subaccount": 10,
+      "subaccounts": [0],
       "any_subaccount": false,
       "metric": "monthly_sending_limit",
       "muted": true,
@@ -241,7 +241,7 @@ Retrieve full information about all of your alerts.
     }
   ]
 
-### Delete an Alert [DELETE /v1/customer-alerts/{id}]
+### Delete an Alert [DELETE /v1/alerts/{id}]
 Delete a single alert.
 
 + Parameters
@@ -254,12 +254,12 @@ Delete a single alert.
     }
   }
 
-### Update an Alert [PUT /v1/customer-alerts/{id}]
+### Update an Alert [PUT /v1/alerts/{id}]
 Updates an existing alert by ID. All fields are optional, but if an updated value conflicts with an existing one an error will be thrown.
 
 + Data Structure
   + name (string) - Display name of the alert.
-  + subaccount (number) - (Optional) Subaccount filter applied to the alert. This field must be set, or any_subaccount set to true.
+  + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
   + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
   + metric (enum) - Metric that the alert is configured to track.
       + `"monthly_sending_limit", "health_score"`
@@ -279,7 +279,7 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
   + Body
     {
       "name": "Totally different name",
-      "subaccount": 19,
+      "subaccounts": [19],
       "muted": true,
       "filters": [
         {
@@ -298,7 +298,7 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
 + Response 200 (application/json)
   {
     "name": "Totally different name",
-    "subaccount": 19,
+    "subaccounts": [19],
     "any_subaccount": false,
     "metric": "health_score",
     "muted": true,
