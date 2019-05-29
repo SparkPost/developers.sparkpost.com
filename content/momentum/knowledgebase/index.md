@@ -40,7 +40,7 @@
 
 [How do I prevent OOM Out of Memory issues](how-do-i-prevent-oom-out-of-memory-issues.md)
 
-[]()
+[How do I View Message Details and Content](how-do-i-view-message-details-and-content.md)
 
 []()
 
