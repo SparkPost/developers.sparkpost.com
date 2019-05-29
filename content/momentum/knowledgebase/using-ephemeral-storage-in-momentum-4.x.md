@@ -1,4 +1,4 @@
-#Using Ephemeral Storage in Momentum 4.x
+# Using Ephemeral Storage in Momentum 4.x
 
 
 
@@ -8,7 +8,7 @@ Ephemeral storage is a special block device that is included with certain type
 
 If you are installing Momentum in AWS, do not use ephemeral disks in your production environment as this can potentially cause a loss of messages.
 
-###Ephemeral Disk: Pros and Cons
+### Ephemeral Disk: Pros and Cons
 
 **Pros:**
 
