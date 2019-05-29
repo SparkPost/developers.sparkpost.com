@@ -42,7 +42,7 @@
 
 [How do I View Message Details and Content](how-do-i-view-message-details-and-content.md)
 
-[How do I setup FBL on Momentum?](how-do-i-setup-fbl-on-momentum.md)
+[How Do I Add a Cluster Manager to an Existing Cluster?](how-do-i-add-a-cluster-manager-to-an-existing-cluster.md)
 
 []()
 
