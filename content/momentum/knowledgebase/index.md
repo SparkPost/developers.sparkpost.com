@@ -29,3 +29,5 @@
 [How can I troubleshoot DNS and network connectivity issues?](./troubleshoot-dns-network-connectivity.md)
 
 [How do I add a recipient on a message to a specific email address?](./add-recipient-specific-email.md)
+
+[How to trace a SMTP inbound session?](how-to-trace-a-smtp-inbound-session.md)
