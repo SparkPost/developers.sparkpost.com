@@ -52,7 +52,7 @@
 
 [Move Messages in Spool to a Different Instance](move-messages-spool-different-instance.md)
 
-[]()
+[How do I add an Analytics node to an existing cluster (Momentum 4.1)?](how-do-i-add-an-analytics-node-to-an-existing-cluster.md)
 
 []()
 
