@@ -48,7 +48,7 @@
 
 [How do I enable log rotation?](log-rotation.md)
 
-[]()
+[How do I generate a new self-signed SSL certificate for ecconfigd?](how-do-i-generate-a-new-self-signed-ssl-certificate-for-ecconfigd.md)
 
 []()
 
