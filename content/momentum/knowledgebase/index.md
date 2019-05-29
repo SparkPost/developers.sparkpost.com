@@ -36,6 +36,28 @@
 
 [How can I view the service and admin passwords with Momentum 4.2](how-can-i-view-the-service-admin-passwords-momo-4.2.md)
 
+[How Do I Check for Global Variables in a Lua Script?](how-do-i-check-for-global-variables-in-a-lua-script)
+
+[How do I prevent OOM Out of Memory issues](how-do-i-prevent-oom-out-of-memory-issues.md)
+
+[How do I View Message Details and Content](how-do-i-view-message-details-and-content.md)
+
+[How Do I Add a Cluster Manager to an Existing Cluster?](how-do-i-add-a-cluster-manager-to-an-existing-cluster.md)
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
 []()
 
 []()
