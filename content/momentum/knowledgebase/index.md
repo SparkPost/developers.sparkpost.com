@@ -44,7 +44,7 @@
 
 [How Do I Add a Cluster Manager to an Existing Cluster?](how-do-i-add-a-cluster-manager-to-an-existing-cluster.md)
 
-[]()
+[How do I enable log rotation](log-rotation.md)
 
 []()
 
