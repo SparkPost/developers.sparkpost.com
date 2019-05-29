@@ -44,7 +44,7 @@
 
 [How Do I Add a Cluster Manager to an Existing Cluster?](how-do-i-add-a-cluster-manager-to-an-existing-cluster.md)
 
-[Using Ephemeral Storage in Momentum 4.x](./using-ephemeral-storage-in-momentum-4.x)
+[Using Ephemeral Storage in Momentum 4.x](./using-ephemeral-storage-in-momentum-4.x.md)
 
 [How do I enable log rotation?](log-rotation.md)
 
