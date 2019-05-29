@@ -34,7 +34,7 @@
 
 [How do I advertise SIZE from Momentum?](how-do-I-advertise-size-from-momentum.md)
 
-[]()
+[How can I view the service and admin passwords with Momentum 4.2](how-can-i-view-the-service-admin-passwords-momo-4.2.md)
 
 []()
 
