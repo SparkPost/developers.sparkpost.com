@@ -2,7 +2,7 @@
 
 RFC 1870 ( http://tools.ietf.org/html/rfc1870  ) describes a mechanism for a mail server to advertise the maximum message size it will accept in the EHLO response. Momentum does not advertise size by default.
 
-To advertise SIZE, you add ac:esmtp_capability_add to your default policy ( https://support.messagesystems.com/docs/web-momo4/lua.ref.ac_esmtp_capability_add.php  ). That will advertise the maximum size of message that you will accept, in bytes. For example:
+To advertise SIZE, you add ac:esmtp_capability_add to your default policy ( https://developers.sparkpost.com/momentum/web-momo4/lua.ref.ac_esmtp_capability_add/ ). That will advertise the maximum size of message that you will accept, in bytes. For example:
 
 ```3require("msys.core");
 require("msys.extended.message");
@@ -16,7 +16,7 @@ end
 msys.registerModule("validate_connect", mod);
 ```
 
-Advertising SIZE will not take action on a message which is too large. To take action, after the DATA phase you could check the size of the message using the message size function ( https://support.messagesystems.com/docs/web-momo4/lua.ref.msg_get_message_size.php  ); if it is too large, reject it using set_code ( https://support.messagesystems.com/docs/web-momo4/lua.ref.vctx_set_code.php  ). For example:
+Advertising SIZE will not take action on a message which is too large. To take action, after the DATA phase you could check the size of the message using the message size function ( https://developers.sparkpost.com/momentum/web-momo4/lua.ref.msg_get_message_size/  ); if it is too large, reject it using set_code ( https://developers.sparkpost.com/momentum/web-momo4/lua.ref.vctx_set_code/ ). For example:
 
 ```
 local mod = {};
