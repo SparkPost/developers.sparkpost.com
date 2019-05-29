@@ -46,7 +46,7 @@
 
 [Using Ephemeral Storage in Momentum 4.x](./using-ephemeral-storage-in-momentum-4.x)
 
-[]()
+[How do I enable log rotation?](log-rotation.md)
 
 []()
 
