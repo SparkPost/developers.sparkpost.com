@@ -36,6 +36,28 @@
 
 [How can I view the service and admin passwords with Momentum 4.2](how-can-i-view-the-service-admin-passwords-momo-4.2.md)
 
+[How Do I Check for Global Variables in a Lua Script?](how-do-i-check-for-global-variables-in-a-lua-script)
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
 []()
 
 []()
