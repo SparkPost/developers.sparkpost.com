@@ -50,7 +50,7 @@
 
 [How do I generate a new self-signed SSL certificate for ecconfigd?](how-do-i-generate-a-new-self-signed-ssl-certificate-for-ecconfigd.md)
 
-[]()
+[Move Messages in Spool to a Different Instance](move-messages-spool-different-instance.md)
 
 []()
 
