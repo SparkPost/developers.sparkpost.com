@@ -1,5 +1,5 @@
 
-#How to Start/Stop/Restart Vertica
+# How to Start/Stop/Restart Vertica
 
 Vertica is very sensitive to server reboots done without shutting Vertica down properly. To restart it, you will have to use HP's AdminTools. Execute the following to get to the ASCII menu page for AdminTools:
 
