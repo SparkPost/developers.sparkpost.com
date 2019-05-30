@@ -58,6 +58,33 @@
 
 [Tuning Momentum Caches](./tuning-momentum-caches.md)
 
+[How do I hard-plumb an IP?](how-do-i-hard-plumb-an-ip.md)
+
+[How do I rebuild the SVN repository?](how-do-i-rebuild-the-svn-repository.md)
+
 []()
 
 []()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
+[]()
+
