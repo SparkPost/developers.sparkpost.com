@@ -72,7 +72,7 @@
 
 [How do I set up authorization for the ec_console?](./ecconsole-authorization.md)
 
-[](./)
+[How do I troubleshoot TLS handshakes?](./tls-troubleshoot.md)
 
 [](./)
 
