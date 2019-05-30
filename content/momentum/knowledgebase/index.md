@@ -68,7 +68,7 @@
 
 [How to Start/Stop/Restart Vertica](how-to-start-stop-restart-vertica.md)
 
-[]()
+[If I have a lengthy DNS query, is it possible to get Momentum to fallback to TCP?](if-I-have-a-lengthy-dns-query-is-it-possible-to-get-momentum-to-fallback-to-tcp.md)
 
 []()
 
