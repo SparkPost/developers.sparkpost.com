@@ -74,7 +74,7 @@
 
 [How do I troubleshoot TLS handshakes?](./tls-troubleshoot.md)
 
-[](./)
+[Change the data retention time in Vertica](./vertica-data-retention.md)
 
 [](./)
 
