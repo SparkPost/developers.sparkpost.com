@@ -62,7 +62,7 @@
 
 [How do I rebuild the SVN repository?](how-do-i-rebuild-the-svn-repository.md)
 
-[]()
+[How do I add a node to an isolated riak ring on Momentum?](how-do-i-add-a-node-to-an-isolated-riak-ring-on-momentum.md)
 
 []()
 
