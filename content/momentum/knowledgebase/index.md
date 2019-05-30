@@ -76,7 +76,7 @@
 
 [Change the data retention time in Vertica](./vertica-data-retention.md)
 
-[](./)
+[Yum install issues with RHEL 6 and 7 on AWS](./yum-install-issue.md)
 
 [](./)
 
