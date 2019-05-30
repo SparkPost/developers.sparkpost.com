@@ -64,7 +64,7 @@
 
 [How do I add a node to an isolated riak ring on Momentum?](how-do-i-add-a-node-to-an-isolated-riak-ring-on-momentum.md)
 
-[]()
+[Increase the Symantec CSAPI update frequency](increase-the-symantec-csapi-update frequency.md)
 
 []()
 
