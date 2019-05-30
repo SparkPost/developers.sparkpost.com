@@ -46,15 +46,13 @@ Example:
 	     "^sysinfo$"
 	
 	     )
-	
-	 }
-	
+	 }	
 	}
 
  
 For each user that will be using the console, you'll need to setup the console passwords using the method documented here:
 
-https://support.messagesystems.com/docs/web-ref/executable.ec_md5passwd.php
+https://developers.sparkpost.com/momentum/web-momo4/executable.ec_md5passwd/
  
 Remember the file that was used to store the passwords. I'd recommend using /opt/msys/ecelerity/etc/console_passwd for this since that's what's recommended in the documentation.
 
@@ -75,25 +73,17 @@ Next, you will have to add an AuthDigestMD5Parameters block to the Control_Liste
 	 
 	
 	 Listen "/tmp/2025" {
-	
 	   Enable_authentication = "true"
-	
 	   Enable_authorization = "true"
-	
 	   AuthorizationParameters = [
-	
 	     uri = "groups:///opt/msys/ecelerity/etc/conf/default/console_roles"
 	
 	   ]
-	
 	   AuthDigestMD5Parameters = [
-	
 	     uri = "digest://[FILE]"
 	
 	   ]
-	
 	 }
-	
 	}
 
  
@@ -103,32 +93,28 @@ Replace [FILE] with the path to the location where the password file is store (o
  
 
 ## Setting up using Operating System Authentication
-
  
 
 You will need to setup your Control_Listener as such:
 
- 
-	Control_Listener {
-	
-	 Listen "/tmp/2025” {
-	
-	   File_Mode = 0666
-	
-	   Enable_Authorization = "true"
-	
-	   Enable_Authentication = "false"
-	
-	
-	   AuthorizationParameters = [
-	
-	     uri = "groups:///opt/msys/ecelerity/etc/conf/default/console_roles"
-	
-	     ]
-	
-	 }
-	
-	}
+	 
+		Control_Listener {
+		
+		 Listen "/tmp/2025” {
+		
+		   File_Mode = 0666
+		
+		   Enable_Authorization = "true"
+		
+		   Enable_Authentication = "false"
+		
+		   AuthorizationParameters = [
+		
+		   uri = "groups:///opt/msys/ecelerity/etc/conf/default/console_roles"
+		
+		     ]
+		 }
+		}
 
  
 
