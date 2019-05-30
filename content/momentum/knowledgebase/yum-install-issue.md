@@ -22,9 +22,8 @@ Please try the following if you see this issue:
 
 The ./setrepodir script establishes some environmental parameters for the installation.
 
-Instead do this:
-
-	`sudo ./setrepodir -i`
+Instead do this:  
+`sudo ./setrepodir -i`
 
 
 The  option "-i" in the setrepodir script would copy the repository file to /etc/yum.repos.d/ folder which would be good for keeping the repository configuration file in the default location. 
