@@ -66,7 +66,7 @@
 
 [Increase the Symantec CSAPI update frequency](increase-the-symantec-csapi-update-frequency.md)
 
-[]()
+[How to Start/Stop/Restart Vertica](how-to-start-stop-restart-vertica.md)
 
 []()
 
