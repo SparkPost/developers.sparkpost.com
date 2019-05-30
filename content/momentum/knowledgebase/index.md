@@ -70,7 +70,7 @@
 
 [If I have a lengthy DNS query, is it possible to get Momentum to fallback to TCP?](if-I-have-a-lengthy-dns-query-is-it-possible-to-get-momentum-to-fallback-to-tcp.md)
 
-[How do I set up authorization for the ec_console?]( ec_console_authorization.md)
+[How do I set up authorization for the ec_console?](ec_console_authorization.md)
 
 []()
 
