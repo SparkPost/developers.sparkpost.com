@@ -11,20 +11,20 @@ Please try the following if you see this issue:
 
 1. Make sure the file /etc/yum.repos.d/rhui-load-balancers.conf has the AWS region set properly. For example, for us-east:
 
-```
-rhui2-cds01.us-east-1.aws.ce.redhat.com
-rhui2-cds02.us-east-2.aws.ce.redhat.com
-```  
+	```
+	rhui2-cds01.us-east-1.aws.ce.redhat.com
+	rhui2-cds02.us-east-2.aws.ce.redhat.com
+	```  
   
 2. The usual way we start the installation is by:
 
-`sudo ./setrepodir`  
+	`sudo ./setrepodir`  
 
 The ./setrepodir script establishes some environmental parameters for the installation.
 
 Instead do this:
 
-`sudo ./setrepodir -i`
+	`sudo ./setrepodir -i`
 
 
 The  option "-i" in the setrepodir script would copy the repository file to /etc/yum.repos.d/ folder which would be good for keeping the repository configuration file in the default location. 
