@@ -38,9 +38,9 @@
 
 [How Do I Check for Global Variables in a Lua Script?](how-do-i-check-for-global-variables-in-a-lua-script)
 
-[How do I prevent OOM Out of Memory issues](how-do-i-prevent-oom-out-of-memory-issues.md)
+[How do I prevent OOM Out of Memory issues](./how-do-i-prevent-oom-out-of-memory-issues.md)
 
-[How do I View Message Details and Content](how-do-i-view-message-details-and-content.md)
+[How do I View Message Details and Content](./how-do-i-view-message-details-and-content.md)
 
 [How Do I Add a Cluster Manager to an Existing Cluster?](how-do-i-add-a-cluster-manager-to-an-existing-cluster.md)
 
@@ -52,7 +52,7 @@
 
 [Move Messages in Spool to a Different Instance](./move-messages-spool-different-instance.md)
 
-[How do I add an Analytics node to an existing cluster (Momentum 4.1)?](how-do-i-add-an-analytics-node-to-an-existing-cluster.md)
+[How do I add an Analytics node to an existing cluster (Momentum 4.1)?](./how-do-i-add-an-analytics-node-to-an-existing-cluster.md)
 
 [Using email_rfc822 with multiple recipients in the To and CC headers](./using-email_rfc822-with-multiple-recipients-in-the-to-and-cc-headers.md)
 
@@ -70,7 +70,7 @@
 
 [If I have a lengthy DNS query, is it possible to get Momentum to fallback to TCP?](./if-I-have-a-lengthy-dns-query-is-it-possible-to-get-momentum-to-fallback-to-tcp.md)
 
-[How do I set up authorization for the ec_console?](./ec_console_authorization.md)
+[How do I set up authorization for the ec_console?](ec_console_authorization.md)
 
 [](./)
 
