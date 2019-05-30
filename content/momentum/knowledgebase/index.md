@@ -46,11 +46,11 @@
 
 [Using Ephemeral Storage in Momentum 4.x](./using-ephemeral-storage-in-momentum-4.x.md)
 
-[How do I enable log rotation?](log-rotation.md)
+[How do I enable log rotation?](./log-rotation.md)
 
-[How do I generate a new self-signed SSL certificate for ecconfigd?](how-do-i-generate-a-new-self-signed-ssl-certificate-for-ecconfigd.md)
+[How do I generate a new self-signed SSL certificate for ecconfigd?](./how-do-i-generate-a-new-self-signed-ssl-certificate-for-ecconfigd.md)
 
-[Move Messages in Spool to a Different Instance](move-messages-spool-different-instance.md)
+[Move Messages in Spool to a Different Instance](./move-messages-spool-different-instance.md)
 
 [How do I add an Analytics node to an existing cluster (Momentum 4.1)?](how-do-i-add-an-analytics-node-to-an-existing-cluster.md)
 
@@ -58,33 +58,33 @@
 
 [Tuning Momentum Caches](./tuning-momentum-caches.md)
 
-[How do I hard-plumb an IP?](how-do-i-hard-plumb-an-ip.md)
+[How do I hard-plumb an IP?](./how-do-i-hard-plumb-an-ip.md)
 
-[How do I rebuild the SVN repository?](how-do-i-rebuild-the-svn-repository.md)
+[How do I rebuild the SVN repository?](./how-do-i-rebuild-the-svn-repository.md)
 
-[How do I add a node to an isolated riak ring on Momentum?](how-do-i-add-a-node-to-an-isolated-riak-ring-on-momentum.md)
+[How do I add a node to an isolated riak ring on Momentum?](./how-do-i-add-a-node-to-an-isolated-riak-ring-on-momentum.md)
 
-[Increase the Symantec CSAPI update frequency](increase-the-symantec-csapi-update-frequency.md)
+[Increase the Symantec CSAPI update frequency](./increase-the-symantec-csapi-update-frequency.md)
 
-[How to Start/Stop/Restart Vertica](how-to-start-stop-restart-vertica.md)
+[How to Start/Stop/Restart Vertica](./how-to-start-stop-restart-vertica.md)
 
-[If I have a lengthy DNS query, is it possible to get Momentum to fallback to TCP?](if-I-have-a-lengthy-dns-query-is-it-possible-to-get-momentum-to-fallback-to-tcp.md)
+[If I have a lengthy DNS query, is it possible to get Momentum to fallback to TCP?](./if-I-have-a-lengthy-dns-query-is-it-possible-to-get-momentum-to-fallback-to-tcp.md)
 
-[How do I set up authorization for the ec_console?](ec_console_authorization.md)
+[How do I set up authorization for the ec_console?](./ec_console_authorization.md)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
-[]()
+[](./)
 
 []()
 
