@@ -23,12 +23,9 @@ Please try the following if you see this issue:
 The ./setrepodir script establishes some environmental parameters for the installation.
 
 Instead do this:  
-`sudo ./setrepodir -i`
+`sudo ./setrepodir -i`  
 
-
-The  option "-i" in the setrepodir script would copy the repository file to /etc/yum.repos.d/ folder which would be good for keeping the repository configuration file in the default location. 
-
-Also remove the --config momentum.repo part of the yum install command for a couple of different reasons:
-
+The  option "-i" in the setrepodir script would copy the repository file to /etc/yum.repos.d/ folder which would be good for keeping the repository configuration file in the default location.  
+Also remove the --config momentum.repo part of the yum install command for a couple of different reasons:  
 When a configuration file is defined for yum with --config it will not read other included configuration files, but does not disable any of the other repositories that are currently enabled on the instance. When you pass your original command, this means that yum is still going to look through the 3 default Red Hat repositories, but not have the configuration for the Red Hat yum plugins that are required in the AWS environment to authenticate with the Red Hat repositories or the load balancers used to hit Red Hat mirrors. This will result in the errors that are currently being shown.
 Between the yum.conf and other included configurations in /etc/yum/pluginconf.d/ there will be discrepancies in the yum install process.
