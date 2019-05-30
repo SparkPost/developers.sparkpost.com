@@ -1,4 +1,4 @@
-#How do I add a node to an isolated riak ring on Momentum?
+# How do I add a node to an isolated riak ring on Momentum?
 
 When adding a node to an environment that has had the Riak ring partitioned its recommended to follow these steps when prompted.  Since there is various configurations depending on where the node is at time of install in relation to the cluster you could be prompted for different questions.  Here is the recommended steps depending on configurations:
 
