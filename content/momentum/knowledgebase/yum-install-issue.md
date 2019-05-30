@@ -1,4 +1,4 @@
-#YUM install issue with RHEL 6 and 7 on AWS
+# YUM install issue with RHEL 6 and 7 on AWS
 When installing Momentum on RHEL 6 and 7 in AWS, we have seen some customers run into issues where the installation fails with the following error:
 
 ```
