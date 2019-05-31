@@ -102,7 +102,7 @@
 
 [Troubleshooting RabbitMQ issues](./troubleshooting-rabbitmq.md)
 
-[](./)
+[Troubleshooting Cassandra issues in 4.x](./troubleshooting-cassandra.md)
 
 [](./)
 
