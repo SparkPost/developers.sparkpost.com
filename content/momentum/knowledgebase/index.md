@@ -100,7 +100,7 @@
 
 [How to globally ban an email address in Momentum 3.x](./how-to-globally-ban-an-email-address-in-momentum-3.md)
 
-[](./)
+[Troubleshooting RabbitMQ issues](./troubleshooting-rabbitmq.md)
 
 [](./)
 
