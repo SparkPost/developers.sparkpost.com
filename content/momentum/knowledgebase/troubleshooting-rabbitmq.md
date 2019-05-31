@@ -22,9 +22,14 @@ current node details:
 ```
 
 ### RabbitMQ process doesn't start
-Try starting/stopping/restarting the process using the following command:
-`sudo /etc/init.d/msys-rabbitmq start|stop|restart`
-Check the `/var/log/msys-rabbitmq/startup_err` and the `/var/log/msys-rabbitmq/startup_log` log files for information on what the issue is.
+Try starting/stopping/restarting the process using the following command:  
+
+`sudo /etc/init.d/msys-rabbitmq start|stop|restart`  
+
+Check the following log files for information on what the issue is:
+  
+`/var/log/msys-rabbitmq/startup_err`  
+`/var/log/msys-rabbitmq/startup_log`  
 All the RabbitMQ logs can be found in the `/var/log/msys-rabbitmq/` folder.
 
 ### Check the events in the queues
