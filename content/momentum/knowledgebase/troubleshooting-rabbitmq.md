@@ -30,12 +30,16 @@ Check the following log files for information on what the issue is:
   
 `/var/log/msys-rabbitmq/startup_err`  
 `/var/log/msys-rabbitmq/startup_log`  
+
 All the RabbitMQ logs can be found in the `/var/log/msys-rabbitmq/` folder.
 
 ### Check the events in the queues
-Use the following command to verify if events are being added into the RabbitMQ:
-`/opt/msys/3rdParty/sbin/rabbitmqctl list_queues`
-The output would be similar to:
+Use the following command to verify if events are being added into the RabbitMQ:  
+
+`/opt/msys/3rdParty/sbin/rabbitmqctl list_queues`  
+
+The output would be similar to:  
+
 ```
 [root@momo42 msys]# /opt/msys/3rdParty/sbin/rabbitmqctl list_queues  
 Listing queues ...  
