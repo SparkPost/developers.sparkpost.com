@@ -84,7 +84,7 @@
 
 [How to monitor the Vertica Database status on all nodes?](./how-to-monitor-the-vertica-database-status-on-all-nodes.md)
 
-[](./)
+[How do throttles in different scopes interact?](./how-do-throttles-in-different-scopes-interact.md)
 
 [](./)
 
