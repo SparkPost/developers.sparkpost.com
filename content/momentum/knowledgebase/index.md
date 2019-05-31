@@ -94,7 +94,7 @@
 
 [Stop a non whitelisted host from succeeding a connection to Momentum](./stop-nonwhitelisted-ip.md)
 
-[](./)
+[How do I clear data from /var/log/eccluster](./eccluster-clear-log-data.md)
 
 [](./)
 
