@@ -104,7 +104,7 @@
 
 [Troubleshooting Cassandra issues in 4.x](./troubleshooting-cassandra.md)
 
-[](./)
+[How do I view Adaptive's Current Understanding of the Rules](./how-do-i-view-adaptives-current-understanding-of-the-rules.md)
 
 [](./)
 
