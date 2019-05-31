@@ -3,7 +3,7 @@
 
 There are two common reasons why the /var/log/eccluster directory can fill up with space, or appear full (even though it's not). Each reason has been separated out to its own section.
 
-## No rotation in place
+## 1. No rotation in place
 The cluster manager logs are not rotated automatically out of the box, because this is your data, and what you want to do with it is a business decision. These are merely centralized logs that are aggregated from each of the MTAs.
 
 The quickest way to clear up space is by simply removing the directories themselves and restarting the eccmgr service on the manager. However, this is not a good long-term solution because it will be easy to forget about this and run into this issue again. 
@@ -28,7 +28,7 @@ A more ideal solution would be to automate this process. The following Code Blo
 
 Additional Resources:  Wikipedia on Cron
 
-## Open File Handles
+## 2. Open File Handles
 The output of the df command shows that the /var/log/eccluster partition is full. However, the total number of actual files does not add up to this sum. Although this doesn't happen all the time, it can happen when actions (such as a cron job that performs compression, or deletion) take place on the file that is actively being accessed by the eccmgr service. This results in eccmgr being unable to properly relinquish its file handles.
 
 Before we can resolve the issue, we must first gather some information.
