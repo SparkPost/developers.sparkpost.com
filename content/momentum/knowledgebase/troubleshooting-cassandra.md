@@ -11,5 +11,8 @@ For further troubleshooting the issue, the log data can be found on the Platform
 `/var/log/msys-cassandra`  
 
 The logs are:  
-```system.log  
-daemon.log```
+
+```
+system.log  
+daemon.log
+```
