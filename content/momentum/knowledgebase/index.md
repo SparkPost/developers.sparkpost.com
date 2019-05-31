@@ -82,7 +82,41 @@
 
 [Starting Ecelerity after manual removal of jlogs](./starting-ecelerity-after-manual-removal-of-jlogs.md)
 
+[How to monitor the Vertica Database status on all nodes?](./how-to-monitor-the-vertica-database-status-on-all-nodes.md)
+
 [](./)
 
-[]()
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
+
+[](./)
 
