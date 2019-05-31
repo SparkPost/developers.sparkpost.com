@@ -80,7 +80,7 @@
 
 [How do I force messages into the delayed queue?](./how-do-i-force-messages-into-the-delayed-queue.md)
 
-[](./)
+[Starting Ecelerity after manual removal of jlogs](./starting-ecelerity-after-manual-removal-of-jlogs.md)
 
 [](./)
 
