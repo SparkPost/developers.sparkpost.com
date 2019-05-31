@@ -86,7 +86,7 @@
 
 [How do throttles in different scopes interact?](./how-do-throttles-in-different-scopes-interact.md)
 
-[](./)
+[How Do I view recent changes through the config system?](./how-do-i-view-recent-changes-through-the-config-system.md)
 
 [](./)
 
