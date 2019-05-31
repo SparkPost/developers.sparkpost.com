@@ -90,11 +90,11 @@
 
 [How do I test webhooks in Momentum?](./how-do-i-test-webhooks-in-momentum.md)
 
-[How To Throttle Batch Sizes For Webhooks](./how-to-throttle-batch-sizes-for-webhooks.md)
+[How To Throttle Batch Sizes For Webhooks?](./how-to-throttle-batch-sizes-for-webhooks.md)
 
 [Stop a non whitelisted host from succeeding a connection to Momentum](./stop-nonwhitelisted-ip.md)
 
-[How do I clear data from /var/log/eccluster](./eccluster-clear-log-data.md)
+[How do I clear data from /var/log/eccluster?](./eccluster-clear-log-data.md)
 
 [](./)
 
