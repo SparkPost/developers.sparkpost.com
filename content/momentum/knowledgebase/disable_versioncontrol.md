@@ -13,7 +13,8 @@ Start with clean slate. Make sure you have pushed or pulled the latest commits a
 
 - The eccfg service (on all nodes) and ecconfigd process (on manager) should be stopped
 
-```/etc/init.d/eccfg stop
+```
+/etc/init.d/eccfg stop
 /etc/init.d/ecconfigd stop  
 ```
 
