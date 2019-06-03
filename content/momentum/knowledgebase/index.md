@@ -106,7 +106,7 @@
 
 [How do I view Adaptive's Current Understanding of the Rules](./how-do-i-view-adaptives-current-understanding-of-the-rules.md)
 
-[](./)
+[Long Time to Deliver](./long-time-to-deliver.md)
 
 [](./)
 
