@@ -112,7 +112,7 @@
 
 [How to add Platform node to an existing Momentum 4.1 cluster](./how-to-add-platform-node-to-an-existing-cluster-momentum-4.1.md)
 
-[](./)
+[How to change admin user password for Momentum 4.1?](./replace-password-with-your-preferred-password.md)
 
 [](./)
 
