@@ -110,7 +110,7 @@
 
 [Why Don't Throttle Down Actions on Adaptive Delivery Seem to Have Any Effect?](./why-dont-throttle-down-actions-on-adaptive-delivery-seem-to-have-any-effect.md)
 
-[How to add Platform node to an existing cluster (Momentum 4.1)?](./how-to-add-platform-node-to-an-existing-cluster-(momentum 4.1).md)
+[How to add Platform node to an existing Momentum 4.1 cluster](./how-to-add-platform-node-to-an-existing-cluster-momentum-4.1.md)
 
 [](./)
 
