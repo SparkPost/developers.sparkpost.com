@@ -1,4 +1,4 @@
-#How do throttles in different scopes interact?
+# How do throttles in different scopes interact?
 
 The standard precedence for throttles (and limits, as well) is as follows, from less specific to more specific:
 
