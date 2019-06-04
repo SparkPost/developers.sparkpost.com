@@ -120,7 +120,7 @@
 
 [Yum install issues with RHEL 6 and 7 on AWS](./yum-install-issue.md)
 
-[](./)
+[How Do I use Rest API under Momentum?](./how-do-i-use-rest-api-under-momentum.md)
 
 [](./)
 
