@@ -30,9 +30,9 @@
 
 [How do I change an Adaptive Suspension default configuration using the adaptive-override.lua?](./how-do-i-change-anadaptive-suspension-default-configuration-using-the-adaptive-override.md)
 
-[How Do I Check for Global Variables in a Lua Script?](./how-do-i-check-for-global-variables-in-a-lua-script)
+[How Do I Check for Global Variables in a Lua Script?](./how-do-i-check-for-global-variables-in-a-lua-script.md)
 
-[How Do I Check for Global Variables in a Lua Script?](./how-do-i-create-an-mdn-in-lua.md)
+[How do I create an MDN (Message Disposition Notification) in Lua?](./how-do-i-create-an-mdn-in-lua.md)
 
 [How do I enable outbound SMTP authentication?](./how-do-i-enable-outbound-smtp-authentication.md)
 
