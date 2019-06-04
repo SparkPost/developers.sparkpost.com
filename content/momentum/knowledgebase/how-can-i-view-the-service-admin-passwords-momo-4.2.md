@@ -10,4 +10,5 @@ Enter the following commands into the terminal.
 
 rmZk155U
 [root@mom42 etc]# echo $ADMINPASS
-admin```
+admin
+```
