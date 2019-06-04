@@ -40,12 +40,11 @@ Initially the documentation here (https://support.messagesystems.com/docs/web-re
 Please note that in this not only is the To and the From being set but you can also set multiple context variables using the vctx stanza. Also note that the "inject" resource is only valid in the v1.0 API.
     
     * Injection using no file and the entire body and context variables through the command line.
-
-
-	```
+    
+    ```
 	curl -X POST  http://localhost:4043/v1.0/inject/  -H 'Content-Type:application/json' --data-binary '{"template":"From: tester@mgr.example.org\nTo: someone@example.com\nSubject:Simple content\n\nThis is your injected message","recipients":[ { "to":"someone@example.com", "from":"postmaster@example.com", "vctx":{"subject":"Verification","sent":"4444"}, } ] }'
 	```
-        
+	
 	This is exactly the same as the previous json blob, however all additional CF/LF have been removed and the entire blob is stored on a single line for ease of parsing. It is also mandatory that you escape any control characters. Obviously if you are doing this via the command line and you intend to use non ASCII characters then you need to change the character set to utf-8 or whatever is allowed by your systems character set so that the command line doesn't corrupt characters.
     
 3. The response to either of the two above methodologies should be similar to what follows:
