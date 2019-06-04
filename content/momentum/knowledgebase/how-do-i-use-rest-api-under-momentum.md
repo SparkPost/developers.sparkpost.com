@@ -1,6 +1,6 @@
 # How Do I use Rest API under Momentum?
 
-Initially the documentation here (https://support.messagesystems.com/docs/web-rest-injector/index.php) appears to cover this however, there are some significant parts of the injection process that aren't covered in the REST API documentation that would be worth going over here
+Initially the documentation here ([https://support.messagesystems.com/docs/web-rest-injector/index.php](https://support.messagesystems.com/docs/web-rest-injector/index.php)) appears to cover this however, there are some significant parts of the injection process that aren't covered in the REST API documentation that would be worth going over here
 
 1. After setting up the listener and REST API as per the documentation in the ecelerity.conf under /opt/msys/ecelerity/etc/conf/default, if this is a cluster it is recommended you make this change on the manager.
 
