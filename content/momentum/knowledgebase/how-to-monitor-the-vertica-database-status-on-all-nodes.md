@@ -1,4 +1,4 @@
-#How to monitor the Vertica Database status on all nodes?
+# How to monitor the Vertica Database status on all nodes?
 
 You can run something like this and you will be able to see the status for all nodes:
 
