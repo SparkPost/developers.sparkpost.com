@@ -41,6 +41,7 @@ Please note that in this not only is the To and the From being set but you can a
     
     * Injection using no file and the entire body and context variables through the command line.
 
+
         ```
         curl -X POST  http://localhost:4043/v1.0/inject/  -H 'Content-Type:application/json' --data-binary '{"template":"From: tester@mgr.example.org\nTo: someone@example.com\nSubject:Simple content\n\nThis is your injected message","recipients":[ { "to":"someone@example.com", "from":"postmaster@example.com", "vctx":{"subject":"Verification","sent":"4444"}, } ] }'
         ```
