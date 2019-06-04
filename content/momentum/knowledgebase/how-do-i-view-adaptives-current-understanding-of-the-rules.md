@@ -1,6 +1,6 @@
-#How do I view Adaptive's Current Understanding of the Rules?
+# How do I view Adaptive's Current Understanding of the Rules?
 
-##Overview
+## Overview
 
 With Base rules, overrides, custom domain settings, etc it can become difficult (especially at scale) to track what the cumulative impact of the rules are.  Using the scriptlet eval functionality within ec_console can give you a good picture of what the resulting ruleset is:
 

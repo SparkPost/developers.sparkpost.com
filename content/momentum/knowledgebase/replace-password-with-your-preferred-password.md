@@ -1,4 +1,4 @@
-#How to change admin user password for Momentum 4.1?
+# How to change admin user password for Momentum 4.1?
 
 
 
@@ -10,9 +10,9 @@ cd /opt/msys/app/users-api
 
 The script below relies on a relative path, so be sure to execute the script from within the above directory:
 
-```
-# Replace 'password' with your preferred password.
 
+# Replace 'password' with your preferred password.
+```
 /opt/msys/3rdParty/bin/node etc/update_user.js --NODE_ENV=production --username admin --password password --customer 1 
 
 ```

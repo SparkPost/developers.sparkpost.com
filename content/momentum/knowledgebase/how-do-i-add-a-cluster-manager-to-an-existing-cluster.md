@@ -1,4 +1,4 @@
-#How Do I Add a Cluster Manager to an Existing Cluster?
+# How Do I Add a Cluster Manager to an Existing Cluster?
 
 * 1\. On each of the MTA nodes in the cluster, disable the cron jobs that pull configuration from the manager:
 

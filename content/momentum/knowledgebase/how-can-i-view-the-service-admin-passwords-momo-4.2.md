@@ -1,4 +1,4 @@
-#How can I view the service and admin passwords with Momentum 4.2
+# How can I view the service and admin passwords with Momentum 4.2
 
 The svcspasswd is randomly generated, not entered manually.
 The admin password is entered manually during the installation process. 

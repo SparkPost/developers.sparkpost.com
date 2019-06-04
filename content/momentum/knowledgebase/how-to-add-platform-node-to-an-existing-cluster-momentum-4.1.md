@@ -2,7 +2,7 @@
 
 
 
-###Prepare the first MTA node
+### Prepare the first MTA node
 
 1) Add the new node to the Ecelerity config files:
 
@@ -34,7 +34,7 @@ vim /opt/msys/3rdParty/cassandra/conf/cassandra.yaml
  service ecelerity restart
 ```
  
-###Update Engagement Proxy node (may be the same as the first MTA node)
+### Update Engagement Proxy node (may be the same as the first MTA node)
 
 1) Add a "server" line for the new host within the nginx config:
 
@@ -48,7 +48,7 @@ vim /opt/msys/3rdParty/nginx/conf.d/click_proxy.conf
 service msys-nginx reload
 ```
 
-###Update remaining Platform nodes (including Log Aggregator/Manager if present)
+### Update remaining Platform nodes (including Log Aggregator/Manager if present)
 
 1) Update cassandra.yaml in the same fashion as the first node.
 2) Restart all affected services:
@@ -58,7 +58,7 @@ service msys-cassandra restart
 service ecelerity restart
 ```
 
-###Configure the new Platform node
+### Configure the new Platform node
 
 1) Copy the same tarball that was used to install the rest of the cluster to the new node and unpack it.
 2) Activate the included yum repo:
@@ -144,7 +144,7 @@ sub decrypt {  return unpack(chr(ord('a') + 19 + print ''),shift); }
 /etc/init.d/msys-app-webhooks-transmitter start
 ```
  
-###Update Analytics Node(s):
+### Update Analytics Node(s):
 1) On the first Analytics node, the following files need to be updated:
 
 ```
