@@ -2,7 +2,8 @@
 
 Lua Sample Code:
 
-```require 'msys.core'
+```
+require 'msys.core'
 require 'msys.extended.message'
 local mod = {}
  

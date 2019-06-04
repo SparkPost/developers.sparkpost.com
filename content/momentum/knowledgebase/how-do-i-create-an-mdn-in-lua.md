@@ -1,5 +1,5 @@
 # How do I create an MDN (Message Disposition Notification) in Lua?
-
+ 
 
 A Message Disposition Notification is a message which is sent back to the e-mail's originating MTA telling the sender whether the mail was delivered, read, discarded, etc. It also can report the reason for the disposition, especially in the cases of bounces or other discard actions. The short snippet of Lua below could be used as a framework to create MDNs.
 

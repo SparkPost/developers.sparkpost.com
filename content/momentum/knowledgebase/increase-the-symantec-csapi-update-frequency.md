@@ -1,7 +1,7 @@
-#Increase the Symantec CSAPI update frequency
+# Increase the Symantec CSAPI update frequency
  
 
-###Increase the default Symantec Content Scanning API - CSAPI virus definition update frequency.
+### Increase the default Symantec Content Scanning API - CSAPI virus definition update frequency.
 
 By default, the update interval is one day set in seconds as 86400.
 As per the documentation here; https://support.messagesystems.com/docs/web-ref/modules.csapi.php a configuration example is shown 14.36.

@@ -1,4 +1,4 @@
-#Why Don't Throttle Down Actions on Adaptive Delivery Seem to Have Any Effect?
+# Why Don't Throttle Down Actions on Adaptive Delivery Seem to Have Any Effect?
 
 Throttling limits the rate at which Momentum will attempt to deliver mail. The "down" parameter, which is the only one associated with this action, defines the throttle indicator.
 

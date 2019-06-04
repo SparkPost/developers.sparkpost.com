@@ -4,7 +4,8 @@ RFC 1870 ( http://tools.ietf.org/html/rfc1870  ) describes a mechanism for a m
 
 To advertise SIZE, you add ac:esmtp_capability_add to your default policy ( https://developers.sparkpost.com/momentum/web-momo4/lua.ref.ac_esmtp_capability_add/ ). That will advertise the maximum size of message that you will accept, in bytes. For example:
 
-```3require("msys.core");
+```
+3require("msys.core");
 require("msys.extended.message");
 require("msys.extended.ac");
 
