@@ -140,7 +140,7 @@
 
 [Create or increase Gimli watchdog interval](./gimli-watchdog.md)
 
-[](./)
+[Momentum 4 Log File Names and Locations](./log-names-locations.md)
 
 [](./)
 
