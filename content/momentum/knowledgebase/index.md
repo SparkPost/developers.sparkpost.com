@@ -128,7 +128,7 @@
 
 [How do I use the iostat command?](./how-do-i-use-the-iostat-command.md)
 
-[](./)
+[How do I use both Lua and Sieve simultaneously?](./how-do-i-use-both-lua-and-sieve-simultaneously.md)
 
 [](./)
 
