@@ -124,7 +124,7 @@
 
 [How do I verify that the pe2m processes are connected to the pe2sched process?](./how-do-i-verify-that-the-pe2m-processes-are-connected-to-the-pe2sched-process.md)
 
-[](./)
+[How do I add multiple subscribers to a Momentum jlog?](./how-do-i-add-multiple-subscribers-to-a-momentum-jlog.md)
 
 [](./)
 
