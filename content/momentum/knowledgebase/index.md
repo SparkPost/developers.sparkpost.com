@@ -132,9 +132,9 @@
 
 [How Do I Upgrade to Newer Versions of 4.2 from 4.2?](./how-do-i-upgrade-to-newer-versions-of-4.2-from-4.2.md)
 
-[](./)
+[Momentum 4 Shutdown/Startup Order](./momentum-4-shutdown-startup-order.md)
 
-[](./)
+[Momentum DKIM 101](./momentum-dkim-101.md)
 
 [](./)
 
