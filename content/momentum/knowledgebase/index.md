@@ -138,7 +138,7 @@
 
 [How do I uninstall Momentum 4.1?](./how-do-i-uninstall-momentum-4.1.md)
 
-[Create or increase Gimli watchdog interval](./gimli_watchdog.md)
+[Create or increase Gimli watchdog interval](./gimli-watchdog.md)
 
 [](./)
 
