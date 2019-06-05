@@ -12,5 +12,3 @@ GIMLI_WATCHDOG_START_INTERVAL applies on startup. The idea is there’s a lot mo
 	export GIMLI_WATCHDOG_START_INTERVAL
 	GIMLI_WATCHDOG_INTERVAL=300
 	export GIMLI_WATCHDOG_INTERVAL
-
-The values above are taken from Sparkpost's production system as of time of writing.
