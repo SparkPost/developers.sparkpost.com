@@ -146,7 +146,7 @@
 
 [How Do I Turn on Automatic Updates for Adaptive Rules?](./how-do-i-turn-on-automatic-updates-for-adaptive-rules.md)
 
-[](./)
+[How do I upgrade a CentOS Minimal server to allow the installation of Momentum 4.x?](./how-do-i-upgrade-a-centos-minimal-server-to-allow-the-installation-of-momentum-4.x.md)
 
 [](./)
 
