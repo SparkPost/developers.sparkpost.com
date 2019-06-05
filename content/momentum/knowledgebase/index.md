@@ -144,7 +144,7 @@
 
 [Momentum 4 Directories and Mounts](./directories-and-mounts.md)
 
-[](./)
+[How Do I Turn on Automatic Updates for Adaptive Rules?](./how-do-i-turn-on-automatic-updates-for-adaptive-rules.md)
 
 [](./)
 
