@@ -142,7 +142,7 @@
 
 [Momentum 4 Log File Names and Locations](./log-names-locations.md)
 
-[](./)
+[Momentum 4 Directories and Mounts](./directories-and-mounts.md)
 
 [](./)
 
