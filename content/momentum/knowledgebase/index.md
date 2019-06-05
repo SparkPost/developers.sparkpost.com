@@ -130,7 +130,7 @@
 
 [How do I use both Lua and Sieve simultaneously?](./how-do-i-use-both-lua-and-sieve-simultaneously.md)
 
-[](./)
+[How Do I Upgrade to Newer Versions of 4.2 from 4.2?](./how-do-i-upgrade-to-newer-versions-of-4.2-from-4.2.md)
 
 [](./)
 
