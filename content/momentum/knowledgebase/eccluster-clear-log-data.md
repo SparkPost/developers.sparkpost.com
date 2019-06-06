@@ -28,7 +28,7 @@ A more ideal solution would be to automate this process. The following Code Blo
 
 Additional Resources:  Wikipedia on Cron
 
-## 2. Open File Handles
+## Open File Handles
 The output of the df command shows that the /var/log/eccluster partition is full. However, the total number of actual files does not add up to this sum. Although this doesn't happen all the time, it can happen when actions (such as a cron job that performs compression, or deletion) take place on the file that is actively being accessed by the eccmgr service. This results in eccmgr being unable to properly relinquish its file handles.
 
 Before we can resolve the issue, we must first gather some information.

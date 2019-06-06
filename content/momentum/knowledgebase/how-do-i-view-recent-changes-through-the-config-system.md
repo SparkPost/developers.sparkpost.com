@@ -1,8 +1,8 @@
-#How Do I view recent changes through the config system?
+# How Do I view recent changes through the config system?
 
 `In most cases, the first step in troubleshooting a sudden problem on a client system is to ask: "What Changed?".  The config system can help you to know what that is with a few simple commands.`
 
-###Verifying the current checkout
+### Verifying the current checkout
 
 The first thing you need to know, is if all of the nodes actually have the same perspective on what the current configuration is.  SVN info will tell you what the current revision is:
 
@@ -24,7 +24,7 @@ Last Changed Date: 2014-03-25 00:16:24 +0000 (Tue, 25 Mar 2014)
 
 If all of the nodes report the same value, you know they at least have a consistent view, and you know if the most recent change happened recently.  Assuming it did, the next question is, how many changes have happened recently.
 
-###How many changes have been done recently?
+### How many changes have been done recently?
 
 To find this out, you need the svn log command.  You can get this history a couple of different ways.  An easy way is to just get the last five or so changes by setting a limit with '-l', like so:
 
@@ -99,7 +99,7 @@ sudo /opt/msys/3rdParty/bin/svn log -r {$(date -d'-1 week' +%F)}:{$(date +%F}) -
 
 These summaries are often less than helpful though, or even less than accurate, so you'll want to get a picture of what the actual changes have been.
 
-###What exactly was changed?
+### What exactly was changed?
 
 There are a couple of ways you may want to get this data.  One way is just to get a view of what each change in the relevant period of time was, and you can get that with **svn diff -c** like so:
 

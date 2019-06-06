@@ -1,4 +1,4 @@
-#DMARC - Basics
+# DMARC - Basics
 
 This document is not meant to replace the information available on DMARC at these locations:
 
@@ -6,9 +6,9 @@ This document is not meant to replace the information available on DMARC at thes
 
 [http://www.dmarc.org/](http://www.dmarc.org/)
 
-###DNS entries that DMARC uses:
+### DNS entries that DMARC uses:
 
-#####1 - The DMARC DNS text entry
+##### 1 - The DMARC DNS text entry
 The following is an example DMARC text entry for DNS :
 
 ```
@@ -24,7 +24,7 @@ In order to get this in the real world use **dig +short _dmarc.<domain> TXT**
 "v=DMARC1\; p=none\; rua=mailto:84tcdfj1@ag.dmarcian.com\;"
 ```
 
-#####2 - The SPF DNS text entry
+##### 2 - The SPF DNS text entry
 The following is an example of a SPF DNS text entry:
 
 ***mydomain.com. IN SPF "v=spf1 ip4:192.0.2.0/24 ip4:198.51.100.123 a -all"***
@@ -43,7 +43,7 @@ See this page relating to creating an SPF DNS text entry: [http://www.openspf.or
 
 For SPF validation you can use: [http://www.kitterman.com/spf/validate.html](http://www.kitterman.com/spf/validate.html)
 
-#####3 - The DKIM DNS text entry
+##### 3 - The DKIM DNS text entry
 The following is an example of an DKIM DNS text entry:
 
 ```
@@ -62,19 +62,19 @@ See this page for details on validation of DKIM: [http://dkimcore.org/tools/keyc
 
 Utility to create DKIM DNS entries: [http://www.dnswatch.info/dkim/create-dns-record](http://www.dnswatch.info/dkim/create-dns-record)
 
-###The DMARC validation process.
+### The DMARC validation process.
 
 In order for DMARC to begin passing a message, either the DKIM must pass or the SPF must pass, if neither pass then the action requested, in p (Domain policy) or sp (Subdomain policy) in the above DMARC DNS text entry will be adhered to. The options on the policies are none, quarantine or reject.
 
 Once either DKIM or SPF have passed, and it can be both, DMARC will then take action based on the requested behavior of adkim or aspf.
 
-###For strict:
+### For strict:
 
 1. In all cases, the RFC5321:Mailfrom and the RFC5322:From must match exactly.
 2. If the adkim is set to strict then the d= entry must match exactly the RFC5322:From domain.
 3. If spf is set to strict then spf domain must exactly match the RFC5322:From domain.
 
-###For relaxed:
+### For relaxed:
 
 1. In all cases both RFC5321:Mailfrom and RF5322:From must share an organizational domain.
 2. For dkim relaxed the d= domain must share an organizational domain with the RFC5322:From domain.

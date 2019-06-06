@@ -17,13 +17,15 @@ Set up the initial repo:
 
 1) From the first Analytics node, add the new node to the cluster:
 
-```# cd /var/tmp/momentum-4.1.0.46072
+```
+# cd /var/tmp/momentum-4.1.0.46072
 # export NEWNODE=new.host.fully.qualified.name
 # /opt/vertica/sbin/install_vertica --add-hosts \$NEWNODE -z silent\_install
 ```
 You can find the silent_install file in the working directory of the initial installation, or you can create a new one with the following contents:
 
-```accept_eula = True
+```
+accept_eula = True
 data_dir = /var/db/vertica
 direct_only = True
 failure_threshold = FAIL
@@ -39,15 +41,18 @@ You will need the root password for the new node or have configured password-les
 
 2) Change to the vertica_dba user and add the new host to the msys database:
 
-```# su - vertica_dba
+```
+# su - vertica_dba
 $ export NEWNODE=new.host.fully.qualified.name
 $ adminTools --tool db_add_node --database msys --add=$NEWNODE
 $ adminTools --tool rebalance_data -k 1 -d msys
-NOTE: that last two steps may take an extended period of time, depending on how long the database has been up and how much data is present and should be run inside a screen or tmux session.```
+NOTE: that last two steps may take an extended period of time, depending on how long the database has been up and how much data is present and should be run inside a screen or tmux session.
+```
 
 3) Add the storage locations for the new node, using the following script:
 
-```#!/bin/bash
+```
+#!/bin/bash
  
 # Setup storage location grants across all hosts
 for ARG in "api/webhooks/WEBHOOK_BATCHES" "etl/etl/ETL"
@@ -139,7 +144,8 @@ done
 
 6) Restart the services on all existing Analytics nodes:
 
-```# service msys-app-metrics-api restart
+```
+# service msys-app-metrics-api restart
 # service msys-app-users-api restart
 # service msys-app-webhooks-api restart
 # service msys-nginx reload
