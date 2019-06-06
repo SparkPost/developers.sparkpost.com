@@ -8,8 +8,7 @@ This command can be used against other processes too, example usage below:
 ps hf -opid -C nginx | awk '{ print $1; exit }' | xargs sh -c 'lsof -p $1' sh
 ```
 
-**The msys-nginx process:
-**
+**The msys-nginx process:**
 
 ```
 ps hf -opid -C nginx | awk '{ print $1; exit }' | xargs sh -c 'lsof -p $1' sh
@@ -55,8 +54,7 @@ nginx   2029 root    9u  unix 0xffff88007a8d23c0      0t0  13264 socket
 nginx   2029 root   10u  unix 0xffff88007ba41c80      0t0  13265 socket
 ```
 
-**The msys-rabbitmq process:
-**
+**The msys-rabbitmq process:**
 
 ```
 ps hf -opid -C S80msys-rabbitmq | awk '{ print $1; exit }' | xargs sh -c 'lsof -p $1' sh
@@ -76,8 +74,7 @@ S80msys-r 1722 root    1w   REG    8,1      343 927166 /var/log/msys-rabbitmq/st
 S80msys-r 1722 root    2w   REG    8,1        0 933380 /var/log/msys-rabbitmq/startup_err
 ```
 
-**The ecelerity process:
-**
+**The ecelerity process:**
 
 ```
 ps hf -opid -C ecelerity | awk '{ print $1; exit }' | xargs sh -c 'lsof -p $1' sh
