@@ -188,7 +188,7 @@
 
 [How Do I Replay Failed Events into the Event Hose?](./how-do-i-replay-failed-events-into-the-event-hose.md)
 
-[](./)
+[Generating ILF Report manually](./ilf-manual-generate.md)
 
 [](./)
 
