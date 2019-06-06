@@ -162,7 +162,7 @@
 
 [Reading messages from the spool](./read-from-spool.md)
 
-[](./)
+[Seeing "ec_cluster: cannot open reader..." errors in the paniclog?](./eccluster-cannot-open-reader-error.md)
 
 [](./)
 
