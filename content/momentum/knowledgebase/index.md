@@ -194,6 +194,6 @@
 
 [How Do I manually consume jlogs?](./how-do-i-manually-consume-jlogs.md)
 
-[](./)
+[How do I add new users in Momentum 4.1?](./how-do-i-add-new-users-in-momentum-4.1.md)
 
 [](./)
