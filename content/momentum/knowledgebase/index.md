@@ -180,7 +180,7 @@
 
 [What do I do if Momentum is Running Out of File Handles?](./what-do-i-do-if-momentum-is-running-out-of-file-handles.md)
 
-[Does Momentum Support Special Characters in E-mail Addresses?](./does-momentum-support-special-characters-in-e-mail-addresses)
+[Does Momentum Support Special Characters in E-mail Addresses?](./does-momentum-support-special-characters-in-e-mail-addresses.md)
 
 [](./)
 
