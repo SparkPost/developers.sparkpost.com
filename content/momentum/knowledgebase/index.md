@@ -166,7 +166,7 @@
 
 [Seeing "ec_cluster: cannot open reader..." errors in the paniclog?](./eccluster-cannot-open-reader-error.md)
 
-[How do I Set Multiple Listener Stanzas with Supercharger?](./how-do-i-set-multiple-listener-stanzas-with-supercharger)
+[How do I Set Multiple Listener Stanzas with Supercharger?](./how-do-i-set-multiple-listener-stanzas-with-supercharger.md)
 
 [](./)
 
