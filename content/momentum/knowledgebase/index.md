@@ -148,7 +148,7 @@
 
 [How do I upgrade a CentOS Minimal server to allow the installation of Momentum 4.x?](./how-do-i-upgrade-a-centos-minimal-server-to-allow-the-installation-of-momentum-4.x.md)
 
-[](./)
+[How do I time how long each phase in the SMTP protocol takes when sending to Momentum?](./how-do-i-time-how-long-each-phase-in-the-smtp-protocol-takes-when-sending-to-momentum.md)
 
 [](./)
 
