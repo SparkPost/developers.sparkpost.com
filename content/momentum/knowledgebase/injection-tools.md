@@ -1,7 +1,7 @@
 # Tools for Injecting/submitting messages
 
 
-Plain ole' Telnet
+## Plain ole' Telnet   
 This simple, ubiquitous yet powerful tool is the most surefire way to submit a message into an MTA. You can use it to manually submit messages into any IP address and on any port. Just doing this basically fulfils these things:
 
 * Network connectivity - does the IP address on that port even work? Is it responding? 
@@ -10,7 +10,7 @@ This simple, ubiquitous yet powerful tool is the most surefire way to submit a m
 
 Here's a sample of Telnet-ing:
 
-	[root@pmta ~]# telnet 127.0.0.1 25
+	[root@momo4 ~]# telnet 127.0.0.1 25
 	Trying 127.0.0.1...
 	Connected to 127.0.0.1.
 	Escape character is '^]'.
@@ -30,13 +30,13 @@ Here's a sample of Telnet-ing:
 ## Smtp-source
 This is my favourite because it comes built-in with most Linux distributions and gives plenty of options. The strength in this tool lies in the fact that it can submit multiple messages very rapidly from the command line - great for performance testing. 
 
-Basic
+### Basic
 You can start off with this basic command of :   
 sending one (1) message to test@yahoo.com from return@path.com through 127.0.0.1
 
 	smtp-source -cdm 1 -f me@from.com -t them@recipient.com  127.0.0.1
 
-## Send multiple messages
+### Send multiple messages
 
 Sends 10 messages
 
@@ -107,7 +107,7 @@ https://aws.amazon.com/premiumsupport/knowledge-center/ec2-enable-epel/
 	Using Auth
 	swaks -s 127.0.0.1 -f me@from.com -t them@recipient.com --auth-user=jasdev --auth-password=jasdev 
 
-## Send via Sparkpost using TLS
+### Send via Sparkpost using TLS
 
 	swaks -server smtp.sparkpostmail.com:587 -tls --auth-user SMTP_Injection --auth-password [your auth key] -f me@from.com -t them@recipient.com
 
