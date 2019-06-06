@@ -192,7 +192,7 @@
 
 [Monitoring Momentum 4 Processes](./monitoring-processes.md)
 
-[](./)
+[How Do I manually consume jlogs?](./how-do-i-manually-consume-jlogs.md)
 
 [](./)
 
