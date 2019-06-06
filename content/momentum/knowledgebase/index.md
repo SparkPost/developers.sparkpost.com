@@ -170,7 +170,7 @@
 
 [Basic Ecconfigd Guide](./basic-ecconfigd.md)
 
-[](./)
+[Changing the subversion password (eccfg)](./change-eccfg-pwd.md)
 
 [](./)
 
