@@ -164,7 +164,7 @@
 
 [How Do I Set Up noatime?](./how-do-i-set-up-noatime.md)
 
-[](./)
+[Seeing "ec_cluster: cannot open reader..." errors in the paniclog?](./eccluster-cannot-open-reader-error.md)
 
 [](./)
 
