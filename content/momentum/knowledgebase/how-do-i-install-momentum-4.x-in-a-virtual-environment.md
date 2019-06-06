@@ -39,7 +39,7 @@ select "custom layout".
 
 - Switch off SELinux by setting it to disabled.
 
-	*vi /etc/selinux/config *
+	*vi /etc/selinux/config*
 
 	```
 	SELINUX=disabled
