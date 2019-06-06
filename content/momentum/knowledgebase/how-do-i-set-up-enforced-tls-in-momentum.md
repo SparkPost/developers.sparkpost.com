@@ -1,8 +1,8 @@
 # How do I set up Enforced TLS in Momentum?
 
-####Enforced TLS
+#### Enforced TLS
  
-#####SMTP Delivery
+##### SMTP Delivery
 The following is how to enforce TLS to the domain bank.fi . "TLS = required" is enforced TLS. If the remote domain does not support the STARTTLS extension, then messages will be temporarily failed with the message "451 4.7.6 [internal] STARTTLS required but not advertised".
 
 ```
@@ -31,7 +31,7 @@ DEFAULT DHE-RSA-AES256-SHA:DHE-DSS-AES256-SHA:AES256-SHA:EDH-RSA-DES-CBC3-SHA:ED
 `openssl ciphers -v DEFAULT` will show you a more readable version of the cipher list.
 
 
-#####SMTP Reception
+##### SMTP Reception
  
 There is an example TLS reception configuration that comes with Momentum, in the example ecelerity.conf file:
 
