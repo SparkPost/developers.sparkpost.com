@@ -160,7 +160,7 @@
 
 [What Language(s) is Ecelerity Coded in?](./what-language.md)
 
-[](./)
+[Reading messages from the spool](./read-from-spool.md)
 
 [](./)
 
