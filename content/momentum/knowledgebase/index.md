@@ -156,7 +156,7 @@
 
 [How do I set up Enforced TLS in Momentum?](./how-do-i-set-up-enforced-tls-in-momentum.md)
 
-[](./)
+[How do I suspend delivery to the default binding?](./how-do-i-suspend-delivery-to-the-default-binding.md)
 
 [](./)
 
