@@ -1,4 +1,4 @@
-Generating ILF Report manually
+# Generating ILF Report manually
 
 If the ILF logger does not work for whatever reason and you are running Vertica, you can query the sum from it. 
 
