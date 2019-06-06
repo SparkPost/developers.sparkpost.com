@@ -174,7 +174,7 @@
 
 [How do I see a list of open files related to a specific process?](./how-do-I-see-a-list-of-open-files-related-to-a-specific-process.md)
 
-[](./)
+[How do I remove a SMTP extension (PIPELINING, 8BITMIME, for example) from showing up after the EHLO?](./how-do-I-remove-a-smtp-extension-pipelining-8bitmime-for-example-from-showing-up-after-the-ehlo.md)
 
 [](./)
 
