@@ -152,7 +152,7 @@
 
 [How do I install Momentum 4.x in a virtual environment?](./how-do-i-install-momentum-4.x-in-a-virtual-environment.md)
 
-[](./)
+[How to enable debugging for the API with Momentum 4](./debug-api.md)
 
 [](./)
 
