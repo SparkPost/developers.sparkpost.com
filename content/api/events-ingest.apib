@@ -103,7 +103,7 @@ including `"reporting": true` are recommended as they are used to drive various 
         {
           "type": {
             "description": "Type of event this record describes",
-            "sampleValue": "bounce",
+            "sampleValue": "delivery",
             "required": true,
             "reporting": true
           },
@@ -121,7 +121,7 @@ including `"reporting": true` are recommended as they are used to drive various 
 Returns an example message event for each event type listed in the `events` parameter.
 
 + Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload. Defaults to all event types. See [Events Types](/api/events/#header-event-types) for the list of available event types.
+    + events (optional, string, `delivery`) ... Event types for which to get a sample payload. Defaults to all event types. See [Events Types](/api/events/#header-event-types) for the list of available event types.
 
 + Request
 
@@ -135,7 +135,7 @@ Returns an example message event for each event type listed in the `events` para
     {
       "results": [
         {
-          "type": "bounce",
+          "type": "delivery",
           ...
         }
       ]
