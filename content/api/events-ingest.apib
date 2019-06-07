@@ -31,18 +31,27 @@ Please see [Processing Out of Band Errors](#header-processing-out-of-band-errors
 
 Post a new-line delimited list of JSON events.
 
+Required Headers
+
+| Header             | Value                   |
+|--------------------|-------------------------|
+| `Content-Encoding` | `gzip`                  |
+| `Content-Type`     | `application/x-ndjson`  |
+
+
 + Data Structure
     + msys (object, required) - The event wrapper
         + *event grouping* (object, required) - Designates the event grouping <br />One of: `message_event`, `track_event`, `gen_event`, `adaptive_event`, `unsubscribe_event`, `relay_event`, `ab_test_event`
             + event_id (string, required) - The event identifier
             + message_id (string, required) - The message identifier
             + type (string, required) - The type of event
+            + timestamp (string, required) - Unix timestamp (in seconds) representing the time the event occurred
             + *transport method* (string, required) - The method in which the message was either received or delivered <br />One of: `recv_method`, `delv_method`
 + Sample
 
     ```
-    {"msys":{"message_event":{"msg_batchname":"1A/50-00001-B03B45C5","template_version":"0","tenant_id":"keyspace_default","msg_spoolname":"2A/50-00001-B03B45C5","msg_size":"315","bounce_class":"25","template_id":"template_12994410358768097","rcpt_tags":[ ],"recv_method":"rest","binding_group":"default","routing_domain":"gmail.com","binding":"default","rcpt_to":"yargevad@gmail.com","open_tracking":"1","msg_from":"sp-event-agent@test.sparkpost.com","type":"inband","customer_id":"1","raw_reason":"551 5.7.0 [internal] recipient blackholed","conn_name":"00/00-00000-00000000","rcpt_meta":{ },"error_code":"551","message_id":"00000bb3545c0100a205","conn_stage":"22","reason":"551 5.7.0 [internal] recipient blackholed","node_name":"8c9f45e70999","queue_time":"2","click_tracking":"1","num_retries":"0","event_id":"12994410358769058","subject":"sp event agent checking in","timestamp":"1549054731","snippet_count":"0","transmission_id":"12994410358768097"}}}
-    {"msys":{"message_event":{"template_id":"template_12994410358768098","open_tracking":"1","msg_spoolname":"5A/50-00001-B03B45C5","binding_group":"default","message_id":"00000bb3545c0100a505","msg_size":"315","timestamp":"1549054731","template_version":"0","subject":"sp event agent checking in","pathway_group":"default","rcpt_meta":{ },"snippet_count":"0","pathway":"default","msg_batchname":"4A/50-00001-B03B45C5","event_id":"12994410358769060","click_tracking":"1","tenant_id":"keyspace_default","conn_stage":"22","customer_id":"1","type":"reception","conn_name":"00/00-00000-00000000","node_name":"8c9f45e70999","transmission_id":"12994410358768098","rcpt_tags":[ ],"recv_method":"rest","rcpt_to":"yargevad@gmail.com","msg_from":"sp-event-agent@test.sparkpost.com","routing_domain":"gmail.com","binding":"default"}}}
+    {"msys":{"message_event":{"msg_batchname":"1A/50-00001-B03B45C5","template_version":"0","msg_spoolname":"2A/50-00001-B03B45C5","msg_size":"315","bounce_class":"25","template_id":"template_12994410358768097","rcpt_tags":[ ],"recv_method":"rest","binding_group":"default","routing_domain":"example.com","binding":"default","rcpt_to":"recipient@example.com","open_tracking":"1","msg_from":"sender@example.com","type":"inband","raw_reason":"551 5.7.0 [internal] recipient blackholed","conn_name":"00/00-00000-00000000","rcpt_meta":{ },"error_code":"551","message_id":"00000bb3545c0100a205","conn_stage":"22","reason":"551 5.7.0 [internal] recipient blackholed","node_name":"8c9f45e70999","queue_time":"2","click_tracking":"1","num_retries":"0","event_id":"12994410358769058","subject":"Summer deals are here!","timestamp":"1549054731","snippet_count":"0","transmission_id":"12994410358768097"}}}
+    {"msys":{"message_event":{"template_id":"template_12994410358768098","open_tracking":"1","msg_spoolname":"5A/50-00001-B03B45C5","binding_group":"default","message_id":"00000bb3545c0100a505","msg_size":"315","timestamp":"1549054731","template_version":"0","subject":"Summer deals are here!","pathway_group":"default","rcpt_meta":{ },"snippet_count":"0","pathway":"default","msg_batchname":"4A/50-00001-B03B45C5","event_id":"12994410358769060","click_tracking":"1","conn_stage":"22","type":"reception","conn_name":"00/00-00000-00000000","node_name":"8c9f45e70999","transmission_id":"12994410358768098","rcpt_tags":[ ],"recv_method":"rest","rcpt_to":"recipient@example.com","msg_from":"sender@example.com","routing_domain":"example.com","binding":"default"}}}
 
     ```
 
@@ -55,9 +64,9 @@ Post a new-line delimited list of JSON events.
 
     + Headers
 
-        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-        Content-Encoding:gzip
-        Content-Type:application/x-ndjson
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Content-Encoding: gzip
+            Content-Type: application/x-ndjson
 
 + Response
     
@@ -94,7 +103,7 @@ including `"reporting": true` are recommended as they are used to drive various 
         {
           "type": {
             "description": "Type of event this record describes",
-            "sampleValue": "bounce",
+            "sampleValue": "delivery",
             "required": true,
             "reporting": true
           },
@@ -112,7 +121,7 @@ including `"reporting": true` are recommended as they are used to drive various 
 Returns an example message event for each event type listed in the `events` parameter.
 
 + Parameters
-    + events (optional, string, `bounce`) ... Event types for which to get a sample payload. Defaults to all event types. See [Events Types](/api/events/#header-event-types) for the list of available event types.
+    + events (optional, string, `delivery`) ... Event types for which to get a sample payload. Defaults to all event types. See [Events Types](/api/events/#header-event-types) for the list of available event types.
 
 + Request
 
@@ -126,7 +135,7 @@ Returns an example message event for each event type listed in the `events` para
     {
       "results": [
         {
-          "type": "bounce",
+          "type": "delivery",
           ...
         }
       ]
