@@ -42,4 +42,5 @@ function mod:init()
   jlog_mutex = thread.mutex()
   return true
 end
-msys.registerModule("write_jlog", mod);```
+msys.registerModule("write_jlog", mod);
+```

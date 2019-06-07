@@ -4,4 +4,4 @@ Per RFC2822 section 2.1.1 there is 998 character limit per line for the header. 
 
 You can change this by using the global "rfc2822_max_line_length" option. 
 
-Please refer to the user's guide for more details : https://support.messagesystems.com/docs/web-momo4/conf.ref.rfc2822_max_line_length.php
+Please refer to the user's guide for more details : https://developers.sparkpost.com/momentum/web-momo4/conf.ref.rfc2822_max_line_length_policy/
