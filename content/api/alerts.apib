@@ -26,7 +26,7 @@ Each metric group has a specific set of filters and some other values allowed.
 
 * monthly_sending_limit
   + filters - must be an empty array. No filters may be applied to this metric.
-  + subaccounts - must be [0].
+  + subaccounts - must be [-1].
   + any_subaccount - must be unset or set to false.
 
 ## Channels
@@ -70,6 +70,7 @@ Alerts can have a number of different notification channel types associated with
       + source (enum) - Source of value to compare against.
         + `"raw", "day_over_day", "week_over_week"`
       + value (number) - Target value to compare against.
+    + last_triggered (string) - ISO date when alert was last triggered
     + channels (object) - Channels to send alert notifications through.
         + emails (array) - Email addresses to send alert notifications to.
 
@@ -94,6 +95,7 @@ Alerts can have a number of different notification channel types associated with
       "source": "raw",
       "value": 0
     },
+    "last_triggered": "2019-06-01T14:48:00.000Z",
     "channels": {
         "emails": [
             "test@sparkpost.com",
@@ -182,6 +184,7 @@ Retrieve full information about a single alert.
       "source": "raw",
       "value": 0
     },
+    "last_triggered": "2019-06-01T14:48:00.000Z",
     "channels": {
       "emails": [
         "test@sparkpost.com",
@@ -213,6 +216,7 @@ Retrieve full information about all of your alerts.
         "source": "raw",
         "value": 0
       },
+    "last_triggered": null,
       "channels": {
         "emails": [
             "test@sparkpost.com",
@@ -233,6 +237,7 @@ Retrieve full information about all of your alerts.
         "source": "raw",
         "value": 90
       },
+    "last_triggered": "2019-05-15T04:51:00.000Z",
       "channels": {
         "emails": [
             "test@sparkpost.com"
@@ -313,6 +318,7 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
       "source": "raw",
       "value": 75
     },
+    "last_triggered": "2019-05-15T04:51:00.000Z",
     "channels": {
       "emails": [
         "test@sparkpost.com",
