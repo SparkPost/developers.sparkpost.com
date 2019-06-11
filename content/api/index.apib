@@ -107,7 +107,7 @@ Features that are limited to some accounts will be marked appropriately througho
 To prevent abuse, our servers enforce request rate limiting, which may trigger responses with HTTP status code 429.
 The following endpoints are rate limited:
 
-- `/api/v1/message-events`
+- `/api/v1/events/*`
 - `/api/v1/metrics/*`
 
 The limits are dynamic, but as a general rule, polling these endpoints more than once in 2 minutes may encounter rate limiting and a 429 status code.
