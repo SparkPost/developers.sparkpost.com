@@ -169,7 +169,7 @@ The template language is supported in `from`, `subject`, `text`, `html`, `amp_ht
     + from (enum, required) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
         + (string)
         + (object)
-            + name (string) - The name associated with the email address.
+            + name (string) - The name associated with the email address (special characters must be escaped).
             + email (string, required) - The email address to send from.
     + subject (string, required) - Email subject line. Expected in the UTF-8 charset without RFC2047 encoding.
     + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
