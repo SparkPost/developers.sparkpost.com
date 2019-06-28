@@ -72,9 +72,9 @@ Alerts can have a number of different notification channel types associated with
       + value (number) - Target value to compare against.
     + last_triggered (string) - ISO date when alert was last triggered
     + channels (object) - Channels to send alert notifications through.
-        + emails (array) - Email addresses to send alert notifications to.
-        + webhook (string) - Single webhook url to send alert notifications to.
-        + slack (string) - Single Slack url to send alert notifications to.
+      + emails (array) - Email addresses to send alert notifications to.
+      + webhook (string) - Webhook url to send alert notifications to.
+      + slack (string) - Slack url to send alert notifications to.
 
 + Sample
 
@@ -103,7 +103,7 @@ Alerts can have a number of different notification channel types associated with
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
     }
   }
@@ -126,10 +126,10 @@ Creates a new alert
     + source (enum, required) - Source of value to compare against.
       + `"raw", "day_over_day", "week_over_week"`
     + value (number, required) - Target value to compare against.
-  + channels (object, required) - Channels to send alert notifications through.
+  + channels (object, required) - Channels to send alert notifications through. At least one channel is required.
     + emails (array) - Email addresses to send alert notifications to.
-    + webhook (string) - Single webhook url to send alert notifications to.
-    + slack (string) - Single Slack url to send alert notifications to.
+    + webhook (string) - Webhook url to send alert notifications to.
+    + slack (string) - Slack url to send alert notifications to.
 
 
 + Request (application/json)
@@ -156,7 +156,7 @@ Creates a new alert
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
       }
   }
@@ -198,7 +198,7 @@ Retrieve full information about a single alert.
         "test@sparkpost.com",
         "bigwig@test.com"
       ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
     }
   }
@@ -232,7 +232,7 @@ Retrieve full information about all of your alerts.
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
       }
     },
@@ -254,7 +254,7 @@ Retrieve full information about all of your alerts.
         "emails": [
             "test@sparkpost.com"
         ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
       } 
     }
@@ -292,8 +292,8 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
     + value (number) - Target value to compare against.
   + channels (object) - Channels to send alert notifications through.
     + emails (array) - Email addresses to send alert notifications to.
-    + webhook (string) - Single webhook url to send alert notifications to.
-    + slack (string) - Single Slack url to send alert notifications to.
+    + webhook (string) - Webhook url to send alert notifications to.
+    + slack (string) - Slack url to send alert notifications to.
 
 
 + Request (application/json)
@@ -340,7 +340,7 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
         "test@sparkpost.com",
         "bigwig@test.com"
       ],
-        "webhook": "http://my.web/hook",
+        "webhook": "https://example.com/webhook",
         "slack": "https://hooks.slack.com/services/T00/B00/XX"
     }
   }
