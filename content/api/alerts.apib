@@ -71,7 +71,7 @@ Alerts can have a number of different notification channel types associated with
         + `"raw", "day_over_day", "week_over_week"`
       + value (number) - Target value to compare against.
     + last_triggered (string) - ISO date when alert was last triggered
-    + channels (object) - Channels to send alert notifications through.
+  + channels (object) - Channels to send alert notifications through. At least one channel is required.
       + emails (array) - Email addresses to send alert notifications to.
       + webhook (string) - Webhook url to send alert notifications to.
       + slack (string) - Slack url to send alert notifications to.
@@ -290,7 +290,7 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
     + source (enum) - Source of value to compare against.
       + `"raw", "day_over_day", "week_over_week"`
     + value (number) - Target value to compare against.
-  + channels (object) - Channels to send alert notifications through.
+  + channels (object) - Channels to send alert notifications through. At least one channel is required.
     + emails (array) - Email addresses to send alert notifications to.
     + webhook (string) - Webhook url to send alert notifications to.
     + slack (string) - Slack url to send alert notifications to.
