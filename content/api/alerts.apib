@@ -73,8 +73,10 @@ Alerts can have a number of different notification channel types associated with
     + last_triggered (string) - ISO date when alert was last triggered
   + channels (object) - Channels to send alert notifications through. At least one channel is required.
       + emails (array) - Email addresses to send alert notifications to.
-      + webhook (string) - Webhook url to send alert notifications to.
-      + slack (string) - Slack url to send alert notifications to.
+      + webhook (object) - Webhook configuration to send alert notifications to.
+        + target (string) - Webhook url
+      + slack (object) - Slack configuration to send alert notifications to.
+        + target (string) - Slack url
 
 + Sample
 
@@ -103,8 +105,12 @@ Alerts can have a number of different notification channel types associated with
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+        "webhook": {
+          "target": "https://example.com/webhook"
+        },
+        "slack": {
+          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        }
     }
   }
   ```
@@ -128,8 +134,10 @@ Creates a new alert
     + value (number, required) - Target value to compare against.
   + channels (object, required) - Channels to send alert notifications through. At least one channel is required.
     + emails (array) - Email addresses to send alert notifications to.
-    + webhook (string) - Webhook url to send alert notifications to.
-    + slack (string) - Slack url to send alert notifications to.
+    + webhook (object) - Webhook configuration to send alert notifications to.
+      + target (string) - Webhook url
+    + slack (object) - Slack configuration to send alert notifications to.
+      + target (string) - Slack url
 
 
 + Request (application/json)
@@ -156,8 +164,12 @@ Creates a new alert
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+        "webhook": {
+          "target": "https://example.com/webhook"
+        },
+        "slack": {
+          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        }
       }
   }
 
@@ -198,8 +210,12 @@ Retrieve full information about a single alert.
         "test@sparkpost.com",
         "bigwig@test.com"
       ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+      "webhook": {
+        "target": "https://example.com/webhook"
+      },
+      "slack": {
+        "target": "https://hooks.slack.com/services/T00/B00/XX"
+      }
     }
   }
 
@@ -232,8 +248,12 @@ Retrieve full information about all of your alerts.
             "test@sparkpost.com",
             "bigwig@test.com"
         ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+        "webhook": {
+          "target": "https://example.com/webhook"
+        },
+        "slack": {
+          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        }
       }
     },
     {
@@ -254,8 +274,12 @@ Retrieve full information about all of your alerts.
         "emails": [
             "test@sparkpost.com"
         ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+        "webhook": {
+          "target": "https://example.com/webhook"
+        },
+        "slack": {
+          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        }
       } 
     }
   ]
@@ -292,8 +316,10 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
     + value (number) - Target value to compare against.
   + channels (object) - Channels to send alert notifications through. At least one channel is required.
     + emails (array) - Email addresses to send alert notifications to.
-    + webhook (string) - Webhook url to send alert notifications to.
-    + slack (string) - Slack url to send alert notifications to.
+    + webhook (object) - Webhook configuration to send alert notifications to.
+      + target (string) - Webhook url
+    + slack (object) - Slack configuration to send alert notifications to.
+      + target (string) - Slack url
 
 
 + Request (application/json)
@@ -340,7 +366,11 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
         "test@sparkpost.com",
         "bigwig@test.com"
       ],
-        "webhook": "https://example.com/webhook",
-        "slack": "https://hooks.slack.com/services/T00/B00/XX"
+      "webhook": {
+        "target": "https://example.com/webhook"
+      },
+      "slack": {
+        "target": "https://hooks.slack.com/services/T00/B00/XX"
+      }
     }
   }
