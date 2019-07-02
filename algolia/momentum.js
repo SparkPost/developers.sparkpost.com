@@ -4,7 +4,7 @@ const slugify = require('../src/utils/api/slugify')
 module.exports = {
   indexName: `momentum`,
   query: `{
-    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum\/web-momo4/"}}) {
+    allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum\/(web-momo4|knowledgebase)/"}}) {
       edges {
         node {
           fields {

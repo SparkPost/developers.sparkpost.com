@@ -7,7 +7,8 @@ Please note that message details cannot show details for a message that is in th
 [https://support.messagesystems.com/docs/web-momo4/console_commands.message_details.php
 ]()
 
-```local mod = {};
+```
+local mod = {};
 require("msys.core");
 require('msys.extended.message');
   
@@ -41,4 +42,5 @@ function mod:init()
   jlog_mutex = thread.mutex()
   return true
 end
-msys.registerModule("write_jlog", mod);```
+msys.registerModule("write_jlog", mod);
+```
