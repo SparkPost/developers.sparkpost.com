@@ -7,14 +7,17 @@ label: New
 Alerts can be used to get notifications regarding various activities and metrics on your SparkPost account.
 
 ## Metrics
-At this time, the following metrics are supported:
+
+The following metrics are supported:
+
+
 
 * Real-Time
     + monthly_sending_limit
     + block_bounce_rate
     + hard_bounce_rate
     + soft_bounce_rate
-* Signals
+* Daily
     + health_score
 
 Each metric group has a specific set of filters and some other values allowed.
@@ -22,7 +25,7 @@ Each metric group has a specific set of filters and some other values allowed.
 * Real-Time
     + filters - filter_type can be 'sending_domain', 'sending_ip', or 'mailbox_provider'
     + threshold_evaluator - source must be 'raw'
-* Signals
+* Daily
     + filters - filter_type can be 'sending_domain', 'ip_pool', or 'mailbox_provider'. Only one filter type can be selected,
         though multiple values are allowed.
 
@@ -35,25 +38,8 @@ Each metric group has a specific set of filters and some other values allowed.
 Alerts can have a number of different notification channel types associated with them. At this time, the following channels are supported:
 
 * emails - Sends notifications via email to up to 10 email addresses.
-
-## Filter Object
-
-+ Data Structure: Attributes
-  + filter_type (enum) - Type of filter to apply to the alert.
-    + `"sending_domain", "mailbox_provider", "sending_ip", "ip_pool"`
-  + `filter_values` (array) - Set of all filter values associated with the given filter_type.
-
-+ Sample
-
-  ```
-  {
-    "filter_type": "sending_domain",
-    "filter_values": [
-      "sparkpost.com",
-      "test.com"
-    ]
-  }
-  ```
+* slack
+* webhook
 
 ## Alert Object
 
@@ -63,22 +49,29 @@ Alerts can have a number of different notification channel types associated with
     + subaccounts (array) - Subaccount filters applied to the alert.
     + any_subaccount (boolean) - Flag indicating all subaccounts should be evaluated for this alert.
     + metric (enum) - Metric that the alert is configured to track.
-        + `"monthly_sending_limit", "health_score"`
+        + `"monthly_sending_limit"`
+        + `"block_bounce_rate"`
+        + `"hard_bounce_rate"`
+        + `"soft_bounce_rate"`
+        + `"health_score"`
     + muted (boolean) - Flag indicating whether the alert should be ignored for evaluation/emission.
     + filters (array) - Filter objects to apply to the alert.
     + threshold_evaluator (object) - Evaluator object for an alert with a trigger threshold.
-      + operator (enum) - Operator for alert evaluation to use.
-        + `"gt", "lt"`
-      + source (enum) - Source of value to compare against.
-        + `"raw", "day_over_day", "week_over_week"`
-      + value (number) - Target value to compare against.
+        + operator (enum) - Operator for alert evaluation to use.
+            + `"gt"`
+            + `"lt"`
+        + source (enum) - Source of value to compare against.
+            + `"raw"`
+            + `"day_over_day"`
+            + `"week_over_week"`
+        + value (number) - Target value to compare against.
     + last_triggered (string) - ISO date when alert was last triggered
-  + channels (object) - Channels to send alert notifications through. At least one channel is required.
-      + emails (array) - Email addresses to send alert notifications to.
-      + webhook (object) - Webhook configuration to send alert notifications to.
-        + target (string) - Webhook url
-      + slack (object) - Slack configuration to send alert notifications to.
-        + target (string) - Slack url
+    + channels (object) - Channels to send alert notifications through. At least one channel is required.
+        + emails (array) - Email addresses to send alert notifications to.
+        + webhook (object) - Webhook configuration to send alert notifications to.
+            + target (string) - Webhook url
+        + slack (object) - Slack configuration to send alert notifications to.
+            + target (string) - Slack url
 
 + Sample
 
@@ -117,29 +110,59 @@ Alerts can have a number of different notification channel types associated with
   }
   ```
 
+
+## Filter Object
+
++ Data Structure: Attributes
+    + filter_type (enum) - Type of filter to apply to the alert.
+        + `"sending_domain"`
+        + `"mailbox_provider"`
+        + `"sending_ip"`
+        + `"ip_pool"`
+    + `filter_values` (array) - Set of all filter values associated with the given filter_type.
+
++ Sample
+
+  ```
+  {
+    "filter_type": "sending_domain",
+    "filter_values": [
+      "sparkpost.com",
+      "test.com"
+    ]
+  }
+  ```
+
 ### Create an Alert [POST /v1/alerts]
 Creates a new alert
 
 + Data Structure
-  + name (string, required) - Display name of the alert.
-  + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
-  + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
-  + metric (enum, required) - Metric that the alert is configured to track.
-      + `"monthly_sending_limit", "health_score"`
-  + muted (boolean, required) - Flag indicating whether the alert should be ignored.
-  + filters (array, required) - Filter objects to apply to the alert.
-  + threshold_evaluator (object, required) - Evaluator object for an alert with a trigger threshold.
-    + operator (enum, required) - Operator for alert evaluation to use.
-      + `"gt", "lt"`
-    + source (enum, required) - Source of value to compare against.
-      + `"raw", "day_over_day", "week_over_week"`
+    + name (string, required) - Display name of the alert.
+    + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
+    + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
+    + metric (enum, required) - Metric that the alert is configured to track.
+        + `"monthly_sending_limit"`
+        + `"block_bounce_rate"`
+        + `"hard_bounce_rate"`
+        + `"soft_bounce_rate"`
+        + `"health_score"`
+    + muted (boolean, required) - Flag indicating whether the alert should be ignored.
+    + filters (array, required) - Filter objects to apply to the alert.
+    + threshold_evaluator (object, required) - Evaluator object for an alert with a trigger threshold.
+        + operator (enum, required) - Operator for alert evaluation to use.
+            + `"gt"`
+            + `"lt"`
+        + source (enum, required) - Source of value to compare against.
+            + `"raw"`
+            + `"day_over_day"`
+            + `"week_over_week"`
     + value (number, required) - Target value to compare against.
-  + channels (object, required) - Channels to send alert notifications through. At least one channel is required.
-    + emails (array) - Email addresses to send alert notifications to.
-    + webhook (object) - Webhook configuration to send alert notifications to.
-      + target (string) - Webhook url
-    + slack (object) - Slack configuration to send alert notifications to.
-      + target (string) - Slack url
+    + channels (object, required) - Channels to send alert notifications through. At least one channel is required.
+        + emails (array) - Email addresses to send alert notifications to.
+        + webhook (object) - Webhook configuration to send alert notifications to.
+            + target (string) - Webhook url
+        + slack (object) - Slack configuration to send alert notifications to.
+            + target (string) - Slack url
 
 
 + Request (application/json)
@@ -221,6 +244,108 @@ Retrieve full information about a single alert.
     }
   }
 
+### Update an Alert [PUT /v1/alerts/{id}]
+Updates an existing alert by ID. All fields are optional, but if an updated value conflicts with an existing one an error will be thrown.
+
++ Data Structure
+    + name (string) - Display name of the alert.
+    + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
+    + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
+    + metric (enum) - Metric that the alert is configured to track.
+        + `"monthly_sending_limit"`
+        + `"block_bounce_rate"`
+        + `"hard_bounce_rate"`
+        + `"soft_bounce_rate"`
+        + `"health_score"`
+    + muted (boolean) - Flag indicating whether the alert should be ignored.
+    + filters (array) - Filter objects to apply to the alert.
+    + threshold_evaluator (object) - Evaluator object for an alert with a trigger threshold.
+        + operator (enum) - Operator for alert evaluation to use.
+            + `"gt"`
+            + `"lt"`
+        + source (enum) - Source of value to compare against.
+            + `"raw"`
+            + `"day_over_day"`
+            + `"week_over_week"`
+        + value (number) - Target value to compare against.
+    + channels (object) - Channels to send alert notifications through. At least one channel is required.
+        + emails (array) - Email addresses to send alert notifications to.
+        + webhook (object) - Webhook configuration to send alert notifications to.
+            + target (string) - Webhook url
+        + slack (object) - Slack configuration to send alert notifications to.
+            + target (string) - Slack url
+
+
++ Request (application/json)
+  + Body
+    {
+      "name": "Totally different name",
+      "subaccounts": [19],
+      "muted": true,
+      "filters": [
+        {
+          "filter_type": "mailbox_provider", 
+          "filter_values": ["gmail.com"]
+        }
+      ],
+      "threshold_evaluator": {
+        "value": 75
+      }
+    }
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  {
+    "name": "Totally different name",
+    "subaccounts": [19],
+    "any_subaccount": false,
+    "metric": "health_score",
+    "muted": true,
+    "filters": [
+      {
+        "filter_type": "mailbox_provider", 
+        "filter_values": ["gmail.com"]
+      }
+    ],
+    "threshold_evaluator": {
+      "operator": "gt",
+      "source": "raw",
+      "value": 75
+    },
+    "last_triggered": "2019-05-15T04:51:00.000Z",
+    "channels": {
+      "emails": [
+        "test@sparkpost.com",
+        "bigwig@test.com"
+      ],
+      "webhook": {
+        "target": "https://example.com/webhook"
+      },
+      "slack": {
+        "target": "https://hooks.slack.com/services/T00/B00/XX"
+      }
+    }
+  }
+
+
+
+### Delete an Alert [DELETE /v1/alerts/{id}]
+Delete a single alert.
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  {
+    "results": {
+      "id": 117
+    }
+  }
+
+
+
 ### Retrieve Alerts [GET /v1/alerts/]
 Retrieve full information about all of your alerts.
 
@@ -285,94 +410,3 @@ Retrieve full information about all of your alerts.
       } 
     }
   ]
-
-### Delete an Alert [DELETE /v1/alerts/{id}]
-Delete a single alert.
-
-+ Parameters
-    + id (required, number, `117`)
-
-+ Response 200 (application/json)
-  {
-    "results": {
-      "id": 117
-    }
-  }
-
-### Update an Alert [PUT /v1/alerts/{id}]
-Updates an existing alert by ID. All fields are optional, but if an updated value conflicts with an existing one an error will be thrown.
-
-+ Data Structure
-  + name (string) - Display name of the alert.
-  + subaccounts (array) - (Optional) Subaccount filters applied to the alert. This field must be set, or any_subaccount set to true.
-  + any_subaccount (boolean) - (Optional)  Flag indicating all subaccounts should be evaluated for this alert. If subaccount is not set, this must be true.
-  + metric (enum) - Metric that the alert is configured to track.
-      + `"monthly_sending_limit", "health_score"`
-  + muted (boolean) - Flag indicating whether the alert should be ignored.
-  + filters (array) - Filter objects to apply to the alert.
-  + threshold_evaluator (object) - Evaluator object for an alert with a trigger threshold.
-    + operator (enum) - Operator for alert evaluation to use.
-      + `"gt", "lt"`
-    + source (enum) - Source of value to compare against.
-      + `"raw", "day_over_day", "week_over_week"`
-    + value (number) - Target value to compare against.
-  + channels (object) - Channels to send alert notifications through. At least one channel is required.
-    + emails (array) - Email addresses to send alert notifications to.
-    + webhook (object) - Webhook configuration to send alert notifications to.
-      + target (string) - Webhook url
-    + slack (object) - Slack configuration to send alert notifications to.
-      + target (string) - Slack url
-
-
-+ Request (application/json)
-  + Body
-    {
-      "name": "Totally different name",
-      "subaccounts": [19],
-      "muted": true,
-      "filters": [
-        {
-          "filter_type": "mailbox_provider", 
-          "filter_values": ["gmail.com"]
-        }
-      ],
-      "threshold_evaluator": {
-        "value": 75
-      }
-    }
-
-+ Parameters
-    + id (required, number, `117`)
-
-+ Response 200 (application/json)
-  {
-    "name": "Totally different name",
-    "subaccounts": [19],
-    "any_subaccount": false,
-    "metric": "health_score",
-    "muted": true,
-    "filters": [
-      {
-        "filter_type": "mailbox_provider", 
-        "filter_values": ["gmail.com"]
-      }
-    ],
-    "threshold_evaluator": {
-      "operator": "gt",
-      "source": "raw",
-      "value": 75
-    },
-    "last_triggered": "2019-05-15T04:51:00.000Z",
-    "channels": {
-      "emails": [
-        "test@sparkpost.com",
-        "bigwig@test.com"
-      ],
-      "webhook": {
-        "target": "https://example.com/webhook"
-      },
-      "slack": {
-        "target": "https://hooks.slack.com/services/T00/B00/XX"
-      }
-    }
-  }
