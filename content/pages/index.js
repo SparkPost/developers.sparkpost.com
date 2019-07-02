@@ -382,7 +382,8 @@ const IndexPage = props => {
           </Row>
         </Container>
       </Section>
-      {'' /*<Section>
+      {
+        '' /*<Section>
         <Container>
           <h2 className="textCenter" style={{ marginBottom: `4rem` }}>
             Engineering Blog
@@ -402,7 +403,8 @@ const IndexPage = props => {
             ))}
           </Row>
         </Container>
-      </Section>*/}
+      </Section>*/
+      }
     </Layout>
   )
 }

@@ -35,11 +35,40 @@ Each metric group has a specific set of filters and some other values allowed.
   + any_subaccount - must be unset or set to false.
 
 ## Channels
-Alerts can have a number of different notification channel types associated with them. At this time, the following channels are supported:
+Alerts can have a one or more notification channels. The following channels are supported:
 
-* emails - Sends notifications via email to up to 10 email addresses.
-* slack
-* webhook
+* emails - Send email notifications up to 10 email addresses
+* slack - Send a slack message to a [slack incoming webhook](https://msys.slack.com/apps/A0F7XDUAZ-incoming-webhooks)
+* webhook - Sends a webhook payload to the given webhook target
+
+#### Webhook Payload
+
++ Data Structure: Attributes
+    + test (array)
++ Sample
+
+    ```
+    [
+      {
+        "alert_id": 1,
+        "incident_id": 1,
+        "name": "Health Score dropped",
+        "metric": "health_score",
+        "triggered_value": 40,
+        "triggered_at": "timestamp",
+        "evaluator": {
+          "operator": "lt",
+          "source": "raw",
+          "value": 50
+        },
+        "filters": {
+          "subaccount": 0,
+          "ip_pool": "default"
+        }
+      }
+    ]
+    ```
+
 
 ## Alert Object
 
@@ -69,44 +98,44 @@ Alerts can have a number of different notification channel types associated with
     + channels (object) - Channels to send alert notifications through. At least one channel is required.
         + emails (array) - Email addresses to send alert notifications to.
         + webhook (object) - Webhook configuration to send alert notifications to.
-            + target (string) - Webhook url
+            + target (string) - Webhook URL
         + slack (object) - Slack configuration to send alert notifications to.
-            + target (string) - Slack url
+            + target (string) - Slack inbound webhook URL
 
 + Sample
 
   ```
   {
-    "id": 117,
-    "name": "Alert Name Here",
-    "subaccounts": [0, 2],
-    "any_subaccount": false,
-    "metric": "health_score",
-    "muted": false,
-    "filters": [
-      {
-        "filter_type": "sending_domain", 
-        "filter_values": ["test.com"]
-      }
-    ],
-    "threshold_evaluator": {
-      "operator": "gt",
-      "source": "raw",
-      "value": 0
-    },
-    "last_triggered": "2019-06-01T14:48:00.000Z",
-    "channels": {
-        "emails": [
-            "test@sparkpost.com",
-            "bigwig@test.com"
+        "id": 117,
+        "name": "Alert Name Here",
+        "subaccounts": [0, 2],
+        "any_subaccount": false,
+        "metric": "health_score",
+        "muted": false,
+        "filters": [
+          {
+            "filter_type": "sending_domain", 
+            "filter_values": ["test.com"]
+          }
         ],
-        "webhook": {
-          "target": "https://example.com/webhook"
+        "threshold_evaluator": {
+          "operator": "gt",
+          "source": "raw",
+          "value": 0
         },
-        "slack": {
-          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        "last_triggered": "2019-06-01T14:48:00.000Z",
+        "channels": {
+            "emails": [
+                "test@sparkpost.com",
+                "bigwig@test.com"
+            ],
+            "webhook": {
+              "target": "https://example.com/webhook"
+            },
+            "slack": {
+              "target": "https://hooks.slack.com/services/T00/B00/XX"
+            }
         }
-    }
   }
   ```
 
@@ -160,50 +189,57 @@ Creates a new alert
     + channels (object, required) - Channels to send alert notifications through. At least one channel is required.
         + emails (array) - Email addresses to send alert notifications to.
         + webhook (object) - Webhook configuration to send alert notifications to.
-            + target (string) - Webhook url
+            + target (string) - Webhook URL
         + slack (object) - Slack configuration to send alert notifications to.
-            + target (string) - Slack url
+            + target (string) - Slack inbound webhook URL
 
 
 + Request (application/json)
   + Body
+  ```
   {
-    "name": "Alert Name Here",
-      "subaccounts": [1],
-      "any_subaccount": false,
-      "metric": "health_score",
-      "muted": false,
-      "filters": [
-        {
-          "filter_type": "sending_domain", 
-          "filter_values": ["test.com"]
+    "results": {
+        "name": "Alert Name Here",
+          "subaccounts": [1],
+          "any_subaccount": false,
+          "metric": "health_score",
+          "muted": false,
+          "filters": [
+            {
+              "filter_type": "sending_domain", 
+              "filter_values": ["test.com"]
+            }
+          ],
+          "threshold_evaluator": {
+            "operator": "gt",
+            "source": "raw",
+            "value": 0
+          },
+          "channels": {
+            "emails": [
+                "test@sparkpost.com",
+                "bigwig@test.com"
+            ],
+            "webhook": {
+              "target": "https://example.com/webhook"
+            },
+            "slack": {
+              "target": "https://hooks.slack.com/services/T00/B00/XX"
+            }
+          }
         }
-      ],
-      "threshold_evaluator": {
-        "operator": "gt",
-        "source": "raw",
-        "value": 0
-      },
-      "channels": {
-        "emails": [
-            "test@sparkpost.com",
-            "bigwig@test.com"
-        ],
-        "webhook": {
-          "target": "https://example.com/webhook"
-        },
-        "slack": {
-          "target": "https://hooks.slack.com/services/T00/B00/XX"
-        }
-      }
-  }
+    }
+    ```
 
 + Response 200 (application/json)
+  
+  ```
   {
     "results": {
       "id": 117,
     }
   }
+  ```
 
 ### Retrieve an Alert [GET /v1/alerts/{id}]
 Retrieve full information about a single alert.
@@ -212,37 +248,41 @@ Retrieve full information about a single alert.
     + id (required, number, `117`)
 
 + Response 200 (application/json)
-  {
-    "name": "Alert Name Here",
-    "subaccounts": [0],
-    "any_subaccount": false,
-    "metric": "health_score",
-    "muted": false,
-    "filters": [
-      {
-        "filter_type": "sending_domain", 
-        "filter_values": ["test.com"]
-      }
-    ],
-    "threshold_evaluator": {
-      "operator": "gt",
-      "source": "raw",
-      "value": 0
-    },
-    "last_triggered": "2019-06-01T14:48:00.000Z",
-    "channels": {
-      "emails": [
-        "test@sparkpost.com",
-        "bigwig@test.com"
-      ],
-      "webhook": {
-        "target": "https://example.com/webhook"
-      },
-      "slack": {
-        "target": "https://hooks.slack.com/services/T00/B00/XX"
-      }
-    }
+  ```
+  { 
+    "results": {
+        "name": "Alert Name Here",
+        "subaccounts": [0],
+        "any_subaccount": false,
+        "metric": "health_score",
+        "muted": false,
+        "filters": [
+          {
+            "filter_type": "sending_domain", 
+            "filter_values": ["test.com"]
+          }
+        ],
+        "threshold_evaluator": {
+          "operator": "gt",
+          "source": "raw",
+          "value": 0
+        },
+        "last_triggered": "2019-06-01T14:48:00.000Z",
+        "channels": {
+          "emails": [
+            "test@sparkpost.com",
+            "bigwig@test.com"
+          ],
+          "webhook": {
+            "target": "https://example.com/webhook"
+          },
+          "slack": {
+            "target": "https://hooks.slack.com/services/T00/B00/XX"
+          }
+        }
+      } 
   }
+  ```
 
 ### Update an Alert [PUT /v1/alerts/{id}]
 Updates an existing alert by ID. All fields are optional, but if an updated value conflicts with an existing one an error will be thrown.
@@ -271,13 +311,14 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
     + channels (object) - Channels to send alert notifications through. At least one channel is required.
         + emails (array) - Email addresses to send alert notifications to.
         + webhook (object) - Webhook configuration to send alert notifications to.
-            + target (string) - Webhook url
+            + target (string) - Webhook URL
         + slack (object) - Slack configuration to send alert notifications to.
-            + target (string) - Slack url
+            + target (string) - Slack inbound webhook URL
 
 
 + Request (application/json)
   + Body
+    ```
     {
       "name": "Totally different name",
       "subaccounts": [19],
@@ -292,42 +333,47 @@ Updates an existing alert by ID. All fields are optional, but if an updated valu
         "value": 75
       }
     }
+    ```
 
 + Parameters
     + id (required, number, `117`)
 
 + Response 200 (application/json)
+  ```
   {
-    "name": "Totally different name",
-    "subaccounts": [19],
-    "any_subaccount": false,
-    "metric": "health_score",
-    "muted": true,
-    "filters": [
-      {
-        "filter_type": "mailbox_provider", 
-        "filter_values": ["gmail.com"]
+    "results": {
+        "name": "Totally different name",
+        "subaccounts": [19],
+        "any_subaccount": false,
+        "metric": "health_score",
+        "muted": true,
+        "filters": [
+          {
+            "filter_type": "mailbox_provider", 
+            "filter_values": ["gmail.com"]
+          }
+        ],
+        "threshold_evaluator": {
+          "operator": "gt",
+          "source": "raw",
+          "value": 75
+        },
+        "last_triggered": "2019-05-15T04:51:00.000Z",
+        "channels": {
+          "emails": [
+            "test@sparkpost.com",
+            "bigwig@test.com"
+          ],
+          "webhook": {
+            "target": "https://example.com/webhook"
+          },
+          "slack": {
+            "target": "https://hooks.slack.com/services/T00/B00/XX"
+          }
+        }
       }
-    ],
-    "threshold_evaluator": {
-      "operator": "gt",
-      "source": "raw",
-      "value": 75
-    },
-    "last_triggered": "2019-05-15T04:51:00.000Z",
-    "channels": {
-      "emails": [
-        "test@sparkpost.com",
-        "bigwig@test.com"
-      ],
-      "webhook": {
-        "target": "https://example.com/webhook"
-      },
-      "slack": {
-        "target": "https://hooks.slack.com/services/T00/B00/XX"
-      }
-    }
   }
+  ```
 
 
 
@@ -338,11 +384,13 @@ Delete a single alert.
     + id (required, number, `117`)
 
 + Response 200 (application/json)
+  ```
   {
     "results": {
       "id": 117
     }
   }
+  ```
 
 
 
@@ -350,63 +398,67 @@ Delete a single alert.
 Retrieve full information about all of your alerts.
 
 + Response 200 (application/json)
-  [
-    {
-      "id": 117
-      "name": "Alert Name Here",
-      "subaccounts": [5],
-      "any_subaccount": false,
-      "metric": "health_score",
-      "muted": false,
-      "filters": [
+  ``` 
+  {
+    "results": [
         {
-          "filter_type": "sending_domain", 
-          "filter_values": ["test.com"]
-        }
-      ],
-      "threshold_evaluator": {
-        "operator": "gt",
-        "source": "raw",
-        "value": 0
-      },
-    "last_triggered": null,
-      "channels": {
-        "emails": [
-            "test@sparkpost.com",
-            "bigwig@test.com"
-        ],
-        "webhook": {
-          "target": "https://example.com/webhook"
+          "id": 117
+          "name": "Alert Name Here",
+          "subaccounts": [5],
+          "any_subaccount": false,
+          "metric": "health_score",
+          "muted": false,
+          "filters": [
+            {
+              "filter_type": "sending_domain", 
+              "filter_values": ["test.com"]
+            }
+          ],
+          "threshold_evaluator": {
+            "operator": "gt",
+            "source": "raw",
+            "value": 0
+          },
+        "last_triggered": null,
+          "channels": {
+            "emails": [
+                "test@sparkpost.com",
+                "bigwig@test.com"
+            ],
+            "webhook": {
+              "target": "https://example.com/webhook"
+            },
+            "slack": {
+              "target": "https://hooks.slack.com/services/T00/B00/XX"
+            }
+          }
         },
-        "slack": {
-          "target": "https://hooks.slack.com/services/T00/B00/XX"
+        {
+          "id": 343
+          "name": "Other Alert Name Here",
+          "subaccounts": [0],
+          "any_subaccount": false,
+          "metric": "monthly_sending_limit",
+          "muted": true,
+          "filters": [],
+          "threshold_evaluator": {
+            "operator": "gt",
+            "source": "raw",
+            "value": 90
+          },
+        "last_triggered": "2019-05-15T04:51:00.000Z",
+          "channels": {
+            "emails": [
+                "test@sparkpost.com"
+            ],
+            "webhook": {
+              "target": "https://example.com/webhook"
+            },
+            "slack": {
+              "target": "https://hooks.slack.com/services/T00/B00/XX"
+            }
+          } 
         }
-      }
-    },
-    {
-      "id": 343
-      "name": "Other Alert Name Here",
-      "subaccounts": [0],
-      "any_subaccount": false,
-      "metric": "monthly_sending_limit",
-      "muted": true,
-      "filters": [],
-      "threshold_evaluator": {
-        "operator": "gt",
-        "source": "raw",
-        "value": 90
-      },
-    "last_triggered": "2019-05-15T04:51:00.000Z",
-      "channels": {
-        "emails": [
-            "test@sparkpost.com"
-        ],
-        "webhook": {
-          "target": "https://example.com/webhook"
-        },
-        "slack": {
-          "target": "https://hooks.slack.com/services/T00/B00/XX"
-        }
-      } 
-    }
-  ]
+      ]
+  }
+  ```
