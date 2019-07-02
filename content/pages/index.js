@@ -382,27 +382,27 @@ const IndexPage = props => {
           </Row>
         </Container>
       </Section>
-{/*       <Section> */}
-{/*         <Container> */}
-{/*           <h2 className="textCenter" style={{ marginBottom: `4rem` }}> */}
-{/*             Engineering Blog */}
-{/*           </h2> */}
-{/*           <Row> */}
-{/*             {map(props, 'allWordpressPost', node => ( */}
-{/*               <Column md={4} xs={12} key={node.title}> */}
-{/*                 <Card */}
-{/*                   image={node.fields.media} */}
-{/*                   date={node.date} */}
-{/*                   author={node.author} */}
-{/*                   title={node.title} */}
-{/*                   description={node.excerpt} */}
-{/*                   link={node.link} */}
-{/*                 /> */}
-{/*               </Column> */}
-{/*             ))} */}
-{/*           </Row> */}
-{/*         </Container> */}
-{/*       </Section> */}
+      {'' /*<Section>
+        <Container>
+          <h2 className="textCenter" style={{ marginBottom: `4rem` }}>
+            Engineering Blog
+          </h2>
+          <Row>
+            {map(props, 'allWordpressPost', node => (
+              <Column md={4} xs={12} key={node.title}>
+                <Card
+                  image={node.fields.media}
+                  date={node.date}
+                  author={node.author}
+                  title={node.title}
+                  description={node.excerpt}
+                  link={node.link}
+                />
+              </Column>
+            ))}
+          </Row>
+        </Container>
+      </Section>*/}
     </Layout>
   )
 }
