@@ -1,6 +1,6 @@
 FORMAT: 1A
 title: Events
-description: Query detailed SparkPost event data for futher analysis and processing.
+description: Query detailed SparkPost event data for further analysis and processing.
 label: New
 
 # Group Events
@@ -192,7 +192,7 @@ Returns a list of message events that matched the filtered search.
                     "rcpt_type": "cc",
                     "recipient_domain": "example.com",
                     "routing_domain": "example.com",
-                    "sending_domain" "example.com",
+                    "sending_domain": "example.com",
                     "sending_ip": "127.0.0.1",
                     "subaccount_id": "101",
                     "subject": "Summer deals are here!",
@@ -204,6 +204,60 @@ Returns a list of message events that matched the filtered search.
                     "transmission_id": "65832150921904138",
                     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36"
                 }
+            ],
+            "total_count": 1,
+            "links": {}
+        }
+
+
+### Search for Ingest Events [GET /v1/events/ingest{?batch_ids,cursor,delimiter,error_types,events,event_ids,from,retryable,subaccounts,to}]
+
+Returns a list of ingest events that matched the filtered search.
+
++ Parameters
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `24 hours ago`
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM.
+        + Default: `1 minute ago`
+    + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
+        + Default: `initial`
+    + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
+        + Default: `1000`
+    + delimiter (string, optional) ... Specifies the delimiter for query parameter lists.
+        + Default: `,`
+    + events (string, optional) - Comma delimited list of event types to search.
+        + Default: `success,error`
+    + event_ids (string, optional) - Comma delimited list of event IDs to search.
+    + batch_ids (string, optional) - Comma delimited list of batch IDs to search.
+    + retryable (boolean, optional) - Filter ingest events by whether or not they are retryable.
+    + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
+
++ Request
+
+    + Headers
+
+        Accept: application/json
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response
+    
+        {
+            "results": [
+                  {
+                    "retryable": false,
+                    "number_succeeded": 440,
+                    "event_id": "1d1941e9-4987-1a6c-b124-2a4328585721",
+                    "number_failed": 460,
+                    "batch_id": "fbd59e4c-1629-4736-803d-201ff9fa8dd6",
+                    "expiration_timestamp": "2019-06-16T19:02:09.373Z",
+                    "error_type": "validation",
+                    "href": "https://api.sparkpost.com/ingest/number_failed/fbd59e4c-1629-4736-803d-201ff9fa8dd6",
+                    "type": "error",
+                    "customer_id": 8675308,
+                    "subaccount_id": 38,
+                    "number_duplicates": 20,
+                    "timestamp": "2019-06-06T19:02:09.373Z"
+                  }
             ],
             "total_count": 1,
             "links": {}
