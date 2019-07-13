@@ -11,7 +11,6 @@ Alerts can be used to get notifications regarding various activities and metrics
 The following metrics are supported:
 
 
-
 * Real-Time
     + monthly_sending_limit
     + block_bounce_rate
@@ -43,8 +42,16 @@ Alerts can have a one or more notification channels. The following channels are 
 
 #### Webhook Payload
 
+When an alert is configured with a webhook channel, it will post the following payload to the target URL. Each payload consists of an array with one or more of the following objects.
+
 + Data Structure: Attributes
-    + test (array)
+    + alert_id (number) - ID of the alert that fired
+    + incident_id (number) - ID of the incident that started
+    + name (string) - Name of the alert that fired
+    + metric (string) - Metric that was evaluated
+    + triggered_value (number) - Value that matched the conditions for the alert
+    + threshold_evaluator (object) - Evaluator object used to trigger the alert
+    + filters (object) - Set of filters that matched the conditions for the alert
 + Sample
 
     ```
@@ -56,7 +63,7 @@ Alerts can have a one or more notification channels. The following channels are 
         "metric": "health_score",
         "triggered_value": 40,
         "triggered_at": "2019-06-01T14:48:00.000Z",
-        "evaluator": {
+        "threshold_evaluator": {
           "operator": "lt",
           "source": "raw",
           "value": 50
