@@ -55,14 +55,14 @@ Alerts can have a one or more notification channels. The following channels are 
         "name": "Health Score dropped",
         "metric": "health_score",
         "triggered_value": 40,
-        "triggered_at": "timestamp",
+        "triggered_at": "2019-06-01T14:48:00.000Z",
         "evaluator": {
           "operator": "lt",
           "source": "raw",
           "value": 50
         },
         "filters": {
-          "subaccount": 0,
+          "subaccount_id": 0,
           "ip_pool": "default"
         }
       }
@@ -282,6 +282,34 @@ Retrieve full information about a single alert.
         }
       } 
   }
+  ```
+
+
+### Retrieve an Alert's incidents [GET /v1/alerts/{id}/incidents]
+
+Retrieve a list of incidents created for the given alert.
+
++ Parameters
+    + id (required, number, `117`)
+
++ Response 200 (application/json)
+  ```
+  {
+    "results": [
+        {
+            "id": 1,
+            "triggered_value": 40,
+            "first_fired": "2019-06-01T14:48:00.000Z",
+            "last_fired": "2019-06-03T09:12:00.000Z",
+            "status": "open",
+            "filters": {
+                "subaccount_id": 0,
+                "sending_ip": "1.2.3.4",
+                "mailbox_provider": "gmail"
+            }
+        }
+    ]
+}
   ```
 
 ### Update an Alert [PUT /v1/alerts/{id}]
