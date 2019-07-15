@@ -1,0 +1,37 @@
+FORMAT: 1A
+title: Engagement Recency
+description: Look up how recently an email address has engaged with your emails
+label: Labs
+
+# Group Engagement Recency
+
+Look up how recently an email address has engaged with your emails, from any given subaccount.
+
+## Lookup a single address [GET /v1/engagement-recency/{address}]
+
+
++ Data Structure: Headers
+    + `X-MSYS-SUBACCOUNT` (number) - ID of the subaccount to look for engagement from
+        + Default: 0
+
+Retrieve the latest engagement date for the given email address. If no subaccount ID is specified then it defaults to the master account.
+
+
++ Request
+
++ Parameters
+
+    + address (required, string, `address@example.com`)
+
++ Response 200 (application/json)
+
+    + Body
+
+            {  
+                "results": {  
+                  "days_since_engagement": 3,  
+                  "last_engagement": "2019-06-04"  
+                }  
+            }
+
++ Response 404 (application/json)

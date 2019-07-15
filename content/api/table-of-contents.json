@@ -19,6 +19,7 @@
       "snippets.apib",
       "recipient-lists.apib",
       "recipient-validation.apib",
+      "engagement-recency.apib",
       "suppression-list.apib",
       "sending-ips.apib",
       "ip-pools.apib"
