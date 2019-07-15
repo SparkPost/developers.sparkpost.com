@@ -205,37 +205,35 @@ Creates a new alert
   + Body
   ```
   {
-    "results": {
-        "name": "Alert Name Here",
-          "subaccounts": [1],
-          "any_subaccount": false,
-          "metric": "health_score",
-          "muted": false,
-          "filters": [
-            {
-              "filter_type": "sending_domain", 
-              "filter_values": ["test.com"]
-            }
-          ],
-          "threshold_evaluator": {
-            "operator": "gt",
-            "source": "raw",
-            "value": 0
-          },
-          "channels": {
-            "emails": [
-                "test@sparkpost.com",
-                "bigwig@test.com"
-            ],
-            "webhook": {
-              "target": "https://example.com/webhook"
-            },
-            "slack": {
-              "target": "https://hooks.slack.com/services/T00/B00/XX"
-            }
-          }
-        }
+    "name": "Alert Name Here",
+    "subaccounts": [1],
+    "any_subaccount": false,
+    "metric": "health_score",
+    "muted": false,
+    "filters": [
+      {
+        "filter_type": "sending_domain", 
+        "filter_values": ["test.com"]
+      }
+    ],
+    "threshold_evaluator": {
+      "operator": "gt",
+      "source": "raw",
+      "value": 0
+    },
+    "channels": {
+      "emails": [
+          "test@sparkpost.com",
+          "bigwig@test.com"
+      ],
+      "webhook": {
+         "target": "https://example.com/webhook"
+      },
+      "slack": {
+        "target": "https://hooks.slack.com/services/T00/B00/XX"
+      }
     }
+  }
     ```
 
 + Response 200 (application/json)
