@@ -97,7 +97,7 @@ Alerts can send notifications on one or more of the following channels:
 ## Filters
 Each alert metric supports a specific set of filters:
 
-| Metric                | Filters   | Filter Types                                          | Values    |
+| Metric                | Filters   | Types                                                 | Values    |
 |-----------------------|-----------|-------------------------------------------------------|-----------|
 | block_bounce_rate     | 1 or more | `sending_domain`, `sending_ip`, `mailbox_provider`    | 1 or more |
 | hard_bounce_rate      | 1 or more | `sending_domain`, `sending_ip`, `mailbox_provider`    | 1 or more |
@@ -105,7 +105,7 @@ Each alert metric supports a specific set of filters:
 | health_score          | Only 1    | `sending_domain`, `ip_pool`, `mailbox_provider`       | 1 or more |
 | monthly_sending_limit | none      | N/A                                                   | N/A       |
 
-
+When the `mailbox_provider` type is set, the filter accepts 1 or more of [these provider values](#header-mailbox-providers).
 
 ### Filter Object
 
@@ -322,7 +322,7 @@ Updates an existing alert. All fields are optional, but if an updated value conf
       "filters": [
         {
           "filter_type": "mailbox_provider",
-          "filter_values": ["gmail.com"]
+          "filter_values": ["gmail"]
         }
       ],
       "threshold_evaluator": {
@@ -346,7 +346,7 @@ Updates an existing alert. All fields are optional, but if an updated value conf
         "filters": [
           {
             "filter_type": "mailbox_provider",
-            "filter_values": ["gmail.com"]
+            "filter_values": ["gmail"]
           }
         ],
         "threshold_evaluator": {
@@ -495,3 +495,25 @@ When an alert is configured with a webhook channel, it will post a payload to th
       }
     ]
     ```
+
+## Mailbox Providers
+When filter_type is set to `mailbox_provider`, filter_values accepts the following provider values, each covering a list of provider domains.
+
+| mailbox_provider Value   | Domains covered |
+|--------------------------|-----------------|
+| apple                    | mac.com |
+| gmail                    | gmail.com, googlemail.com |
+| google_apps              | google.com |
+| microsoft                | hotmail.com |
+| verizon_media            | verizon.net aol.com, aim.com, yahoo.com |
+| yahoo_uk                 | yahoo.co.uk, yahoo.fr, yahoo.es, sky.com, yahoo.de, yahoo.it, yahoo.gr, yahoo.ie, yahoo.dk, yahoo.ro, yahoo.se, yahoo.no, yahoo.pl, yahoo.co.za, yahoo.be, yahoo.nl, yahoo.at, yahoo.fi, yahoo.hu, yahoo.bg, yahoo.cz, yahoo.com.hr, yahoo.com.ua, yahoo.pt, yahoo.sk, yahoo.ee, yahoo.lv |
+| us_broadband             | att.net, comcast.net, cox.net, charter.net, earthlink.net, optonline.net |
+| uk_providers             | btinternet.com, ntlworld.com, talktalk.net |
+| italian_providers        | libero.it, pec.libero.it, alice.it, virgilio.it, tin.it, fastwebnet.it |
+| russian_providers        | mail.ru, yandex.ru, bk.ru, list.ru, inbox.ru, rambler.ru, ya.ru |
+| french_providers         | orange.fr, free.fr, sfr.fr, laposte.net, neuf.fr, bbox.fr |
+| chinese_providers        | qq.com, vip.qq.com, 163.com, vip.163.com, 126.com, vip.126.com, easystack.cn, sina.com |
+| german_providers         | t-online.de, gmx.de, web.de, freenet.de, gmx.net, arcor.de, online.de |
+| canadian_providers       | shaw.ca, rogers.com, telus.net, sympatico.ca, videotron.ca, sasktel.net, cogeco.ca, bell.net |
+| japanese_providers       | ezweb.ne.jp, yahoo.co.jp, i.softbank.jp, docomo.ne.jp, nifty.com |
+| other_european_providers | seznam.cz, wp.pl, onet.pl, telenet.be, skynet.net, bluewin.ch, ukr.net, ziggo.nl, gmx.at, home.nl, centrum.cz, planet.nl, gmx.ch, hetnet.nl, abv.bg |
