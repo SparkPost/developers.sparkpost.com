@@ -38,7 +38,7 @@ Alerts can send notifications on one or more of the following channels:
         + `"hard_bounce_rate"`
         + `"soft_bounce_rate"`
         + `"health_score"`
-    + muted (boolean) - Whether the alert should notify. Muted alerts still create incidents.
+    + muted (boolean) - Whether the alert should notify. Muted alerts still trigger.
     + filters (array) - [Filter objects](#header-filter-object) applied to the alert.
     + threshold_evaluator (object) - The alert's trigger threshold. The source is compaired against the value using the operator.
         + operator (enum) - Operator for alert evaluation to use. `gt` stands for "greater than", `lt` stands for "less than".
@@ -49,7 +49,7 @@ Alerts can send notifications on one or more of the following channels:
             + `"day_over_day"`
             + `"week_over_week"`
         + value (number) - Threshold value to compare source against.
-    + last_triggered (string) - ISO date when alert was last triggered,
+    + last_triggered (string) - ISO date when alert was last triggered.
     + channels (object) - Channels the alert sends notifications through.
         + emails (array) - Email addresses to send alert notifications to.
         + webhook (object) - Webhook configuration to send alert notifications to.
@@ -97,13 +97,13 @@ Alerts can send notifications on one or more of the following channels:
 ## Filters
 Each alert metric supports a specific set of filters:
 
-| Metric                | Filters   | Types                                                 | Values    |
-|-----------------------|-----------|-------------------------------------------------------|-----------|
-| block_bounce_rate     | 1 or more | `sending_domain`, `sending_ip`, `mailbox_provider`    | 1 or more |
-| hard_bounce_rate      | 1 or more | `sending_domain`, `sending_ip`, `mailbox_provider`    | 1 or more |
-| soft_bounce_rate      | 1 or more | `sending_domain`, 'sending_ip', `mailbox_provider`    | 1 or more |
-| health_score          | Only 1    | `sending_domain`, `ip_pool`, `mailbox_provider`       | 1 or more |
-| monthly_sending_limit | none      | N/A                                                   | N/A       |
+| Metric                | Filters   | Types                                        | Values    |
+|-----------------------|-----------|----------------------------------------------|-----------|
+| block_bounce_rate     | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
+| hard_bounce_rate      | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
+| soft_bounce_rate      | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
+| health_score          | Only 1    | sending_domain, ip_pool, mailbox_provider    | 1 or more |
+| monthly_sending_limit | none      | N/A                                          | N/A       |
 
 When the `mailbox_provider` type is set, the filter accepts 1 or more of [these provider values](#header-mailbox-providers).
 
@@ -143,7 +143,7 @@ Creates a new alert
         + `"hard_bounce_rate"`
         + `"soft_bounce_rate"`
         + `"health_score"`
-    + muted (boolean, required) - Whether the alert should notify. Muted alerts still create incidents.
+    + muted (boolean, required) - Whether the alert should notify. Muted alerts still trigger.
     + filters (array, required) - [Filter objects](#header-filter-object) to apply to the alert.
     + threshold_evaluator (object, required) - Defines the alert's trigger threshold. The source will be compaired against the value using the operator.
         + operator (enum, required) - Operator for alert evaluation to use. `gt` stands for "greater than", `lt` stands for "less than".
@@ -208,8 +208,6 @@ Creates a new alert
   ```
 
 ### Retrieve an Alert [GET /v1/alerts/{id}]
-
-Retrieve full information about a single alert.
 
 + Parameters
     + id (required, number, `117`)
@@ -293,7 +291,7 @@ Updates an existing alert. All fields are optional, but if an updated value conf
         + `"hard_bounce_rate"`
         + `"soft_bounce_rate"`
         + `"health_score"`
-    + muted (boolean) - Whether the alert should notify. Muted alerts still create incidents.
+    + muted (boolean) - Whether the alert should notify. Muted alerts still trigger.
     + filters (array) - [Filter objects](#header-filter-object) to apply to the alert.
     + threshold_evaluator (object, required) - Defines the alert's trigger threshold. The source will be compaired against the value using the operator.
         + operator (enum) - Operator for alert evaluation to use. `gt` stands for "greater than", `lt` stands for "less than".
