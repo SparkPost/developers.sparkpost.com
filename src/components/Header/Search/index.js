@@ -100,7 +100,7 @@ const Hit = styled(
 )`
   display: block;
   padding: 0.5rem 1rem;
-  font-size: .833333333rem;
+  font-size: .888888889rem;
   font-weight: ${weight('medium')};
   cursor: pointer;
 
@@ -111,7 +111,7 @@ const Hit = styled(
 `
 
 const Category = styled.div`
-  font-size: 0.722222222rem;
+  font-size: 0.833333333rem;
   margin-top: 0.15rem;
   font-weight: ${weight('normal')};
 `

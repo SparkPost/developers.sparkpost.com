@@ -9,7 +9,7 @@ import dataStructureToJson from 'utils/api/dataStructureToJson'
 const AttributesTitle = styled.h4`
   && {
     ${uppercase} font-weight: ${weight('medium')};
-    font-size: 0.75rem;
+    font-size: 0.833333333rem;
     color: ${grayscale(4)};
     margin: 2rem 0 0.5rem;
   }
@@ -153,7 +153,7 @@ const AttributeWrapper = styled.div`
   }
 
   p {
-    font-size: 0.833333333rem;
+    font-size: 0.888888889rem;
   }
 
   p:last-child {
@@ -163,7 +163,7 @@ const AttributeWrapper = styled.div`
 
 const Property = styled.span`
   display: inline-block;
-  font-size: 0.777777778rem;
+  font-size: 0.833333333rem;
   font-weight: ${weight('medium')};
   color: ${grayscale(4)};
 
@@ -174,7 +174,7 @@ const Property = styled.span`
 
 const Name = styled.span`
   display: inline-block;
-  font-size: 0.888888889rem;
+  font-size: 1rem;
   margin-right: 0.333333333rem;
   font-weight: ${weight('medium')};
   color: ${grayscale('medium')};

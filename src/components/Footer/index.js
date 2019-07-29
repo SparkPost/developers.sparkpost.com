@@ -26,7 +26,7 @@ const CopyRight = styled.div`
   background: ${grayscale('medium')};
   color: ${grayscale(6)};
   text-align: center;
-  font-size: 0.722222222rem;
+  font-size: 0.833333333rem;
   padding: 0.5rem;
   font-weight: ${weight('normal')};
 `
@@ -34,7 +34,7 @@ const CopyRight = styled.div`
 const Header = styled.h5`
   ${props => (props.uppercase ? uppercase : '')} font-weight: 600;
   margin-top: 1.333333333rem;
-  font-size: 0.777777778rem;
+  font-size: 0.833333333rem;
 `
 
 const List = styled.ul`
@@ -49,7 +49,7 @@ const Item = styled(props => (
   </li>
 ))`
   line-height: 1.5;
-  font-size: 0.777777778rem;
+  font-size: 0.833333333rem;
   color: inherit;
   font-weight: ${weight('normal')};
 `

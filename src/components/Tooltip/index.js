@@ -55,7 +55,7 @@ const Content = styled.div`
 
   word-break: normal;
   text-align: left;
-  font-size: 0.777777778rem;
+  font-size: 0.888888889rem;
   font-weight: 400;
   line-height: 1.166666667rem;
 `
