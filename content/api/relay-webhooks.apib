@@ -151,7 +151,7 @@ Create a relay webhook by providing a relay webhooks object as the POST request 
 
 + Data Structure
     + name (string) - Relay webhook name
-    + target: (string, required) - URL of the target to which to POST relay batches
+    + target: (string, required) - URL of the target to which to POST relay batches. Only ports 80 for http and 443 for https can be set.
     + auth_type: none, oauth2 (enum) - Type of authentication to be used during POST requests to target.
         + Default: none
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2 and only grant_type of credentials is supported.
@@ -354,7 +354,7 @@ Update a relay webhook by specifying the webhook ID in the URI path.
 
 + Data Structure
     + name (string) - Relay webhook name
-    + target (string) - URL of the target to which to POST relay batches
+    + target (string) - URL of the target to which to POST relay batches. Only ports 80 for http and 443 for https can be set.
     + auth_token (string) - Authentication token to present in the `X-MessageSystems-Webhook-Token` header of POST requests to target.
     + auth_type: none, oauth2 (enum)
         Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
