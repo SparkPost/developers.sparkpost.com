@@ -28,7 +28,7 @@ const SearchInput = styled.input`
   border: 1px solid ${grayscale(7)};
   border-radius: 2px;
   font: inherit;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   padding: 0.45rem 0.5rem;
   outline: 0;
   transition: 0.2s;

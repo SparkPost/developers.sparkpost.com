@@ -80,11 +80,11 @@ injectGlobal`
   }
 
   h5 {
-    font-size: .888888889rem;
+    font-size: .95rem;
   }
 
   h6 {
-    font-size: .833333333rem;
+    font-size: .9rem;
   }
 
   p, td, tr, li {

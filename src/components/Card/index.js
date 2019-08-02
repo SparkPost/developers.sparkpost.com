@@ -45,7 +45,7 @@ const Author = styled(Link)`
 
 const ReadMore = styled(Link)`
   font-weight: ${weight('normal')};
-  font-size: 0.888888889rem;
+  font-size: 0.95rem;
 
   i {
     padding-left: 0.5rem;

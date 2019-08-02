@@ -9,7 +9,7 @@ import dataStructureToJson from 'utils/api/dataStructureToJson'
 const AttributesTitle = styled.h4`
   && {
     ${uppercase} font-weight: ${weight('medium')};
-    font-size: 0.833333333rem;
+    font-size: 0.9rem;
     color: ${grayscale(4)};
     margin: 2rem 0 0.5rem;
   }
@@ -32,7 +32,7 @@ const Enums = styled.p`
 
 const EnumTitle = styled.b`
   color: ${grayscale(4)};
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   font-weight: ${weight('medium')};
 `
 
@@ -153,7 +153,7 @@ const AttributeWrapper = styled.div`
   }
 
   p {
-    font-size: 0.888888889rem;
+    font-size: 0.95rem;
   }
 
   p:last-child {
@@ -163,7 +163,7 @@ const AttributeWrapper = styled.div`
 
 const Property = styled.span`
   display: inline-block;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   font-weight: ${weight('medium')};
   color: ${grayscale(4)};
 
@@ -243,7 +243,7 @@ const ChildrenToggle = styled.button`
   background: transparent;
   font: inherit;
   font-weight: ${weight('medium')};
-  font-size: 0.777777778rem;
+  font-size: 0.85rem;
   padding: 0.5rem 1rem;
   width: 100%;
   display: block;

@@ -18,7 +18,7 @@ const Category = styled.div`
 `
 
 const CategoryTitle = styled.div`
-  ${uppercase} font-size: .75rem;
+  ${uppercase} font-size: 0.8rem;
   margin: 1rem 0;
   color: ${grayscale(4)};
   font-weight: ${weight('medium')};
@@ -34,7 +34,7 @@ const Children = styled.ul`
   padding-left: 0.75rem;
 
   a {
-    font-size: 0.888888889rem;
+    font-size: 0.95rem;
     color: ${grayscale(4)};
   }
 `
@@ -59,7 +59,7 @@ const Label = styled(props => <span {...props} />)`
   border: 1px solid;
   border-radius: 2px;
   text-transform: uppercase;
-  font-size: 0.888888889rem;
+  font-size: 0.95rem;
   line-height: 1rem;
   vertical-align: text-top;
   padding: 0rem 0.25rem;

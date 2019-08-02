@@ -33,7 +33,7 @@ Link.Unstyled = styled(Link)`
 Link.Action = styled(Link.Unstyled)`
   background: transparent;
   border: 0;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   padding: 0.3rem 0.66667rem;
   color: ${color('orange')};
   font-weight: ${weight('medium')};

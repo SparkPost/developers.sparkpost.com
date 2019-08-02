@@ -19,7 +19,7 @@ const Wrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   padding: 1rem 1rem;
   white-space: nowrap;
 

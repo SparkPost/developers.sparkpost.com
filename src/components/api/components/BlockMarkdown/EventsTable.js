@@ -25,7 +25,7 @@ const Select = styled.select`
   background: ${grayscale('white')};
   color: ${grayscale(1)};
   font-weight: 400;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   line-height: 1.333333333rem;
   box-shadow: ${shadow('base')};
   transition: border 0.15s;
@@ -45,7 +45,7 @@ const SelectCarot = styled.span.attrs({ className: 'fa fa-caret-down' })`
   right: 0.5rem;
   top: 0.65rem;
   color: ${grayscale(4)};
-  font-size: 0.666666667rem;
+  font-size: 0.75rem;
 `
 
 const TableWrapper = styled.div.attrs({ className: 'block' })`
@@ -64,7 +64,7 @@ const EventsHeading = styled.h4.attrs({ children: 'Events' })`
   && {
     ${uppercase}
     font-weight: ${weight('medium')};
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: ${grayscale(4)};
     margin: 2rem 0 0.5rem;
     padding-bottom: 0.5rem;
@@ -84,7 +84,7 @@ const Event = styled(({ active, ...props }) => <button {...props} />)`
   width: 100%;
   padding: 0.4rem 0.333333333rem;
   border-radius: 2px;
-  font-size: .833333333rem;
+  font-size: .9rem;
   font-weight: ${weight('medium')};
   color: inherit;
   text-align: left;
@@ -113,7 +113,7 @@ const TableDataStructure = styled(DataStructure)`
 const DescriptionHeading = styled(HttpHeading)`
   ${uppercase}
   font-weight: ${weight('medium')};
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: ${grayscale(7)};
   border-bottom: 1px solid ${grayscale(1)};
   margin: 1rem 0 0.5rem;

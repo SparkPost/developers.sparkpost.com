@@ -4,7 +4,7 @@ import { weight } from 'utils/fonts'
 
 // prettier-ignore
 export default styled.h4`
-  font-size: 0.888888889rem;
+  font-size: 0.95rem;
   font-weight: ${weight('medium')};
   margin: 0;
 

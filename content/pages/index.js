@@ -163,7 +163,7 @@ const TopSection = styled(Section)`
 `
 
 const Resources = styled(props => <h3 {...props}>Resources</h3>)`
-  ${uppercase} font-size: .833333333rem;
+  ${uppercase} font-size: .9rem;
   font-weight: ${weight('bold')};
   color: ${grayscale(3)};
   margin-bottom: 1.75rem;

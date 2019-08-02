@@ -30,7 +30,7 @@ const Content = styled.div`
   margin-right: -4px;
   padding: 0.666666667rem 1rem;
   min-width: 11.111111111rem;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   line-height: 1.65em;
   font-weight: ${weight('medium')};
 
@@ -73,7 +73,7 @@ const Dismiss = styled(Link)`
   cursor: pointer;
 
   color: ${grayscale(10)};
-  font-size: 0.777777778rem;
+  font-size: 0.85rem;
 
   &:hover {
     ${DismissIcon} {
