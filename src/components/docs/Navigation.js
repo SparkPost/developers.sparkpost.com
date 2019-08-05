@@ -59,7 +59,7 @@ const Label = styled(props => <span {...props} />)`
   border: 1px solid;
   border-radius: 2px;
   text-transform: uppercase;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   vertical-align: text-top;
   padding: 0rem 0.25rem;
