@@ -1,9 +1,10 @@
+import tokens from '@sparkpost/design-tokens'
 /*
  * SparkPost Fonts ⌨
  */
 const fontMap = {
-  primary: `'Gotham Narrow SSm A', 'Gotham Narrow SSm B', 'Gotham Narrow', 'Helvetica', sans-serif`,
-  secondary: `'Gotham SSm A', 'Gotham SSm B', 'Gotham', 'Helvetica', sans-serif`,
+  primary: tokens.fontFamilyBase,
+  secondary: tokens.fontFamilyBase,
   monospace: 'Source Code Pro, monospace',
 }
 
@@ -11,7 +12,7 @@ const fontMap = {
  * SparkPost Font weights ⚖
  */
 const weightMap = {
-  light: 300,
+  light: 400,
   normal: 400,
   medium: 500,
   bold: 600,
@@ -45,7 +46,7 @@ const uppercase = `
 
 const monospace = `
   font-family: ${font('monospace')};
-  font-size: 85%;
+  font-size: 75%;
   font-weight: 400;
 `
 

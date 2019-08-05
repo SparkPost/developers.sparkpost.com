@@ -63,7 +63,7 @@ const SectionTitle = styled(({ indexName, ...props }) => (
     margin: 0;
     padding: 0.35rem 0.5rem;
     color: ${grayscale(4)};
-    font-size: 0.777777778rem;
+    font-size: 0.85rem;
     display: block;
     border-top: 1px solid ${grayscale(9)};
     border-bottom: 1px solid ${grayscale(9)};
@@ -100,7 +100,7 @@ const Hit = styled(
 )`
   display: block;
   padding: 0.5rem 1rem;
-  font-size: .833333333rem;
+  font-size: .95rem;
   font-weight: ${weight('medium')};
   cursor: pointer;
 
@@ -111,7 +111,7 @@ const Hit = styled(
 `
 
 const Category = styled.div`
-  font-size: 0.722222222rem;
+  font-size: 0.9rem;
   margin-top: 0.15rem;
   font-weight: ${weight('normal')};
 `

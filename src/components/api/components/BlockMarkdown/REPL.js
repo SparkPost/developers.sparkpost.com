@@ -122,7 +122,7 @@ const Triggers = styled.div`
 
 // prettier-ignore
 const Trigger = styled(({ isActive, ...props }) => <div {...props}/>)`
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   font-weight: ${weight('medium')};
   border-radius: 2px;
   padding: 0.25rem 0.5rem;

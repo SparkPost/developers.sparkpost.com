@@ -59,7 +59,7 @@ const Developers = styled(props => (
 ))`
   font-weight: ${weight('bold')};
   color: ${color('orange')};
-  font-size: 0.888888889rem;
+  font-size: 0.95rem;
   top: -2px;
 `
 

@@ -50,7 +50,7 @@ const Tab = styled.button`
   padding: 0.65rem 0;
   margin: 0 0.5rem;
   color: ${grayscale(4)};
-  font-size: 0.777777778rem;
+  font-size: 0.85rem;
   font-weight: ${weight('medium')};
   outline: 0;
   bottom: -1px;

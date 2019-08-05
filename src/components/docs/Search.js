@@ -9,7 +9,7 @@ const SearchInput = styled.input`
   border: 1px solid ${grayscale(7)};
   border-radius: 2px;
   font: inherit;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   padding: 0.45rem 0.5rem;
   width: 100%;
   outline: 0;
@@ -42,7 +42,7 @@ const SearchResult = styled(
 )`
   display: block;
   padding: 0.5rem .75rem;
-  font-size: 0.833333333rem;
+  font-size: 0.95rem;
   font-weight: ${weight('medium')};
   cursor: pointer;
   white-space: nowrap;
@@ -56,7 +56,7 @@ const SearchResult = styled(
 `
 
 const Category = styled.div`
-  font-size: 0.722222222rem;
+  font-size: 0.9rem;
   margin-top: 0.15rem;
   font-weight: ${weight('normal')};
 `

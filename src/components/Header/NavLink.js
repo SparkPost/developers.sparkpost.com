@@ -17,6 +17,7 @@ const NavLink = styled(({ active, className, ...props }) => (
   a {
     display: inherit;
     font-weight: inherit;
+    font-size: 0.95rem;
     padding: .5rem 1rem;
     color: ${grayscale(4)};
     text-decoration: none;

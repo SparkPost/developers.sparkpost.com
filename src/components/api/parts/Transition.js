@@ -26,7 +26,7 @@ const HrefWrapper = styled.div`
   border-top: 1px solid ${grayscale(8)};
   border-bottom: 1px solid ${grayscale(8)};
   padding: 0.5rem 0;
-  font-size: 0.833333333rem;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
   word-wrap: break-word;
 `
