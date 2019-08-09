@@ -107,8 +107,8 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
   })
 
   // Create message event nodes
-  const { data: { results: messageEventsDocumentation } } = await sparkpost.request('https://api.sparkpost.com/api/v1/events/message/documentation')
-  const { data: { results: messageEventsSamples } } = await sparkpost.request('https://api.sparkpost.com/api/v1/events/message/samples')
+  const { data: { results: messageEventsDocumentation } } = await sparkpost.request({ uri: 'https://api.sparkpost.com/api/v1/events/message/documentation'})
+  const { data: { results: messageEventsSamples } } = await sparkpost.request({ uri: 'https://api.sparkpost.com/api/v1/events/message/samples'})
 
 
   messageEventsDocumentation.forEach((attributes, i) => {
