@@ -4,26 +4,24 @@ description: Configure real-time alerts for your SparkPost account.
 label: New
 
 # Group Alerts
-Alerts can be used to get notifications regarding various activities and metrics on your SparkPost account.
+Alerts can be used to get notifications regarding various metrics on your account.
 To find out more about how Alerts work, check out the [user guide](https://sparkpost.com/docs/user-guide/alerts).
 
 ## Metrics
-The can set your alerts to track any of the following metrics:
+Alerts can track any of the following metrics:
 
-* Real-time
-    + Monthly Sending Limit
-    + Block Bounce Rate
-    + Hard Bounce Rate
-    + Soft Bounce Rate
-* Daily
-    + Health Score
+* Block Bounce Rate
+* Hard Bounce Rate
+* Soft Bounce Rate
+* Health Score
+* Monthly Sending Limit
 
 ## Channels
-Alerts can send notifications on one or more of the following channels:
+Alerts can send notifications the the following channels:
 
-* Email - Send email notifications up to 10 email addresses.
-* Slack - Send a slack message to a [slack incoming webhook](https://api.slack.com/incoming-webhooks#create_a_webhook).
-* Webhook - Sends a [webhook payload](#header-webhook-payload) to the given target URL.
+* Email
+* [Slack incoming webhook](https://api.slack.com/incoming-webhooks#create_a_webhook)
+* [Webhook payload](#header-webhook-payload)
 
 
 ## Alert Object
@@ -96,15 +94,15 @@ Alerts can send notifications on one or more of the following channels:
   ```
 
 ## Filters
-Each alert metric supports a specific set of filters:
+Alerts can have up to 15 filters. Each alert metric supports a specific set of filters:
 
-| Metric                | Filters   | Types                                        | Values    |
-|-----------------------|-----------|----------------------------------------------|-----------|
-| block_bounce_rate     | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
-| hard_bounce_rate      | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
-| soft_bounce_rate      | 1 or more | sending_domain, sending_ip, mailbox_provider | 1 or more |
-| health_score          | Only 1    | sending_domain, ip_pool, mailbox_provider    | 1 or more |
-| monthly_sending_limit | none      | N/A                                          | N/A       |
+| Metric                | Types                                        |
+|-----------------------|----------------------------------------------|
+| block_bounce_rate     | sending_domain, sending_ip, mailbox_provider |
+| hard_bounce_rate      | sending_domain, sending_ip, mailbox_provider |
+| soft_bounce_rate      | sending_domain, sending_ip, mailbox_provider |
+| health_score          | sending_domain, ip_pool, mailbox_provider    |
+| monthly_sending_limit | N/A                                          |
 
 When the `mailbox_provider` type is set, the filter accepts 1 or more of [these provider values](#header-mailbox-providers).
 
@@ -116,7 +114,7 @@ When the `mailbox_provider` type is set, the filter accepts 1 or more of [these 
         + `"mailbox_provider"`
         + `"sending_ip"`
         + `"ip_pool"`
-    + filter_values (array) - Set of all filter values associated with the given filter_type.
+    + filter_values (array) - Filter values to track for the given filter_type.
 
 + Sample
 
@@ -136,21 +134,21 @@ Creates a new alert
 
 + Data Structure
     + name (string, required) - Display name of the alert.
-    + subaccounts (array) - Subaccounts for the alert to track. Set to `[-1]` to track the master account and all subaccounts. If this field isn't set, any_subaccount must set to `true`.
-    + any_subaccount (boolean) - Whether to track all subaccounts, except the master account. If subaccounts is not set, this must be set to `true`.
-    + metric (enum, required) - Metric that the alert is configured to track.
+    + subaccounts (array) - Subaccounts for the alert to track. Set to `[-1]` to track entire account.
+    + any_subaccount (boolean) - Whether to track all subaccounts, except the master account.
+    + metric (enum, required) - Metric for the alert to track.
         + `"monthly_sending_limit"`
         + `"block_bounce_rate"`
         + `"hard_bounce_rate"`
         + `"soft_bounce_rate"`
         + `"health_score"`
     + muted (boolean, required) - Whether the alert should notify. Muted alerts still trigger.
-    + filters (array, required) - [Filter objects](#header-filter-object) to apply to the alert.
-    + threshold_evaluator (object, required) - Defines the alert's trigger threshold. The source will be compaired against the value using the operator.
+    + filters (array, required) - [Filters](#header-filter-object) to apply to the alert. Each alert can have up to 15 filters.
+    + threshold_evaluator (object, required) - The alert's trigger threshold. The source will be compaired against the value using the operator.
         + operator (enum, required) - Operator for alert evaluation to use. `gt` stands for "greater than", `lt` stands for "less than".
             + `"gt"`
             + `"lt"`
-        + source (enum, required) - Source of metric value to compare against threshold value. Real-time metrics require `raw`.
+        + source (enum, required) - Source of metric value to compare against threshold value.
             + `"raw"`
             + `"day_over_day"`
             + `"week_over_week"`
@@ -284,21 +282,21 @@ Updates an existing alert. All fields are optional, but if an updated value conf
 
 + Data Structure
     + name (string) - Display name of the alert.
-    + subaccounts (array) - Subaccount filters applied to the alert. Set to `[-1]` to track the master account and all subaccounts. This field must be set, or any_subaccount set to true.
-    + any_subaccount (boolean) - Whether to track all subaccounts except the master account. If subaccounts is not set, this must be set to `true`.
-    + metric (enum) - Metric that the alert is configured to track.
+    + subaccounts (array) - Subaccount filters applied to the alert. Set to `[-1]` to track entire account.
+    + any_subaccount (boolean) - Whether to track all subaccounts, except the master account.
+    + metric (enum) - Metric for the alert to track.
         + `"monthly_sending_limit"`
         + `"block_bounce_rate"`
         + `"hard_bounce_rate"`
         + `"soft_bounce_rate"`
         + `"health_score"`
     + muted (boolean) - Whether the alert should notify. Muted alerts still trigger.
-    + filters (array) - [Filter objects](#header-filter-object) to apply to the alert.
+    + filters (array) - [Filters](#header-filter-object) to apply to the alert. Each alert can have up to 15 filters.
     + threshold_evaluator (object, required) - Defines the alert's trigger threshold. The source will be compaired against the value using the operator.
         + operator (enum) - Operator for alert evaluation to use. `gt` stands for "greater than", `lt` stands for "less than".
             + `"gt"`
             + `"lt"`
-        + source (enum) - Source of metric value to compare against threshold value. Real-time metrics require `raw`.
+        + source (enum) - Source of metric value to compare against threshold value.
             + `"raw"`
             + `"day_over_day"`
             + `"week_over_week"`
