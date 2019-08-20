@@ -4,6 +4,8 @@
 
 const crypto = require('crypto')
 const axios = require('axios')
+const SparkPost = require('sparkpost')
+const sparkpost = new SparkPost()
 const { GraphQLJSON } = require('gatsby/graphql')
 const map = require('lodash.map')
 const mapValues = require('lodash.mapvalues')
@@ -16,8 +18,10 @@ const addPeriod = (str) => {
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
 
-  const { data: { results: webhookDocumentation } } = await axios.get('https://api.sparkpost.com/api/v1/webhooks/events/documentation')
-  const { data: { results: webhookSamples } } = await axios.get('https://api.sparkpost.com/api/v1/webhooks/events/samples')
+  const { results: webhookDocumentation } = await sparkpost.get({ uri: '/api/v1/webhooks/events/documentation' })
+  const { results: webhookSamples } = await sparkpost.get({ uri: '/api/v1/webhooks/events/samples' })
+
+
   let eventDescriptions = {}
 
   // Create webhook event nodes
@@ -105,8 +109,8 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
   })
 
   // Create message event nodes
-  const { data: { results: messageEventsDocumentation } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/documentation')
-  const { data: { results: messageEventsSamples } } = await axios.get('https://api.sparkpost.com/api/v1/message-events/events/samples')
+  const { results: messageEventsDocumentation } = await sparkpost.get({ uri: '/api/v1/events/message/documentation' })
+  const { results: messageEventsSamples } = await sparkpost.get({ uri: '/api/v1/events/message/samples' })
 
   messageEventsDocumentation.forEach((attributes, i) => {
     const name = attributes.type.sampleValue
