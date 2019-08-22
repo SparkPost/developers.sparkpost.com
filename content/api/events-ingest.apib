@@ -81,6 +81,50 @@ Required Headers
             }
         }
 
+### Get Success Ingest Events [GET /v1/ingest/events/{id}]
+
+Get a gz stream of successful events to the response as an attachment.
+
+Required Headers
+
+| Header             | Value                   |
+|--------------------|-------------------------|
+| `x-msys-customer`   | `101`                  |
+| `x-msys-tenant`     | `sample tenant`        |
+| `x-msys-subaccount` | `1`                    |
+
+
++ Parameters
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest Batch event ID that has been returning following a successful POST to the ingest API.
+
+
++ Response
+    
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz attachment 
+
+
+### Get Failure Ingest Events [GET /v1/ingest/events/failures/{id}]
+
+Get a gz stream of failed events to the response as an attachment.
+
+Required Headers
+
+| Header             | Value                   |
+|--------------------|-------------------------|
+| `x-msys-customer`   | `101`                  |
+| `x-msys-tenant`     | `sample tenant`        |
+| `x-msys-subaccount` | `0`                    |
+
+
++ Parameters
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest Batch event ID that has been returning following a successful POST to the ingest API.
+
+
++ Response
+    
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz attachment 
+        
+
 ## Documentation [/v1/ingest/events/documentation]
 
 These endpoints are used to generate the samples and descriptions for the [Send Events](#header-send-events) section.
