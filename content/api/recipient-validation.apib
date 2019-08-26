@@ -7,7 +7,7 @@ label: New
 
 Recipient Validation is an easy, efficient way to verify that email addresses are valid before you send. It runs addresses through a series of checks that catch many common problems, including syntax issues and non-existent mailboxes.
 
-##  Address Validation [GET /v1/recipient-validation/single/{address}]
+## Single Address Validation [GET /v1/recipient-validation/single/{address}]
 
 Validate a single email address. The response will contain whether the address is valid or invalid, if it's a disposable address, and if it's a role-based address. If the email address is invalid ,a reason will also be provided.
 
@@ -22,17 +22,16 @@ Validate a single email address. The response will contain whether the address i
 
     + Body
 
-        {
-            "results": {
-            "result": "valid",
-            "valid": true,
-            "is_role": false,
-            "is_disposable": false,
-            "is_free": true,
+            {
+                "results": {
+                    "valid": true,
+                    "is_role": false,
+                    "is_disposable": false,
+                    "is_free": false
+                }
             }
-        }
 
-+ Response 200 - Invalid Domain (application/json)
++ Response 200 - Invalid (application/json)
 
     + Body
 
@@ -44,51 +43,5 @@ Validate a single email address. The response will contain whether the address i
                     "is_disposable": false,
                     "is_free": false,
                     "reason": "Invalid Domain"
-                }
-            }
-
-
-+ Response 200 - Invalid Recipient (application/json)
-
-    + Body
-
-            {
-                "results": {
-                    "result": "undeliverable",
-                    "valid": false,
-                    "reason": "Invalid Recipient",
-                    "is_role": false,
-                    "is_disposable": false,
-                    "is_free": false
-                }
-            }
-
-
-+ Response 200 - Risky (application/json)
-
-    + Body
-
-            {
-                "results": {
-                    "result": "risky",
-                    "valid": true,
-                    "is_role": false,
-                    "is_disposable": false,
-                    "is_free": false
-                }
-            }
-            
-
-+ Response 200 - Role-based (application/json)
-
-    + Body
-
-            {
-                "results": {
-                    "result": "valid",
-                    "valid": true,
-                    "is_role": true,
-                    "is_disposable": false,
-                    "is_free": false
                 }
             }
