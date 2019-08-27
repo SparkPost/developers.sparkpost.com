@@ -19,6 +19,8 @@ Retrieve information regarding your SparkPost account and set account options.
         + Default: active
     + status_updated (string) - ISO date status was last updated
     + status_reason_category (string) - Category for some account statuses, e.g. 'NONPAYMENT'. Empty string by default
+    + tfa_required (boolean) - Account wide two factor authentication requirement.
+        + Default: false
     + service_level (string) - Account service level.
         + Default: standard
     + subscription (object) - Current subscription details.
@@ -73,6 +75,7 @@ Retrieve information regarding your SparkPost account and set account options.
         "status": "active",
         "status_updated": "2018-04-11T08:00:00.000Z",
         "status_reason_category": "",
+        "tfa_required": false,
         "service_level": "standard",
         "subscription": {
             "name": "500K",
@@ -132,6 +135,7 @@ Retrieve information regarding your SparkPost account and set account options.
                 "created": "2018-01-11T08:00:00.000Z",
                 "updated": "2018-02-11T08:00:00.000Z",
                 "status": "active",
+                "tfa_required": false,
                 "status_updated": "2018-12-21T13:21:41.442Z",
                 "status_reason_category": "",
                 "subscription": {
@@ -180,6 +184,7 @@ Retrieve information regarding your SparkPost account and set account options.
 
 + Data Structure
     + company_name (string) - Company name
+    + tfa_required (boolean) - Account wide two factor authentication requirement
     + options (object) - Account-level options.
         + smtp_tracking_default (boolean) - Set to `true` to turn on SMTP engagement tracking by default
         + rest_tracking_default (boolean) - Set to `false` to turn off REST API engagement tracking by default
