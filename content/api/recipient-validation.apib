@@ -7,9 +7,47 @@ label: New
 
 Recipient Validation is an easy, efficient way to verify that email addresses are valid before you send. It runs addresses through a series of checks that catch many common problems, including syntax issues and non-existent mailboxes.
 
-## Single Address Validation [GET /v1/recipient-validation/single/{address}]
+Learn more about the [different response fields](https://www.sparkpost.com/docs/recipient-validation/getting-started-recipient-validation/#understanding-the-results) and read how to [integrate Recipient Validation](https://www.sparkpost.com/docs/recipient-validation/integration-guide/) into your forms.
 
-Validate a single email address. The response will contain whether the address is valid or invalid, if it's a disposable address, and if it's a role-based address. If the email address is invalid ,a reason will also be provided.
+## Validation Object
+
+Each validation will respond with the following result.
+
++ Data Structure: Attributes
+    + valid (boolean) - Whether or not the email address is valid.
+    + result (enum) - Overall status of this email address. Use this field to decide if you want to reject an email address.
+        + `valid`
+        + `risky`
+        + `undeliverable`
+    + reason (enum) - The reason the `result` value was given. If the result is not `undeliverable` then no reason is given.
+        + `Invalid Syntax`
+        + `Invalid Domain`
+        + `Invalid Recipient`
+    + is_role (boolean) - Whether the email address is [role-based](https://www.sparkpost.com/docs/recipient-validation/getting-started-recipient-validation/#role-based-email-address)
+    + is_disposable (boolean) - Whether the email address is [disposable](https://www.sparkpost.com/docs/recipient-validation/getting-started-recipient-validation/#disposable-email-address)
+    + is_free (boolean) - Whether the email address is from a [free email provider](https://www.sparkpost.com/docs/recipient-validation/getting-started-recipient-validation/#free-email-address)
+    + did_you_mean (string) - The corrected email address if there is a [typo in provided address](https://www.sparkpost.com/docs/recipient-validation/getting-started-recipient-validation/#did-you-mean)
+
++ Sample
+        
+    ```
+    {
+        "results": {
+            "valid": false,
+            "result": "undeliverable",
+            "reason": "Invalid Domain",
+            "is_role": false,
+            "is_disposable": false,
+            "is_free": false,
+            "did_you_mean": "asdf@gmail.com"
+        }
+    }
+    ```
+
+
+## Email Address Validation [GET /v1/recipient-validation/single/{address}]
+
+Validate a single email address. The response will contain whether the address is `valid`, `risky`, or undeliverable, along with additional metadata about the address. If the email address is undeliverable, a reason will also be provided.
 
 
 + Request
@@ -22,26 +60,59 @@ Validate a single email address. The response will contain whether the address i
 
     + Body
 
-            {
-                "results": {
-                    "valid": true,
-                    "is_role": false,
-                    "is_disposable": false,
-                    "is_free": false
-                }
+        {
+            "results": {
+                "result": "valid",
+                "valid": true,
+                "is_role": false,
+                "is_disposable": false,
+                "is_free": true
             }
+        }
 
-+ Response 200 - Invalid (application/json)
++ Response 200 - Invalid Domain (application/json)
 
     + Body
 
-            {
-                "results": {
-                    "valid": false,
-                    "result": "undeliverable",
-                     "is_role": false,
-                    "is_disposable": false,
-                    "is_free": false,
-                    "reason": "Invalid Domain"
-                }
+        {
+            "results": {
+                "result": "undeliverable",
+                "valid": false,
+                "reason": "Invalid Domain"
+                 "is_role": false,
+                "is_disposable": false,
+                "is_free": false
             }
+        }
+
+
++ Response 200 - Invalid Recipient (application/json)
+
+    + Body
+
+        {
+            "results": {
+                "result": "undeliverable",
+                "valid": false,
+                "reason": "Invalid Recipient",
+                "is_role": false,
+                "is_disposable": false,
+                "is_free": false
+            }
+        }
+
+
++ Response 200 - Risky (application/json)
+
+    + Body
+
+        {
+            "results": {
+                "result": "risky",
+                "valid": true,
+                "is_role": false,
+                "is_disposable": false,
+                "is_free": false
+            }
+        }
+            
