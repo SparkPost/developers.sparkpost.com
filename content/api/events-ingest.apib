@@ -81,9 +81,9 @@ Required Headers
             }
         }
 
-### Get all Ingest Events [GET /v1/ingest/events/{id}]
+### Get Ingest Events [GET /v1/ingest/events/{id}]
 
-Get a gz stream of all events to the response as an attachment.
+Get a gzip attachment of events to the response.
 
 + Parameters
     + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
@@ -91,12 +91,12 @@ Get a gz stream of all events to the response as an attachment.
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50_all".gz attachment 
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
 
 
 ### Get Failure Ingest Events [GET /v1/ingest/events/failures/{id}]
 
-Get a gz stream of failed events to the response as an attachment.
+Get a gzip attachment of failed events to the response.
 
 + Parameters
     + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
@@ -104,7 +104,7 @@ Get a gz stream of failed events to the response as an attachment.
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50_fail".gz attachment 
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
         
 
 ## Documentation [/v1/ingest/events/documentation]
