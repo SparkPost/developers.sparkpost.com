@@ -81,48 +81,30 @@ Required Headers
             }
         }
 
-### Get Success Ingest Events [GET /v1/ingest/events/{id}]
+### Get all Ingest Events [GET /v1/ingest/events/{id}]
 
-Get a gz stream of successful events to the response as an attachment.
-
-Required Headers
-
-| Header             | Value                   |
-|--------------------|-------------------------|
-| `x-msys-customer`   | `101`                  |
-| `x-msys-tenant`     | `sample tenant`        |
-| `x-msys-subaccount` | `1`                    |
-
+Get a gz stream of all events to the response as an attachment.
 
 + Parameters
-    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest Batch event ID that has been returning following a successful POST to the ingest API.
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
 
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz attachment 
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50_all".gz attachment 
 
 
 ### Get Failure Ingest Events [GET /v1/ingest/events/failures/{id}]
 
 Get a gz stream of failed events to the response as an attachment.
 
-Required Headers
-
-| Header             | Value                   |
-|--------------------|-------------------------|
-| `x-msys-customer`   | `101`                  |
-| `x-msys-tenant`     | `sample tenant`        |
-| `x-msys-subaccount` | `0`                    |
-
-
 + Parameters
-    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest Batch event ID that has been returning following a successful POST to the ingest API.
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
 
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz attachment 
+        "b2013586-c13f-4da4-baf4-11b9d8e40c50_fail".gz attachment 
         
 
 ## Documentation [/v1/ingest/events/documentation]
