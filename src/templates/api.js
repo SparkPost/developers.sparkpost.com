@@ -69,7 +69,7 @@ class Template extends Component {
    */
   shouldComponentUpdate() {
     if (
-      process.env.GATSBY_ACTIVE_ENV === 'docs' ||
+      process.env.GATSBY_ACTIVE_ENV === 'api' ||
       process.env.GATSBY_ACTIVE_ENV === 'development'
     )
       return true
@@ -98,7 +98,7 @@ class Template extends Component {
 
           return {
             file,
-            title: pageNode.meta.title,
+            title: pageNode.meta.title.replace('API', '').trim(),
             path: pageNode.fields.path,
             label: pageNode.meta.label,
           }
