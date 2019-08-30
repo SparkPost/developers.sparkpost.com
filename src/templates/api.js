@@ -69,7 +69,7 @@ class Template extends Component {
    */
   shouldComponentUpdate() {
     if (
-      process.env.GATSBY_ACTIVE_ENV === 'api' ||
+      process.env.GATSBY_ACTIVE_ENV === 'docs' ||
       process.env.GATSBY_ACTIVE_ENV === 'development'
     )
       return true
