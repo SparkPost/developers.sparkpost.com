@@ -98,7 +98,7 @@ class Template extends Component {
 
           return {
             file,
-            title: pageNode.meta.title.replace('API', '').trim(),
+            title: pageNode.meta.title.replace(/APIs?/i, '').trim(),
             path: pageNode.fields.path,
             label: pageNode.meta.label,
           }
