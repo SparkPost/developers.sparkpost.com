@@ -83,10 +83,9 @@ Required Headers
 
 ### Get Ingest Events [GET /v1/ingest/events/{id}]
 
-Get a gzip attachment of events to the response. This is a direct download of a gzip file. 
+Downloads a gzip file of the ingest batch. 
 The binary of the gzip will be displayed to the response body.
-If using <a href="/api/#header-curl">cURL</a>, make sure
-the appropriate headers are used to retrieve the file and the flags -O & -J are used. The -O 
+If using <a href="/api/#header-curl">cURL</a>, make sure the flags -O & -J are used. The -O 
 flag will allow the file to be saved to the current location. The -J indicates to cURL to grab the 
 file as a gzip. 
 
@@ -96,15 +95,14 @@ file as a gzip.
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
+        Saved to filename "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
 
 
 ### Get Failure Ingest Events [GET /v1/ingest/events/failures/{id}]
 
-Get a gzip attachment of failed events to the response. This is a direct download of a gzip file. 
+Downloads a gzip file of the ingest batch with failures. 
 The binary of the gzip will be displayed to the response body.
-If using <a href="/api/#header-curl">cURL</a>, make sure
-the appropriate headers are used to retrieve the file and the flags -O & -J are used. The -O 
+If using <a href="/api/#header-curl">cURL</a>, make sure the flags -O & -J are used. The -O 
 flag will allow the file to be saved to the current location. The -J indicates to cURL to grab the 
 file as a gzip. 
 
@@ -114,7 +112,7 @@ file as a gzip.
 
 + Response
     
-        "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
+        Saved to filename "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
         
 
 ## Documentation [/v1/ingest/events/documentation]
