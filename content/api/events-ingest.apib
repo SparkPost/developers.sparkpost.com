@@ -83,7 +83,12 @@ Required Headers
 
 ### Get Ingest Events [GET /v1/ingest/events/{id}]
 
-Get a gzip attachment of events to the response.
+Get a gzip attachment of events to the response. This is a direct download of a gzip file. 
+The binary of the gzip will be displayed to the response body.
+If using <a href="/api/#header-curl">cURL</a>, make sure
+the appropriate headers are used to retrieve the file and the flags -O & -J are used. The -O 
+flag will allow the file to be saved to the current location. The -J indicates to cURL to grab the 
+file as a gzip. 
 
 + Parameters
     + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
@@ -96,7 +101,12 @@ Get a gzip attachment of events to the response.
 
 ### Get Failure Ingest Events [GET /v1/ingest/events/failures/{id}]
 
-Get a gzip attachment of failed events to the response.
+Get a gzip attachment of failed events to the response. This is a direct download of a gzip file. 
+The binary of the gzip will be displayed to the response body.
+If using <a href="/api/#header-curl">cURL</a>, make sure
+the appropriate headers are used to retrieve the file and the flags -O & -J are used. The -O 
+flag will allow the file to be saved to the current location. The -J indicates to cURL to grab the 
+file as a gzip. 
 
 + Parameters
     + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
