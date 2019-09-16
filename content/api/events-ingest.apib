@@ -32,7 +32,12 @@ For more on viewing ingested status events, see the [events documentation](api/e
 
 ## Ingest [/v1/ingest]
 
-### Send Events [POST /v1/ingest/events]
+### Additional Ingest Notes:
+For GETs, If using <a href="/api/#header-curl">cURL</a>, make sure the flags -O & -J are used. The -O 
+flag will allow the file to be saved to the current location. The -J indicates to cURL to grab the 
+file as a gzip.        
+
+### Send Ingest Events [POST /v1/ingest/events]
 
 Post a new-line delimited list of JSON events.
 
@@ -80,6 +85,35 @@ Required Headers
                 "id": "b2013586-c13f-4da4-baf4-11b9d8e40c50"
             }
         }
+
+
+### Get Ingest Batch [GET /v1/ingest/events/{id}]
+
+Downloads a gzip file of the ingest batch events. 
+The binary of the gzip will be displayed in the response body.
+
++ Parameters
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
+
+
++ Response
+    
+        Saved to filename "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
+
+
+### Get Failure Ingest Batch [GET /v1/ingest/events/failures/{id}]
+
+Downloads a gzip file of the ingest batch with failures. 
+The binary of the gzip will be displayed in the response body.
+
++ Parameters
+    + id (required, number, `e038e809-1308-461c-83b7-fa73c9f50500`) ... Ingest batch ID.
+
+
++ Response
+    
+        Saved to filename "b2013586-c13f-4da4-baf4-11b9d8e40c50".gz
+        
 
 ## Documentation [/v1/ingest/events/documentation]
 
