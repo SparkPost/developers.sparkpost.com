@@ -14,7 +14,7 @@ description: Manage IP pools, which allow you to group and assign dedicated IPs 
     + signing_domain (string) - DKIM-verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. Used only for emails to domains that require DKIM for FBL.  
     + ips (array[object]) - Sending IPs within the pool. Sending IP objects include fields `external_ip`,`hostname`, `auto_warmup_enabled` & `auto_warmup_stage`
-    + `auto_warmup_overflow_pool` (string) - IP Pool ID to be used as an overflow pool for auto IP warmup. Can specify `shared pool` to overflow to the SparkPost Shared Pool.<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
+    + `auto_warmup_overflow_pool` (string) - IP Pool ID to be used as an overflow pool during auto IP warmup. Can specify shared pool to overflow to the SparkPost Shared Pool if you have access.<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
 
 + Sample
     
@@ -45,7 +45,7 @@ Creates an IP Pool and returns a unique ID based on the name. This ID is used fo
     + signing_domain (string) - Domain to use as the DKIM verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool
     + auto_warmup_overflow_pool (string) - 
-    Pool ID to use as overflow pool for auto IP warmup<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
+    IP Pool ID to be used as an overflow pool during auto IP warmup. Can specify shared pool to overflow to the SparkPost Shared Pool if you have access.<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
 
 
 + Request
@@ -160,7 +160,7 @@ Returns a specific IP Pool.
     + signing_domain (string) - Domain to use as the DKIM verified signing domain. To remove it, set it to an empty string.
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. To remove it, set it to an empty string.
     + auto_warmup_overflow_pool (string) - 
-    Pool ID to use as an overflow pool for auto IP warmup. To remove it, set it to an empty string.<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
+    IP Pool ID to be used as an overflow pool during auto IP warmup. Can specify shared pool to overflow to the SparkPost Shared Pool if you have access.<br/>The auto_warmup_overflow_pool `shared pool` is not available for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers
 
 To update sending IP pool assignments see [Sending IPs](/api/sending-ips/).
 
