@@ -41,6 +41,7 @@ Retrieves a specific sending IP.
 
 
 + Response 200 (application/json)
+    + Note: The auto_warmup_engagement_recency_threshold field only shows up for ips with auto_warmup_enabled set to true
 
         {
             "results": {
@@ -49,7 +50,8 @@ Retrieves a specific sending IP.
                 "ip_pool": "cool_kids",
                 "customer_provided": false,
                 "auto_warmup_enabled": true,
-                "auto_warmup_stage": 5
+                "auto_warmup_stage": 5,
+                "auto_warmup_engagement_recency_threshold": 2
             }
         }
 
@@ -170,6 +172,7 @@ Returns a list of all sending IPs.
             Accept: application/json
 
 + Response 200 (application/json)
+    + Note: The auto_warmup_engagement_recency_threshold field only shows up for ips with auto_warmup_enabled set to true
 
         {
             "results": [
@@ -179,7 +182,8 @@ Returns a list of all sending IPs.
                     "ip_pool": "marketing",
                     "customer_provided": false,
                     "auto_warmup_enabled": true,
-                    "auto_warmup_stage": 5
+                    "auto_warmup_stage": 5,
+                    "auto_warmup_engagement_recency_threshold": 2
                 },
                 {
                     "external_ip": "123.45.67.80",
