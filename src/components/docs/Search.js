@@ -78,27 +78,26 @@ const DocsSearch = ({ index, placeholder = '' }) => {
               placeholder: placeholder,
             })}
           />
-          {isOpen &&
-            hits.length > 0 && (
-              <SearchResults {...getMenuProps()}>
-                {hits.map((hit, index) => {
-                  const { title, category, to } = serializeHit(hit)
+          {isOpen && hits.length > 0 && (
+            <SearchResults {...getMenuProps()}>
+              {hits.map((hit, index) => {
+                const { title, category, to } = serializeHit(hit)
 
-                  return (
-                    <SearchResult
-                      key={to}
-                      {...getItemProps({
-                        item: hit,
-                        isHighlighted: highlightedIndex === index,
-                      })}
-                    >
-                      {title}
-                      <Category>{category}</Category>
-                    </SearchResult>
-                  )
-                })}
-              </SearchResults>
-            )}
+                return (
+                  <SearchResult
+                    key={to}
+                    {...getItemProps({
+                      item: hit,
+                      isHighlighted: highlightedIndex === index,
+                    })}
+                  >
+                    {title}
+                    <Category>{category}</Category>
+                  </SearchResult>
+                )
+              })}
+            </SearchResults>
+          )}
         </div>
       )}
     </Search>

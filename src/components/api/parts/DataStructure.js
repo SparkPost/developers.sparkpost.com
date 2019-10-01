@@ -103,43 +103,40 @@ function Attribute(props) {
               <code>{isString(value) ? value : JSON.stringify(value)}</code>
             </Property>
           )}
-        {actualType !== 'object' &&
-          !isUndefined(defaultValue) && (
-            <Property>
-              , default is{' '}
-              <code>
-                {isString(defaultValue)
-                  ? defaultValue
-                  : JSON.stringify(defaultValue)}
-              </code>
-            </Property>
-          )}
+        {actualType !== 'object' && !isUndefined(defaultValue) && (
+          <Property>
+            , default is{' '}
+            <code>
+              {isString(defaultValue)
+                ? defaultValue
+                : JSON.stringify(defaultValue)}
+            </code>
+          </Property>
+        )}
       </div>
       {description && <AttributeMarkdown>{description}</AttributeMarkdown>}
       {'' /* samples should be shown through example JSON blobs */}
       {
         '' /* type !== 'object' && sample && <div>Example: <code>{isString(sample) ? sample : JSON.stringify(sample)}</code></div> */
       }
-      {enumerations &&
-        !isMultipleTypes && (
-          <Enums>
-            <EnumTitle>Possible Values:</EnumTitle>{' '}
-            {enumerations.map(({ value }, i) => (
-              <Fragment key={i}>
-                <code>{value}</code>
-                {i !== enumerations.length - 1 ? ', ' : ''}
-              </Fragment>
-            ))}
-          </Enums>
-        )}
-      {children &&
-        children.length > 0 && (
-          <AttributeChildren>
-            {children.map((props, i) => (
-              <Attribute key={i} {...props} />
-            ))}
-          </AttributeChildren>
-        )}
+      {enumerations && !isMultipleTypes && (
+        <Enums>
+          <EnumTitle>Possible Values:</EnumTitle>{' '}
+          {enumerations.map(({ value }, i) => (
+            <Fragment key={i}>
+              <code>{value}</code>
+              {i !== enumerations.length - 1 ? ', ' : ''}
+            </Fragment>
+          ))}
+        </Enums>
+      )}
+      {children && children.length > 0 && (
+        <AttributeChildren>
+          {children.map((props, i) => (
+            <Attribute key={i} {...props} />
+          ))}
+        </AttributeChildren>
+      )}
     </AttributeWrapper>
   )
 }

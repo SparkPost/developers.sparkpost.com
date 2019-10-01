@@ -19,9 +19,7 @@ export default function highlightHref(href, hrefVariables) {
       // add the value if it is a query parameter or remove it if the value is empty
       const replacementString = isUndefined(param.value)
         ? '$1$2$3'
-        : `$1$2<span class="hljs-literal">${
-            param.name
-          }</span>=<span class="hljs-string">${value}</span>&$3`
+        : `$1$2<span class="hljs-literal">${param.name}</span>=<span class="hljs-string">${value}</span>&$3`
       modifiedHref = modifiedHref.replace(
         // eslint-disable-next-line
         new RegExp(

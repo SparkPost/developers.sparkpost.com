@@ -99,8 +99,8 @@ class Search extends Component {
     const { indexes, algolia, downshift, children } = this.props
 
     // convert all indexes to be objects with a `index` prop and an optional `config` prop
-    const indexesObjects = indexes.map(
-      indexName => (isString(indexName) ? { indexName } : indexName)
+    const indexesObjects = indexes.map(indexName =>
+      isString(indexName) ? { indexName } : indexName
     )
     // first index without a config
     const firstIndex = indexesObjects.find(index => !index.config).indexName
