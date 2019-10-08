@@ -116,9 +116,9 @@ If your result set is less than one page of data, then the `links` object will n
 Returns a list of message events that matched the filtered search.
 
 + Parameters
-    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM, inclusive.
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM:ssZ, inclusive.
         + Default: `24 hours ago`
-    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM, exclusive.
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM:ssZ, exclusive.
         + Default: `1 minute ago`
     + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
         + Default: `initial`
@@ -215,9 +215,9 @@ Returns a list of message events that matched the filtered search.
 Returns a list of ingest events that matched the filtered search.
 
 + Parameters
-    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM, inclusive.
+    + from (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM:ssZ, inclusive.
         + Default: `24 hours ago`
-    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM, exclusive.
+    + to (string, optional) - Datetime in format of YYYY-MM-DDTHH:MM:ssZ, exclusive.
         + Default: `1 minute ago`
     + cursor (string, optional) - Results cursor for pagination. Used in conjunction with `per_page` parameter. See [Pagination](/api/events/#events-pagination) section for details.
         + Default: `initial`
