@@ -15,6 +15,8 @@ description: Manage the sending IPs for your account and assign them to IP pools
     + customer_provided (boolean) - Whether this sending IP was provided by the customer
     + auto_warmup_enabled (boolean) - Whether this sending IP will use auto warmup
     + auto_warmup_stage (number) - The sending IP's auto warmup stage between 1 and 29
+    + auto_warmup_engagement_recency_threshold (number) - The number of days that a customer must have engaged with a message to be used for an IP in warmup
+    + auto_warmup_last_progression_date (string) - The date that an IP in auto IP warmup last progressed its stage
 + Sample
     
     ```
@@ -41,7 +43,6 @@ Retrieves a specific sending IP.
 
 
 + Response 200 (application/json)
-    + Note: The auto_warmup_engagement_recency_threshold field only shows up for ips with auto_warmup_enabled set to true
 
         {
             "results": {
@@ -51,7 +52,8 @@ Retrieves a specific sending IP.
                 "customer_provided": false,
                 "auto_warmup_enabled": true,
                 "auto_warmup_stage": 5,
-                "auto_warmup_engagement_recency_threshold": 2
+                "auto_warmup_engagement_recency_threshold": 2,
+                "auto_warmup_last_progression_date": "2019-01-01"
             }
         }
 
@@ -172,7 +174,6 @@ Returns a list of all sending IPs.
             Accept: application/json
 
 + Response 200 (application/json)
-    + Note: The auto_warmup_engagement_recency_threshold field only shows up for ips with auto_warmup_enabled set to true
 
         {
             "results": [
@@ -183,7 +184,8 @@ Returns a list of all sending IPs.
                     "customer_provided": false,
                     "auto_warmup_enabled": true,
                     "auto_warmup_stage": 5,
-                    "auto_warmup_engagement_recency_threshold": 2
+                    "auto_warmup_engagement_recency_threshold": 2,
+                    "auto_warmup_last_progression_date": "2019-01-01"
                 },
                 {
                     "external_ip": "123.45.67.80",

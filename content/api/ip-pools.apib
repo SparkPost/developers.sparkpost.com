@@ -13,7 +13,7 @@ description: Manage IP pools, which allow you to group and assign dedicated IPs 
     + name (string) - Name of the IP Pool
     + signing_domain (string) - DKIM-verified signing domain
     + fbl_signing_domain (string) - FBL Signing Domain for the pool. Used only for emails to domains that require DKIM for FBL.  
-    + ips (array[object]) - Sending IPs within the pool. Sending IP objects include fields `external_ip`,`hostname`, `auto_warmup_enabled` & `auto_warmup_stage`
+    + ips (array[object]) - Sending IPs within the pool. Sending IP objects include fields `external_ip`,`hostname`, `auto_warmup_enabled`,`auto_warmup_stage`, `auto_warmup_engagement_recency_threshold`, & `auto_warmup_last_progression_date`
     + `auto_warmup_overflow_pool` (string) - IP Pool ID to be used as an overflow pool for auto IP warmup.
 
 + Sample
@@ -30,7 +30,8 @@ description: Manage IP pools, which allow you to group and assign dedicated IPs 
                 "hostname": "mta472a.sparkpostmail.com",
                 "auto_warmup_enabled": true,
                 "auto_warmup_stage": 5,
-                "auto_warmup_engagement_recency_threshold": 2
+                "auto_warmup_engagement_recency_threshold": 2,
+                "auto_warmup_last_progression_date": "2019-01-01"
             }
         ],
         "auto_warmup_overflow_pool": "overflow_pool"
@@ -128,7 +129,8 @@ Returns a specific IP Pool.
                             "hostname": "mta472a.sparkpostmail.com",
                             "auto_warmup_enabled": true,
                             "auto_warmup_stage": 5,
-                            "auto_warmup_engagement_recency_threshold": 2
+                            "auto_warmup_engagement_recency_threshold": 2,
+                            "auto_warmup_last_progression_date": "2019-01-01"
                         },
                         {
                             "external_ip": "54.244.54.137",
@@ -337,7 +339,8 @@ Returns a list of all your IP Pools.
                                 "hostname": "mta472a.sparkpostmail.com",
                                 "auto_warmup_enabled": true,
                                 "auto_warmup_stage": 5,
-                                "auto_warmup_engagement_recency_threshold": 2
+                                "auto_warmup_engagement_recency_threshold": 2,
+                                "auto_warmup_last_progression_date": "2019-01-01"
                             }
                         ]
                     }
