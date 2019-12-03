@@ -412,6 +412,18 @@ Update a relay webhook by specifying the webhook ID in the URI path.
                 ]
             }
 
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "no valid fields in body"
+                    }
+                ]
+            }
+
 + Response 404 (application/json)
 
     + Body
