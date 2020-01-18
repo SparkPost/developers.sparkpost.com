@@ -14,11 +14,13 @@ Learn more about the [different response fields](https://www.sparkpost.com/docs/
 Each validation will respond with the following result.
 
 + Data Structure: Attributes
-    + valid (boolean) - Whether or not the email address is valid.
+    + valid (boolean) - Whether or not the recipient domain (mx and a record check) and syntax of the email address is valid. 
     + result (enum) - Overall status of this email address. Use this field to decide if you want to reject an email address.
         + `valid`
+        + `neutral`
         + `risky`
         + `undeliverable`
+        + `typo`
     + reason (enum) - The reason the `result` value was given. If the result is not `undeliverable` then no reason is given.
         + `Invalid Syntax`
         + `Invalid Domain`
@@ -38,8 +40,7 @@ Each validation will respond with the following result.
             "reason": "Invalid Domain",
             "is_role": false,
             "is_disposable": false,
-            "is_free": false,
-            "did_you_mean": "asdf@gmail.com"
+            "is_free": false
         }
     }
     ```
@@ -47,7 +48,7 @@ Each validation will respond with the following result.
 
 ## Email Address Validation [GET /v1/recipient-validation/single/{address}]
 
-Validate a single email address. The response will contain whether the address is `valid`, `risky`, or undeliverable, along with additional metadata about the address. If the email address is undeliverable, a reason will also be provided.
+Validate a single email address. The response will contain whether the address is `valid`, `neutral, `risky`, `undeliverable` or `typo` along with additional metadata about the address. If the email address is undeliverable, a reason will also be provided.
 
 
 + Request
@@ -116,3 +117,32 @@ Validate a single email address. The response will contain whether the address i
             }
         }
             
+
++ Response 200 - Neutral (application/json)
+
+    + Body
+
+        {
+            "results": {
+                "result": "neutral",
+                "valid": true,
+                "is_role": false,
+                "is_disposable": false,
+                "is_free": false
+            }
+        }
+        
++ Response 200 - Typo (application/json)
+
+    + Body
+
+        {
+            "results": {
+                "result": "typo",
+                "valid": true,
+                "is_role": false,
+                "is_disposable": false,
+                "is_free": false,
+                "did_you_mean": recommendedemailaddress@goes.here
+            }
+        }
