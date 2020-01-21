@@ -490,6 +490,7 @@ Content headers are not generated for transmissions providing RFC822 content. Th
 ### Schedule a Transmission [POST /v1/transmissions/]
 
 Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
+The scheduled start time cannot be more than 3 days in the future.
 
 #### Templates in Scheduled Transmissions
 Transmissions scheduled with a template will use the version of the template available at the scheduled time of generation.
@@ -524,6 +525,18 @@ the template update will succeed, but the transmission will continue to use the 
                 "total_accepted_recipients": 0,
                 "id": "11668787484950529"
             }
+        }
+
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "invalid data format/type",
+                    "description": "Scheduled start_time too far in the future",
+                    "code": "1300"
+                }
+            ]
         }
 
 
