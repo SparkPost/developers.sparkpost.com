@@ -54,7 +54,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
 
 + Data Structure
     + options (object) - Object containing transmission options. If an option is not set, the [template-level option](#header-template-object) is used.
-        + start_time (string) - Delay generation of messages until this datetime. For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). **Not available in SparkPost EU.** <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
+        + start_time (string) - The system will not attempt to deliver messages until this datetime. For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
             + Default: now
         + open_tracking (boolean) - Enable or disable open tracking.
             + Default: true
@@ -525,18 +525,6 @@ the template update will succeed, but the transmission will continue to use the 
                 "total_accepted_recipients": 0,
                 "id": "11668787484950529"
             }
-        }
-
-+ Response 422 (application/json)
-
-        {
-            "errors": [
-                {
-                    "message": "invalid data format/type",
-                    "description": "Scheduled start_time too far in the future",
-                    "code": "1300"
-                }
-            ]
         }
 
 
