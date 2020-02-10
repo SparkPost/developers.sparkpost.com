@@ -54,7 +54,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
 
 + Data Structure
     + options (object) - Object containing transmission options. If an option is not set, the [template-level option](#header-template-object) is used.
-        + start_time (string) - Delay generation of messages until this datetime. For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). **Not available in SparkPost EU.** <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
+        + start_time (string) - The system will not attempt to deliver messages until this datetime. For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
             + Default: now
         + open_tracking (boolean) - Enable or disable open tracking.
             + Default: true
@@ -490,6 +490,7 @@ Content headers are not generated for transmissions providing RFC822 content. Th
 ### Schedule a Transmission [POST /v1/transmissions/]
 
 Create a scheduled transmission to be generated and sent at a future time by specifying `start_time` in the `options` attribute.
+The scheduled start time cannot be more than 3 days in the future.
 
 #### Templates in Scheduled Transmissions
 Transmissions scheduled with a template will use the version of the template available at the scheduled time of generation.
