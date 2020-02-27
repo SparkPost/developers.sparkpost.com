@@ -8,7 +8,7 @@ The Transmissions endpoint lets you send email. Each transmission can send an em
 
 When creating a transmission, the [options](#header-request-body) allow you to configure engagement tracking, sending optimization, global substitution data, and more to control how your emails are sent.
 
-To set the recipients you can include all recipients in the request or use a [stored recipient list](/api/recipient-lists/). For each recipient, you can specify metadata and substitution data to [personalize](/api/substitutions-reference/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
+To set the recipients you can include all recipients in the request or use a [stored recipient list](/api/recipient-lists/). For each recipient, you can specify metadata and substitution data to [personalize](/api/template-language/) each email. You can also set the transmission to treat certain recipients as [CC'd or BCC'd](https://www.sparkpost.com/docs/faq/cc-bcc-with-rest-api/).
 
 The content of the messages can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), a [stored template](#transmissions-post-send-a-template), an [A/B test](#transmissions-post-send-an-a-b-test), or raw [RFC822 content](#transmissions-post-send-rfc822-content). Each method has different use cases they are best suited for. All of these types of content can use the substitution data and metadata to create a unique message for each recipient.
 
