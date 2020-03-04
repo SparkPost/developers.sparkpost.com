@@ -38,7 +38,8 @@
     "category": "Accounts",
     "pages": [
       "account.apib",
-      "subaccounts.apib"
+      "subaccounts.apib",
+      "data-privacy.apib"
     ]
   },
   {
