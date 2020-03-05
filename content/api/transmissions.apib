@@ -638,6 +638,16 @@ Only transmissions which are scheduled for future generation may be deleted.
 
 Delete all transmissions in a campaign.
 
+Please note that this endpoint immediately returns a 204 response and the
+deletion process happens in the background. When a message is deleted, you will
+receive a bounce event with a reason of "554 5.7.1 [internal] Campaign
+cancelled".
+
+Please also note that if you wish to cancel a transmission scheduled by a
+subaccount, you must make the request as the subaccount, i.e., by specifying
+the subaccount ID in the `X-MSYS-SUBACCOUNT` header as the master account or by
+using an API key associated with the subaccount.
+
 + Parameters
     + campaign_id: `white-christmas` (string, required)
 
