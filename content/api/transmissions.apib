@@ -641,7 +641,9 @@ Delete all transmissions in a campaign.
 Please note that this endpoint immediately returns a 204 response and the
 deletion process happens in the background. When a message is deleted, you will
 receive a bounce event with a reason of "554 5.7.1 [internal] Campaign
-cancelled".
+cancelled". You can consume these events via the [Events API](/api/events) and
+[Event Webhooks](/api/webhooks). You can also view statistics about these
+events via the [Metrics API](/api/metrics).
 
 Please also note that if you wish to cancel a transmission scheduled by a
 subaccount, you must make the request as the subaccount, i.e., by specifying
@@ -654,62 +656,3 @@ using an API key associated with the subaccount.
 + Request
 
 + Response 204
-
-### List All Scheduled Transmissions [GET /v1/transmissions{?campaign_id,template_id}]
-
-
-#### Returns
-
-Returns an array of transmission objects.
-
-+ Data Structure: Transmission Object
-    + id (number) - Transmission ID
-    + state (enum)
-        + submitted
-        + Generating
-        + Success
-        + Canceled
-    + template_id (string) - Transmissions with inline content will have this field as "inline".
-    + campaign_id (string)
-    + description
-
-
-+ Parameters
-    + campaign_id: thanksgiving (string, optional) - Campaign to filter by.
-    + template_id (string, optional) - Template to filter by. Cannot filter inline content transmissions.
-
-+ Request
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "content": {
-                        "template_id": "winter_sale"
-                    },
-                    "id": "11713562166689858",
-                    "campaign_id": "thanksgiving",
-                    "description": "",
-                    "state": "submitted"
-                    },
-                {
-                    "content": {
-                        "template_id": "inline"
-                    },
-                    "id": "11713562166689979",
-                    "campaign_id": "thanksgiving",
-                    "description": "",
-                    "state": "submitted"
-                },
-                {
-                    "content": {
-                        "template_id": "thanksgiving-template"
-                    },
-                    "id": "11713048079237202",
-                    "campaign_id": "thanksgiving",
-                    "description": "",
-                    "state": "submitted"
-                }
-            ]
-        }
