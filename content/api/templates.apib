@@ -112,7 +112,7 @@ Templates are created as drafts.
     + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
     + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object, required) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 1 MB
+    + content (object, required) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 5 MB
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
@@ -245,7 +245,7 @@ The new content will completely overwrite the existing content.
 + Data Structure
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 1 MB
+    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 5 MB
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
@@ -331,7 +331,7 @@ The new content will completely overwrite the existing content.
 + Data Structure
     + name (string) - Template name. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
-    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 1 MB
+    + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 5 MB
         + html (string) - HTML content for the email's `text/html` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + text (string) - Text content for the email's `text/plain` MIME part. At a minimum, html or text is required. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
         + amp_html (string) - AMPHTML Email content for the email's `text/x-amp-html` MIME part. At least one of `content.html` or `content.text` must also be provided. Expected in the UTF-8 charset with no `Content-Transfer-Encoding` applied.
