@@ -106,7 +106,7 @@ Features that are limited to some accounts will be marked appropriately througho
 ## Rate Limiting
 SparkPost APIs are rate limited, which limits how often each user can call the API, in order to protect the service from inadvertent or malicious overuse. If you exceed the limits for an API you will receive an HTTP status code 429. These limits are dynamic, but as a general rule, wait 1 to 5 seconds after receiving a 429 response before requesting again. Heavier usage patterns may require a more sophisticated and incremental backoff strategy.
 
-The Transmissions API is not rate-limited in this way, however some customers may have daily or monthly sending limits [https://developers.sparkpost.com/api/transmissions/#header-sending-limits] which may trigger a 420.
+The Transmissions API is not rate-limited in this way, however some customers may have daily or monthly [sending limits](https://developers.sparkpost.com/api/transmissions/#header-sending-limits) which may trigger a 420.
 
 ### Alternatives To Polling
 For some common use cases, the API offers more efficient alternatives to polling, especially of the Events endpoint. For example, a single call to the [metrics deliverability summary](/api/metrics/#metrics-get-metrics-summary)
