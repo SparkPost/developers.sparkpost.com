@@ -27,7 +27,7 @@ When developing locally, you have two options: developing the whole website or d
 This will develop the whole developer site.
 
 1. Run `npm run develop`
-1. open [http://localhost:8000/](http://localhost:8000/) to view the website.
+1. open [http://localhost:4000/](http://localhost:4000/) to view the website.
 
 #### Develop API reference
 
@@ -35,8 +35,9 @@ This will develop the whole developer site.
 
 This will only develop the API reference pages and skip unnecessary queries.
 
-1. Run `npm run docs`
-1. open [http://localhost:8000/api/](http://localhost:8000/api/) to view the docs.
+1. You will need a SparkPost API key to generate the docs
+1. Run `SPARKPOST_API_KEY=<key> npm run docs`
+1. open [http://localhost:4000/api/](http://localhost:4000/api/) to view the docs.
 
 #### Develop Netlify Lambda Functions
 
