@@ -13,7 +13,7 @@ Requests will be completed within 30 days.
 + Data Structure
     + recipients (array, required) - Array of email addresses (max 1000)
     + include_subaccounts (boolean, optional) - Set to `true` to apply request to master account and all subaccounts.
-      If not specified, it will use the value provided in the `X-MSYS-SUBACCOUNT` header.
+      Only applies if `X-MSYS-SUBACCOUNT` header is not set.
 
 + Request (application/json)
 
@@ -71,7 +71,7 @@ Requests will be completed within 30 days.
 + Data Structure
     + recipients (array, required) - Array of email addresses (max 1000)
     + include_subaccounts (boolean, optional) - Set to `true` to apply request to master account and all subaccounts.
-      If not specified, it will use the value provided in the `X-MSYS-SUBACCOUNT` header.
+      Only applies if `X-MSYS-SUBACCOUNT` header is not set.
 
 + Request (application/json)
 
