@@ -1,0 +1,118 @@
+FORMAT: 1A
+title: Data Privacy API
+description: Submit requests to be forgotten and opt-out requests.
+label: New
+
+# Group Data Privacy
+
+Request deletion of recipient data or opt-out of third party data usage of a recipient's personal information.
+Requests will be completed within 30 days.
+
+## Data Privacy Request
+
++ Data Structure
+    + recipients (array, required) - Array of email addresses (max 1000)
+    + include_subaccounts (boolean, optional) - Set to `true` to apply request to master account and all subaccounts. Only applies if `X-MSYS-SUBACCOUNT` header is not set.
+
+### Add request to be forgotten [POST /v1/data-privacy/rtbf-request]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "recipients": [
+                    "email@example.com",
+                    "email2@example.com"
+                ],
+                "include_subaccounts": false
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "message": "Request saved."
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Exceeded maximum number of recipients (1000)"
+                    }
+                ]
+            }
+
++ Response 400 (application/json)
+
+            {
+                "errors": [
+                    {
+                        "message": "invalid email address",
+                        "recipient": "not_an_email"
+                    }
+                ]
+            }
+
+
+### Add opt out request [POST /v1/data-privacy/opt-out-request]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "recipients": [
+                    "email@example.com",
+                    "email2@example.com"
+                ],
+                "include_subaccounts": false
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "message": "Request saved."
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Exceeded maximum number of recipients (1000)"
+                    }
+                ]
+            }
+
++ Response 400 (application/json)
+
+            {
+                "errors": [
+                    {
+                        "message": "invalid email address",
+                        "recipient": "not_an_email"
+                    }
+                ]
+            }
