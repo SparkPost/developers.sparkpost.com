@@ -530,6 +530,8 @@ the template update will succeed, but the transmission will continue to use the 
 
 ### Retrieve a Scheduled Transmission [GET /v1/transmissions/{id}]
 
+<Banner status="warning"><strong>Deprecation Notice</strong>: This feature has been deprecated.</Banner>
+
 Returns details about a scheduled transmission.
 The response for a transmission using an inline content will include `"template_id":"inline"`.
 Inline content cannot be specifically queried.
@@ -585,6 +587,8 @@ Inline content cannot be specifically queried.
 
 ### Delete a Scheduled Transmission [DELETE /v1/transmissions/{id}]
 
+<Banner status="warning"><strong>Deprecation Notice</strong>: This feature has been deprecated. Please use the delete by campaign ID feature instead.</Banner>
+
 Only transmissions which are scheduled for future generation may be deleted.
 
 <Banner status="warning">Scheduled transmissions cannot be deleted if the transmission is within 10 minutes of the scheduled generation time.</Banner>
@@ -633,8 +637,6 @@ Only transmissions which are scheduled for future generation may be deleted.
         }
 
 ### Delete Scheduled Transmissions By Campaign ID [DELETE /v1/transmissions{?campaign_id}]
-
-<Banner status="info">Enterprise only, account-specific configuration option.</Banner>
 
 Delete all transmissions in a campaign.
 

@@ -30,7 +30,7 @@
     "gatsby-plugin-offline": "^2.0.5",
     "gatsby-plugin-page-creator": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-sharp": "^2.5.1",
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-plugin-webpack-bundle-analyzer": "^0.1.1",
     "gatsby-remark-images": "^3.0.10",
