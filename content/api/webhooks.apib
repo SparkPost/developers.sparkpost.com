@@ -266,22 +266,14 @@ and returns information on the response received from the target.
 ### Retrieve Batch Status Information [GET /v1/webhooks/{id}/batch-status{?limit}]
 
 + Data Structure
-      + response_code (optional, int): Server response code of the webhook if successful,
-        + Default: unverified
-      + batch_id (required, uuid): Unique identifier of of the requested batch status,
-        + Default: unverified
-      + batch_size (required, integer): Number of events inside of the batch,
-        + Default: unverified
-      + ts (required, string) - Datetime the the batch was created was created. <br />Format: YYYY-MM-DDTHH:MM:SS+-HH:MM,
-        + Default: unverified
-      + failure_code: (optional) Failure response code if the webhook failed during delivery,
-        + Default: unverified
-      + webhook_id (required, uuid): Unique identifier of the webhook associated with the batch,
-        + Default: unverified
-      + attempts (optional, int): Number of failed attempts before the batch was delivered. Zero if succeeded on first attempt
-        + Default: unverified
-      + latency (required, int): Duration in ms for the entire batch posting HTTP round-trip
-        + Default: unverified
+    + response_code (number): Server response code of the webhook if successful,
+    + batch_id (number): Unique identifier of of the requested batch status,
+    + batch_size (number): Number of events inside of the batch,
+    + ts (string) - Datetime the the batch was created was created. <br />Format: YYYY-MM-DDTHH:MM:SS+-HH:MM
+    + failure_code: (number) Failure response code if the webhook failed during delivery
+    + webhook_id (number): Unique identifier of the webhook associated with the batch
+    + attempts (number): Number of failed attempts before the batch was delivered. Zero if succeeded on first attempt
+    + latency (number): Duration in ms for the entire batch posting HTTP round-trip
 
 When SparkPost does not get a 200 response from your webhook consumer endpoint then the batch is failed and SparkPost will retry the batch multiple times for a period of 8 hours. Status information is provided on any failed batches and those that successed on retry.  Batch status is available in the UI and API for 24 hours.
 
