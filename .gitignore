@@ -9,3 +9,5 @@ yarn-error.log
 .env
 # Netlify functions are built to this directory
 functions/
+# Temporary files from various editors
+**/.*.sw?
