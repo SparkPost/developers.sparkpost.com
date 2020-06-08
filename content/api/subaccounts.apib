@@ -170,6 +170,16 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
             ]
         }
 
++ Response 420 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Unable to create a new subaccount - usage exceeded."
+                }
+            ]
+        }
+
 ### Retrieve a Subaccount [GET /v1/subaccounts/{id}]
 
 This endpoint only returns information about the subaccount, not the resources associated with it.
@@ -246,6 +256,16 @@ This endpoint only returns information about the subaccount, not the resources a
             ]
         }
 
+
++ Response 420 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Unable to change subaccount status - usage exceeded."
+                }
+            ]
+        }
 
 ### List all Subaccounts [GET /v1/subaccounts]
 
