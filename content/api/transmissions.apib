@@ -25,7 +25,7 @@ For more extensive testing with your own sending doman, use the SparkPost [Sink 
 
 ### Sending Limits
 
-Your account has a sandbox, hourly, daily, and monthly sending limit based on your current plan level. You can view your current limits on your [dashboard](https://app.sparkpost.com/dashboard) ([EU](https://app.eu.sparkpost.com/dashboard)). If a transmission will push you over the sandbox, hourly, or daily sending limit, an error with the status code `420` is returned, along with a message detailing which limit you will exceed. If this happens, no messages are sent, regardless of the number of messages in the transmission that will push you passed your limit.
+Your account has a sandbox, daily, and monthly sending limit based on your current plan level. You can view your current limits on your [dashboard](https://app.sparkpost.com/dashboard) ([EU](https://app.eu.sparkpost.com/dashboard)). If a transmission will push you over the sandbox, daily, or monthly sending limit, an error with the status code `420` is returned, along with a message detailing which limit you will exceed. If this happens, no messages are sent, regardless of the number of messages in the transmission that will push you past your limit.
 
 Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-monthly-quota-limits/) and [what counts towards usage](https://www.sparkpost.com/docs/getting-started/what-counts-daily-monthly-usage/).
 
