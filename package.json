@@ -39,7 +39,7 @@
     "gatsby-transformer-json": "^2.1.1",
     "gatsby-transformer-remark": "^2.3.8",
     "is-absolute-url": "^2.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "minim": "^0.20.5",
     "minim-parse-result": "^0.10.0",
     "netlify-cms": "^1.9.2",
