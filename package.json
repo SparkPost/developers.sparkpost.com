@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
   },
+  "engines": {
+    "node": ">=10.17"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^0.20.3",
     "@mdx-js/tag": "^0.20.3",
