@@ -23,7 +23,7 @@
     "gatsby-plugin-algolia": "^0.11.1",
     "gatsby-plugin-google-tagmanager": "^2.3.11",
     "gatsby-plugin-lodash": "^3.3.10",
-    "gatsby-plugin-netlify": "^2.0.0",
+    "gatsby-plugin-netlify": "^2.3.11",
     "gatsby-plugin-netlify-cache": "^1.1.0",
     "gatsby-plugin-netlify-cms": "^2.0.1",
     "gatsby-plugin-nprogress": "^2.0.5",
