@@ -85,7 +85,6 @@ module.exports = {
         showSpinner: false,
       }
     },
-    // `gatsby-plugin-offline`,
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-lodash`,
     `gatsby-plugin-react-helmet`,
