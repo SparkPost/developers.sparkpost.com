@@ -33,7 +33,7 @@
     "gatsby-remark-images": "^3.3.19",
     "gatsby-source-filesystem": "^2.3.19",
     "gatsby-source-wordpress": "^3.3.22",
-    "gatsby-transformer-json": "^2.1.1",
+    "gatsby-transformer-json": "^2.4.11",
     "gatsby-transformer-remark": "^2.3.8",
     "is-absolute-url": "^2.1.0",
     "lodash": "^4.17.19",
