@@ -31,7 +31,7 @@
     "gatsby-plugin-sharp": "^2.6.19",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-remark-images": "^3.3.19",
-    "gatsby-source-filesystem": "^2.0.22",
+    "gatsby-source-filesystem": "^2.3.19",
     "gatsby-source-wordpress": "^3.0.64",
     "gatsby-transformer-json": "^2.1.1",
     "gatsby-transformer-remark": "^2.3.8",
