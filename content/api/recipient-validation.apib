@@ -21,6 +21,7 @@ Each validation will respond with the following result.
         + `risky`
         + `undeliverable`
         + `typo`
+    + delivery_confidence - a score in percentage on how confident SparkPost is that the email address can be delivered
     + reason (enum) - The reason the `result` value was given. If the result is not `undeliverable` then no reason is given.
         + `Invalid Syntax`
         + `Invalid Domain`
@@ -40,6 +41,7 @@ Each validation will respond with the following result.
             "reason": "Invalid Domain",
             "is_role": false,
             "is_disposable": false,
+            "delivery_confidence": 0
             "is_free": false
         }
     }
@@ -67,6 +69,7 @@ Validate a single email address. The response will contain whether the address i
                 "valid": true,
                 "is_role": false,
                 "is_disposable": false,
+                "delivery_confidence": 75
                 "is_free": true
             }
         }
@@ -82,6 +85,7 @@ Validate a single email address. The response will contain whether the address i
                 "reason": "Invalid Domain"
                  "is_role": false,
                 "is_disposable": false,
+                "delivery_confidence": 0,
                 "is_free": false
             }
         }
@@ -98,6 +102,7 @@ Validate a single email address. The response will contain whether the address i
                 "reason": "Invalid Recipient",
                 "is_role": false,
                 "is_disposable": false,
+                "delivery_confidence": 0,
                 "is_free": false
             }
         }
@@ -113,6 +118,7 @@ Validate a single email address. The response will contain whether the address i
                 "valid": true,
                 "is_role": false,
                 "is_disposable": false,
+                "delivery_confidence": <number in percentage>,
                 "is_free": false
             }
         }
@@ -128,7 +134,8 @@ Validate a single email address. The response will contain whether the address i
                 "valid": true,
                 "is_role": false,
                 "is_disposable": false,
-                "is_free": false
+                "is_free": false,
+                "delivery_confidence": <number in percentage>,
             }
         }
         
@@ -143,6 +150,7 @@ Validate a single email address. The response will contain whether the address i
                 "is_role": false,
                 "is_disposable": false,
                 "is_free": false,
-                "did_you_mean": recommendedemailaddress@goes.here
+                "did_you_mean": recommendedemailaddress@goes.here,
+                "delivery_confidence": <number in percentage>,
             }
         }
