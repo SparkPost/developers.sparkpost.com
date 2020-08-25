@@ -117,7 +117,7 @@ class Header extends Component {
               API Reference
             </NavLink>
             <NavLink to="https://sparkpost.com/docs">Documentation</NavLink>
-            <NavLink to="http://slack.sparkpost.com">Slack</NavLink>
+            <NavLink to="https://slack.sparkpost.com">Slack</NavLink>
             <NavLink to="https://status.sparkpost.com" target="_blank">
               <span>
                 <StatusIcon /> Status
