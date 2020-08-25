@@ -176,7 +176,7 @@ export default () => (
                 alt="Slideshare"
               />
               <SocialIcon
-                to="http://slack.sparkpost.com/"
+                to="https://slack.sparkpost.com/"
                 icon="slack"
                 alt="Slack"
               />

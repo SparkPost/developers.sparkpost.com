@@ -258,7 +258,7 @@ const IndexPage = props => {
                     </SectionLink>
                   </Column>
                   <Column xs={12} sm={4}>
-                    <SectionLink to="http://slack.sparkpost.com">
+                    <SectionLink to="https://slack.sparkpost.com">
                       <SectionTitle>
                         <People /> Community
                       </SectionTitle>
