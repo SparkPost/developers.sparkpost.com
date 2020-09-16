@@ -78,6 +78,8 @@ The query `query_filters` query parameter must be set in order to use advanced f
 Note: this type of filtering replaces other filters specified as stand-alone query parameters. 
 e.g. in `?domains=mailing.com,query_filters={}`, the domains query parameter will be ignored. Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
+The `query_filters` value is validated against a JSON schema. The schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. See: [Advanced Query JSON Schema](#header-advanced-query-json-schema).
+
 ### Groupings Structure 
 The JSON object consists of a top level "groupings" key that has an array of compare objects
 
@@ -283,6 +285,10 @@ The deliverability endpoints allow you to get high-level summaries of your data 
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
 
+### Advanced Query JSON Schema [/v1/metrics/deliverability/query-filters-schema]
+
+Retrieves the JSON schema for validating `query_filters` JSON value.
+
 ### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
 Provides high-level summary of aggregate metrics and lists the child endpoints that contain
@@ -292,6 +298,7 @@ aggregate data, which can be used as "group by" qualifiers.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies an alternate delimiter for all included query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -383,6 +390,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -478,6 +486,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -573,6 +582,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -666,6 +676,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -772,6 +783,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -878,6 +890,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -972,6 +985,7 @@ Provides aggregate metrics grouped by template over the time window specified.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1067,6 +1081,7 @@ in the world.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1161,6 +1176,7 @@ Provides deliverability metrics ordered by a precision of time.
     + from (required, datetime, `2018-07-11T07:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list `gmail.com,yahoo.com,hotmail.com`) ... Delimited list of domains for filtering.
     + campaigns (optional, list, `summerSale,promotionX`) ... Delimited list of campaigns for filtering.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1299,6 +1315,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1362,6 +1379,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1427,6 +1445,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1486,6 +1505,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1524,6 +1544,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1564,6 +1585,7 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1607,6 +1629,7 @@ Provides deliverability metrics, specific to delay events, grouped by the domain
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
@@ -1652,6 +1675,7 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
     + from (required, datetime, `2014-07-11T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + timezone = `UTC` (optional, string) ... Standard timezone identification string.
     + metrics (required, list, `count_clicked,count_raw_clicked`) ... Delimited list of metrics to include.
 
@@ -1698,6 +1722,7 @@ Provides aggregate count of deliveries grouped by the attempt number.
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
