@@ -69,6 +69,148 @@ For example, requesting data between `4:22` to `6:37` would return results withi
 
 All precisions are valid up to a 24 hour time window. `15min` precision is valid up to a 48 hour time window. Hour precision is valid up to a 31 day time window.
 
+
+## Advanced Filters
+Each Metrics endpoint specifies certain filters that can be set as query parameters. In addition to these basic filter types, the Metrics API allows for more advanced filtering with multiple conditions, groupings, and comparators.
+
+The query `query_filters` query parameter must be set in order to use advanced filters. The value is presented as a URL-encoded JSON object that matches the schema detailed below.
+
+Note: this type of filtering replaces other filters specified as stand-alone query parameters. 
+e.g. in `?domains=mailing.com,query_filters={}`, the domains query parameter will be ignored. Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
+
+### Groupings Structure 
+The JSON object consists of a top level "groupings" key that has an array of compare objects
+
+Example:
+````json
+{
+  "groupings": [
+    {
+       ... compare group 
+    },
+    {
+       ... compare group 
+    }
+  ]
+}
+
+````
+**Compare Group**
+
+The compare objects have a single logical comparison operator (`OR` or `AND`) that will be used to compare all of the filter conditions in the group
+
+Example:
+````json
+{
+      "AND":{
+        "domains":{
+          "eq":[
+            "gmail.com",
+            "yahoo.com",
+            "hotmail.com"
+          ],
+          "like":[
+            "mail"
+          ]
+        },
+        "sending_domains":{
+          "not":{
+            "eq":[
+              "sparkpost.com"
+            ]
+          }
+        }
+      }
+    }
+````
+
+Each filter group is comprised of the filter keys and comparator keywords. 
+
+**Filter Keys:**   
+               
+               domains
+               bindings
+               sending_ips
+               binding_groups
+               ip_pools
+               campaigns
+               templates
+               sending_domains
+               subaccounts
+
+**Comparator Keywords:** 
+
+               eq   - array of exact values to match
+               like - array of substrings to match on; values must be at least 3 characters long
+               not  - object containing one of the other comparator keywords; negates the value
+
+**Put it all together:**
+
+JSON query object:
+```json
+{
+  "groupings":[
+    {
+      "AND":{
+        "domains":{
+          "eq":[
+            "gmail.com",
+            "yahoo.com",
+            "hotmail.com"
+          ],
+          "like":[
+            "mail"
+          ]
+        },
+        "sending_domains":{
+          "not":{
+            "eq":[
+              "sparkpost.com"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "OR":{
+        "templates":{
+          "eq":[
+            "default"
+          ]
+        },
+        "campaigns":{
+          "like":[
+            "333",
+            "344",
+            "355"
+          ]
+        }
+      }
+    },
+    {
+      "OR":{
+        "campaigns":{
+          "not":{
+            "like":[
+              "Friday"
+            ],
+            "eq":[
+              "stuff",
+              "things"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+Compressed (whitespace and line end characters removed) and URL encoded:
+```
+?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22not%22%3A%7B%22eq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22not%22%3A%7B%22like%22%3A%5B%22Friday%22%5D%2C%22eq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%7D%5D%7D
+```
+
 **Time-series Metrics**
 
 When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
