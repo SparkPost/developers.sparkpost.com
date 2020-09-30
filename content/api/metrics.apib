@@ -1550,7 +1550,7 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
 
 ### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
 
-Provides aggregate count of deliveries grouped by the attempt number.
+Provides aggregate count of deliveries grouped by the attempt number. This endpoint supports at most 3 entries in the results Array, attempts: 1, attempts: 2, and attempts: 3+.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
