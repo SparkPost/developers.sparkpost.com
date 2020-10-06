@@ -116,11 +116,12 @@ Example:
           ]
         },
         "sending_domains":{
-          "not":{
-            "eq":[
-              "sparkpost.com"
-            ]
-          }
+          "notEq": [ 
+            "sparkpost.com" 
+          ],
+          "notLike": [
+            ".io"
+          ]
         }
       }
     }
@@ -142,9 +143,11 @@ Each filter group is comprised of the filter keys and comparator keywords.
 
 **Comparator Keywords:** 
 
-               eq   - array of exact values to match
-               like - array of substrings to match on; values must be at least 3 characters long
-               not  - object containing one of the other comparator keywords; negates the value
+               eq       - array of exact values to match
+               like     - array of substrings to match on; values must be at least 3 characters long
+               notEq    - array of exact values to NOT match
+               notLike  - array of substrings to NOT match on; values must be at least 3 characters long
+
 
 **Put it all together:**
 
@@ -165,11 +168,9 @@ JSON query object:
           ]
         },
         "sending_domains":{
-          "not":{
-            "eq":[
-              "sparkpost.com"
-            ]
-          }
+          "notEq":[
+            "sparkpost.com"
+          ]
         }
       }
     },
@@ -192,15 +193,13 @@ JSON query object:
     {
       "OR":{
         "campaigns":{
-          "not":{
-            "like":[
-              "Friday"
-            ],
-            "eq":[
-              "stuff",
-              "things"
-            ]
-          }
+          "notLike":[
+            "Friday"
+          ],
+          "notEq":[
+            "stuff",
+            "things"
+          ]
         }
       }
     }
@@ -210,7 +209,7 @@ JSON query object:
 
 Compressed (whitespace and line end characters removed) and URL encoded:
 ```
-?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22not%22%3A%7B%22eq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22not%22%3A%7B%22like%22%3A%5B%22Friday%22%5D%2C%22eq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%7D%5D%7D
+?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22notEq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22notLike%22%3A%5B%22Friday%22%5D%2C%22notEq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%5D%7D
 ```
 
 **Time-series Metrics**
