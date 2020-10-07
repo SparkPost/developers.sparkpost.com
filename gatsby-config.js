@@ -4,7 +4,8 @@ const { flatten } = require('lodash')
 const proxy = require('http-proxy-middleware')
 
 // Environment variables prefixed by "GATSBY" are accessible in src/ files
-process.env.GATSBY_ACTIVE_ENV = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV
+process.env.GATSBY_ACTIVE_ENV =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV
 
 module.exports = {
   siteMetadata: {
@@ -23,37 +24,51 @@ module.exports = {
     )
   },
   plugins: flatten([
-    process.env.GATSBY_ACTIVE_ENV !== 'docs' ? [
-      {
-        resolve: `gatsby-plugin-page-creator`,
-        options: {
-          path: `${__dirname}/content/pages`,
-        },
-      },
-      {
-        resolve: `gatsby-source-wordpress`,
-        options: {
-          baseUrl: 'sparkpost.com',
-          protocol: 'https',
-          hostingWPCOM: false,
-          useACF: false,
-          excludedRoutes: [ '**/oembed/**', '**/akismet/**', '**/yoast/**' , '**/users/**', '**/settings', '**/pages', '**/yst_prominent_words', '**/comments', '**/statuses', '**/media' ]
-        }
-      }
-    ] : [],
-    process.env.GATSBY_ACTIVE_ENV === 'publish' ? [
-      {
-        resolve: `gatsby-plugin-algolia`,
-        options: {
-          appId: 'SFXAWCYDV8',
-          apiKey: process.env.ALGOLIA_TOKEN,
-          queries: [
-            require('./algolia/apiReference'),
-            require('./algolia/momentum')
-          ]
-        }
-      }
-    ] : [],
+    process.env.GATSBY_ACTIVE_ENV !== 'docs'
+      ? [
+          {
+            resolve: `gatsby-plugin-page-creator`,
+            options: {
+              path: `${__dirname}/content/pages`,
+            },
+          },
+          {
+            resolve: `gatsby-source-wordpress`,
+            options: {
+              baseUrl: 'sparkpost.com',
+              includedRoutes: [
+                // "**/categories",
+                '**/posts',
+                // "**/pages",
+                // '**/media',
+                // "**/tags",
+                // "**/taxonomies",
+                '**/users',
+              ],
+              hostingWPCOM: false,
+              minimizeDeprecationNotice: false, // todo, we need to upgrade, please don't silence this notice
+              protocol: 'https',
+              useACF: false,
+              verboseOutput: false, // not very helpful
+            },
+          },
+        ]
+      : [],
+    process.env.GATSBY_ACTIVE_ENV === 'publish'
+      ? [
+          {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+              appId: 'SFXAWCYDV8',
+              apiKey: process.env.ALGOLIA_TOKEN,
+              queries: [
+                require('./algolia/apiReference'),
+                require('./algolia/momentum'),
+              ],
+            },
+          },
+        ]
+      : [],
     `gatsby-transformer-json`,
     `gatsby-transformer-api-blueprint`,
     `gatsby-source-sparkpost-api`,
@@ -67,8 +82,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
-        displayName: true
-      }
+        displayName: true,
+      },
     },
     // Google Analytics, HotJar, etc. are added through GTM
     {
@@ -76,14 +91,14 @@ module.exports = {
       options: {
         id: 'GTM-WN7C84',
         includeInDevelopment: false,
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         color: `#fa6423`,
         showSpinner: false,
-      }
+      },
     },
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-lodash`,
@@ -94,9 +109,9 @@ module.exports = {
         headers: {
           // Disable cache for Gatsby's default service worker file path
           // suggested by https://www.netlify.com/blog/2018/06/28/5-pro-tips-and-plugins-for-optimizing-your-gatsby---netlify-site/
-          "/sw.js": [ "Cache-Control: no-cache" ]
+          '/sw.js': ['Cache-Control: no-cache'],
         },
-      }
+      },
     },
     `gatsby-plugin-sharp`,
     {
@@ -114,6 +129,6 @@ module.exports = {
           },
         ],
       },
-    }
-  ])
+    },
+  ]),
 }
