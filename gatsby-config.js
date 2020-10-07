@@ -36,7 +36,12 @@ module.exports = {
             resolve: `gatsby-source-wordpress`,
             options: {
               baseUrl: 'sparkpost.com',
-              includedRoutes: ['**/categories', '**/posts', '**/users'],
+              includedRoutes: [
+                '**/categories',
+                '**/media',
+                '**/posts',
+                '**/users',
+              ],
               hostingWPCOM: false,
               minimizeDeprecationNotice: false, // todo, we need to upgrade, please don't silence this notice
               protocol: 'https',
