@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { graphql } from 'gatsby'
+import fury from '@apielements/core'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Layout from 'components/Layout'
@@ -8,12 +9,7 @@ import { Sidebar, Search, Navigation, Content } from 'components/docs'
 import Right from 'components/api/components/Right'
 import ApiaryRedirects from 'components/api/ApiaryRedirects'
 import API from 'components/api'
-
 import { mediaQuery } from 'utils/breakpoint'
-import parseResult from 'minim-parse-result'
-
-const minim = require('minim').namespace()
-minim.use(parseResult)
 
 // prettier-ignore
 const RightBackground = styled(Right)`
@@ -85,7 +81,7 @@ class Template extends Component {
       TableOfContents: pageTableOfContents = [],
       meta,
     } = props.data.apiBlueprint
-    const { api } = minim.fromRefract(ast)
+    const { api } = fury.load(ast) // note, load() uses minim.fromRefract()
 
     // decorate the table of contents with title, path, and label
     const decoratedTableOfContents = tableOfContents.map(category => {

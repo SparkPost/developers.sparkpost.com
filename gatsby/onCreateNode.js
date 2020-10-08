@@ -20,9 +20,7 @@ module.exports = async ({ node, actions, getNode }) => {
 
         mediaUrl = media.data.guid.rendered
       }
-    }
-    catch(e) {
-    }
+    } catch (e) {}
 
     createNodeField({ node, name: `media`, value: mediaUrl })
   }
@@ -37,38 +35,44 @@ module.exports = async ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: `path`,
-      value: `/api/${fileName === 'index' ? '' : `${fileName}/`}`
+      value: `/api/${fileName === 'index' ? '' : `${fileName}/`}`,
     })
 
     // add file
     createNodeField({
       node,
       name: `file`,
-      value: file
+      value: file,
     })
   }
 
-   /**
+  /**
    * Add the path and file to momentum nodes
    */
-  if (node.internal.type === 'MarkdownRemark' && node.fileAbsolutePath.includes('momentum')) {
-    const filePath = last(dirname(node.fileAbsolutePath).split(`${sep}momentum`))
+  if (
+    node.internal.type === 'MarkdownRemark' &&
+    node.fileAbsolutePath.includes('momentum')
+  ) {
+    const filePath = last(
+      dirname(node.fileAbsolutePath).split(`${sep}momentum`)
+    )
     const fileName = basename(node.fileAbsolutePath, '.md')
-    const path = `/momentum${filePath}/${fileName === 'index' ? '' : `${fileName}/`}`.toLowerCase()
-
+    const path = `/momentum${filePath}/${
+      fileName === 'index' ? '' : `${fileName}/`
+    }`.toLowerCase()
 
     // add path
     createNodeField({
       node,
       name: `path`,
-      value: path
+      value: path,
     })
 
     // add file
     createNodeField({
       node,
       name: `file`,
-      value: `${fileName}.md`
+      value: `${fileName}.md`,
     })
   }
 }

@@ -1,8 +1,5 @@
 import { last, get } from 'lodash'
-import parseResult from 'minim-parse-result'
-
-const minim = require('minim').namespace()
-minim.use(parseResult)
+import fury from '@apielements/core'
 
 export default function mergeDuplicateTransactions(transactions) {
   const transactionsArray = transactions.map(transition => transition.clone())
@@ -33,5 +30,5 @@ export default function mergeDuplicateTransactions(transactions) {
     return [...arr, transaction]
   }, [])
 
-  return minim.toElement(uniqueTransactions)
+  return fury.minim.toElement(uniqueTransactions)
 }

@@ -1,8 +1,7 @@
-const fury = require('fury')
-const apibParser = require('fury-adapter-apib-parser')
+const fury = require('@apielements/core')
+const apibParser = require('@apielements/apib-parser')
 
 fury.use(apibParser)
-
 
 /**
  * parse a API blueprint string into the minim object
@@ -10,9 +9,5 @@ fury.use(apibParser)
 module.exports = function parseApiBlueprint(originalSource) {
   // replace tabs with 4 spaces to keep api blueprint happy
   const source = originalSource.replace(/\t/g, '    ')
-  return new Promise((resolve, reject) => {
-    fury.parse({ source }, (err, result) => {
-      err ? reject(err) : resolve(result)
-    })
-  })
+  return fury.parse({ source })
 }
