@@ -14,7 +14,7 @@ The Events Ingest API accepts email event data, normalizes it, and sends it thro
 Events sent to the Ingest API must adhere to a specific format in order to be correctly processed by SparkPost.
 Only certain aspects of incoming API requests are validated during the REST transaction. Requests that do not pass validation at this point are rejected and a HTTP error code will be returned.
 The body of the request must contain gzip-encoded, [new-line-delimited](http://ndjson.org/) JSON along with the appropriate headers.
-The size of the request is limited to 5 MB.
+The size of the request is limited to 5 MB and the age of events must be less than 24 hours.
 
 Additional validation occurs out of band of the request. This additional validation ensures that events specified as part of the request body
 are properly formatted and consumable by SparkPost analytical services. Events that are not proper JSON, lack the correct wrapper, or are missing required fields will be dropped. 
