@@ -71,7 +71,22 @@ All precisions are valid up to a 24 hour time window. `15min` precision is valid
 
 **Time-series Metrics**
 
-When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
+When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by. The bounds of the time window (`from`, `to`) are also rounded to the nearest time matching the precision. For example, requesting data between `4:22` to `6:37` would round `from` and `to` in the following ways:
+
+| Precision | Rounded time bounds     |
+|-----------|-------------------------|
+| `1min`    | `04:22:00` - `06:37:59` |
+| `5min`    | `04:20:00` - `06:39:59` |
+| `15min`   | `04:15:00` - `06:44:59` |
+| `hour`    | `04:00:00` - `06:59:59` |
+| `12hr`    | `00:00:00` - `11:59:59` |
+
+Larger time windows are also rounded. For example, requesting data between `2020-04-03T04:22` to `2020-04-21T06:37` would round `from` and `to` in the following ways:
+
+| Precision | Rounded time bounds                           |
+| `day`     | `2020-04-03T00:00:00` - `2020-04-21T23:59:59` |
+| `week`    | `2020-03-29T00:00:00` - `2020-04-25T23:59:59` |
+| `month`   | `2020-04-01T00:00:00` - `2020-04-30T23:59:59` |
 
 ### Discoverability Links [GET /v1/metrics/]
 
@@ -1026,7 +1041,7 @@ Provides deliverability metrics ordered by a precision of time.
     + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, enum, `day`) ... Precision of timeseries data returned.
+    + precision (optional, enum, `day`) ... Precision of timeseries data returned. See: [Precision Parameter](#header-precision-parameter).
 
         + Values
             + `1min`
