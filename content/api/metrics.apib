@@ -1180,6 +1180,8 @@ Provides deliverability metrics ordered by a precision of time.
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce reasons.
 
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
+
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1242,6 +1244,8 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 ### Bounce Reason Metrics By Domain [GET /v1/metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
 Provides deliverability metrics, specific to bounce events, grouped by the domain and bounce reasons.
+
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1308,6 +1312,8 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
 
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
+
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1367,6 +1373,8 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 
 Provides deliverability metrics, specific to rejection events, grouped by the rejection reasons.
 
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
+
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1404,6 +1412,8 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
 ### Rejection Reason Metrics By Domain [GET /v1/metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to rejection events, grouped by the domain and rejection reasons.
+
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1444,6 +1454,8 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
 ### Delay Reason Metrics [GET /v1/metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the delay reasons.
+
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1487,6 +1499,8 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
 ### Delay Reason Metrics By Domain [GET /v1/metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the domain and delay reasons.
+
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1533,6 +1547,8 @@ Provides deliverability metrics, specific to delay events, grouped by the domain
 
 Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/template-language/#header-link-names).
 
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
+
 + Parameters
     + from (required, datetime, `2014-07-11T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1578,6 +1594,8 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
 ### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
 
 Provides aggregate count of deliveries grouped by the attempt number. This endpoint supports at most 3 entries in the results Array, attempts: 1, attempts: 2, and attempts: 3+.
+
+Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
