@@ -1651,6 +1651,8 @@ Note that even though precision is not a valid query parameter for this endpoint
 
 Each of the the following endpoints returns a list of their resources for which we have metrics. These help you get an overview of what metrics are available to you.
 
+Note that even though precision is not a valid query parameter for these endpoints, time frame rounding will be applied at the `hour` level of precision. See: [Precision Parameter](#header-precision-parameter).
+
 ### IP Pools [GET /v1/metrics/ip-pools{?from,to,timezone,match,limit}]
 
 Returns a list of IP pools that the Metrics API contains data on.
