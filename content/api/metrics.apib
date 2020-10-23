@@ -71,22 +71,7 @@ All precisions are valid up to a 24 hour time window. `15min` precision is valid
 
 **Time-series Metrics**
 
-When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by. The bounds of the time window (`from`, `to`) are also rounded to the nearest time matching the precision. For example, requesting data between `4:22` to `6:37` would round `from` and `to` in the following ways:
-
-| Precision | Rounded time bounds     |
-|-----------|-------------------------|
-| `1min`    | `04:22:00` - `06:37:59` |
-| `5min`    | `04:20:00` - `06:39:59` |
-| `15min`   | `04:15:00` - `06:44:59` |
-| `hour`    | `04:00:00` - `06:59:59` |
-| `12hr`    | `00:00:00` - `11:59:59` |
-
-Larger time windows are also rounded. For example, requesting data between `2020-04-03T04:22` to `2020-04-21T06:37` would round `from` and `to` in the following ways:
-
-| Precision | Rounded time bounds                           |
-| `day`     | `2020-04-03T00:00:00` - `2020-04-21T23:59:59` |
-| `week`    | `2020-03-29T00:00:00` - `2020-04-25T23:59:59` |
-| `month`   | `2020-04-01T00:00:00` - `2020-04-30T23:59:59` |
+When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
 
 ### Discoverability Links [GET /v1/metrics/]
 
@@ -1041,7 +1026,7 @@ Provides deliverability metrics ordered by a precision of time.
     + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, enum, `day`) ... Precision of timeseries data returned. See: [Precision Parameter](#header-precision-parameter).
+    + precision (optional, enum, `day`) ... Precision of timeseries data returned.
 
         + Values
             + `1min`
@@ -1180,8 +1165,6 @@ Provides deliverability metrics ordered by a precision of time.
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce reasons.
 
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
-
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1244,8 +1227,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ### Bounce Reason Metrics By Domain [GET /v1/metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
 Provides deliverability metrics, specific to bounce events, grouped by the domain and bounce reasons.
-
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1312,8 +1293,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 
 Provides deliverability metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
 
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
-
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1373,8 +1352,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 
 Provides deliverability metrics, specific to rejection events, grouped by the rejection reasons.
 
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
-
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1412,8 +1389,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ### Rejection Reason Metrics By Domain [GET /v1/metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to rejection events, grouped by the domain and rejection reasons.
-
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1454,8 +1429,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ### Delay Reason Metrics [GET /v1/metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the delay reasons.
-
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1499,8 +1472,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ### Delay Reason Metrics By Domain [GET /v1/metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
 Provides deliverability metrics, specific to delay events, grouped by the domain and delay reasons.
-
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1547,8 +1518,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 
 Provides deliverability metrics, specific to engagement events (clicks/opens), grouped by the link name (or URL if no link name exists). To name the links in your messages, [read about the `data-msys-link-name` HTML attribute here](/api/template-language/#header-link-names).
 
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
-
 + Parameters
     + from (required, datetime, `2014-07-11T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1594,8 +1563,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
 
 Provides aggregate count of deliveries grouped by the attempt number. This endpoint supports at most 3 entries in the results Array, attempts: 1, attempts: 2, and attempts: 3+.
-
-Note that even though precision is not a valid query parameter for this endpoint, time frame rounding will be applied. See: [Precision Parameter](#header-precision-parameter).
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1650,8 +1617,6 @@ Note that even though precision is not a valid query parameter for this endpoint
 ## Lists [/lists]
 
 Each of the the following endpoints returns a list of their resources for which we have metrics. These help you get an overview of what metrics are available to you.
-
-Note that even though precision is not a valid query parameter for these endpoints, time frame rounding will be applied at the `hour` level of precision. See: [Precision Parameter](#header-precision-parameter).
 
 ### IP Pools [GET /v1/metrics/ip-pools{?from,to,timezone,match,limit}]
 

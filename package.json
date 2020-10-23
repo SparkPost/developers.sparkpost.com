@@ -19,7 +19,7 @@
     "downshift": "^2.2.2",
     "escape-string-regexp": "^1.0.5",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.24.83",
+    "gatsby": "^2.19.30",
     "gatsby-plugin-algolia": "^0.11.1",
     "gatsby-plugin-google-tagmanager": "^2.3.11",
     "gatsby-plugin-lodash": "^3.3.10",
