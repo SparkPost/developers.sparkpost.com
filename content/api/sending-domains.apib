@@ -146,7 +146,7 @@ Creates a new sending domain. Each domain and it's subdomains can only be added 
         + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
     + generate_dkim (boolean) - Whether to generate a DKIM keypair on creation.
         + Default: true
-    + dkim_key_length (number) - Size, in bits, of the DKIM private key to be generated. This option only applies if `generate_dkim` is true. <br /><span class="label label-info"><strong>Note</strong></span> public keys for private keys longer than 1024 bits will be longer that 255 characters. Because of this, the public key <code>TXT</code> record in DNS will need to contain multiple strings, see <a href="https://tools.ietf.org/html/rfc7208#section-3.3">RFC 7208, section 3.3</a> for an example of how the SPF spec addresses this.
+    + dkim_key_length (number) - Size, in bits, of the DKIM private key to be generated. This option only applies if `generate_dkim` is true. <br /><span class="label label-info"><strong>Note</strong></span> public keys for private keys longer than 1024 bits will be longer than 255 characters. Because of this, the public key <code>TXT</code> record in DNS will need to contain multiple strings, see <a href="https://tools.ietf.org/html/rfc7208#section-3.3">RFC 7208, section 3.3</a> for an example of how the SPF spec addresses this.
         + Default: 1024
     + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
         + Default: false
