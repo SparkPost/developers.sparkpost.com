@@ -49,7 +49,13 @@ Definitions for terms found in Metrics API
 | `total_delivery_time_first`      | Total time taken to deliver messages on first attempt (milliseconds)                                |
 | `total_delivery_time_subsequent` | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
 | `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
-
+| `count_inbox_panel`              | Restricted by deliverability product                                                                |
+| `count_spam_panel`               | Restricted by deliverability product                                                                |
+| `count_inbox_seed`               | Restricted by deliverability product                                                                |
+| `count_spam_seed`                | Restricted by deliverability product                                                                |
+| `count_unsubscribe`              | Restricted by deliverability product                                                                |
+| `count_moved_to_inbox`           | Restricted by deliverability product                                                                |
+| `count_moved_to_spam`            | Restricted by deliverability product                                                                |
 
 <Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
@@ -130,7 +136,12 @@ The Metrics API is designed for discoverability of child links. Calling the API 
                   "href": "/api/v1/metrics/sending-ips",
                   "rel": "sending-ips",
                   "method": "GET"
-                }
+                },
+                {
+                  "href": "/api/v1/metrics/subject-campaigns",
+                  "rel": "subject-campaigns",
+                  "method": "GET"
+                 }
             ]
         }
 
@@ -881,6 +892,12 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -976,6 +993,12 @@ in the world.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1071,6 +1094,12 @@ Provides deliverability metrics ordered by a precision of time.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
     + timezone = `UTC` (optional, string `America/New_York`) ... Standard timezone identification string.
 
@@ -1116,6 +1145,12 @@ Provides deliverability metrics ordered by a precision of time.
                     "count_unique_initial_rendered": 81140,
                     "count_unique_rendered": 69643,
                     "count_unsubscribe": 1,
+                    "count_inbox_panel": 1435,
+                    "count_spam_panel": 12412,
+                    "count_inbox_seed": 4524,
+                    "count_spam_seed": 642345,
+                    "count_moved_to_inbox": 354234,
+                    "count_moved_to_spam": 5234,
                     "total_delivery_time_first": 90854824,
                     "total_delivery_time_subsequent": 1008767467,
                     "total_msg_volume": 1111464137,
@@ -1152,6 +1187,12 @@ Provides deliverability metrics ordered by a precision of time.
                     "count_unique_initial_rendered": 55592,
                     "count_unique_rendered": 48206,
                     "count_unsubscribe": 3,
+                    "count_inbox_panel": 1435,
+                    "count_spam_panel": 12412,
+                    "count_inbox_seed": 4524,
+                    "count_spam_seed": 642345,
+                    "count_moved_to_inbox": 354234,
+                    "count_moved_to_spam": 5234,
                     "total_delivery_time_first": 60928506,
                     "total_delivery_time_subsequent": 665233402,
                     "total_msg_volume": 736088556,
@@ -1601,6 +1642,30 @@ Provides aggregate count of deliveries grouped by the attempt number. This endpo
             ]
         }
 
+### Subject Campaign Metrics [GET /v1/metrics/deliverability/subject-campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
+
+Provides subject campaign metrics.
+
++ Parameters
+    + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + domains (optional, list) ... Delimited list of recipient domains to include.
+    + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + templates (optional, list) ... Delimited list of template IDs to include.
+    + sending_ips (optional, list) ... Delimited list of sending IPs to include.
+    + ip_pools (optional, list) ... Delimited list of IP pools to include.
+    + sending_domains (optional, list) ... Delimited list of sending domains to include.
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
+
++ Response 200 (application/json)
+
+        {
+            "results": {}
+        }
+
 
 ### Metrics by Binding [GET /v1/metrics/deliverability/binding{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
 
@@ -1712,6 +1777,38 @@ Returns a list of campaigns that the Metrics API contains data on.
                     "Founder's Day Event",
                     "Winter Event",
                     "Promotion X"
+                ]
+            }
+        }
+
+### Subject Campaigns [GET /v1/metrics/subject-campaigns{?from,to,timezone,limit,match}]
+
+Returns a list of subject campaigns that the Metrics API contains data on.
+
++ Parameters
+    + match (optional, string) ... Only return results containing this string.
+    + limit (optional, int, `5`) ... Maximum number of results to return.
+    + from (optional, datetime, `2017-12-01T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime, `2017-12-01T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "subject-campaigns": [
+                    "Subject 1",
+                    "Subject 2",
+                    "Subject 3",
+                    "Subject 4",
+                    "Subject 5"
                 ]
             }
         }
