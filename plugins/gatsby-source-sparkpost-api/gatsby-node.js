@@ -5,33 +5,36 @@
 const crypto = require('crypto')
 const axios = require('axios')
 const SparkPost = require('sparkpost')
-const sparkpost = new SparkPost()
+const sparkpost = new SparkPost('not-needed') // an API Key is required by node-sparkpost, but not needed for these public self-doc endpoints
 const { GraphQLJSON } = require('gatsby/graphql')
 const map = require('lodash.map')
 const mapValues = require('lodash.mapvalues')
 const keyBy = require('lodash.keyby')
 
-const addPeriod = (str) => {
+const addPeriod = str => {
   return str.endsWith('.') ? str : `${str}.`
 }
 
 exports.sourceNodes = async ({ actions, createNodeId }) => {
   const { createNode, createParentChildLink } = actions
 
-  const { results: webhookDocumentation } = await sparkpost.get({ uri: '/api/v1/webhooks/events/documentation' })
-  const { results: webhookSamples } = await sparkpost.get({ uri: '/api/v1/webhooks/events/samples' })
-
+  const { results: webhookDocumentation } = await sparkpost.get({
+    uri: '/api/v1/webhooks/events/documentation',
+  })
+  const { results: webhookSamples } = await sparkpost.get({
+    uri: '/api/v1/webhooks/events/samples',
+  })
 
   let eventDescriptions = {}
 
   // Create webhook event nodes
-  const webhookSamplesMap = keyBy(webhookSamples, (sample) => {
+  const webhookSamplesMap = keyBy(webhookSamples, sample => {
     const category = Object.keys(sample.msys)[0]
 
     return sample.msys[category].type
   })
 
-  const processWebhookCategory = (category) => {
+  const processWebhookCategory = category => {
     category.description = addPeriod(category.description)
     const nodeId = createNodeId(`sparkpost-webhook-category-${category.name}`)
     const nodeContent = JSON.stringify(category)
@@ -47,12 +50,12 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
       internal: {
         type: `WebhookCategory`,
         content: nodeContent,
-        contentDigest: nodeContentDigest
-      }
+        contentDigest: nodeContentDigest,
+      },
     })
   }
 
-  const processWebhookEvent = (event) => {
+  const processWebhookEvent = event => {
     const attributes = event.event
     const name = attributes.type.sampleValue
     const sample = webhookSamplesMap[name]
@@ -62,7 +65,7 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
       attributes,
       sample,
       description: addPeriod(event.description),
-      display_name: event.display_name
+      display_name: event.display_name,
     }
     const nodeContent = JSON.stringify(nodeObject)
     const nodeContentDigest = crypto
@@ -80,8 +83,8 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
       internal: {
         type: `WebhookEvent`,
         content: nodeContent,
-        contentDigest: nodeContentDigest
-      }
+        contentDigest: nodeContentDigest,
+      },
     }
   }
 
@@ -89,16 +92,15 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
     const categoryNode = processWebhookCategory({
       name,
       description: category.description,
-      display_name: category.display_name
+      display_name: category.display_name,
     })
 
     createNode(categoryNode)
 
-    map(category.events, (event) => {
+    map(category.events, event => {
       const eventNode = processWebhookEvent(event)
       eventNode.parent = categoryNode.id
       eventNode.category = categoryNode.name
-
 
       // collect the descriptions for message events
       eventDescriptions[eventNode.name] = eventNode.description
@@ -109,8 +111,12 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
   })
 
   // Create message event nodes
-  const { results: messageEventsDocumentation } = await sparkpost.get({ uri: '/api/v1/events/message/documentation' })
-  const { results: messageEventsSamples } = await sparkpost.get({ uri: '/api/v1/events/message/samples' })
+  const { results: messageEventsDocumentation } = await sparkpost.get({
+    uri: '/api/v1/events/message/documentation',
+  })
+  const { results: messageEventsSamples } = await sparkpost.get({
+    uri: '/api/v1/events/message/samples',
+  })
 
   messageEventsDocumentation.forEach((attributes, i) => {
     const name = attributes.type.sampleValue
@@ -132,8 +138,8 @@ exports.sourceNodes = async ({ actions, createNodeId }) => {
       internal: {
         type: `MessageEvent`,
         content: nodeContent,
-        contentDigest: nodeContentDigest
-      }
+        contentDigest: nodeContentDigest,
+      },
     }
 
     createNode(nodeData)
@@ -151,12 +157,12 @@ exports.setFieldsOnGraphQLNodeType = async ({ type }) => {
       resolve(node) {
         const object = JSON.parse(node.internal.content)
 
-        return mapValues(object.attributes, (attribute) => {
+        return mapValues(object.attributes, attribute => {
           attribute.description = addPeriod(attribute.description)
 
           return attribute
         })
-      }
+      },
     },
     sample: {
       type: GraphQLJSON,
@@ -164,7 +170,7 @@ exports.setFieldsOnGraphQLNodeType = async ({ type }) => {
         const object = JSON.parse(node.internal.content)
 
         return object.sample
-      }
-    }
+      },
+    },
   }
 }

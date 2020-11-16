@@ -52,8 +52,9 @@ const SectionTitle = styled(({ indexName, ...props }) => (
   <li {...props}>
     <h5>
       {indexName === 'api_reference' && 'API Reference'}
-      {indexName === 'production_site_posts_support_article' && 'Documentation'}
-      {indexName === 'production_site_posts_post' && 'Blog'}
+      {indexName === 'wp_vip_site_production_posts_support_article' &&
+        'Documentation'}
+      {indexName === 'wp_vip_site_production_posts_post' && 'Blog'}
     </h5>
   </li>
 ))`
@@ -123,9 +124,9 @@ const UniversalSearch = () => {
         algolia={{ hitsPerPage: 3 }}
         indexes={[
           'api_reference',
-          'production_site_posts_support_article',
+          'wp_vip_site_production_posts_support_article',
           {
-            indexName: 'production_site_posts_post',
+            indexName: 'wp_vip_site_production_posts_post',
             config: {
               facetFilters:
                 '[["taxonomies_hierarchical.category.lvl0:Developer"]]',
