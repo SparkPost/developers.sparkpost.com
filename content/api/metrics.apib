@@ -70,15 +70,37 @@ For example, requesting data between `4:22` to `6:37` would return results withi
 All precisions are valid up to a 24 hour time window. `15min` precision is valid up to a 48 hour time window. Hour precision is valid up to a 31 day time window.
 
 
-## Advanced Filters
-Each Metrics endpoint specifies certain filters that can be set as query parameters. In addition to these basic filter types, the Metrics API allows for more advanced filtering with multiple conditions, groupings, and comparators.
+**Time-series Metrics**
 
-The query `query_filters` query parameter must be set in order to use advanced filters. The value is presented as a URL-encoded JSON object that matches the schema detailed below.
+When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
 
-Note: this type of filtering replaces other filters specified as stand-alone query parameters. 
-e.g. in `?domains=mailing.com,query_filters={}`, the domains query parameter will be ignored. Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
-The `query_filters` value is validated against a JSON schema. The schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. See: [Advanced Query JSON Schema](#header-advanced-query-json-schema).
+## Filters
+
+Metric data can be filtered by using query parameters in the [query component](https://tools.ietf.org/html/rfc3986#section-3.4) of the request URI. 
+Each Metrics endpoint specifies certain filters that can be set as query parameters.
+The exact filters and query parameters available to each route are listed in the respective route's "parameters" section below.
+The filters can be specified using either a simple or advanced query syntax.
+
+### Simple Filters
+
+Simple query filters can be specified as key-value pairs in the request URL and multiple values can be listed with a delimiter separating them.
+For example metrics can be limited to sending domains equal to "sparkpost.com" or "example.org" with the following query string:
+
+`?sending_domains=sparkpost.com,example.org`
+
+### Advanced Filters
+
+Instead of using simple filter types, the Metrics API allows for more advanced filtering with multiple conditions, groupings, and comparators. 
+
+The `query_filters` query parameter must be set in order to use advanced filters. The value is presented as a URL-encoded JSON object that matches the schema detailed below.
+
+The `query_filters` value is validated against a JSON schema. The schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. 
+See [Advanced Query JSON Schema](#header-advanced-query-json-schema).
+
+Note: advanced filters cannot be used with simple filters. Simple filters will be ignored if the `query_filters` parameter is used. 
+e.g. in `?domains=mailing.com&query_filters={}`, the domains query parameter will be ignored. 
+Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
 ### Groupings Structure 
 The JSON object consists of a top level "groupings" key that has an array of compare objects
@@ -213,10 +235,6 @@ Compressed (whitespace and line end characters removed) and URL encoded:
 ```
 ?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22notEq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22notLike%22%3A%5B%22Friday%22%5D%2C%22notEq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%5D%7D
 ```
-
-**Time-series Metrics**
-
-When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
 
 ### Discoverability Links [GET /v1/metrics/]
 
