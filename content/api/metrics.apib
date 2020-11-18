@@ -84,25 +84,26 @@ The filters can be specified using either a simple or advanced query syntax.
 
 ### Simple Filters
 
-Simple query filters can be specified as key-value pairs in the request URL and multiple values can be listed with a delimiter separating them.
+Simple query filters can be specified as key-value pairs in the request URI and multiple values can be listed with a delimiter separating them.
 For example metrics can be limited to sending domains equal to "sparkpost.com" or "example.org" with the following query string:
-
 `?sending_domains=sparkpost.com,example.org`
 
 ### Advanced Filters
 
-Instead of using simple filter types, the Metrics API allows for more advanced filtering with multiple conditions, groupings, and comparators. 
+The Metrics API allows for more advanced data filtering with multiple conditions, groupings, and comparators via the `query_filters` query parameter.
 
-The `query_filters` query parameter must be set in order to use advanced filters. The value is presented as a URL-encoded JSON object that matches the schema detailed below.
-
-The `query_filters` value is validated against a JSON schema. The schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. 
+The value of the `query_filters` query parameter must be structured as a URL-encoded JSON object.
+The Metrics API uses [JSON Schema](https://json-schema.org/) to define and validate advanced filters. 
+Advanced Filter requests that do not adhere to the schema will result in a `400` error response. 
+Specific schema violations will be attached to the `validationErrors` property of the error response.
+The exact schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. 
 See [Advanced Query JSON Schema](#header-advanced-query-json-schema).
 
-Note: advanced filters cannot be used with simple filters. Simple filters will be ignored if the `query_filters` parameter is used. 
+Please note, advanced filters cannot be used in conjunction with simple filters. Simple filters will be ignored if the `query_filters` parameter is used. 
 e.g. in `?domains=mailing.com&query_filters={}`, the domains query parameter will be ignored. 
 Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
-### Groupings Structure 
+#### Groupings Structure 
 The JSON object consists of a top level "groupings" key that has an array of compare objects
 
 Example:
@@ -307,7 +308,7 @@ Use the `subaccount` field to get metrics about individual subaccounts or set it
 
 ### Advanced Query JSON Schema [/v1/metrics/deliverability/query-filters-schema]
 
-Retrieves the JSON schema for validating `query_filters` JSON value.
+Retrieves the JSON schema for validating the `query_filters` JSON value.
 
 ### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
