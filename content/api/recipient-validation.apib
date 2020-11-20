@@ -50,7 +50,7 @@ Each validation will respond with the following result.
 
 ## Email Address Validation [GET /v1/recipient-validation/single/{address}]
 
-Validate a single email address. The response will contain whether the address is `valid`, `neutral, `risky`, `undeliverable` or `typo` along with additional metadata about the address. If the email address is undeliverable, a reason will also be provided.
+Validate a single email address. The response will contain whether the address is `valid`, `neutral`, `risky`, `undeliverable` or `typo` along with additional metadata about the address. If the email address is undeliverable, a reason will also be provided. Use UTF-8 encoding for special characters like `/`.
 
 
 + Request
