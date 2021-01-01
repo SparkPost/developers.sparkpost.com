@@ -52,6 +52,8 @@ Filters that support keyword searching are:
 * `sending_domains`
 * `subjects`
 * `templates`
+* `mailbox_providers`
+* `mailbox_provider_regions`
 
 ## Pagination [/v1/events]
 The Events API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
@@ -143,6 +145,8 @@ Returns a list of message events that matched the filtered search.
     + subaccounts (string, optional) - Comma delimited list of subaccount IDs to search.
     + messages (string, optional) - Comma delimited list of message IDs to search.
     + transmissions (string, optional) - Comma delimited list of transmission IDs to search.
+    + mailbox_providers (string, optional) - Comma delimited list of mailbox providers to search. Supports keyword searching.
+    + mailbox_provider_regions (string, optional) - Comma delimited list of mailbox provider regions to search. Supports keyword searching.
     + ab_tests (string, optional) - Comma delimited list of A/B test IDs to search. Supports keyword searching.
     + ab_test_versions (number, optional) - Comma delimited list of version numbers of A/B tests to search. If provided, `ab_tests` parameter becomes required.
 
@@ -202,7 +206,9 @@ Returns a list of message events that matched the filtered search.
                     "template_version": "1",
                     "timestamp": "2016-04-18T14:25:07.000+00:00",
                     "transmission_id": "65832150921904138",
-                    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36"
+                    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36",
+                    "mailbox_provider": "Gmail",
+                    "mailbox_provider_region": "Europe"
                 }
             ],
             "total_count": 1,
