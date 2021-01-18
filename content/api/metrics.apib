@@ -304,7 +304,7 @@ The Metrics API is designed for discoverability of child links. Calling the API 
 
 The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
 
-Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
+Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the primary account's data.
 
 ### Advanced Query JSON Schema [/v1/metrics/deliverability/query-filters-schema]
 
@@ -798,7 +798,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
 
 ### Metrics by Subaccount [GET /v1/metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
-Provides aggregate metrics grouped by subaccount over the time window specified. Please note that master account events will be returned grouped by the subaccount_id field containing the value `0`.
+Provides aggregate metrics grouped by subaccount over the time window specified. Please note that primary account events will be returned grouped by the subaccount_id field containing the value `0`.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
