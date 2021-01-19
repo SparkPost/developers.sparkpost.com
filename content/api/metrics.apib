@@ -1938,13 +1938,12 @@ Returns a list of domains that the Metrics API contains data on.
 
 ## Industry Benchmarks [/v1/metrics/benchmarks]
 
-The benchmarks endpoints allow you to compare yourself to the industry.
-
-Available for customers with the deliverability product
+The industry benchmarks endpoints allow you to compare your performance to your industry.
 
 ### Inbox Rate [GET /v1/metrics/benchmarks/inbox-rate{?from,to,industry_category,mailbox_provider,timezone}]
 
-Provides daily inbox rate industry benchmarks of 25th, 50th, and 75th percentile.
+
+Provides daily inbox rate industry benchmarks of 25th, 50th (median), and 75th percentile.
 #
 Note: The Inbox Rate Industry Benchmark endpoint is available to the SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability</span></a> customers only.
 
