@@ -99,10 +99,10 @@ Once it is verified through one of those two methods, you can use it as a bounce
         + public (string) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string) - Value used as the DomainKey selector which indicates the DKIM public key location.
         + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
-    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
+    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a primary account.
     + subaccount_id (number) - The subaccount ID that the sending domain belongs to. Only available to domains belonging to a subaccount.
     + is_default_bounce_domain (boolean)
-        Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with cname_status of "valid" or mx_status of "valid".  The master account as well as each subaccount may set a unique default bounce domain. <br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
+        Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with cname_status of "valid" or mx_status of "valid".  The primary account as well as each subaccount may set a unique default bounce domain. <br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
     + creation_time (string) - Datetime the domain was created. <br />Format: YYYY-MM-DDTHH:MM:SS+-HH:MM
     + delegated (boolean) - Whether this domain was delegated to SparkPost by the customer. Will not be present if false. <br /> Only available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
 + Sample
@@ -148,7 +148,7 @@ Creates a new sending domain. Each domain and it's subdomains can only be added 
         + Default: true
     + dkim_key_length (number) - Size, in bits, of the DKIM private key to be generated. This option only applies if `generate_dkim` is true. <br /><span class="label label-info"><strong>Note</strong></span> public keys for private keys longer than 1024 bits will be longer that 255 characters. Because of this, the public key <code>TXT</code> record in DNS will need to contain multiple strings, see <a href="https://tools.ietf.org/html/rfc7208#section-3.3">RFC 7208, section 3.3</a> for an example of how the SPF spec addresses this.
         + Default: 1024
-    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
+    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a primary account.
         + Default: false
     
 
@@ -359,8 +359,8 @@ Returns the full sending domain object, except the `domain` field.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string, required) - Value used as the DomainKey selector which indicates the DKIM public key location.
         + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
-    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a master account.
-    + `is_default_bounce_domain` (boolean) - Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with `cname_status` or `mx_status` equal to valid. The master account and each subaccount may set it's own unique default bounce domain.<br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
+    + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a primary account.
+    + `is_default_bounce_domain` (boolean) - Whether this domain should be used as the bounce domain when no other valid bounce domain has been specified in the transmission or SMTP injection. Only available to domains with `cname_status` or `mx_status` equal to valid. The primary account and each subaccount may set it's own unique default bounce domain.<br /> Not available for <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
 
 
 

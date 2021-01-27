@@ -25,7 +25,7 @@ SparkPost supports bulk importing or manually adding up to 1,000,000 suppression
 
 Each subaccount has it's own independent suppression list.
 Set the `X-MSYS-SUBACCOUNT` header to a subaccount ID to search and operate on that subaccount's suppression list.
-By default, the search endpoint will search across the master account's and all subaccounts' lists.
+By default, the search endpoint will search across the primary account's and all subaccounts' lists.
 
 ## Suppression Object
 
@@ -176,10 +176,10 @@ Return all suppression entries for a recipient. If the recipient is not in the s
 
 ##### Searching with Subaccounts
 If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header when performing a lookup on a specific suppression list.
-- Use a value of 0 to only search against the master account suppression list.
+- Use a value of 0 to only search against the primary account suppression list.
 - Use the subaccount's ID to perform a lookup on a specific subaccount suppression list.
 
-If the `X-MSYS-SUBACCOUNT` header is not provided, a search will be performed across the master account and all subaccount suppression lists.
+If the `X-MSYS-SUBACCOUNT` header is not provided, a search will be performed across the primary account and all subaccount suppression lists.
 Searches across multiple lists can return out of date results, with a delay of up to 20 minutes.
 Searches against a specific list are not affected by this delay and return up-to-date information.
 If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT` header in order to receive up-to-date results.
