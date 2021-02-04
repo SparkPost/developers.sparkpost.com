@@ -247,7 +247,7 @@ This endpoint only returns information about the subaccount, not the resources a
         }
 
 
-### List all Subaccounts [GET /v1/subaccounts]
+### List all Subaccounts [GET /v1/subaccounts{?option}]
 
 Returns a list of your subaccounts. 
 
@@ -257,6 +257,9 @@ Returns a list of your subaccounts.
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
++ Parameters
+
+    + option (optional, string, `deliverability`) ... Filters subaccounts to those with the option enabled. The only valid value is currently `deliverability`.
 
 + Response 200 (application/json)
 
@@ -267,19 +270,29 @@ Returns a list of your subaccounts.
                     "name": "Joe's Garage",
                     "status": "active",
                     "ip_pool": "my_ip_pool",
-                    "compliance_status": "active"
+                    "compliance_status": "active",
+                    "options": {
+                        "deliverability": true
+                    }
                 },
                 {
                     "id": 456,
                     "name": "SharkPost",
                     "status": "active",
-                    "compliance_status": "active"
+                    "compliance_status": "active",
+                    "options": {
+                        "deliverability": true
+                    }
+                    
                 },
                 {
                     "id": 789,
                     "name": "Dev Avocado",
                     "status": "suspended",
-                    "compliance_status": "active"
+                    "compliance_status": "active",
+                    "options": {
+                        "deliverability": true
+                    }
                 }
             ]
         }
