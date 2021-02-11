@@ -34,11 +34,11 @@ Retrieve information regarding your SparkPost account and set account options.
     + pending_subscription (object) - Details regarding a pending subscription upgrade or downgrade.
     + options (object) - Account-level tracking settings.
         + smtp_tracking_default (boolean) - Account-level default for SMTP engagement tracking
-        + rest_tracking_default (boolean) - Account-level default for REST API engagement tracking
+        + rest_tracking_default (boolean) - Account-level default for REST API engagement tracking. `true` by default.
         + transactional_unsub (boolean) - Set to `true` to include `List-Unsubscribe` header for all transactional messages by default
         + transactional_default (boolean) - Set to `true` to send messages as transactional by default
         + initial_open_pixel_tracking (boolean)
-            Account-level default for initial open tracking. Note that if you wish to enable initial open tracking for REST and SMTP by default, then you must also set the `rest_tracking_default` and `smtp_tracking_default` options to `true`.
+            Account-level default for initial open tracking. `true` by default. In order for initial open tracking to be enabled for REST and SMTP by default, `rest_tracking_default` and `smtp_tracking_default` must be `true`.
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
     + usage (object) - Account quota usage details. Specify 'include=usage' in query string to include usage info. Usage data is not available for Enterprise accounts.
