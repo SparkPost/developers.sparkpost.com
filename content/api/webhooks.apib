@@ -71,6 +71,8 @@ __The SparkPost Webhooks API uses MaxMind software [MaxMind License](https://www
 
 When a webhook is created, a test POST request is sent to the `target` URL. If this request does not receive an HTTP 200 response, your request to the Webhook API will fail with HTTP 400 and the webhook will not be created. If created successfully, the webhook will begin to receive event data after 1 minute.
 
+Webhooks only support standard ports, port 80 for HTTP traffic and port 443 for HTTPS traffic. You will not be able to create a webhook using a non-standard port.
+
 + Data Structure
     + name (string, required) - Name for webhook
     + target (string, required) - URL of the target to which to POST event batches. Only ports 80 for http and 443 for https can be set.
