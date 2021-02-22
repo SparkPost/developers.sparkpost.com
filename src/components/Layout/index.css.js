@@ -53,6 +53,8 @@ injectGlobal`
 
   body {
     font-size: 1rem;
+    ${'' /* Overriding injected font-family from some unknown source */}
+    font-family: ${font('primary')};
   }
 
   h1, h2, h3, h4, h5, h6, p {
