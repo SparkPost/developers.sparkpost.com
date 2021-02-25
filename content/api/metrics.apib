@@ -1403,7 +1403,7 @@ Provides deliverability metrics ordered by a precision of time.
     + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, enum, `day`) ... Precision of timeseries data returned.
+    + precision (optional, enum, `day`) ... Precision of timeseries data returned. Precisions `day`, `week`, and `month` will return data in the UTC timezone regardless of the specified timezone.
 
         + Values
             + `1min`
@@ -1455,7 +1455,7 @@ Provides deliverability metrics ordered by a precision of time.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone = `UTC` (optional, string `America/New_York`) ... Standard timezone identification string.
+    + timezone = `UTC` (optional, string `America/New_York`) ... Standard timezone identification string. Precisions `day`, `week`, and `month` will return data in the UTC timezone regardless of the specified timezone.
 
 + Request
 
