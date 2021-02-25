@@ -69,20 +69,18 @@ Note: The metrics `count_inbox_panel`,`count_spam_panel`,
 When the `precision` parameter is specified for aggregate metric requests, the bounds of the time window (`from`, `to`) are rounded to the nearest time matching the precision.
 For example, requesting data between `4:22` to `6:37` would return results within the following time windows:
 
-| Precision | Rounded time window   |
-|-----------|-----------------------|
-| `1min`    | `4:22:00` - `6:36:59` |
-| `5min`    | `4:20:00` - `6:39:59` |
-| `15min`   | `4:15:00` - `6:44:59` |
-| `hour`    | `4:00:00` - `6:59:59` |
-
-All precisions are valid up to a 24 hour time window. `15min` precision is valid up to a 48 hour time window. Hour precision is valid up to a 31 day time window.
-
+| Precision | Rounded time window     | Max time window |
+|-----------|-------------------------|-----------------|
+| `1min`    | `04:22:00` - `06:36:59` | `24 hours`      |
+| `5min`    | `04:20:00` - `06:39:59` | `24 hours`      |
+| `15min`   | `04:15:00` - `06:44:59` | `48 hours`      |
+| `hour`    | `04:00:00` - `06:59:59` | `31 days`       |
+| `day`     | `00:00:00` - `23:59:59` | `No max`        |
 
 **Time-series Metrics**
 
 When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
-
+The same max time window ranges apply for time-series requests as do aggregate requests.
 
 ## Filters
 
