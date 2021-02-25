@@ -248,6 +248,48 @@ Compressed (whitespace and line end characters removed) and URL encoded:
 ?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22notEq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22notLike%22%3A%5B%22Friday%22%5D%2C%22notEq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%5D%7D
 ```
 
+### Advanced Query JSON Schema [GET /v1/metrics/deliverability/query-filters-schema]
+
+Retrieves the JSON schema for validating the `query_filters` JSON value.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "$schema": "http://json-schema.org/draft-07/schema",
+                "$id": "root",
+                "type": "object",
+                "title": "The root schema",
+                "description": "The root schema comprises the entire JSON document.",
+                "default": {},
+                "required": [
+                    "groupings"
+                ],
+                "properties": {
+                    ...
+                },
+                "additionalProperties": false,
+                "$defs": {
+                    "groupings": {
+                        ...
+                    },
+                    "filters": {
+                        ...
+                    },
+                    "logicalOperators": {
+                        ...
+                    }
+                }
+            }
+        }
+
 ### Discoverability Links [GET /v1/metrics/]
 
 The Metrics API is designed for discoverability of child links. Calling the API root displays a list of URIs that exists within the Metrics API.
@@ -320,10 +362,6 @@ The Metrics API is designed for discoverability of child links. Calling the API 
 The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the primary account's data.
-
-### Advanced Query JSON Schema [/v1/metrics/deliverability/query-filters-schema]
-
-Retrieves the JSON schema for validating the `query_filters` JSON value.
 
 ### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
