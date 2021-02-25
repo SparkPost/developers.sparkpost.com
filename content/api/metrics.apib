@@ -2108,6 +2108,38 @@ Returns a list of campaigns that the Metrics API contains data on.
             }
         }
 
+### Templates [GET /v1/metrics/templates{?from,to,timezone,limit,match}]
+
+Returns a list of templates that the Metrics API contains data on.
+
++ Parameters
+    + match (optional, string) ... Only return results containing this string.
+    + limit (optional, int, `5`) ... Maximum number of results to return.
+    + from (optional, datetime, `2017-12-01T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime, `2017-12-01T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "templates": [
+                    "labor-day-sale",
+                    "inline",
+                    "welcome-user",
+                    "winter-event-001",
+                    "promotion-x"
+                ]
+            }
+        }
+
 ### Domains [GET /v1/metrics/domains{?from,to,timezone,limit,match}]
 
 Returns a list of domains that the Metrics API contains data on.
