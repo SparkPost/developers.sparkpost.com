@@ -129,7 +129,7 @@ Example:
 ````
 **Compare Group**
 
-The compare objects have a single logical comparison operator (`OR` or `AND`) that will be used to compare all of the filter conditions in the group
+The compare objects have a single logical comparison operator (`OR` or `AND`) that will be used to compare all of the filter conditions in the group.
 
 Example:
 ````json
@@ -245,6 +245,7 @@ Compressed (whitespace and line end characters removed) and URL encoded:
 ```
 ?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22notEq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22notLike%22%3A%5B%22Friday%22%5D%2C%22notEq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%5D%7D
 ```
+Multiple compare groups are evaluated such that the relationship between them is an AND operation.
 
 ### Advanced Query JSON Schema [GET /v1/metrics/deliverability/query-filters-schema]
 
