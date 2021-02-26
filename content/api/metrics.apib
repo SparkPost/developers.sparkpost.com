@@ -383,6 +383,7 @@ aggregate data, which can be used as "group by" qualifiers.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -390,6 +391,7 @@ aggregate data, which can be used as "group by" qualifiers.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -431,7 +433,7 @@ aggregate data, which can be used as "group by" qualifiers.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
 
 + Request
 
@@ -482,6 +484,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -489,6 +492,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -530,7 +534,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -585,6 +589,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -592,6 +597,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -633,7 +639,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -688,6 +694,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -695,6 +702,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -735,7 +743,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `count_spam_seed`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit = 1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -789,6 +797,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -796,6 +805,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -836,7 +846,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             + `count_spam_seed`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -903,6 +913,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -910,6 +921,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -950,7 +962,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `count_spam_seed`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -1017,6 +1029,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1024,6 +1037,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1065,7 +1079,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
     + Sample: count_injected
@@ -1119,6 +1133,7 @@ Provides aggregate metrics grouped by template over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1126,6 +1141,7 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1167,7 +1183,7 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -1224,6 +1240,7 @@ Provides aggregate metrics grouped by deliverability subject campaign over the t
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1231,6 +1248,7 @@ Provides aggregate metrics grouped by deliverability subject campaign over the t
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering. Supports deliverability metrics only.
 
@@ -1242,7 +1260,7 @@ Provides aggregate metrics grouped by deliverability subject campaign over the t
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_inbox_panel
@@ -1303,6 +1321,7 @@ in the world.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1310,6 +1329,7 @@ in the world.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1351,7 +1371,7 @@ in the world.
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
