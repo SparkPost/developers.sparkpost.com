@@ -64,8 +64,6 @@ Note: The metrics `count_inbox_panel`,`count_spam_panel`,
 
 ## Precision Parameter
 
-**Aggregate Metrics**
-
 When the `precision` parameter is specified for aggregate metric requests, the bounds of the time window (`from`, `to`) are rounded to the nearest time matching the precision.
 For example, requesting data between `4:22` to `6:37` would return results within the following time windows:
 
@@ -356,9 +354,9 @@ The Metrics API is designed for discoverability of child links. Calling the API 
         }
 
 
-## Deliverability [/v1/metrics/deliverability]
+## Aggregations [/v1/metrics/deliverability]
 
-The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
+The aggregations endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
 
 Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the primary account's data.
 
@@ -374,7 +372,7 @@ aggregate data, which can be used as "group by" qualifiers.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -475,7 +473,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -580,7 +578,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -685,7 +683,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -788,7 +786,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -904,7 +902,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1020,7 +1018,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1124,7 +1122,7 @@ Provides aggregate metrics grouped by template over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1222,7 +1220,7 @@ Provides aggregate metrics grouped by template over the time window specified.
 Note: Only available to SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers
 
 
-Provides aggregate metrics grouped by deliverability subject campaign over the time window specified.
+Provides aggregate metrics grouped by deliverability add-on subject campaign over the time window specified.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1231,7 +1229,7 @@ Provides aggregate metrics grouped by deliverability subject campaign over the t
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1250,7 +1248,7 @@ Provides aggregate metrics grouped by deliverability subject campaign over the t
             + `hour`
             + `day`
 
-    + metrics (required, list) ... Delimited list of metrics for filtering. Supports deliverability metrics only.
+    + metrics (required, list) ... Delimited list of metrics for filtering. Supports deliverability add-on metrics only.
 
         + Values
             + `count_inbox_panel`
@@ -1312,7 +1310,7 @@ in the world.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1407,7 +1405,7 @@ in the world.
 
 ### Time-Series Metrics [GET /v1/metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
-Provides deliverability metrics ordered by a precision of time.
+Provides aggregate metrics ordered by a precision of time.
 
 + Parameters
     + from (required, datetime, `2020-10-04T00:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1416,7 +1414,7 @@ Provides deliverability metrics ordered by a precision of time.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list `gmail.com,yahoo.com,hotmail.com`) ... Delimited list of domains for filtering.
     + campaigns (optional, list, `summerSale,promotionX`) ... Delimited list of campaigns for filtering.
-    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability metrics only.    
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.    
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
@@ -1565,7 +1563,7 @@ Provides deliverability metrics ordered by a precision of time.
 
 ### Bounce Reason Metrics [GET /v1/metrics/deliverability/bounce-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the bounce reasons.
+Provides aggregate metrics, specific to bounce events, grouped by the bounce reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1629,7 +1627,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 
 ### Bounce Reason Metrics By Domain [GET /v1/metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the domain and bounce reasons.
+Provides aggregate metrics, specific to bounce events, grouped by the domain and bounce reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1695,7 +1693,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
 
 ### Bounce Classification Metrics [GET /v1/metrics/deliverability/bounce-classification{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
+Provides aggregate metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1755,7 +1753,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 
 ### Rejection Reason Metrics [GET /v1/metrics/deliverability/rejection-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to rejection events, grouped by the rejection reasons.
+Provides aggregate metrics, specific to rejection events, grouped by the rejection reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1794,7 +1792,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
 
 ### Rejection Reason Metrics By Domain [GET /v1/metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to rejection events, grouped by the domain and rejection reasons.
+Provides aggregate metrics, specific to rejection events, grouped by the domain and rejection reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1835,7 +1833,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
 
 ### Delay Reason Metrics [GET /v1/metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to delay events, grouped by the delay reasons.
+Provides aggregate metrics, specific to delay events, grouped by the delay reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1879,7 +1877,7 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
 
 ### Delay Reason Metrics By Domain [GET /v1/metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to delay events, grouped by the domain and delay reasons.
+Provides aggregagte metrics, specific to delay events, grouped by the domain and delay reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -2193,7 +2191,7 @@ Returns a list of domains that the Metrics API contains data on.
         
 ### Subject Campaigns [GET /v1/metrics/subject-campaigns{?from,to,timezone,limit,match}]
 
-Returns a list of deliverability subject campaigns that the Metrics API contains data on.
+Returns a list of deliverability add-on subject campaigns that the Metrics API contains data on.
 
 + Parameters
     + match (optional, string) ... Only return results containing this string.
