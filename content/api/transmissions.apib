@@ -56,8 +56,10 @@ You can create a transmission in a number of ways. In all cases, you can use the
     + options (object) - Object containing transmission options. If an option is not set, the [template-level option](#header-template-object) is used.
         + start_time (string) - The system will not attempt to deliver messages until this datetime. For additional information, see [Scheduled Transmissions](#transmissions-scheduled-transmissions). <br />Format: `YYYY-MM-DDTHH:MM:SS+-HH:MM`
             + Default: now
-        + open_tracking (boolean) - Enable or disable open tracking.
-            + Default: true
+        + open_tracking (boolean)
+            Enable or disable open tracking. If this option is not set, then the value of the `rest_tracking_default` account option is used. See the [Account API documentation](/api/account/) for more information on this account option.
+        + initial_open (boolean)
+            Enable or disable initial open tracking. If this option is not set and `open_tracking` is `true`, then the value of the `initial_open_pixel_tracking` account option is used. If this option is not set and `open_tracking` is `false`, then this option is set to `false`. If neither this option nor the `open_tracking` option is set, then this value is set based on the `rest_tracking_default` and `initial_open_pixel_tracking` account options. See the [Account API documentation](/api/account/) for more information on these account options.
         + click_tracking (boolean) - Enable or disable click tracking.
             + Default: true
         + transactional (boolean) - Distinguish between [transactional and non-transactional](https://www.sparkpost.com/resources/infographics/email-difference-transactional-vs-commercial-emails/) messages for unsubscribe and suppression purposes.
