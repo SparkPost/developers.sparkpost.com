@@ -109,7 +109,7 @@ e.g. in `?domains=mailing.com&query_filters={}`, the domains query parameter wil
 Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
 #### Groupings Structure 
-The JSON object consists of a top level "groupings" key that has an array of compare objects.
+The JSON object consists of a root level "groupings" array containing compare objects. Multiple compare groups are evaluated such that the relationship between them is an AND operation.
 
 Example:
 ````json
@@ -125,7 +125,6 @@ Example:
 }
 
 ````
-Multiple compare groups are evaluated such that the relationship between them is an AND operation.
 
 **Compare Group**
 
