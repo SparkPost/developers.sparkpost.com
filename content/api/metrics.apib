@@ -49,31 +49,36 @@ Definitions for terms found in Metrics API
 | `total_delivery_time_first`      | Total time taken to deliver messages on first attempt (milliseconds)                                |
 | `total_delivery_time_subsequent` | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
 | `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
+| `count_inbox_panel`              | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox.                                                              |
+| `count_spam_panel`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder.                                                        |
+| `count_inbox_seed`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed`                | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Seed messages delivered to the spam folder.                                                         |
+| `count_moved_to_inbox`           | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder then moved to the inbox.                                |
+| `count_moved_to_spam`            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox then moved to the spam folder.                                |
 
+Note: The metrics `count_inbox_panel`,`count_spam_panel`,
+`count_inbox_seed`,`count_spam_seed`,`count_moved_to_inbox`,
+ and `count_moved_to_spam` are only available to the SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers. 
 
 <Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
 ## Precision Parameter
 
-**Aggregate Metrics**
-
 When the `precision` parameter is specified for aggregate metric requests, the bounds of the time window (`from`, `to`) are rounded to the nearest time matching the precision.
 For example, requesting data between `4:22` to `6:37` would return results within the following time windows:
 
-| Precision | Rounded time window   |
-|-----------|-----------------------|
-| `1min`    | `4:22:00` - `6:36:59` |
-| `5min`    | `4:20:00` - `6:39:59` |
-| `15min`   | `4:15:00` - `6:44:59` |
-| `hour`    | `4:00:00` - `6:59:59` |
-
-All precisions are valid up to a 24 hour time window. `15min` precision is valid up to a 48 hour time window. Hour precision is valid up to a 31 day time window.
-
+| Precision | Rounded time window     | Max time window |
+|-----------|-------------------------|-----------------|
+| `1min`    | `04:22:00` - `06:36:59` | `24 hours`      |
+| `5min`    | `04:20:00` - `06:39:59` | `24 hours`      |
+| `15min`   | `04:15:00` - `06:44:59` | `48 hours`      |
+| `hour`    | `04:00:00` - `06:59:59` | `31 days`       |
+| `day`     | `00:00:00` - `23:59:59` | `No max`        |
 
 **Time-series Metrics**
 
 When the `precision` parameter is specified for the [time-series request](#metrics-get-time-series-metrics), it reflects the period of time the data is grouped by.
-
+The same max time window ranges apply for time-series requests as do aggregate requests. Precisions `12hr`, `week`, and `month` may also be used for time-series requests.
 
 ## Filters
 
@@ -97,14 +102,14 @@ The Metrics API uses [JSON Schema](https://json-schema.org/) to define and valid
 Advanced Filter requests that do not adhere to the schema will result in a `400` error response. 
 Specific schema violations will be attached to the `validationErrors` property of the error response.
 The exact schema can be retrieved through the `/deliverability/query-filters-schema` endpoint. 
-See [Advanced Query JSON Schema](#header-advanced-query-json-schema).
+See [Advanced Query JSON Schema](#metrics-get-advanced-query-json-schema).
 
 Please note, advanced filters cannot be used in conjunction with simple filters. Simple filters will be ignored if the `query_filters` parameter is used. 
 e.g. in `?domains=mailing.com&query_filters={}`, the domains query parameter will be ignored. 
 Other query parameters like `from`, `to`, `metrics`, `limit`, etc., will be processed as expected.
 
 #### Groupings Structure 
-The JSON object consists of a top level "groupings" key that has an array of compare objects
+The JSON object consists of a root level "groupings" array containing compare objects. Multiple compare groups are evaluated such that the relationship between them is an AND operation.
 
 Example:
 ````json
@@ -120,9 +125,10 @@ Example:
 }
 
 ````
+
 **Compare Group**
 
-The compare objects have a single logical comparison operator (`OR` or `AND`) that will be used to compare all of the filter conditions in the group
+The compare objects have a single logical comparison operator (`OR` or `AND`) that will be used to compare all of the filter conditions in the group.
 
 Example:
 ````json
@@ -161,6 +167,7 @@ Filter keys must be unique within a grouping, but the same filter key can appear
                binding_groups
                ip_pools
                campaigns
+               subject_campaigns
                templates
                sending_domains
                subaccounts
@@ -238,6 +245,48 @@ Compressed (whitespace and line end characters removed) and URL encoded:
 ?query_filters=%7B%22groupings%22%3A%5B%7B%22AND%22%3A%7B%22domains%22%3A%7B%22eq%22%3A%5B%22gmail.com%22%2C%22yahoo.com%22%2C%22hotmail.com%22%5D%2C%22like%22%3A%5B%22mail%22%5D%7D%2C%22sending_domains%22%3A%7B%22notEq%22%3A%5B%22sparkpost.com%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22templates%22%3A%7B%22eq%22%3A%5B%22default%22%5D%7D%2C%22campaigns%22%3A%7B%22like%22%3A%5B%22333%22%2C%22344%22%2C%22355%22%5D%7D%7D%7D%2C%7B%22OR%22%3A%7B%22campaigns%22%3A%7B%22notLike%22%3A%5B%22Friday%22%5D%2C%22notEq%22%3A%5B%22stuff%22%2C%22things%22%5D%7D%7D%7D%5D%7D
 ```
 
+### Advanced Query JSON Schema [GET /v1/metrics/deliverability/query-filters-schema]
+
+Retrieves the JSON schema for validating the `query_filters` JSON value.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "$schema": "http://json-schema.org/draft-07/schema",
+                "$id": "root",
+                "type": "object",
+                "title": "The root schema",
+                "description": "The root schema comprises the entire JSON document.",
+                "default": {},
+                "required": [
+                    "groupings"
+                ],
+                "properties": {
+                    ...
+                },
+                "additionalProperties": false,
+                "$defs": {
+                    "groupings": {
+                        ...
+                    },
+                    "filters": {
+                        ...
+                    },
+                    "logicalOperators": {
+                        ...
+                    }
+                }
+            }
+        }
+
 ### Discoverability Links [GET /v1/metrics/]
 
 The Metrics API is designed for discoverability of child links. Calling the API root displays a list of URIs that exists within the Metrics API.
@@ -295,20 +344,21 @@ The Metrics API is designed for discoverability of child links. Calling the API 
                   "href": "/api/v1/metrics/sending-ips",
                   "rel": "sending-ips",
                   "method": "GET"
+                },
+                {
+                  "href": "/api/v1/metrics/subject-campaigns",
+                  "rel": "subject-campaigns",
+                  "method": "GET"
                 }
             ]
         }
 
 
-## Deliverability [/v1/metrics/deliverability]
+## Aggregations [/v1/metrics/deliverability]
 
-The deliverability endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
+The aggregations endpoints allow you to get high-level summaries of your data grouped by specific quantifiers such as sending domain or template. You can also get specific types of data, such as rejection reason, to better understand your sending.
 
-Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the master account's data.
-
-### Advanced Query JSON Schema [/v1/metrics/deliverability/query-filters-schema]
-
-Retrieves the JSON schema for validating the `query_filters` JSON value.
+Use the `subaccount` field to get metrics about individual subaccounts or set it to 0 to get only the primary account's data.
 
 ### Metrics Summary [GET /v1/metrics/deliverability{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
@@ -322,6 +372,7 @@ aggregate data, which can be used as "group by" qualifiers.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -330,6 +381,7 @@ aggregate data, which can be used as "group by" qualifiers.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -337,6 +389,7 @@ aggregate data, which can be used as "group by" qualifiers.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -371,8 +424,14 @@ aggregate data, which can be used as "group by" qualifiers.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
 
 + Request
 
@@ -414,6 +473,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -422,6 +482,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -429,6 +490,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
 
@@ -463,8 +525,14 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -510,6 +578,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -518,6 +587,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -525,6 +595,7 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -559,8 +630,14 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -606,6 +683,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -614,6 +692,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -621,6 +700,7 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -655,7 +735,13 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit = 1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -700,6 +786,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -708,6 +795,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -715,6 +803,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -749,7 +838,13 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -798,7 +893,7 @@ Provides aggregate metrics grouped by sending domain over the time window specif
 
 ### Metrics by Subaccount [GET /v1/metrics/deliverability/subaccount{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
-Provides aggregate metrics grouped by subaccount over the time window specified. Please note that master account events will be returned grouped by the subaccount_id field containing the value `0`.
+Provides aggregate metrics grouped by subaccount over the time window specified. Please note that primary account events will be returned grouped by the subaccount_id field containing the value `0`.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -807,6 +902,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -815,6 +911,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -822,6 +919,7 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
         
@@ -856,7 +954,13 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -914,6 +1018,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -922,6 +1027,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -929,6 +1035,7 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -963,8 +1070,14 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
     + Sample: count_injected
@@ -1009,6 +1122,7 @@ Provides aggregate metrics grouped by template over the time window specified.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1017,6 +1131,7 @@ Provides aggregate metrics grouped by template over the time window specified.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1024,6 +1139,7 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1058,8 +1174,14 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -1092,6 +1214,89 @@ Provides aggregate metrics grouped by template over the time window specified.
             ]
         }
 
+        
+### Metrics by Subject Campaign [GET /v1/metrics/deliverability/subject-campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
+
+Note: Only available to SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers
+
+
+Provides aggregate metrics grouped by deliverability add-on subject campaign over the time window specified.
+
++ Parameters
+    + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
+    + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
+    + domains (optional, list) ... Delimited list of recipient domains to include.
+    + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
+    + templates (optional, list) ... Delimited list of template IDs to include.
+    + sending_ips (optional, list) ... Delimited list of sending IPs to include.
+    + ip_pools (optional, list) ... Delimited list of IP pools to include.
+    + sending_domains (optional, list) ... Delimited list of sending domains to include.
+    + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
+    + precision = `1min` (optional, enum) ...
+
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
+        See: [Precision Parameter](#header-precision-parameter).
+
+        + Values
+            + `1min`
+            + `5min`
+            + `15min`
+            + `hour`
+            + `day`
+
+    + metrics (required, list) ... Delimited list of metrics for filtering. Supports deliverability add-on metrics only.
+
+        + Values
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
+
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
+    + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
+    + order_by (optional, string) - Metric by which to order results.
+        + Sample: count_inbox_panel
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "count_inbox_panel": 564,
+                    "count_spam_panel": 49,
+                    "count_inbox_seed": 0,
+                    "count_spam_seed": 0,
+                    "count_moved_to_inbox": 2,
+                    "count_moved_to_spam": 1,
+                    "subject_campaign": "[REDACTED] say yes to this deal"
+                },
+                {
+                    "count_inbox_panel": 527,
+                    "count_spam_panel": 19,
+                    "count_inbox_seed": 0,
+                    "count_spam_seed": 0,
+                    "count_moved_to_inbox": 0,
+                    "count_moved_to_spam": 2,
+                    "subject_campaign": "Re: [REDACTED] (Action Requested)"
+                }
+            ]
+        }
+
+
+
 ### Metrics by Watched Domain [GET /v1/metrics/deliverability/watched-domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
 
 Provides aggregate metrics grouped by watched domain over the time window specified. The difference
@@ -1105,6 +1310,7 @@ in the world.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list) ... Delimited list of recipient domains to include.
     + campaigns (optional, list) ... Delimited list of campaigns to include.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
@@ -1113,6 +1319,7 @@ in the world.
     + precision = `1min` (optional, enum) ...
 
         Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1120,6 +1327,7 @@ in the world.
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1154,8 +1362,14 @@ in the world.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
@@ -1191,7 +1405,7 @@ in the world.
 
 ### Time-Series Metrics [GET /v1/metrics/deliverability/time-series{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone}]
 
-Provides deliverability metrics ordered by a precision of time.
+Provides aggregate metrics ordered by a precision of time.
 
 + Parameters
     + from (required, datetime, `2020-10-04T00:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1200,12 +1414,13 @@ Provides deliverability metrics ordered by a precision of time.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + domains (optional, list `gmail.com,yahoo.com,hotmail.com`) ... Delimited list of domains for filtering.
     + campaigns (optional, list, `summerSale,promotionX`) ... Delimited list of campaigns for filtering.
+    + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.    
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
-    + precision (optional, enum, `day`) ... Precision of timeseries data returned.
+    + precision (optional, enum, `day`) ... Precision of timeseries data returned. Precisions `day`, `week`, and `month` will return data in the UTC timezone regardless of the specified timezone.
 
         + Values
             + `1min`
@@ -1250,8 +1465,14 @@ Provides deliverability metrics ordered by a precision of time.
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
-    + timezone = `UTC` (optional, string `America/New_York`) ... Standard timezone identification string.
+    + timezone = `UTC` (optional, string `America/New_York`) ... Standard timezone identification string. Precisions `day`, `week`, and `month` will return data in the UTC timezone regardless of the specified timezone.
 
 + Request
 
@@ -1342,7 +1563,7 @@ Provides deliverability metrics ordered by a precision of time.
 
 ### Bounce Reason Metrics [GET /v1/metrics/deliverability/bounce-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the bounce reasons.
+Provides aggregate metrics, specific to bounce events, grouped by the bounce reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1406,7 +1627,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 
 ### Bounce Reason Metrics By Domain [GET /v1/metrics/deliverability/bounce-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the domain and bounce reasons.
+Provides aggregate metrics, specific to bounce events, grouped by the domain and bounce reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1472,7 +1693,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the domai
 
 ### Bounce Classification Metrics [GET /v1/metrics/deliverability/bounce-classification{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,metrics,timezone,limit}]
 
-Provides deliverability metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
+Provides aggregate metrics, specific to bounce events, grouped by the bounce classification. (See [Bounce Classification Codes.](https://www.sparkpost.com/docs/deliverability/bounce-classification-codes/))
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1532,7 +1753,7 @@ Provides deliverability metrics, specific to bounce events, grouped by the bounc
 
 ### Rejection Reason Metrics [GET /v1/metrics/deliverability/rejection-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to rejection events, grouped by the rejection reasons.
+Provides aggregate metrics, specific to rejection events, grouped by the rejection reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1571,7 +1792,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the re
 
 ### Rejection Reason Metrics By Domain [GET /v1/metrics/deliverability/rejection-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to rejection events, grouped by the domain and rejection reasons.
+Provides aggregate metrics, specific to rejection events, grouped by the domain and rejection reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1612,7 +1833,7 @@ Provides deliverability metrics, specific to rejection events, grouped by the do
 
 ### Delay Reason Metrics [GET /v1/metrics/deliverability/delay-reason{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to delay events, grouped by the delay reasons.
+Provides aggregate metrics, specific to delay events, grouped by the delay reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1656,7 +1877,7 @@ Provides deliverability metrics, specific to delay events, grouped by the delay 
 
 ### Delay Reason Metrics By Domain [GET /v1/metrics/deliverability/delay-reason/domain{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone,limit}]
 
-Provides deliverability metrics, specific to delay events, grouped by the domain and delay reasons.
+Provides aggregagte metrics, specific to delay events, grouped by the domain and delay reasons.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1904,6 +2125,38 @@ Returns a list of campaigns that the Metrics API contains data on.
             }
         }
 
+### Templates [GET /v1/metrics/templates{?from,to,timezone,limit,match}]
+
+Returns a list of templates that the Metrics API contains data on.
+
++ Parameters
+    + match (optional, string) ... Only return results containing this string.
+    + limit (optional, int, `5`) ... Maximum number of results to return.
+    + from (optional, datetime, `2017-12-01T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime, `2017-12-01T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "templates": [
+                    "labor-day-sale",
+                    "inline",
+                    "welcome-user",
+                    "winter-event-001",
+                    "promotion-x"
+                ]
+            }
+        }
+
 ### Domains [GET /v1/metrics/domains{?from,to,timezone,limit,match}]
 
 Returns a list of domains that the Metrics API contains data on.
@@ -1935,6 +2188,40 @@ Returns a list of domains that the Metrics API contains data on.
                 ]
             }
         }
+        
+### Subject Campaigns [GET /v1/metrics/subject-campaigns{?from,to,timezone,limit,match}]
+
+Returns a list of deliverability add-on subject campaigns that the Metrics API contains data on.
+
++ Parameters
+    + match (optional, string) ... Only return results containing this string.
+    + limit (optional, int, `5`) ... Maximum number of results to return.
+    + from (optional, datetime, `2017-12-01T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime, `2017-12-01T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "subject-campaigns": [
+                    "Hi there!",
+                    "Hi [REDACTED]",
+                    "exciting offers.",
+                    "[REDACTED] there!",
+                    "[REDACTED] offers.",
+                    "exciting [REDACTED]"
+                ]
+            }
+        }
+ 
 ### Bindings Groups [GET /v1/metrics/binding-groups{?from,to,timezone,match,limit}]
 
 <Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the IP Pools list endpoint instead.</Banner>
