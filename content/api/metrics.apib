@@ -1365,7 +1365,8 @@ Provides aggregate metrics grouped by mailbox provider over the time window spec
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + precision = `1min` (optional, enum) ...
 
-        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window.
+        Precision of the time window (`from`, `to`) bounds. All values valid up to a 24 hour window, except for `hour` which is also valid up a 31 day window. 
+        The `day` precision will return data in UTC regardless of the specified timezone.
         See: [Precision Parameter](#header-precision-parameter).
 
         + Values
@@ -1373,6 +1374,7 @@ Provides aggregate metrics grouped by mailbox provider over the time window spec
             + `5min`
             + `15min`
             + `hour`
+            + `day`
 
     + metrics (required, list) ... Delimited list of metrics for filtering.
 
@@ -1408,7 +1410,7 @@ Provides aggregate metrics grouped by mailbox provider over the time window spec
             + `count_accepted`
             + `count_spam_complaint`
 
-    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
         + Sample: count_injected
