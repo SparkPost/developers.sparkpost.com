@@ -341,6 +341,11 @@ The Metrics API is designed for discoverability of child links. Calling the API 
                   "method": "GET"
                 },
                 {
+                  href: '/api/v1/metrics/mailbox-provider-regions',
+                  rel: 'mailbox-provider-regions',
+                  method: 'GET'
+                },
+                {
                   "href": "/api/v1/metrics/sending-ips",
                   "rel": "sending-ips",
                   "method": "GET"
@@ -2366,6 +2371,37 @@ Returns a list of sending IPs that the Metrics API contains data on.
             }
         }
 
+### Mailbox Provider Regions [GET /v1/metrics/mailbox-provider-regions{?from,to,timezone,match,limit}]
+
+Returns a list of mailbox provider regions that the Metrics API contains data on.
+
++ Parameters
+    + match (optional, string) ... Only return results containing this string.
+    + limit (optional, int, `5`) ... Maximum number of results to return.
+    + from (optional, datetime, `2017-12-01T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + to = `now` (optional, datetime, `2017-12-01T09:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
+    + timezone =`UTC` (optional, string) ... Standard timezone identification string.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200
+
+        {
+            "results": {
+                "mailbox-provider-regions": [
+                    "mailbox-provider-region-1",
+                    "mailbox-provider-region-2",
+                    "mailbox-provider-region-3",
+                    "mailbox-provider-region-4",
+                    "mailbox-provider-region-5"
+                ]
+            }
+        }
 
 ### Campaigns [GET /v1/metrics/campaigns{?from,to,timezone,limit,match}]
 
