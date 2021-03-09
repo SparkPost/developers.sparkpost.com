@@ -11,3 +11,6 @@ yarn-error.log
 functions/
 # Temporary files from various editors
 **/.*.sw?
+
+*.orig
+*.rej
