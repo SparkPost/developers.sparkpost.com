@@ -1,0 +1,46 @@
+FORMAT: 1A
+title: Seedlist API
+description: Retrieve your seedlist to improve your deliverability.
+label: Deliverability
+
+# Group Seedlist
+
+The Seed List API allows you to programmatically retrieve your seed list, which is used for measuring your deliverability.
+
+Note: The Seedlist API is available to the SparkPost Deliverability Add-On customers only.
+ 
+### Retrieve Seedlist [GET /v1/seeds]
+
+In order for a primary account to specify retrieval of a subaccount, the X-MSYS-SUBACCOUNT header must be set with the desired subaccount id. A primary or subaccount retrieving its own seedlist does not need to explicitly set this.
+
+We recommend that you cache the seedlist and update it when our Seedlist Update Notification service sends out an email with the latest seedlist.
+
++ Request
+
+    + Headers
+
+        Accept: application/json
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 121 (optional)
+
++ Response
+    
+        {
+            "results": [
+                "9dd6f893-1b2c-393d-ad7a-7daf42204b30@reference-seed.sparkpost.com",
+                "miaroob.r77@gmail.com",
+                "michael.pagac.r84@gmail.com",
+                "alan.r.reichert.78@gmail.com",
+                "elsevandervort.r62@gmail.com",
+                "emilie.brekke.r66@gmail.com",
+                "angela.stoltenberg.r65@gmail.com",
+                "gusmurphyr71@gmail.com",
+                "karl.batz.71@gmail.com",
+                "jaylin.hintz.75@gmail.com",
+                "matt.dare.1979@gmail.com",
+                "melissa.crooks.84@gmail.com",
+                "samantha.emard.74@gmail.com",
+                "charles.pfannerstill.75@gmail.com"
+            ]
+        }
+
