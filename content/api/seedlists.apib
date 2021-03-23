@@ -1,6 +1,6 @@
 FORMAT: 1A
 title: Seed List API
-description: Retrieve your seedlist to improve your deliverability.
+description: Retrieve your seed list to improve your deliverability.
 label: Deliverability
 
 # Group Seed List
@@ -9,9 +9,9 @@ The Seed List API allows you to programmatically retrieve your seed list, which 
 
 Note: The Seed List API is available to the SparkPost Deliverability Add-On customers only.
  
-### Retrieve Seedlist [GET /v1/seeds]
+### Retrieve Seed List [GET /v1/seeds]
 
-In order for a primary account to specify retrieval of a subaccount, the X-MSYS-SUBACCOUNT header must be set with the desired subaccount id. A primary or subaccount retrieving its own seedlist does not need to explicitly set this.
+In order for a primary account to specify retrieval of a subaccount, the X-MSYS-SUBACCOUNT header must be set with the desired subaccount id. A primary or subaccount retrieving its own seed list does not need to explicitly set this.
 
 We recommend that you cache the seed list and update it when our Seed List Update Notification service sends out an email with the latest seed list.
 
