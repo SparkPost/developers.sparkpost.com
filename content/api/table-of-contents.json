@@ -31,7 +31,8 @@
       "events.apib",
       "message-events.apib",
       "webhooks.apib",
-      "events-ingest.apib"
+      "events-ingest.apib",
+      "seed-list.apib"
     ]
   },
   {
