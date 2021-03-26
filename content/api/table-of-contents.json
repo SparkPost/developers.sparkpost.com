@@ -32,7 +32,7 @@
       "message-events.apib",
       "webhooks.apib",
       "events-ingest.apib",
-      "seedlists.apib"
+      "seed-list.apib"
     ]
   },
   {
