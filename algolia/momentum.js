@@ -1,5 +1,4 @@
-const { compact, flatten, repeat, last, first } = require('lodash')
-const slugify = require('../src/utils/api/slugify')
+const { compact, flatten, first } = require('lodash')
 
 module.exports = {
   indexName: `momentum`,
@@ -44,10 +43,6 @@ module.exports = {
 
     return results
   },
-}
-
-function escapeRegExp(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 }
 
 // grab the first heading and if it is just "Name" then try to find the actual function the document is talking about

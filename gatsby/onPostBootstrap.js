@@ -6,7 +6,7 @@
 
 module.exports = ({ actions }) => {
   if (process.env.GATSBY_ACTIVE_ENV === 'docs') {
-    const { createRedirect, deletePage } = actions
+    const { createRedirect } = actions
 
     createRedirect({ fromPath: '/', toPath: '/api/', redirectInBrowser: true })
   }
