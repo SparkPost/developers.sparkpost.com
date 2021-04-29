@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Security Badger
-        uses: SparkPost/security-badger@main
+        uses: sparkpost/security-badger@main
         env:
           GITHUB_TOKEN: ${{ secrets.GRAPHQL_GITHUB_API_ACCESS_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
