@@ -11,7 +11,7 @@
     "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
   },
   "engines": {
-    "node": ">=10.17"
+    "node": ">=12"
   },
   "dependencies": {
     "@sparkpost/design-tokens": "0.0.6",
@@ -19,8 +19,8 @@
     "downshift": "^2.2.2",
     "escape-string-regexp": "^1.0.5",
     "font-awesome": "^4.7.0",
-    "gatsby": "^2.32.3",
-    "gatsby-plugin-algolia": "^0.11.1",
+    "gatsby": "^3.4.0",
+    "gatsby-plugin-algolia": "^0.19.0",
     "gatsby-plugin-google-tagmanager": "^2.3.11",
     "gatsby-plugin-lodash": "^3.3.10",
     "gatsby-plugin-netlify": "^2.3.11",
