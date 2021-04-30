@@ -129,9 +129,9 @@ class EventsTable extends Component {
   state = { activeIndex: 0, activeEvent: this.props.events[0] }
 
   setActive = activeIndex => {
-    this.setState(props => ({
+    this.setState((_, { events }) => ({
       activeIndex,
-      activeEvent: props.events[activeIndex],
+      activeEvent: events[activeIndex],
     }))
   }
 

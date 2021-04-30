@@ -3,10 +3,7 @@ const visit = require('unist-util-visit')
 const modify = require('unist-util-modify-children')
 const removePosition = require('unist-util-remove-position')
 const { flatten } = require('lodash')
-const unified = require('unified')
-const remarkParse = require('remark-parse')
 
-const parseProcessor = unified().use(remarkParse)
 function stringify(node) {
   // is html comment
   if (node.type === 'html' && /\s*<!--.*-->\s*/i.test(node.value)) return ''
@@ -36,7 +33,7 @@ function gatherDataStructures(tree) {
  */
 
 function replaceDataStructures(tree, dataStructures) {
-  if (!dataStructures ||  dataStructures.length === 0)
+  if (!Boolean(dataStructures) || Boolean(dataStructures) && dataStructures.length === 0)
     return tree
 
   modify(function(node, index, parent) {
