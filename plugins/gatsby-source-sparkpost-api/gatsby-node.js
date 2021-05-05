@@ -3,7 +3,6 @@
  */
 
 const crypto = require('crypto')
-const axios = require('axios')
 const SparkPost = require('sparkpost')
 const sparkpost = new SparkPost('not-needed') // an API Key is required by node-sparkpost, but not needed for these public self-doc endpoints
 const { GraphQLJSON } = require('gatsby/graphql')

@@ -1,8 +1,6 @@
 const crypto = require('crypto')
 const { keyBy, mapValues } = require('lodash')
 const parseApiBlueprint = require('./parse-api-blueprint')
-const parseResult = require('minim-parse-result')
-const minim = require('minim').namespace()
 
 /**
  * Create ApiBlueprint nodes from files with the extention apib

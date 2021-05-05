@@ -3,11 +3,7 @@ const visit = require('unist-util-visit')
 const modify = require('unist-util-modify-children')
 const removePosition = require('unist-util-remove-position')
 const { flatten } = require('lodash')
-const unified = require('unified')
-const remarkParse = require('remark-parse')
 
-const parseProcessor = unified().use(remarkParse)
-const parseMarkdown = parseProcessor.parse
 function stringify(node) {
   // is html comment
   if (node.type === 'html' && /\s*<!--.*-->\s*/i.test(node.value)) return ''
@@ -37,7 +33,7 @@ function gatherDataStructures(tree) {
  */
 
 function replaceDataStructures(tree, dataStructures) {
-  if (!dataStructures || dataStructures && dataStructures.length === 0)
+  if (!Boolean(dataStructures) || Boolean(dataStructures) && dataStructures.length === 0)
     return tree
 
   modify(function(node, index, parent) {
@@ -113,7 +109,7 @@ function parseDataStructure(node) {
   const paragraph = listItem.children[0]
   const text = paragraph.children[0]
   const list = listItem.children[1]
-  const [ all, title ] = text.value.match(dataStructurePattern)
+  const [ _, title ] = text.value.match(dataStructurePattern)
   const secondListItemText = node.children.length > 1 && stringify({
     type: 'root',
     children: node.children[1].children

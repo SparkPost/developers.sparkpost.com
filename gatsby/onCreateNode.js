@@ -2,8 +2,7 @@
 
 const axios = require('axios')
 const { last } = require('lodash')
-const { resolve, basename, dirname, sep } = require('path')
-const tableOfContents = require(`../content/api/table-of-contents.json`)
+const { basename, dirname, sep } = require('path')
 
 module.exports = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions
