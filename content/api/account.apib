@@ -37,6 +37,8 @@ Retrieve information regarding your SparkPost account and set account options.
         + rest_tracking_default (boolean) - Account-level default for REST API engagement tracking. `true` by default.
         + transactional_unsub (boolean) - Set to `true` to include `List-Unsubscribe` header for all transactional messages by default
         + transactional_default (boolean) - Set to `true` to send messages as transactional by default
+        + initial_open_include_alt_attribute (boolean)
+            Account-level option for adding an html `alt` attribute to initial open pixels. `false` by default. To include the alt attribute (alt="") in initial open pixel tracking link tags set the `initial_open_include_alt_attribute` to `true`. Initial open pixel tracking must be enabled.
         + initial_open_pixel_tracking (boolean)
             Account-level default for initial open tracking. `true` by default. In order for initial open tracking to be enabled for REST and SMTP by default, `rest_tracking_default` and `smtp_tracking_default` must be `true`.
         + click_tracking (boolean)
@@ -191,6 +193,7 @@ Retrieve information regarding your SparkPost account and set account options.
         + rest_tracking_default (boolean) - Set to `false` to turn off REST API engagement tracking by default
         + transactional_unsub (boolean) - Set to `true` to include `List-Unsubscribe` header for all transactional messages by default
         + transactional_default (boolean) - Set to `true` to send messages as transactional by default
+        + initial_open_include_alt_attribute (boolean) - Set to `true` to include a blank alt attribute in initial open tracking pixels
         + initial_open_pixel_tracking (boolean) - Set to `false` to exclude the initial open tracking pixel from top of emails
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
