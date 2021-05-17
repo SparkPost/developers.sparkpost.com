@@ -1,0 +1,20 @@
+name: Security Badger
+
+on:
+  workflow_dispatch: # Allows manual triggering - this can be removed after stabilization
+  schedule:
+    # Run every Tuesday at 6:00 PM UTC
+    - cron: '0 18 * * 2'
+
+jobs:
+  security-vulnerabilities-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Security Badger
+        uses: sparkpost/security-badger@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GRAPHQL_GITHUB_API_ACCESS_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SECURITY_BADGER_SLACK_WEBHOOK_URL }}
+        with:
+          slackChannel: '#front-end-guild'
