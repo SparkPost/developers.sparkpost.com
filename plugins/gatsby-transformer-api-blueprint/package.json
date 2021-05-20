@@ -5,7 +5,7 @@
   "dependencies": {
     "fury": "^3.0.0-beta.6",
     "fury-adapter-apib-parser": "^0.10.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "mdast-util-toc": "^2.0.1",
     "minim": "^0.20.5",
     "remark": "^9.0.0",

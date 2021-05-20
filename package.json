@@ -39,7 +39,7 @@
     "lodash": "^4.17.21",
     "minim": "^0.20.5",
     "minim-parse-result": "^0.10.0",
-    "netlify-cms": "^2.10.129",
+    "netlify-cms": "^1.9.3",
     "netlify-lambda": "^2.0.7",
     "polished": "^1.9.2",
     "prop-types": "^15.6.2",
