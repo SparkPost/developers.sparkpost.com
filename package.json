@@ -11,7 +11,7 @@
     "url": "git+https://github.com/SparkPost/developers.sparkpost.com.git"
   },
   "engines": {
-    "node": ">=10.17"
+    "node": ">=14.16.1"
   },
   "dependencies": {
     "@sparkpost/design-tokens": "0.0.6",
