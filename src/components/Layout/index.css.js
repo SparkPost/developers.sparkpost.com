@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import { darken } from 'polished'
 import { mediaQuery } from 'utils/breakpoint'
 import { color, grayscale } from 'utils/colors'
@@ -9,7 +9,7 @@ import normalize from 'styled-normalize'
 import 'typeface-source-code-pro'
 import './fonts.css'
 
-injectGlobal`
+export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   html {

@@ -18,7 +18,7 @@ const Wrapper = styled(Row)`
   `};
 `
 
-const TransitionHeading = Heading.extend`
+const TransitionHeading = styled(Heading)`
   margin-top: 0;
 `
 

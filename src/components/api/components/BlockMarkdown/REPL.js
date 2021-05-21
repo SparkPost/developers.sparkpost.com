@@ -223,7 +223,7 @@ class CodeEditor extends Component {
     return (
       <Textarea
         onKeyDown={this.onKeyDown}
-        innerRef={this.inputRef}
+        ref={this.inputRef}
         {...this.props}
       />
     )

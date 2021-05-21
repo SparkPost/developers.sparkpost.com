@@ -72,7 +72,7 @@ class FocusableInput extends Component {
             }
           }}
         />
-        <SearchInput {...this.props} innerRef={this.inputRef} />
+        <SearchInput {...this.props} ref={this.inputRef} />
         <SlashIcon />
       </Fragment>
     )
