@@ -54,7 +54,7 @@
     "rehype-raw": "^2.0.0",
     "rehype-react": "^3.0.2",
     "remark-parse": "^5.0.0",
-    "remark-rehype": "^3.0.2",
+    "remark-rehype": "^3.0.0",
     "scriptjs": "^2.5.8",
     "slugify": "^1.2.9",
     "sparkpost": "^2.1.2",

@@ -9,7 +9,7 @@
     "mdast-util-toc": "^2.0.1",
     "minim": "^0.20.5",
     "remark": "^9.0.0",
-    "remark-parse": "^9.0.0",
+    "remark-parse": "^5.0.0",
     "remark-stringify": "^5.0.0",
     "unified": "^7.0.0",
     "unist-util-modify-children": "^1.1.2",
