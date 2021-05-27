@@ -10,6 +10,7 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import ConsentBar from 'components/ConsentBar'
 import zIndex from 'utils/zIndex'
+import { GlobalStyle } from './index.css'
 
 function onDocsPage(location) {
   return (
@@ -104,6 +105,7 @@ const Layout = ({ data, children, location }) => (
             <link rel="manifest" href={withPrefix('/meta/manifest.json')} />
             <meta name="theme-color" content="#ffffff" />
           </Helmet>
+          <GlobalStyle />
           {children}
           {!onDocsPage(location) && <Footer />}
         </StickyContainer>
