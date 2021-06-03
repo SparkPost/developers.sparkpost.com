@@ -31,7 +31,7 @@ To use SparkPost as an SMTP relay you need to point your SMTP client or local MT
 
 SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.
 
-SparkPost recommends reusing existing connections to inject up to 100 messages each. After injecting 100 messages, the client SHOULD disconnect and establish a new connection. Additionally, Sparkpost will automatically disconnect idle connections after 1 minute.
+SparkPost also strongly recommends reusing existing connections due to the overhead of initiating TLS connections. After injecting 10,000 messages, the client SHOULD disconnect and establish a new connection. Additionally, Sparkpost will automatically disconnect idle connections after 1 minute.
 
 If TLS is not supported by your application, SparkPost recommends using API keys with _only_ the `Send via SMTP` privilege enabled.
 It is also good practice to regularly cycle your API keys to limit exposure of keys sent in the clear.
