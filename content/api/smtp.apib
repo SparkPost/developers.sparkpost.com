@@ -31,7 +31,7 @@ To use SparkPost as an SMTP relay you need to point your SMTP client or local MT
 
 SparkPost strongly recommends using TLS with SMTP to protect your message content, recipient information and API keys in transmission. This includes API keys and any details such as recipient email addresses and message content.
 
-SparkPost recommends reusing existing connections to inject up to 100 messages each. After injecting 100 messages, the client SHOULD disconnect and establish a new connection. Additionally, Sparkpost will automatically disconnect idle connections after 1 minute.
+SparkPost recommends reusing existing connections to inject up to 100 messages each. After injecting 100 messages, the client SHOULD disconnect and establish a new connection. Additionally, SparkPost will automatically disconnect idle connections after 1 minute.
 
 If TLS is not supported by your application, SparkPost recommends using API keys with _only_ the `Send via SMTP` privilege enabled.
 It is also good practice to regularly cycle your API keys to limit exposure of keys sent in the clear.
@@ -233,7 +233,7 @@ If the `X-MSYS-API` header contains invalid JSON, the SMTP message will be rejec
 In many cases the SMTP MAIL FROM (or "envelope from") address may be any email address.  The address will be overwritten with a SparkPost specific email address before the email is delivered.
 If you would like SparkPost to deliver the email with a custom MAIL FROM domain then the domain specified in the MAIL FROM address must be set up ahead of time as a [CNAME-verified sending domain](/api/sending-domains/#sending-domains-post-verify-a-sending-domain).
 
-**Note:** Sparkpost will **not** overwrite the MAIL FROM address for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts.
+**Note:** SparkPost will **not** overwrite the MAIL FROM address for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts.
 
 ## AMPHTML Email
 
