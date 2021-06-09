@@ -405,7 +405,7 @@ aggregate data, which can be used as "group by" qualifiers.
             + `hour`
             + `day`
 
-    + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
+    + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
 
         + Values
             + `count_injected`
@@ -508,7 +508,7 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `hour`
             + `day`
 
-    + metrics (required, list, `count_targeted,count_injected,count_rejected,count_sent`) ... Delimited list of metrics for filtering.
+    + metrics (required, list, `count_targeted`) ... Delimited list of metrics for filtering.
 
         + Values
             + `count_injected`
@@ -1680,14 +1680,14 @@ Provides aggregate metrics ordered by a precision of time.
     + to = `now` (optional, datetime) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
-    + domains (optional, list `gmail.com,yahoo.com,hotmail.com`) ... Delimited list of domains for filtering.
-    + campaigns (optional, list, `summerSale,promotionX`) ... Delimited list of campaigns for filtering.
+    + domains (optional, list `gmail.com`) ... Delimited list of domains for filtering.
+    + campaigns (optional, list, `summerSale`) ... Delimited list of campaigns for filtering.
     + subject_campaigns (optional, list) ... <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Delimited list of subject campaigns to include. Supports deliverability add-on metrics only.    
     + mailbox_providers (optional, list) ... Delimited list of mailbox providers to include.
     + mailbox_provider_regions (optional, list) ... Delimited list of mailbox provider regions to include.
     + templates (optional, list) ... Delimited list of template IDs to include.
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
-    + ip_pools (optional, list, `ip-pool-1,ip-pool-2,ip-pool-3`) ... Delimited list of IP pools to include.
+    + ip_pools (optional, list, `ip-pool-1`) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + precision (optional, enum, `day`) ... Precision of timeseries data returned. Precisions `day`, `week`, and `month` will return data in the UTC timezone regardless of the specified timezone.
@@ -2213,7 +2213,7 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
     + delimiter = `,` (optional, string) ... Specifies the delimiter for query parameter lists.
     + query_filters = (optional, string) ... An advanced query structure. See [Advanced Filters](#header-advanced-filters).
     + timezone = `UTC` (optional, string) ... Standard timezone identification string.
-    + metrics (required, list, `count_clicked,count_raw_clicked`) ... Delimited list of metrics to include.
+    + metrics (required, list, `count_clicked`) ... Delimited list of metrics to include.
 
         + Values
             + `count_clicked`
