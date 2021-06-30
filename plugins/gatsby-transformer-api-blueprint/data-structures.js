@@ -51,7 +51,7 @@ function replaceDataStructures(tree, dataStructures) {
  * inserts data structures into api blueprint structure content
  */
 function insertDataStructures(tree, dataStructures) {
-  if (!dataStructures || dataStructures && dataStructures.length === 0)
+  if (!dataStructures || dataStructures.length === 0)
     return tree
 
   const headingMarkdown = {
