@@ -40,7 +40,6 @@ module.exports = {
                 '**/categories',
                 '**/media',
                 '**/posts',
-                '**/users',
               ],
               hostingWPCOM: false,
               minimizeDeprecationNotice: false, // todo, we need to upgrade, please don't silence this notice

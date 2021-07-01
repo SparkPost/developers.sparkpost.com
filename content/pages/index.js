@@ -393,7 +393,6 @@ const IndexPage = props => {
                 <Card
                   image={node.fields.media}
                   date={node.date}
-                  author={node.author}
                   title={node.title}
                   description={node.excerpt}
                   link={node.link}
@@ -434,10 +433,6 @@ export const pageQuery = graphql`
           title
           excerpt
           date(formatString: "MMM D, YYYY")
-          author {
-            name
-            link
-          }
         }
       }
     }

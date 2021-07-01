@@ -38,11 +38,6 @@ const ByLine = styled.p`
   font-size: 0.8rem;
 `
 
-const Author = styled(Link)`
-  font-weight: ${weight('bold')};
-  color: inherit;
-`
-
 const ReadMore = styled(Link)`
   font-weight: ${weight('normal')};
   font-size: 0.95rem;
@@ -52,13 +47,12 @@ const ReadMore = styled(Link)`
   }
 `
 
-export default ({ image, date, author, title, description, link }) => (
+export default ({ image, date, title, description, link }) => (
   <Card>
     <Image style={{ backgroundImage: `url(${image})` }} />
     <Text>
       <ByLine>
-        {date} by{' '}
-        <Author to={author && author.link}>{author && author.name}</Author>
+        {date}
       </ByLine>
       <Title>{title}</Title>
       <div dangerouslySetInnerHTML={{ __html: description }} />
