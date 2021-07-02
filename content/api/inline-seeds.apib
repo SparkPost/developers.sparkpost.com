@@ -5,7 +5,7 @@ description: Accept campaign stats, sanitize PII, and trigger seed messages.
 label: Deliverability
 # Group Automatic Inline Seeding API
 
-The Automatic Inline Seeding API helps customers automatically send messages from their campaigns to seed addresses. This simplifies the process, and removes the requirement that the mail sending platform make cluster-level decisions about seeding, rather letting that configuration happen in a centralized location. This document is for customers that are sending with SparkPost. Customers that are sending using another offering should see TODO: link here to on-prem docs.
+The Automatic Inline Seeding API helps customers automatically send messages from their campaigns to seed addresses. This document is for customers that are sending with SparkPost. Customers that are sending using another offering should see TODO: link here to on-prem docs.
 
 ## Seed Config
 
@@ -26,7 +26,6 @@ Seeding options that will apply to campaigns that match the provided rules.
 Returns config details for the authenticated account.
 Only one seed config with 5 match/exclude rules max is currently supported.
 One or the other of (match, exclude) may be used, not both.
-In a future release, multiple seed configs will be supported, up to a limit.
 Auth context (from API key) provides customer and subaccount ids.
 
 + Request
@@ -404,7 +403,6 @@ account and all subaccounts.
 ### Check Campaign Status [GET /inline-seeds/status?id={campaign_id}&sending_domain={sending_domain}]
 
 Returns read-only campaign metadata.
-Sanitized message content is available separately, using `GET /inline-seeds/sanitized`.
 Auth context (from API key) provides customer and subaccount ids.
 
 + Parameters
@@ -491,8 +489,7 @@ A primary account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
 Make updates to subaccount options for the authenticated account.
 Subaccount id comes from the API key if it is a subaccount API key.
 A primary account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
-If "enabled" is set to false all queries to `GET /inline-seeds/match` will return
-false.
+If "enabled" is set to false all queries to `GET /inline-seeds/match` for the subaccount will return false.
 
 + Request (application/json)
 
