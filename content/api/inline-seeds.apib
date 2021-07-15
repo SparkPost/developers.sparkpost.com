@@ -258,7 +258,7 @@ Set the X-MSYS-SUBACCOUNT header to get campaigns for a specific subaccount
 Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the primary
 account and all subaccounts.
 
-+ Request Get campaigns for primary Account and subaccounts
++ Request Get campaigns for primary account and subaccounts
 
     + Headers
 
@@ -295,7 +295,7 @@ account and all subaccounts.
 ### Check Campaign Status [GET /v1/inline-seeds/status?id=my_campaign&sending_domain=example1.com]
 
 Returns read-only campaign metadata.
-Auth context (from API key) provides customer and subaccount ids.
+Auth context (from API key) provides customer and subaccount IDs.
 
 + Parameters
     + id: `my-campaign` (string, required)
@@ -366,8 +366,8 @@ A user can turn off Automatic Inline Seeding for all subaccounts (including the 
 
     + Headers
 
-      + Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-      + X-MSYS-SUBACCOUNT: 1
+         Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+         X-MSYS-SUBACCOUNT: 1
 
 + Response 200 (application/json)
 
@@ -385,16 +385,18 @@ A user can turn off Automatic Inline Seeding for all subaccounts (including the 
 
 Make updates to options for the authenticated account.
 
++ Request (application/json)
+
     + Headers
 
-      + Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-      + X-MSYS-SUBACCOUNT: 1
+        + Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        + X-MSYS-SUBACCOUNT: 1
 
     + Body
 
         ```json
         {
-          "enabled": false
+            "enabled": false
         }
         ```
 
