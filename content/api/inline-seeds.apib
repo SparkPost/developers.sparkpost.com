@@ -294,7 +294,7 @@ account and all subaccounts.
         }
         ```
 
-### Check Campaign Status [GET /v1/inline-seeds/status?id=my_campaign&sending_domain=example1.com]
+### Check Campaign Status [GET /v1/inline-seeds/status?id=my_campaign&sending_domain=foo.example.com]
 
 Returns read-only campaign metadata.
 Auth context (from API key) provides customer and subaccount IDs.
@@ -353,7 +353,9 @@ Auth context (from API key) provides customer and subaccount IDs.
         }
         ```
 ### Get Options [GET /v1/inline-seeds/options]
-Returns Inline Seeds options. If no subaccount ID is provided this will return the primary account's options.  
+
+Returns Inline Seeds options.  
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account's options.
 
 + Data Structure: Attributes
     + enabled (boolean) - Whether Automatic Inline Seeding is enabled or not.
@@ -386,6 +388,7 @@ A user can turn off Automatic Inline Seeding for all subaccounts (including the 
 ### Update Options [PUT /v1/inline-seeds/options]
 
 Make updates to options for the authenticated account.
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will update the primary account's options.  
 
 + Request (application/json)
 
