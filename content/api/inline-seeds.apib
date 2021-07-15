@@ -5,28 +5,28 @@ description: Accept campaign stats, sanitize PII, and trigger seed messages.
 label: Deliverability
 # Group Automatic Inline Seeding API
 
-The Automatic Inline Seeding API helps customers automatically send messages from their campaigns to seed addresses. This document is for customers that are sending with SparkPost. Customers that are sending using another offering should see TODO: link here to on-prem docs.
+The Automatic Inline Seeding API helps customers automatically send messages from their campaigns to seed addresses. This document is for customers that are sending with SparkPost.
 
 ## Seed Config
 
 Seeding options that will apply to campaigns that match the provided rules.
 
-+ Data Structure
++ Data Structure: Attributes
   + threshold (number) - Number of messages seen for a campaign before seed sending starts. <br /> Maximum: `1,000,000`<br /> Minimum: `1,000`
-    + Default: 10,000
+    + Default: 10000
   + duration (number) - Number of minutes after threshold is met over which to spread out seed messages. <br /> Maximum: `720` (12 hours)<br /> Minimum: `20`
     + Default: 30
   + reset (number) - Number of hours after threshold is met until seed sending can happen again. <br /> Maximum: `168` (7 days) <br /> Minimum: `22`
     + Default: 24
-  + match (array) - Array of campaign ids or prefixes that are eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
-  + exclude (array) Array of campaign ids or prefixes that are NOT eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
+  + match (array) - Array of Campaign IDs or prefixes that are eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
+  + exclude (array) - Array of Campaign IDs or prefixes that are NOT eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
 
-### Get Seed Config [GET /inline-seeds/config]
+### Get Seed Config [GET /v1/inline-seeds/config]
 
 Returns config details for the authenticated account.
 Only one seed config with 5 match/exclude rules max is currently supported.
 One or the other of (match, exclude) may be used, not both.
-Auth context (from API key) provides customer and subaccount ids.
+Auth context (from API key) provides customer and subaccount IDs.
 
 + Request
 
@@ -34,21 +34,19 @@ Auth context (from API key) provides customer and subaccount ids.
 
         Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-+ Response 200 - No matches (disabled) (application/json)
++ Response 200 No matches (disabled) (application/json)
 
     + Body
 
-        ```json
         {
           "results": {}
         }
-        ```
 
-+ Response 200 - Both types of matches (application/json)
+
++ Response 200 Both types of matches (application/json)
 
     + Body
 
-        ```json
         {
           "results": {
             "configs": [
@@ -64,13 +62,12 @@ Auth context (from API key) provides customer and subaccount ids.
             ]
           }
         }
-        ```
 
-### Create Seed Config [POST /inline-seeds/config]
+### Create Seed Config [POST /v1/inline-seeds/config]
 
 Create seed config for the authenticated account.
 
-+ Request - Create a seed config with match rule (application/json)
++ Request Create a seed config with match rule (application/json)
 
     + Headers
 
@@ -106,7 +103,7 @@ Create seed config for the authenticated account.
         }
         ```
 
-+ Request - Both Match and Exclude rule not specified (application/json)
++ Request Both Match and Exclude rule not specified (application/json)
 
     + Headers
 
@@ -135,13 +132,13 @@ Create seed config for the authenticated account.
         }
         ```
 
-### Update Seed Config [PUT /inline-seeds/config]
+### Update Seed Config [PUT /v1/inline-seeds/config]
 
 Make updates to config details for the authenticated account.
 Only one seed config with 5 match rules max is currently supported.
-Auth context (from API key) provides customer and subaccount ids.
+Auth context (from API key) provides customer and subaccount IDs.
 
-+ Request - Remove redundant rule (application/json)
++ Request Remove redundant rule (application/json)
 
     + Headers
 
@@ -177,7 +174,7 @@ Auth context (from API key) provides customer and subaccount ids.
         }
         ```
 
-+ Request - Too many matches (application/json)
++ Request Too many matches (application/json)
 
     + Headers
 
@@ -215,7 +212,7 @@ Auth context (from API key) provides customer and subaccount ids.
         }
         ```
 
-+ Request - Both match and exclude (application/json)
++ Request Both match and exclude (application/json)
 
     + Headers
 
@@ -253,10 +250,10 @@ Auth context (from API key) provides customer and subaccount ids.
         }
         ```
 
-### Check Campaign Eligibility [GET /inline-seeds/match?id={campaign_id}]
+### Check Campaign Eligibility [GET /v1/inline-seeds/match?id=my-campaign]
 
 Check `campaign_id` against config to determine seed eligibility.
-Auth context (from API key) provides customer and subaccount ids.
+Auth context (from API key) provides customer and subaccount IDs.
 If `PUT /inline-seeds/options` was used to disable this feature all campaigns are considered ineligible.
 
 + Parameters
@@ -268,7 +265,7 @@ If `PUT /inline-seeds/options` was used to disable this feature all campaigns ar
 
         Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
-+ Response 200 - Eligible for seeding (application/json)
++ Response 200 Eligible for seeding (application/json)
 
     + Body
 
@@ -280,7 +277,7 @@ If `PUT /inline-seeds/options` was used to disable this feature all campaigns ar
         }
         ```
 
-+ Response 200 - Not eligible for seeding (application/json)
++ Response 200 Not eligible for seeding (application/json)
 
     + Body
 
@@ -292,28 +289,16 @@ If `PUT /inline-seeds/options` was used to disable this feature all campaigns ar
         }
         ```
 
-+ Response 403 - (Sub)Account does not have 'deliverability' product (application/json)
-
-    + Body
-
-        ```json
-        {
-          "errors": {
-            "message": "Forbidden."
-          }
-        }
-        ```
-
-### List Active Campaigns [GET /inline-seeds/status]
+### List Active Campaigns [GET /v1/inline-seeds/status]
 
 Returns read-only list of seed-eligible campaigns that have recent activity.
 Intended use case is informational - checking status via API or UI.
 Set the X-MSYS-SUBACCOUNT header to get campaigns for a specific subaccount
-(set the header to 0 to get campaigns for the primary account).
-Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the primary
+(set the header to 0 to get campaigns for the Primary Account).
+Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the Primary
 account and all subaccounts.
 
-+ Request - Get campaigns for primary account and subaccounts
++ Request Get campaigns for Primary Account and subaccounts
 
     + Headers
 
@@ -347,66 +332,13 @@ account and all subaccounts.
         }
         ```
 
-+ Request - Get campaigns for subaccount
-
-    + Headers
-
-        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-        X-MSYS-SUBACCOUNT: 123
-
-+ Response 200 (application/json)
-
-    + Body
-
-        ```json
-        {
-          "results": [
-            {
-              "campaign": "second_campaign",
-              "sending_domain": "bar.example.com",
-              "count": 1337,
-              "threshold": 5000,
-              "seed_start": null,
-              "duration": 30,
-              "subaccount_id": 123
-            }
-          ]
-        }
-        ```
-
-+ Request - Get campaigns for primary account
-
-    + Headers
-
-        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-        X-MSYS-SUBACCOUNT: 0
-
-+ Response 200 (application/json)
-
-    + Body
-
-        ```json
-        {
-          "results": [
-            {
-              "campaign": "my_campaign",
-              "sending_domain": "foo.example.com",
-              "count": 1256,
-              "threshold": 1256,
-              "seed_start": 1620078946682,
-              "duration": 30
-            }
-          ]
-        }
-        ```
-
-### Check Campaign Status [GET /inline-seeds/status?id={campaign_id}&sending_domain={sending_domain}]
+### Check Campaign Status [GET /v1/inline-seeds/status?id=my_campaign&sending_domain=example1.com]
 
 Returns read-only campaign metadata.
 Auth context (from API key) provides customer and subaccount ids.
 
 + Parameters
-    + id: `my-campaign` (string, required)
+    + ID: `my-campaign` (string, required)
     + sending_domain: `foo.example.com` (string, required)
 
 + Request
@@ -459,11 +391,11 @@ Auth context (from API key) provides customer and subaccount ids.
         }
         ```
 
-### Get Subaccount Options [GET /inline-seeds/options]
+### Get Subaccount Options [GET /v1/inline-seeds/options]
 
-Returns all options for a given subaccount id.
-Subaccount id comes from the API key if it is a subaccount API key.
-A primary account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
+Returns all options for a given subaccount ID.
+subaccount ID comes from the API key if it is a subaccount API key.
+A Primary Account can set the subaccount ID via the X-MSYS-SUBACCOUNT header.
 
 + Request (application/json)
 
@@ -484,11 +416,11 @@ A primary account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
         }
         ```
 
-### Update Subaccount Options [PUT /inline-seeds/options]
+### Update Subaccount Options [PUT /v1/inline-seeds/options]
 
 Make updates to subaccount options for the authenticated account.
-Subaccount id comes from the API key if it is a subaccount API key.
-A primary account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
+subaccount ID comes from the API key if it is a subaccount API key.
+A Primary Account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
 If "enabled" is set to false all queries to `GET /inline-seeds/match` for the subaccount will return false.
 
 + Request (application/json)
