@@ -37,16 +37,17 @@ Auth context (from API key) provides customer and subaccount IDs.
 + Response 200 No matches (disabled) (application/json)
 
     + Body
-
+        ```json
         {
           "results": {}
         }
+        ```
 
 
 + Response 200 Both types of matches (application/json)
 
     + Body
-
+        ```
         {
           "results": {
             "configs": [
@@ -62,6 +63,7 @@ Auth context (from API key) provides customer and subaccount IDs.
             ]
           }
         }
+        ```
 
 ### Create Seed Config [POST /v1/inline-seeds/config]
 
