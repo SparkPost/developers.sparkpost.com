@@ -249,56 +249,16 @@ Auth context (from API key) provides customer and subaccount IDs.
             ]
         }
         ```
-
-### Check Campaign Eligibility [GET /v1/inline-seeds/match?id=my-campaign]
-
-Check `campaign_id` against config to determine seed eligibility.
-Auth context (from API key) provides customer and subaccount IDs.
-If `PUT /inline-seeds/options` was used to disable this feature all campaigns are considered ineligible.
-
-+ Parameters
-    + id: `my-campaign` (string, required)
-
-+ Request
-
-    + Headers
-
-        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-
-+ Response 200 Eligible for seeding (application/json)
-
-    + Body
-
-        ```json
-        {
-          "results": {
-            "match": true
-          }
-        }
-        ```
-
-+ Response 200 Not eligible for seeding (application/json)
-
-    + Body
-
-        ```json
-        {
-          "results": {
-            "match": false
-          }
-        }
-        ```
-
 ### List Active Campaigns [GET /v1/inline-seeds/status]
 
 Returns read-only list of seed-eligible campaigns that have recent activity.
 Intended use case is informational - checking status via API or UI.
 Set the X-MSYS-SUBACCOUNT header to get campaigns for a specific subaccount
-(set the header to 0 to get campaigns for the Primary Account).
-Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the Primary
+(set the header to 0 to get campaigns for the primary account).
+Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the primary
 account and all subaccounts.
 
-+ Request Get campaigns for Primary Account and subaccounts
++ Request Get campaigns for primary Account and subaccounts
 
     + Headers
 
@@ -338,7 +298,7 @@ Returns read-only campaign metadata.
 Auth context (from API key) provides customer and subaccount ids.
 
 + Parameters
-    + ID: `my-campaign` (string, required)
+    + id: `my-campaign` (string, required)
     + sending_domain: `foo.example.com` (string, required)
 
 + Request
@@ -390,12 +350,17 @@ Auth context (from API key) provides customer and subaccount ids.
             ]
         }
         ```
+### Get Options [GET /v1/inline-seeds/options]
+Returns Inline Seeds options. If no subaccount ID is provided this will return the primary account's options.  
 
-### Get Subaccount Options [GET /v1/inline-seeds/options]
++ Data Structure: Attributes
+    + enabled (boolean) - Whether Automatic Inline Seeding is enabled or not.
+        + Default: false
+        + Request (application/json)
 
-Returns all options for a given subaccount ID.
-subaccount ID comes from the API key if it is a subaccount API key.
-A Primary Account can set the subaccount ID via the X-MSYS-SUBACCOUNT header.
+If `enabled` is false Automatic Inline Seeding is currently paused. If set back to true a campaign will resume from its previous state unless it has reached the 24 hour timeout window and been reset. This will not interrupt a campaign that has already begun seeding.
+
+A user can turn off Automatic Inline Seeding for all subaccounts (including the primary account) by setting the account level option "inline_seeds" to false via the [Account API](/api/account). The Account-level option supercedes the API-level option.
 
 + Request (application/json)
 
@@ -416,14 +381,9 @@ A Primary Account can set the subaccount ID via the X-MSYS-SUBACCOUNT header.
         }
         ```
 
-### Update Subaccount Options [PUT /v1/inline-seeds/options]
+### Update Options [PUT /v1/inline-seeds/options]
 
-Make updates to subaccount options for the authenticated account.
-subaccount ID comes from the API key if it is a subaccount API key.
-A Primary Account can set the subaccount id via the X-MSYS-SUBACCOUNT header.
-If "enabled" is set to false all queries to `GET /inline-seeds/match` for the subaccount will return false.
-
-+ Request (application/json)
+Make updates to options for the authenticated account.
 
     + Headers
 
