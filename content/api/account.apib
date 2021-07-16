@@ -43,6 +43,9 @@ Retrieve information regarding your SparkPost account and set account options.
             Account-level default for initial open tracking. `true` by default. In order for initial open tracking to be enabled for REST and SMTP by default, `rest_tracking_default` and `smtp_tracking_default` must be `true`.
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
+        + inline_seeds (boolean)
+            Set to `false` to pause Automatic Inline Seeding across the primary account and all subaccounts.
+            This option is valid for SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers only.
     + usage (object) - Account quota usage details. Specify 'include=usage' in query string to include usage info. Usage data is not available for Enterprise accounts.
         + timestamp (string) - ISO date usage data was retrieved
         + day (object) - Daily usage report.
@@ -197,8 +200,9 @@ Retrieve information regarding your SparkPost account and set account options.
         + initial_open_pixel_tracking (boolean) - Set to `false` to exclude the initial open tracking pixel from top of emails
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
-
-
+        + inline_seeds (boolean)
+            Set to `false` to pause Automatic Inline Seeding across the primary account and all subaccounts.
+            This option is valid for SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers only.
 
 + Request
 
