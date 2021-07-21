@@ -363,7 +363,7 @@ Auth context (from API key) provides customer and subaccount IDs.
 ### Get Options [GET /v1/inline-seeds/options]
 
 Returns Inline Seeds options.  
-If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account's options.
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account and all subaccount options.
 
 + Data Structure: Attributes
     + enabled (boolean) - Whether Automatic Inline Seeding is enabled or not.
@@ -378,8 +378,8 @@ A user can turn off Automatic Inline Seeding for all subaccounts (including the 
 
     + Headers
 
-         Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-         X-MSYS-SUBACCOUNT: 1
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            X-MSYS-SUBACCOUNT: 1
 
 + Response 200 (application/json)
 
@@ -390,6 +390,33 @@ A user can turn off Automatic Inline Seeding for all subaccounts (including the 
           "results": {
             "enabled": true
           }
+        }
+        ```
+
+        + Request (application/json)
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            X-MSYS-SUBACCOUNT: 1
+    
++ Response 200 (application/json)
+
+    + Body
+
+        ```json
+        {
+          "results": [
+            {
+              "enabled": true
+            },
+            {
+              "subaccount_id": 1,
+              "enabled": false
+            }
+          ]
         }
         ```
 
