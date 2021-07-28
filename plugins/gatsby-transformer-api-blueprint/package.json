@@ -8,7 +8,7 @@
     "lodash": "^4.17.21",
     "mdast-util-toc": "^2.0.1",
     "minim": "^0.20.5",
-    "remark": "^9.0.0",
+    "remark": "^10.0.1",
     "remark-parse": "^5.0.0",
     "remark-stringify": "^5.0.0",
     "unified": "^7.0.0",
