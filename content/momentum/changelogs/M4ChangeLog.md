@@ -3,6 +3,7 @@
 
 <table class="sidebar">
   <tr><th>Quick Links</th></tr>
+  <tr><td><a href="#4.4.0">Momentum 4.4.0 released on 2021-08-??</a></td></tr>
   <tr><td><a href="#4.3.1">Momentum 4.3.1 released on 2020-01-07</a></td></tr>
   <tr><td><a href="#4.3.0">Momentum 4.3.0 released on 2019-03-31</a></td></tr>
   <tr><td><a href="#4.2.38">Momentum 4.2.38 released on 2018-01-05</a></td></tr>
@@ -19,6 +20,72 @@
   <tr><td><a href="#4.1.0">Momentum 4.1.0 released on 2014-10-03</a></td></tr>
   <tr><td><a href="#4.0.0">Momentum 4.0.0 released on 2014-04-30</a></td></tr>
 </table>
+
+<h2><a name="4.4.0">Momentum 4.4.0 released on 2021-08-?? (Depending on installation type, all changes may not be applicable)</a></h2>
+<ul>
+<li>Feature: SD-1427  -  Bump versions of all packages required for ecconfigd/eccf </li>
+<li>Feature: SD-321  -  Upgrade to a newer curl version (using one from 2013) </li>
+<li>Fix: TR-2081  -  ectop should not throw errors on exited threads </li>
+<li>Fix: SD-1414  -  SMTP AUTH module does not support temporary auth failures </li>
+<li>Fix: SD-1417  -  fcm module crashes when given invalid mime </li>
+<li>Fix: SD-1426  -  messages could stuck in active queue forever when sent on a binding failed to connect to remote host </li>
+<li>Feature: SD-1438  -  smtp tracer enhanced outbound connection logging </li>
+<li>Feature: SD-1436  -  esmtp trace connection acceptance and destruction </li>
+<li>Feature: SD-1469  -  Bump json-c and sqlite versions and fix packaging </li>
+<li>Feature: SD-1472  -  smtp tracer enhanced outbound connection logging v2 </li>
+<li>Feature: SD-1479  -  smtp tracer enhanced outbound connection logging v3 </li>
+<li>Fix: SD-1437  -  esmtp trace gnutls handshake failure details </li>
+<li>Fix: SD-1276  -  permfail emails to NXDOMAIN immediately instead of tempfail as now in Sparkpost </li>
+<li>Fix: SD-1489  -  generic_delivery module overwrites smtp_state_notconnected state id </li>
+<li>Fix: SD-1453  -  consecutive outbound connection failures did not trigger message delay as expected </li>
+<li>Fix: SD-1457  -  Always use latest system timestamps in paniclog output </li>
+<li>Feature: SD-1395  -  log tls cipher used for SMTP injections and deliveries </li>
+<li>Feature: TR-2207  -  Add support for pthread rwlocks to Lua </li>
+<li>Fix: TR-2239  -  Reduce pinned Lua garbage by disabling pinning of Lua threads for completions </li>
+<li>Fix: SD-1494  -  Debug messages logged at critical  </li>
+<li>Feature: SD-1544  -  Provide an option to set msg:routing_domain without using context variables </li>
+<li>Fix: SD-1573  -  rcpt_type is not included in event data when domain is mixed case using SMTP API </li>
+<li>Feature: SD-1439  -  control command to list binding domain stats </li>
+<li>Fix: SD-1609  -  memory leak on Event when connection is closed due to throttle </li>
+<li>Feature: SD-1343  -  Enable periodic GC on Lua threads for SMTP reception sessions </li>
+<li>Feature: SD-1326  -  Upgrade jlog library to latest release </li>
+<li>Fix: SD-1546  -  ecxs is subtly broken when trying to pass linker options </li>
+<li>Fix: SD-1542  -  suspend_delivery can cause repeated updates to next_attempt and swap to disk </li>
+<li>Fix: SD-1587  -  several ec_console commands missing from online help </li>
+<li>Fix: TR-2310  -  Disable pinning of Lua threads for completions by default </li>
+<li>Feature: SD-1588  -  Improve connect_timeout_to_delay logic </li>
+<li>Feature: SD-1690  -  Please document the -1 switch for mx_fallback_to_A in Momentum </li>
+<li>Feature: SD-933  -  Document the rollup MX feature for combining traffic to a Service Provider into one routing domain </li>
+<li>Feature: TR-2132  -  Improve efficiency of Lua JSON string accesses </li>
+<li>Feature: TR-2341  -  Add "scheduled_time" to message events  </li>
+<li>Fix: SD-1618  -  EC_Console command to display audit series data safely </li>
+<li>Feature: SD-1108  -  Accept an On Prem Customer's Custom Message ID for Pass Through to the Signals Agent </li>
+<li>Fix: TR-2238  -  Momentum crashes on negative Content-Length header </li>
+<li>Fix: SD-1569  -  liveupdated adaptive rules get mistakenly removed after MTA deployment or upgrade </li>
+<li>Fix: SD-1127  -  vctx:iterate_rcpt() leaks memory </li>
+<li>Fix: SD-1362  -  AD rule "throttle down" is not working</li>
+<li>Fix: SD-1811  -  Clip AD settings below configured thresholds </li>
+<li>Feature: TR-2464  -  Add configuration option to do step GC on Lua trash thread instead of full GC </li>
+<li>Feature: TR-2467  -  Maintain separate statistics on global trace and GC on global Lua state </li>
+<li>Fix: SD-2030  -  Momentum bounce classifier is not handling code 30 </li>
+<li>Fix: SD-1492  -  Allow dns_print_domain to be safely called outside of the control command framework </li>
+<li>Feature: SD-2029  -  Upgrade jlog library to latest release </li>
+<li>Fix: SD-1730  -  Additional logging for null key or value in validate context </li>
+<li>Fix: SD-2121  -  SMTPAPI queues multi-recipient messages for some recipients when the SMTP transaction fails with 4xx/5xx </li>
+<li>Fix: TR-2716  -  Crash in msg_gen handling of MSGC messages </li>
+<li>Feature: SD-2320  -  Add configuration option to warn when a timed event blocks event loop too long </li>
+<li>Feature: SD-2374  -  Support running Lua code in a specific event loop thread (msys.runInInst) </li>
+<li>Feature: SD-2234  -  Provide maintainer thread PIDs to help understand CPU usage with tools like top </li>
+<li>Fix: SD-2422  -  Scheduled time ignored for messages injected into binding suspended by Adaptive Delivery </li>
+<li>Feature: SD-1746  -  IPv6 doc updates </li>
+<li>Feature: TR-2829  -  Disallow CRLF in content.inline_images in the Transmissions API </li>
+<li>Feature: SD-2161  -  Allow ecelerity threadpool stats to be reset </li>
+<li>Fix: SD-2558  -  After a config reload the DSN module starts sending duplicate acknowledgements </li>
+<li>Feature: SD-2689  -  Add a new hookpoint after TLS accept  </li>
+<li>Fix: SD-2734  -  SSL_GET_ERROR() causing protocol deviation errors. </li>
+<li>Feature: SD-1564  -  Document that the 'closure' argument is not passed to lua hook implementations </li>
+</ul>
+
 
 <h2><a name="4.3.1">Momentum 4.3.1 released on 2020-01-07 (Depending on installation type, all changes may not be applicable)</a></h2>
 <ul>
