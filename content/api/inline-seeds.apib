@@ -363,12 +363,15 @@ Auth context (from API key) provides customer and subaccount IDs.
 ### Get Options [GET /v1/inline-seeds/options]
 
 Returns Inline Seeds options.  
-If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account and all subaccount options.
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account and all subaccount options.  
+If a subaccount ID is provided this will return the subaccount's options.
 
 + Data Structure: Attributes
     + enabled (boolean) - Whether Automatic Inline Seeding is enabled or not.
         + Default: false
         + Request (application/json)
+    + account_enabled (boolean) - Whether Automatic Inline Seeding is enabled for all subaccounts (including the primary account). Only returned when false and fetching a specific subaccount's options.
+        + Default: false
 
 If `enabled` is false Automatic Inline Seeding is currently paused. If set back to true a campaign will resume from its previous state unless it has reached the 24 hour timeout window and been reset. This will not interrupt a campaign that has already begun seeding.
 
