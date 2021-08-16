@@ -16,7 +16,7 @@ Learn about [how to optimize your sending](https://www.sparkpost.com/docs/tech-r
 
 ### The Sandbox Domain
 
-The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com`, set `options.sandbox` to `true`, and set `content.template_id` to `my-first-email`. Just like with any sending domain, you can set the part before the `@` to any mailbox. You can only use the sandbox domain with the `my-first-email` template.
+The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set `options.sandbox` to `true`, and set `content.template_id` to `my_first_template`. The `from` address in the template `my_first_template` should be `anything@sparkpostbox.com`. Just like with any sending domain, you can set the part before the `@` to any mailbox. You can only use the sandbox domain with the `my_first_template` template.
 
 For more extensive testing with your own sending domain, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
 
