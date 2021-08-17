@@ -8,10 +8,9 @@ This repo contains the code and documentation that powers [developers.sparkpost.
 
 To develop with this repository, you must have the following:
 
-1. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-1. [Node](https://nodejs.org/en/download/)
-1. [npm](https://docs.npmjs.com/troubleshooting/try-the-latest-stable-version-of-npm): version 6 recommended
-1. A [clone](https://help.github.com/articles/cloning-a-repository/) of this repo
+1. [Node](https://nodejs.org/en/download/): version 14.16.1
+2. [npm](https://docs.npmjs.com/troubleshooting/try-the-latest-stable-version-of-npm): version 6 recommended
+3. A [clone](https://help.github.com/articles/cloning-a-repository/) of this repo
 
 ### Installing dependencies
 
@@ -27,7 +26,7 @@ When developing locally, you have two options: developing the whole website or d
 This will develop the whole developer site.
 
 1. Run `npm run develop`
-1. open [http://localhost:4000/](http://localhost:4000/) to view the website.
+1. Open [http://localhost:4000/](http://localhost:4000/) to view the website.
 
 #### Develop API reference
 
@@ -35,9 +34,8 @@ This will develop the whole developer site.
 
 This will only develop the API reference pages and skip unnecessary queries.
 
-1. You will need a SparkPost API key to generate the docs
-1. Run `SPARKPOST_API_KEY=<key> npm run docs`
-1. open [http://localhost:4000/api/](http://localhost:4000/api/) to view the docs.
+1. Run `npm run docs`
+2. Open [http://localhost:4000/api/](http://localhost:4000/api/) to view the docs.
 
 #### Develop Netlify Lambda Functions
 
@@ -53,8 +51,8 @@ You'll find the all the content, pages, and data inside the `content` folder. If
 
 Create a branch for your work in the repo:
 
-1. `git checkout master` to checkout the main branch
-1. `git pull origin master` to get the lastest code
+1. `git checkout main` to checkout the main branch
+1. `git pull origin main` to get the lastest code
 1. `git checkout -b your-branch-name` to create a branch
 
 ### Make your changes
@@ -68,6 +66,4 @@ Create a branch for your work in the repo:
 
 1. Stage and commit your changes (`git add -A && git commit -m "Describe what you did"`)
 1. Push your changes (`git push origin your-branch-name`)
-1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `master` branch. Netlify will publish a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) so you can share and preview your changes as a live site.
-
-After you push your changes, you may see a commit you didn't make such as `your-branch-name npm audit fix`. We use [auditmated](https://github.com/SparkPost/auditmated) to help keep our dependencies secure and up-to-date. To skip this, use the `--no-verify` command line option when you push your code.
+1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `main` branch. Netlify will publish a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) so you can share and preview your changes as a live site.
