@@ -57,7 +57,8 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
         The ID of an IP Pool in which to restrict this subaccount's mail deliveries. If the supplied `ip_pool` is a empty or not present, this subaccount may use any of the account's IP Pools.
         <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers: please consult with your TAM on IP management.
     + options (object)
-        + deliverability (boolean) - Whether the subaccount has access to deliverability features.
+        + deliverability (boolean) 
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
 
 + Sample
     
@@ -97,7 +98,10 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
         Valid values are: `smtp/inject`, `sending_domains/manage`, `tracking_domains/view`, `tracking_domains/manage`, `message_events/view`, `suppression_lists/manage`, `transmissions/view`, `transmissions/modify`, `webhooks/view`, `webhooks/modify`
     + key_valid_ips (array)
         List of IP's that the initial subaccount API key can be used from. If not supplied, the API key will be usable from any IP address.
-
+    + options (object) - subaccount-level options.
+        + deliverability (boolean)
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
+            
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
 <Banner status="info">Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</Banner>
@@ -115,7 +119,10 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
                 "key_label": "API Key for Sparkle Ponies Subaccount",
                 "key_grants": ["smtp/inject", "sending_domains/manage", "message_events/view", "suppression_lists/manage", "tracking_domains/view", "tracking_domains/manage", "webhooks/modify", "webhooks/view"],
                 "key_valid_ips": [],
-                "ip_pool": ""
+                "ip_pool": "",
+                "options": {
+                    "deliverability": true
+                }
             }
 
 + Response 200 (application/json)
@@ -216,8 +223,9 @@ This endpoint only returns information about the subaccount, not the resources a
     + ip_pool (string)
         The ID of an IP Pool in which to restrict this subaccount's mail deliveries. To unassign the current IP Pool, provide an empty string.
         <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers: please consult with your TAM on IP management.
-    + options (object)
-        + deliverability (boolean) - Whether the subaccount has access to deliverability features.
+    + options (object) - subaccount-level options.
+        + deliverability (boolean)
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
 
 
 + Parameters
