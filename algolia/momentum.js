@@ -6,9 +6,6 @@ module.exports = {
     allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/momentum\/(web-momo4|knowledgebase)/"}}) {
       edges {
         node {
-          fields {
-            path
-          }
           headings {
             value
             depth

@@ -24,10 +24,6 @@ async function createApiReference({ actions, graphql }) {
       allApiBlueprint {
         edges {
           node {
-            fields {
-              path
-              file
-            }
           }
         }
       }
