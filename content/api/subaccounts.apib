@@ -50,9 +50,6 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
 The Subaccounts API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
 The `per_page` query parameter sets the number of subaccounts to return in a single request, and supports a maximum value of 100.
 
-In the response body, there are three main keys: `results`, `total_count` and `links`. `results` is an array which contains the page of subaccount objects that matched the request,
-`total_count` is an integer that describes the total number of subaccount objects that matched your request, and `links` is an object which provides a way to request the next page of events, if there is more than one page.
-
 Once you have the response, you then can use `links` to retrieve the URL for your next page, which will be prefilled with the appropriate value for the `cursor` query parameter,
 as well as any other filters you supplied with the original request.
 
@@ -349,7 +346,7 @@ This endpoint only returns information about the subaccount, not the resources a
             }
         }
 
-### List all Subaccounts [GET /v1/subaccounts]
+### List Subaccounts [GET /v1/subaccounts]
 
 <Banner status="warning"><strong>Deprecation of non-paginated results</strong>: All results returned from the `GET /api/v1/subaccounts` endpoint will be [paginated](#header-pagination) by default starting March 2022. Set the`cursor` parameter to `initial` to test paginated results.</Banner>
 
