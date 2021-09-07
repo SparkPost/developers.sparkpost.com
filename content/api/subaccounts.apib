@@ -46,17 +46,64 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
 <Banner status="info">`X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</Banner>
 
 ### Pagination
-The Subaccounts API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
-The `per_page` query parameter tells the Subaccounts API the number of subaccounts to return in a single request, and supports a maximum value of 10,000.
 
-To start a paging request, add the query parameter `?cursor=initial` to your Subaccounts API request. This will fetch the first page of results. If cursor is not provided, then the default value of `initial` is applied.
-In the response body, there are three main keys: `results`, `total_count` and `links`. `results` is an array which contains the page of JSON subaccounts that matched the request,
-`total_count` is an integer that describes the total number of JSON subaccounts that matched your request, and `links` is an object which provides a way to request the next page of events, if there is more than one page.
+The Subaccounts API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
+The `per_page` query parameter sets the number of subaccounts to return in a single request, and supports a maximum value of 100.
+
+In the response body, there are three main keys: `results`, `total_count` and `links`. `results` is an array which contains the page of subaccount objects that matched the request,
+`total_count` is an integer that describes the total number of subaccount objects that matched your request, and `links` is an object which provides a way to request the next page of events, if there is more than one page.
 
 Once you have the response, you then can use `links` to retrieve the URL for your next page, which will be prefilled with the appropriate value for the `cursor` query parameter,
 as well as any other filters you supplied with the original request.
 
 If your result set is less than one page of data, then the `links` object will not have a `next` key.
+
++ Data Structure: Paginated Response
+    + results (array) - A page of subaccount objects that match the search parameters.
+    + total_count (number) - the total number of subaccounts that match the search parameters.
+    + links (object)
+        + next (string) 
+            a URL that can be used to retrieve the next page of results. Will be prefilled with the appropriate value for the `cursor` query parameter, as well as any other filters supplied with the original request.
+
++ Sample
+    
+    {
+        "results": [
+            {
+                "id": 1,
+                "name": "Joe's Garage",
+                "status": "active",
+                "ip_pool": "my_ip_pool",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+            },
+            {
+                "id": 2,
+                "name": "SharkPost",
+                "status": "active",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+                
+            },
+            {
+                "id": 3,
+                "name": "Dev Avocado",
+                "status": "suspended",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+            }
+        ],
+        "total_count": 350,
+        "links":{
+            "next": "/api/v1/subaccounts?cursor=WzIxMCwyMTBd&per_page=3&sort_by=id"
+        }
+    }
 
 ### Subaccount object
 
