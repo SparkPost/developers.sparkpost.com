@@ -13,7 +13,6 @@ const apiTableOfContents = flatten(
 
 module.exports = async data => {
   await createApiReference(data)
-  await createMomentumDocs(data)
 }
 
 async function createApiReference({ actions, graphql }) {
