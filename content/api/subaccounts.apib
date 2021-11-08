@@ -4,6 +4,8 @@ description: Manage subaccounts, a way for service providers to provision and ma
 
 # Group Subaccounts
 
+<Banner status="warning"><strong>Deprecation of non-paginated results</strong>: All results returned from the `GET /api/v1/subaccounts` endpoint will be [paginated](#header-pagination) by default starting March 2022. Set the`cursor` parameter to `initial` to test paginated results.</Banner>
+
 Subaccounts are a way for you to provision and manage senders separately from each other, and to provide assets and reporting data for each of them. This is useful for service providers who send on behalf of others or for a business that wants to separate their different streams of traffic. Learn more in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/).
 
 The following APIs have subaccount support:
@@ -44,12 +46,69 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
 
 <Banner status="info">`X-MSYS-SUBACCOUNT` is not required, but if provided, must be a number.</Banner>
 
+### Pagination
+
+The Subaccounts API supports pagination for queries with larger result sets. Pagination is done through the use of the `cursor` and `per_page` query parameters.
+The `per_page` query parameter sets the number of subaccounts to return in a single request, and supports a maximum value of 100.
+
+Once you have the response, you then can use `links` to retrieve the URL for your next page, which will be prefilled with the appropriate value for the `cursor` query parameter,
+as well as any other filters you supplied with the original request.
+
+If your result set is less than one page of data, then the `links` object will not have a `next` key.
+
++ Data Structure: Paginated Response
+    + results (array) - A page of subaccount objects that match the search parameters.
+    + total_count (number) - The total number of subaccounts that match the search parameters.
+    + links (object)
+        + next (string) 
+            A URL that can be used to retrieve the next page of results. Will be prefilled with the appropriate value for the `cursor` query parameter, as well as any other filters supplied with the original request.
+
++ Sample
+    
+    {
+        "results": [
+            {
+                "id": 1,
+                "name": "Joe's Garage",
+                "status": "active",
+                "ip_pool": "my_ip_pool",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+            },
+            {
+                "id": 2,
+                "name": "SharkPost",
+                "status": "active",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+                
+            },
+            {
+                "id": 3,
+                "name": "Dev Avocado",
+                "status": "suspended",
+                "compliance_status": "active",
+                "options": {
+                    "deliverability": true
+                }
+            }
+        ],
+        "total_count": 350,
+        "links":{
+            "next": "/api/v1/subaccounts?cursor=WzIxMCwyMTBd&per_page=3&sort_by=id"
+        }
+    }
+
 ### Subaccount object
 
 + Data Structure: Attributes
     + id (number) - Unique ID for the subaccount.
     + name (string) - Subaccount display name. <br />Max length: 64 characters
-    + status (enum) - Status of the subaccount. Learn about the affects of each status in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/#master-account-managing-subaccounts).
+    + status (enum) - Status of the subaccount. Learn about the affects of each status in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/#primary-account-managing-subaccounts).
         + active
         + suspended
         + terminated
@@ -58,7 +117,8 @@ When making POST, PUT, or DELETE requests without the `X-MSYS-SUBACCOUNT` header
         The ID of an IP Pool in which to restrict this subaccount's mail deliveries. If the supplied `ip_pool` is a empty or not present, this subaccount may use any of the account's IP Pools.
         <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers: please consult with your TAM on IP management.
     + options (object)
-        + deliverability (boolean) - Whether the subaccount has access to deliverability features.
+        + deliverability (boolean) 
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
 
 + Sample
     
@@ -98,7 +158,10 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
         Valid values are: `smtp/inject`, `sending_domains/manage`, `tracking_domains/view`, `tracking_domains/manage`, `message_events/view`, `suppression_lists/manage`, `transmissions/view`, `transmissions/modify`, `webhooks/view`, `webhooks/modify`
     + key_valid_ips (array)
         List of IP's that the initial subaccount API key can be used from. If not supplied, the API key will be usable from any IP address.
-
+    + options (object) - subaccount-level options.
+        + deliverability (boolean)
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
+            
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
 <Banner status="info">Stored recipients lists and stored templates are currently not supported for subaccounts sending mail using the Transmissions API.</Banner>
@@ -116,7 +179,10 @@ Returns the subaccount's ID, along with the API key and API key label, if one wa
                 "key_label": "API Key for Sparkle Ponies Subaccount",
                 "key_grants": ["smtp/inject", "sending_domains/manage", "message_events/view", "suppression_lists/manage", "tracking_domains/view", "tracking_domains/manage", "webhooks/modify", "webhooks/view"],
                 "key_valid_ips": [],
-                "ip_pool": ""
+                "ip_pool": "",
+                "options": {
+                    "deliverability": true
+                }
             }
 
 + Response 200 (application/json)
@@ -210,15 +276,16 @@ This endpoint only returns information about the subaccount, not the resources a
 
 + Data Structure
     + name (string) - Subaccount display name. <br />Max length: 64 characters
-    + status (enum) - Status of the subaccount. Learn about the affects of each status in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/#master-account-managing-subaccounts).
+    + status (enum) - Status of the subaccount. Learn about the affects of each status in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/#primary-account-managing-subaccounts).
         + active
         + suspended
         + terminated
     + ip_pool (string)
         The ID of an IP Pool in which to restrict this subaccount's mail deliveries. To unassign the current IP Pool, provide an empty string.
         <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a></strong> customers: please consult with your TAM on IP management.
-    + options (object)
-        + deliverability (boolean) - Whether the subaccount has access to deliverability features.
+    + options (object) - subaccount-level options.
+        + deliverability (boolean)
+            <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
 
 
 + Parameters
@@ -280,9 +347,48 @@ This endpoint only returns information about the subaccount, not the resources a
             }
         }
 
-### List all Subaccounts [GET /v1/subaccounts{?option}]
+### List Subaccounts [GET /v1/subaccounts]
 
-Returns a list of your subaccounts. 
+<Banner status="warning"><strong>Deprecation of non-paginated results</strong>: All results returned from the `GET /api/v1/subaccounts` endpoint will be [paginated](#header-pagination) by default starting March 2022. Set the`cursor` parameter to `initial` to test paginated results.</Banner>
+
+Returns a list of your subaccounts. Passing certain query parameters will cause results to be [paginated](#header-pagination).
+
++ Parameters
+
+    + option (enum[string], optional) - Filters subaccounts to those with the option enabled.
+        + Members
+            + `deliverability`
+
+    + cursor (string, optional) - A cursor provided in the `links` object of a page of results, used to get the next page of results. Set this parameter to `initial` to retrieve the first page of results. Passing this parameter will cause results to be [paginated](#header-pagination).
+
+    + per_page (number, optional) - Limits the number of subaccounts that are returned in the `results` object. The maximum allowed value is 100. Passing this parameter will cause results to be [paginated](#header-pagination).
+        + Default: 25
+
+    + sort_by (enum[string], optional) - Sorts results by the specified property. Passing this parameter will cause results to be [paginated](#header-pagination).
+        + Default: `created_at`
+        + Members
+            + `created_at`
+            + `updated_at`
+            + `id`
+            + `name`
+
+    + order (enum[string], optional) - Returns subaccounts in the specified order based on the `sort_by` parameter. `asc` returns results in ascending order, `desc` returns results in descending order. Passing this parameter will cause results to be [paginated](#header-pagination).
+        + Default: `desc`
+        + Members
+            + `asc`
+            + `desc`
+    
+    + ip_pool (string, optional) - Returns only subaccounts that are assigned to the IP pool with the ID passed in this parameter. Passing this parameter will cause results to be [paginated](#header-pagination).
+
+    + status (enum[string], optional) - Returns only subaccounts with the specified status. Passing this parameter will cause results to be [paginated](#header-pagination).
+        + Members
+            + `active`
+            + `suspended`
+            + `terminated`
+
+    + name (string, optional) - Returns subaccounts whose name includes the string passed in the parameter. May return false positives. Passing this parameter will cause results to be [paginated](#header-pagination).
+
+    + ids: `1,2,3,4` (string, optional) - Returns only subaccounts with the IDs included in the comma separated list in the parameter. Passing this parameter will cause results to be [paginated](#header-pagination).
 
 + Request
 
@@ -290,9 +396,6 @@ Returns a list of your subaccounts.
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
             Accept: application/json
-+ Parameters
-
-    + option (optional, string, `deliverability`) ... Filters subaccounts to those with the option enabled. The only valid value is currently `deliverability`.
 
 + Response 200 (application/json)
 

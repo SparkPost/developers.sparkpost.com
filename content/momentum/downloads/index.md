@@ -1,1 +1,0 @@
-Downloads via HTTP/HTTPS are no longer available.  All downloads are now done via SSH/SCP/SFTP.  To get an account and access to the download server, please send an email to support@messagesystems.com and request access.  Thanks.

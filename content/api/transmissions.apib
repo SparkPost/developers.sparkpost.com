@@ -16,7 +16,7 @@ Learn about [how to optimize your sending](https://www.sparkpost.com/docs/tech-r
 
 ### The Sandbox Domain
 
-The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `from` address to `anything@sparkpostbox.com` and set `options.sandbox` to `true`. Just like with any sending domain, you can set the part before the `@` to any mailbox.
+The sandbox domain allows you to send your first email without setting up a sending domain. You can send up to 5 sandbox messages over the lifetime of your account. To send a message from the sandbox domain, set the `options.sandbox` to `true`, and set `content.template_id` to `my-first-email`. The `from` address in the template `my-first-email` should be `support@sparkpostbox.com`. You can only use the sandbox domain with the `my-first-email` template.
 
 For more extensive testing with your own sending domain, use the SparkPost [Sink Server](https://www.sparkpost.com/docs/faq/using-sink-server/).
 
@@ -68,7 +68,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
             + Default: false
         + skip_suppression (boolean) - Whether to ignore customer suppression rules. <span class="label label-warning"><strong>Enterprise</strong></span> only.
             + Default: false.
-        + ip_pool (string) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
+        + ip_pool (string, case insensitive) - The ID of a [dedicated IP pool](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools) to send from. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br/><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  Not performed on AMPHTML Email content.
             + Default: false
         + perform_substitutions (boolean)

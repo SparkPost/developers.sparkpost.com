@@ -51,9 +51,7 @@ export default ({ image, date, title, description, link }) => (
   <Card>
     <Image style={{ backgroundImage: `url(${image})` }} />
     <Text>
-      <ByLine>
-        {date}
-      </ByLine>
+      <ByLine>{date}</ByLine>
       <Title>{title}</Title>
       <div dangerouslySetInnerHTML={{ __html: description }} />
       <ReadMore to={link}>

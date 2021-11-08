@@ -51,7 +51,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
 ## Tracking Domain Object
 
 + Data Structure
-    + domain (string) - Name of the tracking domain.
+    + domain (string, case insensitive) - Name of the tracking domain.
     + port (number) - The port used when constructing the tracking URL. `80` if secure is `false`, `443` if secure is `true`.
     + secure (boolean) - Whether the tracking URL should use HTTPS. HTTP will be used if `false`.
         + Default: false
@@ -88,7 +88,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
 ### Create a Tracking Domain [POST /v1/tracking-domains]
 
 + Data Structure
-    + domain (string, required) - Name of the tracking domain.
+    + domain (string, case insensitive, required) - Name of the tracking domain.
     + secure (boolean) - Whether the tracking URL should use HTTPS. HTTP will be used if `false`.
         + Default: false
 
@@ -161,7 +161,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
 Initiate a check against the configured redirect for the specified tracking domain. The domain's `status` object is returned on success.
 
 + Parameters
-    + domain (required, string, `example.domain.com`)
+    + domain (required, case insensitive, string, `example.domain.com`)
 
 
 + Request
@@ -210,7 +210,7 @@ Initiate a check against the configured redirect for the specified tracking doma
 Retrieve an existing tracking domain.
 
 + Parameters
-    + domain (required, string, `example.domain.com`)
+    + domain (required, case insensitive, string, `example.domain.com`)
 
 + Request
 
@@ -276,7 +276,7 @@ Setting a new default automatically unsets the current relevant default, if it e
 
 
 + Parameters
-    + domain (required, string, `example.domain.com`)
+    + domain (required, case insensitive, string, `example.domain.com`)
 
 + Request
 
@@ -345,7 +345,7 @@ Setting a new default automatically unsets the current relevant default, if it e
 Delete an existing tracking domain.
 
 + Parameters
-    + domain (required, string, `example.domain.com`)
+    + domain (required, case insensitive, string, `example.domain.com`)
 
 + Request
 

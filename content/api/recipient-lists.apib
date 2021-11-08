@@ -14,7 +14,7 @@ The Recipient List API operates on lists as a whole and does not currently suppo
 ### Recipient List Object
 
 + Data Structure: Attributes
-    + id (string) - Unique alphanumeric ID. <br /> Maximum length: 64 bytes
+    + id (string, case sensitive) - Unique alphanumeric ID. <br /> Maximum length: 64 bytes
     + name (string) - Recipient list display name. <br />  Maximum length: 64 bytes
     + description (string) - Description of the recipient list. <br /> Maximum length: 1024 bytes
     + attributes (object) - An object of arbitrary metadata related to this list. This data is not used by the API. It is only for the user.
@@ -123,7 +123,7 @@ The `To` header is only constructed for messages built from email part content. 
 ### Create a Recipient List [POST /v1/recipient-lists{?num_rcpt_errors}]
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
+    + id (string, case sensitive) - Unique alphanumeric ID. If an id is not specified, one is generated. <br /> Maximum length: 64 bytes
     + name (string) - Recipient list display name. If a name is not specified, it defaults to the same value as id. <br />  Maximum length: 64 bytes
     + description (string) - Description of the recipient list. <br /> Maximum length: 1024 bytes
     + attributes (object) - An object of arbitrary metadata related to this list.
@@ -272,7 +272,7 @@ Retrieve details about a specified recipient list by specifying its id in the UR
 retrieve the recipients contained in a list, the list must be specified and the `show_recipients` parameter must be set to true.
 
 + Parameters
-    + id (required, string, `unique_id_4_graduate_students`)
+    + id (required, string, `unique_id_4_graduate_students`) ... Case sensitive.
     + show_recipients (optional, boolean, `true`) ... If true, return all the recipients contained in the list.
 
 + Request
@@ -393,7 +393,7 @@ If a transmission using the recipient list has a `state` of "submitted" or "gene
 Returns the recipient list's `name` and `id`. If the `recipients` array was updated, it includes the number of accepted and rejected recipients.
 
 + Parameters
-    + id (required, string, `unique_id_4_graduate_students_list`)
+    + id (required, string, `unique_id_4_graduate_students_list`) ... Case sensitive.
     + num_rcpt_errors (optional, number, `3`) ... Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
 
 + Request (application/json)
@@ -555,7 +555,7 @@ Returns the recipient list's `name` and `id`. If the `recipients` array was upda
 <Banner status="warning">If a transmission contains a recipient list, the recipient list cannot be deleted if the transmission is submitted or generating.</Banner>
 
 + Parameter
-    + id (required, string, `unique_id_4_graduate_students_list`)
+    + id (required, string, `unique_id_4_graduate_students_list`) ... Case sensitive.
 
 + Request
 

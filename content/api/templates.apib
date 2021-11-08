@@ -18,7 +18,7 @@ If needed, it's also possible to update the published version of a template dire
 ## Template Object
 
 + Data Structure: Attributes
-    + id (string) - Unique alphanumeric ID.
+    + id (string, case sensitive) - Unique alphanumeric ID.
     + name (string) - Display name.
     + description (string) - Description of the template.
     + content (object) - Content that will be used to construct an email. The template language is supported in all content attributes.
@@ -109,7 +109,7 @@ Each error is described in a object with the following attributes:
 Templates are created as drafts.
 
 + Data Structure
-    + id (string) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
+    + id (string, case sensitive) - Unique alphanumeric ID used to reference the template. At a minimum, `id` or `name` is required upon creation. It is auto-generated if not provided. Maximum length - 64 bytes
     + name (string) - Editable display name. At a minimum, `id` or `name` is required upon creation. Does not have to be unique. Maximum length - 1024 bytes
     + description (string) - Description of the template. Maximum length - 1024 bytes
     + content (object, required) - Content that will be used to construct an email. The template language is supported in all content attributes. Maximum length - 5 MB
@@ -191,7 +191,7 @@ Templates are created as drafts.
 Use the `draft` query parameter to specify the draft or published version of the template.
 
 + Parameters
-    + id (required, string, `11714265276872`)
+    + id (required, string, `11714265276872`) ... Case sensitive.
     + draft (optional, boolean, `true`) ... If true, returns the draft template. If false, returns the published template.
 
 + Request
@@ -263,7 +263,7 @@ The new content will completely overwrite the existing content.
 
 
 + Parameters
-    + id (required, string, `11714265276872`)
+    + id (required, string, `11714265276872`) ... Case sensitive.
 
 
 + Request Update (application/json)
@@ -349,7 +349,7 @@ The new content will completely overwrite the existing content.
 
 
 + Parameters
-    + id (required, string, `11714265276872`)
+    + id (required, string, `11714265276872`) ... Case sensitive.
     + update_published (optional, boolean, `true`) ... Set to `true` to overwrite the existing published template.
 
 + Request (application/json)
@@ -393,7 +393,7 @@ See [Template Language](/api/template-language/) for more information.
 
 
 + Parameters
-    + id (required, string, `11714265276872`)
+    + id (required, string, `11714265276872`) ... Case sensitive.
     + draft (optional, boolean, `true`) ... If true, previews the draft template. If false, previews the published template.
 
 + Request (application/json)
@@ -437,7 +437,7 @@ Deletes both published and draft versions of a template.
 <Banner status="info">If a transmission uses a template, the template cannot be deleted if the transmission is submitted or generating.</Banner>
 
 + Parameters
-    + id (required, string, `11714265276872`)
+    + id (required, string, `11714265276872`) ... Case sensitive.
 
 + Request
 
