@@ -1,0 +1,447 @@
+
+FORMAT: 1A
+title: Automatic Inline Seeding
+description: Accept campaign stats, sanitize PII, and trigger seed messages.
+label: Deliverability
+# Group Automatic Inline Seeding API
+
+The Automatic Inline Seeding API helps customers automatically send messages from their campaigns to seed addresses. This document is for customers that are sending with SparkPost.
+
+## Seed Config
+
+Seeding options that will apply to campaigns that match the provided rules.
+
++ Data Structure: Attributes
+  + threshold (number) - Number of messages seen for a campaign before seed sending starts. <br /> Maximum: `1,000,000`<br /> Minimum: `1,000`
+    + Default: 10000
+  + duration (number) - Number of minutes after threshold is met over which to spread out seed messages. <br /> Maximum: `720` (12 hours)<br /> Minimum: `20`
+    + Default: 30
+  + reset (number) - Number of hours after threshold is met until seed sending can happen again. <br /> Maximum: `168` (7 days) <br /> Minimum: `22`
+    + Default: 24
+  + match (array) - Array of Campaign IDs or prefixes that are eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
+  + exclude (array) - Array of Campaign IDs or prefixes that are NOT eligible. Strings ending with an asterisk are treated as prefixes. <br /> Maximum: `5` entries.
+
+### Get Seed Config [GET /v1/inline-seeds/config]
+
+Returns config details for the authenticated account.
+Only one seed config with 5 match/exclude rules max is currently supported.
+One or the other of (match, exclude) may be used, not both.
+Auth context (from API key) provides customer and subaccount IDs.
+
++ Request
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
++ Response 200 No matches (disabled) (application/json)
+
+    + Body
+        ```json
+        {
+          "results": {}
+        }
+        ```
+
+
++ Response 200 Both types of matches (application/json)
+
+    + Body
+        ```
+        {
+          "results": {
+            "configs": [
+              {
+                "threshold": 1000,
+                "duration": 20,
+                "reset": 24,
+                "match": [
+                  "my-campaign",
+                  "my-*"
+                ]
+              }
+            ]
+          }
+        }
+        ```
+
+### Create Seed Config [POST /v1/inline-seeds/config]
+
+Create seed config for the authenticated account.
+
++ Request Create a seed config with match rule (application/json)
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+          "threshold": 1000,
+          "duration": 20,
+          "reset": 24,
+          "match": [
+            "my-*"
+          ]
+        }
+        ```
+
++ Response 200
+    + Body
+
+        ```json
+        {
+          "results": {
+            "threshold": 1000,
+            "duration": 20,
+            "reset": 24,
+            "match": [
+              "my-*"
+            ],
+            "exclude": []
+          }
+        }
+        ```
+
++ Request Both Match and Exclude rule not specified (application/json)
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+          "threshold": 1000,
+          "duration": 20,
+          "reset": 24
+        }
+        ```
++ Response 422 (application/json)
+
+    + Body
+
+        ```json
+        {
+            "errors": [
+                {
+                    "message": "Either match or exclude has to be specified"
+                }
+            ]
+        }
+        ```
+
+### Update Seed Config [PUT /v1/inline-seeds/config]
+
+Make updates to config details for the authenticated account.
+Only one seed config with 5 match/exclude rules max is currently supported.
+Auth context (from API key) provides customer and subaccount IDs.
+
++ Request Remove redundant rule (application/json)
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+          "threshold": 1000,
+          "duration": 20,
+          "reset": 24,
+          "match": [
+            "my-*"
+          ]
+        }
+        ```
+
++ Response 200
+    + Body
+
+        ```json
+        {
+          "results": {
+            "threshold": 1000,
+            "duration": 20,
+            "reset": 24,
+            "match": [
+              "my-*"
+            ],
+            "exclude": []
+          }
+        }
+        ```
+
++ Request Too many matches (application/json)
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+          "threshold": 1000,
+          "duration": 20,
+          "reset": 24,
+          "match": [
+            "fred-*",
+            "wilma-*",
+            "pebbles-*",
+            "barney-*",
+            "betty-*",
+            "bam-bam-*"
+          ]
+        }
+        ```
+
++ Response 422 (application/json)
+
+    + Body
+
+        ```json
+        {
+            "errors": [
+                {
+                    "message": "Match rule limit exceeded (found 6, max is 5)"
+                }
+            ]
+        }
+        ```
+
++ Request Both match and exclude (application/json)
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+          "threshold": 1000,
+          "duration": 20,
+          "reset": 24,
+          "match": [
+            "fred-*",
+            "wilma-*"
+          ],
+          "exclude": [
+            "barney-*",
+            "betty-*"
+          ]
+        }
+        ```
+
++ Response 422 (application/json)
+
+    + Body
+
+        ```json
+        {
+            "errors": [
+                {
+                    "message": "Incompatible rule type combination: 'match' and 'exclude' are mutually exclusive."
+                }
+            ]
+        }
+        ```
+### List Active Campaigns [GET /v1/inline-seeds/status]
+
+Returns read-only list of seed-eligible campaigns that have recent activity.
+Intended use case is informational - checking status via API or UI.
+Set the X-MSYS-SUBACCOUNT header to get campaigns for a specific subaccount
+(set the header to 0 to get campaigns for the primary account).
+Do not set the X-MSYS-SUBACCOUNT header to get campaigns for the primary
+account and all subaccounts.
+
++ Request Get campaigns for primary account and subaccounts
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
++ Response 200 (application/json)
+
+    + Body
+
+        ```json
+        {
+          "results": [
+            {
+              "campaign": "my_campaign",
+              "sending_domain": "foo.example.com",
+              "count": 1256,
+              "threshold": 1256,
+              "seed_start": 1620078946682,
+              "duration": 30
+            },
+            {
+              "campaign": "second_campaign",
+              "sending_domain": "bar.example.com",
+              "count": 1337,
+              "threshold": 5000,
+              "seed_start": null,
+              "duration": 30,
+              "subaccount_id": 123
+            }
+          ]
+        }
+        ```
+
+### Check Campaign Status [GET /v1/inline-seeds/status?id=my_campaign&sending_domain=foo.example.com]
+
+Returns read-only campaign metadata.
+Auth context (from API key) provides customer and subaccount IDs.
+
++ Parameters
+    + id: `my-campaign` (string, required)
+    + sending_domain: `foo.example.com` (string, required)
+
++ Request
+
+    + Headers
+
+        Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        X-MSYS-SUBACCOUNT: 1
+
++ Response 200 (application/json)
+
+    + Body
+        ```json
+        {
+          "results": {
+            "campaign": "my_campaign",
+            "sending_domain": "foo.example.com",
+            "count": 1256,
+            "threshold": 1256,
+            "seed_start": 1620078946682,
+            "duration": 30
+          }
+        }
+        ```
++ Response 200 (application/json)
+
+    + Body
+        ```json
+        {
+          "results": {
+            "campaign": "my_campaign",
+            "sending_domain": "foo.example.com",
+            "count": 1256,
+            "threshold": 1256,
+            "seed_start": 1620078946682,
+            "duration": 30,
+            "subaccount_id": 123
+          }
+        }
+        ```
++ Response 404 (application/json)
+
+    + Body
+        ```json
+        {
+            "errors": [
+                {
+                    "message": "Resource could not be found"
+                }
+            ]
+        }
+        ```
+### Get Options [GET /v1/inline-seeds/options]
+
+Returns Inline Seeds options.  
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will return the primary account and all subaccount options.  
+If a subaccount ID is provided this will return the subaccount's options.
+
++ Data Structure: Attributes
+    + enabled (boolean) - Whether Automatic Inline Seeding is enabled or not.
+        + Default: false
+        + Request (application/json)
+    + account_enabled (boolean) - Whether Automatic Inline Seeding is enabled for all subaccounts (including the primary account). Only returned when false and fetching a specific subaccount's options.
+        + Default: false
+
+If `enabled` is false Automatic Inline Seeding is currently paused. If set back to true a campaign will resume from its previous state unless it has reached the 24 hour timeout window and been reset. This will not interrupt a campaign that has already begun seeding.
+
+A user can turn off Automatic Inline Seeding for all subaccounts (including the primary account) by setting the account level option "inline_seeds" to false via the [Account API](/api/account). The Account-level option supercedes the API-level option.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            X-MSYS-SUBACCOUNT: 1
+
++ Response 200 (application/json)
+
+    + Body
+
+        ```json
+        {
+          "results": {
+            "enabled": true
+          }
+        }
+        ```
+
+        + Request (application/json)
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+    
++ Response 200 (application/json)
+
+    + Body
+
+        ```json
+        {
+          "results": [
+            {
+              "enabled": true
+            },
+            {
+              "subaccount_id": 1,
+              "enabled": false
+            }
+          ]
+        }
+        ```
+
+### Update Options [PUT /v1/inline-seeds/options]
+
+Make updates to options for the authenticated account.
+If no subaccount ID is provided via the X-MSYS-SUBACCOUNT header this will update the primary account's options.  
+
++ Request (application/json)
+
+    + Headers
+
+        + Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+        + X-MSYS-SUBACCOUNT: 1
+
+    + Body
+
+        ```json
+        {
+            "enabled": false
+        }
+        ```
+
++ Response 204
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
