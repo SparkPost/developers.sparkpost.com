@@ -45,7 +45,8 @@ Each file located in the `lambda/` directory will be deployed as a serverless fu
 
 ## Contributing
 
-You'll find the all the content, pages, and data inside the `content` folder. If you are contributing content, take a few minutes and read through the [contributing guidelines](CONTRIBUTING.md).
+You'll find the all the content, pages, and data inside the `content` folder. If you are contributing content, take a
+few minutes and read through the [contributing guidelines](CONTRIBUTING.md).
 
 ### Create a branch
 
