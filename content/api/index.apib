@@ -12,9 +12,9 @@ and follow [this guide](https://www.sparkpost.com/docs/getting-started/getting-s
 
 All calls to the API need to start with the appropriate base URL:
 
-|                   |                        |
-|-------------------|------------------------|
-| **SparkPost**     |`https://api.sparkpost.com/api/v1`   |
+|                                          |                                       |
+|------------------------------------------|---------------------------------------|
+| **SparkPost**                            |`https://api.sparkpost.com/api/v1`     |
 | **[SparkPost EU](#header-sparkpost-eu)** | `https://api.eu.sparkpost.com/api/v1` |
 
 For Enterprise accounts with their own endpoint, please contact your account manager for more information.
@@ -28,9 +28,10 @@ We accept just the API key:
 ```
 "Authorization": "14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf"
 ```
-or Basic type and the API key:
+
+We also support <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme" target="_blank">Basic authentication</a> where the `username` is the API key and the `password` is an empty string. For instance, the `Authorization` header's value is the word `Basic` followed by the base64-encoded string `14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf:`.
 ```
-"Authorization": "Basic 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf"
+"Authorization": "Basic MTRhYzU0OTljZmRkMmJiMjg1OWU0NDc2ZDJlNWIxZDJiYWQwNzliZjo="
 ```
 
 Make sure to store your API keys somewhere secure and never share them publicly.
@@ -46,16 +47,16 @@ For example:
 curl -v \
 -H "Content-Type: application/json" \
 -H "Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf" \
--X GET "https://api.sparkpost.com/api/v1/metrics/deliverability/aggregate?campaigns=testjob&from=2017-01-23T14:00&metrics=count_targeted,count_sent,count_accepted&timezone=America%2FNew_York&to=2017-06-23T15:50"
+-X GET "https://api.sparkpost.com/api/v1/metrics/deliverability?campaigns=testjob&from=2022-02-01T14:00&metrics=count_targeted,count_sent,count_accepted&timezone=America%2FNew_York&to=2022-02-02T15:50"
 ```
 
-Using the `-u` flag for authentication:
+Using the `-u` flag for Basic authentication:
 
 ```
 curl -v \
 -H "Content-Type: application/json" \
 -u 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf: \
--X GET "https://api.sparkpost.com/api/v1/metrics/deliverability/aggregate?campaigns=testjob&from=2017-01-23T14:00&metrics=count_targeted,count_sent,count_accepted&timezone=America%2FNew_York&to=2017-06-23T15:50"
+-X GET "https://api.sparkpost.com/api/v1/metrics/deliverability?campaigns=testjob&from=2022-02-01T14:00&metrics=count_targeted,count_sent,count_accepted&timezone=America%2FNew_York&to=2022-02-02T15:50"
 ```
 
 ### Postman
