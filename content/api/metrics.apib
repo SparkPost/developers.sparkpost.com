@@ -162,9 +162,7 @@ Filter keys must be unique within a grouping, but the same filter key can appear
 **Filter Keys:**   
                
                domains
-               bindings
                sending_ips
-               binding_groups
                ip_pools
                campaigns
                subject_campaigns
@@ -174,8 +172,6 @@ Filter keys must be unique within a grouping, but the same filter key can appear
                subaccounts
                mailbox_provider_regions
                
-Note: `bindings` and `binding_groups` are reserved for <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning">Enterprise</span></a> only
-
 **Comparator Keywords:** 
 
                eq       - array of exact values to match
@@ -293,8 +289,6 @@ Retrieves the JSON schema for validating the `query_filters` JSON value.
 
 The Metrics API is designed for discoverability of child links. Calling the API root displays a list of URIs that exists within the Metrics API.
 
-<Banner status="info"><strong><a href="https://www.sparkpost.com/enterprise-email/">Enterprise</a></strong> Accounts: Metric discoverability links for binding-groups and bindings apply to SparkPost Enterprise customers only.</Banner>
-
 + Request
 
     + Headers
@@ -325,16 +319,6 @@ The Metrics API is designed for discoverability of child links. Calling the API 
                 {
                   "href": "/api/v1/metrics/domains",
                   "rel": "domains",
-                  "method": "GET"
-                },
-                {
-                  "href": "/api/v1/metrics/binding-groups",
-                  "rel": "binding-groups",
-                  "method": "GET"
-                },
-                {
-                  "href": "/api/v1/metrics/bindings",
-                  "rel": "bindings",
                   "method": "GET"
                 },
                 {
@@ -2252,7 +2236,7 @@ Provides deliverability metrics, specific to engagement events (clicks/opens), g
         }
 
 
-### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,bindings,binding_groups,sending_domains,subaccounts,timezone}]
+### Deliveries By Attempt [GET /v1/metrics/deliverability/attempt{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,timezone}]
 
 Provides aggregate count of deliveries grouped by the attempt number. This endpoint supports at most 3 entries in the results Array, attempts: 1, attempts: 2, and attempts: 3+.
 
@@ -2269,8 +2253,6 @@ Provides aggregate count of deliveries grouped by the attempt number. This endpo
     + sending_ips (optional, list) ... Delimited list of sending IPs to include.
     + ip_pools (optional, list) ... Delimited list of IP pools to include.
     + sending_domains (optional, list) ... Delimited list of sending domains to include.
-    + bindings (optional, list, `Confirmation`) ... <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning">Enterprise</span></a> delimited list of bindings to include.
-    + binding_groups (optional, list) ... <a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning">Enterprise</span></a> delimited list of binding groups to include.
     + subaccounts (optional, list) ... Delimited list of subaccount IDs to include.
     + timezone =`UTC` (optional, string) ... Standard timezone identification string.
 
@@ -2296,18 +2278,6 @@ Provides aggregate count of deliveries grouped by the attempt number. This endpo
             ]
         }
 
-
-### Metrics by Binding [GET /v1/metrics/deliverability/binding{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
-
-<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by Sending IP endpoint instead.</Banner>
-
-+ Request
-
-### Metrics by Binding Group [GET /v1/metrics/deliverability/binding-group{?from,to,delimiter,domains,campaigns,templates,bindings,binding_groups,subaccounts,metrics,timezone,limit,order_by}]
-
-<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Metrics by IP Pool endpoint instead.</Banner>
-
-+ Request
 
 ## Lists [/lists]
 
@@ -2601,17 +2571,6 @@ Returns a list of sending domains that the Metrics API contains data on.
             }
         }
  
-### Bindings Groups [GET /v1/metrics/binding-groups{?from,to,timezone,match,limit}]
-
-<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the IP Pools list endpoint instead.</Banner>
-
-+ Request
-
-### Bindings [GET /v1/metrics/bindings{?from,to,timezone,match,limit}]
-
-<Banner status="warning"><strong>Deprecation Notice</strong>: This endpoint has been deprecated. Please use the Sending IPs list endpoint instead.</Banner>
-
-+ Request
 
 ## Industry Benchmarks [/v1/metrics/benchmarks]
 
