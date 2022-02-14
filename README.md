@@ -68,3 +68,20 @@ Create a branch for your work in the repo:
 1. Stage and commit your changes (`git add -A && git commit -m "Describe what you did"`)
 1. Push your changes (`git push origin your-branch-name`)
 1. [Create a Pull Request](https://help.github.com/articles/creating-a-pull-request/) against the `main` branch. Netlify will publish a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) so you can share and preview your changes as a live site.
+
+## Troubleshooting
+
+### M1 Pro related issues
+
+#### `fatal error: 'vips/vips8' file not found:` during npm run bootstrap
+1. You have to install "libvps" globally on your mac system to get this plugin to work on your development machine.
+You need brew installed to do this.
+2. The "libvps" depends on gcc, so do:
+3. ```brew install --build-from-source gcc```
+4. ```brew install vips```
+5. Proceed with ```npm run boostrap``` again
+
+
+#### `FATAL ERROR: wasm code commit Allocation failed - process out of memory` during npm run docs
+1. Install `node v.16.14.0` (you can use [nodenv or node-build](https://github.com/nodenv/node-build) for that)
+2. Proceed with `npm run docs` again
