@@ -51,14 +51,19 @@ Definitions for terms found in Metrics API
 | `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
 | `count_inbox_panel`              | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox.                                                              |
 | `count_spam_panel`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder.                                                        |
-| `count_inbox_seed`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Seed messages delivered to the inbox.                                                               |
-| `count_spam_seed`                | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Seed messages delivered to the spam folder.                                                         |
+| `count_inbox_seed`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed`                | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the spam folder.
+| `count_inbox_seed_private`       | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed_private`        | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the spam folder.    
+| `count_inbox_seed_virtual`       | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed_virtual`        | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the spam folder.    
 | `count_moved_to_inbox`           | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder then moved to the inbox.                                |
 | `count_moved_to_spam`            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox then moved to the spam folder.                                |
 
 Note: The metrics `count_inbox_panel`,`count_spam_panel`,
-`count_inbox_seed`,`count_spam_seed`,`count_moved_to_inbox`,
- and `count_moved_to_spam` are only available to the SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers. 
+`count_inbox_seed`,`count_spam_seed`,`count_inbox_seed_private`,`count_spam_seed_private`,`count_inbox_seed_virtual`,`count_spam_seed_virtual`,
+`count_moved_to_inbox`, and `count_moved_to_spam` 
+are only available to the SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers. 
 
 <Banner status="info">For a given request, average first attempt delivery latency can be calculated as <code>total_delivery_time_first / count_delivered</code>. A similar calculation holds for <code>total_delivery_time_subsequent</code>.</Banner>
 
@@ -426,6 +431,10 @@ aggregate data, which can be used as "group by" qualifiers.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -529,6 +538,10 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -636,6 +649,10 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -743,6 +760,10 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
     + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
@@ -966,6 +987,10 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
     + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
@@ -1084,6 +1109,10 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -1190,6 +1219,10 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -1269,6 +1302,10 @@ Provides aggregate metrics grouped by deliverability add-on subject campaign ove
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -1293,6 +1330,10 @@ Provides aggregate metrics grouped by deliverability add-on subject campaign ove
                     "count_spam_panel": 49,
                     "count_inbox_seed": 0,
                     "count_spam_seed": 0,
+                    "count_inbox_seed_private": 0,
+                    "count_spam_seed_private": 0,
+                    "count_inbox_seed_virtual": 0,
+                    "count_spam_seed_virtual": 0,
                     "count_moved_to_inbox": 2,
                     "count_moved_to_spam": 1,
                     "subject_campaign": "[REDACTED] say yes to this deal"
@@ -1302,6 +1343,10 @@ Provides aggregate metrics grouped by deliverability add-on subject campaign ove
                     "count_spam_panel": 19,
                     "count_inbox_seed": 0,
                     "count_spam_seed": 0,
+                    "count_inbox_seed_private": 0,
+                    "count_spam_seed_private": 0,
+                    "count_inbox_seed_virtual": 0,
+                    "count_spam_seed_virtual": 0,
                     "count_moved_to_inbox": 0,
                     "count_moved_to_spam": 2,
                     "subject_campaign": "Re: [REDACTED] (Action Requested)"
@@ -1382,6 +1427,10 @@ in the world.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
@@ -1481,6 +1530,16 @@ Provides aggregate metrics grouped by mailbox provider over the time window spec
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1600,6 +1659,16 @@ Provides aggregate metrics grouped by mailbox provider region over the time wind
             + `count_sent`
             + `count_accepted`
             + `count_spam_complaint`
+            + `count_inbox_panel`
+            + `count_spam_panel`
+            + `count_inbox_seed`
+            + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
+            + `count_moved_to_inbox`
+            + `count_moved_to_spam`
 
     + timezone =`UTC` (optional, string) ... Standard timezone identification string. The `day` precision will return data in UTC regardless of the specified timezone.
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
@@ -1723,6 +1792,10 @@ Provides aggregate metrics ordered by a precision of time.
             + `count_spam_panel`
             + `count_inbox_seed`
             + `count_spam_seed`
+            + `count_inbox_seed_private`
+            + `count_spam_seed_private`
+            + `count_inbox_seed_virtual`
+            + `count_spam_seed_virtual`
             + `count_moved_to_inbox`
             + `count_moved_to_spam`
 
