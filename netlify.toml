@@ -3,6 +3,15 @@
   command = "npm run bootstrap && npx netlify-lambda build lambda/ && npm run build"
   functions = "./functions"
 
+[[headers]]
+  # Define which paths this specific [[headers]] block will cover.
+  for = "/*"
+
+  [headers.values]
+    Strict-Transport-Security = '''
+    max-age=31536000;
+    includeSubDomains;'''
+
 # Run `npm run publish` to re-index in algolia
 # [context.production]
 #   publish = "./public"
