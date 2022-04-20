@@ -20,12 +20,13 @@
     script-src
       'self'
       'report-sample'
+      'unsafe-inline'
       https://cdn.bizible.com/scripts/bizible.js
       https://cdn.leadmanagerfx.com/js/mcfx/4879
       https://cdn.statuspage.io/se-v2.js
       https://connect.facebook.net/en_US/fbevents.js
-      https://d.adroll.com/consent/check/*
-      https://*.clarity.ms/s/*/clarity.js
+      https://d.adroll.com/consent/check/
+      https://*.clarity.ms
       https://googleads.g.doubleclick.net/pagead/viewthroughconversion/*/
       https://j.6sc.co/6si.min.js
       https://munchkin.marketo.net/*/munchkin.js
@@ -42,7 +43,8 @@
       https://www.googletagmanager.com/gtm.js;
     style-src
       'self'
-      'report-sample';
+      'report-sample'
+      'unsafe-inline';
     object-src
       'none';
     frame-src
@@ -51,6 +53,7 @@
       'self';
     img-src
       'self'
+      data:*
       *;
     font-src
       'self'
@@ -71,7 +74,7 @@
     worker-src
       'none';
     report-uri
-      https://o104929.ingest.sentry.io/api/5254252/security/?sentry_key=f57f5f1a442f4f64871cfd7eae1e5dc1;
+      https://o104929.ingest.sentry.io/api/6351005/security/?sentry_key=4ffc1bf32c374fb18a9cf3c51f65cdf6;
     '''
 
 # Run `npm run publish` to re-index in algolia
