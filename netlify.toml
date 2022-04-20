@@ -21,26 +21,7 @@
       'self'
       'report-sample'
       'unsafe-inline'
-      https://cdn.bizible.com/scripts/bizible.js
-      https://cdn.leadmanagerfx.com/js/mcfx/4879
-      https://cdn.statuspage.io/se-v2.js
-      https://connect.facebook.net/en_US/fbevents.js
-      https://d.adroll.com/consent/check/
-      https://*.clarity.ms
-      https://googleads.g.doubleclick.net/pagead/viewthroughconversion/*/
-      https://j.6sc.co/6si.min.js
-      https://munchkin.marketo.net/*/munchkin.js
-      https://platform.twitter.com/oct.js
-      https://s.adroll.com/j/roundtrip.js
-      https://snap.licdn.com/li.lms-analytics/insight.min.js
-      https://static.ads-twitter.com/uwt.js
-      https://tag.demandbase.com/*.min.js
-      https://tracking.g2crowd.com/attribution_tracking/conversions/*.js
-      https://ws.zoominfo.com/pixel/*
-      https://www.clarity.ms/tag/*
-      https://www.google-analytics.com/analytics.js
-      https://www.googleadservices.com/pagead/conversion_async.js
-      https://www.googletagmanager.com/gtm.js;
+      *;
     style-src
       'self'
       'report-sample'
@@ -53,7 +34,7 @@
       'self';
     img-src
       'self'
-      data:*
+      data:
       *;
     font-src
       'self'
