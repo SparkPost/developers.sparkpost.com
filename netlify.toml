@@ -21,15 +21,18 @@
       'self'
       'report-sample'
       'unsafe-inline'
+      eval:
       *;
     style-src
       'self'
       'report-sample'
-      'unsafe-inline';
+      'unsafe-inline'
+      *;
     object-src
       'none';
     frame-src
-      'self';
+      'self'
+      *;
     child-src
       'self';
     img-src
