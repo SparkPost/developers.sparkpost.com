@@ -228,6 +228,14 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
 
 ### Delete a Suppression [DELETE /v1/suppression-list/{recipient}]
 
+
+##### Deleting from subaccounts
+
+If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header when deleting from a specific subaccount suppression list.
+- Omit the header to delete from the primary account suppression list.
+- Use the subaccount's ID to delete from a specific subaccount suppression list.
+
+
 + Data Structure
     + type (enum) - The type of suppression to delete. If not provided, the suppression will be deleted for both transactional and non-transactional.
         + transactional
