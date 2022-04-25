@@ -12,11 +12,10 @@
     max-age=31536000;
     includeSubDomains;'''
 
-    Content-Security-Policy = '''
+    Content-Security-Policy-Report-Only = '''
     frame-ancestors
       'self';
-    upgrade-insecure-requests
-      1;
+    upgrade-insecure-requests;
     script-src
       'self'
       'report-sample'
@@ -50,7 +49,8 @@
     base-uri
       'self';
     form-action
-      'self';
+      'self'
+      facebook.com;
     media-src
       'self';
     prefetch-src
