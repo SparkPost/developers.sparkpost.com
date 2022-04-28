@@ -14,46 +14,46 @@ Metrics API data is retained for 6 months.
 
 Definitions for terms found in Metrics API
 
-| Term                                          | Definition                                                                                          |
-|----------------------------------------------:|-----------------------------------------------------------------------------------------------------|
-| `count_targeted`                              | Messages successfully injected into SparkPost as well as rejected by it                             |
-| `count_injected`                              | Messages injected to or received by SparkPost                                                       |
-| `count_sent`                                  | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces            |
-| `count_accepted`                              | Messages an ISP or other remote domain accepted (less Out-of-Band Bounces)                          |
-| `count_delivered`                             | Messages delivered                                                                                  |
-| `count_delivered_first`                       | Messages delivered on the first attempt                                                             |
-| `count_delivered_subsequent`                  | Messages delivered that required more than one delivery attempt                                     |
-| `count_rendered`                              | Total renderings of a message                                                                       |
-| `count_nonprefetched_rendered`                | Total nonprefetched renderings of a message                                                         |
-| `count_initial_rendered`                      | Total initial renderings of a message                                                               |
-| `count_nonprefetched_initial_rendered`        | Total initial nonprefetched renderings of a message                                                 |
-| `count_unique_rendered`                       | Total number of messages that were rendered at least once                                           |
-| `count_nonprefetched_unique_rendered`         | Total number of nonprefetched messages that were rendered at least once                             |     
-| `count_unique_initial_rendered`               | Total number of messages that were initally rendered at least once                                  |
-| `count_nonprefetched_unique_initial_rendered` | Total number of nonprefetched messages that were initally rendered at least once                    |
-| `count_unique_confirmed_opened`               | Total number of messages that were rendered or had at least one link selected                       |
-| `count_nonprefetched_unique_confirmed_opened` | Total number of nonprefetched messages that were rendered or had at least one link selected         |
-| `count_clicked`                               | Total number of times that links were selected across all messages                                  |
-| `count_unique_clicked`                        | Total number of messages which had at least one link selected one or more times                     |
-| `count_bounce`                                | Total number of bounced messages, which includes both In-Band and Out-of-Band bounces               |
-| `count_hard_bounce`                           | Total number of Bounced messages due to hard bounce classification reasons                          |
-| `count_soft_bounce`                           | Total number of Bounced messages due to soft bounce classification reasons                          |
-| `count_block_bounce`                          | Total number of Bounced messages due to an IP block                                                 |
-| `count_admin_bounce`                          | Total number of Bounced messages due to admin bounce classification reasons, also includes Rejected |
-| `count_undetermined_bounce`                   | Total number of Bounced messages due to undetermined bounce reasons                                 |
-| `count_rejected`                              | Messages rejected due to policy or that failed to generate                                          |
-| `count_policy_rejection`                      | Messages rejected by SparkPost due to policy                                                        |
-| `count_generation_failed`                     | Message generation failed for an intended recipient                                                 |
-| `count_generation_rejection`                  | Messages rejected by SparkPost due to policy                                                        |
-| `count_inband_bounce`                         | Messages that bounced on delivery attempt during the SMTP session                                   |
-| `count_outofband_bounce`                      | Messages that the ISP bounced subsequent to a successful delivery                                   |
-| `count_delayed`                               | Total number of delays due to any temporary failure                                                 |
-| `count_delayed_first`                         | Messages delayed on the first delivery attempt                                                      |
-| `total_msg_volume`                            | Total size of delivered messages, in bytes (including attachments)                                  |
-| `count_spam_complaint`                        | Number of spam complaints received from an ISP                                                      |
-| `total_delivery_time_first`                   | Total time taken to deliver messages on first attempt (milliseconds)                                |
-| `total_delivery_time_subsequent`              | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
-| `count_unsubscribe`                           | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
+| Term                                          | Definition                                                                                                                                                                                 |
+|----------------------------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `count_targeted`                              | Messages successfully injected into SparkPost as well as rejected by it                                                                                                                    |
+| `count_injected`                              | Messages injected to or received by SparkPost                                                                                                                                              |
+| `count_sent`                                  | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces                                                                                                   |
+| `count_accepted`                              | Messages an ISP or other remote domain accepted (less Out-of-Band Bounces)                                                                                                                 |
+| `count_delivered`                             | Messages delivered                                                                                                                                                                         |
+| `count_delivered_first`                       | Messages delivered on the first attempt                                                                                                                                                    |
+| `count_delivered_subsequent`                  | Messages delivered that required more than one delivery attempt                                                                                                                            |
+| `count_rendered`                              | Total renderings of a message                                                                                                                                                              |
+| `count_nonprefetched_rendered`                | Total <a href="https://www.sparkpost.com/blog/impact-of-ios-15-update-on-open-tracking/">nonprefetched</a> renderings of a message                                                         |
+| `count_initial_rendered`                      | Total initial renderings of a message                                                                                                                                                      |
+| `count_nonprefetched_initial_rendered`        | Total initial <a href="https://www.sparkpost.com/blog/impact-of-ios-15-update-on-open-tracking/">nonprefetched</a> renderings of a message                                                 |
+| `count_unique_rendered`                       | Total number of messages that were rendered at least once                                                                                                                                  |
+| `count_nonprefetched_unique_rendered`         | Total number of <a href="https://www.sparkpost.com/blog/impact-of-ios-15-update-on-open-tracking/">nonprefetched</a> messages that were rendered at least once                             |
+| `count_unique_initial_rendered`               | Total number of messages that were initally rendered at least once                                                                                                                         |
+| `count_nonprefetched_unique_initial_rendered` | Total number of <a href="https://www.sparkpost.com/blog/impact-of-ios-15-update-on-open-tracking/">nonprefetched</a> messages that were initally rendered at least once                    |
+| `count_unique_confirmed_opened`               | Total number of messages that were rendered or had at least one link selected                                                                                                              |
+| `count_nonprefetched_unique_confirmed_opened` | Total number of <a href="https://www.sparkpost.com/blog/impact-of-ios-15-update-on-open-tracking/">nonprefetched</a> messages that were rendered or had at least one link selected         |
+| `count_clicked`                               | Total number of times that links were selected across all messages                                                                                                                         |
+| `count_unique_clicked`                        | Total number of messages which had at least one link selected one or more times                                                                                                            |
+| `count_bounce`                                | Total number of bounced messages, which includes both In-Band and Out-of-Band bounces                                                                                                      |
+| `count_hard_bounce`                           | Total number of Bounced messages due to hard bounce classification reasons                                                                                                                 |
+| `count_soft_bounce`                           | Total number of Bounced messages due to soft bounce classification reasons                                                                                                                 |
+| `count_block_bounce`                          | Total number of Bounced messages due to an IP block                                                                                                                                        |
+| `count_admin_bounce`                          | Total number of Bounced messages due to admin bounce classification reasons, also includes Rejected                                                                                        |
+| `count_undetermined_bounce`                   | Total number of Bounced messages due to undetermined bounce reasons                                                                                                                        |
+| `count_rejected`                              | Messages rejected due to policy or that failed to generate                                                                                                                                 |
+| `count_policy_rejection`                      | Messages rejected by SparkPost due to policy                                                                                                                                               |
+| `count_generation_failed`                     | Message generation failed for an intended recipient                                                                                                                                        |
+| `count_generation_rejection`                  | Messages rejected by SparkPost due to policy                                                                                                                                               |
+| `count_inband_bounce`                         | Messages that bounced on delivery attempt during the SMTP session                                                                                                                          |
+| `count_outofband_bounce`                      | Messages that the ISP bounced subsequent to a successful delivery                                                                                                                          |
+| `count_delayed`                               | Total number of delays due to any temporary failure                                                                                                                                        |
+| `count_delayed_first`                         | Messages delayed on the first delivery attempt                                                                                                                                             |
+| `total_msg_volume`                            | Total size of delivered messages, in bytes (including attachments)                                                                                                                         |
+| `count_spam_complaint`                        | Number of spam complaints received from an ISP                                                                                                                                             |
+| `total_delivery_time_first`                   | Total time taken to deliver messages on first attempt (milliseconds)                                                                                                                       |
+| `total_delivery_time_subsequent`              | Total time taken to delivery messages on subsequent attempts (milliseconds)                                                                                                                |
+| `count_unsubscribe`                           | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature                                                                                             |
 | `count_inbox_panel`                           | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox.                                                              |
 | `count_spam_panel`                            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder.                                                        |
 | `count_inbox_seed`                            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the inbox.                                                               |
