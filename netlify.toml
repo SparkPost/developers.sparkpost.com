@@ -12,6 +12,55 @@
     max-age=31536000;
     includeSubDomains;'''
 
+    Content-Security-Policy-Report-Only = '''
+    frame-ancestors
+      'self';
+    upgrade-insecure-requests;
+    script-src
+      'self'
+      'report-sample'
+      'unsafe-inline'
+      eval:
+      *;
+    style-src
+      'self'
+      'report-sample'
+      'unsafe-inline'
+      *;
+    object-src
+      'none';
+    frame-src
+      'self'
+      *;
+    child-src
+      'self';
+    img-src
+      'self'
+      data:
+      *;
+    font-src
+      'self'
+      *.cloudfront.net;
+    connect-src
+      'self'
+      *;
+    manifest-src
+      'self';
+    base-uri
+      'self';
+    form-action
+      'self'
+      facebook.com;
+    media-src
+      'self';
+    prefetch-src
+      'self';
+    worker-src
+      'none';
+    report-uri
+      https://o104929.ingest.sentry.io/api/6351005/security/?sentry_key=4ffc1bf32c374fb18a9cf3c51f65cdf6;
+    '''
+
 # Run `npm run publish` to re-index in algolia
 # [context.production]
 #   publish = "./public"
