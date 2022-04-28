@@ -14,51 +14,56 @@ Metrics API data is retained for 6 months.
 
 Definitions for terms found in Metrics API
 
-| Term                             | Definition                                                                                          |
-|---------------------------------:|-----------------------------------------------------------------------------------------------------|
-| `count_targeted`                 | Messages successfully injected into SparkPost as well as rejected by it                             |
-| `count_injected`                 | Messages injected to or received by SparkPost                                                       |
-| `count_sent`                     | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces            |
-| `count_accepted`                 | Messages an ISP or other remote domain accepted (less Out-of-Band Bounces)                          |
-| `count_delivered`                | Messages delivered                                                                                  |
-| `count_delivered_first`          | Messages delivered on the first attempt                                                             |
-| `count_delivered_subsequent`     | Messages delivered that required more than one delivery attempt                                     |
-| `count_rendered`                 | Total renderings of a message                                                                       |
-| `count_initial_rendered`         | Total initial renderings of a message                                                               |
-| `count_unique_rendered`          | Total number of messages that were rendered at least once                                           |
-| `count_unique_initial_rendered`  | Total number of messages that were initally rendered at least once                                  |
-| `count_unique_confirmed_opened`  | Total number of messages that were rendered or had at least one link selected                       |
-| `count_clicked`                  | Total number of times that links were selected across all messages                                  |
-| `count_unique_clicked`           | Total number of messages which had at least one link selected one or more times                     |
-| `count_bounce`                   | Total number of bounced messages, which includes both In-Band and Out-of-Band bounces               |
-| `count_hard_bounce`              | Total number of Bounced messages due to hard bounce classification reasons                          |
-| `count_soft_bounce`              | Total number of Bounced messages due to soft bounce classification reasons                          |
-| `count_block_bounce`             | Total number of Bounced messages due to an IP block                                                 |
-| `count_admin_bounce`             | Total number of Bounced messages due to admin bounce classification reasons, also includes Rejected |
-| `count_undetermined_bounce`      | Total number of Bounced messages due to undetermined bounce reasons                                 |
-| `count_rejected`                 | Messages rejected due to policy or that failed to generate                                          |
-| `count_policy_rejection`         | Messages rejected by SparkPost due to policy                                                        |
-| `count_generation_failed`        | Message generation failed for an intended recipient                                                 |
-| `count_generation_rejection`     | Messages rejected by SparkPost due to policy                                                        |
-| `count_inband_bounce`            | Messages that bounced on delivery attempt during the SMTP session                                   |
-| `count_outofband_bounce`         | Messages that the ISP bounced subsequent to a successful delivery                                   |
-| `count_delayed`                  | Total number of delays due to any temporary failure                                                 |
-| `count_delayed_first`            | Messages delayed on the first delivery attempt                                                      |
-| `total_msg_volume`               | Total size of delivered messages, in bytes (including attachments)                                  |
-| `count_spam_complaint`           | Number of spam complaints received from an ISP                                                      |
-| `total_delivery_time_first`      | Total time taken to deliver messages on first attempt (milliseconds)                                |
-| `total_delivery_time_subsequent` | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
-| `count_unsubscribe`              | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
-| `count_inbox_panel`              | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox.                                                              |
-| `count_spam_panel`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder.                                                        |
-| `count_inbox_seed`               | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the inbox.                                                               |
-| `count_spam_seed`                | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the spam folder.
-| `count_inbox_seed_private`       | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the inbox.                                                               |
-| `count_spam_seed_private`        | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the spam folder.    
-| `count_inbox_seed_virtual`       | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the inbox.                                                               |
-| `count_spam_seed_virtual`        | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the spam folder.    
-| `count_moved_to_inbox`           | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder then moved to the inbox.                                |
-| `count_moved_to_spam`            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox then moved to the spam folder.                                |
+| Term                                          | Definition                                                                                          |
+|----------------------------------------------:|-----------------------------------------------------------------------------------------------------|
+| `count_targeted`                              | Messages successfully injected into SparkPost as well as rejected by it                             |
+| `count_injected`                              | Messages injected to or received by SparkPost                                                       |
+| `count_sent`                                  | Messages that SparkPost attempted to deliver, which includes both Deliveries and Bounces            |
+| `count_accepted`                              | Messages an ISP or other remote domain accepted (less Out-of-Band Bounces)                          |
+| `count_delivered`                             | Messages delivered                                                                                  |
+| `count_delivered_first`                       | Messages delivered on the first attempt                                                             |
+| `count_delivered_subsequent`                  | Messages delivered that required more than one delivery attempt                                     |
+| `count_rendered`                              | Total renderings of a message                                                                       |
+| `count_nonprefetched_rendered`                | Total nonprefetched renderings of a message                                                         |
+| `count_initial_rendered`                      | Total initial renderings of a message                                                               |
+| `count_nonprefetched_initial_rendered`        | Total initial nonprefetched renderings of a message                                                 |
+| `count_unique_rendered`                       | Total number of messages that were rendered at least once                                           |
+| `count_nonprefetched_unique_rendered`         | Total number of nonprefetched messages that were rendered at least once                             |     
+| `count_unique_initial_rendered`               | Total number of messages that were initally rendered at least once                                  |
+| `count_nonprefetched_unique_initial_rendered` | Total number of nonprefetched messages that were initally rendered at least once                    |
+| `count_unique_confirmed_opened`               | Total number of messages that were rendered or had at least one link selected                       |
+| `count_nonprefetched_unique_confirmed_opened` | Total number of nonprefetched messages that were rendered or had at least one link selected         |
+| `count_clicked`                               | Total number of times that links were selected across all messages                                  |
+| `count_unique_clicked`                        | Total number of messages which had at least one link selected one or more times                     |
+| `count_bounce`                                | Total number of bounced messages, which includes both In-Band and Out-of-Band bounces               |
+| `count_hard_bounce`                           | Total number of Bounced messages due to hard bounce classification reasons                          |
+| `count_soft_bounce`                           | Total number of Bounced messages due to soft bounce classification reasons                          |
+| `count_block_bounce`                          | Total number of Bounced messages due to an IP block                                                 |
+| `count_admin_bounce`                          | Total number of Bounced messages due to admin bounce classification reasons, also includes Rejected |
+| `count_undetermined_bounce`                   | Total number of Bounced messages due to undetermined bounce reasons                                 |
+| `count_rejected`                              | Messages rejected due to policy or that failed to generate                                          |
+| `count_policy_rejection`                      | Messages rejected by SparkPost due to policy                                                        |
+| `count_generation_failed`                     | Message generation failed for an intended recipient                                                 |
+| `count_generation_rejection`                  | Messages rejected by SparkPost due to policy                                                        |
+| `count_inband_bounce`                         | Messages that bounced on delivery attempt during the SMTP session                                   |
+| `count_outofband_bounce`                      | Messages that the ISP bounced subsequent to a successful delivery                                   |
+| `count_delayed`                               | Total number of delays due to any temporary failure                                                 |
+| `count_delayed_first`                         | Messages delayed on the first delivery attempt                                                      |
+| `total_msg_volume`                            | Total size of delivered messages, in bytes (including attachments)                                  |
+| `count_spam_complaint`                        | Number of spam complaints received from an ISP                                                      |
+| `total_delivery_time_first`                   | Total time taken to deliver messages on first attempt (milliseconds)                                |
+| `total_delivery_time_subsequent`              | Total time taken to delivery messages on subsequent attempts (milliseconds)                         |
+| `count_unsubscribe`                           | Total number of unsubscribes as a result of clicked links and the ISP list unsubscribe feature      |
+| `count_inbox_panel`                           | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox.                                                              |
+| `count_spam_panel`                            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder.                                                        |
+| `count_inbox_seed`                            | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed`                             | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> All Seed messages delivered to the spam folder.
+| `count_inbox_seed_private`                    | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed_private`                     | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Private Seed messages delivered to the spam folder.    
+| `count_inbox_seed_virtual`                    | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the inbox.                                                               |
+| `count_spam_seed_virtual`                     | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Virtual Seed messages delivered to the spam folder.    
+| `count_moved_to_inbox`                        | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the spam folder then moved to the inbox.                                |
+| `count_moved_to_spam`                         | <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Panel messages delivered to the inbox then moved to the spam folder.                                |
 
 Note: The metrics `count_inbox_panel`,`count_spam_panel`, `count_inbox_seed`,
 `count_spam_seed`,`count_inbox_seed_private`,`count_spam_seed_private`,
@@ -420,8 +425,11 @@ aggregate data, which can be used as "group by" qualifiers.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -527,8 +535,11 @@ Provides aggregate metrics grouped by domain over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -638,8 +649,11 @@ Provides aggregate metrics grouped by sending IP over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -749,8 +763,11 @@ Provides aggregate metrics grouped by IP pool over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -858,8 +875,11 @@ Provides aggregate metrics grouped by sending domain over the time window specif
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -980,8 +1000,11 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1102,8 +1125,11 @@ Provides aggregate metrics grouped by campaign over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1212,8 +1238,11 @@ Provides aggregate metrics grouped by template over the time window specified.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1420,8 +1449,11 @@ in the world.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1527,8 +1559,11 @@ Provides aggregate metrics grouped by mailbox provider over the time window spec
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1656,8 +1691,11 @@ Provides aggregate metrics grouped by mailbox provider region over the time wind
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1776,6 +1814,8 @@ Provides aggregate metrics ordered by a precision of time.
             + `count_generation_rejection`
             + `count_generation_failed`
             + `count_inband_bounce`
+            + `count_initial_rendered`
+            + `count_nonprefetched_initial_rendered`
             + `count_outofband_bounce`
             + `count_soft_bounce`
             + `count_hard_bounce`
@@ -1785,8 +1825,13 @@ Provides aggregate metrics ordered by a precision of time.
             + `count_delayed`
             + `count_delayed_first`
             + `count_rendered`
+            + `count_nonprefetched_rendered`
             + `count_unique_rendered`
+            + `count_nonprefetched_unique_rendered`
             + `count_unique_confirmed_opened`
+            + `count_nonprefetched_unique_confirmed_opened`
+            + `count_unique_initial_rendered`
+            + `count_nonprefetched_unique_initial_rendered`
             + `count_clicked`
             + `count_unique_clicked`
             + `count_targeted`
@@ -1833,11 +1878,13 @@ Provides aggregate metrics ordered by a precision of time.
                     "count_hard_bounce": 4296,
                     "count_inband_bounce": 21777,
                     "count_initial_rendered": 139690,
+                    "count_nonprefetched_initial_rendered": 77213,
                     "count_injected": 246682,
                     "count_outofband_bounce": 2399,
                     "count_policy_rejection": 1072,
                     "count_rejected": 2316,
                     "count_rendered": 128385,
+                    "count_nonprefetched_rendered": 64192,
                     "count_sent": 241693,
                     "count_soft_bounce": 1961,
                     "count_spam_complaint": 3,
@@ -1846,7 +1893,9 @@ Provides aggregate metrics ordered by a precision of time.
                     "count_unique_clicked": 9123,
                     "count_unique_confirmed_opened": 81140,
                     "count_unique_initial_rendered": 81140,
+                    "count_nonprefetched_unique_initial_rendered": 40970,
                     "count_unique_rendered": 69643,
+                    "count_nonprefetched_unique_rendered": 33512,
                     "count_unsubscribe": 1,
                     "total_delivery_time_first": 90854824,
                     "total_delivery_time_subsequent": 1008767467,
@@ -1869,11 +1918,13 @@ Provides aggregate metrics ordered by a precision of time.
                     "count_hard_bounce": 2817,
                     "count_inband_bounce": 14501,
                     "count_initial_rendered": 92769,
+                    "count_nonprefetched_initial_rendered": 45612,
                     "count_injected": 163372,
                     "count_outofband_bounce": 1619,
                     "count_policy_rejection": 728,
                     "count_rejected": 1549,
                     "count_rendered": 85483,
+                    "count_nonprefetched_rendered": 42741,
                     "count_sent": 160118,
                     "count_soft_bounce": 1357,
                     "count_spam_complaint": 2,
@@ -1882,7 +1933,9 @@ Provides aggregate metrics ordered by a precision of time.
                     "count_unique_clicked": 5999,
                     "count_unique_confirmed_opened": 55592,
                     "count_unique_initial_rendered": 55592,
+                    "count_nonprefetched_unique_initial_rendered": 26913,
                     "count_unique_rendered": 48206,
+                    "count_nonprefetched_unique_rendered": 25712,
                     "count_unsubscribe": 3,
                     "total_delivery_time_first": 60928506,
                     "total_delivery_time_subsequent": 665233402,
