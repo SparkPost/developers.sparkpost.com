@@ -23,7 +23,8 @@
       data:
       blob:
       'unsafe-inline'
-      'unsafe-eval';
+      'unsafe-eval'
+      googletagmanager.com;
     style-src
       'self'
       'report-sample'
