@@ -12,7 +12,7 @@
     max-age=31536000;
     includeSubDomains;'''
 
-    Content-Security-Policy-Report-Only = '''
+    Content-Security-Policy = '''
     frame-ancestors
       'self';
     upgrade-insecure-requests;
@@ -23,7 +23,8 @@
       data:
       blob:
       'unsafe-inline'
-      'unsafe-eval';
+      'unsafe-eval'
+      googletagmanager.com;
     style-src
       'self'
       'report-sample'
@@ -42,7 +43,9 @@
       *;
     font-src
       'self'
-      *.cloudfront.net;
+      data:
+      *.cloudfront.net
+      fonts.gstatic.com;
     connect-src
       'self'
       *;
