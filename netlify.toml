@@ -42,7 +42,9 @@
       *;
     font-src
       'self'
-      *.cloudfront.net;
+      data:
+      *.cloudfront.net
+      fonts.gstatic.com;
     connect-src
       'self'
       *;
