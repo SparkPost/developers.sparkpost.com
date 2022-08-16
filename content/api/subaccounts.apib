@@ -4,8 +4,6 @@ description: Manage subaccounts, a way for service providers to provision and ma
 
 # Group Subaccounts
 
-<Banner status="warning"><strong>Deprecation of non-paginated results</strong>: All results returned from the `GET /api/v1/subaccounts` endpoint will be [paginated](#header-pagination) by default starting March 2022. Set the`cursor` parameter to `initial` to test paginated results.</Banner>
-
 Subaccounts are a way for you to provision and manage senders separately from each other, and to provide assets and reporting data for each of them. This is useful for service providers who send on behalf of others or for a business that wants to separate their different streams of traffic. Learn more in our [subaccount guide](https://www.sparkpost.com/docs/user-guide/subaccounts/).
 
 The following APIs have subaccount support:
@@ -348,8 +346,6 @@ This endpoint only returns information about the subaccount, not the resources a
         }
 
 ### List Subaccounts [GET /v1/subaccounts]
-
-<Banner status="warning"><strong>Deprecation of non-paginated results</strong>: All results returned from the `GET /api/v1/subaccounts` endpoint will be [paginated](#header-pagination) by default starting March 2022. Set the`cursor` parameter to `initial` to test paginated results.</Banner>
 
 Returns a list of your subaccounts. Passing certain query parameters will cause results to be [paginated](#header-pagination).
 
