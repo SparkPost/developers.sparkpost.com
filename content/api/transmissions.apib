@@ -72,7 +72,7 @@ You can create a transmission in a number of ways. In all cases, you can use the
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  Not performed on AMPHTML Email content.
             + Default: false
         + perform_substitutions (boolean)
-            Enable or disable substitutions. Can only be set to false when using an inline template. Setting to false disables substitution in `text`, `html`, `amp`, and `email_rfc822` content parts and also disables all macros (including [snippets](/api/template-language/#header-snippets)). Headers are still passed to the susbstitution engine when this option is set to `false`. That includes headers that are part of `email_rfc822` content parts.
+            Enable or disable substitutions. Can only be set to `false` when using an inline template. Setting to `false` disables substitution in the `text`, `html`, `amp`, and `email_rfc822` content parts and also disables all macros (including [snippets](/api/template-language/#header-snippets)). Headers are still passed to the susbstitution engine when this option is set to `false`. That includes headers that are part of `email_rfc822` content parts.
             + Default: true
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
         + (array)
