@@ -325,6 +325,31 @@ Number of states: 2
 ```
 </REPL>
 
+#### Arithmetic Operators
+
+Recognized arithmetic operators are as follows:
+
+| Expression |
+|------------|
+| `+`        |
+| `-`        |
+| `*`        |
+| `/`        |
+
+<REPL>
+```html
+Your discounted price is ${{price - 5}}.
+```
+```json
+{
+    "price": 15
+}
+```
+```results
+Your discounted price is $10.
+```
+</REPL>
+
 ### `each` Statement
 
 You can use an `each` statement to iterate over an array. If the array is empty or the value is `null`, nothing is rendered.
