@@ -63,7 +63,7 @@
     worker-src
       'none';
     report-uri
-      https://o104929.ingest.sentry.io/api/6351005/security/?sentry_key=4ffc1bf32c374fb18a9cf3c51f65cdf6;
+      https://o113111.ingest.sentry.io/api/4504169636823040/security/?sentry_key=b0ad7185212c4ea689a404b1b2d0eff5
     '''
 
 # Run `npm run publish` to re-index in algolia
