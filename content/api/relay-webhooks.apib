@@ -71,8 +71,8 @@ The following fields will be included in each object posted to the relay webhook
 
 + Data Structure: relay_message
     + content (object) - The content parsed from the incoming message.
-        + html (string) - Contents of the first text/html part of the message.
-        + text (string) - Contents of the first text/plain part of the message.
+        + html (string) - Contents of the last text/html part of the message.
+        + text (string) - Contents of the last text/plain part of the message.
         + subject (string) - "Subject" header value (decoded from email).
         + to (array[string]) - "To" header value (decoded from email), RFC2822 address list.
         + cc (array[string]) - "CC" header value (decoded from email), RFC2822 address list.
