@@ -27,7 +27,7 @@ const PostmanLink = styled(props => (
     content="Import the SparkPost API as a Postman collection"
   >
     <Link
-      to="https://www.postman.com/run-collection/ee44dcd644445e8bd864"
+      to="https://god.postman.co/run-collection/ee44dcd644445e8bd864?action=collection%2Fimport"
       target="_blank"
     >
       <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" />
