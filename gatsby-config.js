@@ -32,22 +32,6 @@ module.exports = {
               path: `${__dirname}/content/pages`,
             },
           },
-          {
-            resolve: `gatsby-source-wordpress`,
-            options: {
-              baseUrl: 'sparkpost.com',
-              includedRoutes: [
-                '**/categories',
-                '**/media',
-                '**/posts',
-              ],
-              hostingWPCOM: false,
-              minimizeDeprecationNotice: false, // todo, we need to upgrade, please don't silence this notice
-              protocol: 'https',
-              useACF: false,
-              verboseOutput: false, // not very helpful
-            },
-          },
         ]
       : [],
     process.env.GATSBY_ACTIVE_ENV === 'publish'
