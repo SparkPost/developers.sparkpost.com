@@ -9,7 +9,7 @@ This repo contains the code and documentation that powers [developers.sparkpost.
 To develop with this repository, you must have the following:
 
 1. [Node](https://nodejs.org/en/download/): version 14.16.1
-2. [npm](https://docs.npmjs.com/troubleshooting/try-the-latest-stable-version-of-npm): version 6 recommended
+2. [npm](https://docs.npmjs.com/troubleshooting/try-the-latest-stable-version-of-npm): version 7 recommended (version 6 is incompatible with the current lock file)
 3. A [clone](https://help.github.com/articles/cloning-a-repository/) of this repo
 
 ### Installing dependencies
