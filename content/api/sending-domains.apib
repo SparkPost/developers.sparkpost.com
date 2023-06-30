@@ -90,7 +90,6 @@ Once it is verified through one of those two methods, you can use it as a bounce
             + Default: unverified
         + `verification_mailbox` (string) - Nominated anyone@ verification mailbox email address local part. This field will only be returned if it was set in the `verification_mailbox` attribute in a [verification request](#sending-domains-post-verify-a-sending-domain).
         + compliance_status (enum) - Compliance status
-            + pending
             + valid
             + blocked
     + dkim (object) - Object in which DKIM key configuration is defined.
@@ -131,7 +130,7 @@ Once it is verified through one of those two methods, you can use it as a bounce
 
 ### Create a Sending Domain [POST /v1/sending-domains]
 
-Creates a new sending domain. Each domain and it's subdomains can only be added to a single account. Please see our [support article](https://support.sparkpost.com/customer/en/portal/articles/1933318-creating-sending-domains) for additional reasons a domain might not be approved for sending.
+Creates a new sending domain. Each domain and its subdomains can only be added to a single account.
 
 <Banner status="warning"><strong>Note</strong>: When adding a sending domain to your account, the domain must be verified within two weeks or it will be removed from your account.</Banner>
 
@@ -153,6 +152,8 @@ Creates a new sending domain. Each domain and it's subdomains can only be added 
     
 
 Returns the domain and a success message. If `generate_dkim` was true, the dkim object is also returned.
+
+In case the sending domain gets blocked due to compliance validations, an HTTP 400 response is returned along with the error code, description and message with the reason for the blocking. A few examples are provided in the response section.
 
 + Request (application/json)
 
@@ -181,6 +182,30 @@ Returns the domain and a success message. If `generate_dkim` was true, the dkim 
                     "headers": "from:to:subject:date"
                 }
             }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "7000",
+                    "description": "Please contact SparkPost support to get this domain authorized for your account.",
+                    "message": "Restricted domain"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "7004",
+                    "description": "Please contact SparkPost support to check about this org-domain availability.",
+                    "message": "Domain in use by another account"
+                }
+            ]
         }
 
 + Response 400 (application/json)
@@ -236,6 +261,7 @@ Including `postmaster_at_verify`, `abuse_at_verify`, or `verification_mailbox_ve
 For `postmaster_at_verify`, `abuse_at_verify` and `verification_mailbox_verify` ownership verification, if the request is made a second time, another email will be sent with a new verification link. If the link in the previously sent message is clicked it won't verify domain ownership.
 
 ##### Validate the verification token
+
 Including `verification_mailbox_token`, `postmaster_at_token`, or `abuse_at_token` in the request checks of the provided token matches the token sent in the email. If it does, the sending domain is verified.
 
 *This is handled automatically through the SparkPost app.*
@@ -271,7 +297,7 @@ Returns the `status` object along with the [`dns`](#header-dns-object) property,
                 "dkim_status": "valid",
                 "cname_status": "unverified",
                 "mx_status": "unverified",
-                "compliance_status": "pending",
+                "compliance_status": "valid",
                 "spf_status": "unverified",
                 "abuse_at_status": "unverified",
                 "postmaster_at_status": "unverified",
@@ -335,7 +361,7 @@ Returns the full sending domain object, except the `domain` field.
                     "dkim_status": "unverified",
                     "cname_status": "unverified",
                     "mx_status": "pending",
-                    "compliance_status": "pending",
+                    "compliance_status": "valid",
                     "postmaster_at_status": "unverified",
                     "verification_mailbox_status": "unverified"
                 },
@@ -487,9 +513,7 @@ Returns an array with all the sending domains in your account. Use the query par
     + compliance_status (optional, enum) ... Compliance status filter.
         + Values
             + `valid`
-            + `invalid`
-            + `unverified`
-            + `pending`
+            + `blocked`
     + is_default_bounce_domain (optional, boolean) ... Is default bounce domain filter. Valid values are `true` or `false`.
 
 + Request
