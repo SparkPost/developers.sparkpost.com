@@ -91,6 +91,7 @@ Once it is verified through one of those two methods, you can use it as a bounce
         + `verification_mailbox` (string) - Nominated anyone@ verification mailbox email address local part. This field will only be returned if it was set in the `verification_mailbox` attribute in a [verification request](#sending-domains-post-verify-a-sending-domain).
         + compliance_status (enum) - Compliance status
             + valid
+            + blocked
     + dkim (object) - Object in which DKIM key configuration is defined.
         + signing_domain (string)
             Value used as the Signing Domain Identifier (SDID). This will be used in the `d=` field of the DKIM Signature. <br /> Only writable by <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
@@ -152,7 +153,7 @@ Creates a new sending domain. Each domain and its subdomains can only be added t
 
 Returns the domain and a success message. If `generate_dkim` was true, the dkim object is also returned.
 
-In case the sending domain creation is rejected, an HTTP 400 response is returned along with the error code, description and message with the reason for the rejection. A few examples are provided in the response section.
+In case the sending domain gets blocked due to compliance validations, an HTTP 400 response is returned along with the error code, description and message with the reason for the blocking. A few examples are provided in the response section.
 
 + Request (application/json)
 
@@ -473,7 +474,7 @@ Returns the full sending domain object, except the `domain` field.
             }
 
 
-### List all Sending Domains [GET /v1/sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,is_default_bounce_domain}]
+### List all Sending Domains [GET /v1/sending-domains{?ownership_verified,dkim_status,cname_status,mx_status,abuse_at_status,postmaster_at_status,compliance_status,is_default_bounce_domain}]
 
 Returns an array with all the sending domains in your account. Use the query parameters to filter on the various status options.
 
@@ -509,6 +510,10 @@ Returns an array with all the sending domains in your account. Use the query par
             + `invalid`
             + `unverified`
             + `pending`
+    + compliance_status (optional, enum) ... Compliance status filter.
+        + Values
+            + `valid`
+            + `blocked`
     + is_default_bounce_domain (optional, boolean) ... Is default bounce domain filter. Valid values are `true` or `false`.
 
 + Request
