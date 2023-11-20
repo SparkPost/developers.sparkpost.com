@@ -188,7 +188,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
 + Parameters
     + recipient: `rcpt@example.com` (string, required) - Recipient email address.
     + types: `transactional` (list, optional) - Types of suppressions to match in the search, i.e. entries that are `transactional` or `non_transactional`.
-    + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
+    + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored. Cursors last 15 minutes, create a new one after this period.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
     + page (number, optional) - The results page number to return. Used with `per_page` for paging through results. Works up to 10,000 results. Use the `cursor` parameter to page larger result sets.
@@ -291,7 +291,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
     + description (string, optional) - String to match in suppression descriptions.
     + description_strict (boolean, optional) - A complementary field to description. When set to true, will match the exact content in the search description, alternatively will fetch all combination of results in the description. 
         + Default: false
-    + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
+    + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored. Cursors last 15 minutes, create a new one after this period.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
     + page (number, optional) - The results page number to return. Used with `per_page` for paging through results. Works up to 10,000 results. Use the `cursor` parameter to page larger result sets.
