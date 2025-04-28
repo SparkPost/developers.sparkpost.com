@@ -229,6 +229,42 @@ End of template
 ```
 </REPL>
 
+Any content written on the same line as `end` will not break the line; however, content after that will:
+
+<REPL>
+```html
+{{ if city == "Baltimore" }}
+Baltimore
+{{ end }}, Maryland
+```
+```json
+{
+    "city": "Baltimore"
+}
+```
+```results
+Baltimore, Maryland
+```
+</REPL>
+
+<REPL>
+```html
+{{ if state == "Baltimore" }}
+Baltimore
+{{ end }}
+Maryland
+```
+```json
+{
+    "state": "Baltimore"
+}
+```
+```results
+Baltimore
+Maryland
+```
+</REPL>
+
 ### `if/else` Statement
 
 The `if/else` statement allows you to conditionally render some content if a specified condition is `true` or is not `null`. If the condition is `false` or `null`, another block of content may be rendered.

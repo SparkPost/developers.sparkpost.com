@@ -71,6 +71,13 @@ Create a branch for your work in the repo:
 
 ## Troubleshooting
 
+### Python related issues
+
+#### `ModuleNotFoundError: No module named 'distutils'` during npm run bootstrap
+1. distutils package is removed in Python version 3.12
+2. Create a virtual environment (venv) and `pip install setuptools`
+3. _or_ use a Python version 3.11 or earlier
+
 ### M1 Pro related issues
 
 #### `fatal error: 'vips/vips8' file not found:` during npm run bootstrap
