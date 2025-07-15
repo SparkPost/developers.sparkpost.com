@@ -605,7 +605,7 @@ Link names are used to identify links in click events in both webhook payloads a
 <a href="http://www.example.com" data-msys-linkname="banner">Example</a>
 ```
 
-Link names have a maximum length of 63 bytes and are truncated if they exceed the limit. Be wary of multibyte characters since they will be truncated with less than 63 characters.
+Link names are limited to 63 bytes and will be automatically truncated if they exceed this limit. Note that some characters can count as multiple bytes when encoded, so links containing these characters may be truncated at fewer than 63 visible characters.
 
 #### Unsubscribe Links
 
