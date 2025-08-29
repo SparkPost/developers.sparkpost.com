@@ -1,0 +1,79 @@
+FORMAT: 1A
+title: Usage API
+description: Get customer usage across all products.
+
+# Group Admin - Usage API
+
+The Usage API provides customer usage data across all SparkPost products. This endpoint allows you to retrieve usage metrics for your account, including both current usage and historical data organized by product.
+
+## Usage [/usage]
+
+### Get usage [GET]
+
+Gets customer usage across all products
+
++ Response 200 (application/json)
+
+    + Attributes
+        + results (object)
+            + recipient_validation (object) - Recipient validation usage data
+                + day (object) - Daily usage data
+                    + start (string) - Start date of the day period in ISO format
+                    + end (string) - End date of the day period in ISO format  
+                    + limit (number) - Daily usage limit
+                    + used (number) - Used amount for the day
+                + month (object) - Monthly usage data
+                    + start (string) - Start date of the month period in ISO format
+                    + end (string) - End date of the month period in ISO format
+                    + used (number) - Used amount for the month
+                + last_usage_date (string) - Last usage date in ISO format
+                + timestamp (string) - Timestamp of when usage data was retrieved
+            + messaging (object) - Messaging usage data
+                + day (object) - Daily usage data
+                    + start (string) - Start date of the day period in ISO format
+                    + end (string) - End date of the day period in ISO format
+                    + used (number) - Used amount for the day
+                + month (object) - Monthly usage data
+                    + start (string) - Start date of the month period in ISO format
+                    + end (string) - End date of the month period in ISO format
+                    + used (number) - Used amount for the month
+                + last_usage_date (string, nullable) - Last usage date in ISO format (can be null)
+                + timestamp (string) - Timestamp of when usage data was retrieved
+
+    + Body
+
+        ```json
+        {
+            "results": {
+                "recipient_validation": {
+                    "day": {
+                        "start": "2021-08-03T14:45:00.000Z",
+                        "end": "2021-08-04T14:45:00.000Z",
+                        "limit": 5000000,
+                        "used": 2
+                    },
+                    "month": {
+                        "start": "2021-07-09T00:00:00.000Z",
+                        "end": "2021-08-09T00:00:00.000Z",
+                        "used": 2
+                    },
+                    "last_usage_date": "2020-08-19",
+                    "timestamp": "2021-08-04T14:50:53.030Z"
+                },
+                "messaging": {
+                    "day": {
+                        "start": "2021-08-03T14:45:00.000Z",
+                        "end": "2021-08-04T14:45:00.000Z",
+                        "used": 0
+                    },
+                    "month": {
+                        "start": "2021-08-04T00:00:00.000Z",
+                        "end": "2021-09-04T00:00:00.000Z",
+                        "used": 0
+                    },
+                    "last_usage_date": null,
+                    "timestamp": "2021-08-04T14:50:54.331Z"
+                }
+            }
+        }
+        ```

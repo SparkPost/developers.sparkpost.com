@@ -28,6 +28,7 @@
     "category": "Analytics",
     "pages": [
       "metrics.apib",
+      "usage.apib",
       "events.apib",
       "message-events.apib",
       "webhooks.apib",
