@@ -41,14 +41,11 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 ```
 
 
-## Create a Transmission [/v1/transmissions/{?num_rcpt_errors}]
+## Create a Transmission [/v1/transmissions]
 
-You can create a transmission in a number of ways. In all cases, you can use the `num_rcpt_errors` parameter to limit the number of recipient errors returned.
+You can create a transmission in a number of ways.
 
 <Banner status="warning">The transmission content (text + html + attachments + inline images) is limited to 20 MBs.</Banner>
-
-+ Data Structure: Parameters
-    + num_rcpt_errors (number, `3`) - Maximum number of recipient errors that this call can return, otherwise all validation errors are returned.
 
 ### Request Body
 
