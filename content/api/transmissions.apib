@@ -299,10 +299,17 @@ Inline images for a transmission are specified in the `content.inline_images` ar
 The following attributes should be set in the `content` object when using a template as the transmission's content:
 
 + Data Structure: Content Attributes
+    + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
+        + (string)
+        + (object)
+            + name (string) - The name associated with the email address.
+            + email (string, required) - The email address to send from.
+    + reply_to (string) - Email address used to compose the email's "Reply-To" header.
     + template_id (string, required) - ID of the template to use.
     + use_draft_template (boolean) - Whether to use the draft version. If this is set to `true` and no draft exists, the transmission will fail.
         + Default: false
 
+<Banner status="warning">Using `from` and/or `reply_to` will **override** values from the template and substitution_data</Banner>
 
 + Request (application/json)
 
