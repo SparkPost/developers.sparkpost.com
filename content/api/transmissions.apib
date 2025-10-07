@@ -47,6 +47,8 @@ You can create a transmission in a number of ways.
 
 <Banner status="warning">The transmission content (text + html + attachments + inline images) is limited to 20 MBs.</Banner>
 
+<Banner status="warning">The `override` block does **not** support substitution_data</Banner>
+
 ### Request Body
 
 + Data Structure
@@ -71,6 +73,13 @@ You can create a transmission in a number of ways.
         + perform_substitutions (boolean)
             Enable or disable substitutions. Can only be set to `false` when using an inline template. Setting to `false` disables substitutions in the `text`, `html`, `amp`, and `email_rfc822` content parts and also disables all macros (including [snippets](/api/template-language/#header-snippets)). Headers are still passed to the substitution engine when this option is set to `false`. That includes headers that are part of `email_rfc822` content parts.
             + Default: true
+    + override (object) - Object containing data that overrides what is set in the content block (e.g. `from` or `reply_to` values in a stored template)
+        + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
+            + (string)
+            + (object)
+                + name (string) - The name associated with the email address.
+                + email (string, required) - The email address to send from.
+        + reply_to (string) - Email address used to compose the email's "Reply-To" header.
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
         + (array)
         + (object)
@@ -90,6 +99,13 @@ You can create a transmission in a number of ways.
         "transactional": true,
         "ip_pool": "my_ip_pool",
         "inline_css": true
+      },
+      "override": {
+        "from": {
+          "name": "Fred Flintstone",
+          "email": "fred@flintstone.com"
+        },
+        "reply_to": "Christmas Sales <sales@flintstone.com>"
       },
       "description": "Christmas Campaign Email",
       "campaign_id": "christmas_campaign",
