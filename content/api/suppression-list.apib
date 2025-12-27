@@ -11,6 +11,8 @@ Each entry indicates whether the recipient opted out of receiving one of the fol
 * Transactional messages - single recipient messages that are used operationally, e.g. to reset a password or confirm a purchase.
 * Non-transactional messages - used to run email campaigns where a list of recipients are targeted, e.g. advertising a sales event.
 
+Suppressions can be either **account-wide** (blocking all emails of a given type) or **list-specific** (blocking emails only from a particular mailing list). Use the optional `list_id` field to create list-specific suppressions for more granular control.
+
 
 <Banner status="success">When setting up your SparkPost account, we <strong>strongly recommend</strong> you import any suppression list you have from any previous service to avoid incorrectly sending mail to unsubscribed/invalid recipients.</Banner>
 
@@ -42,6 +44,7 @@ By default, the search endpoint will search across the primary account's and all
         + Manually Added
         + Compliance
     + description (string) - Explanation for the suppression.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Only returned if suppressed for a specific list. Must be alphanumeric with hyphens or underscores.
     + created (string) - Date suppression was created.
     + updated (string) - Last time the suppression was updated.
     + transactional (boolean) - Whether the recipient requested to not receive any transactional messages. <span class="label label-danger"><strong>Deprecated</strong></span> in favor of `type`.
@@ -55,6 +58,7 @@ By default, the search endpoint will search across the primary account's and all
         "type": "non_transactional",
         "source": "List Unsubscribe",
         "description": "Unsubscribed using list unsubscribe header",
+        "list_id": "newsletter-weekly",
         "created": "2017-10-01T12:00:00+00:00",
         "updated": "2017-10-01T12:00:00+00:00",
         "transactional": false,
@@ -78,6 +82,7 @@ If a recipient was added by our compliance system, it cannot be updated.
         + transactional
         + non_transactional
     + description (string) - Explanation for the suppression.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be alphanumeric with hyphens or underscores only. Omit for account-wide suppression.
 
 Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, only some of your suppression entries may have been successfully created or updated.
 If this occurs, please re-submit your original request again for processing.
@@ -96,7 +101,8 @@ If this occurs, please re-submit your original request again for processing.
                 {
                     "recipient": "rcpt_2@example.com",
                     "type": "non_transactional",
-                    "description": "User requested to not receive any non-transactional emails."
+                    "description": "User requested to not receive any non-transactional emails.",
+                    "list_id": "newsletter-weekly"
                 }
             ]
         }
@@ -128,6 +134,7 @@ If the recipient was added by our compliance system, it cannot be updated.
         + transactional
         + non_transactional
     + description (string) - Explanation for the suppression.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be alphanumeric with hyphens or underscores only. Omit for account-wide suppression.
 
 
 + Parameters
@@ -139,7 +146,8 @@ If the recipient was added by our compliance system, it cannot be updated.
 
             {
                 "type": "transactional",
-                "description": "Unsubscribe from newsletter"
+                "description": "Unsubscribe from newsletter",
+                "list_id": "newsletter-weekly"
             }
 
 + Response 200 (application/json)
@@ -207,6 +215,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
                     "type": "non_transactional",
                     "source": "Manually Added",
                     "description": "User requested to not receive any non-transactional emails.",
+                    "list_id": "newsletter-weekly",
                     "created": "2015-01-01T12:00:00+00:00",
                     "updated": "2015-01-01T12:00:00+00:00"
                 },
@@ -277,7 +286,7 @@ If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header w
         }
 
 
-### Search Suppressions [GET /v1/suppression-list{?to,from,domain,sources,types,description,description_strict,cursor,per_page,page,sort}]
+### Search Suppressions [GET /v1/suppression-list{?to,from,domain,sources,types,description,description_strict,list_id,cursor,per_page,page,sort}]
 
 Perform a filtered search for entries in your suppression list. Returns an array of suppression objects.
 
@@ -291,6 +300,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
     + description (string, optional) - String to match in suppression descriptions.
     + description_strict (boolean, optional) - A complementary field to description. When set to true, will match the exact content in the search description, alternatively will fetch all combination of results in the description. 
         + Default: false
+    + list_id (string, optional) - Filter by mailing list identifier to return only list-specific suppressions.
     + cursor (string, optional) - The results cursor location to return, to start paging with cursor, use the value of 'initial'. When cursor is provided the `page` parameter is ignored.
     + per_page (number, optional) - Maximum number of results to return per page. Must be between 1 and 10,000.
         + Default: 1000
@@ -331,6 +341,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
                     "description": "Recipient unsubscribed",
                     "source": "Bounce Rule",
                     "type": "transactional",
+                    "list_id": "newsletter-weekly",
                     "created": "2018-01-01T01:01:01+00:00",
                     "updated": "2018-01-01T01:01:01+00:00",
                     "transactional": true
