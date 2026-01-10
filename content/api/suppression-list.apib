@@ -44,7 +44,7 @@ By default, the search endpoint will search across the primary account's and all
         + Manually Added
         + Compliance
     + description (string) - Explanation for the suppression.
-    + list_id (string) - Mailing list identifier for list-specific suppressions. Only returned if suppressed for a specific list. Must be alphanumeric with hyphens or underscores.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Only returned if suppressed for a specific list. Must be RFC 2919 compliant
     + created (string) - Date suppression was created.
     + updated (string) - Last time the suppression was updated.
     + transactional (boolean) - Whether the recipient requested to not receive any transactional messages. <span class="label label-danger"><strong>Deprecated</strong></span> in favor of `type`.
@@ -58,7 +58,7 @@ By default, the search endpoint will search across the primary account's and all
         "type": "non_transactional",
         "source": "List Unsubscribe",
         "description": "Unsubscribed using list unsubscribe header",
-        "list_id": "newsletter-weekly",
+        "list_id": "newsletter-weekly.example1.com",
         "created": "2017-10-01T12:00:00+00:00",
         "updated": "2017-10-01T12:00:00+00:00",
         "transactional": false,
@@ -82,7 +82,7 @@ If a recipient was added by our compliance system, it cannot be updated.
         + transactional
         + non_transactional
     + description (string) - Explanation for the suppression.
-    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be alphanumeric with hyphens or underscores only. Omit for account-wide suppression.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be RFC 2919 compliant. Omit for account-wide suppression.
 
 Please note that in the unlikely scenario where your receive a HTTP 5xx level error response while bulk loading, only some of your suppression entries may have been successfully created or updated.
 If this occurs, please re-submit your original request again for processing.
@@ -101,8 +101,8 @@ If this occurs, please re-submit your original request again for processing.
                 {
                     "recipient": "rcpt_2@example.com",
                     "type": "non_transactional",
-                    "description": "User requested to not receive any non-transactional emails.",
-                    "list_id": "newsletter-weekly"
+                    "description": "User requested to not receive any non-transactional emails from newsletter-weekly.example1.com mailing list.",
+                    "list_id": "newsletter-weekly.example1.com"
                 }
             ]
         }
@@ -134,7 +134,7 @@ If the recipient was added by our compliance system, it cannot be updated.
         + transactional
         + non_transactional
     + description (string) - Explanation for the suppression.
-    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be alphanumeric with hyphens or underscores only. Omit for account-wide suppression.
+    + list_id (string) - Mailing list identifier for list-specific suppressions. Must be RFC 2919 compliant. Omit for account-wide suppression.
 
 
 + Parameters
@@ -147,7 +147,7 @@ If the recipient was added by our compliance system, it cannot be updated.
             {
                 "type": "transactional",
                 "description": "Unsubscribe from newsletter",
-                "list_id": "newsletter-weekly"
+                "list_id": "newsletter-weekly.example1.com"
             }
 
 + Response 200 (application/json)
@@ -215,7 +215,7 @@ If you don't have subaccounts, you do not need to provide the `X-MSYS-SUBACCOUNT
                     "type": "non_transactional",
                     "source": "Manually Added",
                     "description": "User requested to not receive any non-transactional emails.",
-                    "list_id": "newsletter-weekly",
+                    "list_id": "newsletter-weekly.example1.com",
                     "created": "2015-01-01T12:00:00+00:00",
                     "updated": "2015-01-01T12:00:00+00:00"
                 },
@@ -341,7 +341,7 @@ Perform a filtered search for entries in your suppression list. Returns an array
                     "description": "Recipient unsubscribed",
                     "source": "Bounce Rule",
                     "type": "transactional",
-                    "list_id": "newsletter-weekly",
+                    "list_id": "newsletter-weekly.example1.com",
                     "created": "2018-01-01T01:01:01+00:00",
                     "updated": "2018-01-01T01:01:01+00:00",
                     "transactional": true
