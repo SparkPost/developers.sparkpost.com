@@ -83,7 +83,8 @@ X-MSYS-API: {
     "transactional": false,
     "skip_suppression": false,
     "ip_pool": "my_ip_pool",
-    "inline_css": false
+    "inline_css": false,
+    "dkim_key": "marketing"
   }
 }
 ```
@@ -109,6 +110,8 @@ The fields supported in the X-MSYS-API header are as follows:
         + ip_pool (string) - The ID of a dedicated IP pool associated with your account. If this field is not provided, the account's default dedicated IP pool is used (if there are IPs assigned to it). <br /><span class="label label-primary"><strong>SparkPost</strong></span> For more information on dedicated IPs, see the [Support Center](https://www.sparkpost.com/docs/deliverability/dedicated-ip-pools).<br /><a href="https://www.sparkpost.com/enterprise-email/"><span class="label label-warning"><strong>Enterprise</strong></span></a> accounts, contact your TAM for support details.
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  Not performed on AMPHTML Email content.
             + Default: false
+        + dkim_key (string)
+            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used.
 
 
 ### Open And Click Tracking

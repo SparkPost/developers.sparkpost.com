@@ -73,6 +73,8 @@ You can create a transmission in a number of ways.
         + perform_substitutions (boolean)
             Enable or disable substitutions. Can only be set to `false` when using an inline template. Setting to `false` disables substitutions in the `text`, `html`, `amp`, and `email_rfc822` content parts and also disables all macros (including [snippets](/api/template-language/#header-snippets)). Headers are still passed to the substitution engine when this option is set to `false`. That includes headers that are part of `email_rfc822` content parts.
             + Default: true
+        + dkim_key (string)
+            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used.
     + override (object) - Object containing data that overrides what is set in the content block (e.g. `from` or `reply_to` values in a stored template)
         + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
             + (string)
@@ -98,7 +100,8 @@ You can create a transmission in a number of ways.
         "click_tracking": false,
         "transactional": true,
         "ip_pool": "my_ip_pool",
-        "inline_css": true
+        "inline_css": true,
+        "dkim_key": "marketing"
       },
       "override": {
         "from": {
@@ -305,6 +308,28 @@ Inline images for a transmission are specified in the `content.inline_images` ar
                     "description": "Unconfigured or unverified sending domain.",
                     "code": "7001",
                     "message": "Invalid domain"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1100",
+                    "message": "Invalid DKIM key ID 'nonexistent' for sending domain 'example.com'"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1100",
+                    "message": "DKIM key 'marketing' is not verified for sending domain 'example.com'"
                 }
             ]
         }
