@@ -74,7 +74,7 @@ You can create a transmission in a number of ways.
             Enable or disable substitutions. Can only be set to `false` when using an inline template. Setting to `false` disables substitutions in the `text`, `html`, `amp`, and `email_rfc822` content parts and also disables all macros (including [snippets](/api/template-language/#header-snippets)). Headers are still passed to the substitution engine when this option is set to `false`. That includes headers that are part of `email_rfc822` content parts.
             + Default: true
         + dkim_key (string)
-            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used.
+            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used. Specifying a non-existent or unverified key will result in a 400 error.
     + override (object) - Object containing data that overrides what is set in the content block (e.g. `from` or `reply_to` values in a stored template)
         + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
             + (string)

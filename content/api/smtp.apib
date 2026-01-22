@@ -111,7 +111,7 @@ The fields supported in the X-MSYS-API header are as follows:
         + inline_css (boolean) - Whether to inline the CSS in `<style>` tags in the `<head>` in the HTML content.  Not performed on AMPHTML Email content.
             + Default: false
         + dkim_key (string)
-            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used.
+            Select which [DKIM key](/api/sending-domains/#sending-domains-get-list-dkim-keys) to sign the message with. Only keys with a verified DNS record can be used. When not set, the sending domain's default key is used. Specifying a non-existent or unverified key will result in a 400 error.
 
 
 ### Open And Click Tracking
