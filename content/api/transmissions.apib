@@ -79,9 +79,10 @@ You can create a transmission in a number of ways.
         + from (enum) - Email address used to compose the email's `From` header. The domain must be a verified sending domain. Can be a string with a valid email address or an object with the following attributes:
             + (string)
             + (object)
-                + name (string) - The name associated with the email address.
+                + name (string) - The name associated with the email address. If omitted, falls back to `content.from.name` or the stored template's `from.name`.
                 + email (string, required) - The email address to send from.
         + reply_to (string) - Email address used to compose the email's "Reply-To" header.
+        + list_id (string) - Sets the `List-Id` header for mailing list identification (RFC 2919). Used by email clients for filtering and organization. Format: `<list-identifier>` (e.g., `<marketing@example.com>`).
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
         + (array)
         + (object)
@@ -108,7 +109,8 @@ You can create a transmission in a number of ways.
           "name": "Fred Flintstone",
           "email": "fred@flintstone.com"
         },
-        "reply_to": "Christmas Sales <sales@flintstone.com>"
+        "reply_to": "Christmas Sales <sales@flintstone.com>",
+        "list_id": "<marketing@flintstone.com>"
       },
       "description": "Christmas Campaign Email",
       "campaign_id": "christmas_campaign",
