@@ -244,6 +244,12 @@ If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header w
 - Omit the header to delete from the primary account suppression list.
 - Use the subaccount's ID to delete from a specific subaccount suppression list.
 
+##### Deleting from mailing lists
+
+Use the `list_id` query parameter to delete the suppression specifically from that mailing list.
+- Use `?list_id=newsletter-weekly.example1.com` to delete the suppression from a specific mailing list.
+- Omit the parameter to delete the suppression across all mailing lists (account-wide).
+
 
 + Data Structure
     + type (enum) - The type of suppression to delete. If not provided, the suppression will be deleted for both transactional and non-transactional.
@@ -253,6 +259,7 @@ If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header w
 
 + Parameters
     + recipient: `rcpt@example.com` (string, required) - Recipient email address.
+    + list_id: `newsletter-weekly.example1.com` (string, optional) - Mailing list identifier. If provided, deletes the suppression only for that specific mailing list. If omitted, deletes the suppression across all mailing lists.
 
 + Request
 
