@@ -138,7 +138,7 @@ Creates a new sending domain. Each domain and its subdomains can only be added t
     + domain (string, required) - The domain you are sending from.
     + tracking_domain (string) - Associated tracking domain. The tracking domain and sending domain must belong to the same subaccount.
     + dkim (object) - Object in which DKIM key configuration is defined. Will be generated if `generate_dkim` is true.
-        + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). <br /><span class="label label-warning"><strong>Enterprise</strong></span> accounts only.
+        + signing_domain (string) - Value used as the Signing Domain Identifier (SDID).
         + private (string, required) - Valued used as the private key which will be used to create the DKIM Signature.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string, required) - Value used as the DomainKey selector which indicates the DKIM public key location.
@@ -380,7 +380,7 @@ Returns the full sending domain object, except the `domain` field.
 + Data Structure
     + tracking_domain (string) - Associated tracking domain. To remove the current value, set it to an empty string. The tracking domain and sending domain must belong to the same subaccount.
     + dkim (object) - DKIM configuration. Will be verified prior to update. If verification fails, the update will fail.
-        + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). To remove the current value, set it to an empty string. <br /><span class="label label-warning"><strong>Enterprise</strong></span> accounts only.
+        + signing_domain (string) - Value used as the Signing Domain Identifier (SDID). To remove the current value, set it to an empty string.
         + private (string, required) - Valued used as the private key which will be used to create the DKIM Signature.
         + public (string, required) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string, required) - Value used as the DomainKey selector which indicates the DKIM public key location.
@@ -560,6 +560,601 @@ Returns an array with all the sending domains in your account. Use the query par
                     },
                     "shared_with_subaccounts": false,
                     "is_default_bounce_domain" : false
+                }
+            ]
+        }
+
+
+## DKIM Keys
+
+These endpoints manage additional DKIM keys for sending domains. Each sending domain can have up to 256 additional DKIM keys. The "default" key is managed via the standard [Sending Domain](#header-sending-domain-object) endpoints above.
+
+### DKIM Key Object
+
++ Data Structure: Attributes
+    + id (string) - Unique identifier for the DKIM key. 1-64 characters, alphanumeric plus hyphen/underscore, must start with alphanumeric.
+    + signing_domain (string) - Domain used for the DKIM signature.
+    + public (string) - Base64-encoded public key.
+    + selector (string) - DKIM selector indicating the public key location.
+    + headers (string) - Colon-separated list of headers to sign.
+    + dkim_status: unverified, pending, valid, invalid (enum) - Verification status of the DKIM key.
+    + is_default (boolean) - Whether this is the default key for the domain.
+    + created_at (string) - ISO 8601 timestamp of creation. Not present for default keys.
+    + updated_at (string) - ISO 8601 timestamp of last update. Not present for default keys.
+    + dns (object) - DNS record information. Included in single key GET, POST create, POST verify, and PUT update responses.
+        + dkim_record (string) - Full DNS record name.
+        + dkim_value (string) - Expected TXT record value.
+        + dkim_error (string) - Error message if verification failed. Only present in verify responses.
++ Sample
+
+    ```
+    {
+        "id": "marketing",
+        "signing_domain": "mkt.example.com",
+        "public": "MFwwDQYJKoZIhvcNAQEB...",
+        "selector": "mkt0125",
+        "headers": "from:to:subject:date",
+        "dkim_status": "valid",
+        "is_default": false,
+        "created_at": "2025-01-25T14:00:00Z",
+        "updated_at": "2025-01-25T14:00:00Z"
+    }
+    ```
+
+#### DKIM Key Constraints
+
+| Constraint | Value |
+|------------|-------|
+| Maximum keys per domain | 256 (excluding default) |
+| Key ID length | 1-64 characters |
+| Key ID format | Alphanumeric, hyphen, underscore; must start with alphanumeric |
+| Reserved key IDs | `default` |
+| Immutable fields | `id` |
+| Key length range | 1024-4096 bits |
+
+
+#### DNS Verification Requirements
+
+Each DKIM key requires a DNS TXT record for verification. The record must be published at the location specified in the `dns.dkim_record` field returned when creating or retrieving a key.
+
+**TXT Record Format:**
+
+| Component | Value |
+|-----------|-------|
+| Hostname | `{selector}._domainkey.{signing_domain}` |
+| Record Type | TXT |
+| Value | `v=DKIM1; k=rsa; h=sha256; p={public_key}` |
+
+**Verification Requirements:**
+* A valid DKIM record must exist in DNS for the signing domain
+* The record must contain the public key in the `p=` tag
+* If a `k=` tag is defined, it must be set to `rsa`
+* If an `h=` tag is defined, it must be set to `sha256`
+
+**Using DKIM Keys in Transmissions:**
+
+A DKIM key can only be used for signing transmissions after it has been verified (i.e., `dkim_status` is `"valid"`). Specify the key in the `options.dkim_key` field of a [Transmission](/api/transmissions/) request or via the `X-MSYS-API` header for [SMTP](/api/smtp/) injection.
+
+
+#### DKIM Key Error Codes
+
+| HTTP Status | Code | Message | Description |
+|-------------|------|---------|-------------|
+| 400 | 1100 | Invalid DKIM key ID '{key_id}' for sending domain '{domain}' | The specified DKIM key does not exist for the sending domain |
+| 400 | 1100 | DKIM key '{key_id}' is not verified for sending domain '{domain}' | The DKIM key exists but has not passed DNS verification |
+| 400 | 1300 | Key ID '{key_id}' already exists | A DKIM key with this ID already exists for the domain |
+| 400 | 1300 | Key ID 'default' is reserved | Cannot create a key with the reserved ID "default" |
+| 400 | 1300 | When providing custom keys, private, public, and selector must all be specified | Partial key fields were provided |
+| 400 | 1300 | Cannot update default key via this endpoint | Use `/sending-domains/{domain}` to update the default key |
+| 400 | 1300 | Cannot delete default key | The default key cannot be deleted |
+| 400 | 1300 | Cannot verify default key via this endpoint | Use `/sending-domains/{domain}/verify` with `dkim_verify: true` |
+| 400 | 1300 | Field 'id' is immutable | The key ID cannot be changed after creation |
+| 404 | 1600 | Domain '{domain}' does not exist | The sending domain was not found |
+| 404 | 1600 | DKIM key '{key_id}' does not exist | The specified DKIM key was not found |
+| 422 | 1400 | id is required | The required `id` field was not provided |
+
+
+### List DKIM Keys [GET /v1/sending-domains/{domain}/dkim-keys]
+
+Retrieves all DKIM keys for a domain, including the default key.
+
+The default key is always first in the list and does not have `created_at` or `updated_at` fields. The `dns` object is not included in list responses.
+
++ Parameters
+    + domain (required, string, `example.com`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": "default",
+                    "signing_domain": "example.com",
+                    "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQ...",
+                    "selector": "scph0820",
+                    "headers": "from:to:subject:date",
+                    "dkim_status": "valid",
+                    "is_default": true
+                },
+                {
+                    "id": "marketing",
+                    "signing_domain": "mkt.example.com",
+                    "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQ...",
+                    "selector": "mkt0125",
+                    "headers": "from:to:subject:date",
+                    "dkim_status": "valid",
+                    "is_default": false,
+                    "created_at": "2025-01-25T14:00:00Z",
+                    "updated_at": "2025-01-25T14:00:00Z"
+                }
+            ],
+            "total_count": 2
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "Domain 'example.com' does not exist"
+                }
+            ]
+        }
+
+
+### Create a DKIM Key [POST /v1/sending-domains/{domain}/dkim-keys]
+
+Creates a new DKIM key. The system generates the keypair automatically unless you provide your own.
+
+When providing your own keys, all three fields (`private`, `public`, `selector`) must be provided together.
+
++ Data Structure
+    + id (string, required) - Unique identifier. 1-64 characters, alphanumeric plus hyphen/underscore, must start with alphanumeric.
+    + signing_domain (string) - Domain for DKIM signature. Defaults to the sending domain.
+    + headers (string) - Colon-separated headers to sign.
+        + Default: from:to:subject:date
+    + private (string) - User-provided private key. Requires `public` and `selector`.
+    + public (string) - User-provided public key. Requires `private` and `selector`.
+    + selector (string) - User-provided selector. Requires `private` and `public`.
+    + dkim_key_length (number) - Key length for auto-generation (1024-4096).
+        + Default: 1024
+
++ Parameters
+    + domain (required, string, `example.com`)
+
++ Request Auto-generate keys (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "id": "marketing",
+                "signing_domain": "mkt.example.com",
+                "headers": "from:to:subject:date"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "marketing",
+                "signing_domain": "mkt.example.com",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "mkt0125",
+                "headers": "from:to:subject:date",
+                "dkim_status": "unverified",
+                "is_default": false,
+                "created_at": "2025-01-25T14:00:00Z",
+                "updated_at": "2025-01-25T14:00:00Z",
+                "dns": {
+                    "dkim_record": "mkt0125._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Request User-provided keys (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "id": "marketing",
+                "private": "MIICXQIBAAJBALxYLMK...",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "mkt2025"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "marketing",
+                "signing_domain": "example.com",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "mkt2025",
+                "headers": "from:to:subject:date",
+                "dkim_status": "unverified",
+                "is_default": false,
+                "created_at": "2025-01-25T14:00:00Z",
+                "updated_at": "2025-01-25T14:00:00Z",
+                "dns": {
+                    "dkim_record": "mkt2025._domainkey.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Key ID 'marketing' already exists"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Key ID 'default' is reserved"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "When providing custom keys, private, public, and selector must all be specified"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "Domain 'example.com' does not exist"
+                }
+            ]
+        }
+
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1400",
+                    "message": "required field is missing",
+                    "description": "id is required"
+                }
+            ]
+        }
+
+
+### Retrieve a DKIM Key [GET /v1/sending-domains/{domain}/dkim-keys/{key_id}]
+
+Retrieves a specific DKIM key by ID.
+
+Using `key_id` of "default" returns the domain's primary DKIM key. The default key has `is_default: true` and no `created_at`/`updated_at` fields.
+
++ Parameters
+    + domain (required, string, `example.com`)
+    + key_id (required, string, `marketing`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "marketing",
+                "signing_domain": "mkt.example.com",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "mkt0125",
+                "headers": "from:to:subject:date",
+                "dkim_status": "valid",
+                "is_default": false,
+                "created_at": "2025-01-25T14:00:00Z",
+                "updated_at": "2025-01-25T14:00:00Z",
+                "dns": {
+                    "dkim_record": "mkt0125._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "DKIM key 'marketing' does not exist"
+                }
+            ]
+        }
+
+
+### Update a DKIM Key [PUT /v1/sending-domains/{domain}/dkim-keys/{key_id}]
+
+Updates an existing DKIM key. Only `headers` and `signing_domain` can be updated individually. To replace keys, all three (`private`, `public`, `selector`) must be provided together.
+
+The default key cannot be updated via this endpoint. Use the [Update a Sending Domain](#sending-domains-put-update-a-sending-domain) endpoint instead.
+
+Changing `signing_domain` or key fields resets `dkim_status` to `unverified`.
+
++ Data Structure
+    + signing_domain (string) - New signing domain.
+    + headers (string) - New headers to sign.
+    + private (string) - New private key. Requires `public` and `selector`.
+    + public (string) - New public key. Requires `private` and `selector`.
+    + selector (string) - New selector. Requires `private` and `public`.
+
++ Parameters
+    + domain (required, string, `example.com`)
+    + key_id (required, string, `marketing`)
+
++ Request Update headers (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "headers": "from:to:subject:date:reply-to"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "message": "Successfully updated DKIM key.",
+                "id": "marketing",
+                "signing_domain": "mkt.example.com",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "mkt0125",
+                "headers": "from:to:subject:date:reply-to",
+                "dkim_status": "valid",
+                "is_default": false,
+                "created_at": "2025-01-25T14:00:00Z",
+                "updated_at": "2025-01-25T16:30:00Z",
+                "dns": {
+                    "dkim_record": "mkt0125._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Request Full key replacement (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "private": "MIICXQIBAAJBALxYLMK...",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "newsel2025"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "message": "Successfully updated DKIM key.",
+                "id": "marketing",
+                "signing_domain": "mkt.example.com",
+                "public": "MFwwDQYJKoZIhvcNAQEB...",
+                "selector": "newsel2025",
+                "headers": "from:to:subject:date",
+                "dkim_status": "unverified",
+                "is_default": false,
+                "created_at": "2025-01-25T14:00:00Z",
+                "updated_at": "2025-01-25T16:30:00Z",
+                "dns": {
+                    "dkim_record": "newsel2025._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Cannot update default key via this endpoint. Use /sending-domains/{domain} instead."
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Field 'id' is immutable"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "When providing custom keys, private, public, and selector must all be specified"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "DKIM key 'marketing' does not exist"
+                }
+            ]
+        }
+
+
+### Delete a DKIM Key [DELETE /v1/sending-domains/{domain}/dkim-keys/{key_id}]
+
+Deletes a DKIM key. The default key cannot be deleted.
+
++ Parameters
+    + domain (required, string, `example.com`)
+    + key_id (required, string, `marketing`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 204
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Cannot delete default key"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "DKIM key 'marketing' does not exist"
+                }
+            ]
+        }
+
+
+### Verify a DKIM Key [POST /v1/sending-domains/{domain}/dkim-keys/{key_id}/verify]
+
+Initiates DNS verification for a specific DKIM key.
+
+The default key cannot be verified via this endpoint. Use the [Verify a Sending Domain](#sending-domains-post-verify-a-sending-domain) endpoint with `dkim_verify: true` instead.
+
++ Parameters
+    + domain (required, string, `example.com`)
+    + key_id (required, string, `marketing`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {}
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "marketing",
+                "dkim_status": "valid",
+                "dns": {
+                    "dkim_record": "mkt0125._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB..."
+                }
+            }
+        }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "marketing",
+                "dkim_status": "invalid",
+                "dns": {
+                    "dkim_record": "mkt0125._domainkey.mkt.example.com",
+                    "dkim_value": "v=DKIM1; k=rsa; h=sha256; p=MFwwDQYJKoZIhvcNAQEB...",
+                    "dkim_error": "DNS record not found. Please add the TXT record and try again."
+                }
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1300",
+                    "message": "invalid params",
+                    "description": "Cannot verify default key via this endpoint. Use /sending-domains/{domain}/verify with dkim_verify: true instead."
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "code": "1600",
+                    "message": "resource not found",
+                    "description": "DKIM key 'marketing' does not exist"
                 }
             ]
         }
