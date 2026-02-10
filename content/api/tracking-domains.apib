@@ -436,18 +436,6 @@ For more information, see the <a target="_blank" href="https://support.sparkpost
                 ]
             }
 
-+ Response 500 (application/json)
-
-    + Body
-
-            {
-                "errors": [
-                    {
-                        "message": "Internal server error"
-                    }
-                ]
-            }
-
 + Response 503 (application/json)
 
     + Body
@@ -500,6 +488,18 @@ For more information, see the <a target="_blank" href="https://support.sparkpost
                 ]
             }
 
++ Response 403 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Managed certificates cannot be issued for this domain due to Let's Encrypt policies"
+                    }
+                ]
+            }
+
 + Response 404 (application/json)
 
     + Body
@@ -512,14 +512,14 @@ For more information, see the <a target="_blank" href="https://support.sparkpost
                 ]
             }
 
-+ Response 422 (application/json)
++ Response 503 (application/json)
 
     + Body
 
             {
                 "errors": [
                     {
-                        "message": "Managed certificates are not available for this domain. Please use a CDN or reverse proxy instead."
+                        "message": "Certificate eligibility check timed out"
                     }
                 ]
             }
