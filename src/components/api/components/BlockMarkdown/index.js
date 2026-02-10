@@ -1,20 +1,16 @@
+import Banner from 'components/Banner'
+import Markdown from 'components/Markdown'
+import { keys, mapKeys, mapValues } from 'lodash'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import { mapKeys, mapValues, keys } from 'lodash'
-import Markdown from 'components/Markdown'
-import Banner from 'components/Banner'
 import Heading from '../Heading'
 import DataStructure from './DataStructure'
 import MessageEvents from './MessageEvents'
-import WebhookEvents from './WebhookEvents'
 import REPL from './REPL'
+import WebhookEvents from './WebhookEvents'
 
 const EmptyHeader = styled.th`
   padding: 0;
-`
-
-const TableOverflow = styled.div`
-  overflow: scroll;
 `
 
 let components = {
@@ -50,9 +46,7 @@ let components = {
   table(props) {
     return (
       <div className="block">
-        <TableOverflow>
-          <table {...props} />
-        </TableOverflow>
+        <table {...props} />
       </div>
     )
   },
