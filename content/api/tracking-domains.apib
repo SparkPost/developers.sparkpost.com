@@ -36,12 +36,20 @@ Default tracking domains do not override associated tracking domains. You can se
 SparkPost picks the first tracking domain it can find to use in this order: 1. Associated tracking domain. 2. Subaccount default. 3. Account default.
 
 ### DNS
-Tracking domains need to be verified via DNS. You'll need to add a CNAME record with the value of `spgo.io` (`eu.spgo.io` for EU accounts) to the domain's DNS settings before it can be used or set as the default.
+Tracking domains need to be verified via DNS. You'll need to add a CNAME record to the domain's DNS settings before it can be used or set as the default. The CNAME value can change according to the account region or HTTPS support:
+
+| Service | CNAME value | Supports Managed HTTPS | Supports HTTPS through CDN/Proxy |
+|------|----------|------------------------|----------------|
+| SparkPost US V2 | `v2.spgo.io` | Yes | Yes |
+| SparkPost EU V2 | `eu.v2.spgo.io` | Yes | Yes |
+| SparkPost US | `spgo.io` | No | Yes |
+| SparkPost EU | `eu.spgo.io` | No | Yes |
+| SparkPost Enterprise | `<tenant>.et.e.sparkpost.com` | No | Yes |
+
 For more information and Enterprise settings <a target="_blank" href="https://www.sparkpost.com/docs/tech-resources/enabling-multiple-custom-tracking-domains/">go here</a>.
 
 ### Security
-Tracking domains use HTTP by default. Using HTTPS requires the set up and management of SSL Certificates,
-for more information see <a target="_blank" href="https://www.sparkpost.com/docs/tech-resources/enabling-https-engagement-tracking-on-sparkpost/">this guide</a>.
+Tracking domains use HTTP by default. When using the Tracking Domains API, HTTPS support must be explicitly enabled. For more information, see <a target="_blank" href="https://support.sparkpost.com/docs/tech-resources/managed-https-for-tracking-domains">this guide</a>.
 
 ### Subaccounts
 Tracking domains can only be assigned to subaccounts on creation. They cannot be re-assigned at a later point.
@@ -57,7 +65,7 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
         + Default: false
     + default (boolean) - Whether the tracking domain should be used when not explicitly associated with a sending domain. Only one default domain per account and subaccount can be set. The domain has to be verified to be set as the default.
         + Default: false
-    + status (object) - Contains status details like verification and DNS.
+    + status (object) - Contains status details like verification, DNS and TLS.
         + verified (boolean) - Whether the domain's ownership has been verified. `true` if cname_status is `valid`.
         + cname_status (enum) - Verification status of CNAME record configuration.
             + unverified
@@ -68,7 +76,25 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
             + pending
             + valid
             + blocked
+        + tls_status (enum) - Status of the domain's TLS management.
+            + unknown
+            + unavailable
+            + pending
+            + failed
+            + expired
+            + valid
     + subaccount_id (number) - ID of the subaccount the tracking domain is assigned to. Not returned unless set and can only be set on creation.
+    + uses_managed_certificate (boolean) - Whether a managed TLS certificate should be enabled for the domain. <a target="_blank" href="https://support.sparkpost.com/docs/tech-resources/managed-https-for-tracking-domains">Read more</a>
+    + tls_certificate (object) - Contains details about the managed TLS certificate attached to the domain if present.
+        + issued_at (string) - ISO date of certificate issuance.
+        + expires_at (string) - ISO date of certificate expiration.
+        + error_code (enum) - Error encountered during the last issuance or renewal process.
+            + null
+            + acme:rejected_identifier
+            + acme:dns
+            + acme:unauthorized
+            + acme:temporary
+            + service:internal
 + Sample
 
     ```
@@ -77,11 +103,17 @@ In order to be associated to a subaccount's sending domain, a tracking domain ha
         "port": 443,
         "secure": true,
         "default": false,
+        "uses_managed_certificate": true,
         "status": {
             "verified": false,
             "cname_status": "pending",
             "compliance_status": "pending"
-        }
+        },
+        "tls_certificate": {
+            "issued_at": "2026-01-27T19:09:17.000Z",
+            "expires_at": "2026-04-27T19:09:16.000Z",
+            "error_code": null
+        },
     }
     ```
 
@@ -335,6 +367,159 @@ Setting a new default automatically unsets the current relevant default, if it e
                 "errors": [
                     {
                         "message": "Tracking domain 'example.domain.com' unverified."
+                    }
+                ]
+            }
+
+
+### Check Certificate Eligibility [POST /v1/tracking-domains/{domain}/certificate/check]
+
+Check if a tracking domain is eligible for managed TLS certificates. This is a read-only operation that queries Let's Encrypt to determine if the domain can be used with SparkPost's managed HTTPS feature. Unlike the enable endpoint, this check can be performed on unverified domains and does not modify the tracking domain configuration.
+
+Use this endpoint before enabling managed certificates to confirm eligibility and avoid potential failures.
+
+For more information, see the <a target="_blank" href="https://support.sparkpost.com/docs/tech-resources/managed-https-for-tracking-domains">Managed HTTPS guide</a>.
+
++ Parameters
+    + domain (required, case insensitive, string, `example.domain.com`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "domain": "example.domain.com",
+                    "supportsManagedCertificate": true
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Certificate eligibility check failed"
+                    }
+                ]
+            }
+
++ Response 403 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Domain is not eligible for managed certificates due to Let's Encrypt policies"
+                    }
+                ]
+            }
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "resource not found"
+                    }
+                ]
+            }
+
++ Response 500 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Internal server error"
+                    }
+                ]
+            }
+
++ Response 503 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Certificate eligibility check timed out"
+                    }
+                ]
+            }
+
+
+### Enable Managed Certificate [POST /v1/tracking-domains/{domain}/certificate/enable]
+
+Enable managed TLS certificate for an existing tracking domain. This initiates the certificate issuance process using Let's Encrypt. The domain must be verified and point to a V2 endpoint (`v2.spgo.io` or `eu.v2.spgo.io`) before enabling managed certificates. Once enabled, SparkPost will automatically issue and renew TLS certificates for the domain.
+
+After receiving a successful response, monitor the domain's `status.tls_status` field to track the certificate issuance progress. The TLS status will change from `pending` to `valid` once the certificate is successfully issued. Other TLS-related fields will also be updated automatically: `uses_managed_certificate` and `secure` will be set to true, and `port` will be set to 443.
+
+For more information, see the <a target="_blank" href="https://support.sparkpost.com/docs/tech-resources/managed-https-for-tracking-domains">Managed HTTPS guide</a>.
+
++ Parameters
+    + domain (required, case insensitive, string, `example.domain.com`)
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "results": {
+                    "message": "Certificate issuance initiated for example.domain.com"
+                }
+            }
+
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Domain must be verified before enabling managed certificates"
+                    }
+                ]
+            }
+
++ Response 404 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "resource not found"
+                    }
+                ]
+            }
+
++ Response 422 (application/json)
+
+    + Body
+
+            {
+                "errors": [
+                    {
+                        "message": "Managed certificates are not available for this domain. Please use a CDN or reverse proxy instead."
                     }
                 ]
             }
