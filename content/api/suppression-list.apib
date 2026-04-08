@@ -246,9 +246,10 @@ If your account has subaccounts, please provide the `X-MSYS-SUBACCOUNT` header w
 
 ##### Deleting from mailing lists
 
-Use the `list_id` query parameter to delete the suppression specifically from that mailing list.
+Use the `list_id` query parameter to control which suppression entries are deleted:
 - Use `?list_id=newsletter-weekly.example1.com` to delete the suppression from a specific mailing list.
-- Omit the parameter to delete the suppression across all mailing lists (account-wide).
+- Use `?list_id=` (empty value) to delete only the account-level suppression entry (not bound to any mailing list).
+- Omit the parameter to delete **all** suppression entries for the recipient (account-level and all list-specific).
 
 
 + Data Structure
