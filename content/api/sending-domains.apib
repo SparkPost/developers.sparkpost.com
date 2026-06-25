@@ -97,7 +97,8 @@ Once it is verified through one of those two methods, you can use it as a bounce
             Value used as the Signing Domain Identifier (SDID). This will be used in the `d=` field of the DKIM Signature. <br /> Only writable by <span class="label label-warning"><strong>Enterprise</strong></span> accounts.
         + public (string) - Value used as the public key which will be retrieved from the DNS of the sending domain.
         + selector (string) - Value used as the DomainKey selector which indicates the DKIM public key location.
-        + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.** 
+        + headers (string) - Header fields to be included in the DKIM signature. **This field is currently ignored.**
+        + dkim_key_length (number) - Size, in bits, of the RSA modulus of the stored DKIM key (e.g. `2048`). Derived from the public key on each read, so it always reflects the actual key currently in use for the domain.
     + shared_with_subaccounts (boolean) - Whether this domain can be used by subaccounts. Only available to domains belonging to a primary account.
     + subaccount_id (number) - The subaccount ID that the sending domain belongs to. Only available to domains belonging to a subaccount.
     + is_default_bounce_domain (boolean)
@@ -179,7 +180,8 @@ In case the sending domain gets blocked due to compliance validations, an HTTP 4
                     "public": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+W6scd3XWwvC/hPRksfDYFi3ztgyS9OSqnnjtNQeDdTSD1DRx/xFar2wjmzxp2+SnJ5pspaF77VZveN3P/HVmXZVghr3asoV9WBx/uW1nDIUxU35L4juXiTwsMAbgMyh3NqIKTNKyMDy4P8vpEhtH1iv/BrwMdBjHDVCycB8WnwIDAQAB",
                     "selector": "scph0316",
                     "signing_domain": "example1.com",
-                    "headers": "from:to:subject:date"
+                    "headers": "from:to:subject:date",
+                    "dkim_key_length": 2048
                 }
             }
         }
