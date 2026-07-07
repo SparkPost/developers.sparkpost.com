@@ -12,6 +12,8 @@ To set the recipients you can include all recipients in the request or use a [st
 
 The content of the messages can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), a [stored template](#transmissions-post-send-a-template), an [A/B test](#transmissions-post-send-an-a-b-test), or raw [RFC822 content](#transmissions-post-send-rfc822-content). Each method has different use cases they are best suited for. All of these types of content can use the substitution data and metadata to create a unique message for each recipient.
 
+To quickly send a test of a stored template to a few recipients while editing it, use [Send a Test Email](#transmissions-post-send-a-test-email) instead of assembling a full transmission.
+
 Learn about [how to optimize your sending](https://www.sparkpost.com/docs/tech-resources/smtp-rest-api-performance/) with SparkPost.
 
 ### The Sandbox Domain
@@ -527,6 +529,88 @@ Content headers are not generated for transmissions providing RFC822 content. Th
                 }
             ]
         }
+
+## Send a Test Email [/v1/transmissions/test-send]
+
+Send a test email of a stored template to a small set of recipients. This is a scoped alternative to [creating a full transmission](#transmissions-post-create-a-transmission), designed for the template-editing workflow: you can send either the draft or the published version of a stored template to up to 5 recipients without assembling a complete transmission request.
+
+<Banner status="info">This endpoint requires the <code>templates/test-send</code> grant, which is held by the <strong>Templates</strong>, <strong>Developer</strong>, and <strong>Subaccount Developer</strong> roles, and by custom users assigned the <strong>Templates</strong> policy. Users with the full <strong>Transmissions: Read/Write</strong> grant can also call it. It is currently available to web-app sessions only and cannot be assigned to API keys yet.</Banner>
+
+Test sends are **real messages**. They count toward your daily and monthly [sending limits](#header-sending-limits) and account usage, generate the same events as any other message, and respect suppression lists (this cannot be bypassed).
+
+If the template's `from` address uses the [sandbox domain](#header-the-sandbox-domain), sandbox mode is applied automatically by the service; all sandbox rules still apply (the `my-first-email` template only, and the account's lifetime sandbox limit).
+
+Draft and published versions are resolved exactly as they are for the main transmissions endpoint. A missing draft or published version produces the same errors as a regular template transmission.
+
+<Banner status="info">This endpoint is rate limited to 6 requests per minute, per IP address. Exceeding this limit returns a <code>429</code> response.</Banner>
+
+### Send a Test Email [POST]
+
++ Data Structure
+    + template_id (string, required) - ID of the stored template to test.
+    + draft (boolean) - Whether to send the template's draft version. When `false`, the published version is sent.
+        + Default: false
+    + recipients (array[string], required) - A list of 1 to 5 recipient email addresses, given as plain strings (not [recipient objects](/api/recipient-lists/#header-recipient-object)).
+    + substitution_data (object) - Transmission-level [substitution data](/api/template-language/), as used in a regular transmission.
+    + metadata (object) - Transmission-level metadata, as used in a regular transmission.
+    + options (object) - Standard [transmission options](#header-request-body) (such as tracking flags, `transactional`, and `inline_css`). `skip_suppression` and `start_time` are not permitted for test sends, and `sandbox` is ignored — the service sets it automatically based on the template's `from` domain.
+
+Any top-level field not listed above is rejected.
+
+All validation failures return a `422` status with the standard error body (`{"errors": [{"message": "...", "code": "..."}]}`). More than one error may be returned at once when a request has multiple problems.
+
+| Case | code | message |
+|------|------|---------|
+| `template_id` missing | 1400 | template_id is required |
+| `template_id` not a non-empty string | 1300 | template_id must be a non-empty string |
+| `draft` not a boolean | 1300 | draft must be a Boolean |
+| `recipients` missing | 1400 | recipients is required |
+| `recipients` not an array | 1300 | recipients must be an array of email addresses |
+| `recipients` empty | 5002 | at least one recipient is required |
+| More than 5 recipients | 5003 | a maximum of 5 recipients is allowed for test sends |
+| Invalid email in `recipients` | 1300 | invalid recipients[&lt;index&gt;] email address |
+| `substitution_data`, `metadata`, or `options` not an object | 1300 | &lt;field&gt; must be a JSON object |
+| `options.skip_suppression` present | 1302 | options.skip_suppression is not permitted for test sends |
+| `options.start_time` present | 1302 | options.start_time is not permitted for test sends |
+| Unknown top-level field | 1302 | unknown field '&lt;name&gt;' is not permitted |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "template_id": "black_friday",
+                "draft": true,
+                "recipients": [
+                    "wilma@flintstone.com",
+                    "fred@flintstone.com"
+                ],
+                "substitution_data": {
+                    "discount": "25%"
+                }
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "total_rejected_recipients": 0,
+                "total_accepted_recipients": 2,
+                "id": "11668787484950529"
+            }
+        }
+
++ Response 422 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "a maximum of 5 recipients is allowed for test sends",
+                    "code": "5003"
+                }
+            ]
+        }
+
 
 ## Scheduled Transmissions [/v1/transmissions]
 
