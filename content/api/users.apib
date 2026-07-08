@@ -1,0 +1,425 @@
+FORMAT: 1A
+title: Users API
+description: Programmatically manage the users on your SparkPost account with an API key.
+
+# Group Users
+
+The Users API lets you list, invite, update, and remove the users on your account, and manage each user's subaccount access, using an API key rather than the web app.
+
+<Banner status="warning"><strong>Note</strong>: This API is available only to accounts that have user management via API keys enabled. See <a href="#header-prerequisites">Prerequisites</a> below. Contact <a href="https://www.sparkpost.com/contact-support/">SparkPost support</a> to request access.</Banner>
+
+### Prerequisites
+
+Two conditions must both be met before an API key can call the Users API:
+
+1. **The account option `allow_user_management_via_api` must be enabled.** This option is enabled only by SparkPost support; it cannot be toggled through the API or the web app. Contact support to request it for your account.
+2. **An admin must attach the `Users: Manage` grant to the API key.** The grant can only be added by an **admin** user through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). It cannot be attached by another API key. Only API keys carry this grant — it is an `api_key`-role grant.
+
+Requests made with a key that lacks the `Users: Manage` grant, or made on an account where the option is not enabled, are rejected with `403 Forbidden`.
+
+<Banner status="info">The <code>Users: Manage</code> grant is intentionally narrower than the user management available in the web app. It does <strong>not</strong> cover two-factor authentication, email verification, SCIM provisioning, or password endpoints, and it does not allow direct password-based user creation (see <a href="#header-invite-a-user">Invite a User</a>).</Banner>
+
+### Roles
+
+When you invite or update a user you assign a **role** through the `access_level` field. The primary-account roles are:
+
+| Role | Description |
+|-------------|-------------------------------------------------------------|
+| `admin` | Full access to the account, including user and billing management. |
+| `developer` | Access to sending and configuration APIs, without account administration. |
+| `reporting` | Read-only access to reporting and analytics. |
+| `templates` | Access limited to managing templates. |
+| `custom` | A role whose permissions are defined by the `access_policies` you supply. |
+
+Subaccount access levels (used only in the `subaccounts` array and in the subaccount-mapping endpoints) are `subaccount_reporting` and `subaccount_developer`.
+
+### Constraints
+
+The following rules are enforced on every Users API request. They protect against privilege escalation and account lockout:
+
+* **Role ceiling.** You can never create or invite a user, or raise a user to a role, more privileged than the role of the user who owns the API key. An admin-owned key can assign up to `admin`; a key owned by a less-privileged user is bounded by that user's role.
+* **Last admin protection.** The last `admin` on an account cannot be deleted or demoted through the API. Such a request is rejected with `400`.
+* **Restricted fields on update.** `password`, `tfa_enabled`, `is_sso`, and `email` cannot be changed through the API key. Sending any of `password`, `tfa_enabled`, or `is_sso` on an update is rejected with `403 Forbidden`; `email` is silently ignored.
+* **Key revocation on owner deletion.** If the admin user who owns a key holding the `Users: Manage` grant is deleted, that key is revoked rather than reassigned to another user.
+
+### User object
+
+Returned by [List Users](#header-list-users).
+
++ Data Structure: User
+    + name (string) - The user's display name, derived from their first and last name.
+    + username (string) - Unique username that identifies the user.
+    + email (string) - The user's email address.
+    + access (enum) - The user's primary-account role.
+        + `admin`
+        + `developer`
+        + `reporting`
+        + `templates`
+        + `custom`
+    + access_policies (array) - The policies granted to the user when `access` is `custom`.
+    + is_sso (boolean) - Whether the user signs in via single sign-on.
+    + email_verified (boolean) - Whether the user has verified their email address.
+    + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
+    + subaccount_id (number) - The subaccount the user is scoped to, if any.
+    + auth_migrated (boolean) - Internal flag indicating the user's authentication has been migrated.
+    + options (object) - User-level options, present only when set.
+    + link (object) - A link to the individual user resource.
+        + href (string)
+        + rel (string)
+
+### Invite object
+
+Returned by [List Pending Invites](#header-list-pending-invites).
+
++ Data Structure: Invite
+    + id (string) - Unique ID for the pending invite. Use it to revoke the invite.
+    + email (string) - The email address the invite was sent to.
+    + from (string) - The email address of the user who created the invite.
+
+### List Users [GET /v1/users]
+
+Returns the users on your account. Superuser accounts are never included, and users with hidden roles are omitted.
+
+The user identified by the API key's owner determines which users are visible; the key owner must be a user on the account.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "name": "Ada Lovelace",
+                    "username": "ada",
+                    "email": "ada@example.com",
+                    "access": "admin",
+                    "is_sso": false,
+                    "email_verified": true,
+                    "tfa_enabled": false,
+                    "auth_migrated": false,
+                    "link": {
+                        "href": "https://api.sparkpost.com/api/v1/users/ada",
+                        "rel": "urn:msys:user"
+                    }
+                },
+                {
+                    "name": "Grace Hopper",
+                    "username": "grace",
+                    "email": "grace@example.com",
+                    "access": "reporting",
+                    "is_sso": false,
+                    "email_verified": true,
+                    "tfa_enabled": true,
+                    "auth_migrated": false,
+                    "link": {
+                        "href": "https://api.sparkpost.com/api/v1/users/grace",
+                        "rel": "urn:msys:user"
+                    }
+                }
+            ]
+        }
+
++ Response 403 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Forbidden"
+                }
+            ]
+        }
+
+### Invite a User [POST /v1/users/invite]
+
+There is no direct, password-based user creation through the API — users are created by **invitation** only. This endpoint creates an invitation and emails the invitee a registration link; the invitee completes registration through that link and sets their own password. The invited user's role is set by `access_level` and is bounded by the [role ceiling](#header-constraints).
+
+Provide `access_level` for a primary-account user, or `subaccounts` to invite a subaccount-scoped user. When `subaccounts` is supplied, a top-level `access_level` is not required.
+
+The response contains the invite `token`.
+
+<Banner status="danger"><strong>Treat the invite <code>token</code> as a credential.</strong> Anyone who holds the token can complete registration as the invited user. Invited users normally complete registration through the emailed link, so you do not need to handle the token yourself; if you do capture it, store and transmit it as securely as you would a password, and never log or share it.</Banner>
+
++ Data Structure
+    + email (string, required) - Email address of the person to invite. Max length: 512 characters.
+    + access_level (enum) - The primary-account role to assign. Required unless `subaccounts` is supplied.
+        + `admin`
+        + `developer`
+        + `reporting`
+        + `templates`
+        + `custom`
+    + access_policies (array) - The policies to grant. Only valid when `access_level` is `custom`.
+    + subaccounts (array) - Invite the user with access to one or more subaccounts instead of the primary account. Between 1 and 25 entries.
+        + (object)
+            + subaccount_id (number, required) - The subaccount ID.
+            + access_level (enum, required) - The subaccount access level.
+                + `subaccount_reporting`
+                + `subaccount_developer`
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "email": "newuser@example.com",
+                "access_level": "reporting"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+                "token": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "email is a required parameter",
+                    "param": "email",
+                    "value": null
+                }
+            ]
+        }
+
++ Response 403 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Forbidden"
+                }
+            ]
+        }
+
+### List Pending Invites [GET /v1/users/pending-invites/all]
+
+Returns the invitations on your account that have not yet been accepted.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+                    "email": "newuser@example.com",
+                    "from": "ada@example.com"
+                }
+            ]
+        }
+
+### Revoke a Pending Invite [DELETE /v1/users/pending-invites/{id}]
+
+Revokes a pending invitation so its registration link can no longer be used.
+
++ Parameters
+    + id (required, string, `3f2504e0-4f89-41d3-9a0c-0305e82c3301`) - The invite ID from [List Pending Invites](#header-list-pending-invites).
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 204
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "User invite ID does not exist"
+                }
+            ]
+        }
+
+### Update a User [PUT /v1/users/{username}]
+
+Updates an existing user. You may change `first_name`, `last_name`, `access_level` (and, for a `custom` role, `access_policies`), and `options`.
+
+<Banner status="warning"><strong>The following fields cannot be changed through an API key</strong>: <code>password</code>, <code>tfa_enabled</code>, <code>is_sso</code>, and <code>email</code>. Including <code>password</code>, <code>tfa_enabled</code>, or <code>is_sso</code> in the request is rejected with <code>403 Forbidden</code>; <code>email</code> is ignored.</Banner>
+
+Changing `access_level` is subject to the [role ceiling](#header-constraints), and demoting the account's last `admin` is rejected with `400`.
+
++ Data Structure
+    + first_name (string) - The user's first name.
+    + last_name (string) - The user's last name.
+    + access_level (enum) - The primary-account role to assign.
+        + `admin`
+        + `developer`
+        + `reporting`
+        + `templates`
+        + `custom`
+    + access_policies (array) - The policies to grant. Only valid when `access_level` is `custom`.
+    + options (object) - User-level options.
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user to update.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "first_name": "Grace",
+                "last_name": "Hopper",
+                "access_level": "developer"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "message": "Successfully modified user grace"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Cannot change the access level of the last admin user on the account."
+                }
+            ]
+        }
+
++ Response 403 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Forbidden"
+                }
+            ]
+        }
+
+### Delete a User [DELETE /v1/users/{username}]
+
+Deletes a user from your account.
+
+You cannot delete the user who owns the API key you are calling with, a user that belongs to a different account, or the account's last `admin`.
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user to delete.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 204
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Cannot delete the last admin user on the account."
+                }
+            ]
+        }
+
++ Response 403 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Forbidden"
+                }
+            ]
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "User does not exist"
+                }
+            ]
+        }
+
+### Add a Subaccount Mapping [POST /v1/users/{username}/subaccounts]
+
+Grants a user access to a subaccount at the given access level. If the user already has access to the subaccount, the access level is updated.
+
++ Data Structure
+    + subaccount_id (number, required) - The subaccount to grant access to.
+    + access_level (enum, required) - The access level to grant on the subaccount.
+        + `subaccount_reporting`
+        + `subaccount_developer`
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "subaccount_id": 123,
+                "access_level": "subaccount_reporting"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "message": "Subaccount access granted"
+            }
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "access_level must be one of: subaccount_reporting, subaccount_developer"
+                }
+            ]
+        }
+
+### Remove a Subaccount Mapping [DELETE /v1/users/{username}/subaccounts/{subaccountId}]
+
+Removes a user's access to a subaccount.
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user.
+    + subaccountId (required, number, `123`) - The subaccount to remove access to.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
++ Response 204
