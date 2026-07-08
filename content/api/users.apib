@@ -12,10 +12,10 @@ The Users API lets you list, invite, update, and remove the users on your accoun
 
 Two conditions must both be met before an API key can call the Users API:
 
-1. **The account option `allow_user_management_via_api` must be enabled.** This option is enabled only by SparkPost support; it cannot be toggled through the API or the web app. Contact support to request it for your account.
+1. **User management via API keys must be enabled on your account.** This is enabled only by SparkPost support. Contact support to request access for your account.
 2. **An admin must attach the `Users: Manage` grant to the API key.** The grant can only be added by an **admin** user through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). It cannot be attached by another API key. Only API keys carry this grant — it is an `api_key`-role grant.
 
-Requests made with a key that lacks the `Users: Manage` grant, or made on an account where the option is not enabled, are rejected with `403 Forbidden`.
+Requests made with a key that lacks the `Users: Manage` grant, or made on an account where the feature is not enabled, are rejected with `403 Forbidden`.
 
 <Banner status="info">The <code>Users: Manage</code> grant is intentionally narrower than the user management available in the web app. It does <strong>not</strong> cover two-factor authentication, email verification, SCIM provisioning, or password endpoints, and it does not allow direct password-based user creation (see <a href="#header-invite-a-user">Invite a User</a>).</Banner>
 
@@ -39,12 +39,11 @@ The following rules are enforced on every Users API request. They protect agains
 
 * **Role ceiling.** You can never create or invite a user, or raise a user to a role, more privileged than the role of the user who owns the API key. An admin-owned key can assign up to `admin`; a key owned by a less-privileged user is bounded by that user's role.
 * **Last admin protection.** The last `admin` on an account cannot be deleted or demoted through the API. Such a request is rejected with `400`.
-* **Restricted fields on update.** `password`, `tfa_enabled`, `is_sso`, and `email` cannot be changed through the API key. Sending any of `password`, `tfa_enabled`, or `is_sso` on an update is rejected with `403 Forbidden`; `email` is silently ignored.
 * **Key revocation on owner deletion.** If the admin user who owns a key holding the `Users: Manage` grant is deleted, that key is revoked rather than reassigned to another user.
 
 ### User object
 
-Returned by [List Users](#header-list-users).
+Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retrieve-a-user).
 
 + Data Structure: User
     + name (string) - The user's display name, derived from their first and last name.
@@ -61,11 +60,7 @@ Returned by [List Users](#header-list-users).
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + subaccount_id (number) - The subaccount the user is scoped to, if any.
-    + auth_migrated (boolean) - Internal flag indicating the user's authentication has been migrated.
     + options (object) - User-level options, present only when set.
-    + link (object) - A link to the individual user resource.
-        + href (string)
-        + rel (string)
 
 ### Invite object
 
@@ -75,12 +70,24 @@ Returned by [List Pending Invites](#header-list-pending-invites).
     + id (string) - Unique ID for the pending invite. Use it to revoke the invite.
     + email (string) - The email address the invite was sent to.
     + from (string) - The email address of the user who created the invite.
+    + access_level (enum) - The role the invited user will be assigned when they register.
+        + `admin`
+        + `developer`
+        + `reporting`
+        + `templates`
+        + `custom`
+    + expires (number) - Unix timestamp, in epoch seconds, at which the invitation expires.
+
+### Invite lifecycle
+
+* **Invitations expire after 3 days.** Once an invitation expires, its registration link no longer works.
+* **Expired invitations are removed automatically.** They stop appearing in [List Pending Invites](#header-list-pending-invites) once they expire; you do not need to clean them up.
+* **There is no resend.** To give someone another chance to register, [invite the same email address again](#header-invite-a-user). This creates a new, independent invitation with its own token and expiry; the earlier invitation keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
+* **Invite creation is rate limited.** If you create invitations too quickly, requests are rejected with `429 Too Many Requests`. Wait before retrying.
 
 ### List Users [GET /v1/users]
 
-Returns the users on your account. Superuser accounts are never included, and users with hidden roles are omitted.
-
-The user identified by the API key's owner determines which users are visible; the key owner must be a user on the account.
+Returns the users on your account.
 
 + Request
 
@@ -100,12 +107,7 @@ The user identified by the API key's owner determines which users are visible; t
                     "access": "admin",
                     "is_sso": false,
                     "email_verified": true,
-                    "tfa_enabled": false,
-                    "auth_migrated": false,
-                    "link": {
-                        "href": "https://api.sparkpost.com/api/v1/users/ada",
-                        "rel": "urn:msys:user"
-                    }
+                    "tfa_enabled": false
                 },
                 {
                     "name": "Grace Hopper",
@@ -114,12 +116,7 @@ The user identified by the API key's owner determines which users are visible; t
                     "access": "reporting",
                     "is_sso": false,
                     "email_verified": true,
-                    "tfa_enabled": true,
-                    "auth_migrated": false,
-                    "link": {
-                        "href": "https://api.sparkpost.com/api/v1/users/grace",
-                        "rel": "urn:msys:user"
-                    }
+                    "tfa_enabled": true
                 }
             ]
         }
@@ -130,6 +127,44 @@ The user identified by the API key's owner determines which users are visible; t
             "errors": [
                 {
                     "message": "Forbidden"
+                }
+            ]
+        }
+
+### Retrieve a User [GET /v1/users/{username}]
+
+Returns a single user by username.
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user to retrieve.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": {
+                "name": "Grace Hopper",
+                "username": "grace",
+                "email": "grace@example.com",
+                "access": "reporting",
+                "is_sso": false,
+                "email_verified": true,
+                "tfa_enabled": true
+            }
+        }
+
++ Response 404 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "User does not exist"
                 }
             ]
         }
@@ -204,9 +239,19 @@ The response contains the invite `token`.
             ]
         }
 
-### List Pending Invites [GET /v1/users/pending-invites/all]
++ Response 429 (application/json)
 
-Returns the invitations on your account that have not yet been accepted.
+        {
+            "errors": [
+                {
+                    "message": "Too many invite requests. Please try again later."
+                }
+            ]
+        }
+
+### List Pending Invites [GET /v1/users/pending-invites]
+
+Returns the invitations on your account that have not yet been accepted. Expired invitations are not included.
 
 + Request
 
@@ -222,7 +267,9 @@ Returns the invitations on your account that have not yet been accepted.
                 {
                     "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
                     "email": "newuser@example.com",
-                    "from": "ada@example.com"
+                    "from": "ada@example.com",
+                    "access_level": "reporting",
+                    "expires": 1720656000
                 }
             ]
         }
@@ -254,9 +301,7 @@ Revokes a pending invitation so its registration link can no longer be used.
 
 ### Update a User [PUT /v1/users/{username}]
 
-Updates an existing user. You may change `first_name`, `last_name`, `access_level` (and, for a `custom` role, `access_policies`), and `options`.
-
-<Banner status="warning"><strong>The following fields cannot be changed through an API key</strong>: <code>password</code>, <code>tfa_enabled</code>, <code>is_sso</code>, and <code>email</code>. Including <code>password</code>, <code>tfa_enabled</code>, or <code>is_sso</code> in the request is rejected with <code>403 Forbidden</code>; <code>email</code> is ignored.</Banner>
+Updates an existing user. Through this endpoint you can change the following fields: `first_name`, `last_name`, `access_level` (and, when `access_level` is `custom`, `access_policies`), and `options`.
 
 Changing `access_level` is subject to the [role ceiling](#header-constraints), and demoting the account's last `admin` is rejected with `400`.
 
@@ -360,6 +405,33 @@ You cannot delete the user who owns the API key you are calling with, a user tha
             "errors": [
                 {
                     "message": "User does not exist"
+                }
+            ]
+        }
+
+### List a User's Subaccounts [GET /v1/users/{username}/subaccounts]
+
+Returns the subaccounts a user has been granted access to, along with their access level on each.
+
++ Parameters
+    + username (required, string, `grace`) - The username of the user.
+
++ Request
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "subaccount_id": 123,
+                    "subaccount_name": "Joe's Garage",
+                    "access_level": "subaccount_reporting",
+                    "status": "active"
                 }
             ]
         }
