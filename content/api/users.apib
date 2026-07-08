@@ -6,18 +6,16 @@ description: Programmatically manage the users on your SparkPost account with an
 
 The Users API lets you list, invite, update, and remove the users on your account, and manage each user's subaccount access, using an API key rather than the web app.
 
-<Banner status="warning"><strong>Note</strong>: This API is available only to accounts that have user management via API keys enabled. See <a href="#header-prerequisites">Prerequisites</a> below. Contact <a href="https://www.sparkpost.com/contact-support/">SparkPost support</a> to request access.</Banner>
-
 ### Prerequisites
 
-Two conditions must both be met before an API key can call the Users API:
+To call the Users API, an API key must hold one of two grants, and an **admin** must attach the grant to the key through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). A grant cannot be attached by another API key. Both are `api_key`-role grants.
 
-1. **User management via API keys must be enabled on your account.** This is enabled only by SparkPost support. Contact support to request access for your account.
-2. **An admin must attach the `Users: Manage` grant to the API key.** The grant can only be added by an **admin** user through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). It cannot be attached by another API key. Only API keys carry this grant — it is an `api_key`-role grant.
+* **`Users: View`** — read-only access, covering the `GET` endpoints only: [List Users](#header-list-users), [Retrieve a User](#header-retrieve-a-user), [List Pending Invites](#header-list-pending-invites), and [List a User's Subaccounts](#header-list-a-users-subaccounts).
+* **`Users: Manage`** — full management. Every write endpoint (invite, update, delete, and the subaccount-mapping changes) requires this grant.
 
-Requests made with a key that lacks the `Users: Manage` grant, or made on an account where the feature is not enabled, are rejected with `403 Forbidden`.
+Requests made with a key that holds neither grant, or that attempt a write with only `Users: View`, are rejected with `403 Forbidden`.
 
-<Banner status="info">The <code>Users: Manage</code> grant is intentionally narrower than the user management available in the web app. It does <strong>not</strong> cover two-factor authentication, email verification, SCIM provisioning, or password endpoints, and it does not allow direct password-based user creation (see <a href="#header-invite-a-user">Invite a User</a>).</Banner>
+<Banner status="info">These grants are intentionally narrower than the user management available in the web app. They do <strong>not</strong> cover two-factor authentication, email verification, SCIM provisioning, or password endpoints, and they do not allow direct password-based user creation (see <a href="#header-invite-a-user">Invite a User</a>).</Banner>
 
 ### Roles
 
