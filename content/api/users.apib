@@ -41,13 +41,13 @@ The following rules are enforced on every Users API request. They protect agains
 
 ### User object
 
-Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retrieve-a-user).
+Returned by [List Users](#header-list-users).
 
 + Data Structure: User
     + name (string) - The user's display name, derived from their first and last name.
     + username (string) - Unique username that identifies the user.
     + email (string) - The user's email address.
-    + access (enum) - The user's primary-account role.
+    + access (enum) - The user's primary-account role. Empty for subaccount-scoped users.
         + `admin`
         + `developer`
         + `reporting`
@@ -58,18 +58,49 @@ Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retri
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + subaccount_id (number) - The subaccount the user is scoped to, if any.
-    + subaccounts (array) - The subaccounts a subaccount-scoped user has access to, and their access level on each. Present only for subaccount-scoped users; when it is present, the top-level `access` and `subaccount_id` fields are omitted.
+    + subaccounts (array) - The subaccounts a subaccount-scoped user has access to, and their access level on each. Present only for subaccount-scoped users.
+        + (object)
+            + subaccount_id (number) - The subaccount ID.
+            + access_level (enum) - The user's access level on the subaccount.
+                + `subaccount_reporting`
+                + `subaccount_developer`
+            + subaccount_name (string) - The subaccount's display name.
+    + options (object) - User-level options, present only when set.
+
+### Retrieved user object
+
+Returned by [Retrieve a User](#header-retrieve-a-user). This is a richer shape than the [User object](#header-user-object) returned by List Users: it has `first_name` and `last_name` in place of `name`, uses `access_level` for the primary-account role, and adds `created`, `updated`, and an always-present `subaccounts` array.
+
++ Data Structure: RetrievedUser
+    + username (string) - Unique username that identifies the user.
+    + first_name (string) - The user's first name.
+    + last_name (string) - The user's last name.
+    + email (string) - The user's email address.
+    + access_level (enum) - The user's primary-account role. Omitted for subaccount-scoped users.
+        + `admin`
+        + `developer`
+        + `reporting`
+        + `templates`
+        + `custom`
+    + access_policies (array) - The policies granted to the user when `access_level` is `custom`.
+    + subaccount_id (number) - The subaccount the user is scoped to, if any. Omitted when `subaccounts` is non-empty.
+    + is_sso (boolean) - Whether the user signs in via single sign-on.
+    + email_verified (boolean) - Whether the user has verified their email address.
+    + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
+    + options (object) - User-level options, present only when set.
+    + created (string) - ISO 8601 timestamp of when the user was created.
+    + updated (string) - ISO 8601 timestamp of when the user was last updated.
+    + subaccounts (array) - The subaccounts the user has access to, and their access level on each. Always present; an empty array for a user with no subaccount mappings. When it is non-empty, the top-level `access_level` and `subaccount_id` fields are omitted.
         + (object)
             + subaccount_id (number) - The subaccount ID.
             + subaccount_name (string) - The subaccount's display name.
             + access_level (enum) - The user's access level on the subaccount.
                 + `subaccount_reporting`
                 + `subaccount_developer`
-            + status (enum) - The subaccount's status. Returned only by [Retrieve a User](#header-retrieve-a-user).
+            + status (enum) - The subaccount's status.
                 + active
                 + suspended
                 + terminated
-    + options (object) - User-level options, present only when set.
 
 ### Invite object
 
@@ -142,9 +173,7 @@ Returns the users on your account.
 
 ### Retrieve a User [GET /v1/users/{username}]
 
-Returns a single user by username.
-
-For a subaccount-scoped user, the response embeds the `subaccounts` array in place of the top-level `access` and `subaccount_id` fields.
+Returns a single user by username. The response uses the [Retrieved user object](#header-retrieved-user-object) shape, which differs from the [User object](#header-user-object) returned by List Users.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to retrieve.
@@ -160,13 +189,17 @@ For a subaccount-scoped user, the response embeds the `subaccounts` array in pla
 
         {
             "results": {
-                "name": "Grace Hopper",
                 "username": "grace",
+                "first_name": "Grace",
+                "last_name": "Hopper",
                 "email": "grace@example.com",
-                "access": "reporting",
+                "access_level": "reporting",
                 "is_sso": false,
                 "email_verified": true,
-                "tfa_enabled": true
+                "tfa_enabled": true,
+                "created": "2015-01-11T08:00:00.000Z",
+                "updated": "2018-04-11T08:00:00.000Z",
+                "subaccounts": []
             }
         }
 
@@ -176,12 +209,15 @@ For a subaccount-scoped user, the response embeds the `subaccounts` array in pla
 
         {
             "results": {
-                "name": "Joe Mechanic",
                 "username": "joe",
+                "first_name": "Joe",
+                "last_name": "Mechanic",
                 "email": "joe@example.com",
                 "is_sso": false,
                 "email_verified": true,
                 "tfa_enabled": false,
+                "created": "2015-01-11T08:00:00.000Z",
+                "updated": "2018-04-11T08:00:00.000Z",
                 "subaccounts": [
                     {
                         "subaccount_id": 123,
