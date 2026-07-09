@@ -144,7 +144,7 @@ Returns the users on your account.
 
 Returns a single user by username.
 
-For a subaccount-scoped user, the response embeds a `subaccounts` array describing the subaccounts the user can access and their access level on each. When `subaccounts` is present, the top-level `access` and `subaccount_id` fields are omitted.
+For a subaccount-scoped user, the response embeds the `subaccounts` array in place of the top-level `access` and `subaccount_id` fields.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to retrieve.
