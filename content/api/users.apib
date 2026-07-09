@@ -10,7 +10,7 @@ The Users API lets you list, invite, update, and remove the users on your accoun
 
 To call the Users API, an API key must hold one of two grants, and an **admin** must attach the grant to the key through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). A grant cannot be attached by another API key. Both are `api_key`-role grants.
 
-* **`Users: View`** — read-only access, covering the `GET` endpoints only: [List Users](#header-list-users), [Retrieve a User](#header-retrieve-a-user), [List Pending Invites](#header-list-pending-invites), and [List a User's Subaccounts](#header-list-a-users-subaccounts).
+* **`Users: View`** — read-only access, covering the `GET` endpoints only: [List Users](#header-list-users), [Retrieve a User](#header-retrieve-a-user), and [List Pending Invites](#header-list-pending-invites).
 * **`Users: Manage`** — full management. Every write endpoint (invite, update, delete, and the subaccount-mapping changes) requires this grant.
 
 Requests made with a key that holds neither grant, or that attempt a write with only `Users: View`, are rejected with `403 Forbidden`.
@@ -58,6 +58,17 @@ Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retri
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + subaccount_id (number) - The subaccount the user is scoped to, if any.
+    + subaccounts (array) - The subaccounts a subaccount-scoped user has access to, and their access level on each. Present only for subaccount-scoped users; when it is present, the top-level `access` and `subaccount_id` fields are omitted.
+        + (object)
+            + subaccount_id (number) - The subaccount ID.
+            + subaccount_name (string) - The subaccount's display name.
+            + access_level (enum) - The user's access level on the subaccount.
+                + `subaccount_reporting`
+                + `subaccount_developer`
+            + status (enum) - The subaccount's status. Returned only by [Retrieve a User](#header-retrieve-a-user).
+                + active
+                + suspended
+                + terminated
     + options (object) - User-level options, present only when set.
 
 ### Invite object
@@ -133,6 +144,8 @@ Returns the users on your account.
 
 Returns a single user by username.
 
+For a subaccount-scoped user, the response embeds a `subaccounts` array describing the subaccounts the user can access and their access level on each. When `subaccounts` is present, the top-level `access` and `subaccount_id` fields are omitted.
+
 + Parameters
     + username (required, string, `grace`) - The username of the user to retrieve.
 
@@ -154,6 +167,29 @@ Returns a single user by username.
                 "is_sso": false,
                 "email_verified": true,
                 "tfa_enabled": true
+            }
+        }
+
++ Response 200 (application/json)
+
+    A subaccount-scoped user.
+
+        {
+            "results": {
+                "name": "Joe Mechanic",
+                "username": "joe",
+                "email": "joe@example.com",
+                "is_sso": false,
+                "email_verified": true,
+                "tfa_enabled": false,
+                "subaccounts": [
+                    {
+                        "subaccount_id": 123,
+                        "subaccount_name": "Joe's Garage",
+                        "access_level": "subaccount_reporting",
+                        "status": "active"
+                    }
+                ]
             }
         }
 
@@ -403,33 +439,6 @@ You cannot delete the user who owns the API key you are calling with, a user tha
             "errors": [
                 {
                     "message": "User does not exist"
-                }
-            ]
-        }
-
-### List a User's Subaccounts [GET /v1/users/{username}/subaccounts]
-
-Returns the subaccounts a user has been granted access to, along with their access level on each.
-
-+ Parameters
-    + username (required, string, `grace`) - The username of the user.
-
-+ Request
-
-    + Headers
-
-            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
-            Accept: application/json
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "subaccount_id": 123,
-                    "subaccount_name": "Joe's Garage",
-                    "access_level": "subaccount_reporting",
-                    "status": "active"
                 }
             ]
         }
