@@ -371,21 +371,18 @@ Revokes a pending invitation so its registration link can no longer be used.
 
 ### Update a User [PUT /v1/users/{username}]
 
-Updates an existing user. Through this endpoint you can change the following fields: `first_name`, `last_name`, `access_level` (and, when `access_level` is `custom`, `access_policies`), and `options`.
+Changes a user's role. The request accepts only `access_level` (and `access_policies` when `access_level` is `custom`); a request that contains any other field is rejected with `403 Forbidden`.
 
 Changing `access_level` is subject to the [role ceiling](#header-constraints), and demoting the account's last `admin` is rejected with `400`.
 
 + Data Structure
-    + first_name (string) - The user's first name.
-    + last_name (string) - The user's last name.
-    + access_level (enum) - The primary-account role to assign.
+    + access_level (enum, required) - The primary-account role to assign.
         + `admin`
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
-    + access_policies (array) - The policies to grant. Only valid when `access_level` is `custom`.
-    + options (object) - User-level options.
+    + access_policies (array) - The policies to grant. Required when `access_level` is `custom`, and not allowed otherwise.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to update.
@@ -399,8 +396,6 @@ Changing `access_level` is subject to the [role ceiling](#header-constraints), a
     + Body
 
             {
-                "first_name": "Grace",
-                "last_name": "Hopper",
                 "access_level": "developer"
             }
 
