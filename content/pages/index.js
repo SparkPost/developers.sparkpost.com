@@ -335,7 +335,7 @@ const IndexPage = props => {
               >
                 Start sending with the most powerful email platform. Check out
                 the{' '}
-                <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/">
+                <Link to="https://docs.sparkpost.com/docs/getting-started/getting-started-sparkpost/">
                   full guide
                 </Link>{' '}
                 to get started.
@@ -360,7 +360,7 @@ const IndexPage = props => {
                     Add the domain you want to send from and verify you own it
                     through DNS settings.
                   </p>
-                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#preparing-your-from-address">
+                  <Link to="https://docs.sparkpost.com/docs/getting-started/getting-started-sparkpost/#preparing-your-from-address">
                     Add a sending domain <i className="fa fa-chevron-right" />
                   </Link>
                 </StartStep>
@@ -373,7 +373,7 @@ const IndexPage = props => {
                     of our official or community supported{' '}
                     <Link to="#client-libraries">client libraries</Link>.
                   </p>
-                  <Link to="https://www.sparkpost.com/docs/getting-started/getting-started-sparkpost/#sending-email">
+                  <Link to="https://docs.sparkpost.com/docs/getting-started/getting-started-sparkpost/#sending-email">
                     Send your first email <i className="fa fa-chevron-right" />
                   </Link>
                 </StartStep>

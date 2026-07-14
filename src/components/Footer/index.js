@@ -120,7 +120,7 @@ export default () => (
           <FooterColumn md={2} sm={4} xs={12}>
             <Header uppercase>Support</Header>
             <List>
-              <Item to="https://www.sparkpost.com/docs/">Help &amp; Docs</Item>
+              <Item to="https://docs.sparkpost.com/docs/">Help &amp; Docs</Item>
               <Item to="https://www.sparkpost.com/report-abuse/">
                 Report Abuse
               </Item>
