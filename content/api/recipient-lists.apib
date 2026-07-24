@@ -55,7 +55,7 @@ Recipients are described in an array of objects with the following attributes:
     + options (object) - Per-recipient engagement tracking overrides. Each field, when set, takes precedence over the corresponding [transmission-level option](/api/transmissions/#header-request-body) (and over the template, account, and global defaults) for this recipient only. When a field is omitted, the recipient inherits the transmission-level value.<br /><br /><strong>Honored only for inline recipients supplied directly in the Transmissions API `recipients` array.</strong> These fields are ignored for recipients stored in a [recipient list](#header-recipient-list-object).
         + open_tracking (boolean) - Enable or disable open tracking for this recipient.
         + click_tracking (boolean) - Enable or disable click tracking for this recipient.
-        + initial_open (boolean) - Enable or disable initial open tracking for this recipient. As at the transmission level, initial open tracking also requires open tracking to be enabled for the recipient in order to take effect.
+        + initial_open (boolean) - Enable or disable initial open tracking for this recipient. Resolved independently of `open_tracking`: when set here, this value is used for the recipient (you do **not** also need to set `open_tracking` on the recipient). When omitted here, the effective `open_tracking` &mdash; the recipient's value if set, otherwise the inherited transmission/template/account value &mdash; drives it exactly as at the [transmission level](/api/transmissions/#header-request-body): if effective open tracking is disabled, initial open tracking is disabled; if enabled, the `initial_open_pixel_tracking` account option applies.
 + Sample
     
     ```
