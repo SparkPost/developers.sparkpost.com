@@ -83,7 +83,7 @@ You can create a transmission in a number of ways.
                 + email (string, required) - The email address to send from.
         + reply_to (string) - Email address used to compose the email's "Reply-To" header.
         + list_id (string) - Sets the `List-Id` header for mailing list identification (RFC 2919). Used by email clients for filtering and organization. Format: `<list-identifier>` (e.g., `<marketing@example.com>`).
-    + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list).
+    + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list). Inline recipient objects may include an [`options` object](/api/recipient-lists/#header-recipient-object) to override `open_tracking`, `click_tracking`, and `initial_open` for that recipient; these recipient-level values take precedence over the transmission `options`. (Per-recipient overrides are ignored when using a stored recipient list.)
         + (array)
         + (object)
     + content (object, required) - Content used to generate the messages. The content can be set in 4 different ways: [inline content](#transmissions-post-send-inline-content), [stored template](#transmissions-post-send-a-template), [A/B test](#transmissions-post-send-an-a-b-test), or [RFC822 content](#transmissions-post-send-rfc822-content).
@@ -140,6 +140,9 @@ You can create a transmission in a number of ways.
           "substitution_data": {
             "customer_type": "Platinum",
             "year": "Freshman"
+          },
+          "options": {
+            "open_tracking": false
           }
         }
       ],
