@@ -4,22 +4,22 @@ description: Programmatically manage the users on your SparkPost account with an
 
 # Group Users
 
-The Users API lets you list, invite, update, and remove the users on your account, and manage each user's subaccount access, using an API key rather than the web app.
+Use the Users API to manage your account's users from code instead of the web app. You can list users, invite new ones, change roles, remove users, and manage each user's subaccount access.
 
 ### Prerequisites
 
-To call the Users API, an API key must hold one of two grants, and an **admin** must attach the grant to the key through the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). A grant cannot be attached by another API key. Both are `api_key`-role grants.
+Every call needs an API key holding one of two grants. Only an admin can attach either grant, and only from the web app's [API Keys page](https://app.sparkpost.com/account/api-keys). No API key can attach a grant, not even a key that already holds one.
 
-* **`Users: View`** — read-only access, covering the `GET` endpoints only: [List Users](#header-list-users), [Retrieve a User](#header-retrieve-a-user), and [List Pending Invites](#header-list-pending-invites).
-* **`Users: Manage`** — full management. Every write endpoint (invite, update, delete, and the subaccount-mapping changes) requires this grant.
+* **`Users: View`** gives read-only access to the three `GET` endpoints: [List Users](#header-list-users), [Retrieve a User](#header-retrieve-a-user), and [List Pending Invites](#header-list-pending-invites).
+* **`Users: Manage`** covers the same reads plus every write: invite, update, delete, and the subaccount-mapping changes.
 
-Requests made with a key that holds neither grant, or that attempt a write with only `Users: View`, are rejected with `403 Forbidden`.
+A key holding neither grant gets `403`, and so does a write attempted with only `Users: View`.
 
-<Banner status="info">These grants are intentionally narrower than the user management available in the web app. They do <strong>not</strong> cover two-factor authentication, email verification, SCIM provisioning, or password endpoints, and they do not allow direct password-based user creation (see <a href="#header-invite-a-user">Invite a User</a>).</Banner>
+<Banner status="info">These grants cover less than the web app's user management. They do not reach two-factor authentication, email verification, SCIM provisioning, or password endpoints, and they cannot create a user directly with a password. New users join by <a href="#header-invite-a-user">invitation</a>.</Banner>
 
 ### Roles
 
-When you invite or update a user you assign a **role** through the `access_level` field. The primary-account roles are:
+Inviting or updating a user assigns a role through the `access_level` field. The primary-account roles are:
 
 | Role | Description |
 |-------------|-------------------------------------------------------------|
@@ -29,15 +29,16 @@ When you invite or update a user you assign a **role** through the `access_level
 | `templates` | Access limited to managing templates. |
 | `custom` | A role whose permissions are defined by the `access_policies` you supply. |
 
-Subaccount access levels (used only in the `subaccounts` array and in the subaccount-mapping endpoints) are `subaccount_reporting` and `subaccount_developer`.
+Subaccount-scoped users take one of two access levels instead, `subaccount_reporting` or `subaccount_developer`. These appear only in the `subaccounts` array and in the subaccount-mapping endpoints.
 
 ### Constraints
 
-The following rules are enforced on every Users API request. They protect against privilege escalation and account lockout:
+These rules apply to every Users API request. They stop a key from escalating its own privileges or locking an account out of its own administration.
 
-* **Role ceiling.** You can never create or invite a user, or raise a user to a role, more privileged than the role of the user who owns the API key. An admin-owned key can assign up to `admin`; a key owned by a less-privileged user is bounded by that user's role.
-* **Last admin protection.** The last `admin` on an account cannot be deleted or demoted through the API. Such a request is rejected with `400`.
-* **Key revocation on owner deletion.** If the admin user who owns a key holding the `Users: Manage` grant is deleted, that key is revoked rather than reassigned to another user.
+* **No admin through the API.** An API key never assigns the `admin` role, not even a key owned by an admin. Inviting a user as `admin` returns `403`, and so does promoting one. Create admins in the web app.
+* **Role ceiling.** Below admin, a key can only grant a role at or under the role held by the user who owns it. A key owned by a `reporting` user invites `reporting` users and nothing higher.
+* **Last admin protection.** The API refuses to delete or demote the last `admin` on an account, returning `400`.
+* **Self-deletion.** A key cannot delete its own owner.
 
 ### User object
 
@@ -47,7 +48,7 @@ Returned by [List Users](#header-list-users).
     + name (string) - The user's display name, derived from their first and last name.
     + username (string) - Unique username that identifies the user.
     + email (string) - The user's email address.
-    + access (enum) - The user's primary-account role. Empty for subaccount-scoped users.
+    + access (enum) - The user's primary-account role. Omitted for subaccount-scoped users.
         + `admin`
         + `developer`
         + `reporting`
@@ -57,6 +58,7 @@ Returned by [List Users](#header-list-users).
     + is_sso (boolean) - Whether the user signs in via single sign-on.
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
+    + last_login (string, nullable) - ISO 8601 timestamp of the user's last sign-in, or `null` if they have never signed in.
     + subaccount_id (number) - The subaccount the user is scoped to, if any.
     + subaccounts (array) - The subaccounts a subaccount-scoped user has access to, and their access level on each. Present only for subaccount-scoped users.
         + (object)
@@ -69,7 +71,7 @@ Returned by [List Users](#header-list-users).
 
 ### Retrieved user object
 
-Returned by [Retrieve a User](#header-retrieve-a-user). This is a richer shape than the [User object](#header-user-object) returned by List Users: it has `first_name` and `last_name` in place of `name`, uses `access_level` for the primary-account role, and adds `created`, `updated`, and an always-present `subaccounts` array.
+Returned by [Retrieve a User](#header-retrieve-a-user). It differs from the [User object](#header-user-object) that List Users returns. This shape splits `name` into `first_name` and `last_name`, names the primary-account role `access_level` rather than `access`, and adds `created`, `updated`, and a `subaccounts` array that is always present.
 
 + Data Structure: RetrievedUser
     + username (string) - Unique username that identifies the user.
@@ -90,7 +92,7 @@ Returned by [Retrieve a User](#header-retrieve-a-user). This is a richer shape t
     + options (object) - User-level options, present only when set.
     + created (string) - ISO 8601 timestamp of when the user was created.
     + updated (string) - ISO 8601 timestamp of when the user was last updated.
-    + subaccounts (array) - The subaccounts the user has access to, and their access level on each. Always present; an empty array for a user with no subaccount mappings. When it is non-empty, the top-level `access_level` and `subaccount_id` fields are omitted.
+    + subaccounts (array) - The subaccounts the user has access to, and their access level on each. Always present, and an empty array for a user with no subaccount mappings. When it is non-empty, the top-level `access_level` and `subaccount_id` fields are omitted.
         + (object)
             + subaccount_id (number) - The subaccount ID.
             + subaccount_name (string) - The subaccount's display name.
@@ -110,7 +112,7 @@ Returned by [List Pending Invites](#header-list-pending-invites).
     + id (string) - Unique ID for the pending invite. Use it to revoke the invite.
     + email (string) - The email address the invite was sent to.
     + from (string) - The email address of the user who created the invite.
-    + access_level (enum) - The role the invited user will be assigned when they register.
+    + access_level (enum) - The role the user takes on when they register.
         + `admin`
         + `developer`
         + `reporting`
@@ -120,10 +122,10 @@ Returned by [List Pending Invites](#header-list-pending-invites).
 
 ### Invite lifecycle
 
-* **Invitations expire after 3 days.** Once an invitation expires, its registration link no longer works.
-* **Expired invitations are removed automatically.** They stop appearing in [List Pending Invites](#header-list-pending-invites) once they expire; you do not need to clean them up.
-* **There is no resend.** To give someone another chance to register, [invite the same email address again](#header-invite-a-user). This creates a new, independent invitation with its own token and expiry; the earlier invitation keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
-* **Invite creation is rate limited.** If you create invitations too quickly, requests are rejected with `429 Too Many Requests`. Wait before retrying.
+* **Invitations expire after 3 days.** After that the registration link stops working.
+* **Expired invitations clean themselves up.** They drop off [List Pending Invites](#header-list-pending-invites) on expiry, so you never have to revoke them.
+* **There is no resend.** To give someone another chance to register, [invite the same email address again](#header-invite-a-user). That creates a second, independent invitation with its own expiry. The first one keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
+* **Invites are rate limited.** Creating them too fast returns `429 Too Many Requests`. Back off and retry.
 
 ### List Users [GET /v1/users]
 
@@ -147,7 +149,8 @@ Returns the users on your account.
                     "access": "admin",
                     "is_sso": false,
                     "email_verified": true,
-                    "tfa_enabled": false
+                    "tfa_enabled": false,
+                    "last_login": "2026-07-28T14:22:31.000Z"
                 },
                 {
                     "name": "Grace Hopper",
@@ -156,7 +159,8 @@ Returns the users on your account.
                     "access": "reporting",
                     "is_sso": false,
                     "email_verified": true,
-                    "tfa_enabled": true
+                    "tfa_enabled": true,
+                    "last_login": null
                 }
             ]
         }
@@ -173,7 +177,7 @@ Returns the users on your account.
 
 ### Retrieve a User [GET /v1/users/{username}]
 
-Returns a single user by username. The response uses the [Retrieved user object](#header-retrieved-user-object) shape, which differs from the [User object](#header-user-object) returned by List Users.
+Returns one user by username, in the [Retrieved user object](#header-retrieved-user-object) shape rather than the [User object](#header-user-object) shape List Users returns.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to retrieve.
@@ -234,25 +238,22 @@ Returns a single user by username. The response uses the [Retrieved user object]
         {
             "errors": [
                 {
-                    "message": "User does not exist"
+                    "message": "User not found."
                 }
             ]
         }
 
 ### Invite a User [POST /v1/users/invite]
 
-There is no direct, password-based user creation through the API — users are created by **invitation** only. This endpoint creates an invitation and emails the invitee a registration link; the invitee completes registration through that link and sets their own password. The invited user's role is set by `access_level` and is bounded by the [role ceiling](#header-constraints).
+The API has no direct, password-based user creation. New users join by invitation. This endpoint creates the invitation and emails a registration link. The invitee follows the link, sets their own password, and gets the role you named in `access_level`, subject to the [constraints](#header-constraints).
 
-Provide `access_level` for a primary-account user, or `subaccounts` to invite a subaccount-scoped user. When `subaccounts` is supplied, a top-level `access_level` is not required.
+Send `access_level` to invite a primary-account user, or `subaccounts` to invite a subaccount-scoped one. A `subaccounts` invite does not need a top-level `access_level`.
 
-The response contains the invite `token`.
-
-<Banner status="danger"><strong>Treat the invite <code>token</code> as a credential.</strong> Anyone who holds the token can complete registration as the invited user. Invited users normally complete registration through the emailed link, so you do not need to handle the token yourself; if you do capture it, store and transmit it as securely as you would a password, and never log or share it.</Banner>
+The response carries only the invite `id`, which you use to [list](#header-list-pending-invites) and [revoke](#header-revoke-a-pending-invite) the invitation. The API never returns the registration token. It reaches the invitee only in the invitation email, so completing registration requires access to that mailbox.
 
 + Data Structure
-    + email (string, required) - Email address of the person to invite. Max length: 512 characters.
-    + access_level (enum) - The primary-account role to assign. Required unless `subaccounts` is supplied.
-        + `admin`
+    + email (string, required) - Email address of the person to invite. Maximum 512 characters.
+    + access_level (enum) - The primary-account role to assign. Required unless `subaccounts` is supplied. `admin` is not available to API keys, see [Constraints](#header-constraints).
         + `developer`
         + `reporting`
         + `templates`
@@ -282,8 +283,7 @@ The response contains the invite `token`.
 
         {
             "results": {
-                "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
-                "token": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
+                "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301"
             }
         }
 
@@ -304,7 +304,7 @@ The response contains the invite `token`.
         {
             "errors": [
                 {
-                    "message": "Forbidden"
+                    "message": "API keys cannot invite an admin-level user."
                 }
             ]
         }
@@ -321,7 +321,7 @@ The response contains the invite `token`.
 
 ### List Pending Invites [GET /v1/users/pending-invites]
 
-Returns the invitations on your account that have not yet been accepted. Expired invitations are not included.
+Returns the invitations on your account that nobody has accepted yet. Expired invitations do not appear.
 
 + Request
 
@@ -346,7 +346,7 @@ Returns the invitations on your account that have not yet been accepted. Expired
 
 ### Revoke a Pending Invite [DELETE /v1/users/pending-invites/{id}]
 
-Revokes a pending invitation so its registration link can no longer be used.
+Revokes a pending invitation. Its registration link stops working immediately.
 
 + Parameters
     + id (required, string, `3f2504e0-4f89-41d3-9a0c-0305e82c3301`) - The invite ID from [List Pending Invites](#header-list-pending-invites).
@@ -371,18 +371,17 @@ Revokes a pending invitation so its registration link can no longer be used.
 
 ### Update a User [PUT /v1/users/{username}]
 
-Changes a user's role. The request accepts only `access_level` (and `access_policies` when `access_level` is `custom`); a request that contains any other field is rejected with `403 Forbidden`.
+Changes a user's role. The body accepts `access_level` and `access_policies` and nothing else. Any other field returns `403`. Names, passwords, email addresses, and user options stay web-app only.
 
-Changing `access_level` is subject to the [role ceiling](#header-constraints), and demoting the account's last `admin` is rejected with `400`.
+The [constraints](#header-constraints) apply here too. You cannot set a user to `admin`, and demoting the last `admin` returns `400`.
 
 + Data Structure
-    + access_level (enum, required) - The primary-account role to assign.
-        + `admin`
+    + access_level (enum) - The primary-account role to assign.
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
-    + access_policies (array) - The policies to grant. Required when `access_level` is `custom`, and not allowed otherwise.
+    + access_policies (array) - The policies to grant. Only valid when `access_level` is `custom`.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to update.
@@ -422,7 +421,7 @@ Changing `access_level` is subject to the [role ceiling](#header-constraints), a
         {
             "errors": [
                 {
-                    "message": "Forbidden"
+                    "message": "API keys may only modify access_level and access_policies."
                 }
             ]
         }
@@ -431,7 +430,7 @@ Changing `access_level` is subject to the [role ceiling](#header-constraints), a
 
 Deletes a user from your account.
 
-You cannot delete the user who owns the API key you are calling with, a user that belongs to a different account, or the account's last `admin`.
+You cannot delete the owner of the key you are calling with, a user on a different account, or the account's last `admin`.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to delete.
@@ -459,7 +458,7 @@ You cannot delete the user who owns the API key you are calling with, a user tha
         {
             "errors": [
                 {
-                    "message": "Forbidden"
+                    "message": "Cannot delete current user."
                 }
             ]
         }
@@ -476,7 +475,9 @@ You cannot delete the user who owns the API key you are calling with, a user tha
 
 ### Add a Subaccount Mapping [POST /v1/users/{username}/subaccounts]
 
-Grants a user access to a subaccount at the given access level. If the user already has access to the subaccount, the access level is updated.
+Grants a user access to a subaccount at the given access level. If the user already has access to that subaccount, the call updates their access level instead.
+
+This endpoint adds subaccounts to a user who is already subaccount-scoped, so the target needs at least one mapping to begin with. Calling it for a primary-account user returns `400`. To give a new person subaccount access, [invite them](#header-invite-a-user) with a `subaccounts` array.
 
 + Data Structure
     + subaccount_id (number, required) - The subaccount to grant access to.
@@ -518,13 +519,27 @@ Grants a user access to a subaccount at the given access level. If the user alre
             ]
         }
 
++ Response 400 (application/json)
+
+    The user has no subaccount mappings.
+
+        {
+            "errors": [
+                {
+                    "message": "Invalid user"
+                }
+            ]
+        }
+
 ### Remove a Subaccount Mapping [DELETE /v1/users/{username}/subaccounts/{subaccountId}]
 
 Removes a user's access to a subaccount.
 
+A subaccount-scoped user must keep at least one subaccount, so removing the last mapping returns `400`. [Delete the user](#header-delete-a-user) instead.
+
 + Parameters
     + username (required, string, `grace`) - The username of the user.
-    + subaccountId (required, number, `123`) - The subaccount to remove access to.
+    + subaccountId (required, number, `123`) - The subaccount to revoke access to.
 
 + Request
 
@@ -533,3 +548,13 @@ Removes a user's access to a subaccount.
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
 
 + Response 204
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Cannot delete last subaccount for user"
+                }
+            ]
+        }
