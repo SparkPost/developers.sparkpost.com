@@ -41,6 +41,63 @@ Learn more about these [limits](https://www.sparkpost.com/docs/faq/daily-and-mon
 ```
 
 
+### Idempotent Requests
+
+The Transmissions API supports safe retries through idempotency. If a network error or timeout leaves you unsure whether a transmission was created, you can retry the same request without the risk of sending duplicate messages.
+
+To make a request idempotent, include an `Idempotency-Key` header whose value uniquely identifies the logical request:
+
+```
+Idempotency-Key: 9f8b7c6d-1e2f-4a3b-8c9d-0e1f2a3b4c5d
+```
+
+Generate a new key for each distinct transmission — a UUID is a good choice — and reuse the **same** key when retrying that transmission.
+
+* The key must match `^[A-Za-z0-9._-]{1,255}$` — 1 to 255 letters, digits, hyphens, underscores, or periods. An invalid key returns a `400` with code `1602`.
+* SparkPost remembers each key for **24 hours**. For [scheduled transmissions](#transmissions-scheduled-transmissions), the key is retained until 24 hours after the scheduled send time.
+* Keys are scoped to your account (and subaccount, where applicable).
+
+#### Replays
+
+When SparkPost receives a request whose `Idempotency-Key` matches a previously completed request **with an identical payload**, it does not create a new transmission. Instead it replays the original response — the same status code and body, including the original transmission `id` — and adds an `X-Idempotent-Replayed: true` header:
+
+```
+HTTP/1.1 200 OK
+Idempotency-Key: 9f8b7c6d-1e2f-4a3b-8c9d-0e1f2a3b4c5d
+X-Idempotent-Replayed: true
+
+{
+  "results": {
+    "total_rejected_recipients": 0,
+    "total_accepted_recipients": 1,
+    "id": "11668787484950529"
+  }
+}
+```
+
+Because a replay returns the original result rather than sending again, a retried transmission is delivered exactly once.
+
+#### Conflicts
+
+If a key is reused in a way SparkPost cannot safely replay, it returns a `409 Conflict`:
+
+* **`1601` — in progress.** The original request with this key is still being processed. Retry after a short delay.
+* **`1600` — different request.** This key was already used with a different payload. Use a new key for a different transmission.
+
+```json
+{
+  "errors": [
+    {
+      "code": "1600",
+      "message": "Idempotency key already used with a different request"
+    }
+  ]
+}
+```
+
+<Banner status="info">For the strongest guarantee, retry <strong>sequentially</strong> — wait for a response (or a <code>1601</code>) before retrying with the same key.</Banner>
+
+
 ## Create a Transmission [/v1/transmissions]
 
 You can create a transmission in a number of ways.
@@ -257,6 +314,7 @@ Inline images for a transmission are specified in the `content.inline_images` ar
     + Headers
 
             Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Idempotency-Key: 9f8b7c6d-1e2f-4a3b-8c9d-0e1f2a3b4c5d
 
     + Body
 
