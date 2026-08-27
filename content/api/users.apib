@@ -568,7 +568,7 @@ The user must already have access to at least one subaccount. Calling this endpo
 
 ### Revoke Subaccount Access [DELETE /v1/users/{username}/subaccounts/{subaccountId}]
 
-Removes a user's access to a subaccount. A subaccount-scoped user must keep at least one subaccount, so revoking the last one returns `400`. [Delete the user](#header-delete-a-user) instead.
+Removes a user's access to a subaccount.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user.
