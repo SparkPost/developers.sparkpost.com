@@ -54,7 +54,7 @@ Every user is scoped either to the account or to one or more subaccounts. An acc
     + first_name (string, nullable) - The user's first name.
     + last_name (string, nullable) - The user's last name.
     + email (string) - The user's email address.
-    + access_level (enum) - The user's role on the account. Absent for subaccount-scoped users.
+    + access_level (enum) - The user's [role](#header-roles) on the account. Absent for subaccount-scoped users.
         + `admin`
         + `developer`
         + `reporting`
@@ -118,12 +118,14 @@ Returned by [List Pending Invites](#header-list-pending-invites).
     + id (string) - Unique ID for the pending invite. Use it to revoke the invite.
     + email (string) - The email address the invite was sent to.
     + from (string) - The email address of the user who created the invite.
-    + access_level (enum) - The role the user takes on when they register.
+    + access_level (enum) - The [role](#header-roles) the user takes on when they register.
         + `admin`
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
+    + `access_policies` (array[string]) - The [access policies](#header-access-policies) the user takes on when they register, if `access_level` is `custom`.
+    + subaccounts (array[object]) - The subaccount access the user takes on when they register. See [Subaccount invite object](#header-subaccount-invite-object). Present instead of `access_level` for a subaccount-scoped invite.
     + expires (number) - Unix timestamp, in epoch seconds, at which the invitation expires.
 + Sample
     ```
@@ -169,7 +171,7 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
 
 + Data Structure
     + email (string, required) - Email address of the person to invite. Maximum 512 characters.
-    + access_level (enum) - The primary-account role to assign. Required unless `subaccounts` is supplied. `admin` is not available to API keys.
+    + access_level (enum) - The primary-account [role](#header-roles) to assign. Required unless `subaccounts` is supplied. `admin` is not available to API keys.
         + `developer`
         + `reporting`
         + `templates`
