@@ -45,14 +45,16 @@ A user with the `custom` role gets exactly the policies you list in `access_poli
 
 ### User object
 
-Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retrieve-a-user). Both use the same field names. Retrieve returns three things List does not: `created`, `updated`, and a `status` on each entry of `subaccounts`.
+Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retrieve-a-user).
+
+Every user is scoped either to the account or to one or more subaccounts. An account-scoped user has an `access_level`. A subaccount-scoped user has none, and holds a role on each subaccount instead.
 
 + Data Structure: Attributes
     + username (string) - Unique username that identifies the user.
-    + first_name (string, nullable) - The user's first name. `null` if they have not set one.
-    + last_name (string, nullable) - The user's last name. `null` if they have not set one.
+    + first_name (string, nullable) - The user's first name.
+    + last_name (string, nullable) - The user's last name.
     + email (string) - The user's email address.
-    + access_level (enum) - The user's primary-account role. Omitted for subaccount-scoped users.
+    + access_level (enum) - The user's role on the account. Absent for subaccount-scoped users.
         + `admin`
         + `developer`
         + `reporting`
@@ -63,11 +65,26 @@ Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retri
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + last_login (string, nullable) - ISO 8601 timestamp of the user's last sign-in, or `null` if they have never signed in.
-    + subaccount_id (number) - The subaccount the user is scoped to, if any. [Retrieve a User](#header-retrieve-a-user) omits it when `subaccounts` is non-empty.
-    + subaccounts (array[object]) - The subaccounts the user has access to, and their access level on each. For a full description, see [Subaccount access object](#header-subaccount-access-object). [Retrieve a User](#header-retrieve-a-user) always returns this field, as an empty array for a user with no subaccount access, and omits the top-level `access_level` when it is non-empty. [List Users](#header-list-users) returns it only for subaccount-scoped users.
-    + options (object) - User-level options, present only when set.
+    + subaccounts (array[object]) - The subaccounts the user can reach, and their role on each. See [Subaccount access object](#header-subaccount-access-object). Returned by [Retrieve a User](#header-retrieve-a-user) only, and empty for an account-scoped user.
     + created (string) - ISO 8601 timestamp of when the user was created. Returned by [Retrieve a User](#header-retrieve-a-user) only.
     + updated (string) - ISO 8601 timestamp of when the user was last updated. Returned by [Retrieve a User](#header-retrieve-a-user) only.
++ Sample
+    ```
+    {
+        "username": "grace",
+        "first_name": "Grace",
+        "last_name": "Hopper",
+        "email": "grace@example.com",
+        "access_level": "reporting",
+        "is_sso": false,
+        "email_verified": true,
+        "tfa_enabled": true,
+        "last_login": "2026-08-02T09:14:05.000Z",
+        "created": "2015-01-11T08:00:00.000Z",
+        "updated": "2018-04-11T08:00:00.000Z",
+        "subaccounts": []
+    }
+    ```
 
 ### Subaccount access object
 
@@ -108,6 +125,16 @@ Returned by [List Pending Invites](#header-list-pending-invites).
         + `templates`
         + `custom`
     + expires (number) - Unix timestamp, in epoch seconds, at which the invitation expires.
++ Sample
+    ```
+    {
+        "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301",
+        "email": "newuser@example.com",
+        "from": "ada@example.com",
+        "access_level": "reporting",
+        "expires": 1720656000
+    }
+    ```
 
 ### Subaccount invite object
 
@@ -138,7 +165,7 @@ Creates an invitation and emails a registration link to the address you supply. 
 
 Send `access_level` to invite a primary-account user, or `subaccounts` to invite a subaccount-scoped one. A `subaccounts` invite does not need a top-level `access_level`.
 
-The response contains only the invite `id`, which you use to [list](#header-list-pending-invites) and [revoke](#header-revoke-a-pending-invite) the invitation. The registration token is sent in the invitation email and is never returned by the API.
+The response contains the invite `id`, which you use to [list](#header-list-pending-invites) and [revoke](#header-revoke-a-pending-invite) the invitation.
 
 + Data Structure
     + email (string, required) - Email address of the person to invite. Maximum 512 characters.
@@ -381,10 +408,8 @@ Returns one user by username, in the [User object](#header-user-object) shape.
 
 ### Update a User's Role [PUT /v1/users/{username}]
 
-The body accepts `access_level` and `access_policies` only.
-
 + Data Structure
-    + access_level (enum) - The primary-account role to assign.
+    + access_level (enum) - The primary-account [role](#header-roles) to assign.
         + `developer`
         + `reporting`
         + `templates`
@@ -437,7 +462,7 @@ The body accepts `access_level` and `access_policies` only.
 
 ### Delete a User [DELETE /v1/users/{username}]
 
-Deletes a user from your account. You cannot delete the owner of the key you are calling with, a user on a different account, or the account's last `admin`.
+Deletes a user from your account.
 
 + Parameters
     + username (required, string, `grace`) - The username of the user to delete.
