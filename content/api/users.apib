@@ -171,7 +171,7 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
 
 + Data Structure
     + email (string, required) - Email address of the person to invite. Maximum 512 characters.
-    + access_level (enum) - The primary-account [role](#header-roles) to assign. Required unless `subaccounts` is supplied. `admin` is not available to API keys.
+    + access_level (enum) - The primary-account [role](#header-roles) to assign. Required unless `subaccounts` is supplied. `admin` cannot be set through the API.
         + `developer`
         + `reporting`
         + `templates`
@@ -411,7 +411,7 @@ Returns one user by username, in the [User object](#header-user-object) shape.
 ### Update a User's Role [PUT /v1/users/{username}]
 
 + Data Structure
-    + access_level (enum) - The primary-account [role](#header-roles) to assign.
+    + access_level (enum) - The primary-account [role](#header-roles) to assign. `admin` cannot be set through the API.
         + `developer`
         + `reporting`
         + `templates`
