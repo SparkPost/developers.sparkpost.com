@@ -118,7 +118,7 @@ If your result set is less than one page of data, then the `links` object will n
         + deliverability (boolean) 
             <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
         + open_tracking_disabled (boolean)
-            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail. Click tracking is unaffected. Defaults to `false`.
+            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail, and no open events are generated for pixels already delivered in its past mail (the pixel is still served). Click tracking is unaffected. Defaults to `false`.
 
 + Sample
     
@@ -162,7 +162,7 @@ Subaccounts are allowed to send mail using the SMTP protocol or Transmissions AP
         + deliverability (boolean)
             <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
         + open_tracking_disabled (boolean)
-            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail. Click tracking is unaffected. Defaults to `false`.
+            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail, and no open events are generated for pixels already delivered in its past mail (the pixel is still served). Click tracking is unaffected. Defaults to `false`.
             
 Returns the subaccount's ID, along with the API key and API key label, if one was created.
 
@@ -289,7 +289,7 @@ This endpoint only returns information about the subaccount, not the resources a
         + deliverability (boolean)
             <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> Whether the subaccount has access to deliverability features.
         + open_tracking_disabled (boolean)
-            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail. Click tracking is unaffected. Defaults to `false`.
+            When `true`, open tracking is disabled for this subaccount: no open-tracking pixels are injected into its future mail, and no open events are generated for pixels already delivered in its past mail (the pixel is still served). Click tracking is unaffected. Defaults to `false`.
 
 
 + Parameters
