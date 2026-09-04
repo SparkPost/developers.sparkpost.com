@@ -218,7 +218,7 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
         {
             "errors": [
                 {
-                    "message": "API keys cannot invite an admin-level user."
+                    "message": "An admin-level user cannot be invited through the API."
                 }
             ]
         }
@@ -457,7 +457,7 @@ Returns one user by username, in the [User object](#header-user-object) shape.
         {
             "errors": [
                 {
-                    "message": "API keys may only modify access_level and access_policies."
+                    "message": "Only access_level and access_policies can be modified through the API."
                 }
             ]
         }
