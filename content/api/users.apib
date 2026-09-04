@@ -161,6 +161,16 @@ Invitations expire after three days. The registration link then stops working an
 
 To give someone another chance to register, [invite the same email address again](#header-invite-a-user). That creates a second, independent invitation with its own expiry, and the first one keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
 
+### Accounts with single sign-on
+
+On an account with SAML single sign-on enabled, [Invite a User](#header-invite-a-user) skips the invitation. There is no password to set, so the user is created at once with `is_sso` true, and the email tells them to sign in through your identity provider. This changes what the call returns and what you can do afterwards:
+
+- The response carries the new `username` instead of an invite `id`.
+- Nothing appears in [List Pending Invites](#header-list-pending-invites), and there is nothing to revoke. To take the access back, [delete the user](#header-delete-a-user).
+- Inviting an address that already belongs to a user returns `200` with that user's `username`.
+
+Someone outside your identity provider, such as a client who only needs a subaccount, can still get a password login. Send `bypass_sso: true` together with `subaccounts`, and the call creates a regular invitation with a registration link. `bypass_sso` is rejected on a primary-account invite.
+
 ### Invite a User [POST /v1/users/invite]
 
 Creates an invitation and emails a registration link to the address you supply. The invitee follows the link, sets their own password, and takes the role you named in `access_level`.
@@ -178,6 +188,7 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
         + `custom`
     + `access_policies` (array[string]) - The [access policies](#header-access-policies) to grant. Only valid when `access_level` is `custom`.
     + subaccounts (array[object]) - Invite the user with access to one or more subaccounts instead of the primary account. Between 1 and 25 entries. For a full description, see [Subaccount invite object](#header-subaccount-invite-object).
+    + bypass_sso (boolean) - On an account with single sign-on, create a regular invitation with a registration link instead of an SSO user. Only valid together with `subaccounts`. See [Accounts with single sign-on](#header-accounts-with-single-sign-on).
 
 
 + Request (application/json)
@@ -198,6 +209,16 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
         {
             "results": {
                 "id": "3f2504e0-4f89-41d3-9a0c-0305e82c3301"
+            }
+        }
+
++ Response 200 (application/json)
+
+    On an account with single sign-on. See [Accounts with single sign-on](#header-accounts-with-single-sign-on).
+
+        {
+            "results": {
+                "username": "newuser"
             }
         }
 
