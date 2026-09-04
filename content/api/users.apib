@@ -51,8 +51,8 @@ Every user is scoped either to the account or to one or more subaccounts. An acc
 
 + Data Structure: Attributes
     + username (string) - Unique username that identifies the user.
-    + first_name (string, nullable) - The user's first name.
-    + last_name (string, nullable) - The user's last name.
+    + first_name (string) - The user's first name. Only present when the user has set it.
+    + last_name (string) - The user's last name. Only present when the user has set it.
     + email (string) - The user's email address.
     + access_level (enum) - The user's [role](#header-roles) on the account. Absent for subaccount-scoped users.
         + `admin`
