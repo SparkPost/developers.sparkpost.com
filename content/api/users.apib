@@ -60,7 +60,7 @@ Every user is scoped either to the account or to one or more subaccounts. An acc
         + `reporting`
         + `templates`
         + `custom`
-    + `access_policies` (array[string]) - The [access policies](#header-access-policies) granted to the user when `access_level` is `custom`.
+    + `access_policies` (array[string]) - The [access policies](#header-access-policies) granted to the user. Only present when `access_level` is `custom`.
     + is_sso (boolean) - Whether the user signs in via single sign-on.
     + email_verified (boolean) - Whether the user has verified their email address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
