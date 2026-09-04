@@ -62,7 +62,7 @@ Every user is scoped either to the account or to one or more subaccounts. An acc
         + `custom`
     + `access_policies` (array[string]) - The [access policies](#header-access-policies) granted to the user. Only present when `access_level` is `custom`.
     + is_sso (boolean) - Whether the user signs in via single sign-on.
-    + email_verified (boolean) - Whether the user has verified their email address.
+    + email_verified (boolean) - Whether the user has verified their email address. Always `true` for a single sign-on user, whose identity provider vouches for the address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + last_login (string, nullable) - ISO 8601 timestamp of the user's last sign-in, or `null` if they have never signed in.
     + subaccounts (array[object]) - The subaccounts the user can reach, and their role on each. See [Subaccount access object](#header-subaccount-access-object). Returned by [Retrieve a User](#header-retrieve-a-user) only, and empty for an account-scoped user.
