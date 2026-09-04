@@ -126,7 +126,7 @@ Returned by [List Pending Invites](#header-list-pending-invites).
         + `custom`
     + `access_policies` (array[string]) - The [access policies](#header-access-policies) the user takes on when they register, if `access_level` is `custom`.
     + subaccounts (array[object]) - The subaccount access the user takes on when they register. See [Subaccount invite object](#header-subaccount-invite-object). Present instead of `access_level` for a subaccount-scoped invite.
-    + expires (number) - Unix timestamp, in epoch seconds, at which the invitation expires.
+    + expires (string) - ISO 8601 timestamp at which the invitation expires.
 + Sample
     ```
     {
@@ -134,7 +134,7 @@ Returned by [List Pending Invites](#header-list-pending-invites).
         "email": "newuser@example.com",
         "from": "ada@example.com",
         "access_level": "reporting",
-        "expires": 1720656000
+        "expires": "2024-07-11T00:00:00.000Z"
     }
     ```
 
@@ -253,7 +253,7 @@ Returns the invitations on your account that nobody has accepted yet. Expired in
                     "email": "newuser@example.com",
                     "from": "ada@example.com",
                     "access_level": "reporting",
-                    "expires": 1720656000
+                    "expires": "2024-07-11T00:00:00.000Z"
                 }
             ]
         }
