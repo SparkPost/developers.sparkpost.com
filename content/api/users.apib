@@ -483,6 +483,16 @@ Returns one user by username, in the [User object](#header-user-object) shape.
             ]
         }
 
++ Response 403 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "Admin-level access cannot be granted through the API."
+                }
+            ]
+        }
+
 ### Delete a User [DELETE /v1/users/{username}]
 
 Deletes a user from your account.
