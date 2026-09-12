@@ -28,7 +28,7 @@
     "gatsby-plugin-nprogress": "^2.3.10",
     "gatsby-plugin-page-creator": "^2.3.17",
     "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-plugin-sharp": "^4.25.1",
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-remark-images": "^3.8.0",
     "gatsby-source-filesystem": "^2.3.19",
