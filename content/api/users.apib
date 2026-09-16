@@ -1,11 +1,11 @@
 FORMAT: 1A
 title: Users API
-description: Manage the users on your SparkPost account.
+description: Manage the users on your SparkPost account, the roles they hold, and the subaccounts they can access.
 label: New
 
 # Group Users
 
-Manage the users on your account: list, invite new ones, change their roles, and remove them.
+A user is a person who signs in to your SparkPost account. Every user is scoped either to the primary account, where a single [role](#header-roles) sets what they can do, or to one or more subaccounts, where they hold a role on each. Use this API to list users, invite new ones, change their roles, and remove them.
 
 ### Roles
 
@@ -23,7 +23,7 @@ Subaccount-scoped users take `subaccount_reporting` or `subaccount_developer` in
 
 ### Access policies
 
-A user with the `custom` role gets exactly the policies you list in `access_policies`, and nothing else. Supply them as an array of policy names. The field is only valid when `access_level` is `custom`.
+A user with the `custom` role gets exactly the policies you list in `access_policies`. The field is valid only when `access_level` is `custom`.
 
 | Policy | Grants |
 |--------|--------|
@@ -47,27 +47,27 @@ A user with the `custom` role gets exactly the policies you list in `access_poli
 
 Returned by [List Users](#header-list-users) and [Retrieve a User](#header-retrieve-a-user).
 
-Every user is scoped either to the account or to one or more subaccounts. An account-scoped user has an `access_level`. A subaccount-scoped user has none, and holds a role on each subaccount instead.
+A primary-account user has an `access_level`. A subaccount-scoped user has none, and holds a role on each subaccount instead.
 
 + Data Structure: Attributes
     + username (string) - Unique username that identifies the user.
     + first_name (string) - The user's first name. Only present when the user has set it.
     + last_name (string) - The user's last name. Only present when the user has set it.
     + email (string) - The user's email address.
-    + access_level (enum) - The user's [role](#header-roles) on the account. Absent for subaccount-scoped users.
+    + access_level (enum) - The user's [role](#header-roles) on the primary account. Absent for subaccount-scoped users.
         + `admin`
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
     + `access_policies` (array[string]) - The [access policies](#header-access-policies) granted to the user. Only present when `access_level` is `custom`.
-    + is_sso (boolean) - Whether the user signs in via single sign-on.
-    + email_verified (boolean) - Whether the user has verified their email address. Always `true` for a single sign-on user, whose identity provider vouches for the address.
+    + is_sso (boolean) - Whether the user signs in through single sign-on.
+    + email_verified (boolean) - Whether the user has verified their email address. Always `true` for a single sign-on user, because the identity provider confirms the address.
     + tfa_enabled (boolean) - Whether the user has two-factor authentication enabled.
     + last_login (string, nullable) - ISO 8601 timestamp of the user's last sign-in, or `null` if they have never signed in.
-    + subaccounts (array[object]) - The subaccounts the user can reach, and their role on each. See [Subaccount access object](#header-subaccount-access-object). Returned by [Retrieve a User](#header-retrieve-a-user) only, and empty for an account-scoped user.
-    + created (string) - ISO 8601 timestamp of when the user was created. Returned by [Retrieve a User](#header-retrieve-a-user) only.
-    + updated (string) - ISO 8601 timestamp of when the user was last updated. Returned by [Retrieve a User](#header-retrieve-a-user) only.
+    + subaccounts (array[object]) - The subaccounts the user has access to, and the user's role on each. See [Subaccount access object](#header-subaccount-access-object). Returned only by [Retrieve a User](#header-retrieve-a-user), and empty for a primary-account user.
+    + created (string) - ISO 8601 timestamp of when the user was created. Returned only by [Retrieve a User](#header-retrieve-a-user).
+    + updated (string) - ISO 8601 timestamp of when the user was last updated. Returned only by [Retrieve a User](#header-retrieve-a-user).
 + Sample
     ```
     {
@@ -88,15 +88,15 @@ Every user is scoped either to the account or to one or more subaccounts. An acc
 
 ### Subaccount access object
 
-Each object in a user's `subaccounts` array describes one subaccount the user can reach, and the access level they hold on it.
+Each object in a user's `subaccounts` array describes one subaccount the user has access to, and the user's role on it.
 
 + Data Structure: Attributes
     + subaccount_id (number) - The subaccount ID.
     + subaccount_name (string) - The subaccount's display name.
-    + access_level (enum) - The user's access level on the subaccount.
+    + access_level (enum) - The user's [role](#header-roles) on the subaccount.
         + `subaccount_reporting`
         + `subaccount_developer`
-    + status (enum) - The subaccount's status. Returned by [Retrieve a User](#header-retrieve-a-user) only.
+    + status (enum) - The subaccount's status. Returned only by [Retrieve a User](#header-retrieve-a-user).
         + active
         + suspended
         + terminated
@@ -115,18 +115,18 @@ Each object in a user's `subaccounts` array describes one subaccount the user ca
 Returned by [List Pending Invites](#header-list-pending-invites).
 
 + Data Structure: Attributes
-    + id (string) - Unique ID for the pending invite. Use it to revoke the invite.
+    + id (string) - Unique ID of the pending invite.
     + email (string) - The email address the invite was sent to.
     + from (string) - The email address of the user who created the invite.
-    + access_level (enum) - The [role](#header-roles) the user takes on when they register.
+    + access_level (enum) - The [role](#header-roles) the user gets when they register.
         + `admin`
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
-    + `access_policies` (array[string]) - The [access policies](#header-access-policies) the user takes on when they register, if `access_level` is `custom`.
-    + subaccounts (array[object]) - The subaccount access the user takes on when they register. See [Subaccount invite object](#header-subaccount-invite-object). Present instead of `access_level` for a subaccount-scoped invite.
-    + expires (string) - ISO 8601 timestamp at which the invitation expires.
+    + `access_policies` (array[string]) - The [access policies](#header-access-policies) the user gets when they register, if `access_level` is `custom`.
+    + subaccounts (array[object]) - The subaccount access the user gets when they register. See [Subaccount invite object](#header-subaccount-invite-object). Present instead of `access_level` for a subaccount-scoped invite.
+    + expires (string) - ISO 8601 timestamp of when the invite expires.
 + Sample
     ```
     {
@@ -140,11 +140,11 @@ Returned by [List Pending Invites](#header-list-pending-invites).
 
 ### Subaccount invite object
 
-Each object in the `subaccounts` array of an [Invite a User](#header-invite-a-user) request grants the invitee access to one subaccount.
+Each object in the `subaccounts` array of an [Invite a User](#header-invite-a-user) request grants the invitee access to one subaccount, with the role you set.
 
 + Data Structure: Attributes
     + subaccount_id (number, required) - The subaccount ID.
-    + access_level (enum, required) - The access level to grant on the subaccount.
+    + access_level (enum, required) - The [role](#header-roles) to grant on the subaccount.
         + `subaccount_reporting`
         + `subaccount_developer`
 + Sample
@@ -157,27 +157,23 @@ Each object in the `subaccounts` array of an [Invite a User](#header-invite-a-us
 
 ### Invite lifecycle
 
-Invitations expire after three days. The registration link then stops working and the invitation drops off [List Pending Invites](#header-list-pending-invites).
+An invite expires three days after you create it. The registration link then stops working, and the invite drops off [List Pending Invites](#header-list-pending-invites).
 
-To give someone another chance to register, [invite the same email address again](#header-invite-a-user). That creates a second, independent invitation with its own expiry, and the first one keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
-
-### Accounts with single sign-on
-
-On an account with SAML single sign-on enabled, [Invite a User](#header-invite-a-user) skips the invitation. There is no password to set, so the user is created at once with `is_sso` true, and the email tells them to sign in through your identity provider. This changes what the call returns and what you can do afterwards:
-
-- The response carries the new `username` instead of an invite `id`.
-- Nothing appears in [List Pending Invites](#header-list-pending-invites), and there is nothing to revoke. To take the access back, [delete the user](#header-delete-a-user).
-- Inviting an address that already belongs to a user returns `200` with that user's `username`.
-
-Someone outside your identity provider, such as a client who only needs a subaccount, can still get a password login. Send `bypass_sso: true` together with `subaccounts`, and the call creates a regular invitation with a registration link. `bypass_sso` is rejected on a primary-account invite.
+To give someone another chance to register, [invite the same email address again](#header-invite-a-user). That creates a second, independent invite with its own expiry. The first one keeps working until it expires or you [revoke it](#header-revoke-a-pending-invite).
 
 ### Invite a User [POST /v1/users/invite]
 
-Creates an invitation and emails a registration link to the address you supply. The invitee follows the link, sets their own password, and takes the role you named in `access_level`.
+Creates an invite and emails a registration link to the address you supply. The invitee follows the link, sets their own password, and gets the role you set in `access_level`. The response carries the invite `id`, which you use to [list](#header-list-pending-invites) and [revoke](#header-revoke-a-pending-invite) the invite.
 
-Send `access_level` to invite a primary-account user, or `subaccounts` to invite a subaccount-scoped one. A `subaccounts` invite does not need a top-level `access_level`.
+Send `access_level` to invite a primary-account user, or `subaccounts` to invite a subaccount-scoped one.
 
-The response contains the invite `id`, which you use to [list](#header-list-pending-invites) and [revoke](#header-revoke-a-pending-invite) the invitation.
+On an account with SAML single sign-on enabled, there is no password to set, so this endpoint skips the invite and creates the user immediately with `is_sso` true. The email tells the user to sign in through your identity provider. The single sign-on path differs in three ways:
+
+- The response carries the new `username` instead of an invite `id`.
+- Nothing appears in [List Pending Invites](#header-list-pending-invites), so there is nothing to revoke. To take the access back, [delete the user](#header-delete-a-user).
+- Inviting an address that already belongs to a user returns `200` with that user's `username`.
+
+To give a password login to someone outside your identity provider, such as a client who needs only a subaccount, send `bypass_sso: true` together with `subaccounts`. The call then creates a regular invite with a registration link. `bypass_sso` is rejected on a primary-account invite.
 
 + Data Structure
     + email (string, required) - Email address of the person to invite. Maximum 512 characters.
@@ -186,9 +182,9 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
         + `reporting`
         + `templates`
         + `custom`
-    + `access_policies` (array[string]) - The [access policies](#header-access-policies) to grant. Only valid when `access_level` is `custom`.
+    + `access_policies` (array[string]) - The [access policies](#header-access-policies) to grant. Valid only when `access_level` is `custom`.
     + subaccounts (array[object]) - Invite the user with access to one or more subaccounts instead of the primary account. Between 1 and 25 entries. For a full description, see [Subaccount invite object](#header-subaccount-invite-object).
-    + bypass_sso (boolean) - On an account with single sign-on, create a regular invitation with a registration link instead of an SSO user. Only valid together with `subaccounts`. See [Accounts with single sign-on](#header-accounts-with-single-sign-on).
+    + bypass_sso (boolean) - On an account with single sign-on, create a regular invite with a registration link instead of a single sign-on user. Valid only together with `subaccounts`.
 
 
 + Request (application/json)
@@ -213,8 +209,6 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
         }
 
 + Response 200 (application/json)
-
-    On an account with single sign-on. See [Accounts with single sign-on](#header-accounts-with-single-sign-on).
 
         {
             "results": {
@@ -256,7 +250,7 @@ The response contains the invite `id`, which you use to [list](#header-list-pend
 
 ### List Pending Invites [GET /v1/users/pending-invites]
 
-Returns the invitations on your account that nobody has accepted yet. Expired invitations do not appear.
+Returns the invites on your account that nobody has accepted yet, each in the [Invite object](#header-invite-object) shape. Expired invites do not appear.
 
 + Request
 
@@ -281,7 +275,7 @@ Returns the invitations on your account that nobody has accepted yet. Expired in
 
 ### Revoke a Pending Invite [DELETE /v1/users/pending-invites/{id}]
 
-Revokes a pending invitation. Its registration link stops working immediately.
+Revokes a pending invite. Its registration link stops working immediately.
 
 + Parameters
     + id (required, string, `3f2504e0-4f89-41d3-9a0c-0305e82c3301`) - The invite ID from [List Pending Invites](#header-list-pending-invites).
@@ -306,7 +300,7 @@ Revokes a pending invitation. Its registration link stops working immediately.
 
 ### List Users [GET /v1/users]
 
-Returns the users on your account.
+Returns the users on your account, each in the [User object](#header-user-object) shape.
 
 + Request
 
@@ -431,13 +425,15 @@ Returns one user by username, in the [User object](#header-user-object) shape.
 
 ### Update a User's Role [PUT /v1/users/{username}]
 
+Changes a primary-account user's [role](#header-roles), and the [access policies](#header-access-policies) that go with a `custom` role. No other field on a user can be changed through the API.
+
 + Data Structure
     + access_level (enum) - The primary-account [role](#header-roles) to assign. `admin` cannot be set through the API.
         + `developer`
         + `reporting`
         + `templates`
         + `custom`
-    + `access_policies` (array[string]) - The [access policies](#header-access-policies) to grant. Only valid when `access_level` is `custom`.
+    + `access_policies` (array[string]) - The [access policies](#header-access-policies) to grant. Valid only when `access_level` is `custom`.
 
 
 + Parameters
@@ -540,13 +536,13 @@ Deletes a user from your account.
 
 ### Grant Subaccount Access [POST /v1/users/{username}/subaccounts]
 
-Grants a user access to a subaccount at the given access level. If the user already has access to that subaccount, the call updates their access level instead.
+Grants a user access to a subaccount with the role you set. If the user already has access to that subaccount, the call changes their role instead.
 
-The user must already have access to at least one subaccount. Calling this endpoint for a primary-account user returns `400`. To give a new person subaccount access, [invite them](#header-invite-a-user) with a `subaccounts` array.
+The user must already have access to at least one subaccount. This endpoint returns `400` for a primary-account user. To give a new person subaccount access, [invite them](#header-invite-a-user) with a `subaccounts` array.
 
 + Data Structure
     + subaccount_id (number, required) - The subaccount to grant access to.
-    + access_level (enum, required) - The access level to grant on the subaccount.
+    + access_level (enum, required) - The [role](#header-roles) to grant on the subaccount.
         + `subaccount_reporting`
         + `subaccount_developer`
 
@@ -600,6 +596,8 @@ The user must already have access to at least one subaccount. Calling this endpo
 ### Revoke Subaccount Access [DELETE /v1/users/{username}/subaccounts/{subaccountId}]
 
 Removes a user's access to a subaccount.
+
+A subaccount-scoped user must keep access to at least one subaccount. Revoking the last one returns `400`. To remove the user from the account entirely, [delete the user](#header-delete-a-user).
 
 + Parameters
     + username (required, string, `grace`) - The username of the user.
