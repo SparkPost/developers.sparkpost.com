@@ -42,6 +42,7 @@
     "pages": [
       "account.apib",
       "subaccounts.apib",
+      "users.apib",
       "data-privacy.apib"
     ]
   },
