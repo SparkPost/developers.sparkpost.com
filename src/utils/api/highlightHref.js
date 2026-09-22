@@ -2,6 +2,12 @@ import dataStructureToJson from './dataStructureToJson'
 import escapeRegExp from 'escape-string-regexp'
 import { isUndefined } from 'lodash'
 
+// Commas inside substituted parameter values must survive the template-comma
+// strip below, which is indiscriminate. Stash them as a sentinel that cannot
+// appear in a URI, then restore them once the template has been collapsed.
+const VALUE_COMMA = '\u0000'
+const stashCommas = value => String(value).replace(/,/g, VALUE_COMMA)
+
 export default function highlightHref(href, hrefVariables) {
   let modifiedHref = href
 
@@ -9,7 +15,7 @@ export default function highlightHref(href, hrefVariables) {
     const jsonArray = dataStructureToJson({ content: hrefVariables })
 
     for (let param of jsonArray) {
-      const value = isUndefined(param.value) ? '' : param.value
+      const value = isUndefined(param.value) ? '' : stashCommas(param.value)
       // replace it if it is a url parameter
       modifiedHref = modifiedHref.replace(
         `{${param.name}}`,
@@ -41,6 +47,9 @@ export default function highlightHref(href, hrefVariables) {
 
     // if there was no variables inserted we end up with "{?}" on the end - we should remove it
     modifiedHref = modifiedHref.replace(/{\?}$/, '')
+
+    // restore the commas that belonged to parameter values
+    modifiedHref = modifiedHref.split(VALUE_COMMA).join(',')
   }
 
   return modifiedHref
