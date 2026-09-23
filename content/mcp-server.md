@@ -88,22 +88,3 @@ have.
 | Metrics | Deliverability metrics overall and over time, broken out by domain, campaign, or template, plus bounce and rejection reasons. | `metrics_deliverability`, `metrics_deliverability_time_series`, `metrics_deliverability_by_domain`, `metrics_deliverability_by_campaign`, `metrics_deliverability_by_template`, `metrics_bounce_reasons`, `metrics_rejection_reasons` |
 | Message events | Search message events, and fetch sample events. | `events_search_message`, `events_samples_message` |
 | Subaccounts | List, create, retrieve, and update subaccounts. | `subaccounts_list`, `subaccounts_create`, `subaccounts_get`, `subaccounts_update` |
-
-## How discovery works
-
-You should not need any of this to connect — hosts handle it — but it is useful when
-building or debugging one.
-
-The MCP endpoint advertises its authorization server following
-[RFC 9728](https://datatracker.ietf.org/doc/html/rfc9728). An MCP request carrying
-no token is answered with `401` and a `WWW-Authenticate` header naming the resource
-metadata document:
-
-| Account | Resource metadata | Authorization server |
-|---|---|---|
-| **SparkPost** | `https://mcp.sparkpost.com/.well-known/oauth-protected-resource/mcp` | `https://api.sparkpost.com` |
-| **SparkPost EU** | `https://mcp.eu.sparkpost.com/.well-known/oauth-protected-resource/mcp` | `https://api.eu.sparkpost.com` |
-
-That document names the authorization server, whose own metadata sits at
-`/.well-known/oauth-authorization-server` and carries the authorization and token
-endpoints. The MCP endpoint itself accepts `POST` only.
