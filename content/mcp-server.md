@@ -1,6 +1,6 @@
 # MCP Server
 
-The SparkPost MCP server lets an AI assistant work in your SparkPost account —
+The SparkPost MCP server lets agents work in your SparkPost account —
 sending transmissions, managing templates and sending domains, pulling
 deliverability metrics — over the
 [Model Context Protocol](https://modelcontextprotocol.io/).
