@@ -74,22 +74,20 @@ have.
 
 ## What the server can do
 
-51 tools, in ten families. Each family lists the SparkPost permissions a connection
-needs before those tools will run — the same permission names used for API keys and
-roles.
+51 tools, in ten families.
 
-| Family | Tools | What it covers | Permissions |
-|---|---|---|---|
-| Transmissions | 4 | Send email; list, retrieve, and delete transmissions. | `transmissions/view`, `transmissions/modify` |
-| Templates | 6 | Create, list, retrieve, update, delete, and preview templates. | `templates/view`, `templates/modify` |
-| Suppression lists | 5 | Search the suppression list; retrieve, add, update, and remove entries. | `suppression_lists/manage` |
-| Recipient lists | 5 | Create, list, retrieve, update, and delete recipient lists. | `recipient_lists/manage` |
-| Sending domains | 6 | Create, list, retrieve, update, delete, and verify sending domains. | `sending_domains/view`, `sending_domains/manage` |
-| Tracking domains | 6 | Create, list, retrieve, update, delete, and verify tracking domains. | `tracking_domains/view`, `tracking_domains/manage` |
-| Webhooks | 6 | Create, list, retrieve, update, delete, and validate webhooks. | `webhooks/view`, `webhooks/modify` |
-| Metrics | 7 | Deliverability metrics overall and over time, broken out by domain, campaign, or template, plus bounce and rejection reasons. | `metrics/view` |
-| Message events | 2 | Search message events, and fetch sample events. | `message_events/view` |
-| Subaccounts | 4 | List, create, retrieve, and update subaccounts. | `subaccount/view`, `subaccount/manage` |
+| Family | What it covers | Tools |
+|---|---|---|
+| Transmissions | Send email; list, retrieve, and delete transmissions. | `transmissions_send`, `transmissions_list`, `transmissions_get`, `transmissions_delete` |
+| Templates | Create, list, retrieve, update, delete, and preview templates. | `templates_create`, `templates_list`, `templates_get`, `templates_update`, `templates_delete`, `templates_preview` |
+| Suppression lists | Search the suppression list; retrieve, add, update, and remove entries. | `suppression_search`, `suppression_get`, `suppression_upsert_bulk`, `suppression_upsert`, `suppression_delete` |
+| Recipient lists | Create, list, retrieve, update, and delete recipient lists. | `recipient_lists_create`, `recipient_lists_list`, `recipient_lists_get`, `recipient_lists_update`, `recipient_lists_delete` |
+| Sending domains | Create, list, retrieve, update, delete, and verify sending domains. | `sending_domains_create`, `sending_domains_list`, `sending_domains_get`, `sending_domains_update`, `sending_domains_delete`, `sending_domains_verify` |
+| Tracking domains | Create, list, retrieve, update, delete, and verify tracking domains. | `tracking_domains_create`, `tracking_domains_list`, `tracking_domains_get`, `tracking_domains_update`, `tracking_domains_delete`, `tracking_domains_verify` |
+| Webhooks | Create, list, retrieve, update, delete, and validate webhooks. | `webhooks_create`, `webhooks_list`, `webhooks_get`, `webhooks_update`, `webhooks_delete`, `webhooks_validate` |
+| Metrics | Deliverability metrics overall and over time, broken out by domain, campaign, or template, plus bounce and rejection reasons. | `metrics_deliverability`, `metrics_deliverability_time_series`, `metrics_deliverability_by_domain`, `metrics_deliverability_by_campaign`, `metrics_deliverability_by_template`, `metrics_bounce_reasons`, `metrics_rejection_reasons` |
+| Message events | Search message events, and fetch sample events. | `events_search_message`, `events_samples_message` |
+| Subaccounts | List, create, retrieve, and update subaccounts. | `subaccounts_list`, `subaccounts_create`, `subaccounts_get`, `subaccounts_update` |
 
 ## How discovery works
 
