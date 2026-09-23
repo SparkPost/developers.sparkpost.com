@@ -1,9 +1,9 @@
 # MCP Server
 
-The SparkPost MCP server lets agents work in your SparkPost account —
-sending transmissions, managing templates and sending domains, pulling
-deliverability metrics — over the
-[Model Context Protocol](https://modelcontextprotocol.io/).
+The SparkPost MCP server lets agents work in your SparkPost account over the
+[Model Context Protocol](https://modelcontextprotocol.io/). They can send
+transmissions, manage templates and sending domains, and pull deliverability
+metrics.
 
 It is a remote server, so there is nothing to install and no API key to create.
 Point a supported host at the endpoint for your region, sign in to SparkPost, and
@@ -24,8 +24,8 @@ Use the endpoint that matches the region your account is in. An account on
      phrasing content and its <div> ends up inside a <p>. -->
 
 <Banner status="info">
-The server speaks Streamable HTTP. Most hosts need nothing but the endpoint URL —
-they work out the rest themselves.
+The server speaks Streamable HTTP. Most hosts need nothing but the endpoint URL and
+work out the rest themselves.
 </Banner>
 
 ## Connecting
