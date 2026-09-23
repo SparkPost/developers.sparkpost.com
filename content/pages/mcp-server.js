@@ -85,7 +85,9 @@ const content = [
   '',
   'Add the server from your terminal:',
   '',
-  '```',
+  // Tagged: left untagged, highlight.js guesses Dockerfile and keyword-colours
+  // the "add".
+  '```bash',
   'claude mcp add --transport http sparkpost https://mcp.sparkpost.com/mcp',
   '```',
   '',
