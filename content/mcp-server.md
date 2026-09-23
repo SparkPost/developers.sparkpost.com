@@ -60,13 +60,13 @@ Authorization uses OAuth 2.1 with PKCE. The first time a host connects:
 You sign in with your ordinary SparkPost credentials. No API key is created, and
 none is pasted into the host.
 
-## Permissions follow the user
+## Access follows the user
 
-A connection can never do more than the person who approved it. At consent time the
-permissions being requested are intersected with your role on the account and with
-what the account itself is entitled to. A reporting user's connection gets read
-access only, however much the host asks for, and nothing a connection does can
-exceed your own access.
+A connection can never do more than the person who approved it. What a host asks for
+is narrowed at consent time to what your role on the account allows, and to what the
+account itself is entitled to. A reporting user's connection gets read access only,
+however much the host asks for, and nothing a connection does can exceed your own
+access.
 
 To give an assistant narrower access than you have yourself, connect from a
 SparkPost user created for the purpose, holding the role you want the assistant to
