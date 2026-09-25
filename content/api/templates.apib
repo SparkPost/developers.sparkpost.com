@@ -464,6 +464,7 @@ Deletes both published and draft versions of a template.
 ### List all Templates [GET /v1/templates{?draft,shared_with_subaccounts}]
 
 Returns an array containing up to your first 50,000 templates.
+If you have more templates than that, use [Search Templates](#templates-query-search-templates) to page through all of them.
 
 + Parameters
     + draft (optional, boolean, `true`) ... If true, returns the draft templates. If false, returns the published templates. When not provided, returns the most recently edited templates (draft or published).
@@ -500,6 +501,127 @@ Returns an array containing up to your first 50,000 templates.
                     "last_use": "2018-05-08T14:49:03+00:00"
                     "last_update_time": "2018-02-10T14:15:16+00:00",
                     "shared_with_subaccount": true
+                }
+            ]
+        }
+
+### Search Templates [QUERY /v1/templates]
+
+Returns the templates that match a query, one sorted page at a time.
+Each result has the fields of a List all Templates result, without `last_use` and with `status`. A template with an empty name has its ID as its `name`.
+[Search](/api/search/) describes the query language, pagination, limits, and errors, and [Templates fields](/api/search/#header-templates-fields) lists the fields you can search.
+
+Search results are eventually consistent, and a change typically appears within a few seconds of the write.
+To read a template as you last wrote it, use [Retrieve a Template](#templates-get-retrieve-a-template).
+
+To get the next page, send the same `query` and `sort` again, with `cursor` set to the `next_cursor` of the page you have.
+A response with no `next_cursor` is the last page.
+
+The 400 example is the error for the query `name:ab`: the value at position 5 is shorter than three characters.
+
++ Data Structure
+    + query (string) - A query in the [search query language](/api/search/#header-query-language). If not provided, matches every template your API key can see.
+    + sort (array[object]) - The order of the results, as an array of exactly one object. The object has a `field`, which is one of `name`, `id`, `status`, `last_update_time`, and `created_at`, and a `direction`, which is `asc` or `desc`. `status` sorts alphabetically. Results with the same value are then ordered by subaccount ID and template ID, both ascending. Defaults to `[{ "field": "last_update_time", "direction": "desc" }]`.
+    + per_page (number) - The number of results on a page, a whole number from 1 to 1,000.
+        + Default: `25`
+    + cursor (string) - The `next_cursor` from the previous page. If not provided, or set to `initial`, returns the first page.
+
+
++ Request Search (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "query": "welcome status:published",
+                "sort": [
+                    {
+                        "field": "name",
+                        "direction": "asc"
+                    }
+                ],
+                "per_page": 2
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": "sub5-welcome",
+                    "name": "Sub 5 Welcome",
+                    "description": "Subaccount copy",
+                    "published": true,
+                    "has_published": true,
+                    "has_draft": false,
+                    "last_update_time": "2026-07-22T13:05:00.000Z",
+                    "status": "published",
+                    "subaccount_id": 5
+                },
+                {
+                    "id": "welcome-email",
+                    "name": "Welcome Email",
+                    "description": "The first mail a new signup gets",
+                    "published": true,
+                    "has_published": true,
+                    "has_draft": false,
+                    "last_update_time": "2026-08-01T09:15:00.000Z",
+                    "status": "published",
+                    "shared_with_subaccounts": true
+                }
+            ],
+            "next_cursor": "eyJhIjpbIndlbGNvbWUgZW1haWwiLCIwIiwid2VsY29tZS1lbWFpbCJdLCJmIjoiODlLS3lUWWNWdjItdWczQ2pwUE1YZyJ9"
+        }
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "message": "a : match on name needs at least 3 characters",
+                    "code": "invalid_search_query",
+                    "position": 5
+                }
+            ]
+        }
+
++ Request Next page (application/json)
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+
+    + Body
+
+            {
+                "query": "welcome status:published",
+                "sort": [
+                    {
+                        "field": "name",
+                        "direction": "asc"
+                    }
+                ],
+                "per_page": 2,
+                "cursor": "eyJhIjpbIndlbGNvbWUgZW1haWwiLCIwIiwid2VsY29tZS1lbWFpbCJdLCJmIjoiODlLS3lUWWNWdjItdWczQ2pwUE1YZyJ9"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": "welcome-series",
+                    "name": "Welcome series",
+                    "description": "Three mails over the first week",
+                    "published": true,
+                    "has_published": true,
+                    "has_draft": false,
+                    "last_update_time": "2026-08-14T16:40:00.000Z",
+                    "status": "published",
+                    "shared_with_subaccounts": false
                 }
             ]
         }
