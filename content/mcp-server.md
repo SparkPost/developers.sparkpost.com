@@ -62,11 +62,11 @@ none is pasted into the host.
 
 ## Permissions
 
-The permissions a connection holds are selected by the user on the consent screen.
-The user may grant all of their own permissions, or any narrower subset of them.
+You select the permissions a connection holds on the consent screen. You may grant
+all of your own permissions, or any narrower subset of them.
 
-A connection cannot be granted a permission the user does not hold. The available
-set is bounded by the user's role on the account and by the account's entitlements.
+A connection cannot be granted a permission you do not hold. The available set is
+bounded by your role on the account.
 
 ## What the server can do
 
