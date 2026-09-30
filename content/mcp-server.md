@@ -70,8 +70,6 @@ bounded by your role on the account.
 
 ## What the server can do
 
-48 tools, in ten families.
-
 | Family | What it covers | Tools |
 |---|---|---|
 | Transmissions | Send email. | `transmissions_send` |
