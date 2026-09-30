@@ -9,7 +9,7 @@ import Banner from 'components/Banner'
 import Markdown from 'components/Markdown'
 
 const description =
-  'Connect an AI assistant to your SparkPost account over the Model Context Protocol.'
+  'Connect AI agents to your SparkPost account over the Model Context Protocol.'
 
 const components = {
   banner: ({ children, status }) => (
