@@ -2,8 +2,8 @@
 
 The SparkPost MCP server lets agents work in your SparkPost account over the
 [Model Context Protocol](https://modelcontextprotocol.io/). They can send
-transmissions, manage templates and sending domains, and pull deliverability
-metrics.
+transmissions, manage templates and sending domains, pull deliverability metrics,
+and much more.
 
 It is a remote server, so there is nothing to install and no API key to create.
 Point a supported host at the endpoint for your region, sign in to SparkPost, and
@@ -62,12 +62,11 @@ none is pasted into the host.
 
 ## Permissions
 
-When you approve a connection, you pick the permissions it gets. You can grant
-everything you have yourself, or choose a narrower set.
+The permissions a connection holds are selected by the user on the consent screen.
+The user may grant all of their own permissions, or any narrower subset of them.
 
-Your own access is the ceiling. A connection can never be given more than you hold,
-so the permissions on offer are bounded by your role on the account and by what the
-account is entitled to.
+A connection cannot be granted a permission the user does not hold. The available
+set is bounded by the user's role on the account and by the account's entitlements.
 
 ## What the server can do
 
