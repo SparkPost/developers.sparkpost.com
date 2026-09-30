@@ -1,6 +1,6 @@
 # MCP Server
 
-The SparkPost MCP server lets agents work in your SparkPost account over the
+The SparkPost MCP server lets AI agents work in your SparkPost account over the
 [Model Context Protocol](https://modelcontextprotocol.io/). They can send
 transmissions, manage templates and sending domains, pull deliverability metrics,
 and much more.
@@ -70,11 +70,11 @@ bounded by your role on the account.
 
 ## What the server can do
 
-51 tools, in ten families.
+48 tools, in ten families.
 
 | Family | What it covers | Tools |
 |---|---|---|
-| Transmissions | Send email; list, retrieve, and delete transmissions. | `transmissions_send`, `transmissions_list`, `transmissions_get`, `transmissions_delete` |
+| Transmissions | Send email. | `transmissions_send` |
 | Templates | Create, list, retrieve, update, delete, and preview templates. | `templates_create`, `templates_list`, `templates_get`, `templates_update`, `templates_delete`, `templates_preview` |
 | Suppression lists | Search the suppression list; retrieve, add, update, and remove entries. | `suppression_search`, `suppression_get`, `suppression_upsert_bulk`, `suppression_upsert`, `suppression_delete` |
 | Recipient lists | Create, list, retrieve, update, and delete recipient lists. | `recipient_lists_create`, `recipient_lists_list`, `recipient_lists_get`, `recipient_lists_update`, `recipient_lists_delete` |
