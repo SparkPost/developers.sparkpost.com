@@ -54,23 +54,20 @@ sign-in and consent.
 Authorization uses OAuth 2.1 with PKCE. The first time a host connects:
 
 1. It sends you to SparkPost to sign in.
-2. SparkPost shows a consent screen describing what the connection will be able to do.
+2. SparkPost shows a consent screen where you choose what the connection can do.
 3. Approving it returns you to the host with the connection ready to use.
 
 You sign in with your ordinary SparkPost credentials. No API key is created, and
 none is pasted into the host.
 
-## Access follows the user
+## Permissions
 
-A connection can never do more than the person who approved it. What a host asks for
-is narrowed at consent time to what your role on the account allows, and to what the
-account itself is entitled to. A reporting user's connection gets read access only,
-however much the host asks for, and nothing a connection does can exceed your own
-access.
+When you approve a connection, you pick the permissions it gets. You can grant
+everything you have yourself, or choose a narrower set.
 
-To give an assistant narrower access than you have yourself, connect from a
-SparkPost user created for the purpose, holding the role you want the assistant to
-have.
+Your own access is the ceiling. A connection can never be given more than you hold,
+so the permissions on offer are bounded by your role on the account and by what the
+account is entitled to.
 
 ## What the server can do
 
