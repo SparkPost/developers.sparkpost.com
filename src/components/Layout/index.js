@@ -15,6 +15,7 @@ import { GlobalStyle } from './index.css'
 function onDocsPage(location) {
   return (
     location.pathname.startsWith('/api') ||
+    location.pathname.startsWith('/mcp-server') ||
     location.pathname.startsWith('/momentum')
   )
 }
