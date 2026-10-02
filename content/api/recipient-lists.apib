@@ -57,6 +57,8 @@ Recipients are described in an array of objects with the following attributes:
         + click_tracking (boolean) - Enable or disable click tracking for this recipient.
         + initial_open (boolean)
             Enable or disable initial open tracking for this recipient. Resolved independently of `open_tracking`: when set here, this value is used for the recipient (you do **not** also need to set `open_tracking` on the recipient). When omitted here, the effective `open_tracking` &mdash; the recipient's value if set, otherwise the inherited transmission/template/account value &mdash; drives it exactly as at the [transmission level](/api/transmissions/#header-request-body): if effective open tracking is disabled, initial open tracking is disabled; if enabled, the `initial_open_pixel_tracking` [account](/api/account) option applies.
+        + enable_minimized_event_passthrough (boolean)
+            Minimize open events for this recipient: the open event timestamp is truncated to midnight UTC on the day of the open. Takes precedence over the transmission-level value, except that `false` does not override a subaccount or account that has the option enabled. See the [transmission-level option](/api/transmissions/#header-request-body) for details.
 + Sample
     
     ```

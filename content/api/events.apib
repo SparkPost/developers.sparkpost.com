@@ -22,6 +22,8 @@ ___
 
 Data in the Events API is retained for 10 days. Aggregate reporting data is available through [metrics](/api/metrics/) or the app for up to 6 months.
 
+Open and initial open events minimized by the `enable_minimized_event_passthrough` option (see the [Account](/api/account/), [Subaccounts](/api/subaccounts/) and [Transmissions](/api/transmissions/) APIs) are not available in the Events API. They are delivered only by [webhook](/api/webhooks/).
+
 ### Event Types
 
 You can query the following types of events from the Events API.
