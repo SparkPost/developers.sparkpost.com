@@ -41,6 +41,8 @@ Retrieve information regarding your SparkPost account and set account options.
             Account-level default for initial open tracking. `true` by default. In order for initial open tracking to be enabled for REST and SMTP by default, `rest_tracking_default` and `smtp_tracking_default` must be `true`.
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
+        + enable_minimized_event_passthrough (boolean)
+            Set to `true` to minimize open events for mail sent by the primary account, over REST and SMTP: the timestamp of each open and initial open event is truncated to midnight UTC (00:00:00) on the day of the open, and the event carries `enable_minimized_event_passthrough: true`. Minimized events are delivered by [webhook](/api/webhooks/) but are not available in the [Events API](/api/events/). Click events are unaffected. Subaccounts that do not set their own `enable_minimized_event_passthrough` option inherit this value. When `true`, it takes precedence over any per-transmission or per-recipient value, so a message cannot opt out of it. It also applies to opens of mail sent before it was turned on. Mail sent while this option was `true` stays minimized if the option is later set back to `false`. Defaults to `false`.
         + inline_seeds (boolean)
             Set to `false` to pause Automatic Inline Seeding across the primary account and all subaccounts.
             This option is valid for SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers only.
@@ -197,6 +199,8 @@ Retrieve information regarding your SparkPost account and set account options.
         + initial_open_pixel_tracking (boolean) - Set to `false` to exclude the initial open tracking pixel from top of emails
         + click_tracking (boolean)
             Set to `false` to turn off click tracking (overrides smtp_tracking_default and rest_tracking_default)
+        + enable_minimized_event_passthrough (boolean)
+            Set to `true` to minimize open events for mail sent by the primary account, over REST and SMTP: the timestamp of each open and initial open event is truncated to midnight UTC (00:00:00) on the day of the open, and the event carries `enable_minimized_event_passthrough: true`. Minimized events are delivered by [webhook](/api/webhooks/) but are not available in the [Events API](/api/events/). Click events are unaffected. Subaccounts that do not set their own `enable_minimized_event_passthrough` option inherit this value. When `true`, it takes precedence over any per-transmission or per-recipient value, so a message cannot opt out of it. It also applies to opens of mail sent before it was turned on. Mail sent while this option was `true` stays minimized if the option is later set back to `false`. Defaults to `false`.
         + inline_seeds (boolean)
             Set to `false` to pause Automatic Inline Seeding across the primary account and all subaccounts.
             This option is valid for SparkPost <a href="https://www.sparkpost.com/features/email-deliverability/"><span class="label label-warning">Deliverability Add-On</span></a> customers only.
