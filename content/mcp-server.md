@@ -30,6 +30,9 @@ work out the rest themselves.
 
 ## Connecting
 
+The examples below use the SparkPost endpoint. For an EU account, use
+`https://mcp.eu.sparkpost.com/mcp` instead.
+
 ### Claude
 
 In [Claude](https://claude.ai) on the web or in the desktop app, open **Settings →
@@ -45,9 +48,70 @@ Add the server from your terminal:
 claude mcp add --transport http sparkpost https://mcp.sparkpost.com/mcp
 ```
 
-For an EU account, use `https://mcp.eu.sparkpost.com/mcp` instead. Then run `/mcp`
-inside Claude Code and choose to authenticate. Your browser opens for SparkPost
-sign-in and consent.
+Then run `/mcp` inside Claude Code and choose to authenticate. Your browser opens for
+SparkPost sign-in and consent.
+
+### Cursor
+
+Add the server to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "sparkpost": {
+      "url": "https://mcp.sparkpost.com/mcp"
+    }
+  }
+}
+```
+
+Then open Cursor's MCP settings, find `sparkpost`, and follow the sign-in prompt.
+
+### VS Code
+
+Add the server to `.vscode/mcp.json` in your workspace, or to your user `mcp.json`:
+
+```json
+{
+  "servers": {
+    "sparkpost": {
+      "type": "http",
+      "url": "https://mcp.sparkpost.com/mcp"
+    }
+  }
+}
+```
+
+The first time the server starts, VS Code asks you to trust it and then opens the
+SparkPost sign-in.
+
+### Codex
+
+Add the server to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.sparkpost]
+url = "https://mcp.sparkpost.com/mcp"
+```
+
+Then sign in from your terminal:
+
+```bash
+codex mcp login sparkpost
+```
+
+### ChatGPT
+
+ChatGPT connects to custom MCP servers in developer mode.
+
+1. Turn on developer mode in **Settings → Security and login**.
+2. Open **Plugins**, select **+**, and create a developer-mode app.
+3. Name it `SparkPost`, paste the endpoint URL, and choose **OAuth** as the
+   authentication method.
+4. Sign in to SparkPost and approve the connection.
+
+To use it in a conversation, choose **Developer mode** from the **+** menu and select
+SparkPost.
 
 ## Signing in
 
