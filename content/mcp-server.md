@@ -51,6 +51,13 @@ claude mcp add --transport http sparkpost https://mcp.sparkpost.com/mcp
 Then run `/mcp` inside Claude Code and choose to authenticate. Your browser opens for
 SparkPost sign-in and consent.
 
+`claude mcp list` now reports sparkpost as `! Needs authentication`.
+
+Run `/mcp`.
+Select **sparkpost** and press Enter.
+Choose Authenticate. Your browser opens SparkPost's consent screen; review your permissions and approve.
+The server then reads as connected and the tools work. To sign in again later, /mcp offers Re-authenticate; Clear authentication drops the stored token.
+
 ### Cursor
 
 Add the server to `~/.cursor/mcp.json`:
@@ -112,6 +119,26 @@ ChatGPT connects to custom MCP servers in developer mode.
 
 To use it in a conversation, choose **Developer mode** from the **+** menu and select
 SparkPost.
+
+### Google Antigravity
+
+Add the server to `~/.gemini/config/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "sparkpost": {
+      "serverUrl": "https://mcp.sparkpost.com/mcp"
+    }
+  }
+}
+```
+
+1. Navigate to **Settings → Customizations → Installed MCP Servers**.
+2. Click **Refresh MCP Servers** if SparkPost is not available at first.
+2. Click **Authenticate** next to the SparkPost server. Sign in and approve the connection.
+3. Google will provide an authorization code in your browser. Paste the code back into the settings panel in Antigravity, and click **Submit**.
+
 
 ## Signing in
 
