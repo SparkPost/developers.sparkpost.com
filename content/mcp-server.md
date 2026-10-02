@@ -159,7 +159,7 @@ all of your own permissions, or any narrower subset of them.
 A connection cannot be granted a permission you do not hold. The available set is
 bounded by your role on the account.
 
-## What the server can do
+## Tools
 
 | Family | What it covers | Tools |
 |---|---|---|
