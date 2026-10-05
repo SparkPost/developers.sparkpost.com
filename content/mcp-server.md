@@ -6,7 +6,7 @@ transmissions, manage templates and sending domains, pull deliverability metrics
 and much more.
 
 It is a remote server, so there is nothing to install and no API key to create.
-Point a supported host at the endpoint for your region, sign in to SparkPost, and
+Point a supported host at the endpoint for your account, sign in to SparkPost, and
 approve the connection.
 
 ## Endpoints
@@ -15,10 +15,16 @@ approve the connection.
 |---|---|
 | **SparkPost** | `https://mcp.sparkpost.com/mcp` |
 | **SparkPost EU** | `https://mcp.eu.sparkpost.com/mcp` |
+| **SparkPost Enterprise** | `https://mcp.sparkpost.com/<tenant>/mcp` |
+| **SparkPost EU Enterprise** | `https://mcp.eu.sparkpost.com/<tenant>/mcp` |
 
 Use the endpoint that matches the region your account is in. An account on
-[app.sparkpost.com](https://app.sparkpost.com) uses the first; an account on
-[app.eu.sparkpost.com](https://app.eu.sparkpost.com) uses the second.
+[app.sparkpost.com](https://app.sparkpost.com) uses the SparkPost endpoint; an
+account on [app.eu.sparkpost.com](https://app.eu.sparkpost.com) uses the SparkPost
+EU endpoint.
+
+Enterprise accounts use their own path. Your account manager can give you the
+`<tenant>` value for your account.
 
 <!-- Keep the Banner tags on their own lines. Inline, the banner parses as
      phrasing content and its <div> ends up inside a <p>. -->
@@ -30,14 +36,14 @@ work out the rest themselves.
 
 ## Connecting
 
-The examples below use the SparkPost endpoint. For an EU account, use
-`https://mcp.eu.sparkpost.com/mcp` instead.
+The examples below use the SparkPost endpoint. For an EU or Enterprise account, use
+your endpoint from the table above instead.
 
 ### Claude
 
 In [Claude](https://claude.ai) on the web or in the desktop app, open **Settings →
 Connectors → Add custom connector**, name it `SparkPost`, and paste the endpoint
-URL for your region. Claude opens a SparkPost sign-in window; approve the
+URL for your account. Claude opens a SparkPost sign-in window; approve the
 connection and the tools become available in your conversations.
 
 ### Claude Code
