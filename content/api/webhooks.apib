@@ -12,15 +12,17 @@ description: Manage event webhooks, which enable you to receive push updates of 
 * Each webhook batch contains the header `X-MessageSystems-Batch-ID`, which is useful for detecting and prevention of processing duplicate batches. Additionally within each event the `event_id` is unique and can also be used in duplicate detection and prevention.
 * Webhooks posting to your endpoint will timeout after 10 seconds. For best results, write webhook batches to disk and then process asynchronously to minimize data loss if you have a problem with your database.
 * Webhook batch status is available for 24 hours via the UI or the API.
-* See [Best Practices for Managing Webhook Data Streams](https://www.sparkpost.com/docs/tech-resources/webhook-data-streams/) for more information on how best to consume webhooks.
-* See [Webhook Authentication and Security](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/) for highly recommended security measures.
-* For further information on our event types see the [Webhook Event Reference Guide] (https://www.sparkpost.com/docs/tech-resources/webhook-event-reference/)
+* See [Best Practices for Managing Webhook Data Streams](https://docs.sparkpost.com/docs/tech-resources/webhook-data-streams/) for more information on how best to consume webhooks.
+* See [Webhook Authentication and Security](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/) for highly recommended security measures.
+* For further information on our event types see the [Webhook Event Reference Guide](https://docs.sparkpost.com/docs/tech-resources/webhook-event-reference/)
 
 ### Webhook Event Types
 
 You can receive any of the following types of events in webhook payloads.
 
 <WebhookEvents></WebhookEvents>
+
+**Minimized opens.** When the `enable_minimized_event_passthrough` option is enabled on the [account](/api/account/), a [subaccount](/api/subaccounts/), a [transmission](/api/transmissions/) or a recipient, `open`, `initial_open`, `amp_open` and `amp_initial_open` events are delivered with the timestamp truncated to midnight UTC on the day of the open, and carry `"enable_minimized_event_passthrough": "true"` (a string). These events are delivered only by webhook: they are not available in the [Events API](/api/events/) and are not counted in reporting. Click events are not affected.
 
 ## Webhooks Object
 
@@ -31,7 +33,7 @@ You can receive any of the following types of events in webhook payloads.
     + active (boolean) - The status of the webhook. When false, the target will no longer receive batches.
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + exception_subaccounts (array) - Array of subaccount numbers to prevent receiving events in your webhook (only available for webhooks with Primary and All Subaccounts event source).
-    + auth_type (enum) - Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
+    + auth_type (enum) - Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
         + none
         + basic
         + oauth2
@@ -84,7 +86,7 @@ Webhooks only support standard ports, port 80 for HTTP traffic and port 443 for 
     + custom_headers (object) - Object of custom headers to be used during POST requests to target.
     + exception_subaccounts (array) - Array of subaccount numbers to prevent receiving events in your webhook (only available for webhooks with Primary and All Subaccounts event source). Must not have duplicate values nor be empty. Integer values only. Max size: 10.
     + auth_type: none, basic, oauth2 (enum)
-        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
+        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
         + Default: none
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
         + url (string, required) - The URL for the authorization server.
@@ -330,7 +332,7 @@ When SparkPost does not get a 200 response from your webhook consumer endpoint t
     + exception_subaccounts (array) - Array of subaccount numbers to prevent receiving events in your webhook (only available for webhooks with Primary and All Subaccounts event source). Must not have duplicate values. Integers or empty array. New array values will completely replace the current values. Max size: 10.
     + subaccount_id (number) - The new Subaccount to be set as the Event Source. Can be any integer number (use -1 for Primary and All Subaccounts or 0 for Primary Account only).
     + auth_type: none, basic, oauth2 (enum)
-        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://www.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
+        Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
         + url (string, required) - The URL for the authorization server.
         + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
