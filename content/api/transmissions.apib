@@ -271,6 +271,7 @@ The template language is supported in `from`, `subject`, `text`, `html`, `amp_ht
 * The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
 * The template language is supported in headers.
+* When SparkPost adds its own `List-Unsubscribe` and `List-Unsubscribe-Post` headers (non-transactional messages, by default), it replaces any you provide. To send your own instead, open a support ticket [through the app](https://app.sparkpost.com/?supportTicket=true) [[EU]](https://app.eu.sparkpost.com/?supportTicket=true) to have your account keep custom `List-Unsubscribe` headers. SparkPost then adds its headers only to messages that don't already include a `List-Unsubscribe`. A `List-Unsubscribe` that renders empty counts as absent, so a template can choose per recipient: with `"List-Unsubscribe": "{{if unsub_token}}<https://example.com/u/{{unsub_token}}>{{end}}"`, recipients with an `unsub_token` get your header and the rest get SparkPost's. Unsubscribes made through your headers go to your endpoints, so SparkPost doesn't record them as unsubscribe events or add them to your suppression list, and your HTTPS endpoint must accept the one-click `POST` described in [RFC 8058](https://datatracker.ietf.org/doc/html/rfc8058).
 
 #### Attachment Object
 
