@@ -15,6 +15,61 @@ This allows you to work on an upcoming version of the content while continuing t
 Once ready, [publish the draft](#templates-put-publish-a-draft) to the start sending the new version without needing to change the transmission request.
 If needed, it's also possible to update the published version of a template directly, without affecting the draft version.
 
+## Pagination
+
+[List all Templates](#templates-get-list-all-templates) supports pagination through the `cursor` and `per_page` query parameters.
+Pagination is optional. Without `cursor`, the response contains up to your first 50,000 templates. Paginated requests have no such limit, so they can list every template.
+
+Set `cursor` to `initial` to retrieve the first page. Passing `cursor` turns on pagination.
+The `per_page` query parameter sets the number of templates to return in a single page. It defaults to 25, supports a maximum value of 100, and is ignored without `cursor`.
+
+Each page includes a `links` object. `links.next` is the URL of the next page.
+It is prefilled with the `cursor` for that page, and with `per_page` and any `draft` or `shared_with_subaccounts` filters you supplied with the original request.
+The cursor is opaque. Take it from `links.next` rather than building it yourself.
+
+On the last page, the `links` object has no `next` key.
+When the last page is exactly full, `links.next` is still present, and following it returns an empty `results` array with no `next` key.
+
+Paginated results are in no particular order. The response has no total count.
+
++ Data Structure: Paginated Response
+    + results (array) - A page of templates that match the request's filters.
+    + links (object)
+        + next (string)
+            A URL that can be used to retrieve the next page of results. Will be prefilled with the appropriate value for the `cursor` query parameter, as well as `per_page` and any `draft` or `shared_with_subaccounts` filters supplied with the original request. Not present on the last page.
+
++ Sample
+    ```
+    {
+        "results": [
+            {
+                "id": "summer_sale",
+                "name": "Summer Sale!",
+                "published": false,
+                "description": "",
+                "has_draft": true,
+                "has_published": true,
+                "last_update_time": "2017-08-11T12:12:12+00:00",
+                "shared_with_subaccounts": true
+            },
+            {
+                "id": "daily",
+                "name": "daily",
+                "published": false,
+                "description": "Daily roundup email.",
+                "has_draft": true,
+                "has_published": true,
+                "last_use": "2018-05-08T14:49:03+00:00",
+                "last_update_time": "2018-02-10T14:15:16+00:00",
+                "shared_with_subaccounts": true
+            }
+        ],
+        "links": {
+            "next": "/api/v1/templates?cursor=WyAxLCA0OSwgMCwgIm1hc3Rlcl8yIiBd&per_page=2&draft=true&shared_with_subaccounts=true"
+        }
+    }
+    ```
+
 ## Template Object
 
 + Data Structure: Attributes
@@ -461,13 +516,16 @@ Deletes both published and draft versions of a template.
             ]
         }
 
-### List all Templates [GET /v1/templates{?draft,shared_with_subaccounts}]
+### List all Templates [GET /v1/templates{?draft,shared_with_subaccounts,cursor,per_page}]
 
-Returns an array containing up to your first 50,000 templates.
+Returns an array of your templates. Without the `cursor` parameter, the array contains up to your first 50,000 templates. Passing `cursor` [paginates](#header-pagination) the results.
 
 + Parameters
     + draft (optional, boolean, `true`) ... If true, returns the draft templates. If false, returns the published templates. When not provided, returns the most recently edited templates (draft or published).
     + shared_with_subaccounts (optional, boolean, `true`) ... If true, returns only shared templates. If false, returns only non-shared templates.
+    + cursor (optional, string) ... A cursor provided in the `links` object of a page of results, used to get the next page of results. Set this parameter to `initial` to retrieve the first page of results. Passing this parameter will cause results to be [paginated](#header-pagination).
+    + per_page (optional, number) - Limits the number of templates returned in each [page](#header-pagination). The maximum allowed value is 100. Ignored without `cursor`.
+        + Default: 25
 
 + Request
 
@@ -503,6 +561,48 @@ Returns an array containing up to your first 50,000 templates.
                 }
             ]
         }
+
++ Request First page
+
+    + Headers
+
+            Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf
+            Accept: application/json
+
++ Response 200 (application/json)
+
+    The first page of two templates, from a request with `cursor=initial&per_page=2` added to the query string.
+
+    + Body
+
+            {
+                "results": [
+                    {
+                        "id": "summer_sale",
+                        "name": "Summer Sale!",
+                        "published": false,
+                        "description": "",
+                        "has_draft": true,
+                        "has_published": true,
+                        "last_update_time": "2017-08-11T12:12:12+00:00",
+                        "shared_with_subaccounts": true
+                    },
+                    {
+                        "id": "daily",
+                        "name": "daily",
+                        "published": false,
+                        "description": "Daily roundup email.",
+                        "has_draft": true,
+                        "has_published": true,
+                        "last_use": "2018-05-08T14:49:03+00:00",
+                        "last_update_time": "2018-02-10T14:15:16+00:00",
+                        "shared_with_subaccounts": true
+                    }
+                ],
+                "links": {
+                    "next": "/api/v1/templates?cursor=WyAxLCA0OSwgMCwgIm1hc3Rlcl8yIiBd&per_page=2&draft=true&shared_with_subaccounts=true"
+                }
+            }
 
 ### Create an RFC 822 Template [POST /v1/templates]
 
