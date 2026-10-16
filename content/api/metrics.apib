@@ -1068,11 +1068,11 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
             ]
         }
 
-### Metrics by Campaign [GET /v1/metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by}]
+### Metrics by Campaign [GET /v1/metrics/deliverability/campaign{?from,to,delimiter,domains,campaigns,templates,sending_ips,ip_pools,sending_domains,subaccounts,precision,metrics,timezone,limit,order_by,include}]
 
 Provides aggregate metrics grouped by campaign over the time window specified.
 
-Each result also has `first_injected_at` and `last_injected_at`: the earliest and latest injection of the campaign between `from` and `to`. They count injections only.
+When the request has `include=injection_dates`, each result also has `first_injected_at` and `last_injected_at`: the earliest and latest injection of the campaign between `from` and `to`. They count injections only. Without `include`, the results do not have these fields.
 
 Both values are UTC ISO 8601 strings that end in `Z`, such as `2026-03-07T14:05:00Z`. The `timezone` parameter sets the range, not the values.
 
@@ -1159,6 +1159,10 @@ The precision of the values follows the data the range reads: minute for recent 
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
     + Sample: count_injected
+    + include (optional, list) ... Delimited list of optional fields to add to each result. An unsupported value returns a `400`.
+
+        + Values
+            + `injection_dates`
 
 + Request
 
