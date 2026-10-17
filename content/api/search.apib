@@ -1,0 +1,437 @@
+FORMAT: 1A
+title: Search
+description: Documentation for the search query language, pagination, and errors shared by every searchable SparkPost API resource.
+full: true
+
+# Search
+
+A search is a `QUERY` request to a resource's own collection URL, such as `/api/v1/templates`, with a JSON body.
+`QUERY` is an HTTP method for a safe, idempotent read that carries a request body, like a `GET` with a body.
+`GET` on the same URL keeps its existing meaning, so a search and a list are two separate operations.
+
+These resources support search:
+
+| Resource  | Action                                                      | Fields                                  |
+|-----------|-------------------------------------------------------------|-----------------------------------------|
+| Templates | [Search Templates](/api/templates/#templates-query-search-templates) | [Templates fields](#header-templates-fields) |
+
+Every searchable resource shares the request body, the query language, pagination, the response envelope, and the errors on this page.
+Only the fields differ from one resource to another.
+
+With cURL, set the method with `-X QUERY`:
+
+```
+curl -X QUERY \
+-H "Content-Type: application/json" \
+-H "Authorization: 14ac5499cfdd2bb2859e4476d2e5b1d2bad079bf" \
+-d '{"query": "welcome status:published"}' \
+"https://api.sparkpost.com/api/v1/templates"
+```
+
+## Request body
+
+The body is one JSON object, sent with `Content-Type: application/json`.
+
+| Field      | Type             | Default                                                  | Description |
+|------------|------------------|----------------------------------------------------------|-------------|
+| `query`    | string           | Matches every item your API key can see                  | A query in the [query language](#header-query-language). |
+| `sort`     | array of objects | `[{ "field": "last_update_time", "direction": "desc" }]` | Exactly one object, with a `field` and a `direction` of `asc` or `desc`. The resource's field table lists the fields you can sort by. |
+| `per_page` | number           | `25`                                                     | The number of results on a page, a whole number from 1 to 1,000. |
+| `cursor`   | string           | `initial`                                                | The `next_cursor` value from the previous page. Leave it out, or send `initial`, for the first page. |
+
+A field sent as JSON `null` takes its default, and so does an empty `sort` array.
+Unknown fields are ignored.
+A `sort` array with two or more objects is a 400.
+The body is limited to 16 KB, and a larger body is a 413.
+
+## Query language
+
+A query is one or more terms, separated by whitespace.
+A term is a **qualifier**, such as `status:published`, which restricts one field, or **bare text**, such as `welcome`, which has no field in front of it.
+You can join terms with `AND`, `OR`, `NOT`, and parentheses.
+An empty query, or one that holds only whitespace, matches every item your API key can see.
+
+These queries all search Templates:
+
+| Query                                                        | Finds templates that |
+|--------------------------------------------------------------|----------------------|
+| `welcome`                                                    | have `welcome` in the name, ID, subaccount ID, or description |
+| `welcome status:published`                                   | have `welcome` in one of those fields and are published |
+| `v2-fr subaccount_id:5`                                      | have `v2-fr` in one of those fields and belong to subaccount 5 |
+| `name:welc`                                                  | have `welc` anywhere in the name |
+| `id=welcome`                                                 | have the ID `welcome`, and not `welcome-v2` |
+| `name:"welcome email"`                                       | have `welcome email`, with the space, anywhere in the name |
+| `(name:welcome OR name:onboarding) status:draft,published`   | have `welcome` or `onboarding` in the name, and are drafts or published |
+| `-status:draft last_update_time:>=2026-01-01`                | are not drafts and were last updated on or after 1 January 2026 |
+| `last_update_time:2026-01-01..2026-06-30`                    | were last updated between 1 January and 30 June 2026, both days included |
+
+### Two operators
+
+A qualifier is a field name, an operator, and a value, with no whitespace between them.
+There are two operators:
+
+* `=` matches the whole value, on every field type.
+* `:` matches as much as the field's type allows, which the table shows for each type.
+
+| Field type | `:` matches                      | `=` matches        | `>`, `>=`, `<`, `<=`, and `..` |
+|------------|----------------------------------|--------------------|--------------------------------|
+| `string`   | any part of the value            | the whole value    | 400                            |
+| `keyword`  | the whole value                  | the whole value    | 400                            |
+| `enum`     | one value from a fixed set       | the same as `:`    | 400                            |
+| `boolean`  | `true` or `false`                | the same as `:`    | 400                            |
+| `number`   | the value                        | the same as `:`    | yes                            |
+| `date`     | the day or the instant the value names | the same as `:` | yes, against the edges of that day or instant |
+
+Every match is case-insensitive, `=` included, so `name:WELC` and `status:Draft` work.
+An operator that a field's type does not accept is a 400 that names the operators it does accept.
+For example, `name:>x` is a 400.
+
+A `:` match on a `string` field needs at least three characters, so `name:welc` works and `name:we` is a 400.
+The three-character minimum does not apply to `=` or to a `keyword` field, so `id=ab` finds the template whose ID is `ab`, and `subaccount_id:5` works.
+
+A field's type is fixed.
+The field tables at the end of this page list each field with its type.
+
+### Bare text
+
+Bare text is a word, or a quoted value, with no field in front of it.
+It searches each of the resource's Default fields with `:`, and matches when any one of them matches.
+For Templates, the Default fields are `name`, `id`, `subaccount_id`, and `description`, so `welc` searches the same fields as `(name:welc OR id:welc OR subaccount_id:welc OR description:welc)`.
+When your API key cannot query a Default field, bare text skips that field instead of failing.
+
+Bare text needs at least three characters.
+A shorter word is a 400, so `welcome or onboarding` is a 400 at `or`, because a lowercase `or` is text.
+
+Two words separated by whitespace are two terms, and a match needs both.
+So `welcome email` finds `Email for welcome series`, with the words in any order and in any fields.
+Quote the words to search for them together: `"welcome email"` finds the two words next to each other and in that order.
+The quoted value is a match on any part of a field, not on whole words, so `"welcome email"` also finds `prewelcome emails`.
+
+### Quotes only delimit a value
+
+Quotes mark where a value starts and ends, so the value can hold whitespace or a special character.
+Quotes do not change how a value matches:
+
+* `name:"welcome email"` is a partial match on a value that holds a space. It is not a phrase match on whole words, so it finds `Big welcome emails`.
+* Quoting never makes a match case-sensitive. `name:"Welcome Email"` and `name:"welcome email"` find the same templates.
+* A quoted value still needs three characters for a `:` match on a `string` field.
+
+To match a whole value, use `=`: `name="welcome email"` finds only the template named `welcome email`, in any case.
+
+### Escape special characters
+
+These characters have a special meaning outside quotes: `"`, `\`, `(`, `)`, `:`, `=`, and `~`.
+To search for text that holds one of them, put the text in double quotes: `name:"Re: welcome"`.
+
+Inside a qualifier value, these characters also have a special meaning: `,`, `<`, `>`, `*`, `?`, `/`, and the sequence `..`.
+Quote a value that holds one of them: `name:"a/b test"`.
+In bare text they are ordinary characters, so `welcome,email` is one search for the text `welcome,email`.
+
+Every other character is ordinary text, so `Don't miss out` and `[Draft] Welcome` need no quotes.
+
+Inside quotes, `\"` is a double quote and `\\` is a backslash.
+Any other backslash sequence is a 400, and so is an empty pair of quotes, except after `=`.
+
+A quoted value can hold a tab.
+It cannot hold a carriage return or a line feed, so no query matches across a line break.
+To find a description that holds a line break, search for text on one side of it.
+
+Whitespace is a space, a tab, a carriage return, or a line feed.
+Any other space character is a 400 wherever it appears, which includes the non-breaking space that text copied from a web page can carry.
+Invisible characters are a 400 too: control characters, the zero-width and invisible formatting characters U+00AD, U+200B, U+2060, and U+FEFF, and the bidirectional control characters.
+U+200D and U+FE0F are ordinary characters, so an emoji sequence that uses them is one word.
+
+Whitespace is not allowed around `:`, `=`, `,`, `..`, or a comparison operator, so `name: welc` is a 400.
+
+### Lists
+
+A `,` between values is an `OR` of those values on one field: `status:draft,published` matches either status.
+A list holds at most 50 values, and a value must follow each `,` directly.
+So `status:draft, published` and `status:draft ,published` are both a 400.
+A list works on `string`, `keyword`, and `enum` fields only.
+On any other type it is a 400, so `published:true,false` is a 400.
+
+Bare text cannot end with `,`, so `welcome, onboarding` is a 400 at the comma.
+
+### Null and empty values
+
+`field:null` matches items where the field has no value, and `-field:null` matches items where it has one.
+Every Templates field always has a value.
+`field=null` is the same as `field:null`.
+`null` is not case-sensitive.
+To search for the text `null`, quote it: `name:"null"`.
+A `null` inside a list, a range, or a comparison is a 400.
+
+An empty string is a value, and `field=""` finds it.
+For example, `description=""` finds templates with an empty description.
+`""` works only after `=`, only as the whole value, and only on a `string` field.
+So `name:""`, `id=abc,""`, and `""` on any other field type are each a 400.
+
+### Combine terms
+
+Whitespace between two terms means `AND`, so `welcome status:published` and `welcome AND status:published` are the same query.
+`OR` matches when either term matches.
+`NOT`, or `-` directly before a term, negates the term.
+Parentheses group terms, up to five levels deep.
+
+`OR` binds more tightly than `AND`, so `welcome onboarding OR signup` means `welcome AND (onboarding OR signup)`.
+Add parentheses to make the grouping clear:
+
+* `(name:welcome OR name:onboarding) status:published`
+* `welcome (status:draft OR has_draft:true)`
+* `NOT (status:draft OR status:published_with_draft)`
+
+The keywords `AND`, `OR`, and `NOT` are uppercase.
+Lowercase `and`, `or`, and `not` are text.
+A keyword is a keyword everywhere outside quotes, including after `:` or `=`, so `name:AND` is a 400.
+To search for the word, quote it: `name:"AND"`.
+A keyword needs whitespace after it: `NOT (status:draft OR has_draft:true)` works, and `NOT(status:draft)` is a 400.
+Two terms need whitespace between them too, so `(welcome)(email)` and `"welcome"email` are each a 400.
+A query cannot end with a keyword, so `welcome AND` is a 400.
+
+### Negation
+
+`-` and `NOT` negate a qualifier, bare text, or a group in parentheses.
+Each term takes one negation:
+
+* `-status:draft OR name:welc` means `(NOT status:draft) OR name:welc`.
+* `-(status:draft OR status:published)` negates the group.
+* `--status:draft`, `NOT -status:draft`, `-NOT status:draft`, and `- status:draft` are each a 400.
+
+Bare text cannot start with `-`, so search for the text `-draft` as `"-draft"`.
+A qualifier value can start with `-`, so `id:-draft` finds a template whose ID contains `-draft`.
+
+### Comparisons and ranges
+
+`number` and `date` fields accept comparisons and ranges.
+On any other type, they are a 400.
+
+* `>`, `>=`, `<`, and `<=` compare with one value: `last_update_time:>=2026-01-01`.
+* `a..b` is a range that includes both edges: `last_update_time:2026-01-01..2026-06-30`.
+
+A range needs both edges.
+For a range with one edge, use `>=` or `<=`.
+A range whose first edge is after its second edge is a 400 rather than an empty page.
+A value that holds `..` must be quoted.
+Outside a qualifier, `..` is ordinary text, so a bare `2026-01-01..2026-06-30` is one word of bare text.
+
+### Dates
+
+A date is `YYYY-MM-DD`, such as `2026-01-01`, or a date and a time, `YYYY-MM-DDThh:mm`, with optional seconds and optional milliseconds, such as `"2026-01-01T09:30:00.000"`.
+A date and time holds colons, so quote it.
+A date and time can end with `Z` or an offset from `-12:00` to `+14:00`, such as `"2026-01-01T09:30-05:00"`.
+
+A date or time with no offset is UTC.
+A date with no time is the whole of that UTC day, so `last_update_time:2026-01-01` matches any time on 1 January 2026, UTC.
+`>` starts after the day or instant that the value names, and `<` ends before it.
+
+Other ISO 8601 forms, such as `2026`, `2026-W38`, and `20260101`, are a 400.
+An offset on a date with no time, such as `2026-01-01Z`, is a 400.
+A date that does not exist, such as `2026-02-30`, or a time that does not exist, such as `"2026-01-01T25:61"`, is a 400.
+
+### Numbers
+
+A number is digits, with an optional leading `-` and an optional decimal part: `-12`, `0.5`, `007`.
+Other forms, such as `1e3` and `0x10`, are a 400.
+So is a number that search cannot store exactly: an integer larger than 2<sup>53</sup>, or a decimal more precise than a 64-bit floating-point number.
+No Templates field is a `number` field.
+
+### Field names and values
+
+Field names are case-sensitive, and are written as the field table prints them.
+An unknown field is a 400 that names the nearest field, so `nmae:welc` is a 400 instead of a text search.
+
+`enum` and `boolean` fields accept only the values the field table lists.
+An unknown value is a 400, so `status:archived`, `published:maybe`, and `published:1` are each a 400.
+Values are not case-sensitive, so `published:TRUE` works.
+
+### Grammar
+
+This is the query grammar in ABNF (RFC 5234), with `{ }` for repetition, `1*` for one or more, `[ ]` for optional, and `|` for alternation.
+A terminal written with the `%s` prefix of RFC 7405 is case-sensitive.
+A plain quoted terminal is not, which is why `null` is not case-sensitive and `AND` is.
+`&` requires what follows it without consuming it.
+`except` removes the whole token that the production on its right matches, never a prefix, so `ANDROID`, `ORDER`, and `nullify` are ordinary words.
+Scope is every item your API key can see.
+
+```
+query      = [ ws ] [ expression ] [ ws ]        ; empty or blank matches everything in Scope
+expression = factor { ws [ %s"AND" ws ] factor } ; AND, spelled by whitespace or by the word
+factor     = term { ws %s"OR" ws term }          ; OR, tighter
+term       = "-" operand | %s"NOT" ws operand | operand
+operand    = group | qualifier | bareword
+group      = "(" [ ws ] expression [ ws ] ")"
+qualifier  = field ":" ( null | range | comparison | list )
+           | field "=" ( null | empty | list )
+list       = value { "," value }                 ; OR of values on one field, 50 values maximum
+range      = value ".." value                    ; both edges required
+comparison = ( ">=" | "<=" | ">" | "<" ) value
+bareword   = quoted | word                       ; term position
+value      = quoted | ( 1*value-char ) except ( keyword | null )
+field      = ( ALPHA { ALPHA | DIGIT | "_" } ) except keyword
+word       = ( word-initial { word-inner } ) except keyword
+word-inner = word-char except "," | "," &word-char   ; never ends with ","
+keyword    = %s"AND" | %s"OR" | %s"NOT"
+quoted     = DQUOTE 1*( qchar | "\" DQUOTE | "\" "\" ) DQUOTE
+empty      = DQUOTE DQUOTE                       ; after "=" only
+null       = "null"                              ; case-insensitive, alone after ":" or "="
+ws         = 1*( SP | HTAB | LF | CR )
+
+word-initial = word-char except "-", "." and ","
+word-char    = any Unicode scalar except ws, uspace, control and structural
+value-char   = word-char except value-structural, and except a "." followed by a "."
+qchar        = any Unicode scalar except DQUOTE, "\", uspace, and control other than HTAB
+uspace       = any Unicode scalar in general category Zs, Zl or Zp, except SP
+control      = any Unicode scalar in general category Cc, plus the zero-width and
+               invisible formatting characters U+00AD, U+200B, U+2060 and U+FEFF, plus
+               every Bidi_Control character: U+061C, U+200E, U+200F, U+202A-U+202E
+               and U+2066-U+2069. U+200D and U+FE0F stay literal, so a joined emoji
+               sequence is one word
+structural       = DQUOTE | "\" | "(" | ")" | ":" | "=" | "~"
+value-structural = "," | "<" | ">" | "*" | "?" | "/"
+```
+
+## Limits
+
+| Limit                                  | Value |
+|----------------------------------------|-------|
+| Terms in a query                       | 10    |
+| Levels of nested parentheses           | 5     |
+| Values in a list                       | 50    |
+| Length of one value                    | 1,024 bytes, in UTF-8 |
+| Characters for a `:` match on a `string` field, and for bare text | 3, at least |
+| Results on a page                      | 1,000 |
+| Request body                           | 16 KB |
+
+A term is a qualifier or bare text, counted before bare text expands to the Default fields.
+A list counts as one term.
+The nesting limit counts depth, not the number of parentheses, so `(welcome) (email) (promo) (sale) (summer) (winter)` has a depth of one, and `((((((welcome))))))` has a depth of six and is a 400.
+
+The value length and the three-character minimum are measured after escapes are resolved and after the query is normalized to Unicode NFC.
+The same visible text is therefore measured the same way however it was typed.
+The three-character minimum counts characters, and the value length counts bytes.
+The three-character minimum can decrease in the future. It will not increase.
+
+## Consistency
+
+Search results are eventually consistent.
+A change to an item typically appears in search within a few seconds of the write.
+To read an item as you last wrote it, retrieve it by its ID, such as with [Retrieve a Template](/api/templates/#templates-get-retrieve-a-template), `GET /api/v1/templates/{id}`.
+
+## Pagination
+
+Search returns one page at a time.
+To get the next page, send the same `query` and `sort` again, with `cursor` set to the `next_cursor` value of the page you have.
+A response with no `next_cursor` is the last page.
+
+A cursor is opaque.
+It works only with the `query` and the `sort` that produced it, and only for the same set of items the request can see, which the API key and the `X-MSYS-SUBACCOUNT` header decide.
+A cursor sent with any of them changed is a 400 with the code `invalid_cursor`.
+
+There is no previous-page cursor and no total count.
+To go back, keep the cursors of the pages you have read.
+To start from the last result, reverse the `direction` of `sort`.
+
+## Response envelope
+
+A search returns `results`, an array of items, and `next_cursor`, the cursor for the next page.
+The fields inside each item belong to the resource.
+
+```
+{
+  "results": [
+    { "id": "welcome-email", "name": "Welcome Email" }
+  ],
+  "next_cursor": "eyJhIjpbIndlbGNvbWUgZW1haWwiLCIwIiwid2VsY29tZS1lbWFpbCJdLCJmIjoiODlLS3lUWWNWdjItdWczQ2pwUE1YZyJ9"
+}
+```
+
+## Errors
+
+An error returns an `errors` array in the [standard format](/api/#header-errors).
+A query error carries `position`, the 0-based offset in the query where the problem starts.
+
+```
+{
+  "errors": [
+    {
+      "message": "a : match on name needs at least 3 characters",
+      "code": "invalid_search_query",
+      "position": 5
+    }
+  ]
+}
+```
+
+| Status | Code                   | Cause |
+|--------|------------------------|-------|
+| 400    | `invalid_search_query` | The query does not follow the query language, exceeds a limit, or uses a field the API key cannot query. The error carries a `position`. |
+| 400    | `invalid_param`        | The body is not a JSON object, or a field is outside its bounds, such as two `sort` objects or a `per_page` of 0. |
+| 400    | `invalid_cursor`       | The cursor was issued for a different query, sort, or set of items the request can see. |
+| 401    |                        | The API key is missing or not valid. |
+| 405    |                        | The URL does not accept the method. |
+| 413    |                        | The body is larger than 16 KB. |
+| 429    |                        | Too many requests. See [Rate Limiting](/api/#header-rate-limiting). |
+| 503    |                        | Search is not available, or the search timed out. The response carries a `Retry-After` header with the number of seconds to wait. A search never returns a partial page. |
+
+### Error positions
+
+`position` counts Unicode scalar values, which are code points, not bytes and not UTF-16 code units, in the query as you sent it.
+The position is where the token that caused the error starts:
+
+| Query                 | Position | Why |
+|-----------------------|----------|-----|
+| `name:"welc`          | 5        | The closing quote is missing, and the opening quote is at 5. |
+| `(welcome OR email`   | 0        | The parenthesis at 0 is not closed. |
+| `name:ab`             | 5        | The value at 5 is shorter than three characters. |
+| `name:"a\tb"`         | 7        | `\t` is not an escape, and the backslash is at 7. |
+| `na-me:welc`          | 5        | `na-me` is bare text, and a `:` cannot follow bare text. |
+| `name:AND`            | 5        | `AND` is a keyword, and a keyword cannot be a value. |
+| `welcome AND`         | 8        | Nothing follows the `AND` at 8. |
+| `- welcome`           | 0        | Whitespace follows the `-` at 0. |
+
+A query error that exceeds a limit names the first item past the limit: the 11th term, the 51st value in a list, or the sixth `(`.
+
+The query is checked for syntax first, then for limits, then for field types and API key access.
+So the first syntax error is reported even when the query also exceeds a limit.
+For example, `(name:we` is a 400 at 0, for the parenthesis that is not closed, and not at 6 for the short value.
+
+## Templates fields
+
+Search on Templates with [Search Templates](/api/templates/#templates-query-search-templates).
+
+| Field | Type | `:` matches | Comparisons | `,` list | Default field | Sortable |
+|---|---|---|---|---|---|---|
+| `name` | `string` | any part of the value | no | yes | yes | yes |
+| `id` | `string` | any part of the value | no | yes | yes | yes |
+| `description` | `string` | any part of the value | no | yes | yes | no |
+| `subaccount_id`, alias `subaccount` | `keyword` | the whole value, primary account without `X-MSYS-SUBACCOUNT` only | no | yes | yes | no |
+| `status` | `enum` | `draft`, `published`, or `published_with_draft` | no | yes | no | yes, alphabetical |
+| `published` | `boolean` | `true` or `false` | no | no | no | no |
+| `has_published` | `boolean` | `true` or `false` | no | no | no | no |
+| `has_draft` | `boolean` | `true` or `false` | no | no | no | no |
+| `shared_with_subaccounts` | `boolean` | `true` or `false` | no | no | no | no |
+| `last_update_time` | `date` | the day or the instant | yes | no | no | yes |
+| `created_at` | `date` | the day or the instant | yes | no | no | yes |
+
+The Default fields are `name`, `id`, `subaccount_id`, and `description`.
+Bare text searches these four fields.
+
+The API key and the `X-MSYS-SUBACCOUNT` header decide which templates a search can see, as they do for [List all Templates](/api/templates/#templates-get-list-all-templates):
+
+| API key         | `X-MSYS-SUBACCOUNT` | Templates searched |
+|-----------------|---------------------|--------------------|
+| primary account | not set             | the primary account's templates and every subaccount's templates |
+| primary account | `0`                 | the primary account's templates only |
+| primary account | a subaccount ID     | the subaccount's templates, and the primary account's templates shared with subaccounts |
+| subaccount      | not set             | the subaccount's templates, and the primary account's templates shared with subaccounts |
+
+A query can narrow this set. It cannot widen it.
+
+`subaccount` is an alias for `subaccount_id`, and works the same way in every respect: `subaccount:5` and `subaccount=5` both work.
+A `subaccount_id` qualifier works only with a primary account API key sent without the `X-MSYS-SUBACCOUNT` header.
+Otherwise it is a 400, and bare text skips `subaccount_id`.
+With the `X-MSYS-SUBACCOUNT` header set to a subaccount ID, `shared_with_subaccounts:false` returns the same templates as the `shared_with_subaccounts=false` parameter of [List all Templates](/api/templates/#templates-get-list-all-templates).
+
+Sorting on `status` is alphabetical, so `desc` puts `published_with_draft` first.
+Items with the same value in the `sort` field are ordered by subaccount ID and then by template ID, both ascending, so the order is always the same.
