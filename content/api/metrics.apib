@@ -1072,13 +1072,9 @@ Provides aggregate metrics grouped by subaccount over the time window specified.
 
 Provides aggregate metrics grouped by campaign over the time window specified.
 
-When the request has `include=injection_dates`, each result also has `first_injected_at` and `last_injected_at`: the earliest and latest injection of the campaign between `from` and `to`. They count injections only. Without `include`, the results do not have these fields.
+With `include=injection_dates`, each result also has `first_injected_at` and `last_injected_at`: the campaign's first and last injection in the range. Both are UTC ISO 8601 strings, such as `2026-03-07T14:05:00Z`. `timezone` does not apply to them.
 
-Both values are UTC ISO 8601 strings that end in `Z`, such as `2026-03-07T14:05:00Z`. The `timezone` parameter sets the range, not the values.
-
-Both values are `null` when the campaign has no injections in the range. They are also `null` when `metrics` has only unique or Inbox Tracker metrics, such as `count_unique_confirmed_opened`, because those metrics do not use the injection data.
-
-The precision of the values follows the data the range reads: minute for recent data, hour or day for longer ranges. When the range reads the daily rollup, both values are the UTC start of the day.
+Their precision matches the data the range reads: minute for recent data, hour or day for longer ranges. Both are `null` when the campaign has no injections in the range, or when `metrics` has only unique or Inbox Tracker metrics.
 
 + Parameters
     + from (required, datetime, `2018-07-11T08:00`) ... Datetime in format of `YYYY-MM-DDTHH:MM`.
@@ -1159,7 +1155,7 @@ The precision of the values follows the data the range reads: minute for recent 
     + limit=1000 (optional, int, `5`) ... Maximum number of results to return between 1 and 10000, inclusive.
     + order_by (optional, string) - Metric by which to order results.
     + Sample: count_injected
-    + include (optional, list) ... Delimited list of optional fields to add to each result. An unsupported value returns a `400`.
+    + include (optional, list) ... Delimited list of fields to add to each result. An unsupported value returns a `400`.
 
         + Values
             + `injection_dates`
