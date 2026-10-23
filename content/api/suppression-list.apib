@@ -10,7 +10,7 @@ Each entry indicates whether the recipient opted out of receiving one of the fol
 
 * Transactional messages - single recipient messages that are used operationally, e.g. to reset a password or confirm a purchase.
 * Non-transactional messages - used to run email campaigns where a list of recipients are targeted, e.g. advertising a sales event.
-* Open tracking - recipients who revoked consent for open tracking. Unlike the sending types above, an `open_tracking` entry does **not** block sending: mail is delivered normally, but no open events are generated for the recipient (the tracking pixel itself is still served).
+* Open tracking - recipients who revoked consent for open tracking. Unlike the sending types above, an `open_tracking` entry does **not** block sending: mail is delivered normally, but no open events are generated for the recipient (the tracking pixel itself is still served). A recipient revokes consent by clicking a [consent revocation link](/api/template-language/#header-open-tracking-consent-revocation-links) in one of your messages, which adds an entry with the source `Tracking Consent Revoked`.
 
 Suppressions can be either **account-wide** (blocking all emails of a given type) or **list-specific** (blocking emails only from a particular mailing list). Use the optional `list_id` field to create list-specific suppressions for more granular control. `open_tracking` suppressions are always account-wide: `list_id` is not supported for that type.
 

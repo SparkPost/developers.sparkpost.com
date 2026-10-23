@@ -617,6 +617,24 @@ You can configure a link in your content to generate a `link_unsubscribe` event 
 
 More information can be found [here](https://support.sparkpost.com/docs/user-guide/setting-up-unsubscribe-links/).
 
+#### Open Tracking Consent Revocation Links
+
+You can give recipients a way to withdraw their consent to open tracking using the `data-msys-revoke-tracking` custom attribute. The link is tracked even when click tracking is disabled for the transmission, but not when it also has `data-msys-clicktrack="0"`: that link is left untracked, and clicking it does not revoke consent. For example:
+
+```html
+<a href="http://www.example.com/tracking-preferences?id=1234" data-msys-revoke-tracking="1">Stop tracking my opens</a>
+```
+
+In the `text` part:
+
+```no-highlight
+http://www.example.com/tracking-preferences?id=1234[[data-msys-revoke-tracking="1"]]
+```
+
+When the recipient clicks the link, they are redirected to its URL, and SparkPost adds an `open_tracking` entry for them to the [suppression list](/api/suppression-list/) with the source `Tracking Consent Revoked`, usually within a few minutes. The entry applies to the account, or to the subaccount the message was sent from. From then on, opens by that recipient are not tracked, including opens of messages sent before the click. Mail is still delivered. The click itself does not generate a `click` event.
+
+To see who revoked consent and when, [search the suppression list](/api/suppression-list/#suppression-list-get-search-suppressions) with `types=open_tracking`. To track a recipient's opens again, [delete their suppression](/api/suppression-list/#suppression-list-delete-delete-a-suppression) with `type` set to `open_tracking`: a delete without a type only removes the sending types.
+
 #### Per-link Disabling of Click Tracking
 
 When click-tracking is enabled for a transmission, individual links can be skipped using the `data-msys-clicktrack` custom attribute. For example:
