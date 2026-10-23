@@ -619,7 +619,7 @@ More information can be found [here](https://support.sparkpost.com/docs/user-gui
 
 #### Open Tracking Consent Revocation Links
 
-You can give recipients a way to withdraw their consent to open tracking using the `data-msys-revoke-tracking` custom attribute. The link is tracked even when click tracking is disabled for the transmission. For example:
+You can give recipients a way to withdraw their consent to open tracking using the `data-msys-revoke-tracking` custom attribute. The link is tracked even when click tracking is disabled for the transmission, but not when it also has `data-msys-clicktrack="0"`: that link is left untracked, and clicking it does not revoke consent. For example:
 
 ```html
 <a href="http://www.example.com/tracking-preferences?id=1234" data-msys-revoke-tracking="1">Stop tracking my opens</a>
