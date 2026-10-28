@@ -22,7 +22,7 @@ You can receive any of the following types of events in webhook payloads.
 
 <WebhookEvents></WebhookEvents>
 
-**Minimized opens.** When the `enable_minimized_event_passthrough` option is enabled on the [account](/api/account/), a [subaccount](/api/subaccounts/), a [transmission](/api/transmissions/) or a recipient, `open`, `initial_open`, `amp_open` and `amp_initial_open` events are delivered with the timestamp truncated to midnight UTC on the day of the open, and carry `"enable_minimized_event_passthrough": true`. These events are delivered only by webhook: they are not available in the [Events API](/api/events/) and are not counted in reporting. Click events are not affected.
+**Minimized opens.** When the `enable_minimized_event_passthrough` option is enabled on the [account](/api/account/), a [subaccount](/api/subaccounts/), a [transmission](/api/transmissions/) or a recipient, `open`, `initial_open`, `amp_open` and `amp_initial_open` events are delivered with the timestamp truncated to midnight UTC on the day of the open, without the `ip_address`, `geo_ip`, `user_agent` and `user_agent_parsed` fields, and with `"enable_minimized_event_passthrough": true`. Otherwise they have the same fields as other open events (see the [event samples](#webhooks-get-event-samples)). These events are delivered only by webhook: they are not available in the [Events API](/api/events/) and are not counted in reporting. Click events are not affected.
 
 ## Webhooks Object
 
