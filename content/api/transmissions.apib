@@ -142,6 +142,7 @@ You can create a transmission in a number of ways.
                 + email (string, required) - The email address to send from.
         + reply_to (string) - Email address used to compose the email's "Reply-To" header.
         + list_id (string) - Sets the `List-Id` header for mailing list identification (RFC 2919). Used by email clients for filtering and organization. Format: `<list-identifier>` (e.g., `<marketing@example.com>`).
+        + headers (object) - Headers to set on every message of the transmission, replacing any header of the same name in the stored template or inline content. See the [Override Header Notes](#header-override-header-notes).
     + recipients (enum, required) - Array of [recipient objects](/api/recipient-lists/#header-recipient-object) or a single object containing a [stored recipient list](#header-stored-recipient-list). Inline recipient objects may include an [`options` object](/api/recipient-lists/#header-recipient-object) to override `open_tracking`, `click_tracking`, and `initial_open` for that recipient; these recipient-level values take precedence over the transmission `options`. (Per-recipient overrides are ignored when using a stored recipient list.)
         + (array)
         + (object)
@@ -171,7 +172,10 @@ You can create a transmission in a number of ways.
           "email": "fred@flintstone.com"
         },
         "reply_to": "Christmas Sales <sales@flintstone.com>",
-        "list_id": "<marketing@flintstone.com>"
+        "list_id": "<marketing@flintstone.com>",
+        "headers": {
+          "X-Campaign-Tier": "gold"
+        }
       },
       "description": "Christmas Campaign Email",
       "campaign_id": "christmas_campaign",
@@ -271,6 +275,16 @@ The template language is supported in `from`, `subject`, `text`, `html`, `amp_ht
 * The `To` header should not be specified, since it is generated from each recipient's `address` field.
 * Each header value is expected in the UTF-8 charset without RFC2047 encoding.
 * The template language is supported in headers.
+* With a stored template, `content.headers` is not applied to the message. Use [`override.headers`](#header-override-header-notes) instead.
+
+#### Override Header Notes
+
+* Header names are case-insensitive, and each name can appear only once. Up to 50 headers, with names up to 64 bytes and values up to 998 bytes.
+* Values are static: substitution is not supported, and a value containing `{{` is rejected. Values must be printable ASCII.
+* `Subject`, `Reply-To` and `List-Id` can be set here. Setting `Reply-To` or `List-Id` both here and through `override.reply_to` or `override.list_id` is rejected.
+* `From` and `Sender` are rejected: use `override.from`. `X-Binding` is rejected: use `options.ip_pool`. `To`, `Cc` and `Bcc` are rejected, since they come from each recipient.
+* Headers SparkPost sets are rejected: `Message-ID`, `MIME-Version`, any `Content-*` header, `Received`, `Received-SPF`, `Return-Path`, `Authentication-Results`, `DKIM-Signature`, `DomainKey-Signature` and the ARC headers.
+* `List-Unsubscribe` and `List-Unsubscribe-Post` require your account to be enabled for custom `List-Unsubscribe` headers, and are rejected otherwise. To enable it, open a support ticket [through the app](https://app.sparkpost.com/?supportTicket=true) [[EU]](https://app.eu.sparkpost.com/?supportTicket=true).
 
 #### Attachment Object
 
