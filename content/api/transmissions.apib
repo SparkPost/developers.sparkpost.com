@@ -279,8 +279,9 @@ The template language is supported in `from`, `subject`, `text`, `html`, `amp_ht
 
 #### Override Header Notes
 
-* Header names are case-insensitive, and each name can appear only once. Up to 50 headers, with values up to 998 bytes.
-* Values are static: substitution is not supported, and a value containing `{{` is rejected. Values must be printable ASCII.
+* Header names are case-insensitive, and each name can appear only once. Up to 50 headers. A header's name, colon, space and value together can be up to 998 bytes.
+* Values are static: substitution is not supported, and a value containing `{{` or `{%` is rejected.
+* Each value is expected in the UTF-8 charset without RFC2047 encoding, and must not contain control characters.
 * `Subject`, `Reply-To` and `List-Id` can be set here. Setting `Reply-To` or `List-Id` both here and through `override.reply_to` or `override.list_id` is rejected.
 * `From` and `Sender` are rejected: use `override.from`. `X-Binding` is rejected: use `options.ip_pool`. `To`, `Cc` and `Bcc` are rejected, since they come from each recipient.
 * Headers SparkPost sets are rejected: `Message-ID`, `MIME-Version`, any `Content-*` header, `Received`, `Received-SPF`, `Return-Path`, `Authentication-Results`, `DKIM-Signature`, `DomainKey-Signature` and the ARC headers.
