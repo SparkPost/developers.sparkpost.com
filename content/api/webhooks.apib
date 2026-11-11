@@ -38,8 +38,8 @@ You can receive any of the following types of events in webhook payloads.
         + basic
         + oauth2
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
-        + url (string, required) - The URL for the authorization server.
-        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
+        + url (string, required) - The URL of the authorization server's token endpoint. SparkPost does not follow redirects from this URL: a redirect fails the request. The response must be JSON that contains `access_token`. If the response contains `token_type`, it must be `Bearer`. SparkPost then sends `Authorization: Bearer <access_token>` with each batch, and requests a new token when the target responds with HTTP 400 or 401.
+        + body (object, required) - The fields to send to `url`. SparkPost sends them in an HTTP POST request with `Content-Type: application/x-www-form-urlencoded`, one form field per key. Typical keys are `client_id`, `client_secret` and `grant_type`. `grant_type` defaults to `client_credentials` when omitted. Any other key that your authorization server needs, such as `scope` or `audience`, is sent as is. For example, `{"client_id": "CLIENT123", "client_secret": "9sdfj791d2bsbf", "scope": "webhooks"}` is sent as `client_id=CLIENT123&client_secret=9sdfj791d2bsbf&scope=webhooks&grant_type=client_credentials`.
     + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
@@ -89,8 +89,8 @@ Webhooks only support standard ports, port 80 for HTTP traffic and port 443 for 
         Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
         + Default: none
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
-        + url (string, required) - The URL for the authorization server.
-        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
+        + url (string, required) - The URL of the authorization server's token endpoint. SparkPost does not follow redirects from this URL: a redirect fails the request. The response must be JSON that contains `access_token`. If the response contains `token_type`, it must be `Bearer`. SparkPost then sends `Authorization: Bearer <access_token>` with each batch, and requests a new token when the target responds with HTTP 400 or 401.
+        + body (object, required) - The fields to send to `url`. SparkPost sends them in an HTTP POST request with `Content-Type: application/x-www-form-urlencoded`, one form field per key. Typical keys are `client_id`, `client_secret` and `grant_type`. `grant_type` defaults to `client_credentials` when omitted. Any other key that your authorization server needs, such as `scope` or `audience`, is sent as is. For example, `{"client_id": "CLIENT123", "client_secret": "9sdfj791d2bsbf", "scope": "webhooks"}` is sent as `client_id=CLIENT123&client_secret=9sdfj791d2bsbf&scope=webhooks&grant_type=client_credentials`.
     + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
@@ -244,7 +244,8 @@ and returns information on the response received from the target.
                     "url": "https://oauth.myurl.com/tokens",
                     "body": {
                         "client_id": "<oauth client id>",
-                        "client_secret": "<oauth client secret>"
+                        "client_secret": "<oauth client secret>",
+                        "grant_type": "client_credentials"
                     }
                 },
                 "auth_credentials": {
@@ -334,13 +335,13 @@ When SparkPost does not get a 200 response from your webhook consumer endpoint t
     + auth_type: none, basic, oauth2 (enum)
         Type of authentication to be used during POST requests to target. Read more about [webhook authentication](https://docs.sparkpost.com/docs/tech-resources/webhook-authentication/#webhook-authentication-set-up).
     + auth_request_details (object) - Object containing details needed to request authorization token for OAuth 2.0. This is required when `auth_type` is oauth2.
-        + url (string, required) - The URL for the authorization server.
-        + body (object, required) - The body to send in the request to the authorization server. This likely should contain the client ID, client secret, and grant type.
+        + url (string, required) - The URL of the authorization server's token endpoint. SparkPost does not follow redirects from this URL: a redirect fails the request. The response must be JSON that contains `access_token`. If the response contains `token_type`, it must be `Bearer`. SparkPost then sends `Authorization: Bearer <access_token>` with each batch, and requests a new token when the target responds with HTTP 400 or 401.
+        + body (object, required) - The fields to send to `url`. SparkPost sends them in an HTTP POST request with `Content-Type: application/x-www-form-urlencoded`, one form field per key. Typical keys are `client_id`, `client_secret` and `grant_type`. `grant_type` defaults to `client_credentials` when omitted. Any other key that your authorization server needs, such as `scope` or `audience`, is sent as is. For example, `{"client_id": "CLIENT123", "client_secret": "9sdfj791d2bsbf", "scope": "webhooks"}` is sent as `client_id=CLIENT123&client_secret=9sdfj791d2bsbf&scope=webhooks&grant_type=client_credentials`.
     + `auth_credentials` (object) - Object containing credentials needed to make authorized POST requests for Basic Authentication. This is required when `auth_type` is basic. When `auth_type` is oauth2, it is generated from `auth_request_details`.
         + username (string, required) - The username for Basic Authentication.
         + password (string) - The password for Basic Authentication.
 
-If you change to the `target` URL, a test POST request will be sent. If this request does not receive an HTTP 200 response, your request to the Webhooks API will fail with HTTP 400, and the webhook will not be updated.
+If your request includes `target`, `auth_request_details` or `custom_headers`, or sets `active` to true, a test POST request will be sent to the `target` URL, unless the request also sets `active` to false. When `auth_type` is oauth2 and the request includes `auth_request_details`, SparkPost first requests a new token from `auth_request_details.url`. If the token request fails, or the test POST request does not receive an HTTP 200 response, your request to the Webhooks API will fail with HTTP 400, and the webhook will not be updated.
 
 Any batches already queued for delivery to this webhook will not be affected. For example, if you change the webhook's target URL, batches already queued for delivery will still be POSTed to the previous URL.
 
@@ -472,7 +473,8 @@ Returns a list of all your webhooks.
                             "url": "https://oauth.myurl.com/tokens",
                             "body": {
                                 "client_id": "<oauth client id>",
-                                "client_secret": "<oauth client secret>"
+                                "client_secret": "<oauth client secret>",
+                                "grant_type": "client_credentials"
                             }
                         },
                         "auth_credentials": {
