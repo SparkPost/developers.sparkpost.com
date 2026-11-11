@@ -3,6 +3,7 @@
     "category": "Introduction",
     "pages": [
       "index.apib",
+      "search.apib",
       "labs.apib"
     ]
   },
