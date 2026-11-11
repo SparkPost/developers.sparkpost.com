@@ -280,11 +280,11 @@ The template language is supported in `from`, `subject`, `text`, `html`, `amp_ht
 #### Override Header Notes
 
 * Header names are case-insensitive, and each name can appear only once. Up to 50 headers. A header's name, colon, space and value together can be up to 998 bytes.
-* Values are static: substitution is not supported, and a value containing `{{` or `{%` is rejected.
+* Values are static: substitution is not supported, and a value containing `{{` or other template syntax is rejected.
 * Each value is expected in the UTF-8 charset without RFC2047 encoding, and must not contain control characters.
 * `Subject`, `Reply-To` and `List-Id` can be set here. Setting `Reply-To` or `List-Id` both here and through `override.reply_to` or `override.list_id` is rejected.
-* `From` and `Sender` are rejected: use `override.from`. `X-Binding` is rejected: use `options.ip_pool`. `To`, `Cc` and `Bcc` are rejected, since they come from each recipient.
-* Headers SparkPost sets are rejected: `Message-ID`, `MIME-Version`, any `Content-*` header, `Received`, `Received-SPF`, `Return-Path`, `Authentication-Results`, `DKIM-Signature`, `DomainKey-Signature` and the ARC headers.
+* `From` and `Sender` are rejected: use `override.from`. `To`, `Cc` and `Bcc` are rejected, since they come from each recipient.
+* Headers that SparkPost or receiving servers manage are rejected, such as `Message-ID`, `MIME-Version`, `Content-*` headers, `Received`, `Return-Path` and `DKIM-Signature`.
 * `List-Unsubscribe` and `List-Unsubscribe-Post` require your account to be enabled for custom `List-Unsubscribe` headers, and are rejected otherwise. To enable it, open a support ticket [through the app](https://app.sparkpost.com/?supportTicket=true) [[EU]](https://app.eu.sparkpost.com/?supportTicket=true).
 
 #### Attachment Object
